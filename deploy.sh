@@ -3,14 +3,6 @@
 # NOTE: if cannot cd, assumes already in the correct directory
 cd /home/csss-site/csss-site-frontend 2> /dev/null
 
-echo "Making all recipes..."
-make all
-
-# do not continue if make fails
-if [ $? -ne 0 ]; then
-	exit $?
-fi
-
 deploy_path='/var/www/html'
 
 while true; do

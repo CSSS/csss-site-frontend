@@ -2,7 +2,7 @@
   "description": "The SFU Computing Science Student Society Website",
   "author": "CSSS <csss@sfu.ca>",
   "license": "AGPL-3.0-or-later",
-  "homepage": "https://sfucsss.org/",
+  "homepage": "https://sfucsss.org/test",
   "private": true,
   "scripts": {
     "start": "react-scripts start",
