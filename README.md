@@ -2,14 +2,19 @@
 
 The frontend of the [CSSS website](https://sfucsss.org) (pending deployment).
 
+## Important Repos
+
+- [csss-raspberry](https://github.com/csss/csss-raspberry/) - React component library.
+- [csss-site-backend](https://github.com/csss/csss-site-backend/) - Backend API for csss-site-frontend.
+
 ## Prerequisites
 
 To work on the CSSS frontend, you will need the following:
 
-- `bash` (or an alternative shell); for running scripts.
-- `make`; for compiling the websites into `build/`.
-- `nginx`; for serving the files after deployment from `build/`.
-- `npm`; for working with the React applications under `src/`.
+- `bash` (or an alternative shell) - for running scripts.
+- `make` - for compiling the websites into `build/`.
+- `nginx` - for serving the files after deployment from `build/`.
+- `npm` - for working with the React applications under `src/`.
   - Please use version 9.9.2!
 
 ## Local Deployment Instructions
