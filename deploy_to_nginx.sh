@@ -48,8 +48,8 @@ echo "Copying new files to $deploy_path..."
 sudo cp -Rf . $deploy_path
 sudo rm $deploy_path/.gitignore
 
-permissions='u=rwx,go=r'
-user='root'
+permissions='u=rwx,go=rx'
+user='www-data'
 group='www-data'
 
 # wait for user input before proceeding
