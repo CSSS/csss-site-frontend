@@ -6,7 +6,7 @@ npm ci
 echo "Building frontend..."
 npm run build
 
-echo "Adding to build branch..."
+echo "Checking out the build branch..."
 
 # store current branch (e.g., "main") in current_branch
 current_branch=$(git branch --show-current)
@@ -19,7 +19,8 @@ if [ $branch != "build" ]; then
 	exit 1
 fi
 
-# copy, then add build files to the root of the build branch
+# pull, copy, add build files to the root of the build branch
+git pull origin build
 cp -R build/* .
 git add .
 
