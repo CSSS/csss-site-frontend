@@ -48,6 +48,36 @@ echo "Copying new files to $deploy_path..."
 sudo cp -Rf . $deploy_path
 sudo rm $deploy_path/.gitignore
 
+permissions='u=rwx,go=r'
+user='root'
+group='www-data'
+
+# wait for user input before proceeding
+while true; do
+	echo "Permissions for $deploy_path will be set to $permissions for $user:$group."
+	echo "(C)ontinue, set (p)ermissions, (u)ser, (g)roup?"
+	read choice
+
+	if [ $choice = "C" ]; then
+		break
+	elif [ $choice = "p" ]; then
+		echo "What permissions?"
+		read permissions
+	elif [ $choice = "u" ]; then
+		echo "What user?"
+		read user
+	elif [ $choice = "g" ]; then
+		echo "What group?"
+		read group
+	else
+		echo "Not sure what you mean..."
+	fi
+done
+
+echo "Setting permissions and ownership..."
+sudo chown -R $user:$group $deploy_path
+sudo chmod -R $permissions $deploy_path
+
 git checkout $current_branch
 
 echo "Finished! Check for yourself at $deploy_path."
