@@ -10,9 +10,9 @@ fi
 # store current branch (e.g., "main") in current_branch
 echo "Checking out the build branch..."
 current_branch=$(git branch --show-current)
-
 git checkout build
 
+# don't proceed if couldn't checkout build branch
 branch=$(git branch --show-current)
 if [ $branch != "build" ]; then
 	exit 1
@@ -31,6 +31,7 @@ rm -Rf /var/www/html/*
 # selectively copy build files to /var/www/html
 echo "Copying files to /var/www/html..."
 rsync \
+	--verbose \
 	--recursive \
 	--exclude="build/" \
 	--exclude="node_modules/" \
