@@ -1,7 +1,8 @@
 import React from 'react';
 import { Flex } from 'csss-raspberry';
+import './index.css';
 
-export default function App(props) {
+export function Main(props) {
   return (
     <Flex.Container
       flow='column nowrap'
