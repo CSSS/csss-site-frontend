@@ -1,3 +1,15 @@
+:root {
+	--csss-red: #e36956;
+	--csss-orange: #ff9e7d;
+	--csss-yellow: #ffe478;
+	--csss-green: #a0c553;
+	--csss-blue: #69aae8;
+}
+
+a {
+	color: var(--csss-blue);
+}
+
 .csss-leading {
 	position: relative;
 	width: 100%;
