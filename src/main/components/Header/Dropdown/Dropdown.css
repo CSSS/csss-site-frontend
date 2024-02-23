@@ -1,0 +1,11 @@
+p.csss-header-dropdown {
+	font-weight: 500;
+}
+
+p.csss-header-dropdown:hover {
+	cursor: pointer;
+}
+
+p.csss-header-dropdown .csss-icon {
+	--csss-icon-stroke-width: 4px;
+}

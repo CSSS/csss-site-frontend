@@ -7,6 +7,7 @@ import {
 } from 'react-router-dom';
 
 import { Main } from './main';
+import './index.css';
 
 const routes = [
   { path: '/', element: <Main /> }
