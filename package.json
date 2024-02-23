@@ -6,7 +6,7 @@
   "private": true,
   "scripts": {
     "serve": "serve build",
-    "prebuild": "rm -R build/*",
+    "prebuild": "rm -Rf build/*",
     "build": "webpack --mode production",
     "postbuild": "cp -R public/* build",
     "lint": "eslint src"
