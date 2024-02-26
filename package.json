@@ -9,6 +9,7 @@
     "prebuild": "rm -Rf build/*",
     "build": "webpack --mode production",
     "postbuild": "cp -R public/* build",
+    "start": "npm run build && npm run serve",
     "lint": "eslint src"
   },
   "dependencies": {
