@@ -13,11 +13,6 @@ export function Container(props) {
       alignItems='center'
       className='csss-header-container'
     >
-      {/* NOTE: this has height 20px */}
-      <p className='csss-old-website-hint'>
-        Looking for the old website?
-        Click <a href="https://sfucsss.org">here</a>!
-      </p>
       <Flex.Container
         flow='row nowrap'
         alignItems='center'
@@ -46,6 +41,11 @@ export function Container(props) {
           {isDroppedDown ? <Icon.Cross /> : <Icon.Hamburger />}
         </Button>
       </Flex.Container>
+      {/* NOTE: this has height 20px */}
+      <p className='csss-old-website-hint'>
+        Looking for the old website?
+        Click <a href="https://sfucsss.org">here</a>!
+      </p>
       {isDroppedDown ? (
         <div className='csss-header-container-dropdown'>
           {children}

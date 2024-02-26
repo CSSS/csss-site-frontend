@@ -1,9 +1,13 @@
+/* Open Sans font */
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+ 
 :root {
 	--csss-red: #e36956;
 	--csss-orange: #ff9e7d;
 	--csss-yellow: #ffe478;
 	--csss-green: #a0c553;
 	--csss-blue: #69aae8;
+	--csss-font-family-sans-serif: 'Open Sans';
 }
 
 a {
