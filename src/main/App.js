@@ -1,10 +1,20 @@
-import React from 'react';
-import { Dropdown, Flex, Grid, Icon } from 'csss-raspberry';
+import React, { useState, useEffect } from 'react';
+import { Flex, Grid, Icon, helpers } from 'csss-raspberry';
 
 import { Header } from './components';
 import './index.css';
 
+const isMobileDeviceQuery = '(max-width: 768px)';
+
 export function App(props) {
+  const [isMobileDevice, setIsMobileDevice] = useState(
+    helpers.checkMediaQuery(isMobileDeviceQuery)
+  );
+
+  useEffect(() => {
+    helpers.watchMediaQuery(isMobileDeviceQuery, setIsMobileDevice);
+  }, []);
+
   return (
     <Flex.Container
       flow='column nowrap'
@@ -17,22 +27,27 @@ export function App(props) {
     >
       <Header.Container>
         <Grid.Container
-          columns='1fr 1fr 1fr 1fr'
-          rows='1fr 1fr'
-          areas={[
-            'about     events elections more   ',
-            'documents events elections actions'
-          ]}
-          gap='32px'
-          style={{ paddingTop: '16px', width: '100%', height: '100%' }}
+          columns={isMobileDevice ? '1fr 1fr' : '1fr 1fr 1fr 1fr'}
+          rows={isMobileDevice ? '1fr 1fr' : '1fr'}
+          areas={
+            isMobileDevice ?
+              ['about events', 'elections more']
+              : ['about events elections more']
+          }
+          gap='8px'
+          style={{
+            paddingTop: '16px',
+            paddingBottom: '32px',
+            width: '100%',
+            height: 'calc(100% - 48px)'
+          }}
         >
           <Flex.Container flow='column nowrap' gap='8px' area='about'>
             <h1 className='csss-header-section'>About</h1>
             <p>Who We Are</p>
             <p>List of Current Officers</p>
             <p>List of Past Officers</p>
-          </Flex.Container>
-          <Flex.Container flow='column nowrap' gap='8px' area='documents'>
+            <br />
             <h1 className='csss-header-section'>Documents</h1>
             <p>CSSS Constitution</p>
             <p>CSSS Policies</p>
@@ -57,15 +72,19 @@ export function App(props) {
             <p>Software Guide</p>
             <p>Bursaries and Awards</p>
             <Header.Dropdown text='Associated Clubs and DSUs'>
-              <p><Icon.Bullet /> WiCS <Icon.Link /></p>
-              <p><Icon.Bullet /> SSSS <Icon.Link /></p>
-              <p><Icon.Bullet /> MSU <Icon.Link /></p>
-              <p><Icon.Bullet /> ESSS <Icon.Link /></p>
-              <p><Icon.Bullet /> WiE <Icon.Link /></p>
-              <p><Icon.Bullet /> MSESS <Icon.Link /></p>
+              <ul>
+                <li>Women in Computing Science <Icon.Link /></li>
+                <li>Software Systems Student Society <Icon.Link /></li>
+                <li>Mathematics Student Union <Icon.Link /></li>
+                <li>Engineering Science Student Society <Icon.Link /></li>
+                <li>Women in Engineering <Icon.Link /></li>
+                <li>
+                  Mechatronics Systems Engineering Student Society&nbsp;
+                  <Icon.Link />
+                </li>
+              </ul>
             </Header.Dropdown>
-          </Flex.Container>
-          <Flex.Container flow='column nowrap' gap='8px' area='actions'>
+            <br />
             <h1 className='csss-header-section'>Actions</h1>
             <p>Log in</p>
           </Flex.Container>
