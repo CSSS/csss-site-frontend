@@ -1,3 +1,4 @@
 build/
 node_modules/
 *.LICENSE.txt
+.DS_Store
