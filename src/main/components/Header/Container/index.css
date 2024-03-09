@@ -1,8 +1,9 @@
 .csss-header-container {
 	z-index: 99;
 	position: sticky;
-	border-bottom: 1px solid black;
-	background-color: white;
+	top: 0;
+	border-bottom: 1px solid #a0a0a0;
+	background-color: var(--csss-white);
 }
 
 .csss-header-container h1,
@@ -15,18 +16,18 @@
 .csss-header-container p.csss-old-website-hint {
 	margin: 0;
 	width: 100vw;
-	height: 20px;
-	background-color: var(--csss-red);
-	color: white;
+	height: 24px;
+	background-color: #f8f0e0;
+	color: black;
 	font-size: 10pt;
 	font-weight: 400;
-	line-height: 20px;
+	line-height: 24px;
 	text-align: center;
 }
 
 .csss-header-container img.csss-logo {
-	width: 40px;
-	height: 40px;
+	width: 48px;
+	height: 48px;
 }
 
 .csss-header-container h1.csss-title {
@@ -38,14 +39,24 @@
 	line-height: 16px;
 }
 
+.csss-header-container img.csss-social-icon {
+	width: 20px;
+	height: 20px;
+	opacity: 0.5;
+}
+
+.csss-header-container img.csss-social-icon:hover {
+	opacity: 1;
+}
+
 .csss-header-container-dropdown {
 	position: absolute;
-	top: 64px;
+	top: 80px;
 	right: 0;
 	left: 0;
 	padding: 0 var(--csss-page-margin);
 	height: calc(100vh - 64px);
-	background-color: white;
+	background-color: var(--csss-white);
 }
 
 .csss-header-container-dropdown > .csss-grid-container > * {

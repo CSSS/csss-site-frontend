@@ -7,17 +7,24 @@
 	--csss-yellow: #ffe478;
 	--csss-green: #a0c553;
 	--csss-blue: #69aae8;
+	--csss-white: #fcfcfc;
+	--csss-navy: #8080c0;
 	--csss-font-family-sans-serif: 'Open Sans';
 }
 
+body {
+	background-color: var(--csss-white);
+}
+
 a {
-	color: var(--csss-blue);
+	color: #4040d0;
 }
 
 .csss-leading {
 	position: relative;
 	width: 100%;
 	height: 320px;
+	background-color: #8080c0;
 }
 
 .csss-leading img {
@@ -25,7 +32,7 @@ a {
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
-	width: 100%;
+	width: 240px;
 	height: 240px;
 	object-fit: contain;
 }
@@ -38,9 +45,11 @@ a {
 	transform: translate(-50%, -50%);
 	margin: 0;
 	width: 100%;
+	color: white;
 	font-family: 'Rubik', sans-serif;
 	font-size: 32pt;
 	font-weight: 700;
 	line-height: 48px;
 	text-align: center;
+	white-space: nowrap;
 }

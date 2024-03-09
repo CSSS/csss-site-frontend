@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Icon } from 'csss-raspberry';
 
-import './Dropdown.css';
+import './index.css';
 
 export function Dropdown(props) {
   const { children, text } = props;

@@ -1,7 +1,25 @@
 import React, { useState } from 'react';
 import { Button, Flex, Icon } from 'csss-raspberry';
 
-import './Container.css';
+import './index.css';
+
+const socials = [
+  {
+    alt: 'Discord',
+    src: '/static/discord.png',
+    href: 'https://discord.gg/sfucsss'
+  },
+  {
+    alt: 'Instagram',
+    src: '/static/instagram.png',
+    href: 'https://instagram.com/sfu_csss'
+  },
+  {
+    alt: 'GitHub',
+    src: '/static/github.png',
+    href: 'https://github.com/CSSS'
+  }
+];
 
 export function Container(props) {
   const { children } = props;
@@ -17,26 +35,35 @@ export function Container(props) {
         flow='row nowrap'
         alignItems='center'
         justifyContent='flex-start'
-        gap='8px'
+        gap='16px'
         style={{
           width: 'var(--csss-page-width)',
-          height: '64px'
+          height: '80px'
         }}
       >
         <img
-          src='/logos/csss_black.svg'
+          src='/static/csss_black.svg'
           alt='CSSS'
           className='csss-logo'
         />
         <h1 className='csss-title'>
           Computing Science<br />Student Society
         </h1>
+        <div style={{ marginLeft: 'auto' }} />
+        {socials.map((social, i) => (
+          <a href={social.href}>
+            <img
+              src={social.src}
+              alt={social.alt}
+              className='csss-social-icon'
+            />
+          </a>
+        ))}
         <Button
           onClick={() => {
             setIsDroppedDown(!isDroppedDown);
           }}
           className='large transparent icon'
-          style={{ marginLeft: 'auto' }}
         >
           {isDroppedDown ? <Icon.Cross /> : <Icon.Hamburger />}
         </Button>
