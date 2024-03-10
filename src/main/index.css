@@ -7,24 +7,38 @@
 	--csss-yellow: #ffe478;
 	--csss-green: #a0c553;
 	--csss-blue: #69aae8;
-	--csss-white: #fcfcfc;
 	--csss-navy: #8080c0;
+	--csss-white: #fcfcfc;
+	--csss-black: #18181a;
 	--csss-font-family-sans-serif: 'Open Sans';
+
+	/* dark-themed colors */
+	--csss-shadow-color: transparent; /* disable shadows; doesn't work for dark themes */
+	--csss-border-color: #606064;
+	--csss-border-color-alt: #404042;
+	--csss-background-color: var(--csss-black);
+	--csss-background-color-alt: #38383a;
+	--csss-color: var(--csss-white);
+	--csss-color-alt: #a0a0a0;
+
+	/* Button transparent */
+	--csss-button-transparent-border-color: var(--csss-border-color);
+	--csss-button-transparent-hover-color: var(--csss-background-color-alt);
+	--csss-button-transparent-active-color: #48484a;
 }
 
 body {
-	background-color: var(--csss-white);
+	background-color: var(--csss-black);
 }
 
 a {
-	color: #4040d0;
+	color: var(--csss-blue);
 }
 
 .csss-leading {
 	position: relative;
 	width: 100%;
 	height: 320px;
-	background-color: #8080c0;
 }
 
 .csss-leading img {
@@ -35,6 +49,7 @@ a {
 	width: 240px;
 	height: 240px;
 	object-fit: contain;
+	filter: drop-shadow(0 0 32px var(--csss-navy));
 }
 
 .csss-leading h1 {
@@ -52,4 +67,5 @@ a {
 	line-height: 48px;
 	text-align: center;
 	white-space: nowrap;
+	filter: drop-shadow(0 0 16px var(--csss-black));
 }

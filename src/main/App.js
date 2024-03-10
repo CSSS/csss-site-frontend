@@ -19,7 +19,7 @@ export function App(props) {
     <div>
       <Header.Default isMobileDevice={isMobileDevice} />
       <div className='csss-leading'>
-        <img src='/static/csss_black.svg' alt='CSSS' />
+        <img src='/static/csss_colourful.png' alt='CSSS' />
         <h1>Computing Science<br />Student Society</h1>
       </div>
       <Flex.Container

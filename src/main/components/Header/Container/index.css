@@ -2,8 +2,8 @@
 	z-index: 99;
 	position: sticky;
 	top: 0;
-	border-bottom: 1px solid #a0a0a0;
-	background-color: var(--csss-white);
+	border-bottom: 1px solid var(--csss-border-color);
+	background-color: var(--csss-black);
 }
 
 .csss-header-container h1,
@@ -17,8 +17,7 @@
 	margin: 0;
 	width: 100vw;
 	height: 24px;
-	background-color: #f8f0e0;
-	color: black;
+	background-color: var(--csss-background-color-alt);
 	font-size: 10pt;
 	font-weight: 400;
 	line-height: 24px;
@@ -35,7 +34,7 @@
 	margin-right: 16px;
 	font-family: 'Rubik', sans-serif;
 	font-size: 14pt;
-	font-weight: 500;
+	font-weight: 400;
 	line-height: 16px;
 }
 
@@ -56,7 +55,7 @@
 	left: 0;
 	padding: 0 var(--csss-page-margin);
 	height: calc(100vh - 64px);
-	background-color: var(--csss-white);
+	background-color: var(--csss-black);
 }
 
 .csss-header-container-dropdown > .csss-grid-container > * {

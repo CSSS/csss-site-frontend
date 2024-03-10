@@ -42,7 +42,7 @@ export function Container(props) {
         }}
       >
         <img
-          src='/static/csss_black.svg'
+          src='/static/csss_white.svg'
           alt='CSSS'
           className='csss-logo'
         />
