@@ -7,13 +7,13 @@
 	--csss-yellow: #ffe478;
 	--csss-green: #a0c553;
 	--csss-blue: #69aae8;
-	--csss-navy: #8080c0;
+	--csss-navy: #6060a0;
 	--csss-white: #fcfcfc;
 	--csss-black: #18181a;
 	--csss-font-family-sans-serif: 'Open Sans';
 
 	/* dark-themed colors */
-	--csss-shadow-color: transparent; /* disable shadows; doesn't work for dark themes */
+	--csss-shadow-color: #18181a80;
 	--csss-border-color: #606064;
 	--csss-border-color-alt: #404042;
 	--csss-background-color: var(--csss-black);
@@ -29,6 +29,10 @@
 
 body {
 	background-color: var(--csss-black);
+}
+
+body.overflow-hidden {
+	overflow: hidden;
 }
 
 a {
@@ -49,7 +53,9 @@ a {
 	width: 240px;
 	height: 240px;
 	object-fit: contain;
-	filter: drop-shadow(0 0 32px var(--csss-navy));
+	filter:
+		drop-shadow(0 0 8px var(--csss-black))
+		drop-shadow(0 0 32px var(--csss-navy));
 }
 
 .csss-leading h1 {
@@ -67,5 +73,5 @@ a {
 	line-height: 48px;
 	text-align: center;
 	white-space: nowrap;
-	filter: drop-shadow(0 0 16px var(--csss-black));
+	filter: drop-shadow(0 0 8px var(--csss-black));
 }

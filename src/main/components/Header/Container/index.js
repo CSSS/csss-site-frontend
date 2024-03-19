@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Button, Flex, Icon } from 'csss-raspberry';
 
 import './index.css';
@@ -24,6 +24,19 @@ const socials = [
 export function Container(props) {
   const { children } = props;
   const [isDroppedDown, setIsDroppedDown] = useState(false);
+
+  // prevent scroll on body when dropped down
+  useEffect(() => {
+    if (isDroppedDown) {
+      document.body.classList.add('overflow-hidden');
+    } else {
+      document.body.classList.remove('overflow-hidden');
+    }
+
+    return () => {
+      document.body.classList.remove('overflow-hidden');
+    }
+  }, [isDroppedDown]);
 
   return (
     <Flex.Container

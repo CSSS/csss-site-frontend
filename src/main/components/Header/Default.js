@@ -25,52 +25,99 @@ export function Default(props) {
           height: 'calc(100% - 48px)'
         }}
       >
-        <Flex.Container flow='column nowrap' gap='8px' area='about'>
-          <h1 className='csss-header-section'>About</h1>
-          <p>Who We Are</p>
-          <p>List of Current Officers</p>
-          <p>List of Past Officers</p>
-          <br />
-          <h1 className='csss-header-section'>Documents</h1>
-          <p>CSSS Constitution</p>
-          <p>CSSS Policies</p>
-          <p>CSSS Photo Galleries</p>
-          <p>SFSS Council Minutes</p>
-        </Flex.Container>
-        <Flex.Container flow='column nowrap' gap='8px' area='events'>
-          <h1 className='csss-header-section'>Events</h1>
-          <p>Regular Events</p>
-          <p>Tech Fair</p>
-          <p>Frosh Week</p>
-          <p>Mountain Madness Hackathon</p>
-          <p>Fall Hacks Hackathon</p>
-          <p>Workshops</p>
-        </Flex.Container>
-        <Flex.Container flow='column nowrap' gap='8px' area='elections'>
-          <h1 className='csss-header-section'>Elections</h1>
-          <p>(Scrollable list of elections.)</p>
-        </Flex.Container>
-        <Flex.Container flow='column nowrap' gap='8px' area='more'>
-          <h1 className='csss-header-section'>More</h1>
-          <p>Software Guide</p>
-          <p>Bursaries and Awards</p>
-          <Dropdown text='Associated Clubs and DSUs'>
-            <ul>
-              <li>Women in Computing Science <Icon.Link /></li>
-              <li>Software Systems Student Society <Icon.Link /></li>
-              <li>Mathematics Student Union <Icon.Link /></li>
-              <li>Engineering Science Student Society <Icon.Link /></li>
-              <li>Women in Engineering <Icon.Link /></li>
-              <li>
-                Mechatronics Systems Engineering Student Society&nbsp;
-                <Icon.Link />
-              </li>
-            </ul>
-          </Dropdown>
-          <br />
-          <h1 className='csss-header-section'>Actions</h1>
-          <p>Log in</p>
-        </Flex.Container>
+        <Grid.Item area='about' className='csss-header-item'>
+          <Flex.Container flow='column nowrap' gap='8px'>
+            <h1 className='csss-header-section'>About</h1>
+            <p>
+              <a href="/">
+                The Computing Science Student Society
+              </a>
+            </p>
+            <p>List of Current Officers</p>
+            <p>List of Past Officers</p>
+            <br />
+            <h1 className='csss-header-section'>Documents</h1>
+            <p>CSSS Constitution</p>
+            <p>CSSS Policies Document</p>
+            <p>CSSS Photo Galleries</p>
+            <p>SFSS Council Minutes</p>
+            <br />
+          </Flex.Container>
+        </Grid.Item>
+        <Grid.Item area='events' className='csss-header-item'>
+          <Flex.Container flow='column nowrap' gap='8px'>
+            <h1 className='csss-header-section'>Events</h1>
+            <p>Regular Events</p>
+            <p>Board Game Nights</p>
+            <p>Tech Fair</p>
+            <p>Frosh Week</p>
+            <p>Mountain Madness Hackathon</p>
+            <p>Fall Hacks Hackathon</p>
+            <p>Workshops</p>
+            <br />
+          </Flex.Container>
+        </Grid.Item>
+        <Grid.Item area='elections' className='csss-header-item'>
+          <Flex.Container flow='column nowrap' gap='8px'>
+            <h1 className='csss-header-section'>Elections</h1>
+            <p>(Scrollable list of elections.)</p>
+            <br />
+          </Flex.Container>
+        </Grid.Item>
+        <Grid.Item area='more' className='csss-header-item'>
+          <Flex.Container flow='column nowrap' gap='8px'>
+            <h1 className='csss-header-section'>More</h1>
+            <p>
+              <a href="https://sfu.ca">
+                Simon Fraser University
+              </a>
+            </p>
+            <p>
+              <a href="https://www.sfu.ca/computing.html">
+                School of Computing Science
+              </a>
+            </p>
+            <p>Bursaries and Awards</p>
+            <Dropdown text='Associated Clubs and DSUs'>
+              <ul>
+                <li>
+                  <a href="https://www.sfu.ca/computing/wics/">
+                    Women in Computing Science
+                  </a>
+                </li>
+                <li>
+                  <a href="https://sfussss.org">
+                    Software Systems Student Society
+                  </a>
+                </li>
+                <li>
+                  <a href="https://sfumsu.github.io/">
+                    Mathematics Student Union
+                  </a>
+                </li>
+                <li>
+                  <a href="https://esss.ca">
+                    Engineering Science Student Society
+                  </a>
+                </li>
+                <li>
+                  <a href="https://www.sfu.ca/clubs/wie.html">
+                    Women in Engineering
+                  </a>
+                </li>
+                <li>
+                  <a href="https://www.msess.ca/">
+                    Mechatronics Systems Engineering Student Society
+                  </a>
+                </li>
+              </ul>
+            </Dropdown>
+            <br />
+            <h1 className='csss-header-section'>Actions</h1>
+            <p>Log in</p>
+            <br />
+          </Flex.Container>
+        </Grid.Item>
       </Grid.Container>
     </Container>
   );
