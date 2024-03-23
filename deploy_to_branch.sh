@@ -20,6 +20,7 @@ fi
 
 # pull, copy, add build files to the root of the build branch
 git pull origin build
+rm build/js/*.LICENSE.txt # remove license files
 cp -R build/* .
 git add .
 
