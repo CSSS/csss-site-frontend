@@ -21,6 +21,7 @@ fi
 # pull, copy, add build files to the root of the build branch
 git pull origin build
 cp -R build/* .
+rm -f js/*.LICENSE.txt
 git add .
 
 # wait for user input before proceeding
