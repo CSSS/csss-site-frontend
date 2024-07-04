@@ -1,4 +1,4 @@
-const csssApi = 'https://api.sfucsss.org';
+const CSSS_API = 'https://api.sfucsss.org';
 
 /**
  * Checks if a media query matches.
@@ -68,13 +68,13 @@ export function setTheme(oldTheme, newTheme) {
 /** log into the CSSS API */
 export function casLogin(next) {
   const nextEncoded = encodeURI(next);
-  window.location = `https://cas.sfu.ca/cas/login?service=${csssApi}/auth/login%3Fnext%3D${nextEncoded}`;
+  window.location = `https://cas.sfu.ca/cas/login?service=${CSSS_API}/auth/login%3Fnext%3D${nextEncoded}`;
 }
 
 /** get information about the currently logged in user */
 export async function casGetUser() {
   try {
-    const response = await fetch(`${csssApi}/auth/check`, {
+    const response = await fetch(`${CSSS_API}/auth/check`, {
       method: 'GET',
       credentials: 'include' // cookies
     });
