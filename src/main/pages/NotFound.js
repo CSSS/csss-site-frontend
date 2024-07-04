@@ -6,8 +6,12 @@ export const NotFound = () => {
     <Page>
       <div className="p-4">
         <p>
+<<<<<<< HEAD
           Error 404; Page not found :(
           <br />
+=======
+          Error 404; Page not found :(<br />
+>>>>>>> main
         </p>
         <p className="text-blue-400">
           <a href="#">Click me!</a>
