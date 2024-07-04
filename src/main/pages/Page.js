@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-import { Icon, Flex, Grid, VSCode, helpers } from '../../shared';
+import { Icon, Flex, Grid, VSCode, helpers } from '../../_shared';
 
 // example usage of the VSCode.NavBar component, passing in children
 export const Page = ({ children }) => {

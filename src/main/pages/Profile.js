@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-import { helpers } from '../../shared';
+import { helpers } from '../../_shared';
 import { Page } from './Page.js';
 
 export const Profile = () => {

@@ -55,8 +55,8 @@ which "packs" JavaScript starting at a given entry-point into a standalone "bund
 This bundle can then be used in an HTML file with the `<script>` tag.
 
 There are several entry-points in this repo, each being a standalone React app.
-The entry-points are folders in the `src` folder, except the `shared` folder.
-The `shared` folder contains components and helper functions that can be used by any of the React apps in this site.
+The entry-points are folders in the `src` folder, except the `_shared` folder.
+The `_shared` folder contains components and helper functions that can be used by any of the React apps in this site.
 
 During the build process (`npm run build`), the `build` folder is emptied,
 and Webpack compiles each entry-point into the `js` folder inside of the `build` folder.
