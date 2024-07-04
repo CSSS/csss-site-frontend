@@ -1,23 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { Icon, Flex, Grid, VSCode, helpers } from 'csss-raspberry';
 
-const isMobileDeviceQuery = '(max-width: 768px)';
-
 // example usage of the VSCode.NavBar component, passing in children
 export const Page = ({ children }) => {
-  const [isMobileDevice, setIsMobileDevice] = useState(
-    helpers.checkMediaQuery(isMobileDeviceQuery)
-  );
-
-  // on page load
-  useEffect(() => {
-    // NOTE: this will only add an event listener ONCE, regardless of how
-    // many times it is called (see implementation of helpers.watchMediaQuery
-    // in lib/helpers.js).
-    helpers.watchMediaQuery(isMobileDeviceQuery, setIsMobileDevice);
-    // isMobileDevice will update when the media query changes
-  }, []);
-
   const apps = (
     <>
       <Icon.CSSS style={{ '--csss-icon-color': 'white' }} />
@@ -41,8 +26,22 @@ export const Page = ({ children }) => {
   const files = (
     <>
       <VSCode.NavItem text="README.md" to="/" />
+      <VSCode.NavFolder text="CSSS">
+        <VSCode.NavItem isInFolder={true} text="about.md" to="/about" />
+        <VSCode.NavItem isInFolder={true} text="common_rooms.md" to="/common_rooms" />
+        <VSCode.NavItem isInFolder={true} text="officers.md" to="/officers" />
+        <VSCode.NavItem isInFolder={true} text="elections.md" to="/elections" />
+      </VSCode.NavFolder>
+      <VSCode.NavFolder text="Committees">
+        <VSCode.NavItem isInFolder={true} text="events_committee.md" to="/events_committee" />
+        <VSCode.NavItem isInFolder={true} text="merch_committee.md" to="/merch_committee" />
+        <VSCode.NavItem isInFolder={true} text="w3_committee.md" to="/w3_committee" />
+      </VSCode.NavFolder>
+      <VSCode.NavItem text="login.txt" to="/profile" />
       <VSCode.NavFolder text="Events">
-        <VSCode.NavLink isInFolder={true} text="mountain_madness.html" href="/events/2024/mm" />
+        <VSCode.NavLink isInFolder={true} text="mtn_madness_23.html" href="https://sfucsss.org/events/mm/2023" />
+        <VSCode.NavLink isInFolder={true} text="mtn_madness_24.html" href="/events/2024/mm" />
+        <VSCode.NavLink isInFolder={true} text="tech_fair_24.html" href="/events/2024/techfair" />
       </VSCode.NavFolder>
       <VSCode.NavFolder text="Links">
         <VSCode.NavLink
@@ -56,7 +55,6 @@ export const Page = ({ children }) => {
           href="https://github.com/CSSS"
         />
       </VSCode.NavFolder>
-      <VSCode.NavItem text="profile.txt" to="/profile" />
     </>
   );
 
@@ -64,7 +62,6 @@ export const Page = ({ children }) => {
     <VSCode.Page
       apps={apps}
       files={files}
-      isMobileDevice={isMobileDevice}
       title="SFU-CSSS"
     >
       {children}
