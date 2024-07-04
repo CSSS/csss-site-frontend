@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { helpers } from 'csss-raspberry';
 
+import { helpers } from '../../shared';
 import { Page } from './Page.js';
 
 export const Profile = () => {
@@ -22,10 +22,7 @@ export const Profile = () => {
     <Page>
       <div className="p-4">
         {user === null ? (
-          <button
-            className="bg-slate-600 rounded px-1"
-            onClick={loginUser}
-          >
+          <button className="bg-slate-600 rounded px-1" onClick={loginUser}>
             Log in
           </button>
         ) : (
