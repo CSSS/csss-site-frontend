@@ -28,7 +28,7 @@ Run `npm run start` to deploy the site locally at [localhost:3000](http://localh
 The `npm run start` script runs `npm run build` and then `npm run serve`.
 Please see the section on the site architecture for information about what these scripts do.
 
-### Documentation
+## Documentation
 
 The documentation for this repo is lacking at the moment, aside from the architecture section.
 Please read the source code for the `main` and `test` entry-points in the `src` folder for creating a new React app.
@@ -40,6 +40,14 @@ Any additional packages you might need for your app should be installed at the r
 
 When ready to build, add a line to the `webpack.config.js` file under "entry".
 You should reference the `index.js` file that is the root of your React app.
+
+### Serving Local Changes
+
+For serving local changes during development, I recommend running `npm run serve` in a separate terminal,
+and running `npm run build` whenever you've modified enough files to view your changes.
+Refreshing your browser will load the newly built files.
+
+Alternatively, you can just run `npm run start` whenever you want to see your changes, and enter CTRL+C to stop serving.
 
 ## Architecture
 
