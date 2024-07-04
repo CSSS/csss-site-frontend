@@ -1,0 +1,35 @@
+.csss-icon {
+  display: inline-block;
+  width: 16px;
+  enable-background: new 0 0 32 32;
+}
+
+.csss-icon > circle,
+.csss-icon > line,
+.csss-icon > path,
+.csss-icon > polygon,
+.csss-icon > polyline,
+.csss-icon > rect {
+  fill: none;
+  stroke: var(--csss-icon-color);
+  stroke-width: var(--csss-icon-stroke-width);
+}
+
+.csss-icon.fill > circle,
+.csss-icon.fill > path,
+.csss-icon.fill > rect {
+  fill: var(--csss-icon-color);
+  stroke: none;
+  /* stroke-width: var(--csss-icon-stroke-width); */
+}
+
+.csss-icon.csss-icon-film > path {
+  fill: var(--csss-icon-color);
+  stroke: none;
+}
+
+.csss-icon-csss > path {
+  fill: var(--csss-icon-color);
+  stroke: none;
+  fill-rule: evenodd;
+}
