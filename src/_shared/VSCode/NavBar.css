@@ -1,0 +1,55 @@
+.csss-nav-app-drawer {
+  display: flex;
+  flex: none;
+  flex-flow: column nowrap;
+  gap: 4px;
+  justify-content: flex-start;
+  align-items: center;
+  width: 56px;
+  padding: 8px;
+}
+
+.csss-nav-app-drawer > * {
+  width: 40px;
+  height: 40px;
+  padding: 4px;
+  object-fit: contain;
+  border-radius: 4px;
+}
+
+.csss-nav-app-drawer > *:hover {
+  background-color: #334155; /* one of the TW slate colours */
+  cursor: pointer;
+}
+
+.csss-nav-mobile-menu {
+  position: fixed;
+  z-index: 99;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+}
+
+.csss-nav-mobile-menu .navbar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: calc(100% - 64px);
+  height: 100%;
+}
+
+.csss-nav-mobile-menu .exit {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 64px;
+  height: 100%;
+  background-color: #00000040;
+}
+
+.csss-nav-mobile-menu.hidden {
+  display: none;
+}

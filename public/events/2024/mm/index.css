@@ -27,7 +27,13 @@ body {
   width: 100%;
   font-family: sans-serif;
   /*background: linear-gradient(to bottom, var(--sky-color) 90vh, var(--hill-color) 90vh, var(--hill-color) 120vh, var(--hill-color) 140vh) no-repeat;*/
-  background: linear-gradient(to right, var(--hill-shadow) 3px, var(--hill-color) 3px, var(--hill-color) calc(100vw - 42px), var(--hill-shadow) calc(100vw - 42px));
+  background: linear-gradient(
+    to right,
+    var(--hill-shadow) 3px,
+    var(--hill-color) 3px,
+    var(--hill-color) calc(100vw - 42px),
+    var(--hill-shadow) calc(100vw - 42px)
+  );
   background: var(--hill-color);
 }
 
@@ -56,13 +62,24 @@ body * {
   height: 100vh;
   z-index: -3;
   background-color: black;
-  background-image:
-    radial-gradient(white 3px, transparent 2px),
+  background-image: radial-gradient(white 3px, transparent 2px),
     radial-gradient(white 1px, transparent 2px),
-    radial-gradient(rgba(255, 255, 255, .5) 2px, transparent 2px),
-    linear-gradient(transparent 100vh, var(--hill-color) 100vh, var(--hill-color) 150vh);
-  background-size: 550px 550px, 350px 350px, 250px 250px, 150px 150px; 
-  background-position: 0 0, 40px 60px, 130px 270px, 70px 100px;
+    radial-gradient(rgba(255, 255, 255, 0.5) 2px, transparent 2px),
+    linear-gradient(
+      transparent 100vh,
+      var(--hill-color) 100vh,
+      var(--hill-color) 150vh
+    );
+  background-size:
+    550px 550px,
+    350px 350px,
+    250px 250px,
+    150px 150px;
+  background-position:
+    0 0,
+    40px 60px,
+    130px 270px,
+    70px 100px;
 }
 
 #above-fold {
@@ -74,7 +91,8 @@ body * {
   margin: 0;
 }
 
-.btn, button {
+.btn,
+button {
   display: inline-block;
   padding: 12px 12px 10px 12px;
   font-size: inherit;
@@ -87,18 +105,23 @@ body * {
   cursor: pointer;
   font-size: 1em;
   box-shadow: 0 6px 0 var(--darkred);
-  transition: box-shadow .2s, color .2s, background .2s;
+  transition:
+    box-shadow 0.2s,
+    color 0.2s,
+    background 0.2s;
 }
 
-.btn:focus, button:focus,
-.btn:hover, button:hover {
+.btn:focus,
+button:focus,
+.btn:hover,
+button:hover {
   background: var(--lightred);
 }
 
-.btn:active, button:active {
+.btn:active,
+button:active {
   background: var(--darkred);
 }
-
 
 header {
   text-align: center;
@@ -114,7 +137,7 @@ header > h4 {
 
 header > h1 {
   text-transform: uppercase;
-  letter-spacing: .2rem;
+  letter-spacing: 0.2rem;
   margin: 1rem 0;
   font-family: Bungee;
   font-size: 2rem;
@@ -143,16 +166,16 @@ header > h4 b {
   max-width: 125px;
   height: 70px;
   background: gray;
-  box-shadow: inset -20px 0 0 gray, /* right leg */
-              inset 20px 0 0 gray, /* left leg */
-              0 0px 0 gray, /* roof */
-              inset 0 20px 0 gray, /* third level */
-              inset 0 30px 0 black, /* fourth level */
-              inset 0 40px 0 gray, /* fifth level */
-              inset 0 50px 0 black, /* fifth level */
-              /* shadow */
-              10px 0 0 #444,
-              10px 0px 0 #444;
+  box-shadow:
+    inset -20px 0 0 gray,
+    /* right leg */ inset 20px 0 0 gray,
+    /* left leg */ 0 0px 0 gray,
+    /* roof */ inset 0 20px 0 gray,
+    /* third level */ inset 0 30px 0 black,
+    /* fourth level */ inset 0 40px 0 gray,
+    /* fifth level */ inset 0 50px 0 black,
+    /* fifth level */ /* shadow */ 10px 0 0 #444,
+    10px 0px 0 #444;
 }
 
 #building::before {
@@ -191,21 +214,20 @@ header > h4 b {
   position: relative;
   border-top-left-radius: 30%;
   border-top-right-radius: 30%;
-	width: 100%;
-	height: 100%;
+  width: 100%;
+  height: 100%;
   width: 2rem;
   height: 5rem;
-	background: 
-		linear-gradient(315deg, var(--hill-shadow) 25%, transparent 25%),
-		linear-gradient(45deg, var(--hill-shadow) 25%, transparent 25%); 
-	background-color: var(--hill-color);
-	background-position: 0 0;
+  background: linear-gradient(315deg, var(--hill-shadow) 25%, transparent 25%),
+    linear-gradient(45deg, var(--hill-shadow) 25%, transparent 25%);
+  background-color: var(--hill-color);
+  background-position: 0 0;
   /*
 	background-size: calc(var(--hill-height) / 20) 5vw;
 	background-size: calc(var(--hill-height) / 20) 5vw;
   background-size: 1rem .25rem;
   */
-	background-position: bottom left;
+  background-position: bottom left;
 }
 
 .grass:nth-child(1) {
@@ -233,8 +255,12 @@ header > h4 b {
 }
 
 @keyframes cross {
-  0% {left: 100%;}
-  100% {left: -100%;}
+  0% {
+    left: 100%;
+  }
+  100% {
+    left: -100%;
+  }
 }
 
 .clouds {
@@ -259,7 +285,7 @@ header > h4 b {
 }
 
 .cloud::after {
-  content: "";
+  content: '';
   position: absolute;
   background: var(--cloud-color);
   height: calc(var(--width) / 3);
@@ -270,7 +296,7 @@ header > h4 b {
 }
 
 .cloud::before {
-  content: "";
+  content: '';
   position: absolute;
   background: var(--cloud-color);
   height: calc(var(--width) / 2);
@@ -289,14 +315,18 @@ header > h4 b {
   top: -20vh;
 }
 
-
 .clouds > .cloud:nth-child(odd) {
   top: -15vh;
 }
 
 #info-container {
-	background: var(--hill-color);
-  background: linear-gradient(to bottom, var(--hill-color) 10%, #0a1f0a 40%, #0a0a10 100%);
+  background: var(--hill-color);
+  background: linear-gradient(
+    to bottom,
+    var(--hill-color) 10%,
+    #0a1f0a 40%,
+    #0a0a10 100%
+  );
   background: linear-gradient(to bottom, var(--hill-color) 10%, #0a1f0a 40%);
 
   color: white;
@@ -324,7 +354,9 @@ header > h4 b {
 }
 
 /* if have more sponsors, add sponsors here too */
-#schedule, #prize, #sponsors {
+#schedule,
+#prize,
+#sponsors {
   display: flex;
   flex-flow: row wrap;
   justify-content: center;
@@ -356,21 +388,26 @@ header > h4 b {
 }
 */
 
-#schedule div, #prize div, #sponsors div {
+#schedule div,
+#prize div,
+#sponsors div {
   max-width: calc(100% - 2em);
   margin-left: 1em;
   margin-right: 1em;
 }
 
 table td {
-  padding: .5em 0;
+  padding: 0.5em 0;
   max-width: 45%;
 }
 
-#schedule > h2, #schedule > h3, #faq > h2, #prize > h2, #sponsors > h2 {
+#schedule > h2,
+#schedule > h3,
+#faq > h2,
+#prize > h2,
+#sponsors > h2 {
   flex: 1 0 100%;
 }
-
 
 .forest {
   position: relative;
@@ -396,7 +433,8 @@ table td {
   margin: 0;
   margin: auto;
   */
-  margin: var(--foliage-height) var(--foliage-width) var(--trunk-height) var(--foliage-width);
+  margin: var(--foliage-height) var(--foliage-width) var(--trunk-height)
+    var(--foliage-width);
 }
 
 /*
@@ -419,9 +457,17 @@ table td {
   position: absolute;
   width: var(--foliage-width);
   height: var(--foliage-height);
-  margin-left: calc(var(--foliage-width)/-2 + var(--trunk-width)/2);
-  margin-top: calc(-1*var(--foliage-height));
-  clip-path: polygon(50% 0%, 95% 60%, 75% 60%, 100% 100%, 0 100%, 25% 60%, 5% 60%);
+  margin-left: calc(var(--foliage-width) / -2 + var(--trunk-width) / 2);
+  margin-top: calc(-1 * var(--foliage-height));
+  clip-path: polygon(
+    50% 0%,
+    95% 60%,
+    75% 60%,
+    100% 100%,
+    0 100%,
+    25% 60%,
+    5% 60%
+  );
   /*
   border: 1px solid #060;
   border-top-right-radius: 80%;
@@ -432,7 +478,7 @@ table td {
 }
 
 #nav-links {
-  background: rgba(255, 255, 255, .1);
+  background: rgba(255, 255, 255, 0.1);
   width: 100%;
 }
 
@@ -444,14 +490,13 @@ table td {
   padding: 1em 7px;
   margin: 0em 7px;
   vertical-align: middle;
-  transition: text-shadow .2s;
+  transition: text-shadow 0.2s;
 }
 
 #nav-links a:hover {
   /*box-shadow: 0 4px 0 grey;*/
   text-shadow: 0 0 5px grey;
 }
-
 
 #schedule h3 {
   flex: 1 0 100%;
@@ -474,7 +519,10 @@ a {
 }
 
 h2 > a {
-  transition: box-shadow .2s, background .2s, color .2s;
+  transition:
+    box-shadow 0.2s,
+    background 0.2s,
+    color 0.2s;
   padding: 7px 5px 5px 5px;
 }
 
@@ -484,7 +532,7 @@ h2 > a {
 
 #join-discord a {
   font-weight: bold;
-  text-decoration: underline white;  
+  text-decoration: underline white;
 }
 
 a > img {
@@ -492,8 +540,10 @@ a > img {
   height: auto;
   background: white;
   filter: grayscale(100%);
-  opacity: .8;
-  transition: opacity .2s, filter .2s;
+  opacity: 0.8;
+  transition:
+    opacity 0.2s,
+    filter 0.2s;
 }
 
 #mobify-logo {
@@ -540,7 +590,7 @@ footer a {
   /* padding: 1em 7px; */
   /* margin: 0em 7px; */
   /* vertical-align: middle; */
-  transition: text-shadow .2s;
+  transition: text-shadow 0.2s;
 }
 
 footer p {
