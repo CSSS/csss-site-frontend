@@ -1,12 +1,15 @@
 import React from 'react';
-import ReactDOM from 'react-dom/client';
+import { createRoot } from 'react-dom/client';
+import { createHashRouter, RouterProvider } from 'react-router-dom';
 
-import { App } from './App';
+import { Home, Profile, NotFound } from './pages';
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+const router = createHashRouter([
+  { path: '/', element: <Home /> },
+  { path: '/profile', element: <Profile /> },
+  { path: '*', element: <NotFound /> }
+]);
 
-root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
+createRoot(document.getElementById('root')).render(
+  <RouterProvider router={router} />
 );
