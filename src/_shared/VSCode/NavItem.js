@@ -4,8 +4,6 @@ import { useLocation, Link } from 'react-router-dom';
 import { File } from '../Icon';
 
 export const NavItem = ({ text, to, isInFolder }) => {
-  // TODO: isSelected should highlight an item
-
   const fileStyle = {
     '--csss-icon-color': '#94a3b8', // slate-400
     '--csss-icon-stroke-width': '3px'

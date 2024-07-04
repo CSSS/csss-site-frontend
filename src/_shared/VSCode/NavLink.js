@@ -4,8 +4,6 @@ import { Link } from 'react-router-dom';
 import * as Icon from '../Icon';
 
 export const NavLink = ({ text, href, isInFolder, isSelected }) => {
-  // TODO: isSelected should highlight an item
-
   const linkStyle = {
     '--csss-icon-color': '#60a5fa', // blue-400
     '--csss-icon-stroke-width': '3px'
