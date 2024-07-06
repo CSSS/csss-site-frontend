@@ -55,21 +55,28 @@ export const Page = ({ children }) => {
         />
       </VSCode.NavFolder>
       <VSCode.NavItem text="login.txt" to="/profile" />
-      <VSCode.NavFolder text="Events">
+      <VSCode.NavFolder text="Hackathons">
         <VSCode.NavLink
           isInFolder={true}
-          text="mtn_madness_23.html"
-          href="https://sfucsss.org/events/mm/2023"
-        />
-        <VSCode.NavLink
-          isInFolder={true}
-          text="mtn_madness_24.html"
+          text="mtn_madness.html"
           href="/events/2024/mm"
         />
         <VSCode.NavLink
           isInFolder={true}
-          text="tech_fair_24.html"
-          href="/events/2024/techfair"
+          text="tech_fair.html"
+          href="/events/2024/tech_fair"
+        />
+      </VSCode.NavFolder>
+      <VSCode.NavFolder text="Events">
+        <VSCode.NavLink
+          isInFolder={true}
+          text="fall_hacks.html"
+          href="/events/2024/fall_hacks"
+        />
+        <VSCode.NavLink
+          isInFolder={true}
+          text="frosh.html"
+          href="/events/2024/frosh"
         />
       </VSCode.NavFolder>
       <VSCode.NavFolder text="Links">
