@@ -64,19 +64,19 @@ export const Page = ({ children }) => {
         <VSCode.NavLink
           isInFolder={true}
           text="tech_fair.html"
-          href="/events/2024/tech_fair"
+          href="/tech_fair"
         />
       </VSCode.NavFolder>
       <VSCode.NavFolder text="Events">
         <VSCode.NavLink
           isInFolder={true}
           text="fall_hacks.html"
-          href="/events/2024/fall_hacks"
+          href="/fall_hacks"
         />
         <VSCode.NavLink
           isInFolder={true}
           text="frosh.html"
-          href="/events/2024/frosh"
+          href="/frosh"
         />
       </VSCode.NavFolder>
       <VSCode.NavFolder text="Links">
