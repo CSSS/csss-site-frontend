@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
 import { helpers } from '../../_shared';
-import { Page } from './Page.js';
+import { Page } from '../components';
 
 export const Profile = () => {
   const [user, setUser] = useState(null);
