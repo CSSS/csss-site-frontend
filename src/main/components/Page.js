@@ -73,11 +73,7 @@ export const Page = ({ children }) => {
           text="fall_hacks.html"
           href="/fall_hacks"
         />
-        <VSCode.NavLink
-          isInFolder={true}
-          text="frosh.html"
-          href="/frosh"
-        />
+        <VSCode.NavLink isInFolder={true} text="frosh.html" href="/frosh" />
       </VSCode.NavFolder>
       <VSCode.NavFolder text="Links">
         <VSCode.NavLink
