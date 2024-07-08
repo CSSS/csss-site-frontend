@@ -3,11 +3,10 @@ const path = require('path');
 module.exports = {
   entry: {
     // NOTE: new React apps should be listed here
-    main: './src/main/index.js',
-    test: './src/test/index.js'
+    main: './src/main/index.js'
   },
   output: {
-    filename: 'js/[name].js',
+    filename: 'static/js/[name].js',
     path: path.join(__dirname, 'build')
   },
   module: {
