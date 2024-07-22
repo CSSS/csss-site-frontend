@@ -25,7 +25,7 @@ a:hover {
   text-decoration: underline;
 }
 a:target:before {
-  content: 'â€º '; /* â€» ã€‹Â¶ â€º Â§ */
+  content: '> ';
   font-size: 0.75em;
   position: relative;
   bottom: 4px;
@@ -47,7 +47,7 @@ li {
   font-size: 1.3em;
 }
 li:before {
-  content: 'âœ¦';
+  content: '>';
   padding-right: 8px;
 }
 
@@ -56,22 +56,22 @@ li:before {
 
 @font-face {
   font-family: 'darumadropOne';
-  src: url('../fonts/DarumadropOne-Regular.ttf');
+  src: url('/tech_fair/2024/fonts/DarumadropOne-Regular.ttf');
 }
 
 @font-face {
   font-family: 'NotoSansGeorgian-Regular';
-  src: url('../fonts/NotoSansGeorgian-Regular.ttf');
+  src: url('/tech_fair/2024/fonts/NotoSansGeorgian-Regular.ttf');
 }
 
 @font-face {
   font-family: 'Noto Sans Georgian';
-  src: url('../fonts/NotoSansGeorgian-Regular.ttf');
+  src: url('/tech_fair/2024/fonts/NotoSansGeorgian-Regular.ttf');
 }
 
 @font-face {
   font-family: 'NotoSansGeorgian-Bold';
-  src: url('../fonts/NotoSansGeorgian-Bold.ttf');
+  src: url('/tech_fair/2024/fonts/NotoSansGeorgian-Bold.ttf');
 }
 
 .pink {
