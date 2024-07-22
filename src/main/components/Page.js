@@ -27,49 +27,17 @@ export const Page = ({ children }) => {
   const files = (
     <>
       <VSCode.NavItem text="README.md" to="/" />
-      <VSCode.NavFolder text="CSSS">
-        <VSCode.NavItem isInFolder={true} text="about.md" to="/about" />
-        <VSCode.NavItem
-          isInFolder={true}
-          text="common_rooms.md"
-          to="/common_rooms"
-        />
-        <VSCode.NavItem isInFolder={true} text="officers.md" to="/officers" />
-        <VSCode.NavItem isInFolder={true} text="elections.md" to="/elections" />
-      </VSCode.NavFolder>
-      <VSCode.NavFolder text="Committees">
-        <VSCode.NavItem
-          isInFolder={true}
-          text="events_committee.md"
-          to="/events_committee"
-        />
-        <VSCode.NavItem
-          isInFolder={true}
-          text="merch_committee.md"
-          to="/merch_committee"
-        />
-        <VSCode.NavItem
-          isInFolder={true}
-          text="w3_committee.md"
-          to="/w3_committee"
-        />
-      </VSCode.NavFolder>
       <VSCode.NavItem text="login.txt" to="/profile" />
-      <VSCode.NavFolder text="Events">
+      <VSCode.NavFolder text="Hackathons">
         <VSCode.NavLink
           isInFolder={true}
-          text="mtn_madness_23.html"
-          href="https://sfucsss.org/events/mm/2023"
+          text="mountain_madness.html"
+          href="/mountain_madness"
         />
         <VSCode.NavLink
           isInFolder={true}
-          text="mtn_madness_24.html"
-          href="/events/2024/mm"
-        />
-        <VSCode.NavLink
-          isInFolder={true}
-          text="tech_fair_24.html"
-          href="/events/2024/techfair"
+          text="fall_hacks.html"
+          href="/fall_hacks"
         />
       </VSCode.NavFolder>
       <VSCode.NavFolder text="Links">
