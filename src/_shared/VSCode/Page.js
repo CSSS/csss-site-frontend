@@ -14,7 +14,9 @@ const _minimapWidth = 240;
 const _minimapScale = _minimapWidth / _contentWidth;
 
 export const Page = (props) => {
-  const { apps, children, files, title } = props;
+  const { apps, children, files, hideMinimap, title } = props;
+
+  console.log(hideMinimap);
 
   // CSS queries for mobile device, + minimap showing
   const [isMobileDevice, setIsMobileDevice] = useState(
@@ -24,19 +26,21 @@ export const Page = (props) => {
     helpers.checkMediaQuery(isNotWideEnoughQuery)
   );
 
-  // minimap states
+  // minimap states (will be stuck at initial states if !hideMinimap)
   const [minimap, setMinimap] = useState(null);
   const [minimapTop, setMinimapTop] = useState(0); // scroll top
   const [minimapHeight, setMinimapHeight] = useState(240); // height of scroll
 
   // on scroll of content container
   const onscroll = (event) => {
-    setMinimapTop(Math.round(event.target.scrollTop * _minimapScale));
-    setMinimapHeight(Math.round(event.target.offsetHeight * _minimapScale));
+    if (!hideMinimap) {
+      setMinimapTop(Math.round(event.target.scrollTop * _minimapScale));
+      setMinimapHeight(Math.round(event.target.offsetHeight * _minimapScale));
+    }
   };
 
   const contentRef = useCallback((node) => {
-    if (node !== null) {
+    if (!hideMinimap && node !== null) {
       const renderMinimap = async () => {
         const canvas = await html2canvas(node, {
           scale: _minimapScale
@@ -52,7 +56,10 @@ export const Page = (props) => {
   useEffect(() => {
     // watch minimap media queries
     helpers.watchMediaQuery(isMobileDeviceQuery, setIsMobileDevice);
-    helpers.watchMediaQuery(isNotWideEnoughQuery, setIsNotWideEnough);
+
+    if (!hideMinimap) {
+      helpers.watchMediaQuery(isNotWideEnoughQuery, setIsNotWideEnough);
+    }
   }, []);
 
   return (
@@ -96,13 +103,12 @@ export const Page = (props) => {
         >
           {children}
         </Grid.Item>
-      ) : (
+      ) : !hideMinimap ? (
         <>
-          {/* content */}
           <Grid.Item
             onScroll={onscroll}
             area="content"
-            className="overflow-scroll"
+            className="overflow-y-scroll"
             style={{ height: '100vh' }}
           >
             <div
@@ -117,7 +123,6 @@ export const Page = (props) => {
               {children}
             </div>
           </Grid.Item>
-          {/* minimap */}
           <Grid.Item
             area="minimap"
             style={{
@@ -150,6 +155,14 @@ export const Page = (props) => {
             ></div>
           </Grid.Item>
         </>
+      ) : (
+        <Grid.Item
+          area="content"
+          className="overflow-y-scroll text-white"
+          style={{ height: '100vh' }}
+        >
+          {children}
+        </Grid.Item>
       )}
     </Grid.Container>
   );
