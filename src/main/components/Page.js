@@ -28,7 +28,7 @@ export const Page = ({ children, hideMinimap }) => {
     <>
       <VSCode.NavItem text="README.md" to="/" />
       <VSCode.NavItem text="login.txt" to="/profile" />
-      <VSCode.NavFolder text="Hackathons">
+      <VSCode.NavFolder text="Events">
         <VSCode.NavLink
           isInFolder={true}
           text="mountain_madness.html"
@@ -38,6 +38,11 @@ export const Page = ({ children, hideMinimap }) => {
           isInFolder={true}
           text="fall_hacks.html"
           href="/fall_hacks"
+        />
+        <VSCode.NavLink
+          isInFolder={true}
+          text="tech_fair.html"
+          href="/tech_fair"
         />
       </VSCode.NavFolder>
       <VSCode.NavFolder text="Links">
