@@ -92,15 +92,27 @@ export const Home = () => {
           </animated.h1>
         </div>
       </div>
-      <div className="p-16">
-        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold" style={{ fontFamily: 'Poppins, sans-serif' }}>
+      <div className="p-16 max-w-4xl mx-auto text-center">
+        <h2
+          className="text-3xl sm:text-4xl md:text-5xl font-bold"
+          style={{ fontFamily: 'Poppins, sans-serif' }}
+        >
           A message from your president
         </h2>
         <p
-          className="text-lg sm:text-xl md:text-2xl mt-4"
+          className="text-lg sm:text-xl md:text-2xl mt-6 leading-relaxed"
           style={{ fontFamily: 'Poppins, sans-serif' }}
         >
-          Hello! I'm Isabelle Kwan, and I'm delighted to welcome you to the CSSS. We are jsdhflkjasdhfljasdhflasjkdhfasldkjfhasldkjfhasldkjfhsdlkfjhasdlfjkhsdqaflkjashdflkjasdhfalskjdfhalskdjfhasldkjfh. See you around! Signed, Isabelle Kwan
+          <span
+            className="text-5xl sm:text-6xl md:text-7xl font-bold float-left mr-2"
+            style={{ lineHeight: '1.2em' }}
+          >
+            H
+          </span>
+          ello! I'm Isabelle Kwan, and I'm delighted to welcome you to the CSSS.
+          We are jsdhflkjasdhflja sdhflasjkdhfasldkjfh asldkjfhas ldkjfhsdlkfjh
+          asdlfjkhsdqaf lkjashdfl kjasdh falsk jdfhal skdjfhas ldkjfh. See you
+          around! Signed, Isabelle Kwan
         </p>
       </div>
       <div className="mx-16 my-8">
