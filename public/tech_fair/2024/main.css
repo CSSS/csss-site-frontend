@@ -32,8 +32,6 @@ a:target:before {
 }
 
 ul {
-  list-style: none;
-
   margin-left: 0;
   padding-left: 20px;
 }
@@ -45,10 +43,6 @@ li {
   text-indent: -1em;
 
   font-size: 1.3em;
-}
-li:before {
-  content: '>';
-  padding-right: 8px;
 }
 
 /* ************************* */
