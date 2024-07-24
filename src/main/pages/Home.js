@@ -93,14 +93,14 @@ export const Home = () => {
         </div>
       </div>
       <div className="p-16">
+        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold" style={{ fontFamily: 'Poppins, sans-serif' }}>
+          A message from your president
+        </h2>
         <p
-          className="text-lg sm:text-xl md:text-2xl"
+          className="text-lg sm:text-xl md:text-2xl mt-4"
           style={{ fontFamily: 'Poppins, sans-serif' }}
         >
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat.
+          Hello! I'm Isabelle Kwan, and I'm delighted to welcome you to the CSSS. We are jsdhflkjasdhfljasdhflasjkdhfasldkjfhasldkjfhasldkjfhsdlkfjhasdlfjkhsdqaflkjashdflkjasdhfalskjdfhalskdjfhasldkjfh. See you around! Signed, Isabelle Kwan
         </p>
       </div>
       <div className="mx-16 my-8">
