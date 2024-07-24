@@ -5,8 +5,8 @@
   "homepage": "https://sfucsss.org/",
   "private": true,
   "scripts": {
-    "lint": "prettier --write .",
-    "prebuild": "npm run lint && rm -Rf ./build/*",
+    "lint": "prettier --write --log-level warn .",
+    "prebuild": "rm -Rf ./build/*",
     "build": "webpack --mode production",
     "postbuild": "cp -R ./public/* ./build && tailwindcss -i ./tailwind.css -o ./build/static/css/tailwind.css",
     "serve": "concurrently \"serve build\" \"sleep 1 && open http://localhost:3000\"",
