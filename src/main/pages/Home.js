@@ -3,7 +3,7 @@ import { Page } from '../components';
 
 export const Home = () => {
   return (
-    <Page>
+    <Page hideMinimap={true}>
       <div className="p-4">
         <p>
           WELCOME TO
