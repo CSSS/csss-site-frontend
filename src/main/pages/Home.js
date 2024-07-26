@@ -31,30 +31,14 @@ const sections = [
   }
 ];
 
-// Placeholder images for gallery
-const galleryImages = [
-  '/homepage.jpg',
-  '/homepage.jpg',
-  '/homepage.jpg',
-  '/homepage.jpg'
-];
-
 export const Home = () => {
   const [loaded, setLoaded] = useState(false);
-  const [galleryIndex, setGalleryIndex] = useState(0);
 
   // Animation trigger for big banner
   useEffect(() => {
     setTimeout(() => {
       setLoaded(true);
     }, 500);
-
-    // Set up interval for gallery rotation
-    const interval = setInterval(() => {
-      setGalleryIndex((prevIndex) => (prevIndex + 1) % galleryImages.length);
-    }, 5000); // Change image every 5 seconds
-
-    return () => clearInterval(interval);
   }, []);
 
   // Animation for the banner darkening
@@ -99,6 +83,12 @@ export const Home = () => {
         >
           A message from your president
         </h2>
+        <h3
+          className="text-xl sm:text-2xl md:text-3xl font-light mt-2"
+          style={{ fontFamily: 'Poppins, sans-serif' }}
+        >
+          By Isabelle Kwan
+        </h3>
         <p
           className="text-lg sm:text-xl md:text-2xl mt-6 leading-relaxed"
           style={{ fontFamily: 'Poppins, sans-serif' }}
@@ -110,8 +100,17 @@ export const Home = () => {
             H
           </span>
           ello! I'm Isabelle Kwan, and I'm delighted to welcome you to the CSSS.
-          We are jsdhflkjasdhflja sdhflasjkdhfasldkjfh asldkjfhas ldkjfhsdlkfjh
-          asdlfjkhsdqaf lkjashdfl kjasdh falsk jdfhal skdjfhas ldkjfh. See you
+          We are Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+          Pellentesque quis lacus eget urna ornare commodo quis id ante. Integer
+          porttitor diam quis tellus malesuada auctor. Suspendisse vestibulum
+          eros a finibus malesuada. Mauris nec risus eu velit ullamcorper luctus
+          aliquet eu justo. Suspendisse laoreet lacus ut risus eleifend, non
+          tempor orci mattis. Sed arcu augue, posuere in tempus vel, gravida ac
+          ipsum. Ut non eleifend nibh. Aenean semper fermentum arcu eget
+          ultrices. Nullam velit dui, porttitor ac viverra eu, porta ac eros.
+          Nunc dapibus nulla arcu, ut malesuada libero semper a. Donec venenatis
+          lorem quis mauris vestibulum, quis consectetur dolor auctor. Ut congue
+          euismod arcu at commodo. Maecenas sit amet scelerisque erat. See you
           around! Signed, Isabelle Kwan
         </p>
       </div>
@@ -156,28 +155,6 @@ export const Home = () => {
             </div>
           </a>
         ))}
-      </div>
-      <div className="p-16">
-        <h2
-          className="text-2xl sm:text-3xl md:text-4xl font-bold text-center"
-          style={{ fontFamily: 'Poppins, sans-serif' }}
-        >
-          Gallery
-        </h2>
-        <div className="relative mt-8 w-full max-w-4xl h-[30rem] mx-auto rounded-2xl overflow-hidden shadow-lg">
-          {galleryImages.map((image, index) => (
-            <animated.img
-              key={index}
-              src={image}
-              alt={`Gallery image ${index + 1}`}
-              className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-2000 ${galleryIndex === index ? 'opacity-100' : 'opacity-0'}`}
-            />
-          ))}
-          <div
-            className="absolute inset-0 bg-black bg-opacity-50 transition-opacity duration-2000"
-            style={{ opacity: galleryIndex === galleryImages.length ? 1 : 0 }}
-          ></div>
-        </div>
       </div>
     </Page>
   );
