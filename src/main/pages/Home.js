@@ -7,27 +7,27 @@ const sections = [
   {
     text: 'Meet the exec team!',
     image: '/homepage.jpg',
-    link: '/exec-team'
+    link: '#officers'
   },
   {
     text: 'Get involved!',
     image: '/homepage.jpg',
-    link: '/get-involved'
+    link: '#about'
   },
   {
     text: 'Our events!',
     image: '/homepage.jpg',
-    link: '/events'
+    link: '#events'
   },
   {
-    text: 'Our constitution!',
+    text: 'Documents!',
     image: '/homepage.jpg',
-    link: '/constitution'
+    link: '#documents'
   },
   {
     text: 'Visit our Common Room',
     image: '/homepage.jpg',
-    link: '/common-room'
+    link: '#common_rooms'
   }
 ];
 
