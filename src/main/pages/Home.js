@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Page } from '../components';
 import { useSpring, animated } from 'react-spring';
 
-// Placeholder images and routes
+// Updated images and routes
 const sections = [
   {
     text: 'Meet the exec team!',
@@ -76,43 +76,51 @@ export const Home = () => {
           </animated.h1>
         </div>
       </div>
-      <div className="p-16 max-w-4xl mx-auto text-center">
+      <div className="p-16 max-w-4xl mx-auto">
         <h2
-          className="text-3xl sm:text-4xl md:text-5xl font-bold"
+          className="text-3xl sm:text-4xl md:text-5xl font-bold text-center"
           style={{ fontFamily: 'Poppins, sans-serif' }}
         >
           A message from your president
         </h2>
         <h3
-          className="text-xl sm:text-2xl md:text-3xl font-light mt-2"
+          className="text-xl sm:text-2xl md:text-3xl font-light mt-2 text-center"
           style={{ fontFamily: 'Poppins, sans-serif' }}
         >
           By Isabelle Kwan
         </h3>
-        <p
-          className="text-lg sm:text-xl md:text-2xl mt-6 leading-relaxed"
-          style={{ fontFamily: 'Poppins, sans-serif' }}
-        >
-          <span
-            className="text-5xl sm:text-6xl md:text-7xl font-bold float-left mr-2"
-            style={{ lineHeight: '1.2em' }}
+        <div className="mt-6">
+          <img
+            src="/homepage.jpg"
+            alt="President Portrait"
+            className="w-64 h-80 object-cover rounded-lg float-left mr-6 mb-4"
+          />
+          <p
+            className="text-lg sm:text-xl md:text-2xl leading-relaxed text-left"
+            style={{ fontFamily: 'Poppins, sans-serif' }}
           >
-            H
-          </span>
-          ello! I'm Isabelle Kwan, and I'm delighted to welcome you to the CSSS.
-          We are Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-          Pellentesque quis lacus eget urna ornare commodo quis id ante. Integer
-          porttitor diam quis tellus malesuada auctor. Suspendisse vestibulum
-          eros a finibus malesuada. Mauris nec risus eu velit ullamcorper luctus
-          aliquet eu justo. Suspendisse laoreet lacus ut risus eleifend, non
-          tempor orci mattis. Sed arcu augue, posuere in tempus vel, gravida ac
-          ipsum. Ut non eleifend nibh. Aenean semper fermentum arcu eget
-          ultrices. Nullam velit dui, porttitor ac viverra eu, porta ac eros.
-          Nunc dapibus nulla arcu, ut malesuada libero semper a. Donec venenatis
-          lorem quis mauris vestibulum, quis consectetur dolor auctor. Ut congue
-          euismod arcu at commodo. Maecenas sit amet scelerisque erat. See you
-          around! Signed, Isabelle Kwan
-        </p>
+            <span
+              className="text-5xl sm:text-6xl md:text-7xl font-bold float-left mr-4"
+              style={{ lineHeight: '1.2em' }}
+            >
+              H
+            </span>
+            ello! I'm Isabelle Kwan, and I'm delighted to welcome you to the
+            CSSS. We are Lorem ipsum dolor sit amet, consectetur adipiscing
+            elit. Pellentesque quis lacus eget urna ornare commodo quis id ante.
+            Integer porttitor diam quis tellus malesuada auctor. Suspendisse
+            vestibulum eros a finibus malesuada. Mauris nec risus eu velit
+            ullamcorper luctus aliquet eu justo. Suspendisse laoreet lacus ut
+            risus eleifend, non tempor orci mattis. Sed arcu augue, posuere in
+            tempus vel, gravida ac ipsum. Ut non eleifend nibh. Aenean semper
+            fermentum arcu eget ultrices. Nullam velit dui, porttitor ac viverra
+            eu, porta ac eros. Nunc dapibus nulla arcu, ut malesuada libero
+            semper a. Donec venenatis lorem quis mauris vestibulum, quis
+            consectetur dolor auctor. Ut congue euismod arcu at commodo.
+            Maecenas sit amet scelerisque erat. See you around! Signed, Isabelle
+            Kwan
+          </p>
+        </div>
       </div>
       <div className="mx-16 my-8">
         <a href={sections[4].link}>
