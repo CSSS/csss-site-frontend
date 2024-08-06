@@ -5,7 +5,7 @@
   "homepage": "https://sfucsss.org/",
   "private": true,
   "scripts": {
-    "lint": "prettier --write --log-level warn .",
+    "lint": "prettier --write .",
     "prebuild": "rm -Rf ./build/*",
     "tailwind": "tailwindcss -i ./tailwind.css -o ./public/static/css/tailwind.css",
     "prestart": "npm run tailwind",
