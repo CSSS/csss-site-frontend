@@ -25,7 +25,7 @@ Run `npm ci` from within the csss-site-frontend (same directory as the `package.
 
 ### Local Development
 
-Run `npm run start` to deploy the site locally at [localhost:3000](http://localhost:8080).
+Run `npm run start` to deploy the site locally at [localhost:8080](http://localhost:8080).
 
 This script starts a Webpack development server, and watches any changes made to the `src` and `public` directories.
 
@@ -52,8 +52,8 @@ The JSON key before the path to your app's entrypoint is the name of the bundle.
 
 You will need to create an HTML file in the `public` file that then uses the compiled React app.
 Feel free to copy the `public/index.html` file to where you intend to access your app:
-e.g., "public/elections.html" for "http://localhost:8000/elections.html",
-or "public/my/obscure/app/index.html" for "http://localhost:8000/my/obscure/app".
+e.g., "public/elections.html" for "http://localhost:8080/elections.html",
+or "public/my/obscure/app/index.html" for "http://localhost:8080/my/obscure/app".
 
 Make sure to update the line:
 
