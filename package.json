@@ -5,12 +5,13 @@
   "homepage": "https://sfucsss.org/",
   "private": true,
   "scripts": {
-    "lint": "prettier --write --log-level warn .",
+    "lint": "prettier --write .",
     "prebuild": "rm -Rf ./build/*",
+    "tailwind": "tailwindcss -i ./tailwind.css -o ./public/static/css/tailwind.css",
+    "prestart": "npm run tailwind",
+    "start": "webpack serve --mode development",
     "build": "webpack --mode production",
-    "postbuild": "cp -R ./public/* ./build && tailwindcss -i ./tailwind.css -o ./build/static/css/tailwind.css",
-    "serve": "concurrently \"serve build\" \"sleep 1 && open http://localhost:3000\"",
-    "start": "npm run build && npm run serve"
+    "postbuild": "npm run tailwind && cp -R ./public/* ./build"
   },
   "dependencies": {
     "@babel/core": "^7.23.9",
@@ -25,11 +26,11 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.23.1",
-    "serve": "^14.2.1",
     "style-loader": "^3.3.4",
     "tailwindcss": "^3.4.4",
     "webpack": "^5.90.3",
-    "webpack-cli": "^5.1.4"
+    "webpack-cli": "^5.1.4",
+    "webpack-dev-server": "^5.0.4"
   },
   "engines": {
     "node": "^18",
