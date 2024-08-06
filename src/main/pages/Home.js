@@ -1,32 +1,40 @@
 import React, { useEffect, useState } from 'react';
 import { Page } from '../components';
 import { useSpring, animated } from 'react-spring';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {
+  faFacebook,
+  faDiscord,
+  faInstagram,
+  faLinkedin
+} from '@fortawesome/free-brands-svg-icons';
+import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
 
 // Updated images and routes
 const sections = [
   {
     text: 'Meet the exec team!',
-    image: '/homepage.jpg',
+    image: '/homepage/team.jpg',
     link: '#officers'
   },
   {
     text: 'Get involved!',
-    image: '/homepage.jpg',
+    image: '/homepage/getinvolved.jpg',
     link: '#about'
   },
   {
     text: 'Our events!',
-    image: '/homepage.jpg',
+    image: '/homepage/events.jpg',
     link: '#events'
   },
   {
     text: 'Documents!',
-    image: '/homepage.jpg',
+    image: '/homepage/documents.jpg',
     link: '#documents'
   },
   {
     text: 'Visit our Common Room',
-    image: '/homepage.jpg',
+    image: '/homepage/commonroom.jpg',
     link: '#common_rooms'
   }
 ];
@@ -58,7 +66,7 @@ export const Home = () => {
     <Page hideMinimap={true}>
       <div className="relative w-full min-h-screen">
         <animated.img
-          src="/homepage.jpg"
+          src="/homepage/homepage.jpg"
           alt="SFU CSSS"
           className="absolute inset-0 w-full h-full object-cover"
           style={imageSpring}
@@ -91,7 +99,7 @@ export const Home = () => {
         </h3>
         <div className="mt-6">
           <img
-            src="/homepage.jpg"
+            src="/homepage/president.jpg"
             alt="President Portrait"
             className="w-64 h-80 object-cover rounded-lg float-left mr-6 mb-4"
           />
@@ -164,6 +172,52 @@ export const Home = () => {
           </a>
         ))}
       </div>
+      <footer className="bg-[#0f172a] text-white py-8 mt-8">
+        <div className="max-w-4xl mx-auto px-4">
+          <div className="flex flex-col md:flex-row justify-between items-center">
+            <div className="mb-4 md:mb-0 text-center md:text-left">
+              <h4 className="text-lg font-bold">Common Room Address</h4>
+              <p>Applied Science Building 9971</p>
+              <p>Simon Fraser University</p>
+              <p>8888 University Drive</p>
+              <p>Burnaby, BC</p>
+              <p>Canada V5A 1S6</p>
+            </div>
+            <div className="flex space-x-6">
+              <a
+                href="https://www.facebook.com/sfucsss/"
+                className="hover:text-gray-400"
+              >
+                <FontAwesomeIcon icon={faFacebook} size="lg" />
+              </a>
+              <a
+                href="https://discord.com/invite/sfucsss"
+                className="hover:text-gray-400"
+              >
+                <FontAwesomeIcon icon={faDiscord} size="lg" />
+              </a>
+              <a
+                href="https://www.instagram.com/sfu_csss/"
+                className="hover:text-gray-400"
+              >
+                <FontAwesomeIcon icon={faInstagram} size="lg" />
+              </a>
+              <a
+                href="https://www.linkedin.com/company/sfucsss/"
+                className="hover:text-gray-400"
+              >
+                <FontAwesomeIcon icon={faLinkedin} size="lg" />
+              </a>
+              <a
+                href="mailto:csss-exec-current@sfu.ca"
+                className="hover:text-gray-400"
+              >
+                <FontAwesomeIcon icon={faEnvelope} size="lg" />
+              </a>
+            </div>
+          </div>
+        </div>
+      </footer>
     </Page>
   );
 };
