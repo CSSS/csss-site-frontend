@@ -16,17 +16,25 @@ Install the following versions of `node` and `npm`:
 
 `npm`: 9.9.X
 
+To install the correct versions of `node` and `npm`, you might want to install and setup [nvm](https://github.com/nvm-sh/nvm).
+
 ### Set-up
 
 To set-up the csss-site-frontend repo, `git clone` it somewhere you can access, and
 Run `npm ci` from within the csss-site-frontend (same directory as the `package.json` file).
 
-### Local Deployment
+### Local Development
 
-Run `npm run start` to deploy the site locally at [localhost:3000](http://localhost:3000).
+Run `npm run start` to deploy the site locally at [localhost:3000](http://localhost:8080).
 
-The `npm run start` script runs `npm run build` and then `npm run serve`.
-Please see the section on the site architecture for information about what these scripts do.
+This script starts a Webpack development server, and watches any changes made to the `src` and `public` directories.
+
+If you start using new Tailwind classes, however, make sure to run `npm run tailwind` to refresh the `public/static/css/tailwind.css` file.
+Otherwise, your Tailwind classes might not be compiled and ready to use.
+The Webpack dev server should refresh this file after you run the tailwind script, so no need to restart the dev server.
+
+It is recommended to run the start script in a separate terminal while you develop!
+That way all changes you make can be displayed immediately upon file modification.
 
 ## Documentation
 
@@ -40,14 +48,20 @@ Any additional packages you might need for your app should be installed at the r
 
 When ready to build, add a line to the `webpack.config.js` file under "entry".
 You should reference the `index.js` file that is the root of your React app.
+The JSON key before the path to your app's entrypoint is the name of the bundle.
 
-### Serving Local Changes
+You will need to create an HTML file in the `public` file that then uses the compiled React app.
+Feel free to copy the `public/index.html` file to where you intend to access your app:
+e.g., "public/elections.html" for "http://localhost:8000/elections.html",
+or "public/my/obscure/app/index.html" for "http://localhost:8000/my/obscure/app".
 
-For serving local changes during development, I recommend running `npm run serve` in a separate terminal,
-and running `npm run build` whenever you've modified enough files to view your changes.
-Refreshing your browser will load the newly built files.
+Make sure to update the line:
 
-Alternatively, you can just run `npm run start` whenever you want to see your changes, and enter CTRL+C to stop serving.
+```html
+<script defer="defer" src="/js/main.js"></script>
+```
+
+Replacing `main.js` with the bundle name you specified in `webpack.config.js`.
 
 ## Architecture
 
@@ -73,7 +87,6 @@ which contains all necessary React code, and other `npm` packages' code used.
 
 Then, the contents of the `public` folder are copied into the `build` folder.
 HTML files in `public` use the files compiled by webpack to serve the React apps;
-e.g., `public/index.html` imports the `build/js/main.js` file like so:
 
 ```html
 <script defer="defer" src="/js/main.js"></script>
