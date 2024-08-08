@@ -8,7 +8,7 @@ import {
   faInstagram,
   faLinkedin
 } from '@fortawesome/free-brands-svg-icons';
-import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
+import { faEnvelope, faArrowDown } from '@fortawesome/free-solid-svg-icons';
 import Footer from '../components/Footer';
 
 // Updated images and routes
@@ -83,6 +83,13 @@ export const Home = () => {
             <br />
             Computing Science Student Society
           </animated.h1>
+        </div>
+        {/* Down arrow icon */}
+        <div className="absolute bottom-8 w-full flex justify-center">
+          <FontAwesomeIcon
+            icon={faArrowDown}
+            className="text-white text-4xl animate-bounce"
+          />
         </div>
       </div>
       <div className="p-16 max-w-4xl mx-auto">
