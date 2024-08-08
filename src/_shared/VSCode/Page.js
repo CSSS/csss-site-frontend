@@ -67,7 +67,7 @@ export const Page = (props) => {
       columns={
         isMobileDevice
           ? '1fr' // one column
-          : isNotWideEnough
+          : isNotWideEnough || hideMinimap
             ? '320px 1fr' // two columns
             : '320px 1fr 240px' // three columns
       }
@@ -75,7 +75,7 @@ export const Page = (props) => {
       areas={
         isMobileDevice
           ? ['navbar', 'content'] // two rows
-          : isNotWideEnough
+          : isNotWideEnough || hideMinimap
             ? ['navbar content'] // one row
             : ['navbar content minimap'] // one row
       }
