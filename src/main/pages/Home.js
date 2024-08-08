@@ -9,6 +9,7 @@ import {
   faLinkedin
 } from '@fortawesome/free-brands-svg-icons';
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
+import Footer from '../components/Footer';
 
 // Updated images and routes
 const sections = [
@@ -91,13 +92,7 @@ export const Home = () => {
         >
           A message from your president
         </h2>
-        <h3
-          className="text-xl sm:text-2xl md:text-3xl font-light mt-2 text-center"
-          style={{ fontFamily: 'Poppins, sans-serif' }}
-        >
-          By Isabelle Kwan
-        </h3>
-        <div className="mt-6">
+        <div className="mt-10"> 
           <img
             src="/homepage/president.jpg"
             alt="President Portrait"
@@ -113,20 +108,17 @@ export const Home = () => {
             >
               H
             </span>
-            ello! I'm Isabelle Kwan, and I'm delighted to welcome you to the
-            CSSS. We are Lorem ipsum dolor sit amet, consectetur adipiscing
-            elit. Pellentesque quis lacus eget urna ornare commodo quis id ante.
-            Integer porttitor diam quis tellus malesuada auctor. Suspendisse
-            vestibulum eros a finibus malesuada. Mauris nec risus eu velit
-            ullamcorper luctus aliquet eu justo. Suspendisse laoreet lacus ut
-            risus eleifend, non tempor orci mattis. Sed arcu augue, posuere in
-            tempus vel, gravida ac ipsum. Ut non eleifend nibh. Aenean semper
-            fermentum arcu eget ultrices. Nullam velit dui, porttitor ac viverra
-            eu, porta ac eros. Nunc dapibus nulla arcu, ut malesuada libero
-            semper a. Donec venenatis lorem quis mauris vestibulum, quis
-            consectetur dolor auctor. Ut congue euismod arcu at commodo.
-            Maecenas sit amet scelerisque erat. See you around! Signed, Isabelle
-            Kwan
+            i everyone! My name is Isabelle and I am thrilled to welcome you to the Computing Science Student Society – the coolest and most engaged community on campus!
+            <br /><br />
+            No matter your level of experience, whether you’re a seasoned coder, just starting to explore the world of computing, or just trying to fill an elective requirement with CMPT 120, you’ve found your people. We’ve got an amazing year ahead, packed with social events, technical workshops, hackathons, gaming nights, and tons of opportunities to meet like-minded friends.
+            <br /><br />
+            But it’s not just about the tech. We’re here to build a supportive and inclusive community where everyone feels at home. So, jump in and don’t hesitate to share your ideas. We have so many opportunities for you to get involved, volunteer, and build your resumes, so stay up to date with all our meetings and announcements!
+            <br /><br />
+            Finally, if you ever see me or any of the other executives on campus, give us a wave! We are so excited for the upcoming year and all the things we will accomplish together.
+            <br /><br />
+            All the best,<br />
+            Isabelle Kwan<br />
+            CSSS President
           </p>
         </div>
       </div>
@@ -172,52 +164,7 @@ export const Home = () => {
           </a>
         ))}
       </div>
-      <footer className="bg-[#0f172a] text-white py-8 mt-8">
-        <div className="max-w-4xl mx-auto px-4">
-          <div className="flex flex-col md:flex-row justify-between items-center">
-            <div className="mb-4 md:mb-0 text-center md:text-left">
-              <h4 className="text-lg font-bold">Common Room Address</h4>
-              <p>Applied Science Building 9971</p>
-              <p>Simon Fraser University</p>
-              <p>8888 University Drive</p>
-              <p>Burnaby, BC</p>
-              <p>Canada V5A 1S6</p>
-            </div>
-            <div className="flex space-x-6">
-              <a
-                href="https://www.facebook.com/sfucsss/"
-                className="hover:text-gray-400"
-              >
-                <FontAwesomeIcon icon={faFacebook} size="lg" />
-              </a>
-              <a
-                href="https://discord.com/invite/sfucsss"
-                className="hover:text-gray-400"
-              >
-                <FontAwesomeIcon icon={faDiscord} size="lg" />
-              </a>
-              <a
-                href="https://www.instagram.com/sfu_csss/"
-                className="hover:text-gray-400"
-              >
-                <FontAwesomeIcon icon={faInstagram} size="lg" />
-              </a>
-              <a
-                href="https://www.linkedin.com/company/sfucsss/"
-                className="hover:text-gray-400"
-              >
-                <FontAwesomeIcon icon={faLinkedin} size="lg" />
-              </a>
-              <a
-                href="mailto:csss-exec-current@sfu.ca"
-                className="hover:text-gray-400"
-              >
-                <FontAwesomeIcon icon={faEnvelope} size="lg" />
-              </a>
-            </div>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </Page>
   );
 };
