@@ -1,16 +1,16 @@
 import React from 'react';
 
-import { classList } from '../helpers';
+import { classList } from '../../js';
 
 import './Icon.css';
 
 /**
- * Sun icon.
+ * Profile icon.
  * @param {object} props
  * @param {string} props.className - Additional class(es) for SVG icon
  * @param {string} props.style - Additional styles
  */
-export function Sun(props) {
+export function Profile(props) {
   const { className, style } = props;
 
   return (
@@ -25,15 +25,12 @@ export function Sun(props) {
       xmlSpace="preserve"
       style={style}
     >
-      <circle cx="16" cy="16" r="8" />
-      <line x1="16" y1="4" x2="16" y2="0" />
-      <line x1="24.5" y1="7.5" x2="27.3" y2="4.7" />
-      <line x1="28" y1="16" x2="32" y2="16" />
-      <line x1="24.5" y1="24.5" x2="27.3" y2="27.3" />
-      <line x1="16" y1="28" x2="16" y2="32" />
-      <line x1="7.5" y1="24.5" x2="4.7" y2="27.3" />
-      <line x1="4" y1="16" x2="0" y2="16" />
-      <line x1="7.5" y1="7.5" x2="4.7" y2="4.7" />
+      <path
+        d="M28,16c0,3.7-1.6,7-4.2,9.1c-0.9-5.2-4-9.1-7.8-9.1s-6.9,3.9-7.8,9.1C5.6,23,4,19.7,4,16C4,9.4,9.4,4,16,4
+        S28,9.4,28,16z"
+      />
+      <circle cx="16" cy="12" r="4" />
+      <path d="M23.8,25.1C21.7,26.9,19,28,16,28s-5.7-1.1-7.8-2.9c0.9-5.2,4-9.1,7.8-9.1S22.9,19.9,23.8,25.1z" />
     </svg>
   );
 }

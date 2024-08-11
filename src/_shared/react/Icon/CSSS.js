@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { classList } from '../helpers';
+import { classList } from '../../js';
 
 import './Icon.css';
 

@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
 
-import { Icon, Flex, Grid, VSCode, helpers } from '../../_shared';
+import { Icon, Flex, Grid, VSCode } from '../../_shared/react';
+import * as helpers from '../../_shared/js';
 
 // example usage of the VSCode.NavBar component, passing in children
-export const Page = ({ children, hideMinimap }) => {
+export const Page = ({ children }) => {
   const apps = (
     <>
       <Icon.CSSS style={{ '--csss-icon-color': 'white' }} />
@@ -61,12 +62,7 @@ export const Page = ({ children, hideMinimap }) => {
   );
 
   return (
-    <VSCode.Page
-      apps={apps}
-      files={files}
-      hideMinimap={hideMinimap}
-      title="SFU-CSSS"
-    >
+    <VSCode.Page apps={apps} files={files} title="SFU-CSSS">
       {children}
     </VSCode.Page>
   );

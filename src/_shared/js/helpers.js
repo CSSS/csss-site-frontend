@@ -2,33 +2,48 @@ const CSSS_API = 'https://api.sfucsss.org';
 
 /**
  * Checks if a media query matches.
- * @param {string} query - The media query to check.
+ * @param {string} queryString - The media query to check.
  * @returns {boolean} - The result of checking the media query.
  */
-export function checkMediaQuery(query) {
-  return window.matchMedia(query).matches;
+export function checkMediaQuery(queryString) {
+  try {
+    return window.matchMedia(queryString).matches;
+  } catch (err) {
+    console.log(`Error in checkMediaQuery for query ${query}: ${err}`);
+    return false; // doesn't match
+  }
 }
 
 /**
  * Watches a given media query, calling the provided function on change.
- * @param {string} query - The media query to watch.
+ * @param {string} queryString - The media query to watch.
  * @param {function} onChange - The function to call on change.
  */
-export function watchMediaQuery(query, onChange) {
-  // create this thing if it doesn't exist
-  if (!window.csssMediaQueryExists) {
-    window.csssMediaQueryExists = {};
-  }
+export function watchMediaQuery(queryString, onChange) {
+  try {
+    if (!window.csssMediaQueries) {
+      // create this window object to store media queries
+      window.csssMediaQueries = {};
+    }
 
-  if (window.csssMediaQueryExists[query]) {
-    return; // don't attach a new listener
-  }
+    const mediaQuery = window.matchMedia(queryString);
+    const oldListener = window.csssMediaQueries[queryString];
 
-  // future calls for this query shouldn't do anything
-  window.csssMediaQueryExists[query] = true;
-  window
-    .matchMedia(query)
-    .addEventListener('change', (e) => onChange(e.matches));
+    // remove old event listener if it exists
+    if (oldListener) {
+      mediaQuery.removeEventListener('change', oldListener);
+    }
+
+    const newListener = (e) => {
+      onChange(e.matches); // e.matches: whether media query matches
+    };
+
+    // use new event listener on change of media query
+    window.csssMediaQueries[queryString] = newListener;
+    mediaQuery.addEventListener('change', newListener);
+  } catch (err) {
+    console.log(`Error in watchMediaQuery for query ${queryString}: ${err}`);
+  }
 }
 
 /**

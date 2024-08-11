@@ -1,8 +1,14 @@
 const path = require('path');
+const BundleAnalyzerPlugin =
+  require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 module.exports = {
   entry: {
-    main: './src/main/index.js'
+    react: ['react', 'react-dom'],
+    main: {
+      import: './src/main/index.js',
+      dependOn: 'react'
+    }
   },
   output: {
     filename: 'static/js/[name].js',
@@ -29,5 +35,6 @@ module.exports = {
     },
     compress: true,
     port: 8080
-  }
+  },
+  plugins: [new BundleAnalyzerPlugin({ openAnalyzer: false })]
 };

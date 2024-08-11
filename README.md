@@ -36,6 +36,14 @@ The Webpack dev server should refresh this file after you run the tailwind scrip
 It is recommended to run the start script in a separate terminal while you develop!
 That way all changes you make can be displayed immediately upon file modification.
 
+### Local Development (Webmaster)
+
+The `webpack-bundle-analyzer` package is installed to analyze the size of created bundles.
+
+Before deployments, you should take a look at the bundle analyzer at http://localhost:8888 and see if certain apps are exceptionally large.
+The bundle analyzer interface is opened on `npm run start` and `npm run build` commands,
+showing the bundle sizes as not-minimized (`start`) or minimized (`build`).
+
 ## Documentation
 
 The documentation for this repo is lacking at the moment, aside from the architecture section.

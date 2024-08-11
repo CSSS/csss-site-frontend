@@ -1,16 +1,16 @@
 import React from 'react';
 
-import { classList } from '../helpers';
+import { classList } from '../../js';
 
 import './Icon.css';
 
 /**
- * Expand (resize) icon.
+ * Option (rightwards arrow) icon.
  * @param {object} props
  * @param {string} props.className - Additional class(es) for SVG icon
  * @param {string} props.style - Additional styles
  */
-export function Expand(props) {
+export function Option(props) {
   const { className, style } = props;
 
   return (
@@ -25,10 +25,8 @@ export function Expand(props) {
       xmlSpace="preserve"
       style={style}
     >
-      <polyline points="12,4 4,4 4,12 " />
-      <polyline points="20,4 28,4 28,12 " />
-      <polyline points="4,20 4,28 12,28 " />
-      <polyline points="20,28 28,28 28,20 " />
+      <polyline points="20,8 28,16 20,24 " />
+      <path d="M4,4c0,0,0,6,0,8s2,4,4,4s20,0,20,0" />
     </svg>
   );
 }

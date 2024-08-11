@@ -1,16 +1,16 @@
 import React from 'react';
 
-import { classList } from '../helpers';
+import { classList } from '../../js';
 
 import './Icon.css';
 
 /**
- * Shrink (resize) icon.
+ * Hamburger menu icon.
  * @param {object} props
  * @param {string} props.className - Additional class(es) for SVG icon
  * @param {string} props.style - Additional styles
  */
-export function Shrink(props) {
+export function Hamburger(props) {
   const { className, style } = props;
 
   return (
@@ -25,10 +25,9 @@ export function Shrink(props) {
       xmlSpace="preserve"
       style={style}
     >
-      <polyline points="28,20 20,20 20,28 " />
-      <polyline points="4,20 12,20 12,28 " />
-      <polyline points="20,4 20,12 28,12 " />
-      <polyline points="4,12 12,12 12,4 " />
+      <line x1="4" y1="8" x2="28" y2="8" />
+      <line x1="4" y1="16" x2="28" y2="16" />
+      <line x1="4" y1="24" x2="28" y2="24" />
     </svg>
   );
 }

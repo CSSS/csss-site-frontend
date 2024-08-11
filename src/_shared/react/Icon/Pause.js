@@ -1,21 +1,21 @@
 import React from 'react';
 
-import { classList } from '../helpers';
+import { classList } from '../../js';
 
 import './Icon.css';
 
 /**
- * Option (rightwards arrow) icon.
+ * Pause icon.
  * @param {object} props
  * @param {string} props.className - Additional class(es) for SVG icon
  * @param {string} props.style - Additional styles
  */
-export function Option(props) {
+export function Pause(props) {
   const { className, style } = props;
 
   return (
     <svg
-      className={classList(['csss-icon', className || ''])}
+      className={classList(['csss-icon', 'fill', className || ''])}
       version="1.1"
       xmlns="http://www.w3.org/2000/svg"
       xmlnsXlink="http://www.w3.org/1999/xlink"
@@ -25,8 +25,8 @@ export function Option(props) {
       xmlSpace="preserve"
       style={style}
     >
-      <polyline points="20,8 28,16 20,24 " />
-      <path d="M4,4c0,0,0,6,0,8s2,4,4,4s20,0,20,0" />
+      <rect x="8" y="8" width="4" height="16" />
+      <rect x="20" y="8" width="4" height="16" />
     </svg>
   );
 }

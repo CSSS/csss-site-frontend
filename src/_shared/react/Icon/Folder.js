@@ -1,21 +1,21 @@
 import React from 'react';
 
-import { classList } from '../helpers';
+import { classList } from '../../js';
 
 import './Icon.css';
 
 /**
- * Email icon.
+ * Folder icon.
  * @param {object} props
  * @param {string} props.className - Additional class(es) for SVG icon
  * @param {string} props.style - Additional styles
  */
-export function Email(props) {
+export function Folder(props) {
   const { className, style } = props;
 
   return (
     <svg
-      className={classList(['csss-icon', className || ''])}
+      className={classList(['csss-icon fill', className || ''])}
       version="1.1"
       xmlns="http://www.w3.org/2000/svg"
       xmlnsXlink="http://www.w3.org/1999/xlink"
@@ -25,10 +25,7 @@ export function Email(props) {
       xmlSpace="preserve"
       style={style}
     >
-      <rect x="4" y="8" width="24" height="16" />
-      <polyline points="4,8 16,20 28,8 " />
-      <line x1="12" y1="16" x2="4" y2="24" />
-      <line x1="20" y1="16" x2="28" y2="24" />
+      <path d="M4,8v16c0,1.1,0.9,2,2,2h20c1.1,0,2-0.9,2-2V12c0-1.1-0.9-2-2-2H16l-4-4H6C4.9,6,4,6.9,4,8z" />
     </svg>
   );
 }

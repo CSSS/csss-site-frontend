@@ -1,16 +1,16 @@
 import React from 'react';
 
-import { classList } from '../helpers';
+import { classList } from '../../js';
 
 import './Icon.css';
 
 /**
- * Cross icon.
+ * Shrink (resize) icon.
  * @param {object} props
  * @param {string} props.className - Additional class(es) for SVG icon
  * @param {string} props.style - Additional styles
  */
-export function Cross(props) {
+export function Shrink(props) {
   const { className, style } = props;
 
   return (
@@ -25,8 +25,10 @@ export function Cross(props) {
       xmlSpace="preserve"
       style={style}
     >
-      <line x1="4" y1="4" x2="28" y2="28" />
-      <line x1="28" y1="4" x2="4" y2="28" />
+      <polyline points="28,20 20,20 20,28 " />
+      <polyline points="4,20 12,20 12,28 " />
+      <polyline points="20,4 20,12 28,12 " />
+      <polyline points="4,12 12,12 12,4 " />
     </svg>
   );
 }

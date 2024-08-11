@@ -1,21 +1,21 @@
 import React from 'react';
 
-import { classList } from '../helpers';
+import { classList } from '../../js';
 
 import './Icon.css';
 
 /**
- * File icon.
+ * Cross icon.
  * @param {object} props
  * @param {string} props.className - Additional class(es) for SVG icon
  * @param {string} props.style - Additional styles
  */
-export function File(props) {
+export function Cross(props) {
   const { className, style } = props;
 
   return (
     <svg
-      className={classList(['csss-icon fill', className || ''])}
+      className={classList(['csss-icon', className || ''])}
       version="1.1"
       xmlns="http://www.w3.org/2000/svg"
       xmlnsXlink="http://www.w3.org/1999/xlink"
@@ -25,7 +25,8 @@ export function File(props) {
       xmlSpace="preserve"
       style={style}
     >
-      <path d="M6,6v20c0,1.1,0.9,2,2,2h16c1.1,0,2-0.9,2-2V12l-8-8H8C6.9,4,6,4.9,6,6z" />
+      <line x1="4" y1="4" x2="28" y2="28" />
+      <line x1="28" y1="4" x2="4" y2="28" />
     </svg>
   );
 }
