@@ -66,10 +66,13 @@ or "public/my/obscure/app/index.html" for "http://localhost:8080/my/obscure/app"
 Make sure to update the line:
 
 ```html
-<script defer="defer" src="/js/main.js"></script>
+<script defer="defer" src="/static/js/main.js"></script>
 ```
 
 Replacing `main.js` with the bundle name you specified in `webpack.config.js`.
+
+Don't remove the `react.js` script tag!
+This line provides necessary React code to run your React app.
 
 ### Important Notes for React Devs
 
@@ -89,27 +92,28 @@ And what about plain, static pages, that should be served alongside the React ap
 
 ### Building
 
-React apps are built to static files with [webpack](https://webpack.js.org/),
-which "packs" JavaScript starting at a given entry-point into a standalone "bundle".
+Various apps (may be React, TypeScript, JavaScript, ...) are built with [webpack](https://webpack.js.org/),
+which "packs" apps starting at a given entry-point into a standalone "bundle".
 This bundle can then be used in an HTML file with the `<script>` tag.
+This lets you use frameworks and libraries provided by `npm` in your apps, such as React, Vue.js, TypeScript, and so on.
 
 There are several entry-points in this repo, each being a standalone app.
 The entry-points are folders in the `src` folder, except the `_shared` folder.
 
-The `_shared` folder contains various code that may be reused between projects.
+The `_shared` folder contains various things that may be reused between projects.
 E.g., the `_shared/react` folder contains some useful React components,
 and `_shared/js` contains helper functions that may be used in JS projects.
 
 During the build process (`npm run build`), the `build` folder is emptied,
-and Webpack compiles each entry-point into the `js` folder inside of the `build` folder.
-E.g., `src/main/**/*.js` is bundled into a single `build/js/main.js` file,
+and Webpack compiles each entry-point into the `build/static/js` folder.
+E.g., `src/main/**/*.js` is bundled into a single `build/static/js/main.js` file,
 which contains all necessary React code, and other `npm` packages' code used.
 
 Then, the contents of the `public` folder are copied into the `build` folder.
 HTML files in `public` use the files compiled by webpack to serve the React apps;
 
 ```html
-<script defer="defer" src="/js/main.js"></script>
+<script defer="defer" src="/static/js/main.js"></script>
 ```
 
 Notice that the `build` folder is treated as the root of the application (hence the leading slash).
