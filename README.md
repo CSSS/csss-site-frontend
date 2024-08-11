@@ -47,7 +47,7 @@ showing the bundle sizes as not-minimized (`start`) or minimized (`build`).
 ## Documentation
 
 The documentation for this repo is lacking at the moment, aside from the architecture section.
-Please read the source code for the `main` and `test` entry-points in the `src` folder for creating a new React app.
+Please read the source code for the `main` entry-point in the `src` folder for creating a new React app.
 
 ### Creating a new React App
 
@@ -93,9 +93,12 @@ React apps are built to static files with [webpack](https://webpack.js.org/),
 which "packs" JavaScript starting at a given entry-point into a standalone "bundle".
 This bundle can then be used in an HTML file with the `<script>` tag.
 
-There are several entry-points in this repo, each being a standalone React app.
+There are several entry-points in this repo, each being a standalone app.
 The entry-points are folders in the `src` folder, except the `_shared` folder.
-The `_shared` folder contains components and helper functions that can be used by any of the React apps in this site.
+
+The `_shared` folder contains various code that may be reused between projects.
+E.g., the `_shared/react` folder contains some useful React components,
+and `_shared/js` contains helper functions that may be used in JS projects.
 
 During the build process (`npm run build`), the `build` folder is emptied,
 and Webpack compiles each entry-point into the `js` folder inside of the `build` folder.
