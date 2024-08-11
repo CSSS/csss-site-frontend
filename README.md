@@ -36,7 +36,7 @@ The Webpack dev server should refresh this file after you run the tailwind scrip
 It is recommended to run the start script in a separate terminal while you develop!
 That way all changes you make can be displayed immediately upon file modification.
 
-### Local Development (Webmaster)
+### Local Development (System Administrator / Webmaster)
 
 The `webpack-bundle-analyzer` package is installed to analyze the size of created bundles.
 
@@ -70,6 +70,15 @@ Make sure to update the line:
 ```
 
 Replacing `main.js` with the bundle name you specified in `webpack.config.js`.
+
+### Important Notes for React Devs
+
+Try your best to not bundle CSS or image files into your apps!
+
+Please take advantage of the /public/static/files directory to store images,
+and /public/static/css for CSS stylesheets.
+
+For very short stylesheets, ignore this recommendation.
 
 ## Architecture
 

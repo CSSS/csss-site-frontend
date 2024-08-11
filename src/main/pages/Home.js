@@ -15,27 +15,27 @@ import Footer from '../components/Footer';
 const sections = [
   {
     text: 'Meet the exec team!',
-    image: '/homepage/team.jpg',
+    image: '/static/files/main/team.jpg',
     link: '#officers'
   },
   {
     text: 'Get involved!',
-    image: '/homepage/getinvolved.jpg',
+    image: '/static/files/main/getinvolved.jpg',
     link: '#about'
   },
   {
     text: 'Our events!',
-    image: '/homepage/events.jpg',
+    image: '/static/files/main/events.jpg',
     link: '#events'
   },
   {
     text: 'Documents!',
-    image: '/homepage/documents.jpg',
+    image: '/static/files/main/documents.jpg',
     link: '#documents'
   },
   {
     text: 'Visit our Common Room',
-    image: '/homepage/commonroom.jpg',
+    image: '/static/files/main/commonroom.jpg',
     link: '#common_rooms'
   }
 ];
@@ -67,7 +67,7 @@ export const Home = () => {
     <Page hideMinimap={true}>
       <div className="relative w-full min-h-screen">
         <animated.img
-          src="/homepage/homepage.jpg"
+          src="/static/files/main/homepage.jpg"
           alt="SFU CSSS"
           className="absolute inset-0 w-full h-full object-cover"
           style={imageSpring}
@@ -101,7 +101,7 @@ export const Home = () => {
         </h2>
         <div className="mt-10">
           <img
-            src="/homepage/president.jpg"
+            src="/static/files/main/president.jpg"
             alt="President Portrait"
             className="w-64 h-80 object-cover rounded-lg float-left mr-6 mb-4"
           />
