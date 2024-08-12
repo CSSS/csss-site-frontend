@@ -15,27 +15,27 @@ import Footer from '../components/Footer';
 const sections = [
   {
     text: 'Meet the exec team!',
-    image: '/homepage/team.jpg',
+    image: '/static/files/main/team.jpg',
     link: '#officers'
   },
   {
     text: 'Get involved!',
-    image: '/homepage/getinvolved.jpg',
+    image: '/static/files/main/getinvolved.jpg',
     link: '#about'
   },
   {
     text: 'Our events!',
-    image: '/homepage/events.jpg',
+    image: '/static/files/main/events.jpg',
     link: '#events'
   },
   {
     text: 'Documents!',
-    image: '/homepage/documents.jpg',
+    image: '/static/files/main/documents.jpg',
     link: '#documents'
   },
   {
     text: 'Visit our Common Room',
-    image: '/homepage/commonroom.jpg',
+    image: '/static/files/main/commonroom.jpg',
     link: '#common_rooms'
   }
 ];
@@ -67,7 +67,7 @@ export const Home = () => {
     <Page hideMinimap={true}>
       <div className="relative w-full min-h-screen">
         <animated.img
-          src="/homepage/homepage.jpg"
+          src="/static/files/main/homepage.jpg"
           alt="SFU CSSS"
           className="absolute inset-0 w-full h-full object-cover"
           style={imageSpring}
@@ -99,9 +99,9 @@ export const Home = () => {
         >
           A message from your president
         </h2>
-        <div className="mt-10"> 
+        <div className="mt-10">
           <img
-            src="/homepage/president.jpg"
+            src="/static/files/main/president.jpg"
             alt="President Portrait"
             className="w-64 h-80 object-cover rounded-lg float-left mr-6 mb-4"
           />
@@ -115,16 +115,35 @@ export const Home = () => {
             >
               H
             </span>
-            i everyone! My name is Isabelle and I am thrilled to welcome you to the Computing Science Student Society – the coolest and most engaged community on campus!
-            <br /><br />
-            No matter your level of experience, whether you’re a seasoned coder, just starting to explore the world of computing, or just trying to fill an elective requirement with CMPT 120, you’ve found your people. We’ve got an amazing year ahead, packed with social events, technical workshops, hackathons, gaming nights, and tons of opportunities to meet like-minded friends.
-            <br /><br />
-            But it’s not just about the tech. We’re here to build a supportive and inclusive community where everyone feels at home. So, jump in and don’t hesitate to share your ideas. We have so many opportunities for you to get involved, volunteer, and build your resumes, so stay up to date with all our meetings and announcements!
-            <br /><br />
-            Finally, if you ever see me or any of the other executives on campus, give us a wave! We are so excited for the upcoming year and all the things we will accomplish together.
-            <br /><br />
-            All the best,<br />
-            Isabelle Kwan<br />
+            i everyone! My name is Isabelle and I am thrilled to welcome you to
+            the Computing Science Student Society – the coolest and most engaged
+            community on campus!
+            <br />
+            <br />
+            No matter your level of experience, whether you’re a seasoned coder,
+            just starting to explore the world of computing, or just trying to
+            fill an elective requirement with CMPT 120, you’ve found your
+            people. We’ve got an amazing year ahead, packed with social events,
+            technical workshops, hackathons, gaming nights, and tons of
+            opportunities to meet like-minded friends.
+            <br />
+            <br />
+            But it’s not just about the tech. We’re here to build a supportive
+            and inclusive community where everyone feels at home. So, jump in
+            and don’t hesitate to share your ideas. We have so many
+            opportunities for you to get involved, volunteer, and build your
+            resumes, so stay up to date with all our meetings and announcements!
+            <br />
+            <br />
+            Finally, if you ever see me or any of the other executives on
+            campus, give us a wave! We are so excited for the upcoming year and
+            all the things we will accomplish together.
+            <br />
+            <br />
+            All the best,
+            <br />
+            Isabelle Kwan
+            <br />
             CSSS President
           </p>
         </div>
