@@ -62,7 +62,7 @@ export const Page = ({ children }) => {
         <VSCode.NavItem
           isInFolder={true}
           text="Discord"
-          href="https://discord.com/sfucsss"
+          href="https://discord.gg/sfucsss"
         />
       </VSCode.NavFolder>
     </>
