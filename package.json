@@ -12,7 +12,8 @@
     "prestart": "npm run tw",
     "start": "webpack serve --mode development",
     "build": "webpack --mode production",
-    "postbuild": "npm run tailwind && cp -R ./public/* ./build"
+    "postbuild": "npm run tw && cp -R ./public/* ./build",
+    "analyzer": "webpack-bundle-analyzer ./build/stats.json"
   },
   "dependencies": {
     "@babel/core": "^7.23.9",

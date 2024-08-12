@@ -36,5 +36,11 @@ module.exports = {
     compress: true,
     port: 8080
   },
-  plugins: [new BundleAnalyzerPlugin({ openAnalyzer: false })]
+  plugins: [
+    new BundleAnalyzerPlugin({
+      analyzerMode: 'disabled',
+      generateStatsFile: true,
+      openAnalyzer: false
+    })
+  ]
 };
