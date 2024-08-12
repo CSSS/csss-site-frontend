@@ -1,4 +1,6 @@
 import React, { useCallback, useEffect, useState } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCodeBranch } from '@fortawesome/free-solid-svg-icons';
 
 import * as helpers from '../../js';
 import * as Flex from '../Flex';
@@ -32,13 +34,13 @@ export const Page = (props) => {
           ? '1fr' // one column
           : '320px 1fr' // two columns
       }
-      rows={isMobileDevice ? '64px 1fr' : '1fr'}
+      rows={isMobileDevice ? '64px 1fr 32px' : '1fr 32px'}
       areas={
         isMobileDevice
-          ? ['navbar', 'content'] // two rows
-          : ['navbar content'] // one row
+          ? ['.', '.', 'bottom-bar'] // three rows
+          : ['. .', 'bottom-bar bottom-bar'] // two rows
       }
-      className="bg-slate-800"
+      className="bg-zinc-900"
       style={{
         margin: 'auto',
         width: '100vw',
@@ -50,27 +52,47 @@ export const Page = (props) => {
         {files}
       </NavBar>
       {isMobileDevice ? (
-        <Grid.Item
-          area="content"
-          className="overflow-y-scroll text-white"
+        <>
+          <Grid.Item
+            className="overflow-y-scroll text-white"
+            style={{
+              maxWidth: '768px',
+              width: '100%',
+              height: '100%',
+              margin: 'auto'
+            }}
+          >
+            {children}
+          </Grid.Item>
+        </>
+      ) : (
+        <>
+          <Grid.Item
+            className="overflow-y-scroll text-white"
+            style={{ height: '100%' }}
+          >
+            {children}
+          </Grid.Item>
+        </>
+      )}
+      <div
+        className="bg-zinc-950 border-t border-zinc-800 flex flex-row"
+        style={{
+          'grid-area': 'bottom-bar'
+        }}
+      >
+        <p
+          className="bg-blue-500 text-white text-sm"
           style={{
-            maxWidth: '768px',
-            width: '100%',
-            height: '100vh',
-            margin: 'auto'
+            height: '100%',
+            padding: '0 8px',
+            lineHeight: '32px'
           }}
         >
-          {children}
-        </Grid.Item>
-      ) : (
-        <Grid.Item
-          area="content"
-          className="overflow-y-scroll text-white"
-          style={{ height: '100vh' }}
-        >
-          {children}
-        </Grid.Item>
-      )}
+          <FontAwesomeIcon icon={faCodeBranch} />
+          &nbsp;main
+        </p>
+      </div>
     </Grid.Container>
   );
 };
