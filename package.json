@@ -8,8 +8,8 @@
   "scripts": {
     "lint": "prettier --write .",
     "prebuild": "rm -Rf ./build/*",
-    "tailwind": "tailwindcss -i ./tailwind.css -o ./public/static/css/tailwind.css",
-    "prestart": "npm run tailwind",
+    "tw": "tailwindcss -i ./tailwind.css -o ./public/static/css/tailwind.css",
+    "prestart": "npm run tw",
     "start": "webpack serve --mode development",
     "build": "webpack --mode production",
     "postbuild": "npm run tailwind && cp -R ./public/* ./build"

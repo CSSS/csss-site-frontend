@@ -64,8 +64,8 @@ export const Home = () => {
   });
 
   return (
-    <Page hideMinimap={true}>
-      <div className="relative w-full min-h-screen">
+    <Page>
+      <div className="relative w-full" style={{ height: 'calc(100vh - 32px)' }}>
         <animated.img
           src="/static/files/main/homepage.jpg"
           alt="SFU CSSS"
@@ -85,7 +85,7 @@ export const Home = () => {
           </animated.h1>
         </div>
         {/* Down arrow icon */}
-        <div className="absolute bottom-8 w-full flex justify-center">
+        <div className="absolute bottom-20 w-full flex justify-center">
           <FontAwesomeIcon
             icon={faArrowDown}
             className="text-white text-4xl animate-bounce"
@@ -111,7 +111,7 @@ export const Home = () => {
           >
             <span
               className="text-5xl sm:text-6xl md:text-7xl font-bold float-left mr-4"
-              style={{ lineHeight: '1.2em' }}
+              style={{ lineHeight: '1em' }}
             >
               H
             </span>
