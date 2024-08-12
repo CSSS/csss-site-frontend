@@ -1,4 +1,6 @@
 build/
 node_modules/
-*.LICENSE.txt
+public/
+**/*.LICENSE.txt
 .DS_Store
+stats.json
