@@ -1,6 +1,7 @@
-# Ignore all files
-**/*
+# folders
+build
+node_modules
 
-# Except JavaScript files under src and public
-!src/**/*.js
-!public/**/*.js
+# ignore HTML and CSS files
+**/*.html
+**/*.css
