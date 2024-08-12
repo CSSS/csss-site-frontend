@@ -52,28 +52,24 @@ export const Page = (props) => {
         {files}
       </NavBar>
       {isMobileDevice ? (
-        <>
-          <Grid.Item
-            className="overflow-y-scroll text-white"
-            style={{
-              maxWidth: '768px',
-              width: '100%',
-              height: '100%',
-              margin: 'auto'
-            }}
-          >
-            {children}
-          </Grid.Item>
-        </>
+        <Grid.Item
+          className="overflow-y-scroll text-white"
+          style={{
+            maxWidth: '768px',
+            width: '100%',
+            height: '100%',
+            margin: 'auto'
+          }}
+        >
+          {children}
+        </Grid.Item>
       ) : (
-        <>
-          <Grid.Item
-            className="overflow-y-scroll text-white"
-            style={{ height: '100%' }}
-          >
-            {children}
-          </Grid.Item>
-        </>
+        <Grid.Item
+          className="overflow-y-scroll text-white"
+          style={{ height: '100%' }}
+        >
+          {children}
+        </Grid.Item>
       )}
       <div
         className="bg-zinc-950 border-t border-zinc-800 flex flex-row"
