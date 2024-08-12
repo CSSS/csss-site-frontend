@@ -18,7 +18,7 @@
 }
 
 .csss-nav-app-drawer > *:hover {
-  background-color: #334155; /* one of the TW slate colours */
+  background-color: #3f3f46; /* zinc-700 */
   cursor: pointer;
 }
 
