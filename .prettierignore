@@ -1,0 +1,6 @@
+# Ignore all files
+**/*
+
+# Except JavaScript files under src and public
+!src/**/*.js
+!public/**/*.js

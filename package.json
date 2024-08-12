@@ -7,7 +7,7 @@
   "sideEffects": true,
   "scripts": {
     "lint": "prettier --write .",
-    "prebuild": "rm -Rf ./build/*",
+    "prebuild": "rm -Rf ./build",
     "tailwind": "tailwindcss -i ./tailwind.css -o ./public/static/css/tailwind.css",
     "prestart": "npm run tailwind",
     "start": "webpack serve --mode development",

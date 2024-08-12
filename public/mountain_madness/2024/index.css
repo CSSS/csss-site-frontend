@@ -55,7 +55,7 @@ body * {
 }
 
 #above-fold::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   width: 100%;
@@ -180,7 +180,7 @@ header > h4 b {
 
 #building::before {
   background: var(--red);
-  content: 'SFU';
+  content: "SFU";
   font-size: 1rem;
   color: white;
   position: relative;
@@ -285,7 +285,7 @@ header > h4 b {
 }
 
 .cloud::after {
-  content: '';
+  content: "";
   position: absolute;
   background: var(--cloud-color);
   height: calc(var(--width) / 3);
@@ -296,7 +296,7 @@ header > h4 b {
 }
 
 .cloud::before {
-  content: '';
+  content: "";
   position: absolute;
   background: var(--cloud-color);
   height: calc(var(--width) / 2);
@@ -444,7 +444,7 @@ table td {
 */
 
 .tree::before {
-  content: '';
+  content: "";
   position: absolute;
   background: brown;
   box-shadow: -3px 0 0 inset #533;
@@ -453,7 +453,7 @@ table td {
 }
 
 .tree::after {
-  content: '';
+  content: "";
   position: absolute;
   width: var(--foliage-width);
   height: var(--foliage-height);
