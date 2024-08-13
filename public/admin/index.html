@@ -1,257 +1,125 @@
 <!doctype html>
 <html>
 
-<!-- if you dislike frontend: -->
-<!-- python -m http.server 8080 --bind 127.0.0.1 --directory ./ -->
+    <!-- if you dislike frontend: -->
+    <!-- 
+        cd public 
+        python -m http.server 8080 --bind 127.0.0.1 --directory ./
+    -->
 
-<head>
-    <title>CSSS Admin Dashboard</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/png" href="/static/icons/favicon_white.png" />
-</head>
-<style>
-    /* IBM Plex Mono */
-    @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700#display=swap');
+    <head>
+        <title>CSSS Admin Dashboard</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="icon" type="image/png" href="/static/icons/favicon_white.png" />
 
-    body {
-        font-family: monospace;
-        font-weight: 400;
-        font-size: 12px;
+        <!-- fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="/admin/style.css">    
+    </head>
 
-        color: lightgreen;
-        background-color: black;
-    }
+    <body>
+        <div id="header">
+            <div id="header-content">
+                <div id="main-title">
+                    <a href="/" style="transform: translateY(2px);">
+                        <svg id="main-logo" style="width: 3rem; height: 3rem; margin-right: 0.5rem;">
+                            <image xlink:href="/static/logos/csss_black.svg" style="width: 3rem; height: 3rem;" />    
+                        </svg>
+                    </a>
+                    <b>CSSS Admin Dashboard</b>
+                </div>
+                <div style="margin-left: auto; display: flex; align-items: center; padding: 0 1rem;">
+                    <b style="font-weight: 600;">Logged in as <a href="/" id="logged-in-user">Name</a></b>
+                </div>
+            </div>
+        </div>
 
-    pre {
-        width: 100ch;
-        margin: auto;
-        margin-top: 32px;
-        margin-bottom: 32px;
-    }
+        <div id="content">
+            <div id="nav-bar">
+                <div>
+                    <div class="nav-header">Home</div>
+                </div>
 
-    b {
-        color: white;
-        font-weight: 700;
-    }
+                <div style="height: 0.25rem;"></div>
 
-    i {
-        color: gray;
-    }
+                <div>
+                    <div class="nav-header">Officers</div>
+                    <div class="nav-children">
+                        <div class="nav-child">
+                            Add new officers
+                        </div>
+                        <div class="nav-child">
+                            View officers
+                        </div>
+                    </div>
+                </div>
 
-    a {
-        color: lightblue;
-    }
+                <div style="height: 0.25rem;"></div>
 
-    s {
-        color: gray;
-    }
+                <div>
+                    <div class="nav-header">Device</div>
+                    <div class="nav-children">
+                        <div class="nav-child">
+                            Status
+                        </div>
+                    </div>
+                </div>
 
-    #controls {
-        display: flex;
-        gap: 2ch;
+                <div style="height: 0.25rem;"></div>
 
-        margin-top: -2ch;
-        padding: 1ch 0 0 1ch;
-    }
-    #controls div {
-        width: calc(50ch - 2ch);
-        padding: 1ch;
-    }
+                <div>
+                    <div class="nav-header">Admin</div>
+                    <div class="nav-children">
+                        <div class="nav-child">
+                            Officers Log
+                        </div>
+                        <div class="nav-child">
+                            Election Log
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="view-area" style="display: flex; align-items: center; justify-content: center; font-family: 'PT Serif'; font-size: 2rem; color: #666; font-weight: 700;">
+                <div>OWO</div>
+            </div>
+        </div>
 
-    clickable {
-        color: rgb(250, 204, 119);
-        cursor: pointer;
-        text-decoration: underline;
-    }
-    clickable:hover {
-        color: rgb(235, 157, 94);
-    }
-    clickable:active {
-        color: rgb(255, 246, 162);
-    }
+        <!--
 
-    #content {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
+        <div id="footer">
+            <div style="display: flex; align-items: center; padding-left: 8rem; font-size: 1rem;">
+                heyo!
+            </div>
+        </div>
 
-        width: 100ch;
-        height: 36ch;
+        -->
 
-        margin: auto;
+        <!--
+        <div style="display: flex; margin: 0 2ch; margin-bottom: -2ch;">
+            <span style="color: lightgreen;">CSSS Admin Dashboard</span>
+            <a href="https://sfucsss.org" style="margin-left: auto;">go home</a>
+        </div>
 
-        background-color: black;
-        color: grey;
-    }
+        <div id="controls">
+        <div class="left"><span style="margin-top: -4ch; display: inline-block;">Views</span>
+            - <clickable onclick="window.location.hash = '#execs';">Execs</clickable>
+            - <clickable onclick="window.location.hash = '#logs';">Logs</clickable>
+        </div>
+        <div class="right" id="actions">Actions</div>
+        </div>
+        </pre>
 
-    #enterExecsTable {
-        width: 100ch;
-        height: 36ch;
-    }
-</style>
+        <div id="content">
+        enter a view!
+        </div>
 
-<script>
+        <i>====================================================================================================</i>
+        -->
+    </body>
 
-function routeView() {
-    if (window.location.hash == "#execs") {
-        enterExecs();
-    } else if (window.location.hash == "#logs") {
-        enterLogs();
-    }
-}
-window.onload = routeView;
-window.onhashchange = routeView;
-
-function enterExecs() {
-    console.log("#execs");
-
-    // TODO: get this data from the endpoint
-    response = {
-        "president": [
-            {
-                "is_current_officer": true,
-                "position": "president",
-                "start_date": "2024-07-25T04:38:16.307842",
-                "end_date": "2025-07-25T04:38:16.307844",
-                "legal_name": "Person C",
-                "nickname": "CC",
-                "discord_name": null,
-                "discord_nickname": null,
-                "favourite_course_0": "CMPT 999",
-                "favourite_course_1": "CMPT 354",
-                "favourite_language_0": "C++",
-                "favourite_language_1": "C",
-                "csss_email": "csss-president-current@sfu.ca",
-                "biography": "I'm person C...",
-                "photo_url": null,
-                "private_data": null
-            }
-        ],
-        "president2": [
-            {
-                "is_current_officer": true,
-                "position": "president",
-                "start_date": "2024-07-25T04:38:16.307842",
-                "end_date": "2025-07-25T04:38:16.307844",
-                "legal_name": "Person C",
-                "nickname": "CC",
-                "discord_name": null,
-                "discord_nickname": null,
-                "favourite_course_0": "CMPT 999",
-                "favourite_course_1": "CMPT 354",
-                "favourite_language_0": "C++",
-                "favourite_language_1": "C",
-                "csss_email": "csss-president-current@sfu.ca",
-                "biography": "I'm person C...",
-                "photo_url": null,
-                "private_data": null
-            }
-        ],
-        "president3": [
-            {
-                "is_current_officer": true,
-                "position": "president",
-                "start_date": "2024-07-25T04:38:16.307842",
-                "end_date": "2025-07-25T04:38:16.307844",
-                "legal_name": "Person C",
-                "nickname": "CC",
-                "discord_name": null,
-                "discord_nickname": null,
-                "favourite_course_0": "CMPT 999",
-                "favourite_course_1": "CMPT 354",
-                "favourite_language_0": "C++",
-                "favourite_language_1": "C",
-                "csss_email": "csss-president-current@sfu.ca",
-                "biography": "I'm person C...",
-                "photo_url": null,
-                "private_data": null
-            }
-        ]
-    };
-
-    // document.getElementById("content").style.overflowX = "scroll";
-
-    let table = document.createElement("table");
-    table.id = "enterExecsTable";
-    table.style.height = "auto";
-    table.style.fontSize = "10px";
-
-    let thead = document.createElement("thead");
-    let row = document.createElement("tr");
-    for (let key in Object.values(response)[0][0]) {
-        cell = document.createElement("th");
-        cell.style.padding = "0 1ch 0 1ch";
-        cell.innerHTML = key;
-        row.appendChild(cell);
-    }
-    thead.appendChild(row);
-    table.appendChild(thead);
-
-    let tbody = document.createElement("tbody");
-    tbody.style.color = "white";
-    let runningIndex = 0;
-    for (let i in Object.values(response)) {
-
-        let positionInfoList = Object.values(response)[i];
-        for (let j in positionInfoList) {
-
-            row = document.createElement("tr");
-            row.style.backgroundColor = (runningIndex % 2 == 0) ? "midnightblue" : "#111";
-            runningIndex += 1;
-
-            let positionInfo = positionInfoList[j];
-            for (let key in positionInfo) {
-                cell = document.createElement("td");
-                cell.innerHTML = positionInfo[key];
-                cell.style.padding = "0 1ch 0 1ch";
-                row.appendChild(cell);
-            }
-
-            tbody.appendChild(row);
-        }
-    }
-
-    table.appendChild(tbody);
-    document.getElementById("content").innerHTML = '';
-    document.getElementById("content").appendChild(table);
-}
-
-function enterLogs() {
-    // TODO: flex center content
-    document.getElementById("content").innerHTML = 'nothing...';
-}
-
-</script>
-
-<body>
-<pre>
-<i>----------------------------------------------------------------------------------------------------</i>
-
-<div style="display: flex; margin: 0 2ch; margin-bottom: -2ch;">
-    <span style="color: lightgreen;">CSSS Admin Dashboard</span>
-    <a href="https://sfucsss.org" style="margin-left: auto;">go home</a>
-</div>
-
-<i>----------------------------------------------------------------------------------------------------</i>
-
-<div id="controls">
-<div class="left"><span style="margin-top: -4ch; display: inline-block;">Views</span>
-- <clickable onclick="window.location.hash = '#execs';">Execs</clickable>
-- <clickable onclick="window.location.hash = '#logs';">Logs</clickable>
-</div>
-<div class="right" id="actions">Actions</div>
-</div>
-</pre>
-
-<div id="content">
-enter a view!
-</div>
-
-<pre>
-<i>====================================================================================================</i>
-</pre>
-
-</body>
+    <script src="/admin/script.js"></script>
 
 </html>
