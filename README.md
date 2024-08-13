@@ -29,7 +29,7 @@ Run `npm run start` to deploy the site locally at [localhost:8080](http://localh
 
 This script starts a Webpack development server, and watches any changes made to the `src` and `public` directories.
 
-If you start using new Tailwind classes, however, make sure to run `npm run tailwind` to refresh the `public/static/css/tailwind.css` file.
+If you start using new Tailwind classes, however, make sure to run `npm run tailwind` or `npm run tw` to refresh the `public/static/css/tailwind.css` file.
 Otherwise, your Tailwind classes might not be compiled and ready to use.
 The Webpack dev server should refresh this file after you run the tailwind script, so no need to restart the dev server.
 
