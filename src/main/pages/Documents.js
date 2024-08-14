@@ -18,9 +18,9 @@ export const Documents = () => {
           Here you can find all the important documents related to our society.
         </p>
 
-        <div className="flex justify-center items-center">
+        <div className="flex justify-center items-center mb-24">
           <a
-            href="/static/files/docs/constitution.pdf"
+            href="/static/files/docs/constitution_july2024.pdf"
             download
             className="bg-blue-500 hover:bg-blue-700 text-white text-lg sm:text-xl md:text-2xl px-4 py-2 rounded"
             style={{ fontFamily: 'Poppins, sans-serif' }}
@@ -28,7 +28,7 @@ export const Documents = () => {
             Download Constitution
           </a>
           <a
-            href="/static/files/docs/policies.pdf"
+            href="/static/files/docs/policies_july2024.pdf"
             download
             className="bg-blue-500 hover:bg-blue-700 text-white text-lg sm:text-xl md:text-2xl px-4 py-2 rounded"
             style={{ fontFamily: 'Poppins, sans-serif' }}
@@ -36,6 +36,8 @@ export const Documents = () => {
             Download Policies
           </a>
         </div>
+
+        <p>Last Updated: 13 August 2024</p>
       </div>
       <Footer />
     </Page>
