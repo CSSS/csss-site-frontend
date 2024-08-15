@@ -5,7 +5,7 @@ const BundleAnalyzerPlugin =
 // change this to your local instance of the CSSS API
 // source: https://github.com/csss/csss-site-backend
 // (if changed, don't commit your change please!)
-const apiInstance = 'http://localhost:3049';
+const API_INSTANCE = 'http://localhost:3049';
 
 module.exports = {
   entry: {
@@ -43,7 +43,7 @@ module.exports = {
     proxy: [
       {
         context: ['/api'],
-        target: apiInstance
+        target: API_INSTANCE
       }
     ]
   },
