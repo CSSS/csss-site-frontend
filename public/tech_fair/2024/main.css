@@ -6,8 +6,8 @@ html {
 }
 
 body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
-    Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
   overflow-x: hidden;
 }
 
@@ -25,7 +25,7 @@ a:hover {
   text-decoration: underline;
 }
 a:target:before {
-  content: '> ';
+  content: "> ";
   font-size: 0.75em;
   position: relative;
   bottom: 4px;
@@ -45,23 +45,23 @@ li {
 /* custom colours & fonts */
 
 @font-face {
-  font-family: 'darumadropOne';
-  src: url('/tech_fair/2024/fonts/DarumadropOne-Regular.ttf');
+  font-family: "darumadropOne";
+  src: url("/tech_fair/2024/fonts/DarumadropOne-Regular.ttf");
 }
 
 @font-face {
-  font-family: 'NotoSansGeorgian-Regular';
-  src: url('/tech_fair/2024/fonts/NotoSansGeorgian-Regular.ttf');
+  font-family: "NotoSansGeorgian-Regular";
+  src: url("/tech_fair/2024/fonts/NotoSansGeorgian-Regular.ttf");
 }
 
 @font-face {
-  font-family: 'Noto Sans Georgian';
-  src: url('/tech_fair/2024/fonts/NotoSansGeorgian-Regular.ttf');
+  font-family: "Noto Sans Georgian";
+  src: url("/tech_fair/2024/fonts/NotoSansGeorgian-Regular.ttf");
 }
 
 @font-face {
-  font-family: 'NotoSansGeorgian-Bold';
-  src: url('/tech_fair/2024/fonts/NotoSansGeorgian-Bold.ttf');
+  font-family: "NotoSansGeorgian-Bold";
+  src: url("/tech_fair/2024/fonts/NotoSansGeorgian-Bold.ttf");
 }
 
 .pink {
@@ -79,29 +79,29 @@ li {
 
 .noto {
   font-family:
-    'NotoSansGeorgian-Regular',
+    "NotoSansGeorgian-Regular",
     -apple-system,
     BlinkMacSystemFont,
-    'Segoe UI',
+    "Segoe UI",
     Roboto,
     Oxygen-Sans,
     Ubuntu,
     Cantarell,
-    'Helvetica Neue',
+    "Helvetica Neue",
     sans-serif;
 }
 
 .noto-bold {
   font-family:
-    'NotoSansGeorgian-Bold',
+    "NotoSansGeorgian-Bold",
     -apple-system,
     BlinkMacSystemFont,
-    'Segoe UI',
+    "Segoe UI",
     Roboto,
     Oxygen-Sans,
     Ubuntu,
     Cantarell,
-    'Helvetica Neue',
+    "Helvetica Neue",
     sans-serif;
 }
 
@@ -142,15 +142,15 @@ li {
 
   background-color: #fff;
   font-family:
-    'NotoSansGeorgian-Bold',
+    "NotoSansGeorgian-Bold",
     -apple-system,
     BlinkMacSystemFont,
-    'Segoe UI',
+    "Segoe UI",
     Roboto,
     Oxygen-Sans,
     Ubuntu,
     Cantarell,
-    'Helvetica Neue',
+    "Helvetica Neue",
     sans-serif;
 }
 #nav-bar > div {
@@ -267,7 +267,7 @@ li {
   font-size: min(3vw, 2em);
 }
 #code-title > h1 {
-  font-family: 'darumadropOne', 'Lucida Handwriting', cursive;
+  font-family: "darumadropOne", "Lucida Handwriting", cursive;
   padding-top: -18px;
 }
 
@@ -340,15 +340,15 @@ li {
   height: min(12vw, 178px);
 
   font-family:
-    'NotoSansGeorgian-Bold',
+    "NotoSansGeorgian-Bold",
     -apple-system,
     BlinkMacSystemFont,
-    'Segoe UI',
+    "Segoe UI",
     Roboto,
     Oxygen-Sans,
     Ubuntu,
     Cantarell,
-    'Helvetica Neue',
+    "Helvetica Neue",
     sans-serif;
 }
 #logo-title-text > *:nth-child(1) {
@@ -451,15 +451,15 @@ li {
   text-decoration: none;
 
   font-family:
-    'NotoSansGeorgian-Bold',
+    "NotoSansGeorgian-Bold",
     -apple-system,
     BlinkMacSystemFont,
-    'Segoe UI',
+    "Segoe UI",
     Roboto,
     Oxygen-Sans,
     Ubuntu,
     Cantarell,
-    'Helvetica Neue',
+    "Helvetica Neue",
     sans-serif;
 
   color: #fff;
@@ -480,15 +480,15 @@ li {
   text-decoration: none;
 
   font-family:
-    'NotoSansGeorgian-Bold',
+    "NotoSansGeorgian-Bold",
     -apple-system,
     BlinkMacSystemFont,
-    'Segoe UI',
+    "Segoe UI",
     Roboto,
     Oxygen-Sans,
     Ubuntu,
     Cantarell,
-    'Helvetica Neue',
+    "Helvetica Neue",
     sans-serif;
 
   color: #fff;
@@ -523,15 +523,15 @@ li {
   text-decoration: none;
 
   font-family:
-    'NotoSansGeorgian-Bold',
+    "NotoSansGeorgian-Bold",
     -apple-system,
     BlinkMacSystemFont,
-    'Segoe UI',
+    "Segoe UI",
     Roboto,
     Oxygen-Sans,
     Ubuntu,
     Cantarell,
-    'Helvetica Neue',
+    "Helvetica Neue",
     sans-serif;
 
   color: #000;
@@ -555,15 +555,15 @@ li {
   text-decoration: none;
 
   font-family:
-    'NotoSansGeorgian-Bold',
+    "NotoSansGeorgian-Bold",
     -apple-system,
     BlinkMacSystemFont,
-    'Segoe UI',
+    "Segoe UI",
     Roboto,
     Oxygen-Sans,
     Ubuntu,
     Cantarell,
-    'Helvetica Neue',
+    "Helvetica Neue",
     sans-serif;
 
   color: #000;
@@ -624,15 +624,15 @@ li {
   padding: 0;
 
   font-family:
-    'NotoSansGeorgian-Bold',
+    "NotoSansGeorgian-Bold",
     -apple-system,
     BlinkMacSystemFont,
-    'Segoe UI',
+    "Segoe UI",
     Roboto,
     Oxygen-Sans,
     Ubuntu,
     Cantarell,
-    'Helvetica Neue',
+    "Helvetica Neue",
     sans-serif;
   font-size: 1.4em;
 
@@ -662,15 +662,15 @@ li {
   float: right;
 
   font-family:
-    'NotoSansGeorgian-Regular',
+    "NotoSansGeorgian-Regular",
     -apple-system,
     BlinkMacSystemFont,
-    'Segoe UI',
+    "Segoe UI",
     Roboto,
     Oxygen-Sans,
     Ubuntu,
     Cantarell,
-    'Helvetica Neue',
+    "Helvetica Neue",
     sans-serif;
 
   color: #fff;
@@ -824,15 +824,15 @@ li {
   text-decoration: none;
 
   font-family:
-    'NotoSansGeorgian-Bold',
+    "NotoSansGeorgian-Bold",
     -apple-system,
     BlinkMacSystemFont,
-    'Segoe UI',
+    "Segoe UI",
     Roboto,
     Oxygen-Sans,
     Ubuntu,
     Cantarell,
-    'Helvetica Neue',
+    "Helvetica Neue",
     sans-serif;
 
   color: #000;
@@ -854,15 +854,15 @@ li {
   text-decoration: none;
 
   font-family:
-    'NotoSansGeorgian-Bold',
+    "NotoSansGeorgian-Bold",
     -apple-system,
     BlinkMacSystemFont,
-    'Segoe UI',
+    "Segoe UI",
     Roboto,
     Oxygen-Sans,
     Ubuntu,
     Cantarell,
-    'Helvetica Neue',
+    "Helvetica Neue",
     sans-serif;
 
   color: #fff;
@@ -874,15 +874,15 @@ li {
 
   letter-spacing: -2px;
   font-family:
-    'NotoSansGeorgian-Regular',
+    "NotoSansGeorgian-Regular",
     -apple-system,
     BlinkMacSystemFont,
-    'Segoe UI',
+    "Segoe UI",
     Roboto,
     Oxygen-Sans,
     Ubuntu,
     Cantarell,
-    'Helvetica Neue',
+    "Helvetica Neue",
     sans-serif;
 
   color: #aaa;
@@ -905,15 +905,15 @@ li {
   text-decoration: none;
 
   font-family:
-    'NotoSansGeorgian-Bold',
+    "NotoSansGeorgian-Bold",
     -apple-system,
     BlinkMacSystemFont,
-    'Segoe UI',
+    "Segoe UI",
     Roboto,
     Oxygen-Sans,
     Ubuntu,
     Cantarell,
-    'Helvetica Neue',
+    "Helvetica Neue",
     sans-serif;
 
   color: #000;
@@ -926,15 +926,15 @@ li {
   margin-left: 13px;
 
   font-family:
-    'NotoSansGeorgian-Bold',
+    "NotoSansGeorgian-Bold",
     -apple-system,
     BlinkMacSystemFont,
-    'Segoe UI',
+    "Segoe UI",
     Roboto,
     Oxygen-Sans,
     Ubuntu,
     Cantarell,
-    'Helvetica Neue',
+    "Helvetica Neue",
     sans-serif;
   font-size: 1.5em;
 
@@ -958,15 +958,15 @@ li {
   z-index: 10;
 
   font-family:
-    'NotoSansGeorgian-Regular',
+    "NotoSansGeorgian-Regular",
     -apple-system,
     BlinkMacSystemFont,
-    'Segoe UI',
+    "Segoe UI",
     Roboto,
     Oxygen-Sans,
     Ubuntu,
     Cantarell,
-    'Helvetica Neue',
+    "Helvetica Neue",
     sans-serif;
   text-align: center;
 

@@ -1,22 +1,24 @@
 import React, { useEffect, useState } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCodeBranch } from '@fortawesome/free-solid-svg-icons';
 
-import { Icon, Flex, Grid, VSCode, helpers } from '../../_shared';
+import { Icon, Flex, Grid, VSCode } from '../../_shared/react';
+import * as helpers from '../../_shared/js';
 
 // example usage of the VSCode.NavBar component, passing in children
-export const Page = ({ children, hideMinimap }) => {
+export const Page = ({ children }) => {
   const apps = (
     <>
-      <Icon.CSSS style={{ '--csss-icon-color': 'white' }} />
       <Icon.Folder
         style={{
-          '--csss-icon-color': '#64748b' // slate-500
+          '--csss-icon-color': '#a1a1aa' // zinc-400
         }}
       />
       <a style={{ marginTop: 'auto' }} href="#profile">
         <Icon.Profile
           style={{
             width: '100%',
-            '--csss-icon-color': '#64748b', // slate-500
+            '--csss-icon-color': '#a1a1aa', // zinc-400
             '--csss-icon-stroke-width': '1px'
           }}
         />
@@ -27,46 +29,47 @@ export const Page = ({ children, hideMinimap }) => {
   const files = (
     <>
       <VSCode.NavItem text="README.md" to="/" />
-      <VSCode.NavItem text="login.txt" to="/profile" />
-      <VSCode.NavFolder text="Events">
-        <VSCode.NavLink
+      <VSCode.NavFolder text="The CSSS">
+        <VSCode.NavItem isInFolder={true} text="About.md" to="/about" />
+        <VSCode.NavItem
           isInFolder={true}
-          text="mountain_madness.html"
+          text="Common Rooms.md"
+          to="/common_rooms"
+        />
+        <VSCode.NavItem isInFolder={true} text="Officers.md" to="/officers" />
+        <VSCode.NavItem isInFolder={true} text="Documents.md" to="/documents" />
+      </VSCode.NavFolder>
+      <VSCode.NavFolder text="Events">
+        <VSCode.NavItem isInFolder={true} text="About Events.md" to="/events" />
+        <VSCode.NavItem
+          isInFolder={true}
+          text="Mountain Madness"
           href="/mountain_madness"
         />
-        <VSCode.NavLink
+        <VSCode.NavItem
           isInFolder={true}
-          text="fall_hacks.html"
+          text="Fall Hacks"
           href="/fall_hacks"
         />
-        <VSCode.NavLink
-          isInFolder={true}
-          text="tech_fair.html"
-          href="/tech_fair"
-        />
+        <VSCode.NavItem isInFolder={true} text="Tech Fair" href="/tech_fair" />
       </VSCode.NavFolder>
-      <VSCode.NavFolder text="Links">
-        <VSCode.NavLink
+      <VSCode.NavFolder text="Committees">
+        <VSCode.NavItem
+          isInFolder={true}
+          text="Our Committees.md"
+          to="/committees"
+        />
+        <VSCode.NavItem
           isInFolder={true}
           text="Discord"
           href="https://discord.gg/sfucsss"
-        />
-        <VSCode.NavLink
-          isInFolder={true}
-          text="GitHub"
-          href="https://github.com/CSSS"
         />
       </VSCode.NavFolder>
     </>
   );
 
   return (
-    <VSCode.Page
-      apps={apps}
-      files={files}
-      hideMinimap={hideMinimap}
-      title="SFU-CSSS"
-    >
+    <VSCode.Page apps={apps} files={files} title="SFU-CSSS">
       {children}
     </VSCode.Page>
   );

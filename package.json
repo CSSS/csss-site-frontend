@@ -4,32 +4,38 @@
   "license": "AGPL-3.0-or-later",
   "homepage": "https://sfucsss.org/",
   "private": true,
+  "sideEffects": true,
   "scripts": {
-    "lint": "prettier --write --log-level warn .",
+    "lint": "prettier --write .",
     "prebuild": "rm -Rf ./build/*",
+    "tw": "tailwindcss -i ./tailwind.css -o ./public/static/css/tailwind.css",
+    "prestart": "npm run tw",
+    "start": "webpack serve --mode development",
     "build": "webpack --mode production",
-    "postbuild": "cp -R ./public/* ./build && tailwindcss -i ./tailwind.css -o ./build/static/css/tailwind.css",
-    "serve": "concurrently \"serve build\" \"sleep 1 && open http://localhost:3000\"",
-    "start": "npm run build && npm run serve"
+    "postbuild": "npm run tw && cp -R ./public/* ./build",
+    "analyzer": "webpack-bundle-analyzer ./build/stats.json"
   },
   "dependencies": {
     "@babel/core": "^7.23.9",
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
     "@babel/preset-env": "^7.23.9",
     "@babel/preset-react": "^7.23.3",
+    "@fortawesome/free-brands-svg-icons": "^6.6.0",
+    "@fortawesome/free-solid-svg-icons": "^6.6.0",
+    "@fortawesome/react-fontawesome": "^0.2.2",
     "babel-loader": "^9.1.3",
-    "concurrently": "^8.2.2",
     "css-loader": "^6.10.0",
-    "html2canvas": "^1.4.1",
     "prettier": "^3.3.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.23.1",
-    "serve": "^14.2.1",
+    "react-spring": "^9.7.4",
     "style-loader": "^3.3.4",
-    "tailwindcss": "^3.4.4",
+    "tailwindcss": "^3.4.8",
     "webpack": "^5.90.3",
-    "webpack-cli": "^5.1.4"
+    "webpack-bundle-analyzer": "^4.10.2",
+    "webpack-cli": "^5.1.4",
+    "webpack-dev-server": "^5.0.4"
   },
   "engines": {
     "node": "^18",
@@ -46,5 +52,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "file-loader": "^6.2.0"
   }
 }

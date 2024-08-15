@@ -18,7 +18,7 @@ const FRONT_PAGE_MESSAGES = [
   '// build your professional image!',
   //"// reasons you should join tech fair:\n// 1. to make connections\n// 2. it's fun!",
   //["gameobject.GetComponent<", ["Brain", "#4a7a96"], ">().LevelUp();"],
-  //"long i = *(long*) &f;\ni = 0x5f3759df - (i >> 1); \n// hmmm, maybe not...",
+  'long i = *(long*) &f;\ni = 0x5f3759df - (i >> 1);', // \n// hmmm, maybe not...",
   'cout << "n=" << this->booths.size() << endl;',
   'goto tech_fair;',
   'let booth = new CompanyBooth(info);',
@@ -30,9 +30,9 @@ const FRONT_PAGE_MESSAGES = [
   '// be there or be rectangle',
   'adsflghja;dfhj;kldgsdaf\n:q!', //"adsflghja;dfhj;kldgsdaf\n~ \n:q!",
   '(write (car tech_fair_events))',
-  '// run by the ã€ SFU CSSS ã€‘',
-  '// â†‘â†‘â†“â†“â†â†’â†â†’BA\n',
-  //"// âˆ€ companies âˆƒ a perfect one",
+  '// run by the 【 SFU CSSS 】',
+  '// ↑↑↓↓←→←→BA\n',
+  //"// ∀ companies ∃ a perfect one",
   //"[1]+  Stopped\tvi tech_fair.cpp\ncsss@CR:~/tf/$ git add *\ncsss@CR:~/tf/$ git commit -m \"stuff\"",
   '// now with more colours!',
   '// bigger than a bread box!',
@@ -44,7 +44,15 @@ const FRONT_PAGE_MESSAGES = [
   'csss@CR:~/tf/$ fg\nbash: fg: current: no such job',
   '// meet your next co-op!',
   '// lots of tech companies!',
-  '<h1>SFU_CSSS.TechFair(2023);</h1>'
+  '<h1>SFU_CSSS.TechFair(2024);</h1>',
+  '// Micah is awesome (for real)',
+  '// Patrick is awesome!!',
+  '      TURBO-BASIC XL 1.5   \n   (c) 1985 Frank Ostrowski',
+  'git status\nOn branch dev-tf-2024',
+  'source venv/bin/activate',
+  'print "Join csss w3 committee!"',
+  'git rebase dev -i\nerror: cannot rebase.',
+  'sudo git push --force\n(oh god I hope this works...)'
 ];
 
 // todo: add line numbers
