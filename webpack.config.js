@@ -2,6 +2,11 @@ const path = require('path');
 const BundleAnalyzerPlugin =
   require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
+// change this to your local instance of the CSSS API
+// source: https://github.com/csss/csss-site-backend
+// (if changed, don't commit your change please!)
+const API_INSTANCE = 'http://localhost:3049';
+
 module.exports = {
   entry: {
     react: ['react', 'react-dom'],
@@ -34,7 +39,14 @@ module.exports = {
       directory: path.join(__dirname, 'public')
     },
     compress: true,
-    port: 8080
+    port: 8080,
+    proxy: [
+      {
+        context: ['/api'],
+        target: API_INSTANCE,
+        pathRewrite: { '^/api': '' }
+      }
+    ]
   },
   plugins: [
     new BundleAnalyzerPlugin({
