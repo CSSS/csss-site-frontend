@@ -1,0 +1,107 @@
+#add-new-officers-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: calc(100% - 2rem);
+    padding: 0 1rem;
+}
+
+.add-new-officer-input-widget {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 3rem;
+
+    width: calc(100% - 2rem);
+    padding: 1rem;
+
+    background-color: #eee;
+    border-radius: 0.5rem;
+}
+
+.add-new-officer-input-widget label {
+    display: block;
+    margin-bottom: 0.25rem;
+}
+
+.add-new-officer-input-widget input[type=text] {
+    padding: 0.25rem;
+    
+    border: #eee solid 3px;
+    border-radius: 0.25rem;
+    outline: none;
+    
+    font-family: monospace;
+
+    background-color: #fff;
+}
+
+.add-new-officer-input-widget input[type=text]:focus {
+    border: #aaa solid 3px;
+}
+
+.add-new-officer-input-widget .confirm {
+    display: block;
+    
+    height: 2rem;
+    width: 8rem;
+
+    margin-top: 0.5rem;
+
+    border-radius: 0.5rem;
+    border-color: #ccc;
+
+    text-align: center;
+
+    background-color: #eee;
+}
+
+.add-new-officer-plus {
+    display: flex;
+    justify-content: center;
+}
+.add-new-officer-plus button {
+    display: block;
+    
+    width: 2rem;
+    height: 2rem;
+
+    margin-top: 0.5rem;
+
+    border-radius: 4rem;
+    border: none;
+
+    cursor: pointer;
+
+    text-align: center;
+
+    background-color: #eee;
+}
+.add-new-officer-plus button:hover {
+    border-color: #bbb;
+    background-color: #ddd;
+}
+
+.add-new-officer-submit {
+    display: flex;
+    justify-content: center;
+}
+.add-new-officer-submit button {
+    display: block;
+    
+    height: 2rem;
+    width: 8rem;
+
+    margin-top: 0.5rem;
+
+    border-radius: 0.5rem;
+    border-color: #ccc;
+
+    text-align: center;
+
+    background-color: #eee;
+}
+.add-new-officer-submit button:hover {
+    border-color: #bbb;
+    background-color: #ddd;
+}

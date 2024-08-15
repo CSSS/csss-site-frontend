@@ -92,9 +92,38 @@ class AddNewOfficers {
 
     createContents() {
         let contents = `
-            <div style="color: green;">
-                HELLO, I AM OFFICER!
+        <h3 style="margin: 0.5rem 0;">Add New Officer</h3>
+        <div class="add-new-officer-input-widget">
+            <div>
+                <label for="legal-name">Legal Name</label>
+                <input type="text" name="legal-name">
             </div>
+            <div>
+                <label for="computing-id">SFU Computing ID</label>
+                <input type="text" name="computing-id" maxlength="8">
+            </div>
+            <div>
+                <label for="position">Position</label>
+                <input type="text" name="position">
+            </div>
+            <div>
+                <label for="end-date">End Date</label>
+                <input type="text" name="end-date">
+            </div>
+            <div>
+                <span>?</span>
+                <button class="confirm">Confirm</button>
+            </div>
+        </div>
+        
+        <div class="add-new-officer-plus">
+            <button>+</button>
+        </div>
+
+        <div class="add-new-officer-submit">
+            <button>Submit</button>
+        </div>
+
         `;
         updateContents(this.ID, contents);
     }
