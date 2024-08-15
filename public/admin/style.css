@@ -89,31 +89,6 @@ a:hover {
     padding-top: 1rem;
     margin-left: 1rem;
 }
-.tab-item {
-    height: 4rem;
-    
-    border: #ddd 1px solid;
-    border-radius: 1.2rem;
-    
-    cursor: pointer;
-    user-select: none;
-
-    padding: 0.3rem 1rem 0 1rem;
-    transition: transform 0.15s ease-in-out;
-}
-
-.tab-item:hover {
-    background-color: #eee;
-    border: #eee 1px solid;
-    transform: translateY(-2px);
-}
-.tab-item:active {
-    transition: transform 0.1s ease-in-out;
-
-    background-color: #f5f5f5;
-    border: #f5f5f5 1px solid;
-    transform: translateY(4px);
-}
 
 #view-content {
     height: calc(100% - 4rem);
@@ -221,6 +196,65 @@ a:hover {
     transform: translateX(2px);
 }
 
+.tab-item {
+    height: 4rem;
+    
+    border: #ddd 1px solid;
+    border-radius: 1.2rem;
+    
+    cursor: pointer;
+    user-select: none;
+
+    padding: 0.3rem 1rem 0 1rem;
+    transition: transform 0.15s ease-in-out;
+}
+.tab-item:hover {
+    background-color: #eee;
+    border: #eee 1px solid;
+    transform: translateY(-2px);
+}
+.tab-item:active {
+    transition: transform 0.1s ease-in-out;
+
+    background-color: #f5f5f5;
+    border: #f5f5f5 1px solid;
+    transform: translateY(4px);
+}
+#home-tab {
+    font-size: 1.75rem;
+    height: 1.7rem;
+
+    cursor: pointer;
+    user-select: none;
+
+    padding: 0 1rem;
+    margin-top: -0.35rem;
+
+    transition: transform 0.15s ease-in-out;
+}
+#home-tab:hover {
+    transform: translateY(-1px);
+}
+#home-tab:active {
+    transition: transform 0.1s ease-in-out;
+    transform: translateY(2px);
+}
+
+
+/* ------------------- style attributes -------------------- */
+
+.active-tab {
+    background-color: #ddd;
+    border-color: #ddd;
+}
+.active-tab:hover {
+    background-color: #ccc;
+    border-color: #ccc;
+}
+.active-tab:active {
+    background-color: #d6d6d6;
+    border-color: #d6d6d6;
+}
 
 /* ------------------- old -------------------- */
 

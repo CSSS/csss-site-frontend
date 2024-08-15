@@ -1,14 +1,8 @@
 <!doctype html>
 <html>
-
-    <!-- if you dislike frontend: -->
-    <!-- 
-        cd public 
-        python -m http.server 8080 --bind 127.0.0.1 --directory ./
-    -->
-
     <head>
         <title>CSSS Admin Dashboard</title>
+        <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="icon" type="image/png" href="/static/icons/favicon_white.png" />
 
@@ -20,13 +14,34 @@
         <link rel="stylesheet" href="/admin/style.css">    
     </head>
 
+    <script>
+        // scripts should wait until hasPermission is non-null (& true)
+        var hasPermission = null;
+
+        const DEBUG = true;
+        if (!DEBUG) {
+            fetch("/api/permission/is_admin").then(response => {
+                if (!response.ok) {
+                    hasPermission = false;
+                    window.location.replace("/");
+                } else {
+                    response.json().then(json => {
+                        hasPermission = json.is_admin;
+                        if (!hasPermission)
+                            window.location.replace("/");
+                    });
+                }
+            });
+        }
+    </script>
+
     <body>
         <div id="header">
             <div id="header-content">
                 <div id="main-title">
                     <a href="/" style="transform: translateY(2px);">
                         <svg id="main-logo" style="width: 3rem; height: 3rem; margin-right: 0.5rem;">
-                            <image xlink:href="/static/logos/csss_black.svg" style="width: 3rem; height: 3rem;" />    
+                            <image xlink:href="/static/files/csss_black.svg" style="width: 3rem; height: 3rem;" />    
                         </svg>
                     </a>
                     <b>CSSS Admin Dashboard</b>
@@ -40,15 +55,9 @@
         <div id="content">
             <div id="nav-bar">
                 <div>
-                    <div class="nav-header">Home</div>
-                </div>
-
-                <div style="height: 0.25rem;"></div>
-
-                <div>
-                    <div class="nav-header">Officers</div>
+                    <div class="nav-header" onclick="officers.createTab()">Officers</div>
                     <div class="nav-children">
-                        <div class="nav-child">
+                        <div class="nav-child" onclick="addNewOfficers.createTab()">
                             Add new officers
                         </div>
                         <div class="nav-child">
@@ -60,18 +69,13 @@
                 <div style="height: 0.25rem;"></div>
 
                 <div>
-                    <div class="nav-header">Device</div>
-                    <div class="nav-children">
-                        <div class="nav-child">
-                            Status
-                        </div>
-                    </div>
+                    <div class="nav-header" onclick="device.createTab()">Device</div>
                 </div>
 
                 <div style="height: 0.25rem;"></div>
 
                 <div>
-                    <div class="nav-header">Admin</div>
+                    <div class="nav-header" onclick="admin.createTab()">Admin</div>
                     <div class="nav-children">
                         <div class="nav-child">
                             Officers Log
@@ -83,13 +87,15 @@
                 </div>
             </div>
             <div id="view-area">
-                <div id="tab-list">
-                    <div class="tab-item">
-                        Officers Summary
+                <div id="tab-list" onload="initView()">
+                    <div id="home-tab" onclick="updateActiveTab(home)">
+                        ⌂
                     </div>
-                    <div class="tab-item">
-                        Election Log
+                    <!--
+                    <div id="officers-tab" class="tab-item active-tab">
+                        Officers
                     </div>
+                    -->
                 </div>
                 <div id="view-content">
 
@@ -136,5 +142,5 @@
     </body>
 
     <script src="/admin/script.js"></script>
-
+    <script src="/admin/handlers.js"></script>
 </html>

@@ -43,7 +43,8 @@ module.exports = {
     proxy: [
       {
         context: ['/api'],
-        target: API_INSTANCE
+        target: API_INSTANCE,
+        pathRewrite: { '^/api': '' }
       }
     ]
   },
