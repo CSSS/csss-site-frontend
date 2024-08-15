@@ -90,8 +90,7 @@ export function casLogin(next) {
 export async function casGetUser() {
   try {
     const response = await fetch('/api/auth/check', {
-      method: 'GET',
-      credentials: 'include' // cookies
+      method: 'GET'
     });
 
     if (!response.ok) {
