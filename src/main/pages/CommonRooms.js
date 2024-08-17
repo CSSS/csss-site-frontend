@@ -31,6 +31,21 @@ const pop = [
 
 ]
 
+
+
+const snacks = [
+
+    {name: 'Chips', price: '1.50'},
+    {name: 'Seaweed', price: '1.00'},
+    {name: 'Candy', price: '1.50-2.00'},
+    {name: 'Chocolate', price: '1.25'},
+    {name: 'Chewing gum', price: '2.00'},
+    {name: 'Rice Krispies', price:'0.50'},
+    {name: 'Pop tarts', price: '1.00'},
+    {name: 'Protein shakes', price:'3.50'}
+
+]
+
 export const CommonRooms = () => {
 
     return (
@@ -124,53 +139,65 @@ export const CommonRooms = () => {
                         cheapest snacks and pop across all of Burnaby campus.
                     </p>
                 </div>
-                <div className='justify-center items-center flex flex-row gap-8'>
-                    <div className=' flex flex-col m-8 '>
+                <div className='justify-center items-center flex flex-row gap-2 max-w-4xl mx-auto'>
+                    <div className=' flex flex-col m-8'>
                         <div className=' items-center justify-center flex '>
-                            <p className='text-center text-xl font-bold'>Drinks 🥤
+                            <p className='text-center text-3xl font-bold'>Snacks 🍫
                             </p>
                         </div><br></br>
-                        <div className='flex justify-center items-center border-separate rounded-lg '>
-                            <table class="table-column-group rounded-lg">
+                        <div className='flex rounded-lg '>
+                            <table class="table-column-group rounded-lg text-xl">
                                 <thead>
                                     <tr>
-                                        <th className='text-cyan-500 items-center border-spacing-10 border border-red-800'>Drink</th>
-                                        <th className='text-cyan-500 items-center border-spacing-10 border border-red-800'>Price ($)</th>
-                                        {/* <th>Popularity</th> */}
+                                        <th>Item</th>
+                                        <th>Price ($)</th>
+                                        {/* <th>Popularity</th>*/}
                                     </tr>
                                 </thead>
-                            {pop.slice(0,6).map((pop,index) => (
-                                <tbody>
-                                    <tr>
-                                        <td className='text-black items-center border bg-slate-400'>{pop.name}</td>
-                                        <td className='text-cyan-200 justify-center align-middle items-center border bg-black'>{pop.price}</td>
-                                        {/* <td>1961</td> */}
-                                    </tr>
-                                </tbody>
-                            ))}
+                                {snacks.map((snack,index) => {
+                                    if (index%2===0){
+                                        const nextItem = snacks[index+1];
+                                    return (
+                                        <tbody key={index}>
+                                        <tr>
+                                          <td className='text-black text-center px-2 bg-slate-400'>{snack.name}</td>
+                                          <td className='text-black text-center px-4 bg-slate-400'>{snack.price}</td>
+                                            {/* <td>Number of stars</td> */}
+                                        </tr>
+                                        {nextItem && ( 
+                                          <tr>
+                                            <td className='text-cyan-200 text-center px-2 bg-black'>{nextItem.name}</td>
+                                            <td className='text-cyan-200 text-center px-4 bg-black'>{nextItem.price}</td>
+                                                {/* <td>Number of stars</td> */}
+                                          </tr>
+                                        )}
+                                      </tbody>   
+                                    );
+                                }
+                            })}
                             </table>
                         </div><br></br>
                     </div>
 
                     <div className=' flex flex-col  m-8 '>
                         <div className=' items-center justify-center flex '>
-                            <p className='text-center text-xl font-bold'>Drinks 🥤
+                            <p className='text-center text-3xl font-bold'>Drinks 🥤
                             </p>
                         </div><br></br>
                         <div className='flex justify-center items-center border-separate rounded-lg '>
-                            <table class="table-column-group rounded-lg">
+                            <table class="table-column-group rounded-lg text-xl">
                                 <thead>
                                     <tr>
-                                        <th className='text-cyan-500 items-center border-spacing-10 border border-red-800'>Drink</th>
-                                        <th className='text-cyan-500 items-center border-spacing-10 border border-red-800'>Price ($)</th>
+                                        <th className='text-cyan-500 text-center  bg-red-800'>Item</th>
+                                        <th className='text-cyan-500 text-center px-4 bg-red-800'>Price ($)</th>
                                         {/* <th>Popularity</th> */}
                                     </tr>
                                 </thead>
-                            {pop.slice(0,6).map((pop,index) => (
+                            {pop.map((pop,index) => (
                                 <tbody>
                                     <tr>
-                                        <td className='text-black items-center border bg-slate-400'>{pop.name}</td>
-                                        <td className='text-cyan-200 justify-center align-middle items-center border bg-black'>{pop.price}</td>
+                                        <td className='text-black text-center px-4 bg-slate-400'>{pop.name}</td>
+                                        <td className='text-cyan-200 text-center bg-black'>{pop.price}</td>
                                         {/* <td>Number of stars</td> */}
                                     </tr>
                                 </tbody>
