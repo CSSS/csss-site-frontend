@@ -25,7 +25,7 @@ Run `npm ci` from within the csss-site-frontend (same directory as the `package.
 
 ### Local Development
 
-Run `npm run start` to deploy the site locally at [localhost:8080](http://localhost:8080).
+Run `npm run start` to deploy the site locally at [localhost:8080](http://localhost:8080). (warning: if you use a port other than `8080`, it may not work with the backend)
 
 This script starts a Webpack development server, and watches any changes made to the `src` and `public` directories.
 
