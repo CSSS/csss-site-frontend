@@ -8,7 +8,7 @@ import {
 } from '@fortawesome/free-brands-svg-icons';
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
 
-const Footer = () => {
+export const Footer = () => {
   return (
     <footer className="bg-zinc-950 text-white py-8 mt-8">
       <div className="max-w-4xl mx-auto px-4">
@@ -58,5 +58,3 @@ const Footer = () => {
     </footer>
   );
 };
-
-export default Footer;
