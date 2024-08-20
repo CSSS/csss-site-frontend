@@ -23,7 +23,7 @@ export const Documents = () => {
         {/* CSS Documents */}
         <div className="flex flex-wrap justify-center gap-8 mb-12">
           <a
-            href="/static/files/docs/constitution_july2024.pdf"
+            href="https://raw.githubusercontent.com/CSSS/public-docs/dev-update-constitution-policies/constitutions/Constitution_July_2024.pdf"
             download
             className="relative flex-grow w-full sm:w-1/2 md:w-1/3"
           >
@@ -50,7 +50,7 @@ export const Documents = () => {
             </div>
           </a>
           <a
-            href="/static/files/docs/policies_july2024.pdf"
+            href="https://raw.githubusercontent.com/CSSS/public-docs/dev-update-constitution-policies/policies/Policies_July_2024.pdf"
             download
             className="relative flex-grow w-full sm:w-1/2 md:w-1/3"
           >

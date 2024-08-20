@@ -6,43 +6,43 @@ import { useSpring, animated } from 'react-spring';
 const affiliates = [
   {
     text: 'WiCS',
-    image: '/static/files/affiliates/wics.jpg',
+    image: '/static/files/main/wics.png',
     link: 'https://www.sfu.ca/computing/wics/'
   },
   {
-    text: 'MSU',
-    image: '/static/files/affiliates/msu.jpg',
-    link: 'https://sfumsu.github.io/'
+    text: 'SSSS',
+    image: '/static/files/main/ssss.png',
+    link: 'https://sfussss.org/'
   },
   {
     text: 'ESSS',
-    image: '/static/files/affiliates/esss.jpg',
+    image: '/static/files/main/esss.png',
     link: 'https://www.sfu.ca/esss/?page=home'
   },
   {
+    text: 'WiE',
+    image: '/static/files/main/wie.png',
+    link: 'https://www.sfu.ca/clubs/wie.html'
+  },
+  {
     text: 'MSESS',
-    image: '/static/files/affiliates/msess.jpg',
+    image: '/static/files/main/msess.png',
     link: 'https://msess.ca/'
   },
   {
     text: 'SEE',
-    image: '/static/files/affiliates/see.jpg',
+    image: '/static/files/main/seess.png',
     link: 'https://seess.ca/'
   },
   {
-    text: 'WiE',
-    image: '/static/files/affiliates/wie.jpg',
-    link: 'https://www.sfu.ca/clubs/wie.html'
-  },
-  {
-    text: 'SSSS',
-    image: '/static/files/affiliates/ssss.jpg',
-    link: 'https://sfussss.org/'
-  },
-  {
     text: 'DSSS',
-    image: '/static/files/affiliates/dsss.jpg',
+    image: '/static/files/main/dsss.png',
     link: 'https://discord.com/invite/kdj7F82mgn'
+  },
+  {
+    text: 'MSU',
+    image: '/static/files/main/msu.png',
+    link: 'https://sfumsu.github.io/'
   }
 ];
 
