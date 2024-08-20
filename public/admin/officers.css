@@ -6,13 +6,19 @@
     padding: 0 1rem;
 }
 
+.add-new-officer-input-widget-container {
+    display: flex; flex-direction: row; align-items: center;
+}
+
 .add-new-officer-input-widget {
     display: flex;
     flex-direction: row;
     justify-content: center;
     gap: 3rem;
 
-    width: calc(100% - 2rem);
+    margin-top: 1rem;
+
+    width: calc(100% - 2rem - 3rem);
     padding: 1rem;
 
     background-color: #eee;
@@ -24,7 +30,9 @@
     margin-bottom: 0.25rem;
 }
 
-.add-new-officer-input-widget input[type=text] {
+.add-new-officer-input-widget input[type=text],
+.add-new-officer-input-widget input[type=date],
+.add-new-officer-input-widget select {
     padding: 0.25rem;
     
     border: #eee solid 3px;
@@ -36,7 +44,9 @@
     background-color: #fff;
 }
 
-.add-new-officer-input-widget input[type=text]:focus {
+.add-new-officer-input-widget input[type=text]:focus,
+.add-new-officer-input-widget input[type=date]:focus,
+.add-new-officer-input-widget select:focus {
     border: #aaa solid 3px;
 }
 
@@ -46,26 +56,49 @@
     height: 2rem;
     width: 8rem;
 
-    margin-top: 0.5rem;
+    margin-left: 0.5rem;
 
     border-radius: 0.5rem;
+    border-width: 3px;
     border-color: #ccc;
 
     text-align: center;
 
+    cursor: pointer;
+
     background-color: #eee;
 }
 
-.add-new-officer-plus {
+.add-new-officer-input-widget-container .close-icon {
+    margin-top: 1rem;
+    padding-left: 1rem;
+    height: 2rem;
+
+    cursor: pointer;
+
+    filter: invert(50%);
+    transition: 0.2s filter ease-in-out;
+}
+.add-new-officer-input-widget-container .close-icon:hover {
+    filter: invert(10%);
+}
+.add-new-officer-input-widget-container .close-icon:active {
+    transition: 0.01s filter ease-in-out;
+    filter: invert(50%);
+}
+
+#add-new-officer-plus {
     display: flex;
     justify-content: center;
+
+    margin-left: auto;
+    width: 2rem;
 }
-.add-new-officer-plus button {
+#add-new-officer-plus img {
     display: block;
     
     width: 2rem;
     height: 2rem;
-
     margin-top: 0.5rem;
 
     border-radius: 4rem;
@@ -75,33 +108,37 @@
 
     text-align: center;
 
-    background-color: #eee;
+    filter: invert(50%);
+    transition: 0.2s filter ease-in-out;
 }
-.add-new-officer-plus button:hover {
-    border-color: #bbb;
-    background-color: #ddd;
+#add-new-officer-plus img:hover {
+    filter: invert(10%);
+}
+#add-new-officer-plus img:active {
+    transition: 0.01s filter ease-in-out;
+    filter: invert(50%);
 }
 
 .add-new-officer-submit {
     display: flex;
+    flex-direction: column;
     justify-content: center;
+    align-items: center;
 }
 .add-new-officer-submit button {
     display: block;
     
     height: 2rem;
     width: 8rem;
-
     margin-top: 0.5rem;
 
     border-radius: 0.5rem;
+    border-width: 3px;
     border-color: #ccc;
+
+    cursor: pointer;
 
     text-align: center;
 
     background-color: #eee;
-}
-.add-new-officer-submit button:hover {
-    border-color: #bbb;
-    background-color: #ddd;
 }

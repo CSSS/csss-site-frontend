@@ -91,45 +91,168 @@ class AddNewOfficers {
     }
 
     createContents() {
+        let widget = `
+        <div class="add-new-officer-input-widget-container">
+            <div class="add-new-officer-input-widget">
+                <div>
+                    <label>SFU Computing ID</label>
+                    <input type="text" class="add-new-officer-computing-id" maxlength="8" required>
+                </div>
+                <div>
+                    <label>Position</label>
+                    <select class="add-new-officer-position">
+                        <option value="">--</option>
+                        
+                        <option value="president">President</option>
+                        <option value="vice-president">Vice President</option>
+                        <option value="treasurer">Treasurer</option>
+                        <option value="director of resources">Director of Resources</option>
+                        <option value="director of events">Director of Events</option>
+
+                        <option value="director of educational events">Director of Educational Events</option>
+                        <option value="assistant director of events">Assistant Director of Events</option>
+                        <option value="director of communications">Director of Communications</option>
+                        <!--<option value="director of outreach">Director of Outreach</option>-->
+                        <option value="director of multimedia">Director of Multimedia</option>
+
+                        <option value="director of archives">Director of Archives</option>
+                        <option value="executive at large">Executive at Large</option>
+                        <option value="first year representative">First Year Representative</option>
+                        <option value="elections officer">Elections Officer</option>
+                        <option value="sfss council representative">SFSS Council Representative</option>
+
+                        <option value="frosh week chair">Frosh Week Chair</option>
+                        <option value="system administrator">System Administrator</option>
+                        <option value="webmaster">Webmaster</option>
+                        <option value="social media manager">Social Media Manager</option>
+                    </select>
+                </div>
+                <div>
+                    <label>Start Date</label>
+                    <input type="date" class="add-new-officer-start-date" required>
+                </div>
+                <div style="display: flex; flex-direction: row; align-items: center;">
+                    <img class="confirm-icon add-new-officer-status" src="/static/icons/circle-question.svg" style="filter: invert(40%); height: 2rem;">
+                    <button class="confirm" onclick="AddNewOfficers.update_checkbox(this)">Confirm</button>
+                </div>
+            </div>
+            <div style="display: flex; flex-direction: row; align-items: center; width: 3rem;">
+                <img class="close-icon" src="/static/icons/circle-close.svg" onclick="AddNewOfficers.remove_widget(this)">
+            </div>
+        </div>
+        `;
         let contents = `
-        <h3 style="margin: 0.5rem 0;">Add New Officer</h3>
-        <div class="add-new-officer-input-widget">
-            <div>
-                <label for="legal-name">Legal Name</label>
-                <input type="text" name="legal-name">
+        <div>
+            <div style="display: inline-block; display: flex; flex-direction: row; align-items: center; margin-top: 0.5rem;">
+                <h3 style="margin: 0.5rem 0;">
+                    Add New Officer
+                </h3>
+                <div id="add-new-officer-plus">
+                    <img src="/static/icons/circle-plus.svg">
+                </div>
             </div>
-            <div>
-                <label for="computing-id">SFU Computing ID</label>
-                <input type="text" name="computing-id" maxlength="8">
-            </div>
-            <div>
-                <label for="position">Position</label>
-                <input type="text" name="position">
-            </div>
-            <div>
-                <label for="end-date">End Date</label>
-                <input type="text" name="end-date">
-            </div>
-            <div>
-                <span>?</span>
-                <button class="confirm">Confirm</button>
-            </div>
-        </div>
-        
-        <div class="add-new-officer-plus">
-            <button>+</button>
-        </div>
 
-        <div class="add-new-officer-submit">
-            <button>Submit</button>
-        </div>
+            <div id="add-new-officer-widget-list">
+            ${widget}
+            </div>
 
+            <br>
+            <div class="add-new-officer-submit">
+                <button onclick="AddNewOfficers.onSubmit(this)">Submit</button>
+                <p id="add-new-officer-desc-text" style="margin-left: 0.5rem;"></p>
+            </div>
+
+            <br><br><br>
+        </div>
         `;
         updateContents(this.ID, contents);
+    
+        document.getElementById("add-new-officer-plus").addEventListener("click", e => {
+            let widgetElement = document.createElement('div');
+            widgetElement.innerHTML = widget;
+            document.getElementById("add-new-officer-widget-list").appendChild(widgetElement);
+        });
     }
 
     destroyContents() {
 
+    }
+
+    static update_checkbox(element) {
+        let confirmIconElement = element.parentElement.getElementsByClassName("confirm-icon")[0];
+        let closeElement = element.parentElement.parentElement.parentElement.getElementsByClassName("close-icon")[0];
+        if (confirmIconElement.getAttribute("data-checked") == "true") {
+            confirmIconElement.src = "/static/icons/circle-question.svg";
+            confirmIconElement.setAttribute("data-checked", false);
+            confirmIconElement.style.filter = "invert(40%)";
+            element.style.borderColor = "#ccc";
+            element.style.backgroundColor = "#dbf4e000";
+            closeElement.style.filter = "";
+            closeElement.style.cursor = "pointer";
+        } else {
+            confirmIconElement.src = "/static/icons/circle-check.svg";
+            confirmIconElement.setAttribute("data-checked", true);
+            confirmIconElement.style.filter = "brightness(0) saturate(100%) invert(80%) sepia(19%) saturate(1059%) hue-rotate(92deg) brightness(90%) contrast(88%)";
+            element.style.borderColor = "#94dd94";
+            element.style.backgroundColor = "#dbf4e0";
+            closeElement.style.filter = "invert(80%)";
+            closeElement.style.cursor = "default";
+
+            // TODO: check that the data is well formed
+
+            let name = element.parentElement.parentElement.getElementsByClassName("add-new-officer-computing-id")[0].value;
+            let position = element.parentElement.parentElement.getElementsByClassName("add-new-officer-position")[0].value;
+            let startDate = element.parentElement.parentElement.getElementsByClassName("add-new-officer-start-date")[0].value;
+
+        }
+    }
+
+    static remove_widget(element) {
+        let confirmIconElement = element.parentElement.parentElement.getElementsByClassName("confirm-icon")[0];
+        if (confirmIconElement.getAttribute("data-checked") != "true") {
+            element.parentElement.parentElement.remove();
+        }
+    }
+
+    static async onSubmit(element) {
+        let mainContainer = element.parentElement.parentElement;
+        let widgetList = mainContainer.getElementsByClassName("add-new-officer-input-widget-container");
+        let descText = document.getElementById("add-new-officer-desc-text");
+
+        let bodyObjectList = [];
+        for (let widget of widgetList) {
+            let status = widget.getElementsByClassName("add-new-officer-status")[0];
+            if (status.getAttribute("data-checked") != "true") {
+                descText.innerHTML = "must confirm all new officer info";
+                return;
+            }
+
+            let computingId = widget.getElementsByClassName("add-new-officer-computing-id")[0].value;
+            let position = widget.getElementsByClassName("add-new-officer-position")[0].value;
+            let startDate = widget.getElementsByClassName("add-new-officer-start-date")[0].value;
+            // TODO: what is java add?
+            bodyObjectList.push(
+                {
+                    computing_id: computingId,
+                    position: position,
+                    start_date: startDate,
+                }
+            );
+        }
+
+        descText.innerHTML = "uploading ...";
+
+        let response = await fetch("/api/officers/new_term", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(bodyObjectList),
+        });
+
+        if (response.status != 200) {
+            descText.innerHTML = "failed to upload data, with error: " + (await response.json()).detail;
+        } else {
+            descText.innerHTML = "success!";
+        }
     }
 }
 
