@@ -9,9 +9,6 @@ function initView() {
 }
 
 function updateActiveTab(newTab) {
-    console.log("newTab:");
-    console.log(newTab);
-    console.log(activeTab);
     if (activeTab != null && activeTab.ID == newTab.ID) {
         return;
     } else {
@@ -83,7 +80,7 @@ class Home {
     }
 
     createContents() {
-        updateContents(this.ID, "home");
+        updateContents(this.ID, `<div style="padding: 0.5rem;">home</div>`);
     }
 }
 
@@ -95,14 +92,19 @@ class Officers {
     }
 
     createTab() {
-        if (activeTab != null && activeTab.ID == this.ID)
-            return;
-        createTab(this);
+        // TODO: add support for this
+        /*
+        if (document.getElementById(this.ID + "-content").innerHTML == "") {
+            createTab(this);
+            this.createContents();
+        }
         updateActiveTab(this);
+        */
     }
 }
 
 // TODO: this is way overcomplicated; let's do this differently pls!
+// or at least clean up all this wildness......
 class AddNewOfficers {
     constructor() {
         this.ID = "add-new-officers";
@@ -319,6 +321,179 @@ class AddNewOfficers {
     }
 }
 
+class ViewOfficers {
+    constructor() {
+        this.ID = "view-officers";
+        this.NAME = "View Officers";
+        createViewContent(this.ID);
+    }
+
+    createTab() {
+        if (document.getElementById(this.ID + "-content").innerHTML == "") {
+            createTab(this);
+            this.createContents();
+        }
+        updateActiveTab(this);
+    }
+
+    createContents() {
+        let contents = `
+        <div>
+            <div style="display: inline-block; display: flex; flex-direction: row; align-items: center; margin-top: 0.5rem;">
+                <h3 style="margin: 0.5rem 0;">
+                    View Officers
+                </h3>
+                <div class="view-officers-submit">
+                    <button onclick="ViewOfficers.updateTable()">Update Contents</button>
+                    <p id="view-officers-desc-text" style="margin-left: 0.5rem; color: #333;"></p>
+                </div>
+            </div>
+
+            <div id="view-officers-table"></div>
+            <br><br><br>
+        </div>
+        `;
+    
+        updateContents(this.ID, contents);
+        ViewOfficers.updateTable();
+    }
+
+    destroyContents() {
+        destroyContents(this.ID);
+    }
+
+    static async updateTable() {
+        let response = await fetch("/api/officers/all?view_only_filled_in=false", {
+            method: "GET",
+        });
+
+        let descText = document.getElementById("view-officers-desc-text");
+        if (response.status == 500 || response.status == 422) {
+            descText.innerHTML = "failed to get data, with error " + response.status;
+        } else if (response.status != 200) {
+            descText.innerHTML = "failed to get, with error (http " + response.status + "): " + (await response.json()).detail;
+        } else {
+            descText.innerHTML = "success!";
+        }
+
+        let positionInfoList = await response.json();
+        console.log(positionInfoList);
+
+        document.getElementById("view-officers-table").style.overflowX = "scroll";
+
+        let table = document.createElement("table");
+        table.id = "enterExecsTable";
+        table.style.height = "auto";
+        table.style.width = "200%";
+        table.style.fontSize = "14px";
+
+        let thead = document.createElement("thead");
+        let row = document.createElement("tr");
+        for (let key in positionInfoList[0]) {
+            let cell = document.createElement("th");
+
+            if (key == "private_data") {
+                continue;
+            } else if (key == "biography") {
+                cell.style.width = "30%";
+            }
+
+            cell.style.padding = "1ch";
+            cell.innerHTML = key.replaceAll("_", " ");
+            row.appendChild(cell);
+        }
+        // add private data
+        if (positionInfoList[0]["private_data"] != null) {
+            for (let key in positionInfoList[0]["private_data"]) {
+                let cell = document.createElement("th");
+                cell.style.padding = "1ch";
+                cell.innerHTML = key.replaceAll("_", " ");
+                row.appendChild(cell);
+            }
+        }
+        thead.appendChild(row);
+        table.appendChild(thead);
+
+        let tbody = document.createElement("tbody");
+        tbody.style.color = "white";
+
+        let runningIndex = 0;
+        for (let positionInfo of positionInfoList) {
+            let row = document.createElement("tr");
+            row.style.backgroundColor = (runningIndex % 2 == 0) ? "#555" : "#111";
+            runningIndex += 1;
+            
+            for (let key in positionInfo) {
+                if (key == "private_data") continue;
+                let cell = document.createElement("td");
+                cell.innerHTML = positionInfo[key];
+                cell.style.padding = "1ch";
+                cell.style.textAlign = "center";
+                row.appendChild(cell);
+            }
+            if (positionInfoList[0]["private_data"] != null) {
+                for (let key in positionInfo["private_data"]) {
+                    let cell = document.createElement("td");
+                    cell.innerHTML = positionInfo["private_data"][key];
+                    cell.style.padding = "1ch";
+                    cell.style.textAlign = "center";
+                    row.appendChild(cell);
+                }
+            }
+            tbody.appendChild(row);
+        }
+
+        table.appendChild(tbody);
+        document.getElementById("view-officers-table").innerHTML = '';
+        document.getElementById("view-officers-table").appendChild(table);
+
+        // ----------------------------------------------- //
+
+        /*
+        let mainContainer = element.parentElement.parentElement;
+        let widgetList = mainContainer.getElementsByClassName("add-new-officer-input-widget-container");
+        let descText = document.getElementById("add-new-officer-desc-text");
+
+        let bodyObjectList = [];
+        for (let widget of widgetList) {
+            let status = widget.getElementsByClassName("add-new-officer-status")[0];
+            if (status.getAttribute("data-checked") != "true") {
+                descText.innerHTML = "must confirm all new officer info";
+                return;
+            }
+
+            let computingId = widget.getElementsByClassName("add-new-officer-computing-id")[0].value;
+            let position = widget.getElementsByClassName("add-new-officer-position")[0].value;
+            let startDate = widget.getElementsByClassName("add-new-officer-start-date")[0].value;
+            bodyObjectList.push(
+                {
+                    computing_id: computingId,
+                    position: position,
+                    start_date: startDate,
+                }
+            );
+        }
+
+        descText.innerHTML = "uploading ...";
+
+        let response = await fetch("/api/officers/new_term", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(bodyObjectList),
+        });
+
+        if (response.status == 500 || response.status == 422) {
+            descText.innerHTML = "failed to upload data, with http error " + response.status;
+        } else if (response.status != 200) {
+            descText.innerHTML = "failed to upload data, with error (http " + response.status + "): " + (await response.json()).detail;
+        } else {
+            descText.innerHTML = "success!";
+        }
+        */
+
+    }
+}
+
 class Device {
     constructor() {
         this.ID = "device";
@@ -327,11 +502,14 @@ class Device {
     }
 
     createTab() {
+        // TODO: add support for this
+        /*
         if (document.getElementById(this.ID + "-content").innerHTML == "") {
             createTab(this);
             //this.createContents();
         }
         updateActiveTab(this);
+        */
     }
 }
 
@@ -343,11 +521,14 @@ class Admin {
     }
 
     createTab() {
+        // TODO: add support for this
+        /*
         if (document.getElementById(this.ID + "-content").innerHTML == "") {
             createTab(this);
             //this.createContents();
         }
         updateActiveTab(this);
+        */
     }
 }
 
@@ -357,6 +538,7 @@ const home = new Home();
 
 const officers = new Officers();
 const addNewOfficers = new AddNewOfficers();
+const viewOfficers = new ViewOfficers();
 
 const device = new Device();
 const admin = new Admin();

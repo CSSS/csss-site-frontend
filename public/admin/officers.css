@@ -142,3 +142,27 @@
 
     background-color: #eee;
 }
+
+/* --------------------------------------------- */
+
+#view-officers-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: calc(100% - 2rem);
+    padding: 0 1rem;
+}
+
+.view-officers-submit {
+    display: flex;
+    justify-content: center;
+
+    margin-left: auto;
+}
+.view-officers-submit button {
+    cursor: pointer;
+    width: 8rem;
+    height: 2rem;
+}
+
+#view-officers-table {}
