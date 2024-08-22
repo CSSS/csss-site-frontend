@@ -2,8 +2,7 @@ import React from 'react';
 import { createRoot } from 'react-dom/client';
 import { createHashRouter, RouterProvider } from 'react-router-dom';
 
-import { Home, Profile, NotFound, Affiliates, Documents } from './pages';
-import { Home, Profile, CommonRooms, NotFound } from './pages';
+import { Home, Profile, CommonRooms, NotFound, Affiliates, Documents } from './pages';
 
 const router = createHashRouter([
   { path: '/', element: <Home /> },

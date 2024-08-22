@@ -1,40 +1,36 @@
 import React from 'react';
-import { useEffect, useState } from 'react';
-import { Page } from '../components';
-import { useSpring, animated } from 'react-spring';
-import Footer from '../components/Footer';
+import { Page, Footer } from '../components';
 import { text } from '@fortawesome/fontawesome-svg-core';
 
+// Note image pixel sizes for the common room pics
+// TODO: add vending machine pics
+// TODO: add proper common room pictures
+// TODO: add svgs
+//       - display seperately as images??
+//        or 
+//       - embed as a link??
+   
+
 const rooms = [
-
-    // Note image pixel sizes for the common room pics
-    // TODO: section on Vending machine with pic
-    // TODO: add proper common room pictures
-    // TODO: create list of food items sold and respective prices
-
     {   text: 'ASB 9802',
         image: '/static/files/main/CR_Placeholder.png',
-        link:'#common_rooms' },
+        link:'https://roomfinder.sfu.ca/apps/sfuroomfinder_web/?q=ASB%209802' },
     {   text: 'ASB 9971',
         image: '/static/files/main/CR_Placeholder.png',
-        link:'#common_rooms' }
+        link:'https://roomfinder.sfu.ca/apps/sfuroomfinder_web/?q=ASB%209971'    
+    }
 ]
 
 const pop = [
-
     {name: 'Coke',price: '1.25'},
     {name: 'Coke Zero',price: '1.25'},
     {name: 'Dasani',price: '1.75'},
     {name: 'Monster',price: '2.75'},
     {name:'Nestea', price: '1.25'},
     {name:'Mystery', price: '1.00'}
-
 ]
 
-
-
 const snacks = [
-
     {name: 'Chips', price: '1.50'},
     {name: 'Seaweed', price: '1.00'},
     {name: 'Candy', price: '1.50-2.00'},
@@ -43,16 +39,24 @@ const snacks = [
     {name: 'Rice Krispies', price:'0.50'},
     {name: 'Pop tarts', price: '1.00'},
     {name: 'Protein shakes', price:'3.50'}
+]
 
+const crSVGs = [
+    {name: 'old-cr-svg',
+        link: '/static/files/old-common-room.svg'
+    },
+    {name: 'new-cr-svg',
+        link: '/static/files/new-common-room.svg'
+    }
 ]
 
 export const CommonRooms = () => {
 
     return (
-        <Page>
+        <Page style={{ fontFamily: 'Poppins, sans-serif' }}>
                 <br></br><br/>
-                <div className='flex items-center justify-center text-6xl sm:text-3xl md:text-5xl font-bold leading-tight text-center'>
-                ✨ Common Rooms ✨
+                <div className='flex justify-center text-6xl sm:text-3xl md:text-5xl font-bold leading-tight'>
+                 Common Rooms 
                 </div>
                  
                 {/* descriptions  */}
@@ -61,76 +65,79 @@ export const CommonRooms = () => {
                     <p 
                             className="text-left text-lg items-start py-8"
                             style={{ fontFamily: 'Poppins, sans-serif' }}>
-                           
+                            {/*                            
                             <a href="https://roomfinder.sfu.ca/apps/sfuroomfinder_web/?q=ASB%209802" target="_blank" 
                             className=" hover:text-red-700 font-extrabold"> ASB 9802 </a> 
                             and 
                             <a href="https://roomfinder.sfu.ca/apps/sfuroomfinder_web/?q=ASB%209971" target="_blank"
-                            className="hover:text-red-700 font-extrabold"> ASB 9971</a>
-                            , located in the Applied Sciences Building are the CSSS 
+                            className="hover:text-red-700 font-extrabold"> ASB 9971</a> */}
+                            ASB 9802 and ASB 9971, located in the Applied Sciences Building are the CSSS 
                             common rooms maintained by the SFU CSSS. These rooms offer several free services
                             such as ⤵️
                     </p>
-                           
-                    <ul className="list-disc list-inside text-lg pl-8" style={{ fontFamily: 'Poppins, sans-serif' }}>
-                        <li> Fridge 🧊</li>
-                        <li> Microwave 🔥</li>
-                        <li> Free Coffee ☕</li>
-                        <li> Free milk and cereal 🥛</li>
-                        <li> Board games ♠️</li>
-                        <li> A place to hang out with friends and meet new people 😎</li>
-                    </ul>
+
+                    <table className='text-lg pl-8'style={{ fontFamily: 'Poppins, sans-serif' }} >
+                        <tbody>
+                            <tr>
+                                <td className='px-4'>🧊</td>
+                                <td>Fridge</td>
+                            </tr>
+                            <tr>
+                                <td className='px-4'>🔥</td>
+                                <td>Microwave</td>
+                            </tr>
+                            <tr>
+                                <td className='px-4'>☕</td>
+                                <td>Free coffee</td>
+                            </tr>
+                            <tr>
+                                <td className='px-4'>🥛</td>
+                                <td>Free milk and cereal</td>
+                            </tr>
+                            {/* <tr>  // This spade emoji does not line up with the other emojis
+                                <td className='px-4'>♠️</td>
+                                <td>Board games</td>
+                            </tr> */}
+                            <tr>
+                                <td className='px-4'>😎</td>
+                                <td>A place to hang out with friends and meet new people</td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
 
                 {/*Photos of the common rooms*/}
-                <div className='mx-16 my-8 flex gap-8 '>
-                    <div>
-                        <a href={rooms[0].link}>
-                            <div className="relative w-full h-full overflow-hidden rounded-2xl transform transition-transform duration-300 hover:scale-125">
-                                <img
-                                    src={rooms[0].image}
-                                    alt={rooms[0].text}
-                                    className="w-full h-full "
-                                />
-                                <div className="absolute inset-0 bg-gradient-to-r from-black to-transparent opacity-90"></div>
-                                <div className="absolute inset-y-0 left-0 flex items-center pl-8">
-                                    <h2
-                                        className="text-xl sm:text-2xl md:text-3xl font-bold text-white"
-                                        style={{ fontFamily: 'Poppins, sans-serif' }}
-                                    >
-                                        {rooms[0].text}
-                                    </h2>
-                                </div>
+                <div className='mx-16 my-8 flex flex-col md:flex-row gap-8 '>
+                    {rooms.map(room => {
+                        return (
+                            <div>
+                                <a href={room.link} target='_blank'>
+                                <div className="relative w-full h-full overflow-hidden rounded-xl transform transition-transform duration-300 hover:scale-105">
+                                    <img
+                                        src={room.image}
+                                        alt={room.text}
+                                        className="w-full h-full "
+                                    />
+                                    <div className="absolute inset-0 bg-gradient-to-r from-black to-transparent opacity-90"></div>
+                                    <div className="absolute inset-y-0 left-0 flex items-center pl-8">
+                                        <h2
+                                            className="text-xl sm:text-2xl md:text-3xl font-bold text-white"
+                                            style={{ fontFamily: 'Poppins, sans-serif' }}
+                                        >
+                                            {room.text}
+                                        </h2>
+                                    </div>
+                                </div> 
+                                </a>
                             </div>
-                        </a>
-                    </div>
-                    <br></br>
-                    <div>
-                        <a href={rooms[1].link}>
-                            <div className="relative w-full h-full overflow-hidden rounded-2xl transform transition-transform duration-300 hover:scale-125">
-                                <img
-                                    src={rooms[1].image}
-                                    alt={rooms[1].text}
-                                    className=" w-full h-full "
-                                />
-                                <div className="absolute inset-0 bg-gradient-to-r from-black to-transparent opacity-90"></div>
-                                <div className="absolute inset-y-0 left-0 flex items-center pl-8">
-                                    <h2
-                                        className="text-xl sm:text-2xl md:text-3xl font-bold text-white"
-                                        style={{ fontFamily: 'Poppins, sans-serif' }}
-                                    >
-                                        {rooms[1].text}
-                                    </h2>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
+                        )
+                    })}
                 </div>
                 
                 {/*Table of prices*/}
                 <div className='p-16 max-w-4xl mx-auto'>
-                    <div className='flex items-center justify-start text-4xl sm:text-3xl md:text-4xl font-bold leading-tight text-left'>
-                    🍫 Snacks and Drinks 🥤
+                    <div className='flex justify-start text-4xl sm:text-3xl md:text-4xl font-bold leading-tight text-left'>
+                    Refreshments
                     </div><br></br>
                     <p className="text-left text-lg items-start"
                             style={{ fontFamily: 'Poppins, sans-serif' }}>
@@ -139,76 +146,74 @@ export const CommonRooms = () => {
                         cheapest snacks and pop across all of Burnaby campus.
                     </p>
                 </div>
-                <div className='justify-center items-center flex flex-row gap-2 max-w-4xl mx-auto'>
-                    <div className=' flex flex-col m-8'>
-                        <div className=' items-center justify-center flex '>
-                            <p className='text-center text-3xl font-bold'>Snacks 🍫
-                            </p>
-                        </div><br></br>
-                        <div className='flex rounded-lg '>
-                            <table class="table-column-group rounded-lg text-xl">
-                                <thead>
-                                    <tr>
-                                        <th>Item</th>
-                                        <th>Price ($)</th>
-                                        {/* <th>Popularity</th>*/}
-                                    </tr>
-                                </thead>
-                                {snacks.map((snack,index) => {
-                                    if (index%2===0){
-                                        const nextItem = snacks[index+1];
-                                    return (
-                                        <tbody key={index}>
-                                        <tr>
-                                          <td className='text-black text-center px-2 bg-slate-400'>{snack.name}</td>
-                                          <td className='text-black text-center px-4 bg-slate-400'>{snack.price}</td>
-                                            {/* <td>Number of stars</td> */}
-                                        </tr>
-                                        {nextItem && ( 
-                                          <tr>
-                                            <td className='text-cyan-200 text-center px-2 bg-black'>{nextItem.name}</td>
-                                            <td className='text-cyan-200 text-center px-4 bg-black'>{nextItem.price}</td>
-                                                {/* <td>Number of stars</td> */}
-                                          </tr>
-                                        )}
-                                      </tbody>   
-                                    );
-                                }
-                            })}
-                            </table>
-                        </div><br></br>
-                    </div>
+                <div className='justify-center flex flex-row gap-2 max-w-4xl mx-auto overflow-hidden' style={{ fontFamily: 'Poppins, sans-serif' }}>
+                    <div className='mx-16 my-8 flex flex-col md:flex-row gap-8 '>
+                        <div className=' flex flex-col m-8'>
+                            <div className=' justify-center flex '>
+                                <p className='text-center text-3xl font-bold'>Snacks 🍫</p>
+                            </div><br></br>
+                            <div class="-m-1.5 overflow-x-auto">
+                                <div class="p-1.5 min-w-full inline-block align-middle">
+                                    <div class="overflow-hidden">
+                                        <table class="min-w-full divide-y border rounded">
+                                            <thead>
+                                                <tr className='bg-black' style={{ fontFamily: 'Poppins, sans-serif' }}>
+                                                    <th scope="col" class="px-6 py-3 text-left text-white uppercase">ITEM</th>
+                                                    <th scope="col" class="px-6 py-3 text-right text-white uppercase">PRICE($)</th>
+                                                </tr>
+                                            </thead>
+                                            {snacks.map((snack,index) => {
+                                                return (
+                                                    <tbody key={index}
+                                                    className={index%2===0 ? "bg-white text-gray-800" : "bg-gray text-white"}>
+                                                        <tr style={{ fontFamily: 'Poppins, sans-serif' }}>
+                                                            <td class="px-6 py-4 whitespace-nowrap text-left " >{snack.name}</td>
+                                                            <td class="px-6 py-4 whitespace-nowrap text-right " >{snack.price}</td>  
+                                                        </tr>
+                                                    </tbody>   
+                                                    );
+                                                } 
+                                            )}
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
-                    <div className=' flex flex-col  m-8 '>
-                        <div className=' items-center justify-center flex '>
-                            <p className='text-center text-3xl font-bold'>Drinks 🥤
-                            </p>
-                        </div><br></br>
-                        <div className='flex justify-center items-center border-separate rounded-lg '>
-                            <table class="table-column-group rounded-lg text-xl">
-                                <thead>
-                                    <tr>
-                                        <th className='text-cyan-500 text-center  bg-red-800'>Item</th>
-                                        <th className='text-cyan-500 text-center px-4 bg-red-800'>Price ($)</th>
-                                        {/* <th>Popularity</th> */}
-                                    </tr>
-                                </thead>
-                            {pop.map((pop,index) => (
-                                <tbody>
-                                    <tr>
-                                        <td className='text-black text-center px-4 bg-slate-400'>{pop.name}</td>
-                                        <td className='text-cyan-200 text-center bg-black'>{pop.price}</td>
-                                        {/* <td>Number of stars</td> */}
-                                    </tr>
-                                </tbody>
-                            ))}
-                            
-                        
-                            </table>
-                        </div><br></br>
+                        <div className=' flex flex-col  m-8 '>
+                            <div className='justify-center flex '>
+                                <p className='text-center text-3xl font-bold'>Drinks 🥤
+                                </p>
+                            </div><br></br>
+                            <div class="-m-1.5 overflow-x-auto">
+                                <div class="p-1.5 min-w-full inline-block align-middle">
+                                    <div class="overflow-hidden">
+                                        <table class="min-w-full divide-y border rounded" style={{ fontFamily: 'Poppins, sans-serif' }}>
+                                            <thead>
+                                                <tr className='bg-black'>
+                                                    <th scope="col" class="px-6 py-3 text-left text-white uppercase">ITEM</th>
+                                                    <th scope="col" class="px-6 py-3 text-right text-white uppercase">PRICE($)</th>
+                                                </tr>
+                                            </thead>
+                                            {pop.map((pop,index2) => {
+                                                return (
+                                                    <tbody key={index2}
+                                                    className={index2%2===0 ? "bg-white text-gray-800" : "bg-gray text-white"}>
+                                                        <tr>
+                                                            <td class="px-6 py-4 whitespace-nowrap text-left " >{pop.name}</td>
+                                                            <td class="px-6 py-4 whitespace-nowrap text-right " >{pop.price}</td>  
+                                                        </tr>
+                                                    </tbody>   
+                                                    );
+                                                } 
+                                            )}
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                
             <br></br>
             <Footer />
         </Page>
