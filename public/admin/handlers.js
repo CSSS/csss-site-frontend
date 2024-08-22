@@ -77,6 +77,7 @@ class Officers {
     }
 }
 
+// TODO: this is way overcomplicated; let's do this differently pls!
 class AddNewOfficers {
     constructor() {
         this.ID = "add-new-officers";
@@ -159,7 +160,7 @@ class AddNewOfficers {
             <br>
             <div class="add-new-officer-submit">
                 <button onclick="AddNewOfficers.onSubmit(this)">Submit</button>
-                <p id="add-new-officer-desc-text" style="margin-left: 0.5rem;"></p>
+                <p id="add-new-officer-desc-text" style="margin-left: 0.5rem; color: #333;"></p>
             </div>
 
             <br><br><br>
@@ -181,7 +182,8 @@ class AddNewOfficers {
     static update_checkbox(element) {
         let confirmIconElement = element.parentElement.getElementsByClassName("confirm-icon")[0];
         let closeElement = element.parentElement.parentElement.parentElement.getElementsByClassName("close-icon")[0];
-        if (confirmIconElement.getAttribute("data-checked") == "true") {
+
+        function makeDefault() {
             confirmIconElement.src = "/static/icons/circle-question.svg";
             confirmIconElement.setAttribute("data-checked", false);
             confirmIconElement.style.filter = "invert(40%)";
@@ -189,7 +191,9 @@ class AddNewOfficers {
             element.style.backgroundColor = "#dbf4e000";
             closeElement.style.filter = "";
             closeElement.style.cursor = "pointer";
-        } else {
+        }
+
+        function makeGreen() {
             confirmIconElement.src = "/static/icons/circle-check.svg";
             confirmIconElement.setAttribute("data-checked", true);
             confirmIconElement.style.filter = "brightness(0) saturate(100%) invert(80%) sepia(19%) saturate(1059%) hue-rotate(92deg) brightness(90%) contrast(88%)";
@@ -197,13 +201,44 @@ class AddNewOfficers {
             element.style.backgroundColor = "#dbf4e0";
             closeElement.style.filter = "invert(80%)";
             closeElement.style.cursor = "default";
+        }
 
-            // TODO: check that the data is well formed
+        function makeYellow() {
+            confirmIconElement.src = "/static/icons/circle-question.svg";
+            confirmIconElement.style.filter = "brightness(0) saturate(100%) invert(80%) sepia(19%) saturate(2159%) hue-rotate(352deg) brightness(90%) contrast(88%)";
+            element.style.borderColor = "rgb(210 169 79)";
+            element.style.backgroundColor = "#f6d998";
+        }
 
-            let name = element.parentElement.parentElement.getElementsByClassName("add-new-officer-computing-id")[0].value;
-            let position = element.parentElement.parentElement.getElementsByClassName("add-new-officer-position")[0].value;
-            let startDate = element.parentElement.parentElement.getElementsByClassName("add-new-officer-start-date")[0].value;
+        let computingIdElement = element.parentElement.parentElement.getElementsByClassName("add-new-officer-computing-id")[0];
+        let positionElement = element.parentElement.parentElement.getElementsByClassName("add-new-officer-position")[0];
+        let startDateElement = element.parentElement.parentElement.getElementsByClassName("add-new-officer-start-date")[0];
 
+        // check that the data is well formed
+        if (confirmIconElement.getAttribute("data-checked") != "true") {
+            let name = computingIdElement.value;
+            let position = positionElement.value;
+            let startDate = startDateElement.value;
+
+            if (position == "" || name == "" || startDate == "") {
+                makeYellow();
+                return;
+            }
+        }
+
+        if (confirmIconElement.getAttribute("data-checked") == "true") {
+            makeDefault();
+
+            computingIdElement.readOnly = false; 
+            // TODO: this setAttribute for input is a hacky workaround; fix it!
+            positionElement.removeAttribute("readonly");
+            startDateElement.readOnly = false;
+        } else {
+            makeGreen();
+
+            computingIdElement.readOnly = true; 
+            positionElement.setAttribute("readonly", true);
+            startDateElement.readOnly = true;
         }
     }
 
@@ -230,7 +265,6 @@ class AddNewOfficers {
             let computingId = widget.getElementsByClassName("add-new-officer-computing-id")[0].value;
             let position = widget.getElementsByClassName("add-new-officer-position")[0].value;
             let startDate = widget.getElementsByClassName("add-new-officer-start-date")[0].value;
-            // TODO: what is java add?
             bodyObjectList.push(
                 {
                     computing_id: computingId,
@@ -248,8 +282,10 @@ class AddNewOfficers {
             body: JSON.stringify(bodyObjectList),
         });
 
-        if (response.status != 200) {
-            descText.innerHTML = "failed to upload data, with error: " + (await response.json()).detail;
+        if (response.status == 500 || response.status == 422) {
+            descText.innerHTML = "failed to upload data, with http error " + response.status;
+        } else if (response.status != 200) {
+            descText.innerHTML = "failed to upload data, with error (http " + response.status + "): " + (await response.json()).detail;
         } else {
             descText.innerHTML = "success!";
         }
