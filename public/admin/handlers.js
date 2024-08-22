@@ -9,6 +9,9 @@ function initView() {
 }
 
 function updateActiveTab(newTab) {
+    console.log("newTab:");
+    console.log(newTab);
+    console.log(activeTab);
     if (activeTab != null && activeTab.ID == newTab.ID) {
         return;
     } else {
@@ -33,7 +36,11 @@ function createViewContent(tab_id) {
 function updateContents(tab_id, html) {
     document.getElementById(tab_id + "-content").innerHTML = html;
 }
+function destroyContents(tab_id) {
+    document.getElementById(tab_id + "-content").innerHTML = "";
+}
 
+// tab is the tab button
 function createTab(tab) {
     let tabList = document.getElementById("tab-list");
 
@@ -42,10 +49,26 @@ function createTab(tab) {
         return;
 
     let tabElement = document.createElement("div");
+    //<img class="confirm-icon add-new-officer-status" src="/static/icons/circle-question.svg" style="filter: invert(40%); height: 2rem;">
+
     tabElement.id = tab.ID + "-tab";
     tabElement.classList.add("tab-item");
     tabElement.innerHTML = tab.NAME;
     tabElement.addEventListener("click", _ => { updateActiveTab(tab) });
+
+    let xImg = document.createElement("img");
+    xImg.src = "/static/icons/x.svg";
+    xImg.addEventListener("click", e => {
+        e.preventDefault();
+        e.stopPropagation();
+
+        destroyContents(tab.ID);
+        tabElement.remove();
+        // TODO: does this know what home is?
+        updateActiveTab(home);
+    });
+
+    tabElement.append(xImg);
 
     tabList.append(tabElement);
 }
@@ -72,6 +95,8 @@ class Officers {
     }
 
     createTab() {
+        if (activeTab != null && activeTab.ID == this.ID)
+            return;
         createTab(this);
         updateActiveTab(this);
     }
@@ -86,8 +111,10 @@ class AddNewOfficers {
     }
 
     createTab() {
-        createTab(this);
-        this.createContents();
+        if (document.getElementById(this.ID + "-content").innerHTML == "") {
+            createTab(this);
+            this.createContents();
+        }
         updateActiveTab(this);
     }
 
@@ -176,7 +203,7 @@ class AddNewOfficers {
     }
 
     destroyContents() {
-
+        destroyContents(this.ID);
     }
 
     static update_checkbox(element) {
@@ -300,8 +327,11 @@ class Device {
     }
 
     createTab() {
-        createTab(this);
-        this.display();
+        if (document.getElementById(this.ID + "-content").innerHTML == "") {
+            createTab(this);
+            //this.createContents();
+        }
+        updateActiveTab(this);
     }
 }
 
@@ -313,8 +343,11 @@ class Admin {
     }
 
     createTab() {
-        createTab(this);
-        this.display();
+        if (document.getElementById(this.ID + "-content").innerHTML == "") {
+            createTab(this);
+            //this.createContents();
+        }
+        updateActiveTab(this);
     }
 }
 
