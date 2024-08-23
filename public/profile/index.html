@@ -1,0 +1,187 @@
+<!-- All those who modify this file shall be of honour and the most excellence. -->
+
+<!doctype html>
+<html>
+    <head>
+        <title>CSSS User Profile</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="icon" type="image/png" href="/static/icons/favicon_white.png" />
+
+        <!-- fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+
+        <link rel="stylesheet" href="/profile/style.css">
+    </head>
+
+    <script>
+        // scripts should wait until hasPermission is non-null (& true)
+        var hasPermission = null;
+
+        const dateTimeFormat = Intl.DateTimeFormat('en', {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric',
+        });
+
+        const DEBUG = false;
+        if (!DEBUG) {
+            fetch("/api/auth/info").then(response => {
+                if (response.status == 401) {
+                    // redirect the user to the sfu login api if they are not yet logged in
+                    const CAS_LOGIN_URL = "https://cas.sfu.ca/cas/login?service=";
+                    const API_LOGIN_URL = window.location.protocol + "//" + window.location.host + "/api/auth/login";
+                    let loginURL = CAS_LOGIN_URL + API_LOGIN_URL + "?next_url=" + encodeURIComponent(window.location.href);
+                    hasPermission = false;
+                    window.location.replace(loginURL);
+                } else if (!response.ok) {
+                    // TODO: show an error message or something "failed to get user info"
+                    console.log(response);
+                    hasPermission = false;
+                    //window.location.replace("/");
+                } else {
+                    // check if user has same computing_id as query param
+                    response.json().then(json => {
+                        document.getElementById("logged-in-as").innerHTML = "Logged in as " + json["computing_id"]
+
+                        // update user info
+                        document.getElementById("user-info-computing-id").innerHTML = json["computing_id"]
+                        document.getElementById("user-info-last-log-in").innerHTML = dateTimeFormat.format(new Date(json["last_logged_in"]))
+                        document.getElementById("user-info-first-log-in").innerHTML = dateTimeFormat.format(new Date(json["first_logged_in"]))
+                    });
+                }
+            });
+        }
+
+        function logOut() {
+            const API_LOGOUT_URL = window.location.protocol + "//" + window.location.host + "/api/auth/logout";
+            fetch(API_LOGOUT_URL, { method: "POST" });
+            window.location.replace("/");
+        }
+    </script>
+
+    <body>
+        <div id="header">
+            <div style="display: flex; flex-direction: row; justify-content: center; align-items: center;">
+                <a href="/">
+                    <img src="/static/files/csss_black.svg" style="width: 3rem; height: 3rem; margin-right: 1rem;" />
+                </a>
+                <span id="profile-title" class="title" style="font-size: 2rem; font-weight: 700;">User Profile</span>
+                <div style="margin-left: auto; text-align: end;">
+                    <span id="logged-in-as" >Logged in as ...</span> <br>
+                    <a id="log-out" onclick="logOut()" style="text-decoration: underline; cursor: pointer;">Log out</a>
+                </div>
+            </div>
+            <div style="align-items: end; display: flex; flex-direction: row; justify-content: end;">
+            </div>
+        </div>
+        <div id="content">
+            <div id="officer-info-container">
+                <hr style="width: 100%; border-top: 1px solid #ddd;">
+                <h3 class="title" style="font-weight: 600;">Officer Info</h3>
+
+                <div class="clear-widget">
+                    <h3 class="title" style="font-weight: 600;">Welcome new CSSS Officer!</h3>
+                    <p style="margin-bottom: 0;">
+                        Please input your info here as soon as possible, so that we can give you access
+                        to our services, such as the <a href="https://github.com/CSSS">CSSS Github</a>,
+                        or the <a href="https://drive.google.com/drive/u/0/folders/0AGb0FPdVjrsqUk9PVA">CSSS Google Drive</a>.
+                    </p>
+                </div>
+
+                <div>
+                    <!-- format this like https://sfucsss-tools.github.io/tentative_grant_request/index.html -->
+                    <form class="widget" id="officer-info-form">
+                        <div style="display: flex; flex-direction: row; width: 100%;">
+                            <div class="title" style="font-weight: 600; cursor: pointer;">Officer Info</div>
+                            <div style="margin-left: auto;" id="officer-info-form-status">Not yet complete</div>
+                        </div>
+
+                        <div style="min-width: 50%; display: flex; flex-direction: column; margin: auto;">
+                            <label for="legal-name">Legal Name</label>
+                            <input type="text" id="legal-name" name="legal-name">
+                        </div>
+
+                        <br>
+
+                        <div style="min-width: 50%; display: flex; flex-direction: column; margin: auto;">
+                            <label for="discord-name">Discord Name</label>
+                            <input type="text" id="discord-name" name="discord-name">
+                        </div>
+
+                        <div style="min-width: 50%; display: flex; flex-direction: column; margin: auto;">
+                            <label for="discord-nickname">Discord Nickname <span style="color: #999">(auto-generated)</span></label>
+                            <input type="text" id="discord-nickname" name="discord-nickname" disabled style="cursor: not-allowed;">
+                        </div>
+
+                        <div style="min-width: 50%; display: flex; flex-direction: column; margin: auto;">
+                            <label for="discord-id">Discord ID <span style="color: #999">(auto-generated)</span></label>
+                            <input type="text" id="discord-id" name="discord-id" disabled style="cursor: not-allowed;">
+                        </div>
+
+                        <br>
+
+                        <label for="google-email">Google Email <span style="color: #999">(for google drive)</span></label>
+                        <input type="text" id="google-email" name="google-email">
+                        <br>
+
+                        <label for="phone-number">Phone Number</label>
+                        <input type="text" id="" name="">
+                        <br>
+
+                        <label for=""></label>
+                        <input type="text" id="" name="">
+                        <br>
+
+                        <label for=""></label>
+                        <input type="text" id="" name="">
+                        <br>
+
+                        <input type="submit" value="Submit">
+                    </form>
+
+                    <!-- format this like https://sfucsss-tools.github.io/tentative_grant_request/index.html -->
+                    <form class="widget" id="current-term-info-form">
+                        <div style="display: flex; flex-direction: row; width: 100%;">
+                            <div class="title" style="font-weight: 600; cursor: pointer;">Term Info</div>
+                            <div style="margin-left: auto;" id="current-term-info-form-status">Not yet complete</div>
+                        </div>
+
+                        <input type="submit" value="Submit">
+                    </form>
+                </div>
+            </div>
+
+            <div id="user-info-container">
+                <hr style="width: 100%; border-top: 1px solid #ddd;">
+                <h3 class="title" style="font-weight: 600;">Metadata</h3>
+                <div>
+                    <div class="widget">
+                        <div style="display: flex; flex-direction: row; width: 100%;">
+                            <div class="title" style="font-weight: 600; cursor: pointer;">User Info</div>
+                            <div style="margin-left: auto;"></div>
+                        </div>
+
+                        <table style="width: 90%; margin: auto; margin-top: 0.5rem; margin-bottom: 1rem;">
+                            <tr style="background-color: #fff;">
+                                <td><b>SFU computing id</b></td>
+                                <td><span id="user-info-computing-id"></span></td>
+                            </tr>
+                            <tr style="background-color: #ddd;">
+                                <td><b>Most recent login</b></td>
+                                <td><span id="user-info-last-log-in"></span></td>
+                            </tr>
+                            <tr style="background-color: #fff;">
+                                <td><b>First login</b></td>
+                                <td><span id="user-info-first-log-in"></span></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
