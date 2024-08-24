@@ -20,12 +20,17 @@ h3 {
     margin-bottom: 0;
 }
 
+label {
+    margin-top: 0.25rem;
+    margin-bottom: 0.25rem;
+}
+
 input[type=text],
 input[type=date],
 select {
-    padding: 0.25rem;
+    padding: 0.5rem;
 
-    border: #eee solid 3px;
+    border: #fff solid 3px;
     border-radius: 0.25rem;
     outline: none;
 
@@ -72,6 +77,10 @@ td {
     background-color: #fff;
 }
 
+#officer-info-form-contents {
+    width: 100%;
+}
+
 .widget {
     display: flex;
     flex-direction: column;
@@ -100,4 +109,52 @@ td {
 
 .title {
     font-family: Poppins, sans-serif;
+}
+
+.officer-info-input-container {
+    display: flex;
+    flex-direction: row;
+}
+.officer-info-input {
+    display: flex;
+    flex-direction: column;
+
+    width: 50%;
+}
+.officer-info-input .smol-text {
+    margin-left: auto;
+    font-weight: 400;    
+}
+
+.db-result {
+    text-align: left;
+    display: flex;
+    align-items: center;
+
+    color: #777;
+    border-bottom: 1px solid #bbb;
+
+    width: calc(50% - 2 * 1rem);
+    margin: 2rem 1rem 0.5rem 1rem;
+}
+
+.unselectable {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.collapsible {
+    display: inline-block;
+}
+
+.grey {
+    color: #aaa;
+}
+
+.smol-text {
+    font-size: 0.9rem;
 }

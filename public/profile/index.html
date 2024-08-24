@@ -54,6 +54,39 @@
                     });
                 }
             });
+
+            fetch("/api/officers/my_info").then(response => {
+                if (response.status == 401) {
+                    // redirect the user to the sfu login api if they are not yet logged in
+                    const CAS_LOGIN_URL = "https://cas.sfu.ca/cas/login?service=";
+                    const API_LOGIN_URL = window.location.protocol + "//" + window.location.host + "/api/auth/login";
+                    let loginURL = CAS_LOGIN_URL + API_LOGIN_URL + "?next_url=" + encodeURIComponent(window.location.href);
+                    hasPermission = false;
+                    window.location.replace(loginURL);
+                } else if (response.status == 404) {
+                    // do nothing, but happily
+                    console.log("user is not an officer");
+                } else if (!response.ok) {
+                    // assume that failed
+                    console.log("unexpected:");
+                    console.log(response);
+                } else {
+                    // check if user has same computing_id as query param
+                    document.getElementById("officer-info-container").removeAttribute("hidden");
+
+                    response.json().then(json => {
+                        console.log(json);
+                        document.getElementById("legal-name").value = json.legal_name;
+                        document.getElementById("db-legal-name").innerHTML = json.legal_name;
+
+                        document.getElementById("phone-number").value = json.phone_number;
+                        document.getElementById("db-phone-number").innerHTML = json.phone_number;
+                        
+                        // TODO: update the data fields with this info
+                        
+                    });
+                }
+            });
         }
 
         function logOut() {
@@ -79,7 +112,7 @@
             </div>
         </div>
         <div id="content">
-            <div id="officer-info-container">
+            <div id="officer-info-container" hidden>
                 <hr style="width: 100%; border-top: 1px solid #ddd;">
                 <h3 class="title" style="font-weight: 600;">Officer Info</h3>
 
@@ -93,65 +126,101 @@
                 </div>
 
                 <div>
+                    <!-- TODO: add all the required info, then get the rest using the discord API & all that jazz -->
                     <!-- format this like https://sfucsss-tools.github.io/tentative_grant_request/index.html -->
-                    <form class="widget" id="officer-info-form">
+                    <div class="widget" id="officer-info-form">
                         <div style="display: flex; flex-direction: row; width: 100%;">
-                            <div class="title" style="font-weight: 600; cursor: pointer;">Officer Info</div>
+                            <div class="unselectable" style="cursor: pointer; display: flex;" onclick="toggleHidden('officer-info-form-contents', 'officer-info-collapsible');">
+                                <div class="title" style="font-weight: 600;">Officer Info</div>
+                                <img class="collapsible" id="officer-info-collapsible" style="margin-left: 0.25rem;" src="/static/icons/minus.svg">
+                            </div>
                             <div style="margin-left: auto;" id="officer-info-form-status">Not yet complete</div>
                         </div>
+                        <div id="officer-info-form-contents">
+                            <br>
+                            <div style="display: flex; gap: 1rem;">
+                                <em style="color: #aaa;">Personal</em>
+                                <hr style="border-left: none; border-top: 1px solid #bbb; width: 100%; margin-top: 0.75rem; margin-bottom: 0;">
+                            </div>
+                            <br>
 
-                        <div style="min-width: 50%; display: flex; flex-direction: column; margin: auto;">
-                            <label for="legal-name">Legal Name</label>
-                            <input type="text" id="legal-name" name="legal-name">
+                            <div class="officer-info-input-container">
+                                <div class="officer-info-input">
+                                    <label for="legal-name">Legal Name</label>
+                                    <input type="text" id="legal-name" name="legal-name">
+                                </div>
+                                <div class="db-result" id="db-legal-name"></div>
+                            </div>
+
+                            <div class="officer-info-input-container">
+                                <div class="officer-info-input">
+                                    <label for="phone-number">Phone Number</label>
+                                    <input type="text" id="" name="">
+                                </div>
+                                <div class="db-result" id="db-phone-number"></div>
+                            </div>
+
+                            <br>
+                            <div style="display: flex; gap: 1rem;">
+                                <em style="color: #aaa;">Accounts</em>
+                                <hr style="border-left: none; border-top: 1px solid #bbb; width: 100%; margin-top: 0.75rem; margin-bottom: 0;">
+                            </div>
+                            <br>
+
+                            <div class="officer-info-input">
+                                <label for="discord-name" style="display: flex; align-items: center;">
+                                    <span>Discord Name</span>
+                                    <a href="https://discord.gg/sfucsss" class="smol-text"><em>// join our discord first</em></a>
+                                </label>
+                                <input type="text" id="discord-name" name="discord-name">
+                            </div>
+
+                            <div class="officer-info-input">
+                                <label for="discord-nickname" style="display: flex; align-items: center;">
+                                    <span>Discord Nickname</span>
+                                    <em class="grey smol-text">// auto-generated</em>
+                                </label>
+                                <input type="text" id="discord-nickname" name="discord-nickname" disabled style="cursor: not-allowed;">
+                            </div>
+
+                            <div class="officer-info-input">
+                                <label for="discord-id" style="display: flex; align-items: center;">
+                                    <span>Discord ID</span>
+                                    <em class="grey smol-text">// auto-generated</em>
+                                </label>
+                                <input type="text" id="discord-id" name="discord-id" disabled style="cursor: not-allowed;">
+                            </div>
+
+                            <br>
+
+                            <div class="officer-info-input">
+                                <label for="google-email" style="display: flex; align-items: center;">
+                                    <span>Google Email</span>
+                                    <em class="grey smol-text">// for google drive</em>
+                                </label>
+                                <input type="text" id="google-email" name="google-email">
+                            </div>
+
+                            <div class="officer-info-input">
+                                <label for="google-email">Github Username</label>
+                                <input type="text" id="google-email" name="google-email">
+                            </div>
+                            
+                            <br>
+
+                            <button style="display: block; width: 8rem; height: 2rem; margin: auto;" id="officer-info-update">Update</button>
                         </div>
-
-                        <br>
-
-                        <div style="min-width: 50%; display: flex; flex-direction: column; margin: auto;">
-                            <label for="discord-name">Discord Name</label>
-                            <input type="text" id="discord-name" name="discord-name">
-                        </div>
-
-                        <div style="min-width: 50%; display: flex; flex-direction: column; margin: auto;">
-                            <label for="discord-nickname">Discord Nickname <span style="color: #999">(auto-generated)</span></label>
-                            <input type="text" id="discord-nickname" name="discord-nickname" disabled style="cursor: not-allowed;">
-                        </div>
-
-                        <div style="min-width: 50%; display: flex; flex-direction: column; margin: auto;">
-                            <label for="discord-id">Discord ID <span style="color: #999">(auto-generated)</span></label>
-                            <input type="text" id="discord-id" name="discord-id" disabled style="cursor: not-allowed;">
-                        </div>
-
-                        <br>
-
-                        <label for="google-email">Google Email <span style="color: #999">(for google drive)</span></label>
-                        <input type="text" id="google-email" name="google-email">
-                        <br>
-
-                        <label for="phone-number">Phone Number</label>
-                        <input type="text" id="" name="">
-                        <br>
-
-                        <label for=""></label>
-                        <input type="text" id="" name="">
-                        <br>
-
-                        <label for=""></label>
-                        <input type="text" id="" name="">
-                        <br>
-
-                        <input type="submit" value="Submit">
-                    </form>
+                    </div>
 
                     <!-- format this like https://sfucsss-tools.github.io/tentative_grant_request/index.html -->
-                    <form class="widget" id="current-term-info-form">
+                    <div class="widget" id="current-term-info-form">
                         <div style="display: flex; flex-direction: row; width: 100%;">
                             <div class="title" style="font-weight: 600; cursor: pointer;">Term Info</div>
                             <div style="margin-left: auto;" id="current-term-info-form-status">Not yet complete</div>
                         </div>
 
                         <input type="submit" value="Submit">
-                    </form>
+                    </div>
                 </div>
             </div>
 
@@ -184,4 +253,6 @@
             </div>
         </div>
     </body>
+
+    <script src="/profile/script.js"></script>
 </html>
