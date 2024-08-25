@@ -20,6 +20,7 @@
     <script>
         // scripts should wait until hasPermission is non-null (& true)
         var hasPermission = null;
+        var computingID = null;
 
         const dateTimeFormat = Intl.DateTimeFormat('en', {
             year: 'numeric',
@@ -31,12 +32,8 @@
         if (!DEBUG) {
             fetch("/api/auth/info").then(response => {
                 if (response.status == 401) {
-                    // redirect the user to the sfu login api if they are not yet logged in
-                    const CAS_LOGIN_URL = "https://cas.sfu.ca/cas/login?service=";
-                    const API_LOGIN_URL = window.location.protocol + "//" + window.location.host + "/api/auth/login";
-                    let loginURL = CAS_LOGIN_URL + API_LOGIN_URL + "?next_url=" + encodeURIComponent(window.location.href);
                     hasPermission = false;
-                    window.location.replace(loginURL);
+                    loginRedirect();
                 } else if (!response.ok) {
                     // TODO: show an error message or something "failed to get user info"
                     console.log(response);
@@ -45,10 +42,13 @@
                 } else {
                     // check if user has same computing_id as query param
                     response.json().then(json => {
-                        document.getElementById("logged-in-as").innerHTML = "Logged in as " + json["computing_id"]
+                        hasPermission = true;
+                        computingID = json["computing_id"];
+
+                        document.getElementById("logged-in-as").innerHTML = "Logged in as " + computingID;
 
                         // update user info
-                        document.getElementById("user-info-computing-id").innerHTML = json["computing_id"]
+                        document.getElementById("user-info-computing-id").innerHTML = computingID;
                         document.getElementById("user-info-last-log-in").innerHTML = dateTimeFormat.format(new Date(json["last_logged_in"]))
                         document.getElementById("user-info-first-log-in").innerHTML = dateTimeFormat.format(new Date(json["first_logged_in"]))
                     });
@@ -57,12 +57,7 @@
 
             fetch("/api/officers/my_info").then(response => {
                 if (response.status == 401) {
-                    // redirect the user to the sfu login api if they are not yet logged in
-                    const CAS_LOGIN_URL = "https://cas.sfu.ca/cas/login?service=";
-                    const API_LOGIN_URL = window.location.protocol + "//" + window.location.host + "/api/auth/login";
-                    let loginURL = CAS_LOGIN_URL + API_LOGIN_URL + "?next_url=" + encodeURIComponent(window.location.href);
-                    hasPermission = false;
-                    window.location.replace(loginURL);
+                    loginRedirect();
                 } else if (response.status == 404) {
                     // do nothing, but happily
                     console.log("user is not an officer");
@@ -76,23 +71,85 @@
 
                     response.json().then(json => {
                         console.log(json);
+
+                        document.getElementById("officer-info-form-status").innerHTML = json.is_filled_in ? "Complete" : "Not yet complete";
+
+                        // update the data fields with this info
                         document.getElementById("legal-name").value = json.legal_name;
                         document.getElementById("db-legal-name").innerHTML = json.legal_name;
 
                         document.getElementById("phone-number").value = json.phone_number;
                         document.getElementById("db-phone-number").innerHTML = json.phone_number;
                         
-                        // TODO: update the data fields with this info
-                        
+                        document.getElementById("discord-id").value = json.discord_id;
+                        document.getElementById("db-discord-id").innerHTML = json.discord_id;
+
+                        document.getElementById("discord-name").value = json.discord_name;
+                        document.getElementById("db-discord-name").innerHTML = json.discord_name;
+
+                        document.getElementById("github-username").value = json.github_username;
+                        document.getElementById("db-github-username").innerHTML = json.github_username;
+
+                        document.getElementById("google-email").value = json.google_drive_email;
+                        document.getElementById("db-google-email").innerHTML = json.google_drive_email;
                     });
                 }
             });
+        }
+
+        function loginRedirect() {
+            // redirect the user to the sfu login api if they are not yet logged in
+            const CAS_LOGIN_URL = "https://cas.sfu.ca/cas/login?service=";
+            const API_LOGIN_URL = window.location.protocol + "//" + window.location.host + "/api/auth/login";
+            let loginURL = CAS_LOGIN_URL + API_LOGIN_URL + "?next_url=" + encodeURIComponent(window.location.href);
+            window.location.replace(loginURL);
         }
 
         function logOut() {
             const API_LOGOUT_URL = window.location.protocol + "//" + window.location.host + "/api/auth/logout";
             fetch(API_LOGOUT_URL, { method: "POST" });
             window.location.replace("/");
+        }
+
+        // TODO: take inspiration from google settings update -> have a button to edit, then press a button to leave edit mode.
+        function updateInfo() {
+            if (computingID === null) {
+                console.log("computing_id is null");
+                return;
+            }
+
+            fetch(`/api/officers/{computingID}/update_info`, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    // TODO: stop legal_name from being None
+                    "legal_name": document.getElementById("legal-name").value,
+                    "phone_number": document.getElementById("phone-number").value,
+                    "discord_name": document.getElementById("discord-name").value,
+                    "github_username": document.getElementById("discord-username").value,
+                    "google_drive_email": document.getElementById("google-email").value,
+                })
+            }).then(response => {
+                if (!response.ok) {
+                    // assume that failed
+                    console.log("unexpected:");
+                    console.log(response);
+                } else {
+                    response.json().then(json => {
+                        console.log(json);
+
+                        document.getElementById("officer-info-form-status").innerHTML = json.is_filled_in ? "Complete" : "Not yet complete";
+
+                        // update the data fields with this info
+                        document.getElementById("db-legal-name").innerHTML = json.legal_name;
+                        document.getElementById("db-phone-number").innerHTML = json.phone_number;
+                        document.getElementById("db-discord-id").innerHTML = json.discord_id;
+                        document.getElementById("db-discord-name").innerHTML = json.discord_name;
+                        document.getElementById("db-github-username").innerHTML = json.github_username;
+                        document.getElementById("db-google-email").innerHTML = json.google_drive_email;
+                    });
+                }
+            });
         }
     </script>
 
@@ -117,9 +174,9 @@
                 <h3 class="title" style="font-weight: 600;">Officer Info</h3>
 
                 <div class="clear-widget">
-                    <h3 class="title" style="font-weight: 600;">Welcome new CSSS Officer!</h3>
+                    <h3 class="title" style="font-weight: 600;">Welcome CSSS Officer!</h3>
                     <p style="margin-bottom: 0;">
-                        Please input your info here as soon as possible, so that we can give you access
+                        Please ensure your info is up to date as soon as possible, so that we can give you access
                         to our services, such as the <a href="https://github.com/CSSS">CSSS Github</a>,
                         or the <a href="https://drive.google.com/drive/u/0/folders/0AGb0FPdVjrsqUk9PVA">CSSS Google Drive</a>.
                     </p>
@@ -155,7 +212,7 @@
                             <div class="officer-info-input-container">
                                 <div class="officer-info-input">
                                     <label for="phone-number">Phone Number</label>
-                                    <input type="text" id="" name="">
+                                    <input type="text" id="phone-number" name="phone-number">
                                 </div>
                                 <div class="db-result" id="db-phone-number"></div>
                             </div>
@@ -167,48 +224,63 @@
                             </div>
                             <br>
 
-                            <div class="officer-info-input">
-                                <label for="discord-name" style="display: flex; align-items: center;">
-                                    <span>Discord Name</span>
-                                    <a href="https://discord.gg/sfucsss" class="smol-text"><em>// join our discord first</em></a>
-                                </label>
-                                <input type="text" id="discord-name" name="discord-name">
+                            <div class="officer-info-input-container">
+                                <div class="officer-info-input">
+                                    <label for="discord-name" style="display: flex; align-items: center;">
+                                        <span>Discord Name</span>
+                                        <a href="https://discord.gg/sfucsss" class="smol-text"><em>// join our discord first</em></a>
+                                    </label>
+                                    <input type="text" id="discord-name" name="discord-name">
+                                </div>
+                                <div class="db-result" id="db-discord-name"></div>
                             </div>
 
-                            <div class="officer-info-input">
-                                <label for="discord-nickname" style="display: flex; align-items: center;">
-                                    <span>Discord Nickname</span>
-                                    <em class="grey smol-text">// auto-generated</em>
-                                </label>
-                                <input type="text" id="discord-nickname" name="discord-nickname" disabled style="cursor: not-allowed;">
+                            <div class="officer-info-input-container">
+                                <div class="officer-info-input">
+                                    <label for="discord-nickname" style="display: flex; align-items: center;">
+                                        <span>Discord Nickname</span>
+                                        <em class="grey smol-text">// auto-generated</em>
+                                    </label>
+                                    <input type="text" id="discord-nickname" name="discord-nickname" disabled style="cursor: not-allowed;">
+                                </div>
+                                <div class="db-result" id="db-discord-nickname"></div>
                             </div>
 
-                            <div class="officer-info-input">
-                                <label for="discord-id" style="display: flex; align-items: center;">
-                                    <span>Discord ID</span>
-                                    <em class="grey smol-text">// auto-generated</em>
-                                </label>
-                                <input type="text" id="discord-id" name="discord-id" disabled style="cursor: not-allowed;">
+                            <div class="officer-info-input-container">
+                                <div class="officer-info-input">
+                                    <label for="discord-id" style="display: flex; align-items: center;">
+                                        <span>Discord ID</span>
+                                        <em class="grey smol-text">// auto-generated</em>
+                                    </label>
+                                    <input type="text" id="discord-id" name="discord-id" disabled style="cursor: not-allowed;">
+                                </div>
+                                <div class="db-result" id="db-discord-id"></div>
                             </div>
 
                             <br>
 
-                            <div class="officer-info-input">
-                                <label for="google-email" style="display: flex; align-items: center;">
-                                    <span>Google Email</span>
-                                    <em class="grey smol-text">// for google drive</em>
-                                </label>
-                                <input type="text" id="google-email" name="google-email">
+                            <div class="officer-info-input-container">
+                                <div class="officer-info-input">
+                                    <label for="google-email" style="display: flex; align-items: center;">
+                                        <span>Google Email</span>
+                                        <em class="grey smol-text">// for google drive</em>
+                                    </label>
+                                    <input type="text" id="google-email" name="google-email">
+                                </div>
+                                <div class="db-result" id="db-google-email"></div>
                             </div>
 
-                            <div class="officer-info-input">
-                                <label for="google-email">Github Username</label>
-                                <input type="text" id="google-email" name="google-email">
+                            <div class="officer-info-input-container">
+                                <div class="officer-info-input">
+                                    <label for="github-username">Github Username</label>
+                                    <input type="text" id="github-username" name="github-username">
+                                </div>
+                                <div class="db-result" id="db-github-username"></div>
                             </div>
                             
                             <br>
 
-                            <button style="display: block; width: 8rem; height: 2rem; margin: auto;" id="officer-info-update">Update</button>
+                            <button style="display: block; width: 8rem; height: 2rem; margin: auto;" id="officer-info-update" onclick="updateInfo()">Update</button>
                         </div>
                     </div>
 
