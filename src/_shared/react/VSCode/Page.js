@@ -74,7 +74,7 @@ export const Page = (props) => {
       <div
         className="bg-zinc-950 border-t border-zinc-800 flex flex-row"
         style={{
-          'grid-area': 'bottom-bar'
+          gridArea: 'bottom-bar'
         }}
       >
         <p

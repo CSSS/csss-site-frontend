@@ -1,4 +1,4 @@
-const CSSS_API = 'https://api.sfucsss.org';
+const CSSS_API = 'https://new.sfucsss.org/api';
 
 /**
  * Checks if a media query matches.
@@ -89,9 +89,8 @@ export function casLogin(next) {
 /** get information about the currently logged in user */
 export async function casGetUser() {
   try {
-    const response = await fetch(`${CSSS_API}/auth/check`, {
-      method: 'GET',
-      credentials: 'include' // cookies
+    const response = await fetch('/api/auth/check', {
+      method: 'GET'
     });
 
     if (!response.ok) {
