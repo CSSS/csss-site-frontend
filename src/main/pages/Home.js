@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Page } from '../components';
+import { Page, Footer } from '../components';
 import { useSpring, animated } from 'react-spring';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
@@ -9,7 +9,6 @@ import {
   faLinkedin
 } from '@fortawesome/free-brands-svg-icons';
 import { faEnvelope, faArrowDown } from '@fortawesome/free-solid-svg-icons';
-import Footer from '../components/Footer';
 
 // Updated images and routes
 const sections = [
@@ -67,7 +66,7 @@ export const Home = () => {
     <Page>
       <div className="relative w-full" style={{ height: 'calc(100vh - 32px)' }}>
         <animated.img
-          src="/static/files/main/homepage.jpg"
+          src="/static/files/main/mural.png"
           alt="SFU CSSS"
           className="absolute inset-0 w-full h-full object-cover"
           style={imageSpring}
