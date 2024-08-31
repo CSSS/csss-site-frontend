@@ -1,0 +1,74 @@
+:root {
+	/* custom vars */
+	--shadow-color: #08080a;
+	--background-color: #18181c;
+	--background-color-alt: #202026;
+	--background-color-alt2: #303037;
+	--midground-color: #404048;
+	--midground-color-alt: #606069;
+	--foreground-color: #f0f0f8;
+	--foreground-color-alt: #80808a;
+
+	/* csss-react-lib vars */
+	--csss-background-color: var(--background-color);
+	--csss-border-color: var(--midground-color);
+	--csss-color: var(--foreground-color);
+	--csss-color-alt: var(--foreground-color-alt);
+	--csss-button-transparent-border-color: var(--midground-color);
+	--csss-button-transparent-hover-color: var(--midground-color);
+	--csss-button-transparent-active-color: var(--midground-color-alt);
+}
+
+html {
+	scroll-padding-top: 80px;
+}
+
+.csss-button {
+	line-height: 24px;
+	padding: 6px 10px;
+}
+
+.csss-button.small {
+	line-height: 16px;
+	padding: 6px;
+}
+
+.csss-button.transparent {
+	background-color: var(--background-color-alt2);
+}
+
+img.mural {
+	border-radius: 16px;
+	width: 100%;
+	height: 200px;
+	object-fit: cover;
+}
+
+section h1 {
+	font-size: 16pt;
+	font-weight: 500;
+}
+
+section p {
+	font-size: 12pt;
+	font-weight: 400;
+	text-indent: 32px;
+}
+
+section a {
+	color: var(--foreground-color-alt);
+}
+
+input {
+	outline: none;
+	border: 1px solid var(--background-color-alt2);
+	border-radius: 6px;
+	padding: 4px 6px;
+	background-color: var(--background-color-alt);
+	color: var(--foreground-color);
+	font-family: var(--csss-font-family-monospace), monospace;
+	font-size: 11pt;
+	font-weight: 500;
+	width: 64px;
+	height: 16px;
+}

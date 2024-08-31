@@ -1,0 +1,164 @@
+:root {
+  --csss-button-color: var(--csss-color);
+  --csss-button-color-disabled: var(--csss-color-alt);
+  --csss-button-idle-color: #e0e0e0;
+  --csss-button-border-color: #c0c0c0;
+  --csss-button-hover-color: #e8e8e8;
+  --csss-button-active-color: #d8d8d8;
+  --csss-button-transparent-color: var(--csss-color);
+  --csss-button-transparent-color-disabled: var(--csss-color-alt);
+  --csss-button-transparent-idle-color: var(--csss-background-color);
+  --csss-button-transparent-border-color: #c0c0c0;
+  --csss-button-transparent-hover-color: #e8e8e8;
+  --csss-button-transparent-active-color: #d8d8d8;
+  --csss-button-primary-color: var(--csss-background-color);
+  --csss-button-primary-color-disabled: var(--csss-color-alt);
+  --csss-button-primary-idle-color: #3458f8;
+  --csss-button-primary-border-color: #2030e0;
+  --csss-button-primary-hover-color: #6080ff;
+  --csss-button-primary-active-color: #2848f0;
+}
+
+.csss-button {
+  display: inline-flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  margin: 0;
+  border-radius: 8px;
+  border: none;
+  padding: 10px;
+  background-color: var(--csss-button-idle-color);
+  color: var(--csss-button-color);
+  font-size: 12pt;
+  font-weight: 400;
+  line-height: 16px;
+  white-space: nowrap;
+  text-decoration: none;
+  transition: background-color ease 0.1s;
+  --csss-button-depth-margin: 20px;
+}
+
+.csss-button span,
+.csss-button .csss-icon {
+  margin: 0 4px;
+  --csss-icon-color: var(--csss-button-color);
+}
+
+.csss-button .csss-icon {
+  width: 16px;
+  height: 16px;
+}
+
+.csss-button.icon .csss-icon {
+  margin: 0 0;
+}
+
+.csss-button.small {
+  border-radius: 6px;
+  padding: 8px;
+  font-size: 11pt;
+  line-height: 12px;
+  --csss-button-depth-margin: 16px;
+}
+
+.csss-button.small .csss-icon {
+  width: 12px;
+  height: 12px;
+}
+
+.csss-button.large {
+  border-radius: 8px;
+  padding: 10px;
+  font-size: 13pt;
+  line-height: 20px;
+  --csss-button-depth-margin: 24px;
+}
+
+.csss-button.large .csss-icon {
+  width: 20px;
+  height: 20px;
+}
+
+.csss-button:not(.disabled):hover {
+  background-color: var(--csss-button-hover-color);
+  cursor: pointer;
+}
+
+.csss-button:not(.disabled):hover:active {
+  box-shadow: 0 0 0 1px var(--csss-button-border-color);
+  background-color: var(--csss-button-active-color);
+}
+
+.csss-button.disabled {
+  color: var(--csss-button-color-disabled);
+}
+
+.csss-button.disabled .csss-icon {
+  --csss-icon-color: var(--csss-button-color-disabled);
+}
+
+/* Transparent */
+
+.csss-button.transparent {
+  background-color: transparent;
+  color: var(--csss-button-transparent-color);
+}
+
+/* when a transparent button is a child of a dropdown, don't be transparent */
+/*
+.csss-dropdown-flex .csss-button.transparent {
+	background-color: var(--csss-button-transparent-idle-color);
+	color: var(--csss-button-transparent-color);
+}
+*/
+
+.csss-button.transparent:not(.disabled):hover {
+  background-color: var(--csss-button-transparent-hover-color);
+}
+
+.csss-button.transparent:not(.disabled):hover:active {
+  box-shadow: 0 0 0 1px var(--csss-button-transparent-border-color);
+  background-color: var(--csss-button-transparent-active-color);
+}
+
+.csss-button.primary .csss-icon {
+  --csss-icon-color: var(--csss-button-transparent-color);
+}
+
+.csss-button.disabled {
+  color: var(--csss-button-transparent-color-disabled);
+}
+
+.csss-button.disabled .csss-icon {
+  --csss-icon-color: var(--csss-button-transparent-color-disabled);
+}
+
+/* Primary */
+
+.csss-button.primary {
+  background-color: var(--csss-button-primary-idle-color);
+  color: var(--csss-button-primary-color);
+}
+
+.csss-button.primary:not(.disabled):hover {
+  background-color: var(--csss-button-primary-hover-color);
+}
+
+.csss-button.primary:not(.disabled):hover:active {
+  box-shadow: 0 0 0 1px var(--csss-button-primary-border-color);
+  background-color: var(--csss-button-primary-active-color);
+}
+
+.csss-button.primary .csss-icon {
+  --csss-icon-color: var(--csss-button-primary-color);
+}
+
+.csss-button.disabled {
+  color: var(--csss-button-primary-color-disabled);
+}
+
+.csss-button.disabled .csss-icon {
+  --csss-icon-color: var(--csss-button-primary-color-disabled);
+}
