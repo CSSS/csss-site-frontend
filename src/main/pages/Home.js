@@ -80,7 +80,7 @@ export const Home = () => {
           >
             Welcome to the
             <br />
-            Computing Science Student Society 
+            Computing Science Student Society
           </animated.h1>
         </div>
         {/* Down arrow icon */}
