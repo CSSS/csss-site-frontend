@@ -67,7 +67,7 @@ export const Home = () => {
     <Page>
       <div className="relative w-full" style={{ height: 'calc(100vh - 32px)' }}>
         <animated.img
-          src="/static/files/main/homepage-smol.png"
+          src="/static/files/main/mural.png"
           alt="SFU CSSS"
           className="absolute inset-0 w-full h-full object-cover"
           style={imageSpring}
