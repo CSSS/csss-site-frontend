@@ -66,7 +66,7 @@ export const Home = () => {
     <Page>
       <div className="relative w-full" style={{ height: 'calc(100vh - 32px)' }}>
         <animated.img
-          src="/static/files/main/homepage.jpg"
+          src="/static/files/main/mural.png"
           alt="SFU CSSS"
           className="absolute inset-0 w-full h-full object-cover"
           style={imageSpring}
@@ -103,7 +103,7 @@ export const Home = () => {
             src="/static/files/main/president.jpg"
             alt="President Portrait"
             className="w-64 h-80 object-cover rounded-lg float-left mr-6 mb-4"
-            style={{ 'overflow-clip-margin': 'unset' }}
+            style={{ overflowClipMargin: 'unset' }}
           />
           <p
             className="text-lg sm:text-xl md:text-2xl leading-relaxed text-left"
