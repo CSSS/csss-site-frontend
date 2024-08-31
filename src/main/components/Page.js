@@ -33,6 +33,11 @@ export const Page = ({ children }) => {
         <VSCode.NavItem isInFolder={true} text="About.md" to="/about" />
         <VSCode.NavItem
           isInFolder={true}
+          text="Affiliates.md"
+          to="/affiliates"
+        />
+        <VSCode.NavItem
+          isInFolder={true}
           text="Common Rooms.md"
           to="/common_rooms"
         />
