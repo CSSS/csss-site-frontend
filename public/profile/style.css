@@ -27,7 +27,8 @@ label {
 
 input[type=text],
 input[type=date],
-select {
+select,
+textarea {
     padding: 0.5rem;
 
     border: #fff solid 3px;
@@ -41,7 +42,8 @@ select {
 
 input[type=text]:focus,
 input[type=date]:focus,
-select:focus {
+select:focus,
+textarea:focus {
     border: #aaa solid 3px;
 }
 
@@ -77,10 +79,6 @@ td {
     background-color: #fff;
 }
 
-#officer-info-form-contents {
-    width: 100%;
-}
-
 .widget {
     display: flex;
     flex-direction: column;
@@ -111,17 +109,17 @@ td {
     font-family: Poppins, sans-serif;
 }
 
-.officer-info-input-container {
+.officer-input-container {
     display: flex;
     flex-direction: row;
 }
-.officer-info-input {
+.officer-input {
     display: flex;
     flex-direction: column;
 
     width: 50%;
 }
-.officer-info-input .smol-text {
+.officer-input .smol-text {
     margin-left: auto;
     font-weight: 400;    
 }
