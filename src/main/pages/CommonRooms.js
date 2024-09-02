@@ -54,7 +54,7 @@ export const CommonRooms = () => {
     <Page style={{ fontFamily: 'Poppins, sans-serif' }}>
       <br></br>
       <br />
-      <div className="flex justify-center text-6xl sm:text-3xl md:text-5xl font-bold leading-tight">
+      <div className="flex justify-center text-3xl md:text-5xl font-bold">
         Common Rooms
       </div>
 
@@ -62,7 +62,7 @@ export const CommonRooms = () => {
 
       <div className="p-16 max-w-4xl mx-auto">
         <p
-          className="text-left text-lg items-start py-8"
+          className="text-left text-lg py-8"
           style={{ fontFamily: 'Poppins, sans-serif' }}
         >
           ASB 9802 and ASB 9971, located in the Applied Sciences Building are
@@ -132,11 +132,11 @@ export const CommonRooms = () => {
       </div>
 
       {/* svg maps of the rooms */}
-      <div className="mx-16 flex flex-col md:flex-row gap-8">
+      <div className="mx-8 flex flex-col md:flex-row gap-8">
         {rooms.map((room) => {
           return (
             <div className=" justify-center flex relative w-full h-full rounded-xl bg-white">
-              <object height={350} data={room.svg}></object>
+              <object height={300} data={room.svg}></object>
             </div>
           );
         })}
@@ -144,7 +144,7 @@ export const CommonRooms = () => {
 
       {/*Table of prices*/}
       <div className="p-16 max-w-4xl mx-auto">
-        <div className="flex justify-start text-4xl sm:text-3xl md:text-4xl font-bold leading-tight text-left">
+        <div className="flex justify-start text-4xl sm:text-3xl md:text-4xl font-bold text-left">
           Refreshments
         </div>
         <br></br>
