@@ -87,6 +87,9 @@
                         document.getElementById("discord-name").value = json.discord_name;
                         document.getElementById("db-discord-name").innerHTML = json.discord_name;
 
+                        document.getElementById("discord-nickname").value = json.discord_nickname;
+                        document.getElementById("db-discord-nickname").innerHTML = json.discord_nickname;
+
                         document.getElementById("github-username").value = json.github_username;
                         document.getElementById("db-github-username").innerHTML = json.github_username;
 
@@ -118,7 +121,7 @@
                 return;
             }
 
-            fetch(`/api/officers/{computingID}/update_info`, {
+            fetch(`/api/officers/${computingID}/update_info`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({
@@ -126,7 +129,7 @@
                     "legal_name": document.getElementById("legal-name").value,
                     "phone_number": document.getElementById("phone-number").value,
                     "discord_name": document.getElementById("discord-name").value,
-                    "github_username": document.getElementById("discord-username").value,
+                    "github_username": document.getElementById("github-username").value,
                     "google_drive_email": document.getElementById("google-email").value,
                 })
             }).then(response => {
@@ -141,12 +144,37 @@
                         document.getElementById("officer-info-form-status").innerHTML = json.is_filled_in ? "Complete" : "Not yet complete";
 
                         // update the data fields with this info
-                        document.getElementById("db-legal-name").innerHTML = json.legal_name;
-                        document.getElementById("db-phone-number").innerHTML = json.phone_number;
-                        document.getElementById("db-discord-id").innerHTML = json.discord_id;
-                        document.getElementById("db-discord-name").innerHTML = json.discord_name;
-                        document.getElementById("db-github-username").innerHTML = json.github_username;
-                        document.getElementById("db-google-email").innerHTML = json.google_drive_email;
+                        document.getElementById("db-legal-name").innerHTML = json.updated_officer_info.legal_name;
+                        document.getElementById("db-phone-number").innerHTML = json.updated_officer_info.phone_number;
+
+                        document.getElementById("db-discord-name").innerHTML = json.updated_officer_info.discord_name;
+                        document.getElementById("db-discord-nickname").innerHTML = json.updated_officer_info.discord_nickname;
+                        document.getElementById("db-discord-id").innerHTML = json.updated_officer_info.discord_id;
+
+                        document.getElementById("discord-name").value = json.updated_officer_info.discord_name;
+                        document.getElementById("discord-nickname").value = json.updated_officer_info.discord_nickname;
+                        document.getElementById("discord-id").value = json.updated_officer_info.discord_id;
+
+                        document.getElementById("db-github-username").innerHTML = json.updated_officer_info.github_username;
+                        document.getElementById("db-google-email").innerHTML = json.updated_officer_info.google_drive_email;
+
+                        let validationErrorsElement = document.getElementById("officer-info-validation-failures");
+                        if (json.validation_failures.length == 0) {
+                            validationErrorsElement.innerHTML = "";
+                        } else {
+                            validationErrorsElement.innerHTML = "Validation Errors:";
+                            for (let i = 0; i < json.validation_failures.length; i++) {
+                                const desc = json.validation_failures[i];
+                                const colour = (i % 2 == 0) ? "fff" : "ddd";
+                                validationErrorsElement.innerHTML += `
+                                    <div style="background-color: #${colour}; padding: 0.5rem; border-radius: 0.5rem;">
+                                        <b style="margin-right: 0.5rem;">${i}</b>
+                                        ${desc}
+                                    <div>
+                                `;
+                            }
+                        }
+
                     });
                 }
             });
@@ -228,7 +256,10 @@
                                 <div class="officer-info-input">
                                     <label for="discord-name" style="display: flex; align-items: center;">
                                         <span>Discord Name</span>
-                                        <a href="https://discord.gg/sfucsss" class="smol-text"><em>// join our discord first</em></a>
+                                        <em class="smol-text">
+                                            <a href="https://discord.gg/sfucsss" class="smol-text">// join our discord</a>
+                                            <a href="https://support.discord.com/hc/en-us/articles/12620128861463-New-Usernames-Display-Names" class="smol-text">& update your username</a>
+                                        </em>
                                     </label>
                                     <input type="text" id="discord-name" name="discord-name">
                                 </div>
@@ -272,6 +303,7 @@
 
                             <div class="officer-info-input-container">
                                 <div class="officer-info-input">
+                                    <!-- TODO: add a popup that is updated as typing that links to https://github.com/<name> & says "// is this you?" -->
                                     <label for="github-username">Github Username</label>
                                     <input type="text" id="github-username" name="github-username">
                                 </div>
@@ -281,6 +313,7 @@
                             <br>
 
                             <button style="display: block; width: 8rem; height: 2rem; margin: auto;" id="officer-info-update" onclick="updateInfo()">Update</button>
+                            <p style="display: block; width: 100%; margin: auto; margin-top: 1rem;" id="officer-info-validation-failures"></p>
                         </div>
                     </div>
 
