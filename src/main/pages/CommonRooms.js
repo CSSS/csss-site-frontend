@@ -4,21 +4,29 @@ import { text } from '@fortawesome/fontawesome-svg-core';
 
 // Note image pixel sizes for the common room pics
 // TODO: maybe add vending machine pics
+
 // TODO: add proper common room pictures
+
 
 const rooms = [
   {
     text: 'ASB 9802',
+
     // image: '/static/files/main/CR_Placeholder.png',
-    image: '/static/files/main/asb9971_2.png', // placeholder
+   // placeholder
+
+    image: '/static/files/main/asb9802.jpg',
+
     link: 'https://roomfinder.sfu.ca/apps/sfuroomfinder_web/?q=ASB%209802',
     svg: '/static/files/old-common-room.svg'
   },
   {
     text: 'ASB 9971',
     image: '/static/files/main/asb9971.png',
-    // or
+
+   // or
     // image: '/static/files/main/asb9971_2.png',
+
     link: 'https://roomfinder.sfu.ca/apps/sfuroomfinder_web/?q=ASB%209971',
     svg: '/static/files/new-common-room.svg'
   }
@@ -28,7 +36,11 @@ const pop = [
   { name: 'Coke', price: '1.25' },
   { name: 'Coke Zero', price: '1.25' },
   { name: 'Dasani', price: '1.75' },
-  { name: 'Monster', price: '2.75' },
+
+ 
+
+  { name: 'Mystery Monster', price: '2.75' },
+
   { name: 'Nestea', price: '1.25' },
   { name: 'Mystery', price: '1.00' }
 ];
@@ -54,7 +66,9 @@ export const CommonRooms = () => {
     <Page style={{ fontFamily: 'Poppins, sans-serif' }}>
       <br></br>
       <br />
-      <div className="flex justify-center text-6xl sm:text-3xl md:text-5xl font-bold leading-tight">
+
+      <div className="flex justify-center text-3xl md:text-5xl font-bold">
+
         Common Rooms
       </div>
 
@@ -62,7 +76,9 @@ export const CommonRooms = () => {
 
       <div className="p-16 max-w-4xl mx-auto">
         <p
-          className="text-left text-lg items-start py-8"
+
+          className="text-left text-lg py-8"
+
           style={{ fontFamily: 'Poppins, sans-serif' }}
         >
           ASB 9802 and ASB 9971, located in the Applied Sciences Building are
@@ -114,6 +130,7 @@ export const CommonRooms = () => {
                     src={room.image}
                     alt={room.text}
                     className=" inset-0 w-full h-full object-cover"
+
                   />
                   <div className="absolute inset-0 bg-gradient-to-r from-black to-transparent opacity-90"></div>
                   <div className="absolute inset-y-0 left-0 flex items-center pl-8">
@@ -132,11 +149,13 @@ export const CommonRooms = () => {
       </div>
 
       {/* svg maps of the rooms */}
-      <div className="mx-16 flex flex-col md:flex-row gap-8">
+
+      <div className="mx-8 flex flex-col md:flex-row gap-8">
         {rooms.map((room) => {
           return (
-            <div className=" justify-center flex relative w-full h-full rounded-xl bg-white">
-              <object height={350} data={room.svg}></object>
+            <div className="justify-center flex relative w-full h-full rounded-xl bg-white py-2">
+              <object height={300} width="100%" data={room.svg}></object>
+
             </div>
           );
         })}
@@ -144,7 +163,9 @@ export const CommonRooms = () => {
 
       {/*Table of prices*/}
       <div className="p-16 max-w-4xl mx-auto">
-        <div className="flex justify-start text-4xl sm:text-3xl md:text-4xl font-bold leading-tight text-left">
+
+        <div className="flex justify-start text-4xl sm:text-3xl md:text-4xl font-bold text-left">
+
           Refreshments
         </div>
         <br></br>

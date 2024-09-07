@@ -1,0 +1,599 @@
+<!-- All those who modify this file shall be of honour and the most excellence. -->
+
+<!doctype html>
+<html>
+    <head>
+        <title>CSSS User Profile</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="icon" type="image/png" href="/static/icons/favicon_white.png" />
+
+        <!-- fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+
+        <link rel="stylesheet" href="/profile/style.css">
+    </head>
+
+    <script>
+        // scripts should wait until hasPermission is non-null (& true)
+        var hasPermission = null;
+        var computingID = null;
+
+        const dateTimeFormat = Intl.DateTimeFormat('en', {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric',
+        });
+
+        const DEBUG = false;
+        if (!DEBUG) {
+            fetch("/api/auth/info").then(response => {
+                if (response.status == 401) {
+                    hasPermission = false;
+                    loginRedirect();
+                } else if (!response.ok) {
+                    // TODO: show an error message or something "failed to get user info"
+                    console.log(response);
+                    hasPermission = false;
+                    //window.location.replace("/");
+                } else {
+                    // check if user has same computing_id as query param
+                    response.json().then(json => {
+                        hasPermission = true;
+                        computingID = json["computing_id"];
+
+                        document.getElementById("logged-in-as").innerHTML = "Logged in as " + computingID;
+
+                        // update user info
+                        document.getElementById("user-info-computing-id").innerHTML = computingID;
+                        document.getElementById("user-info-last-log-in").innerHTML = dateTimeFormat.format(new Date(json["last_logged_in"]))
+                        document.getElementById("user-info-first-log-in").innerHTML = dateTimeFormat.format(new Date(json["first_logged_in"]))
+
+                        initOfficerInfo(computingID);
+                    });
+                }
+            });
+        }
+
+        function initOfficerInfo(computingID) {
+            fetch(`/api/officers/info/${computingID}`).then(response => {
+                if (response.status == 401) {
+                    loginRedirect();
+                } else if (response.status == 404) {
+                    // do nothing, but happily
+                    console.log("user is not an officer");
+                } else if (!response.ok) {
+                    // assume that failed
+                    console.log("unexpected:");
+                    console.log(response);
+                } else {
+                    // check if user has same computing_id as query param
+                    document.getElementById("officer-info-container").removeAttribute("hidden");
+
+                    response.json().then(json => {
+                        console.log(json);
+
+                        document.getElementById("officer-info-form-status").innerHTML = json.is_filled_in ? "<b>Complete</b>" : "Not yet complete";
+
+                        // update the data fields with this info
+                        document.getElementById("legal-name").value = json.legal_name;
+                        document.getElementById("db-legal-name").innerHTML = json.legal_name;
+
+                        document.getElementById("phone-number").value = json.phone_number;
+                        document.getElementById("db-phone-number").innerHTML = json.phone_number;
+                        
+                        document.getElementById("discord-id").value = json.discord_id;
+                        document.getElementById("db-discord-id").innerHTML = json.discord_id;
+
+                        document.getElementById("discord-name").value = json.discord_name;
+                        document.getElementById("db-discord-name").innerHTML = json.discord_name;
+
+                        document.getElementById("discord-nickname").value = json.discord_nickname;
+                        document.getElementById("db-discord-nickname").innerHTML = json.discord_nickname;
+
+                        document.getElementById("github-username").value = json.github_username;
+                        document.getElementById("db-github-username").innerHTML = json.github_username;
+
+                        document.getElementById("google-email").value = json.google_drive_email;
+                        document.getElementById("db-google-email").innerHTML = json.google_drive_email;
+                    });
+
+                    // once officer info has been found, also fetch officer terms
+                    initOfficerTerms(computingID);
+                }
+            });
+        }
+
+        function initOfficerTerms(computingID) {
+            if (document.getElementById("officer-info-container").getAttribute("hidden"))
+                return;
+
+            fetch(`/api/officers/terms/${computingID}`).then(response => {
+                if (response.status == 401) {
+                    loginRedirect();
+                } else if (!response.ok) {
+                    // assume that failed
+                    console.log("unexpected:");
+                    console.log(response);
+                } else {
+                    // response.json is a list of serializble dict
+                    response.json().then(json => {
+                        console.log(json);
+
+                        for(let termData of json) {
+                            let i = termData.id;
+                            let element = document.createElement("div");
+                            element.classList.add("widget");
+                            element.id = `officer-term-form-${i}`;
+                            element.innerHTML = `
+                            <div style="display: flex; flex-direction: row; width: 100%;">
+                                <div
+                                    class="unselectable"
+                                    style="cursor: pointer; display: flex;"
+                                    onclick="toggleHidden('officer-term-form-${i}-contents', 'officer-term-${i}-collapsible');"
+                                >
+                                    <div class="title" style="font-weight: 600;">Officer Term ${i}</div>
+                                    <img class="collapsible" id="officer-term-${i}-collapsible" style="margin-left: 0.25rem;" src="/static/icons/minus.svg">
+                                </div>
+                                <div style="margin-left: auto;" id="officer-term-form-${i}-status">Not yet complete</div>
+                            </div>
+                            <div id="officer-term-form-${i}-contents" style="width: 100%;">
+                                <br>
+                                <div style="display: flex; gap: 1rem;">
+                                    <em style="color: #aaa;">Admin</em>
+                                    <hr style="border-left: none; border-top: 1px solid #bbb; width: 100%; margin-top: 0.75rem; margin-bottom: 0;">
+                                </div>
+                                <br>
+
+                                <div class="officer-input-container">
+                                    <div class="officer-input">
+                                        <label for="position-${i}">Position</label>
+                                        <input type="text" id="position-${i}" disabled style="cursor: not-allowed;">
+                                    </div>
+                                    <div class="db-result" id="db-position-${i}"></div>
+                                </div>
+
+                                <div class="officer-input-container">
+                                    <div class="officer-input">
+                                        <label for="start_date-${i}">Start Date</label>
+                                        <input type="text" id="start_date-${i}" disabled style="cursor: not-allowed;">
+                                    </div>
+                                    <div class="db-result" id="db-start_date-${i}"></div>
+                                </div>
+
+                                <div class="officer-input-container">
+                                    <div class="officer-input">
+                                        <label for="end_date-${i}">End Date</label>
+                                        <input type="text" id="end_date-${i}" disabled style="cursor: not-allowed;">
+                                    </div>
+                                    <div class="db-result" id="db-end_date-${i}"></div>
+                                </div>
+
+                                <br>
+                                <div style="display: flex; gap: 1rem;">
+                                    <em style="color: #aaa;">Personal</em>
+                                    <hr style="border-left: none; border-top: 1px solid #bbb; width: 100%; margin-top: 0.75rem; margin-bottom: 0;">
+                                </div>
+                                <br>
+
+                                <div class="officer-input-container">
+                                    <div class="officer-input">
+                                        <label for="nickname-${i}">Nickname</label>
+                                        <input type="text" id="nickname-${i}">
+                                    </div>
+                                    <div class="db-result" id="db-nickname-${i}"></div>
+                                </div>
+
+                                <div class="officer-input-container">
+                                    <div class="officer-input">
+                                        <label for="favourite_course_0-${i}">Favourite Course 0</label>
+                                        <input type="text" id="favourite_course_0-${i}">
+                                    </div>
+                                    <div class="db-result" id="db-favourite_course_0-${i}"></div>
+                                </div>
+
+                                <div class="officer-input-container">
+                                    <div class="officer-input">
+                                        <label for="favourite_course_1-${i}">Favourite Course 1</label>
+                                        <input type="text" id="favourite_course_1-${i}">
+                                    </div>
+                                    <div class="db-result" id="db-favourite_course_1-${i}"></div>
+                                </div>
+
+                                <div class="officer-input-container">
+                                    <div class="officer-input">
+                                        <label for="favourite_pl_0-${i}">Favourite Programming Language 0</label>
+                                        <input type="text" id="favourite_pl_0-${i}">
+                                    </div>
+                                    <div class="db-result" id="db-favourite_pl_0-${i}"></div>
+                                </div>
+
+                                <div class="officer-input-container">
+                                    <div class="officer-input">
+                                        <label for="favourite_pl_1-${i}">Favourite Programming Language 1</label>
+                                        <input type="text" id="favourite_pl_1-${i}">
+                                    </div>
+                                    <div class="db-result" id="db-favourite_pl_1-${i}"></div>
+                                </div>
+
+                                <div class="officer-input-container">
+                                    <div class="officer-input">
+                                        <label for="biography-${i}">Biography</label>
+                                        <textarea type="text" id="biography-${i}" style="resize: vertical;"></textarea>
+                                    </div>
+                                    <div markdown="1" class="db-result" id="db-biography-${i}" style="white-space: pre-wrap;"></div>
+                                </div>
+
+                                <br>
+
+                                <div class="officer-input-container">
+                                    <div class="officer-input">
+                                        <label for="photo_url-${i}">Photo URL</label>
+                                        <input type="text" id="photo_url-${i}">
+                                    </div>
+                                    <div class="db-result" id="db-photo_url-${i}"></div>
+                                </div>
+                                
+                                <br>
+
+                                <button style="display: block; width: 8rem; height: 2rem; margin: auto;" id="officer-term-${i}-update" onclick="updateTerm(${i})">Update</button>
+                                <p style="display: block; width: 100%; margin: auto; margin-top: 1rem;" id="officer-term-${i}-validation-failures"></p>
+                            </div>
+                            `;
+
+                            document.getElementById("officer-widgets").appendChild(element);
+
+                            document.getElementById(`officer-term-form-${i}-status`).innerHTML = termData.is_filled_in ? "<b>Complete</b>" : "Not yet complete";
+
+                            // update the data fields with this info
+                            document.getElementById(`position-${i}`).value = termData.position;
+                            document.getElementById(`db-position-${i}`).innerHTML = termData.position;
+
+                            document.getElementById(`start_date-${i}`).value = termData.start_date;
+                            document.getElementById(`db-start_date-${i}`).innerHTML = termData.start_date;
+
+                            document.getElementById(`nickname-${i}`).value = termData.nickname;
+                            document.getElementById(`db-nickname-${i}`).innerHTML = termData.nickname;
+
+                            document.getElementById(`favourite_course_0-${i}`).value = termData.favourite_course_0;
+                            document.getElementById(`db-favourite_course_0-${i}`).innerHTML = termData.favourite_course_0;
+
+                            document.getElementById(`favourite_course_1-${i}`).value = termData.favourite_course_1;
+                            document.getElementById(`db-favourite_course_1-${i}`).innerHTML = termData.favourite_course_1;
+
+                            document.getElementById(`favourite_pl_0-${i}`).value = termData.favourite_pl_0;
+                            document.getElementById(`db-favourite_pl_0-${i}`).innerHTML = termData.favourite_pl_0;
+
+                            document.getElementById(`favourite_pl_1-${i}`).value = termData.favourite_pl_1;
+                            document.getElementById(`db-favourite_pl_1-${i}`).innerHTML = termData.favourite_pl_1;
+
+                            document.getElementById(`biography-${i}`).value = termData.biography;
+                            document.getElementById(`db-biography-${i}`).innerHTML = termData.biography;
+
+                            document.getElementById(`photo_url-${i}`).value = termData.photo_url;
+                            document.getElementById(`db-photo_url-${i}`).innerHTML = termData.photo_url;
+                        }
+                    });
+                }
+            });
+        }
+
+        function loginRedirect() {
+            // redirect the user to the sfu login api if they are not yet logged in
+            const CAS_LOGIN_URL = "https://cas.sfu.ca/cas/login?service=";
+            const API_LOGIN_URL = window.location.protocol + "//" + window.location.host + "/api/auth/login";
+            let loginURL = CAS_LOGIN_URL + API_LOGIN_URL + "?next_url=" + encodeURIComponent(window.location.href);
+            window.location.replace(loginURL);
+        }
+
+        function logOut() {
+            const API_LOGOUT_URL = window.location.protocol + "//" + window.location.host + "/api/auth/logout";
+            fetch(API_LOGOUT_URL, { method: "POST" });
+            window.location.replace("/");
+        }
+
+        // TODO: (GUI) take inspiration from google settings update -> have a button to edit, then press a button to leave edit mode.
+        function updateInfo() {
+            if (computingID === null) {
+                console.log("computing_id is null");
+                return;
+            }
+
+            fetch(`/api/officers/info/${computingID}`, {
+                method: "PATCH",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    // TODO: stop legal_name from being None
+                    "legal_name": document.getElementById("legal-name").value,
+                    "phone_number": document.getElementById("phone-number").value,
+                    "discord_name": document.getElementById("discord-name").value,
+                    "github_username": document.getElementById("github-username").value,
+                    "google_drive_email": document.getElementById("google-email").value,
+                })
+            }).then(response => {
+                if (!response.ok) {
+                    // assume that failed
+                    console.log("unexpected:");
+                    console.log(response);
+                } else {
+                    response.json().then(json => {
+                        console.log(json);
+
+                        document.getElementById("officer-info-form-status").innerHTML = json.is_filled_in ? "<b>Complete</b>" : "Not yet complete";
+
+                        // update the data fields with this info
+                        document.getElementById("db-legal-name").innerHTML = json.updated_officer_info.legal_name;
+                        document.getElementById("db-phone-number").innerHTML = json.updated_officer_info.phone_number;
+
+                        document.getElementById("db-discord-name").innerHTML = json.updated_officer_info.discord_name;
+                        document.getElementById("db-discord-nickname").innerHTML = json.updated_officer_info.discord_nickname;
+                        document.getElementById("db-discord-id").innerHTML = json.updated_officer_info.discord_id;
+
+                        document.getElementById("discord-name").value = json.updated_officer_info.discord_name;
+                        document.getElementById("discord-nickname").value = json.updated_officer_info.discord_nickname;
+                        document.getElementById("discord-id").value = json.updated_officer_info.discord_id;
+
+                        document.getElementById("db-github-username").innerHTML = json.updated_officer_info.github_username;
+                        document.getElementById("db-google-email").innerHTML = json.updated_officer_info.google_drive_email;
+                        
+                        let validationErrorsElement = document.getElementById("officer-info-validation-failures");
+                        if (json.validation_failures.length == 0) {
+                            validationErrorsElement.innerHTML = "";
+                        } else {
+                            validationErrorsElement.innerHTML = "Validation Errors:";
+                            for (let i = 0; i < json.validation_failures.length; i++) {
+                                const desc = json.validation_failures[i];
+                                const colour = (i % 2 == 0) ? "fff" : "ddd";
+                                validationErrorsElement.innerHTML += `
+                                    <div style="background-color: #${colour}; padding: 0.5rem; border-radius: 0.5rem;">
+                                        <b style="margin-right: 0.5rem;">${i}</b>
+                                        ${desc}
+                                    <div>
+                                `;
+                            }
+                        }
+                    });
+                }
+            });
+        }
+
+        function updateTerm(termID) {
+            if (computingID === null) {
+                console.log("computing_id is null");
+                return;
+            }
+
+            // TODO: update term by element & pass term id to backend
+            fetch(`/api/officers/term/${termID}`, {
+                method: "PATCH",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    "position": document.getElementById(`position-${termID}`).value,
+                    "start_date": document.getElementById(`start_date-${termID}`).value,
+                    "end_date": document.getElementById(`end_date-${termID}`).value == "" ? null : document.getElementById(`end_date-${termID}`).value,
+                    "nickname": document.getElementById(`nickname-${termID}`).value,
+                    "favourite_course_0": document.getElementById(`favourite_course_0-${termID}`).value,
+                    "favourite_course_1": document.getElementById(`favourite_course_1-${termID}`).value,
+                    "favourite_pl_0": document.getElementById(`favourite_pl_0-${termID}`).value,
+                    "favourite_pl_1": document.getElementById(`favourite_pl_1-${termID}`).value,
+                    "biography": document.getElementById(`biography-${termID}`).value,
+                    "photo_url": document.getElementById(`photo_url-${termID}`).value,
+                })
+            }).then(response => {
+                if (!response.ok) {
+                    // assume that failed
+                    console.log("unexpected:");
+                    console.log(response);
+                } else {
+                    response.json().then(json => {
+                        console.log(json);
+
+                        document.getElementById(`officer-term-form-${termID}-status`).innerHTML = json.is_filled_in ? "<b>Complete</b>" : "Not yet complete";
+
+                        // update the data fields with this info
+                        document.getElementById(`db-position-${termID}`).innerHTML = json.updated_officer_term.position;
+                        document.getElementById(`db-start_date-${termID}`).innerHTML = json.updated_officer_term.start_date;
+                        document.getElementById(`db-end_date-${termID}`).innerHTML = json.updated_officer_term.end_date;
+
+                        document.getElementById(`db-nickname-${termID}`).innerHTML = json.updated_officer_term.nickname;
+                        document.getElementById(`db-favourite_course_0-${termID}`).innerHTML = json.updated_officer_term.favourite_course_0;
+                        document.getElementById(`db-favourite_course_1-${termID}`).innerHTML = json.updated_officer_term.favourite_course_1;
+                        document.getElementById(`db-favourite_pl_0-${termID}`).innerHTML = json.updated_officer_term.favourite_pl_0;
+                        document.getElementById(`db-favourite_pl_1-${termID}`).innerHTML = json.updated_officer_term.favourite_pl_1;
+                        document.getElementById(`db-biography-${termID}`).innerHTML = json.updated_officer_term.biography;
+                        document.getElementById(`db-photo_url-${termID}`).innerHTML = json.updated_officer_term.photo_url;
+                        
+                        // TODO: into a function
+                        let validationErrorsElement = document.getElementById(`officer-term-${termID}-validation-failures`);
+                        if (json.validation_failures.length == 0) {
+                            validationErrorsElement.innerHTML = "";
+                        } else {
+                            validationErrorsElement.innerHTML = "Validation Errors:";
+                            for (let i = 0; i < json.validation_failures.length; i++) {
+                                const desc = json.validation_failures[i];
+                                const colour = (i % 2 == 0) ? "fff" : "ddd";
+                                validationErrorsElement.innerHTML += `
+                                    <div style="background-color: #${colour}; padding: 0.5rem; border-radius: 0.5rem;">
+                                        <b style="margin-right: 0.5rem;">${i}</b>
+                                        ${desc}
+                                    <div>
+                                `;
+                            }
+                        }
+                    });
+                }
+            });
+        }
+    </script>
+
+    <body>
+        <div id="header">
+            <div style="display: flex; flex-direction: row; justify-content: center; align-items: center;">
+                <a href="/">
+                    <img src="/static/files/csss_black.svg" style="width: 3rem; height: 3rem; margin-right: 1rem;" />
+                </a>
+                <span id="profile-title" class="title" style="font-size: 2rem; font-weight: 700;">User Profile</span>
+                <div style="margin-left: auto; text-align: end;">
+                    <span id="logged-in-as" >Logged in as ...</span> <br>
+                    <a id="log-out" onclick="logOut()" style="text-decoration: underline; cursor: pointer;">Log out</a>
+                </div>
+            </div>
+            <div style="align-items: end; display: flex; flex-direction: row; justify-content: end;">
+            </div>
+        </div>
+        <div id="content">
+            <div id="officer-info-container" hidden>
+                <hr style="width: 100%; border-top: 1px solid #ddd;">
+                <h3 class="title" style="font-weight: 600;">Officer Info</h3>
+
+                <div class="clear-widget">
+                    <h3 class="title" style="font-weight: 600;">Welcome CSSS Officer!</h3>
+                    <p style="margin-bottom: 0;">
+                        Please ensure your info is up to date as soon as possible, so that we can give you access
+                        to our services, such as the <a href="https://github.com/CSSS">CSSS Github</a>,
+                        or the <a href="https://drive.google.com/drive/u/0/folders/0AGb0FPdVjrsqUk9PVA">CSSS Google Drive</a>.
+                    </p>
+                </div>
+
+                <div id="officer-widgets">
+                    <div class="widget" id="officer-info-form">
+                        <div style="display: flex; flex-direction: row; width: 100%;">
+                            <div class="unselectable" style="cursor: pointer; display: flex;" onclick="toggleHidden('officer-info-form-contents', 'officer-info-collapsible');">
+                                <div class="title" style="font-weight: 600;">Officer Info</div>
+                                <img class="collapsible" id="officer-info-collapsible" style="margin-left: 0.25rem;" src="/static/icons/minus.svg">
+                            </div>
+                            <div style="margin-left: auto;" id="officer-info-form-status">Not yet complete</div>
+                        </div>
+                        <div id="officer-info-form-contents" style="width: 100%;">
+                            <br>
+                            <div style="display: flex; gap: 1rem;">
+                                <em style="color: #aaa;">Personal</em>
+                                <hr style="border-left: none; border-top: 1px solid #bbb; width: 100%; margin-top: 0.75rem; margin-bottom: 0;">
+                            </div>
+                            <br>
+
+                            <div class="officer-input-container">
+                                <div class="officer-input">
+                                    <label for="legal-name">Legal Name</label>
+                                    <input type="text" id="legal-name" name="legal-name">
+                                </div>
+                                <div class="db-result" id="db-legal-name"></div>
+                            </div>
+
+                            <div class="officer-input-container">
+                                <div class="officer-input">
+                                    <label for="phone-number">Phone Number</label>
+                                    <input type="text" id="phone-number" name="phone-number">
+                                </div>
+                                <div class="db-result" id="db-phone-number"></div>
+                            </div>
+
+                            <br>
+                            <div style="display: flex; gap: 1rem;">
+                                <em style="color: #aaa;">Accounts</em>
+                                <hr style="border-left: none; border-top: 1px solid #bbb; width: 100%; margin-top: 0.75rem; margin-bottom: 0;">
+                            </div>
+                            <br>
+
+                            <div class="officer-input-container">
+                                <div class="officer-input">
+                                    <label for="discord-name" style="display: flex; align-items: center;">
+                                        <span>Discord Name</span>
+                                        <em class="smol-text">
+                                            <a href="https://discord.gg/sfucsss" class="smol-text">// join our discord</a>
+                                            <a href="https://support.discord.com/hc/en-us/articles/12620128861463-New-Usernames-Display-Names" class="smol-text">& update your username</a>
+                                        </em>
+                                    </label>
+                                    <input type="text" id="discord-name" name="discord-name">
+                                </div>
+                                <div class="db-result" id="db-discord-name"></div>
+                            </div>
+
+                            <div class="officer-input-container">
+                                <div class="officer-input">
+                                    <label for="discord-nickname" style="display: flex; align-items: center;">
+                                        <span>Discord Nickname</span>
+                                        <em class="grey smol-text">// auto-generated</em>
+                                    </label>
+                                    <input type="text" id="discord-nickname" name="discord-nickname" disabled style="cursor: not-allowed;">
+                                </div>
+                                <div class="db-result" id="db-discord-nickname"></div>
+                            </div>
+
+                            <div class="officer-input-container">
+                                <div class="officer-input">
+                                    <label for="discord-id" style="display: flex; align-items: center;">
+                                        <span>Discord ID</span>
+                                        <em class="grey smol-text">// auto-generated</em>
+                                    </label>
+                                    <input type="text" id="discord-id" name="discord-id" disabled style="cursor: not-allowed;">
+                                </div>
+                                <div class="db-result" id="db-discord-id"></div>
+                            </div>
+
+                            <br>
+
+                            <div class="officer-input-container">
+                                <div class="officer-input">
+                                    <label for="google-email" style="display: flex; align-items: center;">
+                                        <span>Google Email</span>
+                                        <em class="grey smol-text">// for google drive</em>
+                                    </label>
+                                    <input type="text" id="google-email" name="google-email">
+                                </div>
+                                <div class="db-result" id="db-google-email"></div>
+                            </div>
+
+                            <div class="officer-input-container">
+                                <div class="officer-input">
+                                    <!-- TODO: add a popup that is updated as typing that links to https://github.com/<name> & says "// is this you?" -->
+                                    <label for="github-username">Github Username</label>
+                                    <input type="text" id="github-username" name="github-username">
+                                </div>
+                                <div class="db-result" id="db-github-username"></div>
+                            </div>
+                            
+                            <br>
+
+                            <button style="display: block; width: 8rem; height: 2rem; margin: auto;" id="officer-info-update" onclick="updateInfo()">Update</button>
+                            <p style="display: block; width: 100%; margin: auto; margin-top: 1rem;" id="officer-info-validation-failures"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="user-info-container">
+                <hr style="width: 100%; border-top: 1px solid #ddd;">
+                <h3 class="title" style="font-weight: 600;">Metadata</h3>
+                <div>
+                    <div class="widget">
+                        <div style="display: flex; flex-direction: row; width: 100%;">
+                            <div class="title" style="font-weight: 600; cursor: pointer;">User Info</div>
+                            <div style="margin-left: auto;"></div>
+                        </div>
+
+                        <table style="width: 90%; margin: auto; margin-top: 0.5rem; margin-bottom: 1rem;">
+                            <tr style="background-color: #fff;">
+                                <td><b>SFU computing id</b></td>
+                                <td><span id="user-info-computing-id"></span></td>
+                            </tr>
+                            <tr style="background-color: #ddd;">
+                                <td><b>Most recent login</b></td>
+                                <td><span id="user-info-last-log-in"></span></td>
+                            </tr>
+                            <tr style="background-color: #fff;">
+                                <td><b>First login</b></td>
+                                <td><span id="user-info-first-log-in"></span></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+
+    <script src="/profile/script.js"></script>
+</html>
