@@ -8,7 +8,7 @@ import { text } from '@fortawesome/fontawesome-svg-core';
 const rooms = [
   {
     text: 'ASB 9802',
-    image: '/static/files/main/asb9802.jpg', 
+    image: '/static/files/main/asb9802.jpg',
     link: 'https://roomfinder.sfu.ca/apps/sfuroomfinder_web/?q=ASB%209802',
     svg: '/static/files/old-common-room.svg'
   },
