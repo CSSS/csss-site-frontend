@@ -110,6 +110,7 @@ export const CommonRooms = () => {
                     src={room.image}
                     alt={room.text}
                     className=" inset-0 w-full h-full object-cover"
+                    style={{ 'overflow-clip-margin': 'unset' }}
                   />
                   <div className="absolute inset-0 bg-gradient-to-r from-black to-transparent opacity-90"></div>
                   <div className="absolute inset-y-0 left-0 flex items-center pl-8">
@@ -131,7 +132,7 @@ export const CommonRooms = () => {
       <div className="mx-8 flex flex-col md:flex-row gap-8">
         {rooms.map((room) => {
           return (
-            <div className=" justify-center flex relative w-full h-full rounded-xl bg-white">
+            <div className="justify-center flex relative w-full h-full rounded-xl bg-white py-2">
               <object height={300} width="100%" data={room.svg}></object>
             </div>
           );
