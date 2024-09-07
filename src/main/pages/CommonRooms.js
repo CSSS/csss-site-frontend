@@ -4,21 +4,17 @@ import { text } from '@fortawesome/fontawesome-svg-core';
 
 // Note image pixel sizes for the common room pics
 // TODO: maybe add vending machine pics
-// TODO: add proper common room pictures
 
 const rooms = [
   {
     text: 'ASB 9802',
-    // image: '/static/files/main/CR_Placeholder.png',
-    image: '/static/files/main/asb9971_2.png', // placeholder
+    image: '/static/files/main/asb9802.jpg', 
     link: 'https://roomfinder.sfu.ca/apps/sfuroomfinder_web/?q=ASB%209802',
     svg: '/static/files/old-common-room.svg'
   },
   {
     text: 'ASB 9971',
     image: '/static/files/main/asb9971.png',
-    // or
-    // image: '/static/files/main/asb9971_2.png',
     link: 'https://roomfinder.sfu.ca/apps/sfuroomfinder_web/?q=ASB%209971',
     svg: '/static/files/new-common-room.svg'
   }
@@ -28,7 +24,7 @@ const pop = [
   { name: 'Coke', price: '1.25' },
   { name: 'Coke Zero', price: '1.25' },
   { name: 'Dasani', price: '1.75' },
-  { name: 'Monster', price: '2.75' },
+  { name: 'Mystery Monster', price: '2.75' },
   { name: 'Nestea', price: '1.25' },
   { name: 'Mystery', price: '1.00' }
 ];
@@ -136,7 +132,7 @@ export const CommonRooms = () => {
         {rooms.map((room) => {
           return (
             <div className=" justify-center flex relative w-full h-full rounded-xl bg-white">
-              <object height={300} data={room.svg}></object>
+              <object height={300} width="100%" data={room.svg}></object>
             </div>
           );
         })}
