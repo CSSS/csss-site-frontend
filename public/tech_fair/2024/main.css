@@ -597,7 +597,7 @@ li {
   border-radius: 16px 16px 0 0;
 
   opacity: 50%;
-  object-fit: cover;
+  object-fit: contain;
 
   transition: opacity 0.3s ease-in-out;
 }
