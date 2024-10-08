@@ -90,7 +90,7 @@ export const CommonRooms = () => {
       <div className="mx-16 my-8 flex flex-col md:flex-row gap-8">
         {rooms.map((room) => {
           return (
-            <div className="flex-1 lg:px-16 lg:mx-16">
+            <div className="flex-1 lg:mx-16">
               <a href={room.link} target="_blank">
                 <div className="relative h-80 overflow-hidden rounded-xl transform transition-transform duration-300 hover:scale-105">
                   <img
@@ -118,7 +118,7 @@ export const CommonRooms = () => {
           return (
             <div
               className="justify-center relative w-full h-80 rounded-xl
-             bg-white py-2 lg:mx-16 lg:px-16"
+             bg-white py-2 lg:mx-16"
             >
               <object height={300} width="100%" data={room.svg}></object>
             </div>
