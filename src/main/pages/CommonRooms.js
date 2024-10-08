@@ -87,10 +87,10 @@ export const CommonRooms = () => {
       </div>
 
       {/* Photos of the common rooms */}
-      <div className=" mx-16 my-8 flex flex-col md:flex-row gap-8 ">
+      <div className="mx-16 my-8 flex flex-col md:flex-row gap-8">
         {rooms.map((room) => {
           return (
-            <div className="flex-1">
+            <div className="flex-1 lg:px-16 lg:mx-16">
               <a href={room.link} target="_blank">
                 <div className="relative h-80 overflow-hidden rounded-xl transform transition-transform duration-300 hover:scale-105">
                   <img
@@ -113,17 +113,20 @@ export const CommonRooms = () => {
       </div>
 
       {/* svg maps of the rooms */}
-      <div className="mx-16 flex flex-col md:flex-row gap-8">
+      <div className=" mx-16 flex flex-col md:flex-row gap-8">
         {rooms.map((room) => {
           return (
-            <div className="justify-center relative w-full h-full rounded-xl bg-white py-2">
+            <div
+              className="justify-center relative w-full h-80 rounded-xl
+             bg-white py-2 lg:mx-16 lg:px-16"
+            >
               <object height={300} width="100%" data={room.svg}></object>
             </div>
           );
         })}
       </div>
 
-      {/*Table of prices*/}
+      {/*Refreshments*/}
       <div className="p-16 max-w-4xl mx-auto text-left">
         <div className="flex text-4xl sm:text-3xl md:text-4xl font-bold">
           Refreshments
@@ -140,7 +143,7 @@ export const CommonRooms = () => {
       {/*Table of prices*/}
 
       <div className="justify-center flex gap-2 max-w-4xl mx-auto overflow-hidden">
-        <div className="mx-16 flex flex-col md:flex-row gap-8 ">
+        <div className="mx-16 flex flex-col lg:flex-row gap-8 ">
           <div className="mx-8">
             <p className="text-center text-3xl font-bold">Snacks 🍫</p>
             <br></br>
