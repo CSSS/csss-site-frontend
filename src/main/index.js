@@ -8,7 +8,8 @@ import {
   CommonRooms,
   NotFound,
   Affiliates,
-  Documents
+  Documents,
+  Committees
 } from './pages';
 
 const router = createHashRouter([
@@ -16,6 +17,7 @@ const router = createHashRouter([
   { path: '/common_rooms', element: <CommonRooms /> },
   { path: '/profile', element: <Profile /> },
   { path: '/affiliates', element: <Affiliates /> },
+  { path: '/committees', element: <Committees /> },
   { path: '/documents', element: <Documents /> },
   { path: '*', element: <NotFound /> }
 ]);
