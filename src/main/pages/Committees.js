@@ -149,10 +149,7 @@ const TLTComponent = ({ committee, links, isOpen, toggle }) => {
       >
         <p className="text-left font-semibold text-sm md:text-lg">
           {committee.description}
-          <a
-            href={link.link}
-            className="italic underline hover:text-blue-500"
-          >
+          <a href={link.link} className="italic underline hover:text-blue-500">
             {link.text}
           </a>
           {committee.description2}
@@ -217,7 +214,9 @@ const JustText = ({ committee, isOpen, toggle }) => {
       <div
         className={`p-8 my-8 max-w-4xl mx-auto bg-[#18181b] rounded-lg ${isOpen ? 'block' : 'hidden'}`}
       >
-        <p className="text-left text-sm font-semibold md:text-lg">{committee.description}</p>
+        <p className="text-left text-sm font-semibold md:text-lg">
+          {committee.description}
+        </p>
       </div>
     </div>
   );
@@ -251,7 +250,7 @@ export const Committees = () => {
       </div>
 
       <div className="bg-black rounded-lg">
-      <br></br>
+        <br></br>
         <div>
           {committees.map((committee) => (
             <TLTComponent
@@ -284,7 +283,7 @@ export const Committees = () => {
           {committees2.map((committee) => {
             if (committee.key === 'Policy') {
               return (
-                <JustText 
+                <JustText
                   key={committee.key}
                   committee={committee}
                   isOpen={openSection === committee.name}
