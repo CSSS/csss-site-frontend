@@ -138,20 +138,20 @@ const TLTComponent = ({ committee, links, isOpen, toggle }) => {
         <button
           onClick={toggle}
           className="text-center font-bold max-w-80 py-4 px-4 rounded-lg 
-         hover:bg-gray-700 text-md md:text-xl"
+         hover:bg-white hover:text-black text-lg md:text-xl"
         >
           {committee.name}
         </button>
       </div>
 
       <div
-        className={`p-8 my-8 max-w-4xl mx-auto bg-gray-700 rounded-lg ${isOpen ? 'block' : 'hidden'}`}
+        className={`p-8 my-8 max-w-4xl bg-[#18181b] mx-auto rounded-lg ${isOpen ? 'block' : 'hidden'}`}
       >
-        <p className="text-left text-sm md:text-lg">
+        <p className="text-left font-semibold text-sm md:text-lg">
           {committee.description}
           <a
             href={link.link}
-            className="italic underline font-semibold hover:text-black"
+            className="italic underline hover:text-blue-500"
           >
             {link.text}
           </a>
@@ -170,27 +170,27 @@ const TLTLTcomponent = ({ committee, links, isOpen, toggle }) => {
         <button
           onClick={toggle}
           className="text-center font-bold max-w-80 py-4 px-4 rounded-lg
-           hover:bg-gray-700 text-md md:text-xl"
+           hover:bg-white hover:text-black text-lg md:text-xl"
         >
           {committee.name}
         </button>
       </div>
 
       <div
-        className={`p-8 my-8 max-w-4xl mx-auto bg-gray-700 rounded-lg ${isOpen ? 'block' : 'hidden'}`}
+        className={`p-8 my-8 max-w-4xl mx-auto bg-[#18181b] rounded-lg ${isOpen ? 'block' : 'hidden'}`}
       >
-        <p className="text-left text-sm md:text-lg">
+        <p className="text-left text-sm font-semibold md:text-lg">
           {committee.description}
           <a
             href={link.arr.link}
-            className="italic underline font-semibold hover:text-black"
+            className="italic underline hover:text-blue-500"
           >
             {link.arr.text}
           </a>
           {committee.description2}
           <a
             href={link.arr2.link}
-            className="italic underline font-semibold hover:text-black"
+            className="italic underline font-semibold hover:text-blue-500"
           >
             {link.arr2.text}
           </a>
@@ -208,16 +208,16 @@ const JustText = ({ committee, isOpen, toggle }) => {
         <button
           onClick={toggle}
           className="text-center font-bold max-w-80 py-4 px-4 rounded-lg 
-          hover:bg-gray-700 text-md md:text-xl"
+           hover:bg-white hover:text-black text-lg md:text-xl"
         >
           {committee.name}
         </button>
       </div>
 
       <div
-        className={`p-8 my-8 max-w-4xl mx-auto bg-gray-700 rounded-lg ${isOpen ? 'block' : 'hidden'}`}
+        className={`p-8 my-8 max-w-4xl mx-auto bg-[#18181b] rounded-lg ${isOpen ? 'block' : 'hidden'}`}
       >
-        <p className="text-left text-sm md:text-lg">{committee.description}</p>
+        <p className="text-left text-sm font-semibold md:text-lg">{committee.description}</p>
       </div>
     </div>
   );
@@ -251,6 +251,7 @@ export const Committees = () => {
       </div>
 
       <div className="bg-black rounded-lg">
+      <br></br>
         <div>
           {committees.map((committee) => (
             <TLTComponent
@@ -283,7 +284,7 @@ export const Committees = () => {
           {committees2.map((committee) => {
             if (committee.key === 'Policy') {
               return (
-                <JustText
+                <JustText 
                   key={committee.key}
                   committee={committee}
                   isOpen={openSection === committee.name}
@@ -293,6 +294,7 @@ export const Committees = () => {
             }
           })}
         </div>
+        <br></br>
       </div>
 
       <Footer />
