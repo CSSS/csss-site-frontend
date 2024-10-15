@@ -29,7 +29,7 @@ const links = [
  * When displaying the committees
  * The format is
  * description + email link in the description retrieved from links + the remaining description
- * Given that there is only one email address to embedded int the text body
+ * Given that there is only one email address to be embedded into the text body
  */
 
 const committees = [
@@ -130,24 +130,23 @@ const committees2 = [
  * 3. Text
  */
 
+const button_style = "text-center font-bold max-w-80 py-4 px-4 rounded-lg hover:bg-white hover:text-black text-lg md:text-xl"
+const desc_style = "text-left text-sm md:text-lg p-8 my-8 max-w-4xl bg-[#18181b] mx-auto bg-black rounded-lg"
+
 const TLTComponent = ({ committee, links, isOpen, toggle }) => {
   const link = links.find((link) => link.key === committee.key);
   return (
     <div>
       <div className="flex justify-center">
-        <button
-          onClick={toggle}
-          className="text-center font-bold max-w-80 py-4 px-4 rounded-lg 
-         hover:bg-white hover:text-black text-lg md:text-xl"
-        >
+        <button onClick={toggle} className={button_style}>
           {committee.name}
         </button>
       </div>
 
       <div
-        className={`p-8 my-8 max-w-4xl bg-[#18181b] mx-auto rounded-lg ${isOpen ? 'block' : 'hidden'}`}
+        className={`${isOpen ? 'block' : 'hidden'}`}
       >
-        <p className="text-left font-semibold text-sm md:text-lg">
+        <p className={desc_style}>
           {committee.description}
           <a href={link.link} className="italic underline hover:text-blue-500">
             {link.text}
@@ -166,17 +165,16 @@ const TLTLTcomponent = ({ committee, links, isOpen, toggle }) => {
       <div className="flex justify-center">
         <button
           onClick={toggle}
-          className="text-center font-bold max-w-80 py-4 px-4 rounded-lg
-           hover:bg-white hover:text-black text-lg md:text-xl"
+          className={button_style}
         >
           {committee.name}
         </button>
       </div>
 
       <div
-        className={`p-8 my-8 max-w-4xl mx-auto bg-[#18181b] rounded-lg ${isOpen ? 'block' : 'hidden'}`}
+        className={`${isOpen ? 'block' : 'hidden'}`}
       >
-        <p className="text-left text-sm font-semibold md:text-lg">
+        <p className={desc_style}>
           {committee.description}
           <a
             href={link.arr.link}
@@ -204,17 +202,15 @@ const JustText = ({ committee, isOpen, toggle }) => {
       <div className="flex justify-center">
         <button
           onClick={toggle}
-          className="text-center font-bold max-w-80 py-4 px-4 rounded-lg 
-           hover:bg-white hover:text-black text-lg md:text-xl"
-        >
+          className={button_style}>
           {committee.name}
         </button>
       </div>
 
       <div
-        className={`p-8 my-8 max-w-4xl mx-auto bg-[#18181b] rounded-lg ${isOpen ? 'block' : 'hidden'}`}
+        className={`${isOpen ? 'block' : 'hidden'}`}
       >
-        <p className="text-left text-sm font-semibold md:text-lg">
+        <p className={desc_style}>
           {committee.description}
         </p>
       </div>
@@ -233,6 +229,9 @@ export const Committees = () => {
     setOpenSection(openSection === name ? null : name);
   };
 
+  const header = "text-3xl sm:text-4xl md:text-5xl font-bold mb-8"
+  const subHeader = "text-md md:text-xl"
+
   return (
     <Page style={{ fontFamily: 'Poppins, sans-serif' }}>
       <br></br>
@@ -242,14 +241,14 @@ export const Committees = () => {
       - is sub header required?? 
     */}
 
-      <div className="flex flex-col text-center mb-4">
-        <div className="text-3xl md:text-5xl font-bold mb-4">Committees</div>
-        {/* <div className="text-lg md:text-2xl mb-4">
-          <p>A list of our committees.</p>
-        </div> */}
+      <div className="flex flex-col text-center mx-16">
+        <div className={header}>Committees</div>
+        <div className={subHeader}>
+          <p>Click on each committee to learn more about it ⤵️</p>
+        </div>
       </div>
 
-      <div className="bg-black rounded-lg">
+      <div className="">
         <br></br>
         <div>
           {committees.map((committee) => (
