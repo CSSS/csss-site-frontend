@@ -47,7 +47,7 @@ export const NavBar = ({
         {apps}
       </div>
       {/* navigation drawer */}
-      <div className="h-full flex flex-col grow gap-px overflow-y-scroll">
+      <div className="h-full flex flex-col grow gap-px overflow-y-auto">
         <div className="flex flex-row p-3 h-10 w-full align-center justify-between">
           <h2 className="text-zinc-400">{title}</h2>
           {!isMobileDevice && (

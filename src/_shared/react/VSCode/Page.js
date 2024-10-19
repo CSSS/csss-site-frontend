@@ -1,9 +1,8 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCodeBranch } from '@fortawesome/free-solid-svg-icons';
+import { faGlobe, faCodeBranch } from '@fortawesome/free-solid-svg-icons';
 
 import * as helpers from '../../js';
-import * as Flex from '../Flex';
 import * as Grid from '../Grid';
 import { NavBar } from './NavBar.js';
 
@@ -11,7 +10,7 @@ const isMobileDeviceQuery = '(max-width: 768px)';
 const contentWidth = 768;
 
 export const Page = (props) => {
-  const { apps, children, files, title } = props;
+  const { apps, children, files, statusBar, title } = props;
 
   // media query for mobile device
   const [isMobileDevice, setIsMobileDevice] = useState(
@@ -53,7 +52,7 @@ export const Page = (props) => {
       </NavBar>
       {isMobileDevice ? (
         <Grid.Item
-          className="overflow-y-scroll text-white"
+          className="overflow-y-auto text-white"
           style={{
             maxWidth: '768px',
             width: '100%',
@@ -65,7 +64,7 @@ export const Page = (props) => {
         </Grid.Item>
       ) : (
         <Grid.Item
-          className="overflow-y-scroll text-white"
+          className="overflow-y-auto text-white"
           style={{ height: '100%' }}
         >
           {children}
@@ -77,17 +76,16 @@ export const Page = (props) => {
           gridArea: 'bottom-bar'
         }}
       >
-        <p
-          className="bg-blue-500 text-white text-sm"
-          style={{
-            height: '100%',
-            padding: '0 8px',
-            lineHeight: '32px'
-          }}
-        >
-          <FontAwesomeIcon icon={faCodeBranch} />
-          &nbsp;main
-        </p>
+        <div className="h-full w-full text-white leading-8 flex flex-row justify-start items-center gap-3">
+          <p className="h-full leading-8 bg-blue-500 px-4">
+            <FontAwesomeIcon className="text-base" icon={faGlobe} />
+          </p>
+          <p className="text-sm">
+            <FontAwesomeIcon className="text-base mr-1" icon={faCodeBranch} />
+            main
+          </p>
+          {statusBar}
+        </div>
       </div>
     </Grid.Container>
   );

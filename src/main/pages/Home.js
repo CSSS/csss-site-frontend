@@ -9,6 +9,9 @@ import {
   faLinkedin
 } from '@fortawesome/free-brands-svg-icons';
 import { faEnvelope, faArrowDown } from '@fortawesome/free-solid-svg-icons';
+import * as helpers from '../../_shared/js/helpers.js';
+
+const isMobileDeviceQuery = '(max-width: 768px)';
 
 // Updated images and routes
 const sections = [
@@ -41,12 +44,22 @@ const sections = [
 
 export const Home = () => {
   const [loaded, setLoaded] = useState(false);
+  const [isMobileDevice, setIsMobileDevice] = useState(
+    helpers.checkMediaQuery(isMobileDeviceQuery)
+  );
 
   // Animation trigger for big banner
   useEffect(() => {
     setTimeout(() => {
       setLoaded(true);
     }, 500);
+
+    // watch media query to check if is mobile device
+    helpers.watchMediaQuery(isMobileDeviceQuery, setIsMobileDevice);
+
+    return () => {
+      // no need to cleanup; helpers.watchMediaQuery will remove old listeners
+    };
   }, []);
 
   // Animation for the banner darkening
@@ -64,7 +77,12 @@ export const Home = () => {
 
   return (
     <Page>
-      <div className="relative w-full" style={{ height: 'calc(100vh - 32px)' }}>
+      <div
+        className="relative w-full"
+        style={{
+          height: isMobileDevice ? 'calc(100lvh - 96px)' : 'calc(100lvh - 32px)'
+        }}
+      >
         <animated.img
           src="/static/files/main/mural.png"
           alt="SFU CSSS"
@@ -80,7 +98,7 @@ export const Home = () => {
           >
             Welcome to the
             <br />
-            Computing Science Student Society 
+            Computing Science Student Society
           </animated.h1>
         </div>
         {/* Down arrow icon */}
