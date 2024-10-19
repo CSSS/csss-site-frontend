@@ -5,6 +5,7 @@ The frontend of the CSSS website, currently deployed at [new.sfucsss.org](https:
 Please check out [csss-site-backend](https://github.com/csss/csss-site-backend/) for the backend API used by this repo.
 
 ## Table of Contents
+
 1. [Development](#development)
    - [Prereqs](#prereqs)
    - [Set-up](#set-up)
