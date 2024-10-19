@@ -82,7 +82,7 @@ export const Page = (props) => {
           </p>
           <p className="text-sm">
             <FontAwesomeIcon className="text-base mr-1" icon={faCodeBranch} />
-            main
+            <a href="https://github.com/CSSS" className="hover:underline">main</a>
           </p>
           {statusBar}
         </div>
