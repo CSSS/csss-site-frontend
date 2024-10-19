@@ -1,12 +1,31 @@
 import React, { useEffect, useState } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCodeBranch } from '@fortawesome/free-solid-svg-icons';
+import axios from 'axios';
 
-import { Icon, Flex, Grid, VSCode } from '../../_shared/react';
-import * as helpers from '../../_shared/js';
+import { Icon, VSCode } from '../../_shared/react';
+
+const CAS_LOGIN_URL = 'https://cas.sfu.ca/cas/login';
 
 // example usage of the VSCode.NavBar component, passing in children
 export const Page = ({ children }) => {
+  const [userInfo, setUserInfo] = useState(null);
+
+  useEffect(() => {
+    const checkLogin = async () => {
+      try {
+        const res = await axios.get('/api/auth/user');
+        sessionStorage.setItem('profile', JSON.stringify(res.data));
+        setUserInfo({
+          computing_id: res.data.computing_id,
+          profile_picture_url: res.data.profile_picture_url
+        });
+      } catch (err) {
+        // pass
+      }
+    };
+
+    checkLogin();
+  }, []);
+
   const apps = (
     <>
       <Icon.Folder
@@ -15,13 +34,24 @@ export const Page = ({ children }) => {
         }}
       />
       <a style={{ marginTop: 'auto' }} href="#profile">
-        <Icon.Profile
-          style={{
-            width: '100%',
-            '--csss-icon-color': '#a1a1aa', // zinc-400
-            '--csss-icon-stroke-width': '1px'
-          }}
-        />
+        {userInfo !== null && userInfo.profile_picture_url !== null ? (
+          <img
+            style={{
+              width: '32px',
+              height: '32px',
+              objectFit: 'cover'
+            }}
+            src="https://random.dog/oq9izk0057hy.jpg"
+          />
+        ) : (
+          <Icon.Profile
+            style={{
+              width: '100%',
+              '--csss-icon-color': '#a1a1aa', // zinc-400
+              '--csss-icon-stroke-width': '1px'
+            }}
+          />
+        )}
       </a>
     </>
   );
@@ -74,8 +104,58 @@ export const Page = ({ children }) => {
     </>
   );
 
+  console.log(window.location.hash);
+
+  const loginUrl =
+    CAS_LOGIN_URL +
+    '?service=' +
+    encodeURIComponent(
+      window.location.origin +
+        '/api/auth/login' +
+        '?redirect_path=' +
+        window.location.pathname +
+        '&redirect_fragment=' +
+        window.location.hash.substring(1)
+    );
+
+  const logout = async () => {
+    try {
+      await axios.get('/api/auth/logout');
+      setUserInfo(null);
+      sessionStorage.removeItem('profile');
+      window.location.reload();
+    } catch (err) {
+      // pass
+    }
+  };
+
+  const statusBar =
+    userInfo === null ? (
+      <p className="text-sm text-gray-400">
+        Not logged in;{' '}
+        <a className="text-blue-400 hover:underline" href={loginUrl}>
+          log in with SFU CAS
+        </a>
+      </p>
+    ) : (
+      <p className="text-sm">
+        Logged in as {userInfo.computing_id};{' '}
+        <a
+          className="text-blue-400 hover:underline hover:cursor-pointer"
+          onClick={logout}
+        >
+          log out
+        </a>
+      </p>
+    );
+
   return (
-    <VSCode.Page apps={apps} files={files} title="SFU-CSSS">
+    <VSCode.Page
+      apps={apps}
+      files={files}
+      statusBar={statusBar}
+      title="SFU-CSSS"
+    >
       {children}
     </VSCode.Page>
   );
