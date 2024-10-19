@@ -237,10 +237,6 @@ export const Committees = () => {
       <br></br>
       <br />
 
-      {/* 
-      - is sub header required?? 
-    */}
-
       <div className="flex flex-col text-center mx-16">
         <div className={header}>Committees</div>
         <div className={subHeader}>
@@ -275,12 +271,7 @@ export const Committees = () => {
                 />
               );
             }
-          })}
-        </div>
-
-        <div>
-          {committees2.map((committee) => {
-            if (committee.key === 'Policy') {
+            else if (committee.key === 'Policy') {
               return (
                 <JustText
                   key={committee.key}
