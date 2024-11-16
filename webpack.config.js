@@ -13,6 +13,10 @@ module.exports = {
     main: {
       import: './src/main/index.js',
       dependOn: 'react'
+    },
+    walle: {
+      import: './src/walle/index.js',
+      dependOn: 'react'
     }
   },
   output: {
