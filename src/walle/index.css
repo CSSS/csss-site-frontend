@@ -1,0 +1,110 @@
+:root {
+	/* custom vars */
+	--shadow-color: #08080a;
+	--background-color: #18181c;
+	--background-color-alt: #202026;
+	--background-color-alt2: #303037;
+	--midground-color: #404048;
+	--midground-color-alt: #606069;
+	--foreground-color: #f0f0f8;
+	--foreground-color-alt: #80808a;
+}
+
+body {
+	margin: 0;
+	overflow-x: hidden;
+	padding: 0 16px;
+	width: 100vw;
+    background-color: var(--background-color);
+	color: var(--foreground-color);
+	font-family: sans-serif;
+}
+
+.walle-page {
+    max-width: 768px;
+    margin: auto;
+}
+
+/* Row things */
+
+.csss-flex-container.row {
+	position: relative;
+	border-radius: 8px;
+	padding: 0 16px;
+	width: calc(100%);
+	height: 64px;
+	background-color: var(--background-color);
+	color: var(--foreground-color);
+}
+
+.csss-flex-container.row.alt {
+	background-color: var(--background-color-alt);
+}
+
+.csss-flex-container.row img {
+	border-radius: 50%;
+	border: 1px solid var(--midground-color);
+	height: 32px;
+}
+
+.csss-flex-container.row h1.position {
+	font-size: 12pt;
+	font-weight: 200;
+}
+
+.csss-flex-container.row h1.position b {
+	font-weight: 600;
+}
+
+.csss-flex-container.row h1.name {
+	font-size: 12pt;
+	font-weight: 600;
+}
+
+.csss-flex-container.row h1.level {
+	color: var(--foreground-color-alt);
+	font-size: 10pt;
+	font-weight: 400;
+}
+
+.csss-row-stats {
+	position: relative;
+	margin-top: 16px;
+	border: 1px solid var(--midground-color);
+	border-radius: 6px;
+	width: 256px;
+	height: 12px;
+	background-color: var(--foreground-color-alt);
+}
+
+.csss-row-stats h1.above-text {
+	position: absolute;
+	bottom: 16px;
+	left: 50%;
+	transform: translateX(-50%);
+	margin: 0;
+	font-size: 12px;
+	font-weight: 400;
+	white-space: nowrap;
+}
+
+.csss-row-stats h1.inside-text {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	margin: 0;
+	color: var(--midground-color);
+	font-size: 10px;
+	font-weight: 600;
+	white-space: nowrap;
+}
+
+.csss-row-stats .filled-bar {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	border-radius: 6px;
+	background-color: var(--foreground-color);
+}
