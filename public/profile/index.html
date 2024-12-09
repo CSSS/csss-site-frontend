@@ -30,7 +30,7 @@
 
         const DEBUG = false;
         if (!DEBUG) {
-            fetch("/api/auth/info").then(response => {
+            fetch("/api/auth/user").then(response => {
                 if (response.status == 401) {
                     hasPermission = false;
                     loginRedirect();
@@ -111,7 +111,8 @@
             if (document.getElementById("officer-info-container").getAttribute("hidden"))
                 return;
 
-            fetch(`/api/officers/terms/${computingID}`).then(response => {
+            // TODO: ensure this returns all of the current officer's terms (b/c they have access to them)
+            fetch(`/api/officers/terms/${computingID}?include_inactive=True`).then(response => {
                 if (response.status == 401) {
                     loginRedirect();
                 } else if (!response.ok) {
@@ -253,7 +254,12 @@
                             document.getElementById(`db-position-${i}`).innerHTML = termData.position;
 
                             document.getElementById(`start_date-${i}`).value = termData.start_date;
-                            document.getElementById(`db-start_date-${i}`).innerHTML = termData.start_date;
+                            const startDatePretty = dateTimeFormat.format(new Date(termData.start_date));
+                            document.getElementById(`db-start_date-${i}`).innerHTML = startDatePretty;
+
+                            document.getElementById(`end_date-${i}`).value = termData.end_date;
+                            const endDatePretty = dateTimeFormat.format(new Date(termData.end_date));
+                            document.getElementById(`db-end_date-${i}`).innerHTML = endDatePretty;
 
                             document.getElementById(`nickname-${i}`).value = termData.nickname;
                             document.getElementById(`db-nickname-${i}`).innerHTML = termData.nickname;
@@ -366,7 +372,6 @@
                 return;
             }
 
-            // TODO: update term by element & pass term id to backend
             fetch(`/api/officers/term/${termID}`, {
                 method: "PATCH",
                 headers: { "Content-Type": "application/json" },
@@ -395,8 +400,14 @@
 
                         // update the data fields with this info
                         document.getElementById(`db-position-${termID}`).innerHTML = json.updated_officer_term.position;
-                        document.getElementById(`db-start_date-${termID}`).innerHTML = json.updated_officer_term.start_date;
-                        document.getElementById(`db-end_date-${termID}`).innerHTML = json.updated_officer_term.end_date;
+
+                        const startDatePretty = dateTimeFormat.format(new Date(json.updated_officer_term.start_date));
+                        document.getElementById(`db-start_date-${termID}`).innerHTML = startDatePretty;
+                        document.getElementById(`db-end_date-${termID}`).innerHTML = (
+                            json.updated_officer_term.end_date == null
+                            ? ""
+                            : dateTimeFormat.format(new Date(json.updated_officer_term.end_date))
+                        );
 
                         document.getElementById(`db-nickname-${termID}`).innerHTML = json.updated_officer_term.nickname;
                         document.getElementById(`db-favourite_course_0-${termID}`).innerHTML = json.updated_officer_term.favourite_course_0;
@@ -405,7 +416,7 @@
                         document.getElementById(`db-favourite_pl_1-${termID}`).innerHTML = json.updated_officer_term.favourite_pl_1;
                         document.getElementById(`db-biography-${termID}`).innerHTML = json.updated_officer_term.biography;
                         document.getElementById(`db-photo_url-${termID}`).innerHTML = json.updated_officer_term.photo_url;
-                        
+
                         // TODO: into a function
                         let validationErrorsElement = document.getElementById(`officer-term-${termID}-validation-failures`);
                         if (json.validation_failures.length == 0) {

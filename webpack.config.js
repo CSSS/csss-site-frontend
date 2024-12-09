@@ -5,7 +5,7 @@ const BundleAnalyzerPlugin =
 // change this to your local instance of the CSSS API
 // source: https://github.com/csss/csss-site-backend
 // (if changed, don't commit your change please!)
-const API_INSTANCE = 'http://127.0.0.1:8000';
+const API_INSTANCE = 'http://127.0.0.1:3049';
 
 module.exports = {
   entry: {
