@@ -319,7 +319,7 @@ class AddNewOfficers {
 
         descText.innerHTML = "uploading ...";
 
-        let response = await fetch("/api/officers/new_term", {
+        let response = await fetch("/api/officers/term", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(bodyObjectList)
