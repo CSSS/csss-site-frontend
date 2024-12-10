@@ -112,7 +112,7 @@
                 return;
 
             // TODO: ensure this returns all of the current officer's terms (b/c they have access to them)
-            fetch(`/api/officers/terms/${computingID}?include_inactive=True`).then(response => {
+            fetch(`/api/officers/terms/${computingID}?only_active_officers=True`).then(response => {
                 if (response.status == 401) {
                     loginRedirect();
                 } else if (!response.ok) {
