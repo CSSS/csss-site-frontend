@@ -34,7 +34,7 @@ export function Row(props) {
     >
       <Flex.Container flow='row nowrap' gap='8px' alignItems='center'>
         <h1 className='position'>#{position}</h1>
-        {/*<img src={avatar} alt={name} />*/}
+        {avatar === null ? {} : <img src={avatar} alt={name} />}
         <h1 className='name'>{name}</h1>
         <h1 className='level'>Level {levelNumber}</h1>
       </Flex.Container>
