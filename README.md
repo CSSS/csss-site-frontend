@@ -58,6 +58,10 @@ Before deployments, you should take a look at the bundle analyzer at http://loca
 The bundle analyzer interface is opened on `npm run start` and `npm run build` commands,
 showing the bundle sizes as not-minimized (`start`) or minimized (`build`).
 
+### Deploying changes to the `build` branch (System Administrator / Webmaster only)
+
+After you've merged changes into `main`, run `./scripts/deploy_to_branch.sh` locally. Next, ssh into the server, then run `./scripts/deploy_to_nginx.sh`.
+
 ## Documentation
 
 The documentation for this repo is lacking at the moment, aside from the architecture section.
