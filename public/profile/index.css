@@ -1,0 +1,135 @@
+body {
+  background-image: url('/profile/background.gif');
+  background-repeat: repeat;
+}
+
+input {
+  padding: 0 4px;
+  font-size: 8pt;
+  border: 1px solid #c0c0c0;
+  background-color: #f8f8f8;
+  color: black;
+}
+
+input:disabled {
+  border: 1px solid #808080;
+  background-color: #e0e0e0;
+  color: #808080;
+}
+
+input::placeholder {
+  color: #808080;
+}
+
+textarea {
+  width: 100%;
+  padding: 0 4px;
+  font-size: 8pt;
+  border: 1px solid #c0c0c0;
+  background-color: #f8f8f8;
+  color: black;
+}
+
+button {
+  font-size: 10pt;
+  padding: 2px 6px;
+  border: 1px solid #b0b0b0;
+  background-color: #f0f0f0;
+  color: black;
+  border-radius: 4px;
+}
+
+button:hover {
+  border: 1px solid #c0c0c0;
+  background-color: #f8f8f8;
+}
+
+#tabs {
+  display: flex;
+  flex-flow: row wrap-reverse;
+  width: 404px;
+  background-color: #e0e0e0;
+  gap: 0 2px;
+  padding-top: 8px;
+  padding-left: 8px;
+}
+
+#tabs a {
+  display: block;
+  background-color: #f0f0f0;
+  font-size: 8pt;
+  padding-top: 4px;
+  padding-left: 8px;
+  padding-right: 8px;
+  color: #606060;
+  border: 1px solid #c0c0c0;
+  border-bottom: 1px solid #e0e0e0;
+  border-radius: 8px 8px 0 0;
+}
+
+#tabs a.selected {
+  background-color: white;
+  border-bottom: 1px solid white;
+  color: black;
+}
+
+.login {
+  color: #6080ff;
+  text-decoration: underline;
+}
+
+.user-info-grid {
+  display: grid;
+  column-gap: 4px;
+  row-gap: 4px;
+  grid-template-columns: 128px 144px 92px;
+  grid-template-rows: 20px 20px 20px 20px;
+  grid-template-areas:
+    "none none picture"
+    "none none picture"
+    "none none picture"
+    "none none picture"
+}
+
+.officer-info-grid {
+  display: grid;
+  column-gap: 4px;
+  row-gap: 4px;
+  grid-template-columns: 128px 240px;
+  grid-template-rows: 20px 20px 20px 20px;
+  grid-template-areas:
+    "none none"
+    "none none"
+    "none none"
+    "none none"
+    "none none"
+}
+
+.officer-term-grid-1 {
+  display: grid;
+  column-gap: 4px;
+  row-gap: 4px;
+  grid-template-columns: 128px 144px 92px;
+  grid-template-rows: 20px 20px 20px 20px 20px;
+  grid-template-areas:
+    "none none photo"
+    "none none photo"
+    "none none photo"
+    "none none photo"
+    "none none photo"
+}
+
+.officer-term-grid-2 {
+  display: grid;
+  column-gap: 4px;
+  row-gap: 4px;
+  grid-template-columns: 128px 240px;
+  grid-template-rows: 20px 20px 20px 20px 20px 1fr;
+  grid-template-areas:
+    "none none"
+    "none none"
+    "none none"
+    "none none"
+    "none none"
+    "biography biography"
+}
