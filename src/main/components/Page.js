@@ -33,25 +33,14 @@ export const Page = ({ children }) => {
           '--csss-icon-color': '#a1a1aa' // zinc-400
         }}
       />
-      <a style={{ marginTop: 'auto' }} href="#profile">
-        {userInfo !== null && userInfo.profile_picture_url !== null ? (
-          <img
-            style={{
-              width: '32px',
-              height: '32px',
-              objectFit: 'cover'
-            }}
-            src="https://random.dog/oq9izk0057hy.jpg"
-          />
-        ) : (
-          <Icon.Profile
-            style={{
-              width: '100%',
-              '--csss-icon-color': '#a1a1aa', // zinc-400
-              '--csss-icon-stroke-width': '1px'
-            }}
-          />
-        )}
+      <a style={{ marginTop: 'auto' }} href="/profile">
+        <Icon.Profile
+          style={{
+            width: '100%',
+            '--csss-icon-color': '#a1a1aa', // zinc-400
+            '--csss-icon-stroke-width': '1px'
+          }}
+        />
       </a>
     </>
   );

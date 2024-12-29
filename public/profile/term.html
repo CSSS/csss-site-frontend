@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Profile | CSSS</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/png" href="/static/icons/favicon_black.png" />
+    <link rel="stylesheet" href="/static/css/tailwind.css" />
+    <link rel="stylesheet" href="/profile/index.css" />
+    <script defer="defer" src="/profile/term.js"></script>
+  </head>
+  <body class="w-screen h-screen flex justify-center items-center">
+    <div class="border border-slate-400 bg-white" id="root">
+      <div id="tabs"></div>
+      <div class="px-4 py-2">
+        <p id="error" class="text-xs text-red-500 py-2 hidden"></p>
+        <p class="text-xs text-zinc-500 py-2">Officer term information:</p>
+        <div class="officer-term-grid-1">
+          <p class="text-sm">Computing ID:</p>
+          <input id="computing_id" type="text" disabled></input>
+          <p class="text-sm">Position:</p>
+          <input id="position" type="text" disabled></input>
+          <p class="text-sm">Start date:</p>
+          <input id="start_date" type="text" disabled></input>
+          <p class="text-sm">End date:</p>
+          <input id="end_date" type="text" disabled></input>
+          <p class="text-sm">Photo URL:</p>
+          <input id="photo_url" type="text" placeholder="https://example.com/image.jpg"></input>
+          <img id="photo" style="grid-area: photo" class="w-full h-full bg-slate-400 object-cover" />
+        </div>
+        <div class="officer-term-grid-2 mt-1">
+          <p class="text-sm">Preferred name:</p>
+          <input id="nickname" type="text" placeholder="First Last"></input>
+          <p class="text-sm">Fav. course 1:</p>
+          <input id="favourite_course_0" type="text" placeholder="CMPT120"></input>
+          <p class="text-sm">Fav. course 2:</p>
+          <input id="favourite_course_1" type="text" placeholder="MATH150"></input>
+          <p class="text-sm">Fav. language 1:</p>
+          <input id="favourite_pl_0" type="text" placeholder="JavaScript"></input>
+          <p class="text-sm">Fav. language 2:</p>
+          <input id="favourite_pl_1" type="text" placeholder="C/C++"></input>
+          <div style="grid-area: biography">
+            <p class="text-sm">Biography:</p>
+            <textarea id="biography" rows="4">I'm a CS student at SFU.</textarea>
+          </div>
+        </div>
+        <hr />
+        <div class="flex flex-row justify-start items-center w-full gap-1 py-2">
+          <button type="button" onclick="user_logout()">Log out</button>
+          <button type="botton" onclick="user_reset()" style="margin-left: auto;">Reset</button>
+          <button type="botton" onclick="user_submit()">Submit</button>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
