@@ -5,8 +5,6 @@ import { faPerson } from '@fortawesome/free-solid-svg-icons';
 
 import { Page } from '../components';
 
-const CAS_LOGIN_URL = 'https://cas.sfu.ca/cas/login';
-
 export const Profile = () => {
   const [userInfo, setUserInfo] = useState(null);
 

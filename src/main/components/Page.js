@@ -106,17 +106,20 @@ export const Page = ({ children }) => {
 
   console.log(window.location.hash);
 
+  // This is a quick fix to use the registered backend for authentication
+  let window_location_origin = (window.location.origin == "https://new.sfucsss.org") ? "https://sfucsss.org/new" : window.location.origin;
+
   const loginUrl =
     CAS_LOGIN_URL +
     '?service=' +
     encodeURIComponent(
-      window.location.origin +
+      window_location_origin +
         '/api/auth/login' +
         '?redirect_path=' +
         window.location.pathname +
         '&redirect_fragment=' +
         window.location.hash.substring(1)
-    );
+    ) + "&allow=faculty,student,alumni,sfu";
 
   const logout = async () => {
     try {
