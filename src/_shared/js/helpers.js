@@ -1,4 +1,5 @@
-const CSSS_API = 'https://new.sfucsss.org/api';
+// This is a quick fix to use the registered backend for authentication.
+const CSSS_API = 'https://sfucsss.org/new/api';
 
 /**
  * Checks if a media query matches.
@@ -83,7 +84,7 @@ export function setTheme(oldTheme, newTheme) {
 /** log into the CSSS API */
 export function casLogin(next) {
   const nextEncoded = encodeURI(next);
-  window.location = `https://cas.sfu.ca/cas/login?service=${CSSS_API}/auth/login%3Fnext%3D${nextEncoded}`;
+  window.location = `https://cas.sfu.ca/cas/login?service=${CSSS_API}/auth/login%3Fnext%3D${nextEncoded}&allow=faculty,student,alumni,sfu`;
 }
 
 /** get information about the currently logged in user */

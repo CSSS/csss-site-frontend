@@ -290,8 +290,12 @@
         function loginRedirect() {
             // redirect the user to the sfu login api if they are not yet logged in
             const CAS_LOGIN_URL = "https://cas.sfu.ca/cas/login?service=";
-            const API_LOGIN_URL = window.location.protocol + "//" + window.location.host + "/api/auth/login";
-            let loginURL = CAS_LOGIN_URL + API_LOGIN_URL + "?next_url=" + encodeURIComponent(window.location.href);
+
+            // This is a quick fix to use the registered backend for authentication
+            let window_location_protocol = (window.location.protocol == "https://new.sfucsss.org") ? "https://sfucsss.org/new" : window.location.protocol;
+
+            const API_LOGIN_URL = window_location_protocol + "//" + window.location.host + "/api/auth/login";
+            let loginURL = CAS_LOGIN_URL + API_LOGIN_URL + "?next_url=" + encodeURIComponent(window.location.href) + "&allow=faculty,student,alumni,sfu";
             window.location.replace(loginURL);
         }
 
