@@ -1,5 +1,7 @@
 import React from 'react';
 import { Page, Footer } from '../../components';
+import { SlNote } from 'react-icons/sl';
+import { FaVoteYea } from 'react-icons/fa';
 
 export const AboutElections = () => {
   return (
@@ -64,6 +66,23 @@ export const AboutElections = () => {
               .
             </strong>
           </p>
+        </div>
+
+        <div className="flex flex-row items-center justify-center text-md sm:text-lg md:text-xl mb-8 gap-8">
+          <a
+            href="#about_elections"
+            className="relative w-full px-4 py-6 rounded flex flex-col items-center justify-center  hover:bg-white hover:text-black  duration-300"
+          >
+            <SlNote />
+            Register
+          </a>
+          <a
+            href="#about_elections"
+            className=" relative w-full px-4 py-6 rounded flex flex-col items-center justify-center  hover:bg-white hover:text-black  duration-300"
+          >
+            <FaVoteYea />
+            Vote
+          </a>
         </div>
       </div>
       <Footer />

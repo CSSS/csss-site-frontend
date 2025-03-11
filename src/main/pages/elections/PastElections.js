@@ -13,6 +13,16 @@ export const PastElections = () => {
         </h1>
         <div className="flex flex-col items-center justify-center text-md sm:text-lg md:text-xl mb-8 gap-8">
           <p>
+            {' '}
+            <a
+              className="text-blue-500 hover:text-blue-700"
+              href="https://sfucsss.org/elections/"
+              target="_blank"
+            >
+              Old website
+            </a>
+          </p>
+          <p>
             <a
               className="text-blue-500 hover:text-blue-700"
               href="#past_elections"
