@@ -12,7 +12,7 @@ import {
   Committees
 } from './pages';
 
-import { AboutElections } from './pages/elections';
+import { AboutElections, PastElections } from './pages/elections';
 
 const router = createHashRouter([
   { path: '/', element: <Home /> },
@@ -23,7 +23,8 @@ const router = createHashRouter([
   { path: '/documents', element: <Documents /> },
   { path: '*', element: <NotFound /> },
 
-  { path: '/about_elections', element: <AboutElections /> }
+  { path: '/about_elections', element: <AboutElections /> },
+  { path: '/past_elections', element: <PastElections /> }
 ]);
 
 createRoot(document.getElementById('root')).render(
