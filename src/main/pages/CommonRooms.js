@@ -234,15 +234,15 @@ const PriceTables = () => {
 }
 export const CommonRooms = () => {
   return (
-    <div style={{ fontFamily: 'Poppins, sans-serif' }}>
-      <Page>
+    <Page>
+      <div style={{ fontFamily: 'Poppins, sans-serif' }}>
         <Description />
         <CRPhoto />
         <Maps />
         <Refreshments />
         <PriceTables />
-        <Footer />
-      </Page>
-    </div>
+      </div>
+      <Footer />
+    </Page>
   );
 };

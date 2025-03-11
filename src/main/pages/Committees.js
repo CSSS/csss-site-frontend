@@ -130,8 +130,10 @@ const committees2 = [
  * 3. Text
  */
 
-const button_style = "text-center font-bold max-w-80 py-4 px-4 rounded-lg hover:bg-white hover:text-black text-lg md:text-xl"
-const desc_style = "text-left text-sm md:text-lg p-8 my-8 max-w-4xl bg-[#18181b] mx-auto bg-black rounded-lg"
+const button_style =
+  'text-center font-bold max-w-80 py-4 px-4 rounded-lg hover:bg-white hover:text-black text-lg md:text-xl';
+const desc_style =
+  'text-left text-sm md:text-lg p-8 my-8 max-w-4xl bg-[#18181b] mx-auto bg-black rounded-lg';
 
 const TLTComponent = ({ committee, links, isOpen, toggle }) => {
   const link = links.find((link) => link.key === committee.key);
@@ -143,9 +145,7 @@ const TLTComponent = ({ committee, links, isOpen, toggle }) => {
         </button>
       </div>
 
-      <div
-        className={`${isOpen ? 'block' : 'hidden'}`}
-      >
+      <div className={`${isOpen ? 'block' : 'hidden'}`}>
         <p className={desc_style}>
           {committee.description}
           <a href={link.link} className="italic underline hover:text-blue-500">
@@ -163,17 +163,12 @@ const TLTLTcomponent = ({ committee, links, isOpen, toggle }) => {
   return (
     <div>
       <div className="flex justify-center">
-        <button
-          onClick={toggle}
-          className={button_style}
-        >
+        <button onClick={toggle} className={button_style}>
           {committee.name}
         </button>
       </div>
 
-      <div
-        className={`${isOpen ? 'block' : 'hidden'}`}
-      >
+      <div className={`${isOpen ? 'block' : 'hidden'}`}>
         <p className={desc_style}>
           {committee.description}
           <a
@@ -200,19 +195,13 @@ const JustText = ({ committee, isOpen, toggle }) => {
   return (
     <div>
       <div className="flex justify-center">
-        <button
-          onClick={toggle}
-          className={button_style}>
+        <button onClick={toggle} className={button_style}>
           {committee.name}
         </button>
       </div>
 
-      <div
-        className={`${isOpen ? 'block' : 'hidden'}`}
-      >
-        <p className={desc_style}>
-          {committee.description}
-        </p>
+      <div className={`${isOpen ? 'block' : 'hidden'}`}>
+        <p className={desc_style}>{committee.description}</p>
       </div>
     </div>
   );
@@ -229,63 +218,61 @@ export const Committees = () => {
     setOpenSection(openSection === name ? null : name);
   };
 
-  const header = "text-3xl sm:text-4xl md:text-5xl font-bold mb-8"
-  const subHeader = "text-md md:text-xl"
+  const header = 'text-3xl sm:text-4xl md:text-5xl font-bold mb-8 mt-8';
+  const subHeader = 'text-md md:text-xl mt-4 mb-8';
 
   return (
-    <Page style={{ fontFamily: 'Poppins, sans-serif' }}>
-      <br></br>
-      <br />
+    <Page>
+      <div
+        className="flex flex-col "
+        style={{ fontFamily: 'Poppins, sans-serif' }}
+      >
+        <div className="flex flex-col text-center mx-16">
+          <div className={header}>Committees</div>
+          <div className={subHeader}>
+            <p>Click on each committee to learn more about it ⤵️</p>
+          </div>
+        </div>
 
-      <div className="flex flex-col text-center mx-16">
-        <div className={header}>Committees</div>
-        <div className={subHeader}>
-          <p>Click on each committee to learn more about it ⤵️</p>
+        <div className="mb-12 pb-8">
+          <div>
+            {committees.map((committee) => (
+              <TLTComponent
+                key={committee.name}
+                committee={committee}
+                links={links}
+                isOpen={openSection === committee.name}
+                toggle={() => toggleSection(committee.name)}
+              />
+            ))}
+          </div>
+
+          <div>
+            {committees2.map((committee) => {
+              if (committee.key === 'W3C') {
+                return (
+                  <TLTLTcomponent
+                    key={committee.key}
+                    committee={committee}
+                    links={links}
+                    isOpen={openSection === committee.name}
+                    toggle={() => toggleSection(committee.name)}
+                  />
+                );
+              } else if (committee.key === 'Policy') {
+                return (
+                  <JustText
+                    key={committee.key}
+                    committee={committee}
+                    isOpen={openSection === committee.name}
+                    toggle={() => toggleSection(committee.name)}
+                  />
+                );
+              }
+            })}
+          </div>
         </div>
       </div>
-
-      <div className="">
-        <br></br>
-        <div>
-          {committees.map((committee) => (
-            <TLTComponent
-              key={committee.name}
-              committee={committee}
-              links={links}
-              isOpen={openSection === committee.name}
-              toggle={() => toggleSection(committee.name)}
-            />
-          ))}
-        </div>
-
-        <div>
-          {committees2.map((committee) => {
-            if (committee.key === 'W3C') {
-              return (
-                <TLTLTcomponent
-                  key={committee.key}
-                  committee={committee}
-                  links={links}
-                  isOpen={openSection === committee.name}
-                  toggle={() => toggleSection(committee.name)}
-                />
-              );
-            }
-            else if (committee.key === 'Policy') {
-              return (
-                <JustText
-                  key={committee.key}
-                  committee={committee}
-                  isOpen={openSection === committee.name}
-                  toggle={() => toggleSection(committee.name)}
-                />
-              );
-            }
-          })}
-        </div>
-        <br></br>
-      </div>
-
       <Footer />
     </Page>
   );
