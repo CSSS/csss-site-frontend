@@ -1,6 +1,9 @@
 import React from 'react';
 import { Page, Footer } from '../../components';
 
+const years = [2024, 2023, 2022, 2021, 2020, 2019, 2018, 2017, 2016, 2015];
+// TODO: replace with api call for all past elections
+
 export const PastElections = () => {
   return (
     <Page>
@@ -22,86 +25,16 @@ export const PastElections = () => {
               Old website
             </a>
           </p>
-          <p>
-            <a
-              className="text-blue-500 hover:text-blue-700"
-              href="#past_elections"
-            >
-              2024
-            </a>
-          </p>
-          <p>
-            <a
-              className="text-blue-500 hover:text-blue-700"
-              href="#past_elections"
-            >
-              2023
-            </a>
-          </p>
-          <p>
-            <a
-              className="text-blue-500 hover:text-blue-700"
-              href="#past_elections"
-            >
-              2022
-            </a>
-          </p>
-          <p>
-            <a
-              className="text-blue-500 hover:text-blue-700"
-              href="#past_elections"
-            >
-              2021
-            </a>
-          </p>
-          <p>
-            <a
-              className="text-blue-500 hover:text-blue-700"
-              href="#past_elections"
-            >
-              2020
-            </a>
-          </p>
-          <p>
-            <a
-              className="text-blue-500 hover:text-blue-700"
-              href="#past_elections"
-            >
-              2019
-            </a>
-          </p>
-          <p>
-            <a
-              className="text-blue-500 hover:text-blue-700"
-              href="#past_elections"
-            >
-              2018
-            </a>
-          </p>
-          <p>
-            <a
-              className="text-blue-500 hover:text-blue-700"
-              href="#past_elections"
-            >
-              2017
-            </a>
-          </p>
-          <p>
-            <a
-              className="text-blue-500 hover:text-blue-700"
-              href="#past_elections"
-            >
-              2016
-            </a>
-          </p>
-          <p>
-            <a
-              className="text-blue-500 hover:text-blue-700"
-              href="#past_elections"
-            >
-              2015
-            </a>
-          </p>
+          {years.map((year) => (
+            <p key={year}>
+              <a
+                className="text-blue-500 hover:text-blue-700"
+                href="#past_elections"
+              >
+                {year}
+              </a>
+            </p>
+          ))}
         </div>
       </div>
       <Footer />
