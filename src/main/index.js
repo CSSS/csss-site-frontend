@@ -12,7 +12,7 @@ import {
   Committees
 } from './pages';
 
-import { AboutElections, PastElections } from './pages/elections';
+import { AboutElections, PastElections, ElectionInfo } from './pages/elections';
 
 const router = createHashRouter([
   { path: '/', element: <Home /> },
@@ -24,7 +24,8 @@ const router = createHashRouter([
   { path: '*', element: <NotFound /> },
 
   { path: '/about_elections', element: <AboutElections /> },
-  { path: '/past_elections', element: <PastElections /> }
+  { path: '/past_elections', element: <PastElections /> },
+  { path: '/past_elections/:slug', element: <ElectionInfo /> }
 ]);
 
 createRoot(document.getElementById('root')).render(

@@ -1,0 +1,210 @@
+{
+  "elections": {
+    "by-election-2024-04-12": {
+      "name": "By-Election: 2024-04-12",
+      "positions": {
+        "Treasurer": [
+          {
+            "full_name": "Jane Doe",
+            "speech": "I pledge to ensure full financial transparency, prioritizing responsible budgeting and resource allocation. My goal is to advocate for a financial strategy that maximizes student-led initiatives, empowers student organizations, and ensures the best use of funds for activities and events that benefit everyone on campus. I will work to improve financial literacy for students and ensure every dollar is well-spent, making sure that the student body is always informed and involved in decisions regarding our funds.",
+            "votes": 2100
+          }
+        ],
+        "Vice President": [
+          {
+            "full_name": "John Smith",
+            "speech": "As your Vice President, my mission is to create a more inclusive, supportive, and connected student body. I will focus on building stronger relationships between students and the administration, ensuring that every student's voice is heard. I will work to ensure that student feedback is not just listened to, but actively implemented. Through collaborative efforts, I want to create spaces and initiatives that make every student feel like they belong. Together, we can build an environment that fosters growth, opportunities, and well-being for all.",
+            "votes": 1850
+          }
+        ],
+        "President": [
+          {
+            "full_name": "Emily Johnson",
+            "speech": "I will work tirelessly to represent your voice, advocating for a better future for all students on our campus. I believe that leadership is about service, and I am committed to ensuring that all students have access to the resources, support, and opportunities they need to succeed. I will prioritize creating a campus that reflects the diverse needs of our student body, with a strong focus on mental health, inclusivity, and academic excellence. My goal is to foster a community where every student feels heard, respected, and empowered to make a difference.",
+            "votes": 2200
+          }
+        ]
+      }
+    },
+    "general-election-2024-03-28": {
+      "name": "General Election: 2024-03-28",
+      "positions": {
+        "Director of Archives": [
+          {
+            "full_name": "Daniel Brown",
+            "speech": "I am committed to improving the accessibility of student records and ensuring that our history is preserved for future generations. I believe that every student deserves to have access to the history of their community, and I will work hard to make sure our archives are well-maintained, organized, and digitized. I will advocate for a robust archival system that ensures student records and memories are easily accessible and serve as an important resource for years to come. It is essential that we preserve our history while also making sure it is usable and relevant for the future.",
+            "votes": 1500
+          }
+        ],
+        "Director of Resources": [
+          {
+            "full_name": "Emily Wright",
+            "speech": "I am dedicated to enhancing our campus resources, from library services to student lounge areas, ensuring that all students have the tools and space they need to succeed. I will work to improve access to academic resources, such as textbooks, study spaces, and tutoring services, as well as recreational spaces where students can relax and recharge. I will collaborate with faculty, staff, and students to ensure that our campus facilities are constantly evolving to meet the needs of a growing and diverse student body. Together, we can create an environment where students thrive both academically and personally.",
+            "votes": 1400
+          }
+        ],
+        "Vice President": [
+          {
+            "full_name": "Alice Johnson",
+            "speech": "As your Vice President, I will work tirelessly to strengthen student engagement, ensuring that we have the resources needed to succeed and grow. I will create new programs to foster collaboration between different student groups and will advocate for better access to opportunities for personal and professional growth. It’s crucial that all students, regardless of background or interests, feel like they have a place on campus. I will also work on ensuring that the student body has a clear and accessible way to voice concerns, and that those concerns are met with action.",
+            "votes": 1800
+          }
+        ],
+        "President": [
+          {
+            "full_name": "Sophia Martinez",
+            "speech": "As President, I will lead with transparency and work closely with students to ensure that their voices are heard at every level of decision-making. I believe in an open dialogue between students, faculty, and administration, where ideas can be shared freely, and where student feedback is used to create positive change. I will fight for policies that promote inclusivity, mental health support, and equal opportunities for all students. Together, we can build a more vibrant, collaborative, and supportive campus that truly reflects the diverse needs of our student body.",
+            "votes": 1900
+          }
+        ],
+        "Director of Events": [
+          {
+            "full_name": "Bob Smith",
+            "speech": "My vision for campus events is to organize memorable, inclusive, and impactful events that bring our student body together, foster a sense of community, and celebrate diversity. I will ensure that all students, regardless of their interests, have opportunities to participate in events that appeal to them. From academic events and workshops to cultural celebrations and social gatherings, I will make sure that our campus events promote interaction, engagement, and fun. I am committed to making every student feel welcome and included in every event we organize.",
+            "votes": 1700
+          }
+        ]
+      }
+    },
+    "council-rep-2024-02-28": {
+      "name": "Council Rep Election: 2024-02-28",
+      "positions": {
+        "Council Representative": [
+          {
+            "full_name": "Mark Taylor",
+            "speech": "I will focus on ensuring a more inclusive campus where every student has a voice and where our campus policies reflect the needs and priorities of our diverse student body. I will advocate for better student services, resources, and support systems, ensuring that all students, regardless of their background or circumstances, have access to the help they need. I will also work to increase transparency in decision-making processes, so that students are always in the loop and feel empowered to make meaningful change on campus.",
+            "votes": 1325
+          },
+          {
+            "full_name": "Laura Green",
+            "speech": "As Vice President, I will work to improve communication and collaboration between the student body and the administration. I believe that by fostering a strong partnership between students, faculty, and administration, we can achieve more and create an environment that supports the needs of all students. I will prioritize initiatives that promote inclusivity, strengthen student engagement, and enhance the overall student experience. I am committed to making sure that every student feels valued and that their voices are heard in every decision that affects them.",
+            "votes": 1450
+          }
+        ]
+      }
+    },
+    "by-election-2024-01-30": {
+      "name": "By-Election: 2024-01-30",
+      "positions": {
+        "Treasurer": [
+          {
+            "full_name": "Chris Green",
+            "speech": "I will work to ensure financial transparency and accountability in all decisions regarding student funds. My focus will be on supporting student-led initiatives, ensuring that every dollar is spent wisely to maximize the impact of campus events and programs. I will provide regular updates to the student body on the financial status of the organization, allowing everyone to see how funds are allocated and ensuring that there is full transparency in all financial matters. My goal is to foster a sense of trust between the student body and our financial operations.",
+            "votes": 1750
+          }
+        ],
+        "Director of Events": [
+          {
+            "full_name": "Samantha Lee",
+            "speech": "I will organize events that engage all students, creating a sense of belonging and unity on campus. From large-scale social events to smaller, intimate gatherings, I will ensure that there is something for everyone. I will collaborate with student organizations to ensure that events are diverse, inclusive, and reflective of the interests and needs of our campus community. My goal is to make sure every student feels welcomed and has opportunities to connect with others and be part of the vibrant campus life we all cherish.",
+            "votes": 1600
+          }
+        ]
+      }
+    },
+    "general-election-2023-03-29": {
+      "name": "General Election: 2023-03-29",
+      "positions": {
+        "Director of Archives": [
+          {
+            "full_name": "Daniel Brown",
+            "speech": "I will ensure that our history is preserved and accessible to all students. As Director of Archives, I will focus on digitizing records, preserving memories, and making sure that our history is properly maintained and easily accessible. This will not only help future generations of students learn from our past, but it will also provide insight into the evolution of our community. I will work to ensure that every student's story is remembered and that our archives serve as an invaluable resource for years to come.",
+            "votes": 1500
+          }
+        ],
+        "Director of Resources": [
+          {
+            "full_name": "Emily Wright",
+            "speech": "I am committed to improving student access to campus resources, ensuring that all students have what they need to succeed. Whether it's enhancing library services, improving study spaces, or ensuring that students have access to the tools and support they need to excel, I will work to make sure that our campus facilities are efficient and accessible for everyone. I will prioritize making resources available to all students, including providing better access to technology, study areas, and learning support services.",
+            "votes": 1400
+          }
+        ],
+        "Vice President": [
+          {
+            "full_name": "Chris Green",
+            "speech": "As Vice President, I will work to create a more collaborative environment where every student feels represented and heard. I will focus on strengthening communication between the administration and students, ensuring that every student has an outlet to express their concerns and ideas. I will advocate for initiatives that foster inclusivity and ensure that no student is left behind. Together, we can create a more transparent, supportive, and empowered student body.",
+            "votes": 1700
+          }
+        ],
+        "President": [
+          {
+            "full_name": "Samantha Lee",
+            "speech": "My priority as President is to represent the students and lead with integrity, transparency, and a focus on meaningful change. I will work to create a campus environment that reflects the diverse needs of our community, where every student feels heard and valued. I will advocate for better mental health support, increased resources for student success, and more opportunities for engagement. I am committed to ensuring that your voice is always heard and that together, we can create a campus that empowers every student.",
+            "votes": 1800
+          }
+        ],
+        "Director of Events": [
+          {
+            "full_name": "Julia Evans",
+            "speech": "I will work to organize dynamic and inclusive events that cater to all student interests. From academic seminars to social gatherings, I will ensure that our events are engaging and accessible to everyone. My goal is to foster a sense of community, where students can come together, share experiences, and create lasting memories. I will work closely with student organizations and the administration to ensure that our events are fun, impactful, and reflective of the diverse needs of our student body.",
+            "votes": 1600
+          }
+        ]
+      }
+    },
+    "council-rep-2023-03-10": {
+      "name": "Council Rep Election: 2023-03-10",
+      "positions": {
+        "Council Representative": [
+          {
+            "full_name": "Michael Howard",
+            "speech": "I will bring a fresh perspective, advocating for all students while ensuring that campus policies reflect our diverse needs. I believe that a strong campus community is built on the foundation of inclusivity, collaboration, and active participation. I will work hard to ensure that all students feel represented and that their concerns are heard. Together, we can create a more connected, empowered campus where every student has the opportunity to thrive.",
+            "votes": 1200
+          }
+        ]
+      }
+    },
+    "by-election-2022-04-23": {
+      "name": "By-Election: 2022-04-23",
+      "positions": {
+        "Treasurer": [
+          {
+            "full_name": "Sophia Martinez",
+            "speech": "I promise to ensure transparency and responsible budgeting for the benefit of all students. I will work closely with the student body to ensure that their financial priorities are reflected in our budget. I will advocate for programs that directly impact student life, while making sure that we are using our funds in the most efficient way possible. I will provide regular updates on our financial status, ensuring that every dollar is spent in the best interest of our community.",
+            "votes": 1600
+          }
+        ]
+      }
+    },
+    "general-election-2022-04-01": {
+      "name": "General Election: 2022-04-01",
+      "positions": {
+        "Director of Archives": [
+          {
+            "full_name": "Julia Evans",
+            "speech": "I will focus on preserving and digitizing our student body’s history to ensure future generations can access it. I believe that our archives are a vital resource for understanding our campus's evolution. By working to preserve our history, I will ensure that we have a detailed record of student achievements and milestones. My goal is to make our archives easily accessible and relevant to every student, so they can learn from our past as they shape the future.",
+            "votes": 1700
+          }
+        ],
+        "Director of Resources": [
+          {
+            "full_name": "Liam Johnson",
+            "speech": "I am dedicated to improving student access to resources and ensuring the facilities serve everyone’s needs. I will work to enhance campus infrastructure, increase accessibility to academic resources, and ensure that every student has the tools they need to succeed. Whether it's improving study spaces or expanding access to technology, my goal is to ensure that our campus meets the needs of a diverse student body, allowing everyone to achieve their full potential.",
+            "votes": 1500
+          }
+        ],
+        "Vice President": [
+          {
+            "full_name": "Sophia Martinez",
+            "speech": "As Vice President, I will work to ensure all students feel supported and that their voices are heard in every decision. I will work closely with the student body to ensure that we are creating an environment that prioritizes inclusivity, communication, and accessibility. I will advocate for policies that make student services more efficient and accessible, and I will work tirelessly to ensure that every student has an opportunity to succeed and grow on this campus.",
+            "votes": 1800
+          }
+        ],
+        "President": [
+          {
+            "full_name": "Samantha Lee",
+            "speech": "I will strive to build a community where every student’s voice is valued and empowered. As President, I will be a strong advocate for students, ensuring that our needs are met and that our campus reflects the diversity of our voices. I will focus on initiatives that promote inclusivity, mental health, and academic success. Together, we can create a more vibrant, supportive, and transparent community where every student feels like they belong.",
+            "votes": 1900
+          }
+        ],
+        "Director of Events": [
+          {
+            "full_name": "John Smith",
+            "speech": "I will organize impactful events that bring the campus together and help build lasting memories. From academic workshops to social gatherings, I will ensure that all students have access to events that foster personal growth and community building. My goal is to create a more connected campus through meaningful events that reflect the diverse interests of the student body. I will work to make sure every event is inclusive and engaging for all students.",
+            "votes": 1600
+          }
+        ]
+      }
+    }
+  }
+}
