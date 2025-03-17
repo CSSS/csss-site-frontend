@@ -1,9 +1,42 @@
-import React from 'react';
+import React, { useState, useEffect }  from 'react';
 import { Page, Footer } from '../../components';
 import { SlNote } from 'react-icons/sl';
 import { FaVoteYea } from 'react-icons/fa';
+const CAS_LOGIN_URL = 'https://cas.sfu.ca/cas/login';
 
 export const AboutElections = () => {
+    const [userInfo, setUserInfo] = useState(null);
+
+         useEffect(() => {
+            setTimeout(() => {
+              const userInfoStr = sessionStorage.getItem('profile');
+              if (userInfoStr) {
+                setUserInfo(JSON.parse(userInfoStr));
+              }
+            }, 100); // 100ms to let Page load login info
+          }, []);
+    
+          const loginUrl =
+          CAS_LOGIN_URL +
+          '?service=' +
+          encodeURIComponent(
+            window.location.origin +
+              '/api/auth/login' +
+              '?redirect_path=' +
+              window.location.pathname +
+              '&redirect_fragment=' +
+              window.location.hash.substring(1)
+          );
+
+  const checkLogin = () => {
+    if (userInfo === null) {
+      window.location.replace(loginUrl)
+    }
+    else
+      window.location.replace('/#register');
+    }
+    
+  
   return (
     <Page>
       <div
@@ -70,7 +103,7 @@ export const AboutElections = () => {
 
         <div className="flex flex-row items-center justify-center text-md sm:text-lg md:text-xl mb-8 gap-8">
           <a
-            href="#about_elections"
+            onClick={checkLogin}
             className="relative w-full px-4 py-6 rounded flex flex-col items-center justify-center  hover:bg-white hover:text-black  duration-300"
           >
             <SlNote />
