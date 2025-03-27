@@ -49,14 +49,34 @@
         details > summary:hover {
             text-decoration: underline;
         }
+
+        #go_back_logo {
+            transition: transform ease-out 0.2s;
+        }
+        #go_back_logo:hover {
+            transform: rotate(15deg);
+            filter: invert(15%);
+        }
+        #go_back_logo:active {
+            filter: invert(30%);
+        }
     </style>
 
     <body>
-        <h2 style="margin: 30px 0">CSSS 2025-2026 SFSS Council Representative Election</h2>
+        <div style="overflow: hidden; width:100%; height: 96px; margin: 30px 0;">
+            <img src="/static/files/main/mural.png" style="width:200%; margin-top: -65%;">
+        </div>
+
+        <div style="display: flex; flex-direction: row; align-items: center; justify-content: center;">
+            <a href="/"><img id="go_back_logo" src="/static/files/csss_black.svg" style="width:64px;"></a>
+            <h2 style="margin: 30px 0 30px 15px;">CSSS 2025-2026 SFSS Council Representative Election</h2>
+        </div>
+
+        <p><b style="color: #3364cc;">What is an SFSS Council Representative?</b> You can read more about it in the <a href="https://github.com/CSSS/public-docs/tree/master/constitutions">CSSS's Constitution</a>.</p>
 
         <p>
             Voting for this election will be conducted through SFU's simplyvoting platform. If you are
-            elligible, you will be sent an email with instructions on how to vote.
+            elligible, you will be sent an email with instructions on how to vote (login to <a href="https://sfu.simplyvoting.com/">sfu.simplyvoting.com</a> and select this election).
         </p>
 
         <p>
@@ -67,7 +87,7 @@
         </p>
 
         <p>
-            The following are speeches provided by the candidates:
+            The following speeches are provided by the candidates.
         </p>
 
         <div id="speech-container">
@@ -137,6 +157,12 @@
     </body>
 
     <script>
+
+        console.log("woah, you opened the browser console!! Here, have a cookie!")
+
+        var _ = Math.random();
+        var _ = Math.random();
+        var _ = Math.random();
 
         // https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array
         function shuffle(array) {
