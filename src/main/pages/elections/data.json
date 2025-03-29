@@ -2,6 +2,9 @@
   "elections": {
     "by-election-2024-04-12": {
       "name": "By-Election: 2024-04-12",
+      "end_date": false,
+      "start_date": false,
+      "registration": true,
       "positions": {
         "Treasurer": [
           {
@@ -28,6 +31,9 @@
     },
     "general-election-2024-03-28": {
       "name": "General Election: 2024-03-28",
+      "end_date": true,
+      "start_date": true,
+      "registration": false,
       "positions": {
         "Director of Archives": [
           {
@@ -68,6 +74,9 @@
     },
     "council-rep-2024-02-28": {
       "name": "Council Rep Election: 2024-02-28",
+      "end_date": true,
+      "start_date": true,
+      "registration": false,
       "positions": {
         "Council Representative": [
           {
@@ -85,6 +94,9 @@
     },
     "by-election-2024-01-30": {
       "name": "By-Election: 2024-01-30",
+      "end_date": true,
+      "start_date": true,
+      "registration": false,
       "positions": {
         "Treasurer": [
           {
@@ -104,6 +116,9 @@
     },
     "general-election-2023-03-29": {
       "name": "General Election: 2023-03-29",
+      "end_date": true,
+      "start_date": true,
+      "registration": false,
       "positions": {
         "Director of Archives": [
           {
@@ -144,6 +159,9 @@
     },
     "council-rep-2023-03-10": {
       "name": "Council Rep Election: 2023-03-10",
+      "end_date": true,
+      "start_date": true,
+      "registration": false,
       "positions": {
         "Council Representative": [
           {
@@ -156,6 +174,9 @@
     },
     "by-election-2022-04-23": {
       "name": "By-Election: 2022-04-23",
+      "end_date": true,
+      "start_date": true,
+      "registration": false,
       "positions": {
         "Treasurer": [
           {
@@ -168,6 +189,9 @@
     },
     "general-election-2022-04-01": {
       "name": "General Election: 2022-04-01",
+      "end_date": true,
+      "start_date": true,
+      "registration": false,
       "positions": {
         "Director of Archives": [
           {

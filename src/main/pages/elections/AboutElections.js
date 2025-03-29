@@ -1,46 +1,82 @@
-import React, { useState, useEffect }  from 'react';
+import React, { useState, useEffect } from 'react';
 import { Page, Footer } from '../../components';
 import { SlNote } from 'react-icons/sl';
 import { FaVoteYea } from 'react-icons/fa';
+import elections from './data.json';
 const CAS_LOGIN_URL = 'https://cas.sfu.ca/cas/login';
 
-export const AboutElections = () => {
-    const [userInfo, setUserInfo] = useState(null);
+const displayElection = (election) => {
+  return (
+    <div>
+      <h1 className="text-xl sm:text-2xl md:text-3xl font-bold text-center mb-8 pb-8">
+        {election.name}
+      </h1>
+      {Object.entries(election.positions).map(([position, candidates]) => (
+        <div key={position}>
+          <h2 className="text-lg sm:text-xl md:text-2xl font-bold py-4">
+            Position: {position}
+          </h2>
+          <ul>
+            {candidates.map((candidate) => (
+              <li className="py-4" key={candidate.full_name}>
+                <h3>
+                  {' '}
+                  Nominee name: <strong>{candidate.full_name}</strong>
+                </h3>
+                <p>
+                  Votes: <strong>{candidate.votes}</strong>
+                </p>
+                <h4 className="py-4">Nominee speech:</h4>
+                <ul className="bg-gray-900 text-white p-4 rounded-sm shadow-md">
+                  <li>{candidate.speech}</li>
+                </ul>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+  );
+};
 
-         useEffect(() => {
-            setTimeout(() => {
-              const userInfoStr = sessionStorage.getItem('profile');
-              if (userInfoStr) {
-                setUserInfo(JSON.parse(userInfoStr));
-              }
-            }, 100); // 100ms to let Page load login info
-          }, []);
-    
-          const loginUrl =
-          CAS_LOGIN_URL +
-          '?service=' +
-          encodeURIComponent(
-            window.location.origin +
-              '/api/auth/login' +
-              '?redirect_path=' +
-              window.location.pathname +
-              '&redirect_fragment=' +
-              window.location.hash.substring(1)
-          );
+export const AboutElections = () => {
+  const [userInfo, setUserInfo] = useState(null);
+  const electionEntries = Object.entries(elections.elections); // Convert object to an array
+  const currentElection = electionEntries.filter(
+    ([_, election]) => election.registration
+  );
+
+  useEffect(() => {
+    setTimeout(() => {
+      const userInfoStr = sessionStorage.getItem('profile');
+      if (userInfoStr) {
+        setUserInfo(JSON.parse(userInfoStr));
+      }
+    }, 100); // 100ms to let Page load login info
+  }, []);
+
+  const loginUrl =
+    CAS_LOGIN_URL +
+    '?service=' +
+    encodeURIComponent(
+      window.location.origin +
+        '/api/auth/login' +
+        '?redirect_path=' +
+        window.location.pathname +
+        '&redirect_fragment=' +
+        window.location.hash.substring(1)
+    );
 
   const checkLogin = () => {
     if (userInfo === null) {
-      window.location.replace(loginUrl)
-    }
-    else
-      window.location.replace('/#register');
-    }
-    
-  
+      window.location.replace(loginUrl);
+    } else window.location.replace('/#register');
+  };
+
   return (
     <Page>
       <div
-        className="p-16 max-w-4xl mx-auto"
+        className="p-8 max-w-4xl mx-auto min-h-fit"
         style={{ fontFamily: 'Poppins, sans-serif' }}
       >
         <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-8 pb-8">
@@ -101,22 +137,57 @@ export const AboutElections = () => {
           </p>
         </div>
 
-        <div className="flex flex-row items-center justify-center text-md sm:text-lg md:text-xl mb-8 gap-8">
-          <a
-            onClick={checkLogin}
-            className="relative w-full px-4 py-6 rounded flex flex-col items-center justify-center  hover:bg-white hover:text-black  duration-300"
+        {currentElection.map(([slug, election]) => (
+          <div
+            key={slug}
+            className="flex flex-row items-center justify-center text-md sm:text-lg md:text-xl mb-8 gap-8"
           >
-            <SlNote />
-            Register
-          </a>
-          <a
-            href="#about_elections"
-            className=" relative w-full px-4 py-6 rounded flex flex-col items-center justify-center  hover:bg-white hover:text-black  duration-300"
-          >
-            <FaVoteYea />
-            Vote
-          </a>
-        </div>
+            <a
+              // onClick={checkLogin}
+              href={`#elections/${slug}/register`}
+              className="relative w-full px-4 py-6 rounded flex flex-col items-center justify-center  hover:bg-white hover:text-black  duration-300"
+            >
+              <SlNote />
+              Register
+            </a>
+          </div>
+        ))}
+      </div>
+
+      <div
+        className="p-8 max-w-4xl mx-auto"
+        style={{ fontFamily: 'Poppins, sans-serif' }}
+      >
+        {currentElection.map(([slug, election]) => (
+          <div key={slug}>
+            {election.start_date ? (
+              <div>
+                <h1 className="text-center mb-8 pb-8">
+                  Scroll down to view the current election
+                </h1>
+                {displayElection(election)}
+                <a
+                  href="#about_elections"
+                  className=" relative py-6 rounded flex flex-col items-center justify-center  hover:bg-white hover:text-black  duration-300"
+                >
+                  <FaVoteYea />
+                  Vote
+                </a>
+              </div>
+            ) : election.registration ? (
+              <div>
+                <h1>
+                  Students can now register for{' '}
+                  <span className="italic font-bold">{election.name}</span>.
+                </h1>
+              </div>
+            ) : (
+              <div>
+                <h1>There are currently no elections in progress.</h1>
+              </div>
+            )}
+          </div>
+        ))}
       </div>
       <Footer />
     </Page>

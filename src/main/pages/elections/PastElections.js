@@ -7,6 +7,10 @@ const years = [2024, 2023, 2022, 2021, 2020, 2019, 2018, 2017, 2016, 2015];
 
 export const PastElections = () => {
   const electionEntries = Object.entries(elections.elections); // Convert object to an array
+  const pastElections = electionEntries.filter(
+    ([_, election]) => election.end_date
+  );
+
   return (
     <Page>
       <div
@@ -27,24 +31,14 @@ export const PastElections = () => {
               Old website
             </a>
           </p>
-          {/* {years.map((year) => (
-            <p key={year}>
-              <a
-                className="text-blue-500 hover:text-blue-700"
-                href="#past_elections"
-              >
-                {year}
-              </a>
-            </p>
-          ))} */}
 
-          {electionEntries.map(([slug, election]) => (
+          {pastElections.map(([slug, election]) => (
             <div key={slug}>
               <a
                 className="text-blue-500 hover:text-blue-700"
-                href={`#past_elections/${slug}`}
+                href={`#elections/${slug}`}
               >
-                <h2>{election.name}</h2>
+                {election.name}
               </a>
             </div>
           ))}
