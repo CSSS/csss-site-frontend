@@ -105,12 +105,12 @@ export const Page = ({ children }) => {
         <VSCode.NavItem
           isInFolder={true}
           text="About Elections.md"
-          to="/about_elections"
+          to="/elections/about"
         />
         <VSCode.NavItem
           isInFolder={true}
           text="Past Elections.md"
-          to="/past_elections"
+          to="/elections"
         />
       </VSCode.NavFolder>
     </>
