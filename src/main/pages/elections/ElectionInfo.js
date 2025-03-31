@@ -1,7 +1,7 @@
 import React from 'react';
 import { Page, Footer } from '../../components';
 import { useParams } from 'react-router-dom';
-import elections from './data.json';
+import elections from './elections.json';
 
 export const ElectionInfo = () => {
   const { slug } = useParams();

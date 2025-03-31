@@ -2,8 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Page, Footer } from '../../components';
 import { SlNote } from 'react-icons/sl';
 import { FaVoteYea } from 'react-icons/fa';
-import elections from './data.json';
-const CAS_LOGIN_URL = 'https://cas.sfu.ca/cas/login';
+import elections from './elections.json';
 
 const displayElection = (election) => {
   return (
@@ -40,38 +39,10 @@ const displayElection = (election) => {
 };
 
 export const AboutElections = () => {
-  const [userInfo, setUserInfo] = useState(null);
   const electionEntries = Object.entries(elections.elections); // Convert object to an array
   const currentElection = electionEntries.filter(
-    ([_, election]) => election.registration
+    ([_, election]) => election.status != 'ended'
   );
-
-  useEffect(() => {
-    setTimeout(() => {
-      const userInfoStr = sessionStorage.getItem('profile');
-      if (userInfoStr) {
-        setUserInfo(JSON.parse(userInfoStr));
-      }
-    }, 100); // 100ms to let Page load login info
-  }, []);
-
-  const loginUrl =
-    CAS_LOGIN_URL +
-    '?service=' +
-    encodeURIComponent(
-      window.location.origin +
-        '/api/auth/login' +
-        '?redirect_path=' +
-        window.location.pathname +
-        '&redirect_fragment=' +
-        window.location.hash.substring(1)
-    );
-
-  const checkLogin = () => {
-    if (userInfo === null) {
-      window.location.replace(loginUrl);
-    } else window.location.replace('/#register');
-  };
 
   return (
     <Page>
@@ -97,21 +68,21 @@ export const AboutElections = () => {
             <span className="italic">
               <a
                 className="text-blue-500 hover:text-blue-700"
-                href="#about_elections"
+                href="#elections/about"
               >
                 Major
               </a>
               ,{' '}
               <a
                 className="text-blue-500 hover:text-blue-700"
-                href="#about_elections"
+                href="#elections/about"
               >
                 Minor
               </a>
               , or{' '}
               <a
                 className="text-blue-500 hover:text-blue-700"
-                href="#about_elections"
+                href="#elections/about"
               >
                 Honours
               </a>
@@ -136,58 +107,48 @@ export const AboutElections = () => {
             </strong>
           </p>
         </div>
-
-        {currentElection.map(([slug, election]) => (
-          <div
-            key={slug}
-            className="flex flex-row items-center justify-center text-md sm:text-lg md:text-xl mb-8 gap-8"
-          >
-            <a
-              // onClick={checkLogin}
-              href={`#elections/${slug}/register`}
-              className="relative w-full px-4 py-6 rounded flex flex-col items-center justify-center  hover:bg-white hover:text-black  duration-300"
-            >
-              <SlNote />
-              Register
-            </a>
-          </div>
-        ))}
       </div>
 
       <div
-        className="p-8 max-w-4xl mx-auto"
+        className="p-4 max-w-4xl mx-auto text-sm sm:text-md md:text-lg "
         style={{ fontFamily: 'Poppins, sans-serif' }}
       >
         {currentElection.map(([slug, election]) => (
           <div key={slug}>
-            {election.start_date ? (
-              <div>
-                <h1 className="text-center mb-8 pb-8">
-                  Scroll down to view the current election
-                </h1>
-                {displayElection(election)}
+            {election.status === 'voting' ? (
+              <div className="flex flex-row items-center justify-between mb-4 gap-2 bg-gray-900 pl-8 rounded shadow-md">
+                <span className="font-bold">{election.name}</span>
                 <a
-                  href="#about_elections"
-                  className=" relative py-6 rounded flex flex-col items-center justify-center  hover:bg-white hover:text-black  duration-300"
+                  href={`#elections/${slug}`}
+                  className="relative px-6 py-6 rounded flex flex-col items-center justify-center  hover:bg-white hover:text-black  duration-300"
                 >
                   <FaVoteYea />
                   Vote
                 </a>
               </div>
-            ) : election.registration ? (
-              <div>
-                <h1>
-                  Students can now register for{' '}
-                  <span className="italic font-bold">{election.name}</span>.
-                </h1>
+            ) : election.status === 'registration' ? (
+              <div className="flex flex-row items-center justify-between mb-4 gap-4 bg-gray-900 pl-8 rounded shadow-md">
+                <span className="font-bold">{election.name}</span>
+                <a
+                  href={`#elections/${slug}/register`}
+                  className="relative px-6 py-6 rounded flex flex-col items-center justify-center  hover:bg-white hover:text-black  duration-300"
+                >
+                  <SlNote />
+                  Register
+                </a>
               </div>
             ) : (
-              <div>
-                <h1>There are currently no elections in progress.</h1>
-              </div>
+              <div></div>
             )}
           </div>
         ))}
+        {currentElection.length === 0 && (
+          <div>
+            <h1 className="text-md sm:text-lg md:text-xl font-bold text-center mb-8 pb-8">
+              There are currently no elections in progress.
+            </h1>
+          </div>
+        )}
       </div>
       <Footer />
     </Page>

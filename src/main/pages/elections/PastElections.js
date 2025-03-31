@@ -1,6 +1,6 @@
 import React from 'react';
 import { Page, Footer } from '../../components';
-import elections from './data.json';
+import elections from './elections.json';
 
 const years = [2024, 2023, 2022, 2021, 2020, 2019, 2018, 2017, 2016, 2015];
 // TODO: replace with api call for all past elections
@@ -8,7 +8,7 @@ const years = [2024, 2023, 2022, 2021, 2020, 2019, 2018, 2017, 2016, 2015];
 export const PastElections = () => {
   const electionEntries = Object.entries(elections.elections); // Convert object to an array
   const pastElections = electionEntries.filter(
-    ([_, election]) => election.end_date
+    ([_, election]) => election.status === 'ended'
   );
 
   return (
