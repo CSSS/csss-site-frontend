@@ -2,6 +2,30 @@
 # Starting May 2025, all new pull requests will be not be merged until the rewrite has been merged to main.
 # No new updates will be made on the current codebase as well.
 # Target launch is before the Fall 2025 semester.
+
+## Development
+
+### Prereqs
+You will need:
+- `git`
+- `node` v22
+- `npm` v10
+- Install the Angular CLI globally `npm install -g @angular/cli`
+- SSH keys
+
+To install the correct versions of `node` and `npm`, you might want to install and setup [nvm](https://github.com/nvm-sh/nvm).
+
+### Set-up
+1. Clone the repo (use SSH): `git clone git@github.com:CSSS/csss-site-frontend.git`
+2. Install the node modules: `npm ci`
+3. Start the frontend server: `npm run start` or `ng serve`
+
+The last two commands are equivalent. To view other npm commands, look at `package.json` under the "scripts" key.
+
+### Local development
+
+
+# Everything below this is from the old new site.
 # csss-site-frontend
 
 The frontend of the CSSS website, currently deployed at [new.sfucsss.org](https://new.sfucsss.org).
