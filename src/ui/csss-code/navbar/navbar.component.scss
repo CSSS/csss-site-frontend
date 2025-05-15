@@ -1,0 +1,7 @@
+@use '../_colours.scss' as c;
+
+:host {
+  max-width: 20rem;
+  background-color: c.$bg3;
+  height: 100%;
+}
