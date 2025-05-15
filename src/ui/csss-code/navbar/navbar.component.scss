@@ -1,7 +1,24 @@
 @use '../_colours.scss' as c;
 
 :host {
+  display: grid;
+  grid-template-columns: 3.5rem auto;
   max-width: 20rem;
+  height: calc(100vh - 2rem);
+}
+
+#activity-bar {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: .75rem;
+  background-color: c.$bg4;
+}
+
+#file-system {
   background-color: c.$bg3;
-  height: 100%;
+}
+
+img {
+  width: 2rem;
 }
