@@ -1,0 +1,18 @@
+@use '../ui/csss-code/colours' as c;
+
+:host {
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  grid-template-rows: 1fr 32px;
+  height: 100%;
+}
+
+#outlet:nth-child(2) {
+  height: calc(100vh - 32px);
+  overflow: auto;
+}
+
+#status-line {
+  grid-column: span 2;
+  background-color: c.$accent;
+}
