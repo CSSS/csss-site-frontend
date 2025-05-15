@@ -1,6 +1,0 @@
-# folders
-build
-node_modules
-
-# ignore HTML and CSS files
-**/*.css
