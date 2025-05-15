@@ -5,6 +5,7 @@
   grid-template-columns: 3.5rem auto;
   max-width: 20rem;
   height: calc(100vh - 2rem);
+  color: white;
 }
 
 #activity-bar {
@@ -16,6 +17,10 @@
 }
 
 #file-system {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: .75rem;
   background-color: c.$bg3;
 }
 
