@@ -1,9 +1,18 @@
-import { ChangeDetectionStrategy, Component, computed, input, OnInit, Signal } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  input,
+  OnInit,
+  signal,
+  WritableSignal
+} from '@angular/core';
 import { NavbarEntry } from 'pages/navbar-entries';
 import { faChevronDown, faChevronRight, faFile } from '@fortawesome/free-solid-svg-icons';
+import { IconDefinition } from '@fortawesome/angular-fontawesome';
 
 interface NavbarItem extends NavbarEntry {
-  isClosed: boolean;
+  isOpen: boolean;
 }
 
 @Component({
@@ -15,17 +24,42 @@ interface NavbarItem extends NavbarEntry {
 })
 export class NavbarComponent implements OnInit {
   entries = input.required<NavbarEntry[]>();
-  navEntries: NavbarItem[] = [];
-  fileIcon = faFile;
-  folderClosedIcon = faChevronRight;
-  folderOpenIcon = faChevronDown;
+  navItems: WritableSignal<NavbarItem[]> = signal([]);
 
   ngOnInit(): void {
-    this.navEntries = this.entries().map(entry => {
-      return {
-        ...entry,
-        isClosed: true
-      };
-    });
+    this.navItems.set(
+      this.entries().map(entry => {
+        return {
+          ...entry,
+          isOpen: true
+        };
+      })
+    );
+  }
+
+  getIcon(item: NavbarEntry | NavbarItem): IconDefinition {
+    switch (item.type) {
+      case 'file': {
+        return faFile;
+      }
+      case 'folder': {
+        return 'isOpen' in item && item.isOpen ? faChevronDown : faChevronRight;
+      }
+    }
+  }
+
+  onItemClick(item: NavbarEntry | NavbarItem): void {
+    if ('isOpen' in item) {
+      this.navItems.set(
+        this.navItems().map(entry => {
+          const isOpen = entry.key === item.key ? !entry.isOpen : entry.isOpen;
+          return {
+            ...entry,
+            isOpen
+          };
+        })
+      );
+    }
+    console.log(item.key + 'clicked');
   }
 }
