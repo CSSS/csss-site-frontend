@@ -1,0 +1,12 @@
+$bg1: #3e3e42;
+$bg2: #2d2d30;
+$bg3: #252526;
+$bg4: #1e1e1e;
+$accent: #30422e;
+
+@mixin page {
+  display: block;
+  background-color: $bg4;
+  min-height: 100%;
+  min-width: 100%;
+}
