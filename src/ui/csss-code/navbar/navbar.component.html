@@ -4,15 +4,11 @@
 
 <nav id="file-system">
   <div>SFU-CSSS</div>
-  @for (entry of navEntries; track entry.key) {
-    @if (entry.isClosed) {
-      <csss-navbar-item [icon]="folderClosedIcon" [descriptor]="entry.name"/>
-    } @else {
-      <csss-navbar-item [icon]="folderOpenIcon" [descriptor]="entry.name"/>
-    }
-    @if (entry.entries) {
+  @for (entry of navItems(); track entry.key) {
+      <csss-navbar-item (click)="onItemClick(entry)" [icon]="getIcon(entry)" [descriptor]="entry.descriptor"/>
+    @if (entry.entries && entry.isOpen) {
       @for (child of entry.entries; track child.key) {
-      <csss-navbar-item class="nav-child" [icon]="fileIcon" [descriptor]="child.name"/>
+      <csss-navbar-item class="nav-child" (click)="onItemClick(child)" [icon]="getIcon(child)" [descriptor]="child.descriptor"/>
       }
     }
   }
