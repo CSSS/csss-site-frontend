@@ -1,6 +1,5 @@
 import {
   ChangeDetectionStrategy,
-  ChangeDetectorRef,
   Component,
   input,
   OnInit,
@@ -60,6 +59,5 @@ export class NavbarComponent implements OnInit {
         })
       );
     }
-    console.log(item.key + 'clicked');
   }
 }

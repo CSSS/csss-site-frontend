@@ -11,6 +11,5 @@ import { navbarEntries } from 'pages/navbar-entries';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AppComponent {
-  title = 'csss-ng-frontend';
   navbarEntries = navbarEntries;
 }
