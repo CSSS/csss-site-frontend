@@ -1,9 +1,8 @@
-@use '../_colours.scss' as c;
+@use '../theme' as c;
 
 :host {
   display: grid;
-  grid-template-columns: 3.5rem auto;
-  max-width: 20rem;
+  grid-template-columns: 3.5rem min-content;
   height: calc(100vh - 2rem);
   color: white;
 }
@@ -19,6 +18,7 @@
 #file-system {
   display: flex;
   flex-direction: column;
+  min-width: 16.5rem;
   justify-content: flex-start;
   padding: .75rem;
   background-color: c.$bg2;
