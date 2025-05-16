@@ -3,6 +3,17 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
+    "paths": {
+      "pages/*": [
+        "./src/app/pages/*"
+      ],
+      "styles/*": [
+        "./src/app/styles/*"
+      ],
+      "@csss-code/*": [
+        "./src/ui/csss-code"
+      ]
+    },
     "outDir": "./dist/out-tsc",
     "strict": true,
     "noImplicitOverride": true,

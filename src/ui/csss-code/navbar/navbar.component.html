@@ -1,6 +1,15 @@
 <div id="activity-bar">
   <img src="static/icons/favicon_white.png" alt="">
 </div>
+
 <nav id="file-system">
   <div>SFU-CSSS</div>
+  @for (entry of entries(); track entry.key) {
+    <div class="nav-entry"><fa-icon [icon]="folderClosedIcon"></fa-icon> <span>{{ entry.name }}</span></div>
+    @if (entry.entries) {
+      @for (child of entry.entries; track child.key) {
+        <div class="nav-entry nav-child"><fa-icon [icon]="folderClosedIcon"></fa-icon> <span>{{ child.name }}</span></div>
+      }
+    }
+  }
 </nav>
