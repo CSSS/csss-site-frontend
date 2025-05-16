@@ -1,3 +1,9 @@
+:host {
+  user-select: none;
+  -webkit-user-select: none;
+}
+
 fa-icon {
+  display: inline-block;
   margin-right: 0.5em;
 }
