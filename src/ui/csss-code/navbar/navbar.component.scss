@@ -24,6 +24,18 @@
   background-color: c.$bg3;
 }
 
+.nav-entry {
+  padding: 0.25em 0;
+
+  fa-icon {
+    margin-right: 0.5em;
+  }
+}
+
+.nav-child {
+  margin-left: 1em;
+}
+
 img {
   width: 2rem;
 }
