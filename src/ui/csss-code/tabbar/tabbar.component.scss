@@ -1,0 +1,12 @@
+@use '../_colours.scss' as c;
+
+:host {
+  display: flex;
+  width: 100%;
+  background-color: c.$bg1;
+}
+
+.tab {
+  width: 6em;
+  background-color: c.$bg4;
+}
