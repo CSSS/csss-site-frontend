@@ -1,18 +1,3 @@
-export interface NavbarFile {
-  key: string;
-  name: string;
-}
-
-export interface NavbarFolder {
-  key: string;
-  name: string;
-  entries: NavbarEntry[];
-}
-
-export const isNavbarFile = (entry: NavbarEntry) => {
-  return (entry as NavbarFolder).entries !== undefined;
-};
-
 export interface NavbarEntry {
   key: string;
   name: string;
