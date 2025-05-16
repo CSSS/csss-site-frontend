@@ -1,4 +1,6 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, input } from '@angular/core';
+import { NavbarEntry } from 'pages/navbar-entries';
+import { faChevronDown, faChevronRight, faFile } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'csss-navbar',
@@ -7,4 +9,10 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   styleUrl: './navbar.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class NavbarComponent {}
+export class NavbarComponent {
+  entries = input.required<NavbarEntry[]>();
+
+  fileIcon = faFile;
+  folderClosedIcon = faChevronRight;
+  folderOpenIcon = faChevronDown;
+}
