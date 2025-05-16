@@ -36,7 +36,7 @@ export class NavbarComponent implements OnInit {
     );
   }
 
-  getIcon(item: NavbarEntry | NavbarItem): IconDefinition {
+  getIcon(item: NavbarEntry | NavbarItem): IconDefinition | undefined {
     switch (item.type) {
       case 'file': {
         return faFile;
