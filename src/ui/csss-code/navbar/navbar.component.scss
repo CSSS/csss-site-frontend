@@ -13,7 +13,7 @@
   flex-direction: column;
   justify-content: flex-start;
   padding: .75rem;
-  background-color: c.$bg4;
+  background-color: c.$bg1;
 }
 
 #file-system {
@@ -21,7 +21,7 @@
   flex-direction: column;
   justify-content: flex-start;
   padding: .75rem;
-  background-color: c.$bg3;
+  background-color: c.$bg2;
 }
 
 csss-navbar-item {
@@ -29,8 +29,12 @@ csss-navbar-item {
   cursor: pointer;
 }
 
+csss-navbar-item:hover {
+  background-color: c.$bg1;
+}
+
 .nav-child {
-  margin-left: 1em;
+  padding-left: 1em;
 }
 
 img {
