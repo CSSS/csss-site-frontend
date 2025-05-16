@@ -10,6 +10,9 @@
       "styles/*": [
         "./src/app/styles/*"
       ],
+      "assets/*": [
+        "./src/app/assets/*"
+      ],
       "@csss-code/*": [
         "./src/ui/csss-code"
       ]
