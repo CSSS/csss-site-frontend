@@ -1,0 +1,19 @@
+@use '../../../ui/csss-code/theme';
+
+:host {
+  @include theme.page;
+}
+
+div {
+  display: flex;
+  justify-content: center;
+}
+
+#logo-frame {
+  padding-top: 7rem;
+}
+
+fa-icon {
+  font-size: 15rem;
+  color: theme.$accent;
+}
