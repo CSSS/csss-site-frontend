@@ -10,9 +10,6 @@ import { NavEntry } from 'pages/navbar-entries';
 import { csssLogo } from '../../../assets/icons/csss-logo';
 
 export interface NavbarItem extends NavEntry {
-  key: string;
-  label: string;
-  type: 'file' | 'folder';
   children: NavbarItem[];
 }
 
