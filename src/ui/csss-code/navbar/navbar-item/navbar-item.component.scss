@@ -1,6 +1,17 @@
+@use '../../theme';
+
 :host {
   user-select: none;
   -webkit-user-select: none;
+}
+
+.nav-entry {
+  margin-bottom: 0.25em;
+}
+
+.nav-entry:hover {
+  cursor: pointer;
+  background-color: theme.$bg0;
 }
 
 fa-icon {
