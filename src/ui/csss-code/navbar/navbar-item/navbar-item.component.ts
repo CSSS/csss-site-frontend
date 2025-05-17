@@ -1,5 +1,4 @@
 import { ChangeDetectionStrategy, Component, computed, input, signal } from '@angular/core';
-import { IconDefinition } from '@fortawesome/angular-fontawesome';
 import { NavbarItem } from '../navbar.component';
 import { faChevronDown, faChevronRight, faFile } from '@fortawesome/free-solid-svg-icons';
 import { Router } from '@angular/router';
