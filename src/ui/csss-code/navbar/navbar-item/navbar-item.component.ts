@@ -47,7 +47,7 @@ export class NavbarItemComponent {
 
   /**
    *  Handler for when the item is clicked.
-   * */
+   */
   onItemClick() {
     const entry = this.entry();
     switch (entry.type) {
