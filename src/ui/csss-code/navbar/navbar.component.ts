@@ -9,6 +9,7 @@ import {
 import { NavbarEntry } from 'pages/navbar-entries';
 import { faChevronDown, faChevronRight, faFile } from '@fortawesome/free-solid-svg-icons';
 import { IconDefinition } from '@fortawesome/angular-fontawesome';
+import { csssLogo } from '../../../assets/icons/csss-logo';
 
 interface NavbarItem extends NavbarEntry {
   isOpen: boolean;
@@ -24,6 +25,7 @@ interface NavbarItem extends NavbarEntry {
 export class NavbarComponent implements OnInit {
   entries = input.required<NavbarEntry[]>();
   navItems: WritableSignal<NavbarItem[]> = signal([]);
+  csssIcon = csssLogo;
 
   ngOnInit(): void {
     this.navItems.set(
