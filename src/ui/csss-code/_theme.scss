@@ -1,8 +1,12 @@
-$bg1: #3e3e42;
-$bg2: #2d2d30;
-$bg3: #252526;
-$bg4: #1e1e1e;
-$accent: #30422e;
+$bg0: #37373d; // file explorer hover
+$bg1: #333333; // activity bar
+$bg2: #2d2d2d; // unfocused tab
+$bg3: #252526; // tab bar, file explorer
+$bg4: #1e1e1e; // code background, focused tab
+$bg5: #151515; // logo
+$icon: #adadad; // activity bar icons
+$code-text: #909090; // landing page text on the code section
+$accent: #99f0bc; // status bar
 
 @mixin page {
   display: block;
