@@ -13,7 +13,11 @@ div {
   padding-top: 7rem;
 }
 
+#welcome {
+  color: theme.$code-text;
+}
+
 fa-icon {
   font-size: 15rem;
-  color: theme.$accent;
+  color: theme.$bg5;
 }
