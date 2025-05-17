@@ -6,39 +6,49 @@ import {
   signal,
   WritableSignal
 } from '@angular/core';
-import { NavbarEntry } from 'pages/navbar-entries';
+import { NavEntry } from 'pages/navbar-entries';
 import { faChevronDown, faChevronRight, faFile } from '@fortawesome/free-solid-svg-icons';
 import { IconDefinition } from '@fortawesome/angular-fontawesome';
 import { csssLogo } from '../../../assets/icons/csss-logo';
 
-interface NavbarItem extends NavbarEntry {
-  isOpen: boolean;
+export interface NavbarItem extends NavEntry {
+  key: string;
+  label: string;
+  type: 'file' | 'folder';
+  children: NavbarItem[];
 }
 
 @Component({
-  selector: 'csss-navbar',
+  selector: 'code-navbar',
   standalone: false,
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class NavbarComponent implements OnInit {
-  entries = input.required<NavbarEntry[]>();
+  entries = input.required<NavEntry[]>();
   navItems: WritableSignal<NavbarItem[]> = signal([]);
   csssIcon = csssLogo;
 
   ngOnInit(): void {
-    this.navItems.set(
-      this.entries().map(entry => {
-        return {
-          ...entry,
-          isOpen: true
-        };
-      })
-    );
+    this.navItems.set(this.navEntryToItem(this.entries()));
   }
 
-  getIcon(item: NavbarEntry | NavbarItem): IconDefinition | undefined {
+  /**
+   * Recursively converts all the navbar entries into object this navbar can use
+   **/
+  private navEntryToItem(entries: NavEntry[]): NavbarItem[] {
+    return entries.map(entry => {
+      const children = entry.children?.length ? this.navEntryToItem(entry.children) : [];
+      return {
+        ...entry,
+        children,
+        isOpen: true
+      };
+    });
+  }
+
+  getIcon(item: NavEntry | NavbarItem): IconDefinition | undefined {
     switch (item.type) {
       case 'file': {
         return faFile;
@@ -46,20 +56,6 @@ export class NavbarComponent implements OnInit {
       case 'folder': {
         return 'isOpen' in item && item.isOpen ? faChevronDown : faChevronRight;
       }
-    }
-  }
-
-  onItemClick(item: NavbarEntry | NavbarItem): void {
-    if ('isOpen' in item) {
-      this.navItems.set(
-        this.navItems().map(entry => {
-          const isOpen = entry.key === item.key ? !entry.isOpen : entry.isOpen;
-          return {
-            ...entry,
-            isOpen
-          };
-        })
-      );
     }
   }
 }

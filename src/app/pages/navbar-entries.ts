@@ -1,11 +1,12 @@
-export interface NavbarEntry {
+export interface NavEntry {
   key: string;
   label: string;
   type: 'file' | 'folder';
-  entries?: NavbarEntry[];
+  children?: NavEntry[];
+  link?: string;
 }
 
-export const navbarEntries: NavbarEntry[] = [
+export const navEntries: NavEntry[] = [
   {
     key: 'readme',
     label: 'README',
@@ -15,7 +16,7 @@ export const navbarEntries: NavbarEntry[] = [
     key: 'csss',
     label: 'The CSSS',
     type: 'folder',
-    entries: [
+    children: [
       {
         key: 'about',
         label: 'About',
@@ -52,7 +53,7 @@ export const navbarEntries: NavbarEntry[] = [
     key: 'elections',
     label: 'Elections',
     type: 'folder',
-    entries: [
+    children: [
       {
         key: 'elections-upcoming',
         label: 'Upcoming',
@@ -74,7 +75,7 @@ export const navbarEntries: NavbarEntry[] = [
     key: 'events',
     label: 'Events',
     type: 'folder',
-    entries: [
+    children: [
       {
         key: 'events-upcoming',
         label: 'Upcoming',
