@@ -16,14 +16,25 @@ You will need:
 To install the correct versions of `node` and `npm`, you might want to install and setup [nvm](https://github.com/nvm-sh/nvm).
 
 ### Set-up
-1. Clone the repo (use SSH): `git clone git@github.com:CSSS/csss-site-frontend.git`
-2. Install the node modules: `npm ci`
-3. Start the frontend server: `npm run start` or `ng serve`
+1. Clone the repo (use SSH):
+```
+git clone git@github.com:CSSS/csss-site-frontend.git
+```
+2. Install the node modules:
+```
+npm ci
+```
+
+3. Start the frontend server:
+```
+npm run start
+or
+ng serve
+```
 
 The last two commands are equivalent. To view other npm commands, look at `package.json` under the "scripts" key.
 
 ### Local development
-
 
 # Everything below this is from the old new site.
 # csss-site-frontend
