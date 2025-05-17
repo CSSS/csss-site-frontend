@@ -1,6 +1,6 @@
 export interface NavbarEntry {
   key: string;
-  descriptor: string;
+  label: string;
   type: 'file' | 'folder';
   entries?: NavbarEntry[];
 }
@@ -8,81 +8,81 @@ export interface NavbarEntry {
 export const navbarEntries: NavbarEntry[] = [
   {
     key: 'readme',
-    descriptor: 'README',
+    label: 'README',
     type: 'file'
   },
   {
     key: 'csss',
-    descriptor: 'The CSSS',
+    label: 'The CSSS',
     type: 'folder',
     entries: [
       {
         key: 'about',
-        descriptor: 'About',
+        label: 'About',
         type: 'file'
       },
       {
         key: 'affiliates',
-        descriptor: 'Affiliates',
+        label: 'Affiliates',
         type: 'file'
       },
       {
         key: 'committees',
-        descriptor: 'Committees',
+        label: 'Committees',
         type: 'file'
       },
       {
         key: 'common-room',
-        descriptor: 'Common Room',
+        label: 'Common Room',
         type: 'file'
       },
       {
         key: 'documents',
-        descriptor: 'Documents',
+        label: 'Documents',
         type: 'file'
       },
       {
         key: 'officers',
-        descriptor: 'Officers',
+        label: 'Officers',
         type: 'file'
       }
     ]
   },
   {
     key: 'elections',
-    descriptor: 'Elections',
+    label: 'Elections',
     type: 'folder',
     entries: [
       {
         key: 'elections-upcoming',
-        descriptor: 'Upcoming',
+        label: 'Upcoming',
         type: 'file'
       },
       {
         key: 'speeches',
-        descriptor: 'Speeches',
+        label: 'Speeches',
         type: 'file'
       },
       {
         key: 'elections-archive',
-        descriptor: 'Archive',
+        label: 'Archive',
         type: 'file'
       }
     ]
   },
   {
     key: 'events',
-    descriptor: 'Events',
+    label: 'Events',
     type: 'folder',
     entries: [
       {
         key: 'events-upcoming',
-        descriptor: 'Upcoming',
+        label: 'Upcoming',
         type: 'file'
       },
       {
         key: 'events-archive',
-        descriptor: 'Archive',
+        label: 'Archive',
         type: 'file'
       }
     ]
