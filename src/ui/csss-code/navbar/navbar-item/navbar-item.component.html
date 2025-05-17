@@ -1,4 +1,14 @@
-@if (icon(); as i) {
-<fa-icon class="fa-fw" [icon]="i"></fa-icon>
+<!-- This is the nav item -->
+<div class="nav-entry" (click)="onItemClick()">
+  @if (icon(); as i) {
+    <fa-icon class="fa-fw" [style.paddingLeft.em]="depth() * 1.5" [icon]="i" />
+  }
+  <span>{{ entry().label }}</span>
+</div>
+
+<!-- This is the sublist if the item has any children -->
+@if (isOpen() && entry().children.length) {
+  @for (entry of entry().children; track entry.key) {
+    <code-navbar-item [depth]="depth() + 1" [entry]="entry" />
+  }
 }
-<span>{{ label() }}</span>

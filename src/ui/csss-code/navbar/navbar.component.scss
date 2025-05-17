@@ -1,4 +1,6 @@
-@use '../theme' as c;
+@use '../theme';
+
+$item-spacing: .75em;
 
 :host {
   display: grid;
@@ -11,34 +13,22 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  padding: .75rem;
-  background-color: c.$bg1;
+  padding: $item-spacing;
+  background-color: theme.$bg1;
 }
 
 #navbar {
-  background-color: c.$bg3;
+  background-color: theme.$bg3;
 }
 
 #navbar-header {
-  padding-bottom: .75rem;
+  padding: $item-spacing 2em;
 }
 
 #navbar-list {
   display: flex;
   flex-direction: column;
   min-width: 16.5rem;
-  justify-content: flex-start;
-}
-
-csss-navbar-item {
-  margin: 0.25em 0;
-  cursor: pointer;
-}
-
-csss-navbar-item:hover {
-  background-color: c.$bg0;
-}
-
-.nav-child {
-  padding-left: 1em;
+  row-gap: 0.25em;
+  padding-left: 0.25em;
 }
