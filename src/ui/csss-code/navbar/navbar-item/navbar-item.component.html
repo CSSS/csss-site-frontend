@@ -3,7 +3,7 @@
   @if (icon(); as i) {
     <fa-icon class="fa-fw" [style.paddingLeft.em]="depth() * 1.5" [icon]="i" />
   }
-  <span>{{ entry().label }}</span>
+  <span>{{ label() }}</span>
 </div>
 
 <!-- This is the sublist if the item has any children -->
