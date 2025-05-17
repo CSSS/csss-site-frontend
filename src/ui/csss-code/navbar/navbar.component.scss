@@ -21,7 +21,7 @@
   min-width: 16.5rem;
   justify-content: flex-start;
   padding: .75rem;
-  background-color: c.$bg2;
+  background-color: c.$bg3;
 }
 
 csss-navbar-item {
@@ -30,7 +30,7 @@ csss-navbar-item {
 }
 
 csss-navbar-item:hover {
-  background-color: c.$bg1;
+  background-color: c.$bg0;
 }
 
 .nav-child {
