@@ -1,10 +1,10 @@
-<aside id="activity-list">
+<aside class="activity-list">
   <fa-icon [icon]="csssIcon" size="2x">hello</fa-icon>
 </aside>
 
-<aside id="navbar">
-  <header id="navbar-header">SFU-CSSS</header>
-  <nav id="navbar-list">
+<aside class="navbar">
+  <header class="navbar-header">SFU-CSSS</header>
+  <nav class="navbar-list">
     @for (entry of navItems(); track entry.key) {
       <code-navbar-item [entry]="entry" />
     }

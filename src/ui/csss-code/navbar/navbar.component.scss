@@ -9,7 +9,7 @@ $item-spacing: .75em;
   color: white;
 }
 
-#activity-list {
+.activity-list {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -17,15 +17,15 @@ $item-spacing: .75em;
   background-color: theme.$bg1;
 }
 
-#navbar {
+.navbar {
   background-color: theme.$bg3;
 }
 
-#navbar-header {
+.navbar-header {
   padding: $item-spacing 2em;
 }
 
-#navbar-list {
+.navbar-list {
   display: flex;
   flex-direction: column;
   min-width: 16.5rem;

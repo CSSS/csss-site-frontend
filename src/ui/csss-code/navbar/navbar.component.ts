@@ -36,7 +36,7 @@ export class NavbarComponent implements OnInit {
 
   /**
    * Recursively converts all the navbar entries into object this navbar can use
-   **/
+   */
   private navEntryToItem(entries: NavEntry[]): NavbarItem[] {
     return entries.map(entry => {
       const children = entry.children?.length ? this.navEntryToItem(entry.children) : [];
@@ -46,16 +46,5 @@ export class NavbarComponent implements OnInit {
         isOpen: true
       };
     });
-  }
-
-  getIcon(item: NavEntry | NavbarItem): IconDefinition | undefined {
-    switch (item.type) {
-      case 'file': {
-        return faFile;
-      }
-      case 'folder': {
-        return 'isOpen' in item && item.isOpen ? faChevronDown : faChevronRight;
-      }
-    }
   }
 }
