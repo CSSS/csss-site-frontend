@@ -7,7 +7,7 @@
   color: white;
 }
 
-#activity-bar {
+#activity-list {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -15,7 +15,7 @@
   background-color: c.$bg1;
 }
 
-#file-system {
+#navbar-list {
   display: flex;
   flex-direction: column;
   min-width: 16.5rem;
@@ -35,8 +35,4 @@ csss-navbar-item:hover {
 
 .nav-child {
   padding-left: 1em;
-}
-
-img {
-  width: 2rem;
 }

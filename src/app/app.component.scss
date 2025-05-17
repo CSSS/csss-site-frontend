@@ -1,10 +1,10 @@
-@use '../ui/csss-code/theme' as c;
-@use '../styles/variables' as v;
+@use '../ui/csss-code/theme';
+@use '../styles/globals' as g;
 
 :host {
   display: grid;
   grid-template-columns: min-content auto;
-  grid-template-rows: #{v.$tab-bar-height} auto #{v.$status-line-height};
+  grid-template-rows: #{g.$tab-bar-height} auto #{g.$status-line-height};
   height: 100%;
 }
 
@@ -25,5 +25,5 @@ csss-tabbar {
 
 #status-line {
   grid-column: 1 / 3;
-  background-color: c.$accent;
+  background-color: theme.$accent;
 }
