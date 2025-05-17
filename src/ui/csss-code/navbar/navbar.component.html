@@ -1,15 +1,17 @@
-<div id="activity-list">
-  <fa-icon [icon]="csssIcon" size="2x"></fa-icon>
-</div>
+<aside id="activity-list">
+  <fa-icon [icon]="csssIcon" size="2x">hello</fa-icon>
+</aside>
 
-<nav id="navbar-list">
+<aside id="navbar">
   <header id="navbar-header">SFU-CSSS</header>
-  @for (entry of navItems(); track entry.key) {
-      <csss-navbar-item (click)="onItemClick(entry)" [icon]="getIcon(entry)" [descriptor]="entry.descriptor"/>
-    @if (entry.entries && entry.isOpen) {
-      @for (child of entry.entries; track child.key) {
-      <csss-navbar-item class="nav-child" (click)="onItemClick(child)" [icon]="getIcon(child)" [descriptor]="child.descriptor"/>
+  <nav id="navbar-list">
+    @for (entry of navItems(); track entry.key) {
+        <csss-navbar-item (click)="onItemClick(entry)" [icon]="getIcon(entry)" [descriptor]="entry.descriptor"/>
+      @if (entry.entries && entry.isOpen) {
+        @for (child of entry.entries; track child.key) {
+        <csss-navbar-item class="nav-child" (click)="onItemClick(child)" [icon]="getIcon(child)" [descriptor]="child.descriptor"/>
+        }
       }
     }
-  }
-</nav>
+  </nav>
+</aside>
