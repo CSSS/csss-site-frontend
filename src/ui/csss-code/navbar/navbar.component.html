@@ -6,12 +6,7 @@
   <header id="navbar-header">SFU-CSSS</header>
   <nav id="navbar-list">
     @for (entry of navItems(); track entry.key) {
-        <csss-navbar-item (click)="onItemClick(entry)" [icon]="getIcon(entry)" [label]="entry.label"/>
-      @if (entry.entries && entry.isOpen) {
-        @for (child of entry.entries; track child.key) {
-        <csss-navbar-item class="nav-child" (click)="onItemClick(child)" [icon]="getIcon(child)" [label]="child.label"/>
-        }
-      }
+      <code-navbar-item [entry]="entry" />
     }
   </nav>
 </aside>
