@@ -1,8 +1,8 @@
 @use '../../theme';
+@use '../../../../styles/globals';
 
 :host {
-  user-select: none;
-  -webkit-user-select: none;
+  @include globals.no-select;
 }
 
 .nav-entry {
