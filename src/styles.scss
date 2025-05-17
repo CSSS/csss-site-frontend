@@ -1,10 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
-@use 'styles/variables';
+@use 'styles/globals';
 
 html,
 body {
   height: 100%;
   margin: 0;
   overflow: hidden;
-  font-family: variables.$main-font;
+  font-family: globals.$main-font;
 }
