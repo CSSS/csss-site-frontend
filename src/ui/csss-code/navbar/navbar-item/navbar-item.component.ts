@@ -9,6 +9,6 @@ import { IconDefinition } from '@fortawesome/angular-fontawesome';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class NavbarItemComponent {
-  descriptor = input.required<string>();
+  label = input.required<string>();
   icon = input<IconDefinition>();
 }
