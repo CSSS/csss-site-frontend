@@ -7,8 +7,6 @@ import {
   WritableSignal
 } from '@angular/core';
 import { NavEntry } from 'pages/navbar-entries';
-import { faChevronDown, faChevronRight, faFile } from '@fortawesome/free-solid-svg-icons';
-import { IconDefinition } from '@fortawesome/angular-fontawesome';
 import { csssLogo } from '../../../assets/icons/csss-logo';
 
 export interface NavbarItem extends NavEntry {
