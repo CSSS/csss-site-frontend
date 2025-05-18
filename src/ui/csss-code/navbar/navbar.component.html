@@ -1,12 +1,20 @@
 <aside class="activity-list">
-  <fa-icon [icon]="csssIcon" size="2x">hello</fa-icon>
+  <fa-icon class="clickable" [icon]="csssIcon" size="2x"></fa-icon>
+  <fa-icon class="clickable" (click)="openNavbar()" [icon]="folderIcon" size="2x"></fa-icon>
 </aside>
 
-<aside class="navbar">
-  <header class="navbar-header">SFU-CSSS</header>
-  <nav class="navbar-list">
-    @for (entry of navItems(); track entry.key) {
-      <code-navbar-item [entry]="entry" />
-    }
-  </nav>
-</aside>
+@if (isOpen()) {
+  <aside class="navbar">
+    <header class="navbar-header">
+      SFU-CSSS
+      <button type="button" (click)="toggleNavbar()">...</button>
+    </header>
+    <nav>
+      <ul class="navbar-list">
+        @for (entry of navItems(); track entry.key) {
+          <li><code-navbar-item [entry]="entry" /></li>
+        }
+      </ul>
+    </nav>
+  </aside>
+}
