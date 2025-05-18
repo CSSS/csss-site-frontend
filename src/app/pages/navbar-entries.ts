@@ -20,7 +20,8 @@ export const navEntries: NavEntry[] = [
       {
         key: 'about',
         label: 'About',
-        type: 'file'
+        type: 'file',
+        link: '/about'
       },
       {
         key: 'affiliates',

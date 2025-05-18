@@ -1,19 +1,21 @@
 <!-- This is the nav item -->
+<!-- If the entry has a link, wrap it in an `a` tag. Otherwise, use a `div`-->
 @if (entry().link) {
   <a class="nav-entry" (click)="itemClick()">
-    @if (icon(); as i) {
-      <fa-icon class="fa-fw" [style.paddingLeft.em]="depth() * 1.5" [icon]="i" />
-    }
-    <a>{{ label() }}</a>
+    <ng-container [ngTemplateOutlet]="item"></ng-container>
   </a>
 } @else {
   <div class="nav-entry" (click)="itemClick()">
-    @if (icon(); as i) {
-      <fa-icon class="fa-fw" [style.paddingLeft.em]="depth() * 1.5" [icon]="i" />
-    }
-    <span>{{ label() }}</span>
+    <ng-container [ngTemplateOutlet]="item"></ng-container>
   </div>
 }
+
+<ng-template #item>
+  @if (icon(); as i) {
+    <fa-icon class="fa-fw" [style.paddingLeft.em]="depth() * 1.5" [icon]="i" />
+  }
+  <span>{{ label() }}</span>
+</ng-template>
 
 <!-- This is the sublist if the item has any children -->
 @if (isOpen() && entry().children.length) {
