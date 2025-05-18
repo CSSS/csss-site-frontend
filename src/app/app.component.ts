@@ -1,11 +1,11 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { CsssCodeModule } from '../ui/csss-code/csss-code.module';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { TabsComponent } from './components/tabs/tabs.component';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, NavbarComponent, CsssCodeModule],
+  imports: [RouterOutlet, NavbarComponent, TabsComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush

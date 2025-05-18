@@ -9,7 +9,7 @@ import {
   ViewChild
 } from '@angular/core';
 
-const LETTER_HEIGHT = 21;
+const LETTER_HEIGHT = 24;
 
 @Component({
   selector: 'code-content',
@@ -45,7 +45,8 @@ export class ContentComponent implements AfterViewInit, OnDestroy {
 
   ngAfterViewInit(): void {
     /**
-     * This observer is set to watch the content of the page and if the height of the content reaches a point where it can add/take away numbers, then we update the UI.
+     * This observer is set to watch the content of the page and if the height of the content reaches a point where it
+     * can add/take away numbers, then we update the UI.
      * This needs to run outside the zone to avoid a ton of change detection calls.
      */
     this.resizeObs = new ResizeObserver(entries => {
@@ -63,6 +64,7 @@ export class ContentComponent implements AfterViewInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
+    // Need to disconnect from this observer after this component is destroyed, or else we get a memory leak.
     if (this.resizeObs) {
       this.resizeObs.disconnect();
     }
