@@ -32,9 +32,9 @@ export interface Application {
 /**
  * All registered applications should go here.
  */
-export const applicationsMap: Map<number, Application> = new Map([
+export const routeApplicationMap: Map<string, Application> = new Map([
   [
-    0,
+    '/readme',
     {
       id: 0,
       label: 'README.md',
@@ -42,7 +42,7 @@ export const applicationsMap: Map<number, Application> = new Map([
     }
   ],
   [
-    1,
+    '/about',
     {
       id: 1,
       label: 'About.md',
@@ -50,3 +50,12 @@ export const applicationsMap: Map<number, Application> = new Map([
     }
   ]
 ]);
+
+export const getApplicationById = (id: number): Application | undefined => {
+  for (const app of routeApplicationMap.values()) {
+    if (app.id === id) {
+      return app;
+    }
+  }
+  return;
+};
