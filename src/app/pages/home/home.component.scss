@@ -4,16 +4,15 @@
   @include theme.page;
 }
 
-div {
+.logo-frame {
   display: flex;
   justify-content: center;
-}
-
-#logo-frame {
   padding-top: 7rem;
 }
 
-#welcome {
+.welcome {
+  display: flex;
+  justify-content: center;
   color: theme.$code-text;
 }
 
