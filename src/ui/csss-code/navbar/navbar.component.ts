@@ -1,13 +1,7 @@
-import {
-  ChangeDetectionStrategy,
-  Component,
-  input,
-  OnInit,
-  signal,
-  WritableSignal
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, input, signal } from '@angular/core';
 import { NavEntry } from 'pages/navbar-entries';
 import { csssLogo } from '../../../assets/icons/csss-logo';
+import { faFolder } from '@fortawesome/free-solid-svg-icons';
 
 export interface NavbarItem extends NavEntry {
   children: NavbarItem[];
@@ -20,14 +14,24 @@ export interface NavbarItem extends NavEntry {
   styleUrl: './navbar.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class NavbarComponent implements OnInit {
+export class NavbarComponent {
+  /**
+   * Navbar entries
+   */
   entries = input.required<NavEntry[]>();
-  navItems: WritableSignal<NavbarItem[]> = signal([]);
-  csssIcon = csssLogo;
 
-  ngOnInit(): void {
-    this.navItems.set(this.navEntryToItem(this.entries()));
-  }
+  /**
+   * Flag representing if the navbar is closed or open.
+   */
+  isOpen = signal<boolean>(true);
+
+  /**
+   * Signal that converts the nav entries, in case they need to be dynamically instantiated.
+   */
+  navItems = computed(() => this.navEntryToItem(this.entries()));
+
+  csssIcon = csssLogo;
+  folderIcon = faFolder;
 
   /**
    * Recursively converts all the navbar entries into object this navbar can use
@@ -41,5 +45,13 @@ export class NavbarComponent implements OnInit {
         isOpen: true
       };
     });
+  }
+
+  toggleNavbar() {
+    this.isOpen.update(value => !value);
+  }
+
+  openNavbar() {
+    this.isOpen.set(true);
   }
 }

@@ -1,14 +1,25 @@
 <!-- This is the nav item -->
-<div class="nav-entry" (click)="onItemClick()">
-  @if (icon(); as i) {
-    <fa-icon class="fa-fw" [style.paddingLeft.em]="depth() * 1.5" [icon]="i" />
-  }
-  <span>{{ label() }}</span>
-</div>
+@if (entry().link) {
+  <a class="nav-entry" (click)="itemClick()">
+    @if (icon(); as i) {
+      <fa-icon class="fa-fw" [style.paddingLeft.em]="depth() * 1.5" [icon]="i" />
+    }
+    <a>{{ label() }}</a>
+  </a>
+} @else {
+  <div class="nav-entry" (click)="itemClick()">
+    @if (icon(); as i) {
+      <fa-icon class="fa-fw" [style.paddingLeft.em]="depth() * 1.5" [icon]="i" />
+    }
+    <span>{{ label() }}</span>
+  </div>
+}
 
 <!-- This is the sublist if the item has any children -->
 @if (isOpen() && entry().children.length) {
-  @for (entry of entry().children; track entry.key) {
-    <code-navbar-item [depth]="depth() + 1" [entry]="entry" />
-  }
+  <ul>
+    @for (entry of entry().children; track entry.key) {
+      <li><code-navbar-item [depth]="depth() + 1" [entry]="entry" /></li>
+    }
+  </ul>
 }

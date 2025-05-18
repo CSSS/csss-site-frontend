@@ -5,6 +5,15 @@
   @include globals.no-select;
 }
 
+a {
+  display: block;
+}
+
+ul,
+li {
+  all: unset;
+}
+
 .nav-entry {
   margin-bottom: 0.25em;
 }
