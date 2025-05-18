@@ -16,8 +16,14 @@
       "services/*": [
         "./src/app/services/*"
       ],
+      "utils/*": [
+        "./src/app/utils/*"
+      ],
+      "components/*": [
+        "./src/app/components/*"
+      ],
       "@csss-code/*": [
-        "./src/ui/csss-code"
+        "./src/ui/csss-code/*"
       ]
     },
     "outDir": "./dist/out-tsc",
