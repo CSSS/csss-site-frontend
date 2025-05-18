@@ -1,0 +1,15 @@
+@use '../theme.scss';
+
+:host {
+  display: grid;
+  grid-template-columns: 2.5rem auto;
+  column-gap: 0.5rem;
+}
+
+aside {
+  color: theme.$code-text;
+
+  div {
+    text-align: right;
+  }
+}
