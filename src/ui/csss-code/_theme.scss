@@ -7,10 +7,3 @@ $bg5: #151515; // logo
 $icon: #adadad; // activity bar icons
 $code-text: #909090; // landing page text on the code section
 $accent: #99f0bc; // status bar
-
-@mixin page {
-  display: block;
-  background-color: $bg4;
-  min-height: 100%;
-  min-width: 100%;
-}
