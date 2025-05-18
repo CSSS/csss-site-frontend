@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, computed, Signal } from '@angular/core';
+import { CsssCodeModule } from '@csss-code/csss-code.module';
+import { TabBarItem } from '@csss-code/tabbar/tabbar.component';
 import { ApplicationService } from 'services/application.service';
-import { TabBarItem } from '../../../ui/csss-code/tabbar/tabbar.component';
-import { CsssCodeModule } from '../../../ui/csss-code/csss-code.module';
 
 @Component({
   selector: 'csss-tabs',
@@ -16,6 +16,7 @@ export class TabsComponent {
     for (const app of this.applicationService.runningApplications().values()) {
       result.push({ id: app.id, label: app.label });
     }
+    console.log(result);
     return result;
   });
 
