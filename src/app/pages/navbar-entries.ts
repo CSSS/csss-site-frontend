@@ -10,7 +10,8 @@ export const navEntries: NavEntry[] = [
   {
     key: 'readme',
     label: 'README',
-    type: 'file'
+    type: 'file',
+    link: '/readme'
   },
   {
     key: 'csss',
@@ -26,27 +27,32 @@ export const navEntries: NavEntry[] = [
       {
         key: 'affiliates',
         label: 'Affiliates',
-        type: 'file'
+        type: 'file',
+        link: 'affiliates'
       },
       {
         key: 'committees',
         label: 'Committees',
-        type: 'file'
+        type: 'file',
+        link: 'committees'
       },
       {
         key: 'common-room',
         label: 'Common Room',
-        type: 'file'
+        type: 'file',
+        link: 'common-room'
       },
       {
         key: 'documents',
         label: 'Documents',
-        type: 'file'
+        type: 'file',
+        link: 'documents'
       },
       {
         key: 'officers',
         label: 'Officers',
-        type: 'file'
+        type: 'file',
+        link: 'officers'
       }
     ]
   },
@@ -58,17 +64,20 @@ export const navEntries: NavEntry[] = [
       {
         key: 'elections-upcoming',
         label: 'Upcoming',
-        type: 'file'
+        type: 'file',
+        link: 'elections-upcoming'
       },
       {
         key: 'speeches',
         label: 'Speeches',
-        type: 'file'
+        type: 'file',
+        link: 'speeches'
       },
       {
         key: 'elections-archive',
         label: 'Archive',
-        type: 'file'
+        type: 'file',
+        link: 'elections-archive'
       }
     ]
   },
@@ -80,12 +89,14 @@ export const navEntries: NavEntry[] = [
       {
         key: 'events-upcoming',
         label: 'Upcoming',
-        type: 'file'
+        type: 'file',
+        link: 'events-upcoming'
       },
       {
         key: 'events-archive',
         label: 'Archive',
-        type: 'file'
+        type: 'file',
+        link: 'events-archive'
       }
     ]
   }

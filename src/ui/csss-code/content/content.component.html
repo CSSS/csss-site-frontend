@@ -1,0 +1,8 @@
+<aside class="gutter">
+  @for (line of numbersToDisplay(); track line) {
+    <div>{{ line + 1 }}</div>
+  }
+</aside>
+<main #content>
+  <ng-content></ng-content>
+</main>

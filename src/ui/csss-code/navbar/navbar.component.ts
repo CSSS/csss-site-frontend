@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, computed, input, signal } from '@angular/core';
 import { NavEntry } from 'pages/navbar-entries';
 import { csssLogo } from '../../../assets/icons/csss-logo';
-import { faFolder } from '@fortawesome/free-solid-svg-icons';
+import { faCopy } from '@fortawesome/free-solid-svg-icons';
 
 export interface NavbarItem extends NavEntry {
   children: NavbarItem[];
@@ -31,7 +31,7 @@ export class NavbarComponent {
   navItems = computed(() => this.navEntryToItem(this.entries()));
 
   csssIcon = csssLogo;
-  folderIcon = faFolder;
+  copyIcon = faCopy;
 
   /**
    * Recursively converts all the navbar entries into object this navbar can use

@@ -4,10 +4,17 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { TabbarComponent } from './tabbar/tabbar.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { NavbarItemComponent } from './navbar/navbar-item/navbar-item.component';
+import { ContentComponent } from './content/content.component';
 
 @NgModule({
-  declarations: [NavbarComponent, NavbarItemComponent, TabbarComponent],
+  declarations: [NavbarComponent, NavbarItemComponent, TabbarComponent, ContentComponent],
   imports: [CommonModule, FontAwesomeModule],
-  exports: [NavbarComponent, NavbarComponent, NavbarItemComponent, TabbarComponent]
+  exports: [
+    NavbarComponent,
+    NavbarComponent,
+    NavbarItemComponent,
+    TabbarComponent,
+    ContentComponent
+  ]
 })
 export class CsssCodeModule {}
