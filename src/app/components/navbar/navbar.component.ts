@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { CsssCodeModule } from '../../../ui/csss-code/csss-code.module';
 import { navEntries } from 'pages/navbar-entries';
 
@@ -6,7 +6,8 @@ import { navEntries } from 'pages/navbar-entries';
   selector: 'csss-navbar',
   imports: [CsssCodeModule],
   templateUrl: './navbar.component.html',
-  styleUrl: './navbar.component.scss'
+  styleUrl: './navbar.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class NavbarComponent {
   navbarEntries = navEntries;
