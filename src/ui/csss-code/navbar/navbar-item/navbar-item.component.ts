@@ -52,7 +52,7 @@ export class NavbarItemComponent {
   /**
    *  Handler for when the item is clicked.
    */
-  onItemClick() {
+  itemClick() {
     const entry = this.entry();
     switch (entry.type) {
       case 'file': {
