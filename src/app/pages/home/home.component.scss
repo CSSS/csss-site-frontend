@@ -1,9 +1,5 @@
 @use '../../../ui/csss-code/theme';
 
-:host {
-  @include theme.page;
-}
-
 .logo-frame {
   display: flex;
   justify-content: center;

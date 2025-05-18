@@ -1,4 +1,5 @@
 @use '../theme.scss';
+@use '../../../styles/globals' as g;
 
 :host {
   display: grid;
@@ -6,10 +7,16 @@
   column-gap: 0.5rem;
 }
 
+main {
+  height: fit-content;
+  line-height: g.$line-height;
+}
+
 aside {
   color: theme.$code-text;
 
   div {
     text-align: right;
+    line-height: g.$line-height;
   }
 }
