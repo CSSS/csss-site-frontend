@@ -13,6 +13,9 @@
       "assets/*": [
         "./src/app/assets/*"
       ],
+      "services/*": [
+        "./src/app/services/*"
+      ],
       "@csss-code/*": [
         "./src/ui/csss-code"
       ]

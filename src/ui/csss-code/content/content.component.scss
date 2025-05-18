@@ -7,16 +7,11 @@
   column-gap: 0.5rem;
 }
 
-main {
-  height: fit-content;
-  line-height: g.$line-height;
-}
-
 aside {
   color: theme.$code-text;
 
   div {
     text-align: right;
-    line-height: g.$line-height;
+    line-height: 1.5;
   }
 }
