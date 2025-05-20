@@ -1,15 +1,9 @@
-@use '../theme';
+@use 'theme';
+@use 'globals';
 
 :host {
   display: flex;
   width: 100%;
   height: 100%;
   background-color: theme.$bg3;
-}
-
-.tab {
-  padding: 0.5em 0 1em 1em;
-  padding-left: 2em;
-  width: 7em;
-  background-color: theme.$bg4;
 }
