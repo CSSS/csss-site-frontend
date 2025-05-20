@@ -1,6 +1,6 @@
 $tab-bar-height: '32px';
 $status-line-height: '32px';
-$main-font: "IBM Plex Mono";
+$main-font: 'Inter', sans-serif;
 
 @mixin no-select {
   user-select: none;

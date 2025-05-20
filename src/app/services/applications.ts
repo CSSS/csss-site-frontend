@@ -1,8 +1,8 @@
 /**
  * Interface representing an Application that is registered to run.
- * Each application will be run in a runtime.
+ * Each application will be run in an activity.
  * Runtimes will be identified by their string name.
- * Applications that share a run time will share the same tab with each other.
+ * Applications that share a activity will share a tab, meaning the previous activity will be lost.
  */
 export interface Application {
   /**
@@ -16,10 +16,10 @@ export interface Application {
   label: string;
 
   /**
-   * The activity these applications will share.
-   * Only pages the main pages should omit this value.
+   * The key activity this applications will use.
+   * Applications that have the same key can't run alongside each other.
    */
-  activity?: string;
+  activityKey: string;
 
   /**
    * The key of the application.
@@ -38,6 +38,7 @@ export const routeApplicationMap: Map<string, Application> = new Map([
     {
       id: 0,
       label: 'README.md',
+      activityKey: '',
       key: 'readme'
     }
   ],
@@ -46,6 +47,7 @@ export const routeApplicationMap: Map<string, Application> = new Map([
     {
       id: 1,
       label: 'About.md',
+      activityKey: '',
       key: 'about'
     }
   ]

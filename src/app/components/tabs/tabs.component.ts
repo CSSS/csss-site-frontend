@@ -1,7 +1,10 @@
-import { ChangeDetectionStrategy, Component, computed, Signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, inject, Signal } from '@angular/core';
 import { CsssCodeModule } from '@csss-code/csss-code.module';
-import { TabBarItem } from '@csss-code/tabbar/tabbar.component';
 import { ApplicationService } from 'services/application.service';
+
+export interface TabBarItem {
+  label: string;
+}
 
 @Component({
   selector: 'csss-tabs',
@@ -11,16 +14,12 @@ import { ApplicationService } from 'services/application.service';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TabsComponent {
+  private applicationService = inject(ApplicationService);
   tabs: Signal<TabBarItem[]> = computed(() => {
     const result: TabBarItem[] = [];
     for (const app of this.applicationService.runningApplications().values()) {
-      result.push({ id: app.id, label: app.label });
+      result.push({ label: app.label });
     }
-    console.log(result);
     return result;
   });
-
-  constructor(private applicationService: ApplicationService) {
-    console.log('Created');
-  }
 }

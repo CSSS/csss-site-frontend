@@ -1,0 +1,29 @@
+@use 'theme';
+@use 'globals';
+
+.label {
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.tab {
+  @include globals.no-select;
+
+  display: grid;
+  grid-template-columns: 1fr 4fr 1fr;
+  background-color: theme.$bg4;
+  width: 10em;
+  height: 100%;
+  overflow: hidden;
+
+  button {
+    all: unset;
+    float: right;
+  }
+
+  button:hover {
+    cursor: pointer;
+  }
+}

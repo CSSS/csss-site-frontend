@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, computed, input, signal } from '@angular/core';
 import { NavEntry } from 'pages/navbar-entries';
-import { csssLogo } from '../../../assets/icons/csss-logo';
+import { csssLogo } from 'assets/icons/csss-logo';
 import { faCopy } from '@fortawesome/free-solid-svg-icons';
 
 export interface NavbarItem extends NavEntry {
