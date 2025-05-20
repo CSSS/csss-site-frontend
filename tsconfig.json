@@ -4,14 +4,14 @@
   "compileOnSave": false,
   "compilerOptions": {
     "paths": {
+      "assets/*": [
+        "./src/assets/*"
+      ],
       "pages/*": [
         "./src/app/pages/*"
       ],
       "styles/*": [
         "./src/app/styles/*"
-      ],
-      "assets/*": [
-        "./src/app/assets/*"
       ],
       "services/*": [
         "./src/app/services/*"

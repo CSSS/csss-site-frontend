@@ -1,9 +1,4 @@
-import { ChangeDetectionStrategy, Component, input } from '@angular/core';
-
-export interface TabBarItem {
-  id: number;
-  label: string;
-}
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
   selector: 'code-tabbar',
@@ -12,6 +7,4 @@ export interface TabBarItem {
   styleUrl: './tabbar.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class TabBarComponent {
-  tabs = input.required<TabBarItem[]>();
-}
+export class TabBarComponent {}
