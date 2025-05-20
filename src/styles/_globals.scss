@@ -1,6 +1,7 @@
 $tab-bar-height: '32px';
 $status-line-height: '32px';
 $main-font: 'Inter', sans-serif;
+$static-font: 'Fira Code', monospace;
 
 @mixin no-select {
   user-select: none;

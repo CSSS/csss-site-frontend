@@ -1,14 +1,15 @@
-@use '../theme.scss';
-@use '../../../styles/globals' as g;
+@use 'theme';
+@use 'globals';
 
 :host {
   display: grid;
   grid-template-columns: 2.5rem auto;
   column-gap: 0.5rem;
-  font-family: 'Fira Code', monospace;
 }
 
 aside {
+  @include globals.no-select;
+  font-family: globals.$static-font;
   color: theme.$code-text;
 
   div {

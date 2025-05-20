@@ -12,13 +12,13 @@ import {
 const LETTER_HEIGHT = 24;
 
 @Component({
-  selector: 'code-content',
+  selector: 'code-article',
   standalone: false,
-  templateUrl: './content.component.html',
-  styleUrl: './content.component.scss',
+  templateUrl: './article.component.html',
+  styleUrl: './article.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ContentComponent implements AfterViewInit, OnDestroy {
+export class ArticleComponent implements AfterViewInit, OnDestroy {
   /**
    * Reference to the content inside the page.
    */
@@ -54,7 +54,6 @@ export class ContentComponent implements AfterViewInit, OnDestroy {
         const numbersToFit = Math.floor(entry.contentRect.height / LETTER_HEIGHT);
 
         if (this.numbersToPrint() !== numbersToFit) {
-          // No need to reattach to the zone since we're updating a signal.
           this.numbersToPrint.set(numbersToFit);
         }
       }
