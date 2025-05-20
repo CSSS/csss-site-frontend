@@ -15,8 +15,8 @@ body {
   cursor: pointer;
 }
 
-// For articles in web pages.
-main {
+code-article>article.static {
+  font-family: globals.$static-font;
   line-height: 1.5;
   height: fit-content;
 
