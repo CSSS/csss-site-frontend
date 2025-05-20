@@ -2,17 +2,7 @@ import { Injectable, signal, WritableSignal } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { filter } from 'rxjs';
 import { Application, getApplicationById, routeApplicationMap } from './applications';
-import { updateSignalMap } from 'utils/signalUtils';
-
-/**
- * Interface representing an Application that is potentially running concurrently with other Applications.
- */
-export interface RunningApplication extends Application {
-  /**
-   * True if the application is focused, false otherwise.
-   */
-  isFocus: boolean;
-}
+import { addToSignalMap, removeFromSignalMap } from 'utils/signalUtils';
 
 /**
  * Service that handles updating what applications are currently running.
@@ -21,12 +11,10 @@ export interface RunningApplication extends Application {
   providedIn: 'root'
 })
 export class ApplicationService {
-  focusedApplication: WritableSignal<RunningApplication | null> = signal<RunningApplication | null>(
-    null
+  focusedApplication: WritableSignal<Application | null> = signal<Application | null>(null);
+  runningApplications: WritableSignal<Map<number, Application>> = signal<Map<number, Application>>(
+    new Map()
   );
-  runningApplications: WritableSignal<Map<number, RunningApplication>> = signal<
-    Map<number, RunningApplication>
-  >(new Map());
 
   constructor(private router: Router) {
     // Observable that emits when navigating to a new URL has completed.
@@ -39,7 +27,6 @@ export class ApplicationService {
         // `/<application>?=<query params>` or `/<runtime>/<application>?=<query params>`
         // or maybe they don't have any query params at all.
         route = route.split('?')[0];
-        console.log(route);
         const app = routeApplicationMap.get(route);
         if (app) {
           this.openApplication(app);
@@ -47,38 +34,54 @@ export class ApplicationService {
       });
   }
 
-  focusOnApplication(app: RunningApplication): void {
-    const currFocus = this.focusedApplication();
-
-    if (currFocus && currFocus !== app) {
-      currFocus.isFocus = false;
+  private focusOnApplication(app: Application): void {
+    if (this.focusedApplication()?.id !== app.id) {
+      this.focusedApplication.set(app);
     }
-    app.isFocus = true;
-    this.focusedApplication.set(app);
   }
 
-  openApplication(application: Application): void {
-    // Check if the application is already running first.
-    const app = this.runningApplications().get(application.id);
-    if (app) {
-      this.focusOnApplication(app);
-    } else {
-      // Otherwise, launch it.
-      const newApp = getApplicationById(application.id);
-      if (!newApp) {
-        throw new Error(`No registered application identified by ${application.id}`);
+  /**
+   * Try to open the application.
+   *
+   * @param application - Application to try and launch.
+   */
+  private openApplication(application: Application): void {
+    const focusedApp = this.focusedApplication();
+
+    if (focusedApp?.id === application.id) {
+      return;
+    }
+    this.focusedApplication.set(application);
+    addToSignalMap(this.runningApplications, application.id, application);
+
+    // No focused app, so there must be no other applications to check.
+    if (!focusedApp) {
+      return;
+    }
+
+    // The currently focused app shares the activity with the incoming app, so remove the old app.
+    if (focusedApp.activityKey === application.activityKey) {
+      this.closeApplication(focusedApp.id);
+      console.log(focusedApp.key);
+      return;
+    }
+
+    // The activity for this app might be open, but not focused. Try and remove it.
+    for (const app of this.runningApplications().values()) {
+      if (app.activityKey === application.key && app.id !== application.id) {
+        this.closeApplication(app.id);
+        console.log(app.key);
+        break;
       }
-      const appToLaunch: RunningApplication = { ...newApp, isFocus: true };
-      this.focusedApplication.set(appToLaunch);
-      updateSignalMap<number, RunningApplication>(
-        this.runningApplications,
-        appToLaunch.id,
-        appToLaunch
-      );
     }
   }
 
-  closeApplication(idOrLabel: number) {
-    this.runningApplications().delete(idOrLabel);
+  /**
+   * Closes the application based on the unique ID.
+   *
+   * @param id - The ID of the application to close.
+   */
+  private closeApplication(id: number) {
+    removeFromSignalMap(this.runningApplications, id);
   }
 }
