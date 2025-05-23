@@ -50,8 +50,4 @@ export class NavbarComponent {
   toggleNavbar() {
     this.isOpen.update(value => !value);
   }
-
-  openNavbar() {
-    this.isOpen.set(true);
-  }
 }
