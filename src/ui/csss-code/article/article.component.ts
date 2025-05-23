@@ -1,12 +1,15 @@
 import {
+  AfterContentInit,
   AfterViewInit,
   ChangeDetectionStrategy,
   Component,
   computed,
   ElementRef,
+  inject,
   OnDestroy,
+  Renderer2,
   signal,
-  ViewChild
+  viewChild
 } from '@angular/core';
 
 const LETTER_HEIGHT = 24;
@@ -18,11 +21,13 @@ const LETTER_HEIGHT = 24;
   styleUrl: './article.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ArticleComponent implements AfterViewInit, OnDestroy {
+export class ArticleComponent implements AfterViewInit, AfterContentInit, OnDestroy {
   /**
-   * Reference to the content inside the page.
+   *
    */
-  @ViewChild('content', { read: ElementRef }) content!: ElementRef;
+  readonly view = viewChild.required('article', { read: ElementRef });
+
+  renderer: Renderer2 = inject(Renderer2);
 
   /**
    * Observer to watch when an element resizes.
@@ -41,8 +46,6 @@ export class ArticleComponent implements AfterViewInit, OnDestroy {
    */
   numbersToDisplay = computed(() => Array.from({ length: this.numbersToPrint() }, (_, i) => i + 1));
 
-  constructor() {}
-
   ngAfterViewInit(): void {
     /**
      * This observer is set to watch the content of the page and if the height of the content reaches a point where it
@@ -59,8 +62,10 @@ export class ArticleComponent implements AfterViewInit, OnDestroy {
       }
     });
 
-    this.resizeObs.observe(this.content.nativeElement);
+    this.resizeObs.observe(this.view().nativeElement);
   }
+
+  ngAfterContentInit(): void {}
 
   ngOnDestroy(): void {
     // Need to disconnect from this observer after this component is destroyed, or else we get a memory leak.
