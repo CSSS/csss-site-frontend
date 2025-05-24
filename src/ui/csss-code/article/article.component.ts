@@ -4,6 +4,8 @@ import {
   ChangeDetectionStrategy,
   Component,
   computed,
+  contentChild,
+  contentChildren,
   ElementRef,
   inject,
   OnDestroy,
@@ -23,9 +25,16 @@ const LETTER_HEIGHT = 24;
 })
 export class ArticleComponent implements AfterViewInit, AfterContentInit, OnDestroy {
   /**
-   *
+   * The full article with the content inside.
    */
   readonly view = viewChild.required('article', { read: ElementRef });
+
+  /**
+   * The content of the article, excluding the article itself.
+   */
+  // readonly h1 = contentChild.required('h1', { read: ElementRef });
+  readonly h2s = contentChildren('h2', { read: ElementRef });
+  readonly ps = contentChildren('p', { read: ElementRef });
 
   renderer: Renderer2 = inject(Renderer2);
 
