@@ -1,3 +1,7 @@
+body {
+  background-color: #111;
+}
+
 nav {
   position: sticky;
   top: 0;
@@ -14,16 +18,17 @@ a {
   padding: 0.1rem;
 }
 
-img {
+.home-logo {
   width: 2rem;
   height: 2rem;
 }
 
 header {
   position: sticky;
+  text-align: center;
   font-size: 10vw;
   inset: 5rem;
-  color: black;
+  color: white;
 }
 
 .overlay {
@@ -48,6 +53,10 @@ header {
   transition: background 0.1s ease;
 }
 
-.overlay>span {
+.overlay-text {
   font-size: 5vw;
+}
+
+main {
+  height: 500vh;
 }
