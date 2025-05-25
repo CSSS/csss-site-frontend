@@ -1,3 +1,14 @@
+a:link,
+a:visited {
+  color: black;
+  text-decoration: none;
+}
+
+a:link:active,
+a:visited:active {
+  color: black;
+}
+
 nav {
   position: sticky;
   width: 100%;
@@ -9,37 +20,27 @@ nav {
   background-color: #555;
   color: black;
   font-size: clamp(0.75rem, 2vw, 2rem);
-}
 
-.nav-links {
-  display: flex;
-  align-content: space-between;
-  margin: 0;
-  height: 100%;
-  padding: 0;
-}
+  & .nav-links {
+    display: flex;
+    align-content: space-between;
+    margin: 0;
+    height: 100%;
+    padding: 0;
+  }
 
-nav li {
-  all: unset;
-  cursor: pointer;
-  flex-grow: 1;
-}
+  & li {
+    all: unset;
+    cursor: pointer;
+    flex-grow: 1;
+  }
 
 
-nav a {
-  cursor: pointer;
-  text-align: center;
-}
+  & a {
+    cursor: pointer;
+    text-align: center;
+  }
 
-a:link,
-a:visited {
-  color: black;
-  text-decoration: none;
-}
-
-a:link:active,
-a:visited:active {
-  color: black;
 }
 
 .csss-logo {
@@ -57,13 +58,14 @@ header {
   background-color: lightseagreen;
   z-index: 10;
   height: fit-content;
+
+  span {
+    align-self: flex-end;
+    vertical-align: bottom;
+    font-size: 2.1rem;
+  }
 }
 
-header>span {
-  align-self: flex-end;
-  vertical-align: bottom;
-  font-size: 2.1rem;
-}
 
 .loading {
   backdrop-filter: blur(10px);
@@ -112,36 +114,46 @@ header>span {
 
 main {
   height: 1000vh;
-}
 
-main>article {
-  position: relative;
-  margin: 0 auto;
-  width: max(22.5rem, 60vw);
-}
+  & article {
+    position: relative;
+    margin: 0 auto;
+    display: grid;
+    place-items: center;
+    align-content: center;
 
-main>article>section {
-  height: 150vh;
-  /* The top padding makes sure when we jump to a section we don't undershoot. */
-  padding: 25vh 1em 0;
+    & section {
+      width: max(22.5rem, 60vw);
+      height: 140vh;
+      /* The top padding makes sure when we jump to a section we don't undershoot. */
+      padding: 20vh 1em 0;
+    }
+  }
 }
 
 #home {
-  display: flex;
-  flex-wrap: wrap;
   position: relative;
-}
 
-#home>* {
-  flex: 1 1 15rem;
-}
+  display: flex;
+  flex-direction: row;
+  align-content: flex-start;
+  flex-wrap: wrap;
 
-#home>img {
-  width: clamp(10rem, 100%, 20rem);
-  height: clamp(10rem, 100%, 20rem);
-}
+  & img {
+    display: block;
+    width: 22.5rem;
+    height: 16.875rem;
+    flex: 1 1 22.5rem;
+  }
 
-.home-content>h2,
-p {
-  text-align: center;
+  & .content {
+    flex: 1 1 calc(100% - 22.5rem);
+
+    & h2,
+    p {
+
+      text-align: center;
+      flex: 1 1 50%;
+    }
+  }
 }
