@@ -1,5 +1,3 @@
-let overlayEl, overlayText, progressBar;
-
 function setOverlay(distanceScrolled, windowHeight) {
   const percent = Math.min(distanceScrolled / windowHeight, 1);
   const fade = percent * 50;
@@ -22,19 +20,17 @@ function setProgressBar(distanceScrolled, windowHeight) {
   progressBar.style.width = `${percent}%`;
 }
 
-function onload() {
-  overlayEl = document.querySelector('.overlay');
-  overlayText = document.querySelector('.overlay-text');
-  progressBar = document.querySelector('.progress-bar');
-  document.body.classList.remove('loading');
+const overlayEl = document.querySelector('.overlay');
+const overlayText = document.querySelector('.overlay-text');
+const progressBar = document.querySelector('.progress-bar');
+document.body.classList.remove('loading');
+setOverlay(window.scrollY, window.innerHeight);
+setProgressBar(window.scrollY, window.innerHeight);
+
+/**
+ * Event listener for the overlay to open up.
+ */
+window.addEventListener('scroll', () => {
   setOverlay(window.scrollY, window.innerHeight);
   setProgressBar(window.scrollY, window.innerHeight);
-
-  /**
-   * Event listener for the overlay to open up.
-   */
-  window.addEventListener('scroll', () => {
-    setOverlay(window.scrollY, window.innerHeight);
-    setProgressBar(window.scrollY, window.innerHeight);
-  });
-}
+});
