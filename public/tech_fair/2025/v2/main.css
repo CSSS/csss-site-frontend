@@ -130,7 +130,6 @@ main>article>section {
   display: flex;
   flex-wrap: wrap;
   position: relative;
-  top: 20vh;
 }
 
 #home>* {
