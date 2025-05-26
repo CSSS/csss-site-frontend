@@ -13,14 +13,15 @@
 
     <nav>
       <div class="progress-bar"></div>
-      <ul class="nav-links">
-          <li><a href="/"><img class="csss-logo" src="/static/files/csss_black.svg" alt="CSSS logo"/></a> </li>
-          <li><a href="#home">About</a></li>
-          <li><a href="#history">History</a></li>
-          <li><a href="#students">Students</a></li>
-          <li><a href="#booths">Booths</a></li>
-          <li><a href="#companies">Companies</a></li>
-      </ul>
+      <div class="nav-section">
+        <a href="/"><img class="csss-logo" src="/static/files/csss_black.svg" alt="CSSS logo"/></a> 
+        <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#history">History</a></li>
+            <li><a href="#students">Students</a></li>
+            <li><a href="#companies">Companies</a></li>
+        </ul>
+      </div>
     </nav>
 
     <header>
@@ -31,15 +32,9 @@
       <span> Tech Fair 2025 </span>
     </header>
 
-    <div class="overlay">
-      <span class="overlay-text">TECH FAIR 2025</span>
-    </div>
-
     <main>
       <article> 
-        <section></section>
-
-        <section id="home">
+        <section id="about" class="hidden">
           <img
             title="Long Shot of Tech Fair 2022"
             alt="Long Shot of Tech Fair 2022"
@@ -61,7 +56,7 @@
           </div>
         </section>
 
-        <section id="history">
+        <section id="history" class="hidden">
           <h2>> History</h2>
           <p>
             Just a short decade ago, Tech Fair was a standing CSSS tradition at SFU. Unforunately, due to the curse of time, it's fallen out of favour in recent years.
@@ -72,30 +67,35 @@
           </p>
         </section>
 
-        <section id="students">
+        <section id="students" class="hidden">
           <h2>> Students</h2>
           <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras mi quam, ultrices in tincidunt id, euismod id dui. Aenean consequat, augue eu consequat egestas, lacus est maximus nunc, eu condimentum justo ex in urna. Aliquam porttitor, risus ut consequat commodo, ligula dolor scelerisque enim, tempus lobortis massa turpis eget velit. Maecenas sollicitudin tristique lacus eu luctus. Curabitur porta lobortis bibendum. Maecenas eleifend vehicula nisl et dapibus. Curabitur elit dui, ultrices at accumsan vitae, accumsan vel arcu. Interdum et malesuada fames ac ante ipsum primis in faucibus. Aenean pellentesque, mi a pellentesque tincidunt, neque magna iaculis nibh, vel tempor mi eros nec est. Phasellus accumsan neque ut lacinia condimentum. Praesent hendrerit sem eget arcu vestibulum, pulvinar gravida magna porttitor. Aliquam tincidunt est vitae magna maximus, lacinia feugiat nisl aliquam. 
           </p>
         </section>
 
-        <section id="booths">
-          <h2>> Booths</h2>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras mi quam, ultrices in tincidunt id, euismod id dui. Aenean consequat, augue eu consequat egestas, lacus est maximus nunc, eu condimentum justo ex in urna. Aliquam porttitor, risus ut consequat commodo, ligula dolor scelerisque enim, tempus lobortis massa turpis eget velit. Maecenas sollicitudin tristique lacus eu luctus. Curabitur porta lobortis bibendum. Maecenas eleifend vehicula nisl et dapibus. Curabitur elit dui, ultrices at accumsan vitae, accumsan vel arcu. Interdum et malesuada fames ac ante ipsum primis in faucibus. Aenean pellentesque, mi a pellentesque tincidunt, neque magna iaculis nibh, vel tempor mi eros nec est. Phasellus accumsan neque ut lacinia condimentum. Praesent hendrerit sem eget arcu vestibulum, pulvinar gravida magna porttitor. Aliquam tincidunt est vitae magna maximus, lacinia feugiat nisl aliquam. 
-          </p>
-        </section>
-
-        <section id="companies">
+        <section id="companies" class="hidden">
           <h2>> Companies</h2>
           <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras mi quam, ultrices in tincidunt id, euismod id dui. Aenean consequat, augue eu consequat egestas, lacus est maximus nunc, eu condimentum justo ex in urna. Aliquam porttitor, risus ut consequat commodo, ligula dolor scelerisque enim, tempus lobortis massa turpis eget velit. Maecenas sollicitudin tristique lacus eu luctus. Curabitur porta lobortis bibendum. Maecenas eleifend vehicula nisl et dapibus. Curabitur elit dui, ultrices at accumsan vitae, accumsan vel arcu. Interdum et malesuada fames ac ante ipsum primis in faucibus. Aenean pellentesque, mi a pellentesque tincidunt, neque magna iaculis nibh, vel tempor mi eros nec est. Phasellus accumsan neque ut lacinia condimentum. Praesent hendrerit sem eget arcu vestibulum, pulvinar gravida magna porttitor. Aliquam tincidunt est vitae magna maximus, lacinia feugiat nisl aliquam. 
           </p>
         </section>
+
+        <section id="final" class="hidden">
+          <h2>See you there!</h2>
+        </section>
       </article>
     </main>
 
-    <footer></footer>
+    <footer>
+      <small>SFU_CSSS.TechFair(2025);</small>
+      <small>
+          <a href="mailto:csss-techfair@sfu.ca">Email</a> |
+          <a href="https://www.linkedin.com/company/sfucsss/">LinkedIn</a> |
+          <a href="https://www.instagram.com/sfu_csss/">Instagram</a> |
+          <a href="http://discord.sfucsss.org/">Discord</a>
+      </small>
+    </footer>
   </body>
 
 </html>

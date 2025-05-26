@@ -1,36 +1,40 @@
-function setOverlay(distanceScrolled, windowHeight) {
-  const percent = Math.min(distanceScrolled / windowHeight, 1);
-  const fade = percent * 50;
-
-  overlayEl.style.background = `linear-gradient(to right,
-      rgba(0, 0, 0, 1) 0%, 
-      rgba(0, 0, 0, 1) ${50 - fade}%, 
-      rgba(0, 0, 0, 0) ${50 - fade}%, 
-      rgba(0, 0, 0, 0) ${50 + fade}%, 
-      rgba(0, 0, 0, 1) ${50 + fade}%, 
-      rgba(0, 0, 0, 1) 100%)`;
-
-  overlayText.style.opacity = 1 - percent;
+/**
+ * Controls the progress bar at the top of the site.
+ *
+ * @param {number} windowHeight - The height of the viewport.
+ */
+function setProgressBar(windowHeight) {
+  const rect = main.getBoundingClientRect();
+  const mainHeight = rect.height;
+  const mainOffset = windowHeight - rect.top;
+  const scrollPercent =
+    Math.min(mainHeight, Math.max(0, mainOffset)) / mainHeight;
+  progressBar.style.width = `${scrollPercent * 100}%`;
 }
 
-function setProgressBar(distanceScrolled, windowHeight) {
-  const docHeight = document.documentElement.scrollHeight - windowHeight;
-  const percent = (distanceScrolled / docHeight) * 100;
-  console.log(percent);
-  progressBar.style.width = `${percent}%`;
-}
-
-const overlayEl = document.querySelector('.overlay');
-const overlayText = document.querySelector('.overlay-text');
+// Handles the scrolling features
+const main = document.querySelector('main');
 const progressBar = document.querySelector('.progress-bar');
+
 document.body.classList.remove('loading');
-setOverlay(window.scrollY, window.innerHeight);
-setProgressBar(window.scrollY, window.innerHeight);
+setProgressBar(window.innerHeight);
 
 /**
  * Event listener for the overlay to open up.
  */
 window.addEventListener('scroll', () => {
-  setOverlay(window.scrollY, window.innerHeight);
-  setProgressBar(window.scrollY, window.innerHeight);
+  setProgressBar(window.innerHeight);
 });
+
+const observer = new IntersectionObserver((entries) => {
+  for (const entry of entries) {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('show');
+    }
+  }
+});
+
+const sections = document.querySelectorAll('.hidden');
+for (const section of sections) {
+  observer.observe(section);
+}

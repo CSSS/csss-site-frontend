@@ -1,3 +1,12 @@
+@font-face {
+  font-family: 'Questrial';
+  src: url('fonts/Questrial-Regular.ttf') format('truetype')
+}
+
+body {
+  font-family: 'Questrial';
+}
+
 a:link,
 a:visited {
   color: black;
@@ -9,11 +18,32 @@ a:visited:active {
   color: black;
 }
 
+.hidden {
+  opacity: 0;
+  filter: blur(5px);
+  transform: translateX(-100%);
+}
+
+@media(prefers-reduced-motion: no-preference) {
+  .hidden {
+    transition:
+      opacity 2s,
+      filter 1s,
+      transform 1s
+  }
+}
+
+.show {
+  opacity: 1;
+  filter: blur(0);
+  transform: translateX(0);
+}
+
 nav {
   position: sticky;
   width: 100%;
   top: 0;
-  padding: 1rem;
+  padding: 1rem 0;
   height: 4rem;
   z-index: 10;
 
@@ -21,26 +51,41 @@ nav {
   color: black;
   font-size: clamp(0.75rem, 2vw, 2rem);
 
-  & .nav-links {
-    display: flex;
-    align-content: space-between;
-    margin: 0;
-    height: 100%;
-    padding: 0;
+  & .progress-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 0.5rem;
+    background-color: yellow;
+    z-index: -1;
   }
 
-  & li {
-    all: unset;
-    cursor: pointer;
-    flex-grow: 1;
+  & .nav-section {
+    display: grid;
+    grid-template-columns: 1fr 9fr 1fr;
+    width: 100%;
+
+    & ul {
+      display: flex;
+      align-items: center;
+      margin: 0;
+      height: 100%;
+      padding: 0;
+
+      & li {
+        all: unset;
+        display: flex;
+        justify-content: center;
+        cursor: pointer;
+        flex: 1 1;
+
+        & a {
+          cursor: pointer;
+          text-align: center;
+        }
+      }
+    }
   }
-
-
-  & a {
-    cursor: pointer;
-    text-align: center;
-  }
-
 }
 
 .csss-logo {
@@ -77,61 +122,25 @@ header {
   bottom: 0;
 }
 
-.overlay {
-  display: flex;
-  place-items: center;
-  justify-content: center;
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 1000;
-  height: 100vh;
-  width: 100%;
-  color: white;
-  pointer-events: none;
-
-  background: linear-gradient(to right,
-      rgba(0, 0, 0, 1) 0%,
-      rgba(0, 0, 0, 1) 50%,
-      rgba(0, 0, 0, 1) 50%,
-      rgba(0, 0, 0, 1) 100%);
-
-  transition: background 0.1s ease;
-}
-
-.overlay-text {
-  font-size: 5vw;
-}
-
-.progress-bar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 10px;
-  background-color: yellow;
-  z-index: -1;
-}
-
 main {
-  height: 1000vh;
+  background-color: #CCC;
 
   & article {
-    position: relative;
-    margin: 0 auto;
     display: grid;
     place-items: center;
     align-content: center;
 
     & section {
       width: max(22.5rem, 60vw);
+      /* Fixed height makes it so the scroll bar stays more accurate and animations work better */
       height: 140vh;
       /* The top padding makes sure when we jump to a section we don't undershoot. */
-      padding: 20vh 1em 0;
+      padding: 10em 1em;
     }
   }
 }
 
-#home {
+#about {
   position: relative;
 
   display: flex;
@@ -156,4 +165,20 @@ main {
       flex: 1 1 50%;
     }
   }
+}
+
+#final {
+  height: 90vh;
+
+  & h2 {
+    display: flex;
+    justify-content: center;
+    font-size: 7vw;
+  }
+}
+
+footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
