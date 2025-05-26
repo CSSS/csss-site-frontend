@@ -3,6 +3,10 @@
   src: url('fonts/Questrial-Regular.ttf') format('truetype')
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   font-family: 'Questrial';
 }
@@ -27,7 +31,7 @@ a:visited:active {
 @media(prefers-reduced-motion: no-preference) {
   .hidden {
     transition:
-      opacity 2s,
+      opacity 2s ease,
       filter 1s,
       transform 1s
   }
@@ -93,6 +97,11 @@ nav {
   margin: auto;
 }
 
+.icon {
+  width: 1.5em;
+  height: 1.5em;
+}
+
 header {
   display: flex;
   flex-direction: row;
@@ -127,42 +136,48 @@ main {
 
   & article {
     display: grid;
-    place-items: center;
-    align-content: center;
 
     & section {
-      width: max(22.5rem, 60vw);
+      width: 100%;
       /* Fixed height makes it so the scroll bar stays more accurate and animations work better */
       height: 140vh;
       /* The top padding makes sure when we jump to a section we don't undershoot. */
-      padding: 10em 1em;
+      padding: 10rem 1rem;
+
+      & .section-content {
+        width: 100%;
+        height: fit-content;
+      }
     }
   }
 }
 
 #about {
   position: relative;
+  padding-top: 4rem;
 
-  display: flex;
-  flex-direction: row;
-  align-content: flex-start;
-  flex-wrap: wrap;
+  & .section-content {
+    display: flex;
+    flex-direction: row;
+    align-content: flex-start;
+    flex-wrap: wrap;
 
-  & img {
-    display: block;
-    width: 22.5rem;
-    height: 16.875rem;
-    flex: 1 1 22.5rem;
-  }
+    & img {
+      display: block;
+      width: 22.5rem;
+      height: 16.875rem;
+      flex: 1 1 22.5rem;
+    }
 
-  & .content {
-    flex: 1 1 calc(100% - 22.5rem);
+    & .content {
+      flex: 1 1 calc(100% - 22.5rem);
 
-    & h2,
-    p {
+      & h2,
+      p {
 
-      text-align: center;
-      flex: 1 1 50%;
+        text-align: center;
+        flex: 1 1 50%;
+      }
     }
   }
 }
@@ -181,4 +196,9 @@ footer {
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  & .icons {
+    display: flex;
+    gap: 0.5rem;
+  }
 }

@@ -16,11 +16,10 @@ function setProgressBar(windowHeight) {
 const main = document.querySelector('main');
 const progressBar = document.querySelector('.progress-bar');
 
-document.body.classList.remove('loading');
 setProgressBar(window.innerHeight);
 
 /**
- * Event listener for the overlay to open up.
+ * Event listener for the progress bar.
  */
 window.addEventListener('scroll', () => {
   setProgressBar(window.innerHeight);
