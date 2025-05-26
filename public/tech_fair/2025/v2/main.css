@@ -147,6 +147,7 @@ main {
       & .section-content {
         width: 100%;
         height: fit-content;
+        padding: 0 1vw;
       }
     }
   }
@@ -154,7 +155,6 @@ main {
 
 #about {
   position: relative;
-  padding-top: 4rem;
 
   & .section-content {
     display: flex;
