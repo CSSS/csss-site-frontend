@@ -3,9 +3,7 @@
   src: url('fonts/Questrial-Regular.ttf') format('truetype')
 }
 
-html {
-  scroll-behavior: smooth;
-}
+:root {}
 
 body {
   font-family: 'Questrial';
@@ -54,15 +52,6 @@ nav {
   background-color: #555;
   color: black;
   font-size: clamp(0.75rem, 2vw, 2rem);
-
-  & .progress-bar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    height: 0.5rem;
-    background-color: yellow;
-    z-index: -1;
-  }
 
   & .nav-section {
     display: grid;
