@@ -10,10 +10,16 @@
   --big-screen: 1024px;
 
   /* Colours */
+  --c-bg-header: mediumaquamarine;
+  --c-bg-main: #2596be;
+
+  /* Structure */
+  --header-height: 3rem;
 }
 
 body {
   font-family: 'Questrial';
+  background-color: var(--c-bg-main);
 }
 
 a:link,
@@ -30,7 +36,6 @@ a:visited:active {
 .hidden {
   opacity: 0;
   filter: blur(5px);
-  transform: translateX(-100%);
 }
 
 @media(prefers-reduced-motion: no-preference) {
@@ -49,10 +54,17 @@ a:visited:active {
 }
 
 header {
-  position: sticky;
+  /* Keep this at the top of the page */
+  position: fixed;
+
   display: flex;
   padding: 0.25rem;
-  background-color: mediumaquamarine;
+  background-color: var(--c-bg-header);
+  width: 100%;
+  height: var(--header-height);
+
+  transition: top 0.5s;
+  z-index: 1000;
 
   & img {
     width: 3rem;
@@ -72,6 +84,39 @@ header {
           text-align: center;
           padding: 1rem;
         }
+      }
+    }
+  }
+}
+
+.hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: calc(var(--header-height) + 20vh);
+  background-color: white;
+  height: 110vh;
+
+  & img {
+    width: 10rem;
+    height: auto;
+  }
+}
+
+main {
+  height: 1000vh;
+
+  & article {
+    & section {
+      padding: 5rem 1rem;
+
+      & .section-content {
+        background-color: white;
+        height: 100vh;
+        padding: 0 1rem;
+
+        border-radius: 20px;
+        border: 10px solid black;
       }
     }
   }
