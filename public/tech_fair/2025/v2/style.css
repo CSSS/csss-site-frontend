@@ -4,13 +4,7 @@
 }
 
 :root {
-  /* Breakpoints */
-  --small-screen: 360px;
-  --medium-screen: 768px;
-  --big-screen: 1024px;
-
   /* Colours */
-  --c-bg-header: mediumaquamarine;
   --c-bg-main: #2596be;
 
   /* Structure */
@@ -52,7 +46,6 @@ a:visited:active {
 .show {
   opacity: 1;
   filter: blur(0);
-  transform: translateX(0);
 }
 
 .emphasis {
@@ -79,7 +72,6 @@ a:visited:active {
 header {
   /* Keep this at the top of the page */
   position: fixed;
-  background-color: var(--c-bg-header);
   width: 100%;
   height: var(--header-height);
 
@@ -94,6 +86,7 @@ header {
   & nav {
     display: flex;
     padding: 0.25rem;
+    margin: 0 1vw;
 
     & ul {
       list-style-type: none;
@@ -169,6 +162,12 @@ main {
   }
 }
 
+@media screen and (max-width: 400px) {
+  #students {
+    height: fit-content;
+  }
+}
+
 #companies {
   a {
     color: red;
@@ -179,7 +178,9 @@ main {
   display: flex;
   justify-content: center;
   height: 85vh;
+  font-size: 5vw;
 }
+
 
 footer {
   display: flex;

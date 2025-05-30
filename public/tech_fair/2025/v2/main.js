@@ -33,7 +33,7 @@ function setHeaderScroll() {
 
   // Sets the header to hide/show when scrolling down/up on the page.
   window.addEventListener('scroll', () => {
-    if (ignoreScroll || window.innerWidth > 768) {
+    if (ignoreScroll) {
       return;
     }
 
