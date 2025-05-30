@@ -27,13 +27,13 @@ function setHeaderScroll() {
       setTimeout(() => {
         lastScrollY = window.scrollY;
         ignoreScroll = false;
-      }, 1000);
+      }, 2000);
     });
   }
 
   // Sets the header to hide/show when scrolling down/up on the page.
   window.addEventListener('scroll', () => {
-    if (ignoreScroll) {
+    if (ignoreScroll || window.innerWidth > 768) {
       return;
     }
 

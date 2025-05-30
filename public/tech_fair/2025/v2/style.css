@@ -20,6 +20,8 @@
 body {
   font-family: 'Questrial';
   background-color: var(--c-bg-main);
+  background-image: url('./images/mountain-landscape.svg');
+  background-repeat: no-repeat;
 }
 
 a:link,
@@ -58,6 +60,22 @@ a:visited:active {
   text-align: center;
 }
 
+.btn-anchor {
+  display: inline-block;
+  margin: 0 auto;
+  cursor: pointer;
+  padding: 1rem;
+  background-color: pink;
+  border-radius: 20px;
+  box-shadow: -5px 5px black;
+}
+
+.centering {
+  display: flex;
+  justify-content: center;
+  width: auto;
+}
+
 header {
   /* Keep this at the top of the page */
   position: fixed;
@@ -79,12 +97,11 @@ header {
 
     & ul {
       list-style-type: none;
+      flex-grow: 1;
       margin: 0;
       padding: 1rem 0 0;
 
       & li {
-        float: left;
-
         & a {
           text-align: center;
           padding: 1rem;
@@ -100,11 +117,18 @@ header {
   align-items: center;
   text-align: center;
   padding-top: calc(var(--header-height) + 5vh);
-  background-color: white;
   height: 110vh;
 
+  & p {
+    font-size: max(1.5rem, 4vw);
+  }
+
+  h1 {
+    font-size: max(2rem, 6vw);
+  }
+
   & img {
-    width: 10rem;
+    width: 30vw;
     height: auto;
   }
 
@@ -118,17 +142,20 @@ main {
     display: grid;
 
     & section {
-      padding: 5rem clamp(1rem, 10vw, 20rem);
-      height: 120vh;
+      padding: 5rem 10vw;
+      height: 130vh;
 
       & .section-content {
         background-color: white;
         padding: 1rem;
+        margin-bottom: 2rem;
 
         border-radius: 20px;
         box-shadow: -5px 5px black;
+        border: 1px solid black;
 
-        & ol {
+        & ul,
+        ol {
           padding: inherit;
           margin: 0;
 
@@ -142,10 +169,16 @@ main {
   }
 }
 
+#companies {
+  a {
+    color: red;
+  }
+}
+
 #final {
   display: flex;
   justify-content: center;
-  height: 80vh;
+  height: 85vh;
 }
 
 footer {
@@ -164,147 +197,3 @@ footer {
     }
   }
 }
-
-/* nav { */
-/*   position: sticky; */
-/*   width: 100%; */
-/*   top: 0; */
-/*   padding: 1rem 0; */
-/*   height: 4rem; */
-/*   z-index: 10; */
-/**/
-/*   background-color: #555; */
-/*   color: black; */
-/*   font-size: clamp(0.75rem, 2vw, 2rem); */
-/**/
-/*   & .nav-section { */
-/*     display: grid; */
-/*     grid-template-columns: 1fr 9fr 1fr; */
-/*     width: 100%; */
-/**/
-/*     & ul { */
-/*       display: flex; */
-/*       align-items: center; */
-/*       margin: 0; */
-/*       height: 100%; */
-/*       padding: 0; */
-/**/
-/*       & li { */
-/*         all: unset; */
-/*         display: flex; */
-/*         justify-content: center; */
-/*         cursor: pointer; */
-/*         flex: 1 1; */
-/**/
-/*         & a { */
-/*           cursor: pointer; */
-/*           text-align: center; */
-/*         } */
-/*       } */
-/*     } */
-/*   } */
-/* } */
-/**/
-/* .csss-logo { */
-/*   width: clamp(2rem, 10vw, 3.5rem); */
-/*   margin: auto; */
-/* } */
-/**/
-/**/
-/* header { */
-/*   display: flex; */
-/*   flex-direction: row; */
-/*   position: sticky; */
-/*   top: 4rem; */
-/*   text-align: center; */
-/*   color: white; */
-/*   background-color: lightseagreen; */
-/*   z-index: 10; */
-/*   height: fit-content; */
-/**/
-/*   span { */
-/*     align-self: flex-end; */
-/*     vertical-align: bottom; */
-/*     font-size: 2.1rem; */
-/*   } */
-/* } */
-/**/
-/**/
-/* .loading { */
-/*   backdrop-filter: blur(10px); */
-/* } */
-/**/
-/* .laptop { */
-/*   position: relative; */
-/*   height: 5rem; */
-/*   bottom: 0; */
-/* } */
-/**/
-/* main { */
-/*   background-color: #CCC; */
-/**/
-/*   & article { */
-/*     display: grid; */
-/**/
-/*     & section { */
-/*       width: 100%; */
-/*       /* Fixed height makes it so the scroll bar stays more accurate and animations work better */
-*/
-/*       height: 140vh; */
-/*       /* The top padding makes sure when we jump to a section we don't undershoot. */
-*/
-/*       padding: 10rem 1rem; */
-/**/
-/*       & .section-content { */
-/*         width: 100%; */
-/*         height: fit-content; */
-/*         padding: 0 1vw; */
-/*       } */
-/*     } */
-/*   } */
-/* } */
-/**/
-/* #about { */
-/*   position: relative; */
-/**/
-/*   & .section-content { */
-/*     display: flex; */
-/*     flex-direction: row; */
-/*     align-content: flex-start; */
-/*     flex-wrap: wrap; */
-/**/
-/*     & img { */
-/*       display: block; */
-/*       width: 22.5rem; */
-/*       height: 16.875rem; */
-/*       flex: 1 1 22.5rem; */
-/*     } */
-/**/
-/*     & .content { */
-/*       flex: 1 1 calc(100% - 22.5rem); */
-/**/
-/*       & h2, */
-/*       p { */
-/**/
-/*         text-align: center; */
-/*         flex: 1 1 50%; */
-/*       } */
-/*     } */
-/*   } */
-/* } */
-/**/
-/* #final { */
-/*   height: 90vh; */
-/**/
-/*   & h2 { */
-/*     display: flex; */
-/*     justify-content: center; */
-/*     font-size: 7vw; */
-/*   } */
-/* } */
-/**/
-/* footer { */
-/*   display: flex; */
-/*   flex-direction: column; */
-/*   align-items: center; */
-/**/
