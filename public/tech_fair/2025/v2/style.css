@@ -3,7 +3,14 @@
   src: url('fonts/Questrial-Regular.ttf') format('truetype')
 }
 
-:root {}
+:root {
+  /* Breakpoints */
+  --small-screen: 360px;
+  --medium-screen: 768px;
+  --big-screen: 1024px;
+
+  /* Colours */
+}
 
 body {
   font-family: 'Questrial';
@@ -41,153 +48,184 @@ a:visited:active {
   transform: translateX(0);
 }
 
-nav {
+header {
   position: sticky;
-  width: 100%;
-  top: 0;
-  padding: 1rem 0;
-  height: 4rem;
-  z-index: 10;
+  display: flex;
+  padding: 0.25rem;
+  background-color: mediumaquamarine;
 
-  background-color: #555;
-  color: black;
-  font-size: clamp(0.75rem, 2vw, 2rem);
+  & img {
+    width: 3rem;
+    height: auto;
+  }
 
-  & .nav-section {
-    display: grid;
-    grid-template-columns: 1fr 9fr 1fr;
-    width: 100%;
-
+  & nav {
     & ul {
-      display: flex;
-      align-items: center;
+      list-style-type: none;
       margin: 0;
-      height: 100%;
-      padding: 0;
+      padding: 1rem 0 0;
 
       & li {
-        all: unset;
-        display: flex;
-        justify-content: center;
-        cursor: pointer;
-        flex: 1 1;
+        float: left;
 
         & a {
-          cursor: pointer;
           text-align: center;
+          padding: 1rem;
         }
       }
     }
   }
 }
 
-.csss-logo {
-  width: clamp(2rem, 10vw, 3.5rem);
-  margin: auto;
-}
-
-.icon {
-  width: 1.5em;
-  height: 1.5em;
-}
-
-header {
-  display: flex;
-  flex-direction: row;
-  position: sticky;
-  top: 4rem;
-  text-align: center;
-  color: white;
-  background-color: lightseagreen;
-  z-index: 10;
-  height: fit-content;
-
-  span {
-    align-self: flex-end;
-    vertical-align: bottom;
-    font-size: 2.1rem;
-  }
-}
-
-
-.loading {
-  backdrop-filter: blur(10px);
-}
-
-.laptop {
-  position: relative;
-  height: 5rem;
-  bottom: 0;
-}
-
-main {
-  background-color: #CCC;
-
-  & article {
-    display: grid;
-
-    & section {
-      width: 100%;
-      /* Fixed height makes it so the scroll bar stays more accurate and animations work better */
-      height: 140vh;
-      /* The top padding makes sure when we jump to a section we don't undershoot. */
-      padding: 10rem 1rem;
-
-      & .section-content {
-        width: 100%;
-        height: fit-content;
-        padding: 0 1vw;
-      }
-    }
-  }
-}
-
-#about {
-  position: relative;
-
-  & .section-content {
-    display: flex;
-    flex-direction: row;
-    align-content: flex-start;
-    flex-wrap: wrap;
-
-    & img {
-      display: block;
-      width: 22.5rem;
-      height: 16.875rem;
-      flex: 1 1 22.5rem;
-    }
-
-    & .content {
-      flex: 1 1 calc(100% - 22.5rem);
-
-      & h2,
-      p {
-
-        text-align: center;
-        flex: 1 1 50%;
-      }
-    }
-  }
-}
-
-#final {
-  height: 90vh;
-
-  & h2 {
-    display: flex;
-    justify-content: center;
-    font-size: 7vw;
-  }
-}
-
-footer {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-
-  & .icons {
-    display: flex;
-    gap: 0.5rem;
-  }
-}
+/* nav { */
+/*   position: sticky; */
+/*   width: 100%; */
+/*   top: 0; */
+/*   padding: 1rem 0; */
+/*   height: 4rem; */
+/*   z-index: 10; */
+/**/
+/*   background-color: #555; */
+/*   color: black; */
+/*   font-size: clamp(0.75rem, 2vw, 2rem); */
+/**/
+/*   & .nav-section { */
+/*     display: grid; */
+/*     grid-template-columns: 1fr 9fr 1fr; */
+/*     width: 100%; */
+/**/
+/*     & ul { */
+/*       display: flex; */
+/*       align-items: center; */
+/*       margin: 0; */
+/*       height: 100%; */
+/*       padding: 0; */
+/**/
+/*       & li { */
+/*         all: unset; */
+/*         display: flex; */
+/*         justify-content: center; */
+/*         cursor: pointer; */
+/*         flex: 1 1; */
+/**/
+/*         & a { */
+/*           cursor: pointer; */
+/*           text-align: center; */
+/*         } */
+/*       } */
+/*     } */
+/*   } */
+/* } */
+/**/
+/* .csss-logo { */
+/*   width: clamp(2rem, 10vw, 3.5rem); */
+/*   margin: auto; */
+/* } */
+/**/
+/* .icon { */
+/*   width: 1.5em; */
+/*   height: 1.5em; */
+/* } */
+/**/
+/* header { */
+/*   display: flex; */
+/*   flex-direction: row; */
+/*   position: sticky; */
+/*   top: 4rem; */
+/*   text-align: center; */
+/*   color: white; */
+/*   background-color: lightseagreen; */
+/*   z-index: 10; */
+/*   height: fit-content; */
+/**/
+/*   span { */
+/*     align-self: flex-end; */
+/*     vertical-align: bottom; */
+/*     font-size: 2.1rem; */
+/*   } */
+/* } */
+/**/
+/**/
+/* .loading { */
+/*   backdrop-filter: blur(10px); */
+/* } */
+/**/
+/* .laptop { */
+/*   position: relative; */
+/*   height: 5rem; */
+/*   bottom: 0; */
+/* } */
+/**/
+/* main { */
+/*   background-color: #CCC; */
+/**/
+/*   & article { */
+/*     display: grid; */
+/**/
+/*     & section { */
+/*       width: 100%; */
+/*       /* Fixed height makes it so the scroll bar stays more accurate and animations work better */
+*/
+/*       height: 140vh; */
+/*       /* The top padding makes sure when we jump to a section we don't undershoot. */
+*/
+/*       padding: 10rem 1rem; */
+/**/
+/*       & .section-content { */
+/*         width: 100%; */
+/*         height: fit-content; */
+/*         padding: 0 1vw; */
+/*       } */
+/*     } */
+/*   } */
+/* } */
+/**/
+/* #about { */
+/*   position: relative; */
+/**/
+/*   & .section-content { */
+/*     display: flex; */
+/*     flex-direction: row; */
+/*     align-content: flex-start; */
+/*     flex-wrap: wrap; */
+/**/
+/*     & img { */
+/*       display: block; */
+/*       width: 22.5rem; */
+/*       height: 16.875rem; */
+/*       flex: 1 1 22.5rem; */
+/*     } */
+/**/
+/*     & .content { */
+/*       flex: 1 1 calc(100% - 22.5rem); */
+/**/
+/*       & h2, */
+/*       p { */
+/**/
+/*         text-align: center; */
+/*         flex: 1 1 50%; */
+/*       } */
+/*     } */
+/*   } */
+/* } */
+/**/
+/* #final { */
+/*   height: 90vh; */
+/**/
+/*   & h2 { */
+/*     display: flex; */
+/*     justify-content: center; */
+/*     font-size: 7vw; */
+/*   } */
+/* } */
+/**/
+/* footer { */
+/*   display: flex; */
+/*   flex-direction: column; */
+/*   align-items: center; */
+/**/
+/*   & .icons { */
+/*     display: flex; */
+/*     gap: 0.5rem; */
+/*   } */
+/* } */
