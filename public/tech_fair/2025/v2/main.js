@@ -47,6 +47,6 @@ function setHeaderScroll() {
 }
 
 (() => {
-  setHeaderScroll();
+  // setHeaderScroll();
   setPopInEffect();
 })();

@@ -48,11 +48,6 @@ a:visited:active {
   filter: blur(0);
 }
 
-.emphasis {
-  font-size: 2rem;
-  text-align: center;
-}
-
 .btn-anchor {
   display: inline-block;
   margin: 0 auto;
@@ -66,36 +61,43 @@ a:visited:active {
 .centering {
   display: flex;
   justify-content: center;
-  width: auto;
 }
 
 header {
   /* Keep this at the top of the page */
-  position: fixed;
   width: 100%;
   height: var(--header-height);
 
-  transition: top 0.5s;
   z-index: 1000;
 
-  & img {
-    width: 3rem;
-    height: auto;
-  }
-
-  & nav {
+  &>nav {
     display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
     padding: 0.25rem;
     margin: 0 1vw;
 
-    & ul {
-      list-style-type: none;
+    &>a {
+      /* This keeps the icon at the far left and the nav links centered */
+      position: absolute;
+      top: 0.5rem;
+      left: 1vw;
+
+      &>img {
+        width: 3rem;
+        height: auto;
+      }
+    }
+
+    &>ul {
       flex-grow: 1;
+      list-style-type: none;
       margin: 0;
       padding: 1rem 0 0;
 
-      & li {
-        & a {
+      &>li {
+        &>a {
           text-align: center;
           padding: 1rem;
         }
@@ -109,45 +111,46 @@ header {
   flex-direction: column;
   align-items: center;
   text-align: center;
-  padding-top: calc(var(--header-height) + 5vh);
+  padding-top: var(--header-height);
   height: 110vh;
 
-  & p {
-    font-size: max(1.5rem, 4vw);
+  &>p {
+    font-size: max(1rem, 3vw);
   }
 
   h1 {
     font-size: max(2rem, 6vw);
   }
 
-  & img {
+  &>img {
     width: 30vw;
     height: auto;
   }
 
-  & section {
+  &>section {
     padding: 1rem;
   }
 }
 
 main {
-  & article {
+  &>article {
     display: grid;
 
-    & section {
-      padding: 5rem 10vw;
+    &>section {
+      padding: 2rem 10vw;
       height: 130vh;
 
-      & .section-content {
+      &>.section-content {
         background-color: white;
-        padding: 1rem;
+        padding: max(1rem, 2vw);
         margin-bottom: 2rem;
 
         border-radius: 20px;
         box-shadow: -5px 5px black;
         border: 1px solid black;
+        font-size: clamp(1rem, 1.5vw, 3rem);
 
-        & ul,
+        &>ul,
         ol {
           padding: inherit;
           margin: 0;
@@ -159,12 +162,6 @@ main {
         }
       }
     }
-  }
-}
-
-@media screen and (max-width: 400px) {
-  #students {
-    height: fit-content;
   }
 }
 
@@ -196,5 +193,23 @@ footer {
       width: 1.5em;
       height: 1.5em;
     }
+  }
+}
+
+@media (max-width: 400px) {
+  header>nav {
+
+    /* These will ensure the nav links will be pushed to the right so CSSS icon will become part of the nav's flow again */
+    &>a {
+      position: static;
+    }
+
+    &>ul {
+      flex-shrink: 0;
+    }
+  }
+
+  #students {
+    height: fit-content;
   }
 }
