@@ -7,8 +7,12 @@
   /* Colours */
   --c-bg-main: #2596be;
 
+  /* Animation */
+  --trans-short: 0.3s ease;
+
   /* Structure */
-  --header-height: 4rem;
+  --header-height: 3rem;
+  --square-logo-dim: 3rem;
 }
 
 body {
@@ -64,11 +68,29 @@ a:visited:active {
 }
 
 header {
-  /* Keep this at the top of the page */
   width: 100%;
-  height: var(--header-height);
-
+  height: fit-content;
   z-index: 1000;
+
+  /* Keep this at the top of the page */
+  position: fixed;
+  top: 0;
+
+  &>#blur-layer {
+    position: absolute;
+    width: 100%;
+    height: 200%;
+    z-index: 0;
+    backdrop-filter: none;
+    mask-image: none;
+    transition:
+      backdrop-filter var(--trans-short),
+  }
+
+  &>#blur-layer.scrolled {
+    backdrop-filter: blur(5000px);
+    mask-image: linear-gradient(to bottom, black 0%, transparent 100%);
+  }
 
   &>nav {
     display: flex;
@@ -77,7 +99,9 @@ header {
     position: relative;
     padding: 0.25rem;
     margin: 0 1vw;
+    height: fit-content;
 
+    /* CSSS Logo */
     &>a {
       /* This keeps the icon at the far left and the nav links centered */
       position: absolute;
@@ -85,21 +109,39 @@ header {
       left: 1vw;
 
       &>img {
-        width: 3rem;
-        height: auto;
+        width: var(--square-logo-dim);
+        height: var(--square-logo-dim);
+
+        /* This portion force the home icon to go to the left when scrolling down */
+        transform: translateX(0);
+        transition:
+          transform var(--trans-short),
+          height var(--trans-short);
+
+        &.scrolled {
+          transform: translateX(-5rem);
+          height: 0;
+        }
       }
     }
 
     &>ul {
-      flex-grow: 1;
       list-style-type: none;
       margin: 0;
       padding: 1rem 0 0;
+      transition:
+        padding var(--trans-short),
+        flex-basis var(--trans-short);
+
+      &.scrolled {
+        padding: 0;
+        flex-basis: 100%;
+      }
 
       &>li {
         &>a {
           text-align: center;
-          padding: 1rem;
+          padding: 0 1rem;
         }
       }
     }
@@ -202,6 +244,11 @@ footer {
     /* These will ensure the nav links will be pushed to the right so CSSS icon will become part of the nav's flow again */
     &>a {
       position: static;
+
+      &>img {
+        height: 2rem;
+        width: 2rem;
+      }
     }
 
     &>ul {

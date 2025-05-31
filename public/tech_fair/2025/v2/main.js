@@ -1,3 +1,15 @@
+/** Variables declared in the :root component in `style.css` */
+const cssVars = getComputedStyle(document.querySelector(':root'));
+
+/** The size of rem, in pixels */
+const remSize = parseFloat(getComputedStyle(document.documentElement).fontSize);
+
+/** The size of the header in pixels. */
+const headerSize = parseFloat(cssVars.getPropertyValue('--header-height')) * remSize;
+
+/** Checks if the page is scrolled to the top. */
+let isAtTop = window.scrollY > headerSize;
+
 function setPopInEffect() {
   const observer = new IntersectionObserver(entries => {
     for (const entry of entries) {
@@ -13,40 +25,30 @@ function setPopInEffect() {
   }
 }
 
-function setHeaderScroll() {
-  const header = document.getElementById('header');
-  const navs = document.querySelectorAll('a[href^="#"]');
-  let ignoreScroll = false;
-  let lastScrollY = 0;
+function setScrolledEffect() {
+  const scrolledElements = [
+    document.getElementById('blur-layer'),
+    document.getElementById('nav-list'),
+    document.getElementById('home-link'),
+    document.getElementById('home-logo')
+  ];
 
-  // Disables the header hiding when scrolling down if a navigation link is pressed.
-  for (const nav of navs) {
-    nav.addEventListener('click', () => {
-      ignoreScroll = true;
-
-      setTimeout(() => {
-        lastScrollY = window.scrollY;
-        ignoreScroll = false;
-      }, 2000);
-    });
-  }
-
-  // Sets the header to hide/show when scrolling down/up on the page.
   window.addEventListener('scroll', () => {
-    if (ignoreScroll) {
-      return;
+    if (window.scrollY <= headerSize && !isAtTop) {
+      isAtTop = true;
+      for (const el of scrolledElements) {
+        el.classList.remove('scrolled');
+      }
+    } else if (window.scrollY > headerSize && isAtTop) {
+      isAtTop = false;
+      for (const el of scrolledElements) {
+        el.classList.add('scrolled');
+      }
     }
-
-    if (window.scrollY > lastScrollY) {
-      header.style.top = '-5rem';
-    } else {
-      header.style.top = '0';
-    }
-    lastScrollY = window.scrollY;
   });
 }
 
 (() => {
-  // setHeaderScroll();
   setPopInEffect();
+  setScrolledEffect();
 })();
