@@ -20,6 +20,7 @@ body {
   background-color: var(--c-bg-main);
   background-image: url('./images/mountain-landscape.svg');
   background-repeat: no-repeat;
+  background-size: cover;
 }
 
 a:link,
@@ -69,27 +70,20 @@ a:visited:active {
 
 header {
   width: 100%;
-  height: fit-content;
+  height: var(--header-height);
   z-index: 1000;
 
   /* Keep this at the top of the page */
   position: fixed;
   top: 0;
 
-  &>#blur-layer {
+  &>.header-blur {
     position: absolute;
+    top: 0;
+    height: 100%;
     width: 100%;
-    height: 200%;
-    z-index: 0;
-    backdrop-filter: none;
-    mask-image: none;
-    transition:
-      backdrop-filter var(--trans-short),
-  }
-
-  &>#blur-layer.scrolled {
-    backdrop-filter: blur(5000px);
-    mask-image: linear-gradient(to bottom, black 0%, transparent 100%);
+    backdrop-filter: blur(1000px);
+    mask-image: linear-gradient(to bottom, black 20%, transparent 100%);
   }
 
   &>nav {
@@ -98,8 +92,8 @@ header {
     justify-content: center;
     position: relative;
     padding: 0.25rem;
-    margin: 0 1vw;
     height: fit-content;
+    width: 100%;
 
     /* CSSS Logo */
     &>a {
@@ -116,27 +110,26 @@ header {
         transform: translateX(0);
         transition:
           transform var(--trans-short),
-          height var(--trans-short);
+          height var(--trans-short),
+          width var(--trans-short);
 
-        &.scrolled {
-          transform: translateX(-5rem);
-          height: 0;
-        }
+      }
+
+      &>img.scrolled {
+        transform: translateX(-5rem);
+        width: 0;
+        height: 0;
       }
     }
 
     &>ul {
+      display: flex;
+      justify-content: space-evenly;
       list-style-type: none;
       margin: 0;
       padding: 1rem 0 0;
       transition:
-        padding var(--trans-short),
-        flex-basis var(--trans-short);
-
-      &.scrolled {
-        padding: 0;
-        flex-basis: 100%;
-      }
+        padding var(--trans-short);
 
       &>li {
         &>a {
@@ -144,6 +137,10 @@ header {
           padding: 0 1rem;
         }
       }
+    }
+
+    &>ul.scrolled {
+      padding: 0;
     }
   }
 }
@@ -154,18 +151,18 @@ header {
   align-items: center;
   text-align: center;
   padding-top: var(--header-height);
-  height: 110vh;
+  height: 100vh;
 
   &>p {
-    font-size: max(1rem, 3vw);
+    font-size: max(1rem, 2vw);
   }
 
   h1 {
-    font-size: max(2rem, 6vw);
+    font-size: max(2rem, 5vw);
   }
 
   &>img {
-    width: 30vw;
+    width: min(30vw, 30rem);
     height: auto;
   }
 
@@ -179,7 +176,7 @@ main {
     display: grid;
 
     &>section {
-      padding: 2rem 10vw;
+      padding: 2rem 12vw;
       height: 130vh;
 
       &>.section-content {
@@ -190,7 +187,7 @@ main {
         border-radius: 20px;
         box-shadow: -5px 5px black;
         border: 1px solid black;
-        font-size: clamp(1rem, 1.5vw, 3rem);
+        font-size: clamp(1rem, 1.5vw, 1.5rem);
 
         &>ul,
         ol {
@@ -198,7 +195,7 @@ main {
           margin: 0;
 
           del {
-            color: #5f5f5f;
+            color: #c5c5c5;
           }
 
         }
@@ -216,8 +213,13 @@ main {
 #final {
   display: flex;
   justify-content: center;
-  height: 85vh;
-  font-size: 5vw;
+  height: 100vh;
+  font-size: min(5vw, 10rem);
+
+  &>div {
+    display: flex;
+    align-items: center;
+  }
 }
 
 

@@ -27,9 +27,7 @@ function setPopInEffect() {
 
 function setScrolledEffect() {
   const scrolledElements = [
-    document.getElementById('blur-layer'),
     document.getElementById('nav-list'),
-    document.getElementById('home-link'),
     document.getElementById('home-logo')
   ];
 
