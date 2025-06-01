@@ -25,24 +25,30 @@ function setPopInEffect() {
   }
 }
 
+function checkScrolledEffect(scrolledElements) {
+  if (window.scrollY <= headerSize && !isAtTop) {
+    isAtTop = true;
+    for (const el of scrolledElements) {
+      el.classList.remove('scrolled');
+    }
+  } else if (window.scrollY > headerSize && isAtTop) {
+    isAtTop = false;
+    for (const el of scrolledElements) {
+      el.classList.add('scrolled');
+    }
+  }
+}
+
 function setScrolledEffect() {
   const scrolledElements = [
     document.getElementById('nav-list'),
     document.getElementById('home-logo')
   ];
 
+  checkScrolledEffect(scrolledElements);
+
   window.addEventListener('scroll', () => {
-    if (window.scrollY <= headerSize && !isAtTop) {
-      isAtTop = true;
-      for (const el of scrolledElements) {
-        el.classList.remove('scrolled');
-      }
-    } else if (window.scrollY > headerSize && isAtTop) {
-      isAtTop = false;
-      for (const el of scrolledElements) {
-        el.classList.add('scrolled');
-      }
-    }
+    checkScrolledEffect(scrolledElements);
   });
 }
 

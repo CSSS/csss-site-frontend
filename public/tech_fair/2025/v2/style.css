@@ -4,9 +4,6 @@
 }
 
 :root {
-  /* Colours */
-  --c-bg-main: #2596be;
-
   /* Animation */
   --trans-short: 0.3s ease;
 
@@ -17,7 +14,6 @@
 
 body {
   font-family: 'Questrial';
-  background-color: var(--c-bg-main);
   background-image: url('./images/mountain-landscape.svg');
   background-repeat: no-repeat;
   background-size: cover;
@@ -39,6 +35,11 @@ a:visited:active {
   filter: blur(5px);
 }
 
+.show {
+  opacity: 1;
+  filter: blur(0);
+}
+
 @media(prefers-reduced-motion: no-preference) {
   .hidden {
     transition:
@@ -46,11 +47,6 @@ a:visited:active {
       filter 1s,
       transform 1s
   }
-}
-
-.show {
-  opacity: 1;
-  filter: blur(0);
 }
 
 .btn-anchor {
@@ -177,27 +173,47 @@ main {
 
     &>section {
       padding: 2rem 12vw;
-      height: 130vh;
+      min-height: 130vh;
+
+      &>h2 {
+        font-size: clamp(1.05rem, 2vw, 2rem);
+      }
 
       &>.section-content {
         background-color: white;
         padding: max(1rem, 2vw);
         margin-bottom: 2rem;
+        width: clamp(15rem, 50vw, 40rem);
 
-        border-radius: 20px;
         box-shadow: -5px 5px black;
+        border-radius: 20px;
         border: 1px solid black;
-        font-size: clamp(1rem, 1.5vw, 1.5rem);
+        width: fit-content;
+
+        &.right {
+          float: right;
+          box-shadow: 5px 5px black;
+          width: 95%;
+        }
+
+        &.left {
+          float: left;
+        }
+
+        &>p,
+        ul,
+        ol {
+          font-size: clamp(1rem, 1.5vw, 1.5rem);
+        }
 
         &>ul,
         ol {
-          padding: inherit;
+          padding-left: inherit;
           margin: 0;
 
           del {
             color: #c5c5c5;
           }
-
         }
       }
     }
@@ -213,12 +229,14 @@ main {
 #final {
   display: flex;
   justify-content: center;
+  align-items: center;
   height: 100vh;
   font-size: min(5vw, 10rem);
 
-  &>div {
+  &>h2 {
     display: flex;
-    align-items: center;
+    height: fit-content;
+    box-shadow: 5px 5px black;
   }
 }
 
@@ -243,7 +261,8 @@ footer {
 @media (max-width: 400px) {
   header>nav {
 
-    /* These will ensure the nav links will be pushed to the right so CSSS icon will become part of the nav's flow again */
+    /* These will ensure the nav links will be pushed to the right so CSSS icon will become 
+     * part of the nav's flow again */
     &>a {
       position: static;
 
