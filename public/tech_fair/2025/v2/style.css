@@ -178,7 +178,7 @@ main {
       min-height: 130vh;
 
       &>h2 {
-        font-size: clamp(1.05rem, 2vw, 2rem);
+        font-size: clamp(1.05rem, 2vw, 1.5rem);
       }
 
       &>.section-content {
@@ -205,7 +205,7 @@ main {
         &>p,
         ul,
         ol {
-          font-size: clamp(1rem, 1.5vw, 1.5rem);
+          font-size: clamp(1rem, 1.5vw, 1.05rem);
         }
 
         &>ul,
