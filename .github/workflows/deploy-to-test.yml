@@ -30,8 +30,10 @@ jobs:
           
           # Checkout `develop` and copy the files over
           # Based off the script `./scripts/deploy_to_branch.sh`
-          git fetch origin build
-          git checkout test
+
+          # The branch we are publishing to
+          git fetch origin test
+          git switch test
           git pull origin test
           cp -R build/* .
           rm -f js/*.LICENSE.txt
