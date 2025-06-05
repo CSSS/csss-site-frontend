@@ -1,0 +1,41 @@
+name: Builds and pushes the results to the `test` branch when a pull request is merged nto `develop`
+
+on:
+  pull_request:
+    types: [closed]
+    branches:
+      - develop
+
+jobs:
+  deploy-to-branch:
+    if: github.event.pull_request.merged == true
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout `develop`
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js, install dependencies and build
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22.x'
+      - run: npm ci
+      - run: npm run build --if-present
+
+      - name: Push build folder to `test` branch
+        run: |
+          # Set up a dummy user and email for identification purposes
+          git config --global user.name "${{ github.actor }}"
+          git config --global user.email "${{ github.actor }}@user.noreply.github.com"
+          
+          # Checkout `build` and copy the files over
+          # Based off the script `./scripts/deploy_to_branch.sh`
+          git checkout test
+          git pull origin test
+          cp -R build/* .
+          rm -f js/*.LICENSE.txt
+          git add .
+          git commit -m "Updating `test` with PR#${{ github.event.pull_request.number }}: ${{ github.event.pull_request.title }}"
+          git push origin test
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
