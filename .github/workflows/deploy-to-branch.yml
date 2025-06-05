@@ -30,6 +30,7 @@ jobs:
           
           # Checkout `build` and copy the files over
           # Based off the script `./scripts/deploy_to_branch.sh`
+          git fetch origin build
           git checkout build
           git pull origin build
           cp -R build/* .
