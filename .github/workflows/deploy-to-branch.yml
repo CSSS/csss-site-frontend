@@ -23,7 +23,7 @@ jobs:
       - run: npm run build --if-present
 
       - name: Preserve build output when moving branches
-      - run: mv build ../build-tmp
+        run: mv build ../build-tmp
 
       - name: Switch to the build branch and clean it
       - run: |
@@ -40,7 +40,7 @@ jobs:
           rm -f ./js/*.LICENSE.txt
 
       - name: Commit and push
-      - run: |
+        run: |
           git config --global user.name "${{ github.actor }}"
           git config --global user.email "${{ github.actor }}@user.noreply.github.com"
           git add .
