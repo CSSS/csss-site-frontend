@@ -21,6 +21,8 @@ jobs:
           node-version: '22.x'
       - run: npm ci
       - run: npm run build --if-present
+        # If this is not done the build folder won't persist between branch switches
+      - run: mv build ${{ runner.temp }}/build
 
       - name: Switch to the `build` branch
         run: |
@@ -30,14 +32,13 @@ jobs:
           
           # Checkout `build` and copy the files over
           # Based off the script `./scripts/deploy_to_branch.sh`
-
           # The branch we are publishing to
           git fetch origin build
           git switch build
 
       - name: Copy the built files over to the root directory and push to `build`
         run: |
-          cp -R build/* .
+          cp -R ${{ runner.temp }}/* .
           rm -f js/*.LICENSE.txt
           git add .
           git commit -m "Updating `build` with PR#${{ github.event.pull_request.number }}: ${{ github.event.pull_request.title }}"
