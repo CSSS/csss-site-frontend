@@ -28,8 +28,9 @@ jobs:
           git config --global user.name "${{ github.actor }}"
           git config --global user.email "${{ github.actor }}@user.noreply.github.com"
           
-          # Checkout `build` and copy the files over
+          # Checkout `develop` and copy the files over
           # Based off the script `./scripts/deploy_to_branch.sh`
+          git fetch origin build
           git checkout test
           git pull origin test
           cp -R build/* .
