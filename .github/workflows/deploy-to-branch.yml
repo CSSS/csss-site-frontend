@@ -30,6 +30,8 @@ jobs:
           
           # Checkout `build` and copy the files over
           # Based off the script `./scripts/deploy_to_branch.sh`
+
+          # The branch we are publishing to
           git fetch origin build
           git switch build
 
