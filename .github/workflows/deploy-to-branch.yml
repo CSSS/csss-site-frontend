@@ -22,7 +22,7 @@ jobs:
       - run: npm ci
       - run: npm run build --if-present
 
-      - name: Push build folder to `build` branch
+      - name: Switch to the `build` branch
         run: |
           # Set up a dummy user and email for identification purposes
           git config --global user.name "${{ github.actor }}"
@@ -34,7 +34,9 @@ jobs:
           # The branch we are publishing to
           git fetch origin build
           git switch build
-          git pull origin build
+
+      - name: Copy the built files over to the root directory and push to `build`
+        run: |
           cp -R build/* .
           rm -f js/*.LICENSE.txt
           git add .
