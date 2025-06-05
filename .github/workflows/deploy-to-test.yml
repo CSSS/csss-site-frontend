@@ -21,24 +21,28 @@ jobs:
           node-version: '22.x'
       - run: npm ci
       - run: npm run build --if-present
-        # If this is not done the build folder won't persist between branch switches
-      - run: mv ./build ${{ runner.temp }}/build
 
-      - name: Switch to the `develop` branch
+      - name: Preserve build output when moving branches
+      - run: mv build ../build-tmp
+
+      - name: Switch to the build branch and clean it
         run: |
-          # Set up a dummy user and email for identification purposes
-          git config --global user.name "${{ github.actor }}"
-          git config --global user.email "${{ github.actor }}@user.noreply.github.com"
-          
-          # Checkout `test` and copy the files over
           # Based off the script `./scripts/deploy_to_branch.sh`
+          # The branch we are publishing to
           git fetch origin test
           git switch test
+          rm -rf *
 
       - name: Copy the built files over to the root directory and push to `test`
         run: |
-          cp -R ${{ runner.temp }}/build/* .
-          rm -f js/*.LICENSE.txt
+          # Set up a dummy user and email for identification purposes
+          cp -R ../build-tmp/* .
+          rm -f ./js/*.LICENSE.txt
+
+      - name: Commit and push
+      - run: |
+          git config --global user.name "${{ github.actor }}"
+          git config --global user.email "${{ github.actor }}@user.noreply.github.com"
           git add .
           git commit -m "Updating `test` with PR#${{ github.event.pull_request.number }}: ${{ github.event.pull_request.title }}"
           git push origin test
