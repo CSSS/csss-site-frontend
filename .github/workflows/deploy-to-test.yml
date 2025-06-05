@@ -1,4 +1,4 @@
-name: Builds and pushes the results to the `test` branch when a pull request is merged nto `develop`
+name: Builds and pushes the results to the `test` branch when a pull request is merged into `develop`
 
 on:
   pull_request:
@@ -22,23 +22,23 @@ jobs:
       - run: npm ci
       - run: npm run build --if-present
 
-      - name: Push build folder to `test` branch
+      - name: Switch to the `develop` branch
         run: |
           # Set up a dummy user and email for identification purposes
           git config --global user.name "${{ github.actor }}"
           git config --global user.email "${{ github.actor }}@user.noreply.github.com"
           
-          # Checkout `develop` and copy the files over
+          # Checkout `test` and copy the files over
           # Based off the script `./scripts/deploy_to_branch.sh`
+          git fetch origin develop
+          git switch develop
 
-          # The branch we are publishing to
-          git fetch origin test
-          git switch test
-          git pull origin test
+      - name: Copy the built files over to the root directory and push to `test`
+        run: |
           cp -R build/* .
           rm -f js/*.LICENSE.txt
           git add .
           git commit -m "Updating `test` with PR#${{ github.event.pull_request.number }}: ${{ github.event.pull_request.title }}"
-          git push origin test
+          git push origin develop
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
