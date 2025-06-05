@@ -1,6 +1,5 @@
 const path = require('path');
-const BundleAnalyzerPlugin =
-  require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 // change this to your local instance of the CSSS API
 // source: https://github.com/csss/csss-site-backend

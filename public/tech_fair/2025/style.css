@@ -1,0 +1,276 @@
+@font-face {
+  font-family: 'Questrial';
+  src: url('fonts/Questrial-Regular.ttf') format('truetype')
+}
+
+:root {
+  /* Animation */
+  --trans-short: 0.3s ease;
+
+  /* Structure */
+  --header-height: 3rem;
+  --square-logo-dim: 3rem;
+}
+
+body {
+  font-family: 'Questrial';
+  background-image: url('./images/mountain-landscape.svg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+a:link,
+a:visited {
+  color: black;
+  text-decoration: none;
+}
+
+a:link:active,
+a:visited:active {
+  color: black;
+}
+
+.hidden {
+  opacity: 0;
+  filter: blur(5px);
+}
+
+.show {
+  opacity: 1;
+  filter: blur(0);
+}
+
+@media(prefers-reduced-motion: no-preference) {
+  .hidden {
+    transition:
+      opacity 2s ease,
+      filter 1s,
+      transform 1s
+  }
+}
+
+.btn-anchor {
+  display: inline-block;
+  margin: 0 auto;
+  cursor: pointer;
+  padding: 1rem;
+  background-color: pink;
+  border-radius: 20px;
+  box-shadow: -5px 5px black;
+}
+
+.centering {
+  display: flex;
+  justify-content: center;
+}
+
+header {
+  width: 100%;
+  z-index: 1000;
+
+  /* Keep this at the top of the page */
+  position: fixed;
+  top: 0;
+
+  &>nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    padding: 0.25rem;
+    height: fit-content;
+    width: 100%;
+    border-bottom: solid black 1px;
+
+    /* CSSS Logo */
+    &>a {
+      /* This keeps the icon at the far left and the nav links centered */
+      position: absolute;
+      top: 0.5rem;
+      left: 1vw;
+
+      &>img {
+        width: var(--square-logo-dim);
+        height: var(--square-logo-dim);
+
+        /* This portion force the home icon to go to the left when scrolling down */
+        transform: translateX(0);
+        transition:
+          transform var(--trans-short),
+          height var(--trans-short),
+          width var(--trans-short);
+      }
+
+      &>img.scrolled {
+        transform: translateX(-5rem);
+        width: 0;
+        height: 0;
+      }
+    }
+
+    &>ul {
+      display: flex;
+      justify-content: space-evenly;
+      list-style-type: none;
+      margin: 0;
+      padding: 1rem 0 0;
+      transition:
+        padding var(--trans-short);
+
+      &>li {
+
+        &>a {
+          text-align: center;
+          padding: 0 1rem;
+        }
+      }
+    }
+
+    &>ul.scrolled {
+      padding: 0;
+    }
+  }
+}
+
+.hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding-top: calc(var(--header-height) + 10vh);
+  height: 100vh;
+
+  &>p {
+    font-size: max(1rem, 2vw);
+  }
+
+  h1 {
+    font-size: max(2rem, 5vw);
+  }
+
+  &>img {
+    width: min(30vw, 30rem);
+    height: auto;
+  }
+
+  &>section {
+    padding: 1rem;
+  }
+}
+
+main {
+  &>article {
+    display: grid;
+
+    &>section {
+      padding: 2rem 12vw;
+      min-height: 130vh;
+
+      &>h2 {
+        font-size: clamp(1.05rem, 2vw, 1.5rem);
+      }
+
+      &>.section-content {
+        background-color: white;
+        padding: max(1rem, 2vw);
+        margin-bottom: 2rem;
+        width: clamp(15rem, 50vw, 40rem);
+
+        box-shadow: -5px 5px black;
+        border-radius: 20px;
+        border: 1px solid black;
+        width: fit-content;
+
+        &.right {
+          float: right;
+          box-shadow: 5px 5px black;
+          width: 95%;
+        }
+
+        &.left {
+          float: left;
+        }
+
+        &>p,
+        ul,
+        ol {
+          font-size: clamp(1rem, 1.5vw, 1.05rem);
+        }
+
+        &>ul,
+        ol {
+          padding-left: inherit;
+          margin: 0;
+
+          del {
+            color: #c5c5c5;
+          }
+        }
+      }
+    }
+  }
+}
+
+#companies {
+  a {
+    color: red;
+  }
+}
+
+#final {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-size: min(5vw, 10rem);
+
+  &>h2 {
+    display: flex;
+    height: fit-content;
+    box-shadow: 5px 5px black;
+  }
+}
+
+
+footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: white;
+
+  .icons {
+    display: flex;
+    gap: 0.5rem;
+
+
+    & .icon {
+      width: 1.5em;
+      height: 1.5em;
+    }
+  }
+}
+
+@media (max-width: 400px) {
+  header>nav {
+
+    /* These will ensure the nav links will be pushed to the right so CSSS icon will become 
+     * part of the nav's flow again */
+    &>a {
+      position: static;
+
+      &>img {
+        height: 2rem;
+        width: 2rem;
+      }
+    }
+
+    &>ul {
+      flex-shrink: 0;
+    }
+  }
+
+  #students {
+    height: fit-content;
+  }
+}
