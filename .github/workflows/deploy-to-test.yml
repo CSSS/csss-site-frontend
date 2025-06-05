@@ -37,7 +37,7 @@ jobs:
 
       - name: Copy the built files over to the root directory and push to `test`
         run: |
-          cp -R ${{ runner.temp }}/* .
+          cp -R ${{ runner.temp }}/build/* .
           rm -f js/*.LICENSE.txt
           git add .
           git commit -m "Updating `test` with PR#${{ github.event.pull_request.number }}: ${{ github.event.pull_request.title }}"
