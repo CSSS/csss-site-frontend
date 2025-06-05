@@ -22,7 +22,7 @@ jobs:
       - run: npm ci
       - run: npm run build --if-present
         # If this is not done the build folder won't persist between branch switches
-      - run: mv build ${{ runner.temp }}/build
+      - run: mv ./build ${{ runner.temp }}/build
 
       - name: Switch to the `build` branch
         run: |
@@ -39,7 +39,7 @@ jobs:
       - name: Copy the built files over to the root directory and push to `build`
         run: |
           cp -R ${{ runner.temp }}/build/* .
-          rm -f js/*.LICENSE.txt
+          rm -f ./js/*.LICENSE.txt
           git add .
           git commit -m "Updating `build` with PR#${{ github.event.pull_request.number }}: ${{ github.event.pull_request.title }}"
           git push origin build

@@ -22,7 +22,7 @@ jobs:
       - run: npm ci
       - run: npm run build --if-present
         # If this is not done the build folder won't persist between branch switches
-      - run: mv build ${{ runner.temp }}/build
+      - run: mv ./build ${{ runner.temp }}/build
 
       - name: Switch to the `develop` branch
         run: |
