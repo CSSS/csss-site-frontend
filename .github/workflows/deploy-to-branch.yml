@@ -26,7 +26,7 @@ jobs:
         run: mv build ../build-tmp
 
       - name: Switch to the build branch and clean it
-      - run: |
+        run: |
           # Based off the script `./scripts/deploy_to_branch.sh`
           # The branch we are publishing to
           git fetch origin build
@@ -34,7 +34,7 @@ jobs:
           rm -rf *
 
       - name: Copy the built files over to the root directory and push to `build`
-      - run: |
+        run: |
           # Set up a dummy user and email for identification purposes
           cp -R ../build-tmp/* .
           rm -f ./js/*.LICENSE.txt
