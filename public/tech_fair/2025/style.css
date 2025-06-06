@@ -137,9 +137,9 @@ header {
 .hero {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
   text-align: center;
-  padding-top: calc(var(--header-height) + 10vh);
   height: 100vh;
 
   &>p {
@@ -165,7 +165,7 @@ main {
     display: grid;
 
     &>section {
-      padding: 2rem 12vw;
+      padding: 2.5rem 12vw;
       min-height: 130vh;
 
       &>h2 {
