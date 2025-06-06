@@ -6,7 +6,7 @@
 body {
     display: flex;
     flex-direction: column;
-    
+
     margin: 0 auto;
 
     height: 100vh;
@@ -42,8 +42,8 @@ select[readonly] optgroup {
 
     border-bottom: #bbb 1px solid;
 
-    background: rgb(184,252,223);
-    background: linear-gradient(19deg, rgb(202, 255, 232) 0%, rgb(236, 255, 218) 31%, rgba(255,254,243,1) 100%);
+    background: rgb(184, 252, 223);
+    background: linear-gradient(19deg, rgb(202, 255, 232) 0%, rgb(236, 255, 218) 31%, rgba(255, 254, 243, 1) 100%);
 }
 
 #header-content {
@@ -122,14 +122,14 @@ select[readonly] optgroup {
     align-items: center;
     font-size: 1.5rem;
     line-height: 1;
-    
+
     text-align: center;
-    
+
     padding: 0 1rem;
-    height: 100%; 
+    height: 100%;
 
     vertical-align: middle;
-    
+
     cursor: pointer;
     user-select: none;
 
@@ -161,6 +161,7 @@ select[readonly] optgroup {
 .nav-header:hover {
     background-color: #eee;
 }
+
 .nav-header:active {
     background-color: #f6f6f6;
 }
@@ -193,10 +194,12 @@ select[readonly] optgroup {
 
     transition: transform 0.15s ease-in-out;
 }
+
 .nav-child:hover {
     background-color: #f7f7f7;
     transform: translateX(-2px);
 }
+
 .nav-child:active {
     transition: transform 0.06s ease-in-out;
     transform: translateX(2px);
@@ -204,21 +207,23 @@ select[readonly] optgroup {
 
 .tab-item {
     height: 4rem;
-    
+
     border: #ddd 1px solid;
     border-radius: 1.2rem;
-    
+
     cursor: pointer;
     user-select: none;
 
     padding: 0.3rem 1rem 0 1rem;
     transition: transform 0.15s ease-in-out;
 }
+
 .tab-item:hover {
     background-color: #eee;
     border: #eee 1px solid;
     transform: translateY(-2px);
 }
+
 .tab-item:active {
     transition: transform 0.075s ease-in-out;
 
@@ -226,6 +231,7 @@ select[readonly] optgroup {
     border: #f5f5f5 1px solid;
     transform: translateY(2px);
 }
+
 #home-tab {
     font-size: 1.75rem;
     height: 1.7rem;
@@ -238,9 +244,11 @@ select[readonly] optgroup {
 
     transition: transform 0.15s ease-in-out;
 }
+
 #home-tab:hover {
     transform: translateY(-1px);
 }
+
 #home-tab:active {
     transition: transform 0.1s ease-in-out;
     transform: translateY(2px);
@@ -256,10 +264,12 @@ select[readonly] optgroup {
 
     transition: 0.1s transform ease-in-out;
 }
+
 .tab-item img:hover {
     filter: invert(0%);
     background-color: #ccc;
 }
+
 .tab-item img:active {
     filter: invert(20%);
     background-color: #bbb;
@@ -271,10 +281,12 @@ select[readonly] optgroup {
     background-color: #ddd;
     border-color: #ddd;
 }
+
 .active-tab:hover {
     background-color: #ccc;
     border-color: #ccc;
 }
+
 .active-tab:active {
     background-color: #d6d6d6;
     border-color: #d6d6d6;
@@ -289,6 +301,7 @@ select[readonly] optgroup {
     margin-top: -2ch;
     padding: 1ch 0 0 1ch;
 }
+
 #controls div {
     width: calc(50ch - 2ch);
     padding: 1ch;
@@ -299,9 +312,11 @@ clickable {
     cursor: pointer;
     text-decoration: underline;
 }
+
 clickable:hover {
     color: rgb(235, 157, 94);
 }
+
 clickable:active {
     color: rgb(255, 246, 162);
 }
