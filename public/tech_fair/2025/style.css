@@ -9,7 +9,7 @@
 
   /* Structure */
   --header-height: 3rem;
-  --square-logo-dim: 3rem;
+  --square-logo-dim: 2.8rem;
 }
 
 body {
@@ -33,12 +33,10 @@ a:visited:active {
 
 .hidden {
   opacity: 0;
-  filter: blur(5px);
 }
 
 .show {
   opacity: 1;
-  filter: blur(0);
 }
 
 @media(prefers-reduced-motion: no-preference) {
@@ -72,6 +70,11 @@ header {
   /* Keep this at the top of the page */
   position: fixed;
   top: 0;
+  backdrop-filter: blur(5px);
+
+  &.scrolled {
+    border-bottom: solid black 1px;
+  }
 
   &>nav {
     display: flex;
@@ -81,13 +84,11 @@ header {
     padding: 0.25rem;
     height: fit-content;
     width: 100%;
-    border-bottom: solid black 1px;
 
     /* CSSS Logo */
     &>a {
       /* This keeps the icon at the far left and the nav links centered */
       position: absolute;
-      top: 0.5rem;
       left: 1vw;
 
       &>img {
@@ -257,7 +258,8 @@ footer {
     /* These will ensure the nav links will be pushed to the right so CSSS icon will become 
      * part of the nav's flow again */
     &>a {
-      position: static;
+      position: relative;
+      left: 0;
 
       &>img {
         height: 2rem;

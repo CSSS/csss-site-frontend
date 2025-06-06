@@ -41,6 +41,7 @@ function checkScrolledEffect(scrolledElements) {
 
 function setScrolledEffect() {
   const scrolledElements = [
+    document.getElementById('header'),
     document.getElementById('nav-list'),
     document.getElementById('home-logo')
   ];
