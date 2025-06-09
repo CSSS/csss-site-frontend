@@ -101,6 +101,18 @@ export const Page = ({ children }) => {
           href="https://discord.gg/sfucsss"
         />
       </VSCode.NavFolder>
+      <VSCode.NavFolder text="Elections">
+        <VSCode.NavItem
+          isInFolder={true}
+          text="About Elections.md"
+          to="/elections/about"
+        />
+        <VSCode.NavItem
+          isInFolder={true}
+          text="Past Elections.md"
+          to="/elections"
+        />
+      </VSCode.NavFolder>
     </>
   );
 
