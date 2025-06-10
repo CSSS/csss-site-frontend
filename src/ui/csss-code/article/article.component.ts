@@ -12,6 +12,8 @@ import {
   viewChild
 } from '@angular/core';
 
+const LETTER_HEIGHT = 24;
+
 @Component({
   selector: 'code-article',
   standalone: false,
@@ -45,8 +47,6 @@ export class ArticleComponent implements AfterViewInit, OnDestroy {
 
   /**
    * The array to display the lines needed for the content.
-   * Yes there is a magic number. No I'm not sure how to do this without it.
-   * It's about 1.3125 rem, given rem is 16px. If you change rem, you probably break this.
    */
   numbersToDisplay = computed(() => Array.from({ length: this.numbersToPrint() }, (_, i) => i + 1));
 
@@ -58,7 +58,7 @@ export class ArticleComponent implements AfterViewInit, OnDestroy {
      */
     this.resizeObs = new ResizeObserver(entries => {
       for (const entry of entries) {
-        const numbersToFit = Math.floor(entry.contentRect.height);
+        const numbersToFit = Math.floor(entry.contentRect.height / LETTER_HEIGHT);
 
         if (this.numbersToPrint() !== numbersToFit) {
           this.numbersToPrint.set(numbersToFit);

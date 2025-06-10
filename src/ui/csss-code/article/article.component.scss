@@ -11,6 +11,7 @@ aside {
   @include globals.no-select;
   font-family: globals.$static-font;
   color: theme.$code-text;
+  width: fit-content;
 
   div {
     text-align: right;
