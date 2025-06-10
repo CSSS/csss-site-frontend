@@ -1,0 +1,18 @@
+@use 'theme';
+@use 'globals' as g;
+
+button {
+  @include g.no-select;
+  border: 1px solid #1e1e1e;
+  border-radius: 50px;
+  padding: 0.5rem;
+  background-color: #111111;
+}
+
+fa-icon {
+  color: white;
+}
+
+button:hover {
+  background-color: #222222;
+}

@@ -8,6 +8,7 @@ import { ArticleComponent } from './article/article.component';
 import { TabItemComponent } from './tabbar/tab-item/tab-item.component';
 import { ClassComponent } from './article/class/class.component';
 import { FunctionComponent } from './article/function/function.component';
+import { ButtonComponent } from './button/button.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { FunctionComponent } from './article/function/function.component';
     ArticleComponent,
     TabItemComponent,
     ClassComponent,
-    FunctionComponent
+    FunctionComponent,
+    ButtonComponent
   ],
   imports: [CommonModule, FontAwesomeModule],
   exports: [
@@ -26,7 +28,8 @@ import { FunctionComponent } from './article/function/function.component';
     NavbarItemComponent,
     TabBarComponent,
     ArticleComponent,
-    ClassComponent
+    ClassComponent,
+    ButtonComponent
   ]
 })
 export class CsssCodeModule {}
