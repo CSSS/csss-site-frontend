@@ -8,6 +8,7 @@ import { ArticleComponent } from './article/article.component';
 import { ClassComponent } from './article/class/class.component';
 import { FunctionComponent } from './article/function/function.component';
 import { ButtonComponent } from './button/button.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -19,9 +20,8 @@ import { ButtonComponent } from './button/button.component';
     FunctionComponent,
     ButtonComponent
   ],
-  imports: [CommonModule, FontAwesomeModule],
+  imports: [CommonModule, RouterModule, FontAwesomeModule],
   exports: [
-    NavbarComponent,
     NavbarComponent,
     NavbarItemComponent,
     TabBarComponent,

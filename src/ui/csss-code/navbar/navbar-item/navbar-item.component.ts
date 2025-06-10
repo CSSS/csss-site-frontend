@@ -67,16 +67,13 @@ export class NavbarItemComponent {
   itemClick() {
     const entry = this.entry();
     switch (entry.type) {
-      case 'file': {
-        if (entry.link) {
-          this.router.navigate([entry.link]);
-        }
-        break;
-      }
       case 'folder': {
         this.isOpen.update(value => !value);
+        break;
+      }
+      default: {
+        return;
       }
     }
-    return;
   }
 }

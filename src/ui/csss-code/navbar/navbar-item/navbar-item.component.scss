@@ -19,6 +19,10 @@ li {
   margin-bottom: 0.25em;
 }
 
+.nav-entry.active {
+  background-color: theme.$bg0;
+}
+
 .nav-entry:hover {
   cursor: pointer;
   background-color: theme.$bg0;
