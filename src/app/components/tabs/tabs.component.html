@@ -1,10 +1,9 @@
 <code-tabbar>
   @for (tab of tabs(); track $index) {
     <div class="tab clickable">
-      <div></div>
+      <div class="left"></div>
       <span class="label">{{ tab.label }}</span>
       <button type="button" (click)="closeTab(tab.id)">&#x2715;</button>
     </div>
-    <ng-content [id]="`tab-${key}-${item.label}-${$index}`"></ng-content>
   }
 </code-tabbar>
