@@ -27,12 +27,6 @@ export class ArticleComponent implements AfterViewInit, OnDestroy {
    */
   readonly view = viewChild.required('article', { read: ElementRef });
 
-  /**
-   * The content of the article, excluding the article itself.
-   */
-  readonly h2s = contentChildren('h2', { read: ElementRef });
-  readonly ps = contentChildren('p', { read: ElementRef });
-
   renderer: Renderer2 = inject(Renderer2);
 
   /**
