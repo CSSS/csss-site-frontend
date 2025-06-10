@@ -3,7 +3,7 @@
   <fa-icon class="clickable" (click)="toggleNavbar()" [icon]="copyIcon" size="2x"></fa-icon>
 </aside>
 
-@if (isOpen()) {
+@if (isNavOpen()) {
   <aside class="navbar">
     <header class="navbar-header">
       {{ title() }}

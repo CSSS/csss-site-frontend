@@ -37,7 +37,7 @@ export class NavbarComponent implements OnInit {
   /**
    * Flag representing if the navbar is closed or open.
    */
-  isOpen = signal<boolean>(false);
+  isNavOpen = signal<boolean>(false);
 
   /**
    * Signal that converts the nav entries, in case they need to be dynamically instantiated.
@@ -54,7 +54,7 @@ export class NavbarComponent implements OnInit {
   private breakpointObs = inject(BreakpointObserver);
 
   ngOnInit(): void {
-    this.isOpen.set(this.breakpointObs.isMatched('(min-width: 968px)'));
+    this.isNavOpen.set(this.breakpointObs.isMatched('(min-width: 968px)'));
   }
 
   /**
@@ -72,6 +72,6 @@ export class NavbarComponent implements OnInit {
   }
 
   toggleNavbar() {
-    this.isOpen.update(value => !value);
+    this.isNavOpen.update(value => !value);
   }
 }
