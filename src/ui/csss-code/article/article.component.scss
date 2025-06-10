@@ -1,20 +1,25 @@
 @use 'theme';
-@use 'globals';
+@use 'globals' as g;
 
 :host {
   display: grid;
   grid-template-columns: 2.5rem auto;
-  column-gap: 0.5rem;
 }
 
 aside {
-  @include globals.no-select;
-  font-family: globals.$static-font;
+  @include g.no-select;
+  font-family: g.$static-font;
   color: theme.$code-text;
   width: fit-content;
 
   div {
     text-align: right;
     line-height: 1.5;
+  }
+}
+
+@media (min-width: g.$sm-w) {
+  :host {
+    column-gap: 0.5rem;
   }
 }
