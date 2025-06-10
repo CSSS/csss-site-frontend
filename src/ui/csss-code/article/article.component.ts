@@ -1,10 +1,8 @@
 import {
-  AfterContentInit,
   AfterViewInit,
   ChangeDetectionStrategy,
   Component,
   computed,
-  contentChild,
   contentChildren,
   ElementRef,
   inject,
@@ -14,8 +12,6 @@ import {
   viewChild
 } from '@angular/core';
 
-const LETTER_HEIGHT = 24;
-
 @Component({
   selector: 'code-article',
   standalone: false,
@@ -23,7 +19,7 @@ const LETTER_HEIGHT = 24;
   styleUrl: './article.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ArticleComponent implements AfterViewInit, AfterContentInit, OnDestroy {
+export class ArticleComponent implements AfterViewInit, OnDestroy {
   /**
    * The full article with the content inside.
    */
@@ -32,7 +28,6 @@ export class ArticleComponent implements AfterViewInit, AfterContentInit, OnDest
   /**
    * The content of the article, excluding the article itself.
    */
-  // readonly h1 = contentChild.required('h1', { read: ElementRef });
   readonly h2s = contentChildren('h2', { read: ElementRef });
   readonly ps = contentChildren('p', { read: ElementRef });
 
@@ -44,7 +39,7 @@ export class ArticleComponent implements AfterViewInit, AfterContentInit, OnDest
   private resizeObs!: ResizeObserver;
 
   /**
-   * How many lines should be printed in the gutter.
+   * How many lines should be printed in the line gutter.
    */
   numbersToPrint = signal(0);
 
@@ -63,7 +58,7 @@ export class ArticleComponent implements AfterViewInit, AfterContentInit, OnDest
      */
     this.resizeObs = new ResizeObserver(entries => {
       for (const entry of entries) {
-        const numbersToFit = Math.floor(entry.contentRect.height / LETTER_HEIGHT);
+        const numbersToFit = Math.floor(entry.contentRect.height);
 
         if (this.numbersToPrint() !== numbersToFit) {
           this.numbersToPrint.set(numbersToFit);
@@ -73,8 +68,6 @@ export class ArticleComponent implements AfterViewInit, AfterContentInit, OnDest
 
     this.resizeObs.observe(this.view().nativeElement);
   }
-
-  ngAfterContentInit(): void {}
 
   ngOnDestroy(): void {
     // Need to disconnect from this observer after this component is destroyed, or else we get a memory leak.
