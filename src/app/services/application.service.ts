@@ -1,4 +1,4 @@
-import { Injectable, signal, WritableSignal } from '@angular/core';
+import { inject, Injectable, signal, WritableSignal } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { filter } from 'rxjs';
 import { Application, getApplicationById, routeApplicationMap } from './applications';
@@ -16,7 +16,9 @@ export class ApplicationService {
     new Map()
   );
 
-  constructor(private router: Router) {
+  private router = inject(Router);
+
+  constructor() {
     // Observable that emits when navigating to a new URL has completed.
     // Used to check if the route should launch an application or change the content of an application.
     this.router.events
@@ -34,6 +36,11 @@ export class ApplicationService {
       });
   }
 
+  /**
+   * Focus on an application, making its outlet the visible one.
+   *
+   * @param app - Target application
+   */
   private focusOnApplication(app: Application): void {
     if (this.focusedApplication()?.id !== app.id) {
       this.focusedApplication.set(app);
@@ -81,7 +88,15 @@ export class ApplicationService {
    *
    * @param id - The ID of the application to close.
    */
-  private closeApplication(id: number) {
+  closeApplication(id: number) {
     removeFromSignalMap(this.runningApplications, id);
+    if (this.runningApplications().size) {
+      const nextApp = this.runningApplications().entries().next().value;
+      if (nextApp) {
+        this.openApplication(nextApp[1]);
+      }
+    } else {
+      this.router.navigate(['/']);
+    }
   }
 }
