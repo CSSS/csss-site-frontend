@@ -1,5 +1,13 @@
-<!-- This is the nav item -->
-<!-- If the entry has a link, wrap it in an `a` tag. Otherwise, use a `div`-->
+<!-- This is the template of the navbar item, i.e. the actual nav entry's look -->
+<ng-template #item>
+  @if (icon(); as i) {
+    <fa-icon class="fa-fw" [style.paddingLeft.em]="depth() * 1.5" [icon]="i" />
+  }
+  <span>{{ label() }}</span>
+</ng-template>
+
+<!-- If the entry has a link, wrap it in an `a` tag, otherwise, use a `div`. -->
+<!-- This is for semantic purposes -->
 @if (entry().link) {
   <a class="nav-entry" (click)="itemClick()">
     <ng-container [ngTemplateOutlet]="item"></ng-container>
@@ -10,15 +18,8 @@
   </div>
 }
 
-<ng-template #item>
-  @if (icon(); as i) {
-    <fa-icon class="fa-fw" [style.paddingLeft.em]="depth() * 1.5" [icon]="i" />
-  }
-  <span>{{ label() }}</span>
-</ng-template>
-
-<!-- This is the sublist if the item has any children -->
-@if (isOpen() && entry().children.length) {
+<!-- Structure of items that have sub-items -->
+@if (isOpen() && entry().children?.length) {
   <ul>
     @for (entry of entry().children; track entry.key) {
       <li><code-navbar-item [depth]="depth() + 1" [entry]="entry" /></li>

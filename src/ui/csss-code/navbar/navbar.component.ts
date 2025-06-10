@@ -7,14 +7,10 @@ import {
   OnInit,
   signal
 } from '@angular/core';
-import { NavEntry } from 'pages/navbar-entries';
 import { csssLogo } from 'assets/icons/csss-logo';
 import { faCopy } from '@fortawesome/free-solid-svg-icons';
 import { BreakpointObserver } from '@angular/cdk/layout';
-
-export interface NavbarItem extends NavEntry {
-  children: NavbarItem[];
-}
+import { NavbarItem } from './navbar-item/navbar-item.component';
 
 @Component({
   selector: 'code-navbar',
@@ -32,7 +28,7 @@ export class NavbarComponent implements OnInit {
   /**
    * Navbar entries
    */
-  entries = input.required<NavEntry[]>();
+  entries = input.required<NavbarItem[]>();
 
   /**
    * Flag representing if the navbar is closed or open.
@@ -60,7 +56,7 @@ export class NavbarComponent implements OnInit {
   /**
    * Recursively converts all the navbar entries into object this navbar can use
    */
-  private navEntryToItem(entries: NavEntry[]): NavbarItem[] {
+  private navEntryToItem(entries: NavbarItem[]): NavbarItem[] {
     return entries.map(entry => {
       const children = entry.children?.length ? this.navEntryToItem(entry.children) : [];
       return {
