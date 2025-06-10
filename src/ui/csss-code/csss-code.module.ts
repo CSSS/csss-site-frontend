@@ -7,22 +7,25 @@ import { NavbarItemComponent } from './navbar/navbar-item/navbar-item.component'
 import { ArticleComponent } from './article/article.component';
 import { ButtonComponent } from './button/button.component';
 import { RouterModule } from '@angular/router';
+import { CardComponent } from './card/card.component';
 
 @NgModule({
   declarations: [
+    ArticleComponent,
+    ButtonComponent,
+    CardComponent,
     NavbarComponent,
     NavbarItemComponent,
-    TabBarComponent,
-    ArticleComponent,
-    ButtonComponent
+    TabBarComponent
   ],
   imports: [CommonModule, RouterModule, FontAwesomeModule],
   exports: [
+    ArticleComponent,
+    ButtonComponent,
+    CardComponent,
     NavbarComponent,
     NavbarItemComponent,
-    TabBarComponent,
-    ArticleComponent,
-    ButtonComponent
+    TabBarComponent
   ]
 })
 export class CsssCodeModule {}
