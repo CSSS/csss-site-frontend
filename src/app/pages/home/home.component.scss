@@ -1,9 +1,11 @@
 @use 'theme';
 
-.logo-frame {
+:host {
   display: flex;
+  height: 100%;
+  flex-direction: column;
   justify-content: center;
-  padding-top: 7rem;
+  align-items: center;
 }
 
 .welcome {
@@ -11,8 +13,8 @@
   color: theme.$code-text;
 }
 
-h1 {
-  font-size: 1rem;
+h2 {
+  font-size: 1.5rem;
 }
 
 fa-icon {
