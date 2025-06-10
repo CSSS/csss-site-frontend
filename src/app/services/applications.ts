@@ -31,6 +31,7 @@ export interface Application {
 
 /**
  * All registered applications should go here.
+ * TODO:Need a way to dynamically generate this or the routes.
  */
 export const routeApplicationMap: Map<string, Application> = new Map([
   [
@@ -49,6 +50,15 @@ export const routeApplicationMap: Map<string, Application> = new Map([
       label: 'About.md',
       activityKey: '',
       key: 'about'
+    }
+  ],
+  [
+    '/affiliates',
+    {
+      id: 2,
+      label: 'Affiliates.md',
+      activityKey: '',
+      key: 'affiliates'
     }
   ]
 ]);

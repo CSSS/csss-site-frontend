@@ -3,6 +3,7 @@
 
 $item-spacing: 1rem; // Padding for the activity bar items.
 $act-bar-h-sm: calc($item-spacing*2 + g.$act-bar-h + 1px);
+$border: 1px solid #1e1e1e;
 
 :host {
   display: flex;
@@ -24,7 +25,7 @@ header {
   background-color: theme.$bg1;
   gap: $item-spacing;
   padding: $item-spacing;
-  border-bottom: solid 1px #1e1e1e;
+  border-bottom: $border;
 }
 
 .navbar-header {
@@ -36,6 +37,7 @@ header {
   top: $act-bar-h-sm;
   height: calc(100vh - g.$act-bar-h);
   background-color: theme.$bg3;
+  border-right: $border;
 }
 
 .navbar-list {

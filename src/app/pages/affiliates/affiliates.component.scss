@@ -1,5 +1,7 @@
 @use 'globals' as g;
 
+$gradient: linear-gradient(to top, black 0%, transparent 55%);
+
 .affiliates {
   display: flex;
   flex-wrap: wrap;
@@ -11,7 +13,7 @@ a {
   all: unset;
   @include g.no-select;
 
-  width: 15vw;
+  width: 20vw;
   min-width: 9rem;
   aspect-ratio: 1/1;
   background-size: cover;
@@ -19,19 +21,26 @@ a {
 
 .label-container {
   display: flex;
-  opacity: 0;
   width: 100%;
   height: 100%;
   justify-content: center;
+  background: $gradient;
 }
 
 .label-container:hover {
   opacity: 1;
-  background: linear-gradient(to top, black 0%, transparent 100%);
+  background: $gradient;
 }
 
 .label {
   text-align: center;
   font-size: max(4vw, 1rem);
   align-self: flex-end;
+}
+
+@media (hover: hover) {
+  .label-container {
+    opacity: 0;
+    background: none;
+  }
 }
