@@ -4,6 +4,7 @@ import { ApplicationService } from 'services/application.service';
 
 export interface TabBarItem {
   label: string;
+  id: number;
 }
 
 @Component({
@@ -15,11 +16,19 @@ export interface TabBarItem {
 })
 export class TabsComponent {
   private applicationService = inject(ApplicationService);
+
+  /**
+   * The tabs that should be displayed.
+   */
   tabs: Signal<TabBarItem[]> = computed(() => {
     const result: TabBarItem[] = [];
     for (const app of this.applicationService.runningApplications().values()) {
-      result.push({ label: app.label });
+      result.push({ label: app.label, id: app.id });
     }
     return result;
   });
+
+  closeTab(index: number): void {
+    this.applicationService.closeApplication(index);
+  }
 }
