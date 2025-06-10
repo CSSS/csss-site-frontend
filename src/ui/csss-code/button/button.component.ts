@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 import { IconDefinition } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
-  selector: 'csss-button',
+  selector: 'code-button',
   standalone: false,
   templateUrl: './button.component.html',
   styleUrl: './button.component.scss',
