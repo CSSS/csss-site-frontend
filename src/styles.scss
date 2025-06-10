@@ -26,18 +26,18 @@ button {
   cursor: pointer;
 }
 
-code-article>article.static {
+code-article>article.content {
   font-family: globals.$static-font;
-  line-height: 1.5;
   height: fit-content;
+
+  h1,
+  h2,
+  p {
+    margin: 0 0 1rem 0;
+  }
 
   header {
     font-size: 50px;
     line-height: 3rem;
-  }
-
-  p {
-    max-width: 50rem;
-    margin: 1.5rem 0;
   }
 }

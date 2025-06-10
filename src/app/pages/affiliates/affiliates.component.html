@@ -1,0 +1,15 @@
+<code-article>
+  <h1>Affiliates</h1>
+  <section>
+    <h2>Links to our affiliate organizations</h2>
+    <div class="affiliates clickable">
+      @for (aff of affiliates; track aff.label) {
+        <a [href]="aff.url" target="_blank" [style.backgroundImage]="aff.imgName">
+          <div class="label-container">
+            <p class="label">{{ aff.label }}</p>
+          </div>
+        </a>
+      }
+    </div>
+  </section>
+</code-article>
