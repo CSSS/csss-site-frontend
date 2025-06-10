@@ -3,9 +3,9 @@
 </div>
 <article class="welcome">
   <h1>Welcome to Computing Science Student Society</h1>
-  <p>Learn more about us.</p>
+  <p>Click one of the buttons below to learn about us.</p>
   <nav>
-    <code-button label="About" [icon]="fileIcon" (click)="aboutAction()" />
-    <code-button label="README" [icon]="fileIcon" (click)="readmeAction()" />
+    <a><code-button label="README" [icon]="fileIcon" (click)="readmeAction()" /></a>
+    <a><code-button label="About" [icon]="fileIcon" (click)="aboutAction()" /></a>
   </nav>
 </article>

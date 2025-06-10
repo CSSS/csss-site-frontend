@@ -19,3 +19,9 @@ fa-icon {
   font-size: 15rem;
   color: theme.$bg5;
 }
+
+nav {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+}
