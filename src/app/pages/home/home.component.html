@@ -1,4 +1,11 @@
 <div class="logo-frame">
   <fa-icon [icon]="csssIcon"></fa-icon>
 </div>
-<article class="welcome">Welcome to Computing Science Student Society</article>
+<article class="welcome">
+  <h1>Welcome to Computing Science Student Society</h1>
+  <p>Learn more about us.</p>
+  <nav>
+    <csss-button label="About" [icon]="fileIcon" (click)="aboutAction()" />
+    <csss-button label="README" [icon]="fileIcon" (click)="readmeAction()" />
+  </nav>
+</article>

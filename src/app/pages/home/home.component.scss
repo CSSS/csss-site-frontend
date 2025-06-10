@@ -1,4 +1,4 @@
-@use '../../../ui/csss-code/theme';
+@use 'theme';
 
 .logo-frame {
   display: flex;
@@ -7,9 +7,12 @@
 }
 
 .welcome {
-  display: flex;
-  justify-content: center;
+  text-align: center;
   color: theme.$code-text;
+}
+
+h1 {
+  font-size: 1rem;
 }
 
 fa-icon {
