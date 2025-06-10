@@ -2,7 +2,7 @@
 @use 'globals' as g;
 
 $item-spacing: 1rem; // Padding for the activity bar items.
-$act-bar-h-sm: calc($item-spacing*2 + g.$act-bar-h + 1px);
+$header-space-sm: calc($item-spacing*2 + g.$act-bar-h + 1px); // size of the activity + tab bar for small device widths
 $border: 1px solid #1e1e1e;
 
 :host {
@@ -21,31 +21,35 @@ header {
 
 .activity-list {
   display: flex;
-  height: g.$act-bar-h;
+  height: $header-space-sm;
   background-color: theme.$bg1;
-  gap: $item-spacing;
-  padding: $item-spacing;
   border-bottom: $border;
-}
 
-.navbar-header {
-  padding: $item-spacing 2em;
+  &>div {
+    padding: $item-spacing ;
+  }
 }
 
 .navbar {
   position: absolute;
-  top: $act-bar-h-sm;
-  height: calc(100vh - g.$act-bar-h);
+  top: calc($header-space-sm + 1px);
+  height: calc(100vh - $header-space-sm - 1px - 1rem); // The 1 rem is from the footer
   background-color: theme.$bg3;
   border-right: $border;
-}
 
-.navbar-list {
-  display: flex;
-  flex-direction: column;
-  min-width: 15.5rem;
-  row-gap: 0.25rem;
-  padding: 0 1rem;
+  &>.navbar-header {
+    padding: $item-spacing 2em;
+  }
+
+  &>nav {
+    &>.navbar-list {
+      display: flex;
+      flex-direction: column;
+      min-width: 15.5rem;
+      row-gap: 0.25rem;
+      padding: 0 1rem;
+    }
+  }
 }
 
 @media (min-width: g.$sm-w) {
