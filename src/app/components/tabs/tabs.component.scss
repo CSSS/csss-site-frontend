@@ -2,10 +2,9 @@
 @use 'globals';
 
 .label {
-  display: flex;
-  align-items: center;
   overflow: hidden;
   text-overflow: ellipsis;
+  align-self: center;
 }
 
 .tab {
@@ -14,7 +13,7 @@
   display: grid;
   grid-template-columns: 1fr 4fr 1fr;
   background-color: theme.$bg4;
-  width: clamp(5rem, 12vw, 20rem);
+  width: clamp(5rem, 12vw, 10rem);
   height: 100%;
   overflow: hidden;
 
