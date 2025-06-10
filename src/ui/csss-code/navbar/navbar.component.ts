@@ -1,7 +1,16 @@
-import { ChangeDetectionStrategy, Component, computed, input, signal } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  computed,
+  inject,
+  input,
+  OnInit,
+  signal
+} from '@angular/core';
 import { NavEntry } from 'pages/navbar-entries';
 import { csssLogo } from 'assets/icons/csss-logo';
 import { faCopy } from '@fortawesome/free-solid-svg-icons';
+import { BreakpointObserver } from '@angular/cdk/layout';
 
 export interface NavbarItem extends NavEntry {
   children: NavbarItem[];
@@ -14,7 +23,7 @@ export interface NavbarItem extends NavEntry {
   styleUrl: './navbar.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class NavbarComponent {
+export class NavbarComponent implements OnInit {
   /**
    * The title at the top of the header
    */
@@ -28,7 +37,7 @@ export class NavbarComponent {
   /**
    * Flag representing if the navbar is closed or open.
    */
-  isOpen = signal<boolean>(true);
+  isOpen = signal<boolean>(false);
 
   /**
    * Signal that converts the nav entries, in case they need to be dynamically instantiated.
@@ -41,6 +50,12 @@ export class NavbarComponent {
    * Icon for the file explorer in the activity bar.
    */
   copyIcon = faCopy;
+
+  private breakpointObs = inject(BreakpointObserver);
+
+  ngOnInit(): void {
+    this.isOpen.set(this.breakpointObs.isMatched('(min-width: 968px)'));
+  }
 
   /**
    * Recursively converts all the navbar entries into object this navbar can use
