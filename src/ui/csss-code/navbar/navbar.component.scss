@@ -9,14 +9,15 @@ $item-spacing: .75em;
   width: 100%;
 }
 
+button {
+  all: unset;
+  cursor: pointer;
+}
+
 header {
   display: flex;
   justify-content: space-between;
 
-  button {
-    all: unset;
-    cursor: pointer;
-  }
 }
 
 .activity-list {

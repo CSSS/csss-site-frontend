@@ -1,5 +1,5 @@
-@use '../ui/csss-code/theme';
-@use '../styles/globals' as g;
+@use 'theme';
+@use 'globals' as g;
 
 :host {
   display: grid;
