@@ -16,6 +16,11 @@ export interface NavbarItem extends NavEntry {
 })
 export class NavbarComponent {
   /**
+   * The title at the top of the header
+   */
+  title = input.required<string>();
+
+  /**
    * Navbar entries
    */
   entries = input.required<NavEntry[]>();
