@@ -1,7 +1,12 @@
-$tab-bar-height: '32px';
-$status-line-height: '32px';
+$tab-bar-h: '2rem';
+$status-line-h: '1rem';
 $main-font: 'Inter', sans-serif;
 $static-font: 'Fira Code', monospace;
+
+// Media query breakpoints
+$sm-w: '968px'; // When the nav is moved to be stacked above the tab bar
+$act-bar-w: 3.5rem;
+$act-bar-h: 2rem;
 
 @mixin no-select {
   user-select: none;
