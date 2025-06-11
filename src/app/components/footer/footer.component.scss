@@ -1,0 +1,26 @@
+@use 'globals' as g;
+
+footer {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  background-color: black;
+  width: 100%;
+  padding: 2rem 0;
+  font-family: g.$main-font;
+}
+
+h3,
+p {
+  margin: 0 !important;
+}
+
+section {
+  padding-bottom: 1rem;
+}
+
+.contact {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
