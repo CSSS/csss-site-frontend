@@ -1,11 +1,11 @@
 @use 'globals' as g;
 
-$gradient: linear-gradient(to top, black 0%, transparent 55%);
+$gradient: linear-gradient(to top, #1e1e1e 0%, transparent 100%);
 
-.affiliates {
+.card-gallery {
   display: flex;
   flex-wrap: wrap;
-  gap: 1rem;
+  gap: 1.3rem;
   margin: 2rem 0;
 }
 
@@ -14,8 +14,12 @@ a {
 
   width: 20vw;
   min-width: 9rem;
-  aspect-ratio: 1/1;
-  background-size: cover;
+  aspect-ratio: 1 / 1;
+}
+
+a:hover .label-container {
+  opacity: 1;
+  background: $gradient;
 }
 
 .label-container {
@@ -26,15 +30,11 @@ a {
   background: $gradient;
 }
 
-.label-container:hover {
-  opacity: 1;
-  background: $gradient;
-}
-
 .label {
   text-align: center;
   font-size: max(4vw, 1rem);
   align-self: flex-end;
+  text-shadow: 2px 2px 5px black;
 }
 
 @media (hover: hover) {
