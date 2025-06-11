@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { CsssCodeModule } from '@csss-code/csss-code.module';
 import { FooterComponent } from 'components/footer/footer.component';
+import { prependHttps, toCssUrl } from 'utils/stringUtils';
 
 interface Affiliate {
   label: string;
@@ -65,8 +66,8 @@ export class AffiliatesComponent {
   affiliates = AFFILIATES.map(aff => {
     return {
       ...aff,
-      url: `https://${aff.url}`,
-      imgName: `url(affiliates/${aff.imgName}.png)`
+      url: prependHttps(aff.url),
+      imgName: toCssUrl(`affiliates`, `${aff.imgName}.png`)
     };
   });
 }
