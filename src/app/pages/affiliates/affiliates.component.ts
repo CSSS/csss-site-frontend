@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { CsssCodeModule } from '@csss-code/csss-code.module';
+import { FooterComponent } from 'components/footer/footer.component';
 
 interface Affiliate {
   label: string;
@@ -55,7 +56,7 @@ const AFFILIATES: Affiliate[] = [
 
 @Component({
   selector: 'csss-affiliates',
-  imports: [CsssCodeModule],
+  imports: [CsssCodeModule, FooterComponent],
   templateUrl: './affiliates.component.html',
   styleUrl: './affiliates.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
