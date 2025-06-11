@@ -36,7 +36,6 @@ header {
   height: calc(100vh - $header-space-sm - 1px - 1rem); // The 1 rem is from the footer
   background-color: theme.$bg3;
   border-right: $border;
-  z-index: 100;
 
   &>.navbar-header {
     padding: $item-spacing 2em;
