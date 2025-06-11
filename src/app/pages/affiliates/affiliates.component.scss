@@ -10,7 +10,6 @@ $gradient: linear-gradient(to top, black 0%, transparent 55%);
 }
 
 a {
-  all: unset;
   @include g.no-select;
 
   width: 20vw;

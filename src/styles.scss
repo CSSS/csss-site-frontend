@@ -22,9 +22,15 @@ button {
   all: unset;
 }
 
+a {
+  all: unset;
+  cursor: pointer;
+}
+
 .clickable {
   cursor: pointer;
 }
+
 
 code-article>article.content {
   font-family: globals.$static-font;
