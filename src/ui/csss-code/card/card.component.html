@@ -1,5 +1,5 @@
 <div class="container" [style.backgroundImage]="backgroundImage()">
-  <ng-content select="card-header"></ng-content>
-  <ng-content select="card-content"></ng-content>
-  <ng-content select="card-footer"></ng-content>
+  <ng-content select="card-header"><div></div></ng-content>
+  <ng-content select="card-content"><div></div></ng-content>
+  <ng-content select="card-footer"><div></div></ng-content>
 </div>
