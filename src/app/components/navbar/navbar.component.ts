@@ -34,24 +34,24 @@ export class NavbarComponent {
           type: 'file',
           link: '/affiliates'
         },
-        {
-          key: 'committees',
-          label: 'Committees',
-          type: 'file',
-          link: '/committees'
-        },
+        // {
+        //   key: 'committees',
+        //   label: 'Committees',
+        //   type: 'file',
+        //   link: '/committees'
+        // },
         {
           key: 'common-room',
           label: 'Common Room',
           type: 'file',
           link: '/common-room'
         },
-        {
-          key: 'documents',
-          label: 'Documents',
-          type: 'file',
-          link: '/documents'
-        },
+        // {
+        //   key: 'documents',
+        //   label: 'Documents',
+        //   type: 'file',
+        //   link: '/documents'
+        // },
         {
           key: 'officers',
           label: 'Officers',

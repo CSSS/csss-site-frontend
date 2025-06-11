@@ -7,17 +7,15 @@
   </div>
 </aside>
 
-@if (isNavOpen()) {
-  <aside class="navbar">
-    <header class="navbar-header">
-      {{ title() }}
-    </header>
-    <nav>
-      <ul class="navbar-list">
-        @for (entry of navItems(); track entry.key) {
-          <li><code-navbar-item [entry]="entry" /></li>
-        }
-      </ul>
-    </nav>
-  </aside>
-}
+<aside class="navbar" [hidden]="isNavOpen()">
+  <header class="navbar-header">
+    {{ title() }}
+  </header>
+  <nav>
+    <ul class="navbar-list">
+      @for (entry of navItems(); track entry.key) {
+        <li><code-navbar-item [entry]="entry" /></li>
+      }
+    </ul>
+  </nav>
+</aside>
