@@ -1,13 +1,16 @@
 <code-article>
-  <h1>Affiliates</h1>
+  <h1>Check out our affiliates organizations</h1>
   <section>
-    <h3>Links to our affiliate organizations</h3>
-    <div class="affiliates">
+    <div class="card-gallery">
       @for (aff of affiliates; track aff.label) {
-        <a [href]="aff.url" target="_blank" [style.backgroundImage]="aff.imgName">
-          <div class="label-container">
-            <p class="label">{{ aff.label }}</p>
-          </div>
+        <a [href]="aff.url" target="_blank">
+          <code-card [backgroundImage]="aff.imgName">
+            <div class="label-container" ngProjectAs="card-footer">
+              <p class="label">
+                <strong>{{ aff.label }}</strong>
+              </p>
+            </div>
+          </code-card>
         </a>
       }
     </div>
