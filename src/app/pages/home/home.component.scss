@@ -17,9 +17,35 @@ h2 {
   font-size: 1.5rem;
 }
 
+@keyframes cycle-colour {
+  0% {
+    color: white
+  }
+
+  20% {
+    color: red
+  }
+
+  40% {
+    color: green
+  }
+
+  60% {
+    color: aquamarine
+  }
+
+  80% {
+    color: black
+  }
+
+  100% {
+    color: white
+  }
+}
+
 fa-icon {
   font-size: 15rem;
-  color: theme.$bg5;
+  animation: cycle-colour 20s infinite;
 }
 
 nav {
