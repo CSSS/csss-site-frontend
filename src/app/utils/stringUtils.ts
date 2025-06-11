@@ -13,3 +13,10 @@ export function prependHttps(url: string): string {
 export function toCssUrl(folder: ImagesFolder, fileName: string): string {
   return `url(images/${folder}/${fileName})`;
 }
+
+export function pathToCssUrl(path: string | undefined): string {
+  if (path && path.startsWith('url(')) {
+    return path;
+  }
+  return path ? `url(${path})` : '';
+}

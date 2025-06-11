@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component, computed, input } from '@angular/core';
+import { pathToCssUrl } from 'utils/stringUtils';
 
 @Component({
   selector: 'code-card',
@@ -12,5 +13,5 @@ export class CardComponent {
    * URL of the image to use.
    * This image will cover the entire card.
    */
-  backgroundImage = input<string>();
+  backgroundImage = input('', { transform: pathToCssUrl });
 }
