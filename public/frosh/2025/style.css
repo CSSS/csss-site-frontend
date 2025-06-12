@@ -1,0 +1,156 @@
+/* Global stuff */
+:root {
+    /* Structure Sizes */
+    --header-size: 3.5rem;
+    --home-logo-size: clamp(2rem, 3vw, calc(var(--header-size) - 1rem));
+
+
+    /* Colour Palette */
+    --c-primary: #77a290;
+    --c-secondary: #dde1c9;
+    --c-accent: #ffd754;
+    --c-sky: #8ccdea;
+
+    /* Fonts */
+    --f-heading: "League Spartan", sans-serif;
+    --f-subheading: "Monstserrat", sans-serif;
+    --f-main: "DM Sans", sans-serif;
+}
+
+a {
+    all: unset;
+
+    cursor: pointer;
+}
+
+h1 {
+    font-family: var(--f-heading);
+    font-weight: 700;
+}
+
+h2 {
+    font-family: var(--f-heading);
+    font-weight: 500;
+}
+
+.bg-box {
+    background-color: var(--c-primary);
+    box-shadow:
+        var(--c-accent) 5px 5px 0px 0px;
+    padding: 0.5rem 0.25rem;
+    border: solid 1px black;
+}
+
+.button {
+    /* Structure */
+    width: clamp(10rem, 22vw, 15rem);
+    aspect-ratio: 3.5 / 1;
+
+    /* Text */
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: white;
+    font-family: var(--f-subheading);
+    font-size: clamp(1rem, 8vw, 1.5rem);
+    font-weight: 700;
+    letter-spacing: 2px;
+
+    cursor: pointer;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+}
+
+/* Specific styles */
+body {
+    background-color: var(--c-sky);
+    font-family: var(--f-main);
+    font-weight: 300;
+}
+
+header {
+    position: sticky;
+    top: 0;
+    background-color: var(--c-primary);
+    height: var(--header-size);
+
+    &>nav {
+        display: flex;
+
+        &>a {
+            height: var(--home-logo-size);
+            padding: 0.5rem;
+
+            &>img {
+                height: 100%;
+                aspect-ratio: 1 / 1;
+            }
+        }
+
+        &>ul {
+            display: flex;
+            width: 100%;
+            justify-content: space-evenly;
+            padding: 0;
+
+            &>li {
+                display: block;
+                flex: 1 1 0;
+                text-align: center;
+            }
+        }
+    }
+}
+
+.hero {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    height: calc(100vh - var(--header-size));
+    padding: 2rem 1rem 0;
+
+    background-image: url('/frosh/2025/images/mountains.png');
+    background-size: cover;
+    background-position: center;
+
+
+    &>hgroup {
+        text-align: center;
+
+        &>.title-container {
+            &>h1 {
+                width: 100%;
+                font-size: clamp(2.5rem, 10vw, 5rem);
+                color: var(--c-accent);
+                text-shadow: black 2px 2px 0px;
+            }
+        }
+
+        &>p {
+            font-family: var(--f-subheading);
+            font-size: clamp(1rem, 3vw, 2rem);
+            font-weight: 200;
+        }
+    }
+
+    &>nav {
+        &>ul {
+            padding: 0;
+
+            &>li {
+                display: block;
+            }
+
+            li+li {
+                margin-top: 1rem;
+            }
+        }
+    }
+}
+
+main {
+    height: 300vh;
+}
