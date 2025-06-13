@@ -11,7 +11,7 @@
     --c-secondary: #dde1c9;
     --c-tertiary: #f2f3ee;
     --c-accent: #ffd754;
-    --c-top-main: #8ccdea;
+    --c-top-main: #5c889c;
     --c-bot-main: #11191c;
     --c-strong: #14331f;
 
@@ -29,7 +29,7 @@ a {
 
 h1 {
     font-family: var(--f-heading);
-    font-weight: 900;
+    font-weight: 800;
 }
 
 h2 {
@@ -58,16 +58,25 @@ p {
     /* Text */
     display: flex;
     align-items: center;
+    justify-content: space-evenly;
     color: white;
     font-family: var(--f-subheading);
     font-size: clamp(1rem, 8vw, 1.5rem);
     font-weight: 700;
-    letter-spacing: 2px;
 
     cursor: pointer;
     user-select: none;
     -webkit-user-select: none;
     touch-action: manipulation;
+}
+
+.icon {
+    width: 1.5em;
+    height: 1.5em;
+}
+
+.st0 {
+    fill: white;
 }
 
 /* Specific styles */
@@ -174,7 +183,7 @@ header {
 
         &>img {
             position: fixed;
-            bottom: calc(-30vw + 72px);
+            bottom: calc(72px - 25vw);
         }
     }
 }
@@ -187,13 +196,10 @@ main {
     &>article {
         display: grid;
         place-items: center;
+        row-gap: 2rem;
 
         &>.jump-section {
             padding-top: calc(var(--header-h) + 1rem);
-        }
-
-        &>*+* {
-            margin-top: 2rem;
         }
 
         &>section {
@@ -204,15 +210,12 @@ main {
 
             &>.section-container {
                 width: clamp(10rem, 90%, 80rem);
-                border: var(--c-strong) 2px solid;
-                background-color: var(--c-tertiary);
 
                 &>h2 {
                     display: block;
                     text-align: center;
                     font-weight: 700;
                     color: var(--c-accent);
-                    background-color: var(--c-primary);
                 }
 
                 &>.section-content {
@@ -224,11 +227,11 @@ main {
                     &>p {
                         padding: 0.5rem;
                         border-radius: 5px;
+                        color: white;
                     }
 
                     & strong {
                         font-weight: 900;
-                        color: var(--c-strong);
                     }
 
                 }
@@ -241,8 +244,8 @@ main {
                     padding-bottom: 1rem;
 
                     &>* {
-                        width: 60%;
-                        max-width: 12rem;
+                        width: 50%;
+                        max-width: 15rem;
                         flex: 1 1 auto;
                     }
                 }
