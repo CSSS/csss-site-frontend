@@ -32,8 +32,13 @@ h1 {
 }
 
 h2 {
+    font-size: clamp(1.5rem, 3vw, 3rem);
     font-family: var(--f-subheading);
     font-weight: 500;
+}
+
+p {
+    font-size: clamp(1rem, 2vw, 1.5rem);
 }
 
 .bg-box {
@@ -124,7 +129,7 @@ header {
         &>.title-container {
             &>h1 {
                 width: 100%;
-                font-size: clamp(2.5rem, 10vw, 5rem);
+                font-size: clamp(2.5rem, 10vw, 8rem);
                 color: var(--c-accent);
                 text-shadow: black 2px 2px 0px;
             }
@@ -175,25 +180,31 @@ header {
 }
 
 main {
-    height: 600vh;
     background: linear-gradient(to bottom, var(--c-top-main) 0, var(--c-bot-main) 100%);
 
     &>article {
         display: grid;
         place-items: center;
 
+        &>.jump-section {
+            padding-top: calc(var(--header-h) + 1rem);
+        }
+
+        &>*+* {
+            margin-top: 2rem;
+        }
+
         &>section {
             display: flex;
             flex-direction: column;
             align-items: center;
-            padding-top: calc(var(--header-h) + 1rem);
 
             &>.section-container {
-                padding: 1rem;
-                width: clamp(10rem, 90%, 50rem);
-                max-width: 50rem;
+                width: clamp(10rem, 90%, 80rem);
+                background-color: white;
 
                 &>h2 {
+                    display: block;
                     text-align: center;
                     font-weight: 700;
                     color: var(--c-accent);
@@ -201,21 +212,39 @@ main {
                 }
 
                 &>.section-content {
-                    background-color: white;
+                    display: flex;
+                    flex-direction: column;
+                    gap: 1rem;
                     padding: 0.5rem;
 
                     &>p {
                         padding: 0.5rem;
                         background-color: var(--c-tertiary);
-                        border-radius: 10px;
+                        border-radius: 5px;
                     }
 
                     & strong {
                         font-weight: 900;
                     }
+
+                }
+
+                &>.section-footer {
+                    display: flex;
+                    flex-wrap: wrap;
+                    justify-content: center;
+                    gap: 0.5rem;
+                    padding-bottom: 1rem;
+
+                    &>* {
+                        width: 60%;
+                        max-width: 15rem;
+                        flex: 1 1 auto;
+                    }
                 }
             }
         }
+
     }
 }
 
@@ -235,4 +264,19 @@ footer {
             height: 1.5em;
         }
     }
+}
+
+.duck-fact {
+    width: clamp(15rem, 80%, 40rem);
+    background-color: var(--c-primary);
+
+    &>h2 {
+        font-family: var(--f-heading);
+        color: var(--c-accent);
+    }
+
+    &>p {
+        color: white;
+    }
+
 }
