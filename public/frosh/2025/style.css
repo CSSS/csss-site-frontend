@@ -13,6 +13,7 @@
     --c-accent: #ffd754;
     --c-top-main: #8ccdea;
     --c-bot-main: #11191c;
+    --c-strong: #14331f;
 
     /* Fonts */
     --f-heading: "League Spartan", sans-serif;
@@ -28,7 +29,7 @@ a {
 
 h1 {
     font-family: var(--f-heading);
-    font-weight: 700;
+    font-weight: 900;
 }
 
 h2 {
@@ -46,18 +47,17 @@ p {
     box-shadow:
         var(--c-accent) 5px 5px 0px 0px;
     padding: 0.5rem 0.25rem;
-    border: solid 1px black;
+    border: solid 2px var(--c-strong);
 }
 
 .button {
     /* Structure */
-    width: clamp(10rem, 22vw, 15rem);
-    aspect-ratio: 3.5 / 1;
+    width: clamp(8rem, 22vw, 10rem);
+    aspect-ratio: 6 / 1;
 
     /* Text */
     display: flex;
     align-items: center;
-    text-align: center;
     color: white;
     font-family: var(--f-subheading);
     font-size: clamp(1rem, 8vw, 1.5rem);
@@ -127,11 +127,12 @@ header {
         text-align: center;
 
         &>.title-container {
+
             &>h1 {
                 width: 100%;
                 font-size: clamp(2.5rem, 10vw, 8rem);
                 color: var(--c-accent);
-                text-shadow: black 2px 2px 0px;
+                text-shadow: var(--c-strong) 2px 2px 0px;
             }
         }
 
@@ -162,25 +163,26 @@ header {
     bottom: 0;
     width: 100%;
     z-index: 1;
+    pointer-events: none;
 
     &>.left,
     .right {
         position: absolute;
         bottom: 0;
         width: 100%;
-        height: 30vw;
+        height: 20vh;
 
         &>img {
-            position: absolute;
-            width: 3840px;
+            position: fixed;
+            bottom: calc(-30vw + 72px);
         }
     }
-
-
 }
 
 main {
     background: linear-gradient(to bottom, var(--c-top-main) 0, var(--c-bot-main) 100%);
+    padding-bottom: 5rem;
+
 
     &>article {
         display: grid;
@@ -198,10 +200,12 @@ main {
             display: flex;
             flex-direction: column;
             align-items: center;
+            width: 100%;
 
             &>.section-container {
                 width: clamp(10rem, 90%, 80rem);
-                background-color: white;
+                border: var(--c-strong) 2px solid;
+                background-color: var(--c-tertiary);
 
                 &>h2 {
                     display: block;
@@ -219,12 +223,12 @@ main {
 
                     &>p {
                         padding: 0.5rem;
-                        background-color: var(--c-tertiary);
                         border-radius: 5px;
                     }
 
                     & strong {
                         font-weight: 900;
+                        color: var(--c-strong);
                     }
 
                 }
@@ -238,13 +242,12 @@ main {
 
                     &>* {
                         width: 60%;
-                        max-width: 15rem;
+                        max-width: 12rem;
                         flex: 1 1 auto;
                     }
                 }
             }
         }
-
     }
 }
 
@@ -267,8 +270,9 @@ footer {
 }
 
 .duck-fact {
-    width: clamp(15rem, 80%, 40rem);
-    background-color: var(--c-primary);
+    width: clamp(15rem, 80%, 25rem);
+    background-color: var(--c-strong);
+    padding: 1rem;
 
     &>h2 {
         font-family: var(--f-heading);
@@ -279,4 +283,26 @@ footer {
         color: white;
     }
 
+}
+
+/* Media Queries */
+@media (min-width: 600px) {
+    .hero-nav {
+        width: 100%;
+
+        &>ul {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            flex-direction: row;
+            gap: 1rem;
+
+
+            &>li {
+                margin: 0 !important;
+                padding: 0;
+            }
+        }
+    }
 }
