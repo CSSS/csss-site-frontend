@@ -192,7 +192,6 @@ main {
     background: linear-gradient(to bottom, var(--c-top-main) 0, var(--c-bot-main) 100%);
     padding-bottom: 5rem;
 
-
     &>article {
         display: grid;
         place-items: center;
@@ -225,9 +224,7 @@ main {
                     padding: 0.5rem;
 
                     &>h3,
-                    p {
-                        padding: 0.5rem;
-                    }
+                    p {}
 
                     &>h3 {
                         color: var(--c-secondary);
@@ -357,7 +354,8 @@ footer {
         flex-wrap: wrap;
 
         &>.bg-box {
-            flex: 1 1 15rem;
+            width: 100%;
+            flex: 1 1 30%;
         }
     }
 }
