@@ -254,6 +254,35 @@ main {
     }
 }
 
+#calendar {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+    &>.bg-box {
+        width: 100%;
+        padding: 1rem;
+
+        & span {
+            float: right;
+        }
+
+        &>h3 {
+            color: var(--c-accent);
+        }
+
+        &>h4 {
+            color: var(--c-strong);
+        }
+
+        &>p {
+            color: var(--c-tertiary);
+            font-size: 1rem;
+        }
+    }
+
+}
+
 footer {
     display: flex;
     flex-direction: column;
@@ -306,6 +335,18 @@ footer {
                 margin: 0 !important;
                 padding: 0;
             }
+        }
+    }
+}
+
+@media (min-width: 570px) {
+    #calendar {
+        flex-direction: row;
+        align-items: flex-start;
+        flex-wrap: wrap;
+
+        &>.bg-box {
+            flex: 1 1 15rem;
         }
     }
 }
