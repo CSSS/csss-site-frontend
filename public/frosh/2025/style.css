@@ -224,10 +224,21 @@ main {
                     gap: 1rem;
                     padding: 0.5rem;
 
-                    &>p {
+                    &>h3,
+                    p {
                         padding: 0.5rem;
-                        border-radius: 5px;
+                    }
+
+                    &>h3 {
+                        color: var(--c-secondary);
+                    }
+
+                    &>p {
                         color: white;
+
+                        &>a {
+                            color: var(--c-top-main);
+                        }
                     }
 
                     & strong {
