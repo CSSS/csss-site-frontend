@@ -152,10 +152,8 @@ header {
 }
 
 .reeds {
-    --reed-offset: 3vw;
     position: fixed;
-    top: 0;
-    height: var(--hero-h);
+    bottom: 0;
     width: 100%;
     z-index: 1;
 
@@ -163,13 +161,15 @@ header {
     .right {
         position: absolute;
         bottom: 0;
-        height: 50%;
         width: 100%;
-        background-image: url('/frosh/2025/images/reeds-width.png');
-        background-size: contain;
-        background-position: center;
-        background-repeat: no-repeat;
+        height: 30vw;
+
+        &>img {
+            position: absolute;
+            width: 3840px;
+        }
     }
+
 
 }
 
@@ -182,8 +182,8 @@ footer {
     display: flex;
     flex-direction: column;
     align-items: center;
-    color: white;
-    background-color: black;
+    color: var(--c-accent);
+    background-color: var(--c-primary);
 
     .icons {
         display: flex;
