@@ -9,6 +9,7 @@
     /* Colour Palette */
     --c-primary: #77a290;
     --c-secondary: #dde1c9;
+    --c-tertiary: #f2f3ee;
     --c-accent: #ffd754;
     --c-top-main: #8ccdea;
     --c-bot-main: #11191c;
@@ -31,7 +32,7 @@ h1 {
 }
 
 h2 {
-    font-family: var(--f-heading);
+    font-family: var(--f-subheading);
     font-weight: 500;
 }
 
@@ -176,6 +177,46 @@ header {
 main {
     height: 600vh;
     background: linear-gradient(to bottom, var(--c-top-main) 0, var(--c-bot-main) 100%);
+
+    &>article {
+        display: grid;
+        place-items: center;
+
+        &>section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-top: calc(var(--header-h) + 1rem);
+
+            &>.section-container {
+                padding: 1rem;
+                width: clamp(10rem, 90%, 50rem);
+                max-width: 50rem;
+
+                &>h2 {
+                    text-align: center;
+                    font-weight: 700;
+                    color: var(--c-accent);
+                    background-color: var(--c-primary);
+                }
+
+                &>.section-content {
+                    background-color: white;
+                    padding: 0.5rem;
+
+                    &>p {
+                        padding: 0.5rem;
+                        background-color: var(--c-tertiary);
+                        border-radius: 10px;
+                    }
+
+                    & strong {
+                        font-weight: 900;
+                    }
+                }
+            }
+        }
+    }
 }
 
 footer {
