@@ -1,8 +1,9 @@
 /* Global stuff */
 :root {
     /* Structure Sizes */
-    --header-size: 3.5rem;
-    --home-logo-size: clamp(2rem, 3vw, calc(var(--header-size) - 1rem));
+    --header-h: 3.5rem;
+    --home-logo-size: clamp(2rem, 3vw, calc(var(--header-h) - 1rem));
+    --hero-h: 120vh;
 
 
     /* Colour Palette */
@@ -73,7 +74,7 @@ header {
     position: sticky;
     top: 0;
     background-color: var(--c-primary);
-    height: var(--header-size);
+    height: var(--header-h);
     z-index: 10;
 
     &>nav {
@@ -151,23 +152,25 @@ header {
 }
 
 .reeds {
-    --reed-scale: 3;
-
-    position: absolute;
-    top: 90vh;
+    --reed-offset: 3vw;
+    position: fixed;
+    top: 0;
+    height: var(--hero-h);
+    width: 100%;
     z-index: 1;
 
-    &>img {
-        width: 100vw;
+    &>.left,
+    .right {
+        position: absolute;
+        bottom: 0;
+        height: 50%;
+        width: 100%;
+        background-image: url('/frosh/2025/images/reeds-width.png');
+        background-size: contain;
+        background-position: center;
+        background-repeat: no-repeat;
     }
 
-    &>.left {
-        transform: scale(var(--reed-scale), var(--reed-scale));
-    }
-
-    &>.right {
-        transform: scale(-var(--reed-scale), var(--reed-scale));
-    }
 }
 
 main {
@@ -185,7 +188,6 @@ footer {
     .icons {
         display: flex;
         gap: 0.5rem;
-
 
         & .icon {
             width: 1.5em;
