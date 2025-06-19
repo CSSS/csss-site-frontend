@@ -42,6 +42,10 @@ p {
     font-size: clamp(1rem, 2vw, 1.5rem);
 }
 
+h3 {
+    font-size: clamp(1.2rem, 2.1vw, 2.5rem);
+}
+
 .bg-box {
     background-color: var(--c-primary);
     box-shadow:
@@ -203,9 +207,7 @@ main {
 
         &>section {
             display: grid;
-            /* flex-direction: column; */
             place-items: center;
-
             width: 100%;
 
             &>.section-container {
@@ -263,10 +265,11 @@ main {
 #calendar {
     display: flex;
     flex-direction: column;
+    align-items: center;
     gap: 1rem;
 
     &>.bg-box {
-        width: 100%;
+        width: 90%;
         padding: 1rem;
 
         & span {
@@ -308,18 +311,19 @@ footer {
 }
 
 .duck-fact {
-    width: 30%;
-    min-width: 15rem;
+    display: none;
     background-color: var(--c-strong);
     padding: 1rem;
 
     &>h2 {
+        font-size: clamp(1rem, 2.5vw, 1.8rem);
         font-family: var(--f-heading);
         color: var(--c-accent);
     }
 
     &>p {
         color: white;
+        font-size: clamp(0.8rem, 2vw, 1.2rem);
     }
 
 }
@@ -356,5 +360,30 @@ footer {
             width: 100%;
             flex: 1 1 30%;
         }
+    }
+
+    .section-container {
+        max-width: 47rem;
+    }
+}
+
+@media (min-width: 1280px) {
+    section {
+        grid-template-columns: [left] 1fr [mid] auto [right] 1fr;
+        grid-template-rows: 1fr;
+        grid-column-gap: 0.5rem;
+
+        .section-container {
+            grid-column: mid;
+        }
+    }
+
+    .duck-fact {
+        display: block;
+        width: min(80%, 25rem);
+    }
+
+    .duck-fact.even {
+        grid-area: 1 / 1;
     }
 }
