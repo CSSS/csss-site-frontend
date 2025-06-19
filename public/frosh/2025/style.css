@@ -202,17 +202,18 @@ main {
         }
 
         &>section {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+            display: grid;
+            /* flex-direction: column; */
+            place-items: center;
+
             width: 100%;
 
             &>.section-container {
-                width: clamp(10rem, 90%, 80rem);
+                min-width: 15rem;
+                text-align: center;
 
                 &>h2 {
                     display: block;
-                    text-align: center;
                     font-weight: 700;
                     color: var(--c-accent);
                 }
@@ -246,7 +247,7 @@ main {
                     flex-wrap: wrap;
                     justify-content: center;
                     gap: 0.5rem;
-                    padding-bottom: 1rem;
+                    padding: 1rem 0;
 
                     &>* {
                         width: 50%;
@@ -307,7 +308,8 @@ footer {
 }
 
 .duck-fact {
-    width: clamp(15rem, 80%, 25rem);
+    width: 30%;
+    min-width: 15rem;
     background-color: var(--c-strong);
     padding: 1rem;
 
