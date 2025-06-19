@@ -262,6 +262,10 @@ main {
     }
 }
 
+.img-gutter {
+    display: none;
+}
+
 #calendar {
     display: flex;
     flex-direction: column;
@@ -289,7 +293,6 @@ main {
             font-size: 1rem;
         }
     }
-
 }
 
 footer {
@@ -325,7 +328,6 @@ footer {
         color: white;
         font-size: clamp(0.8rem, 2vw, 1.2rem);
     }
-
 }
 
 /* Media Queries */
@@ -382,7 +384,13 @@ footer {
         width: min(80%, 25rem);
     }
 
-    .duck-fact.even {
-        grid-area: 1 / 1;
+    .img-gutter {
+        display: flex;
+        justify-content: space-around;
+
+        &>img {
+            width: 25vw;
+            height: auto;
+        }
     }
 }
