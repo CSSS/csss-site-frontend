@@ -370,7 +370,6 @@ footer {
 @media (min-width: 1280px) {
     section {
         grid-template-columns: [left] 1fr [mid] auto [right] 1fr;
-        grid-template-rows: 1fr;
         grid-column-gap: 0.5rem;
 
         .section-container {
