@@ -223,9 +223,6 @@ main {
                     gap: 1rem;
                     padding: 0.5rem;
 
-                    &>h3,
-                    p {}
-
                     &>h3 {
                         color: var(--c-secondary);
                     }
@@ -234,7 +231,7 @@ main {
                         color: white;
 
                         &>a {
-                            color: var(--c-top-main);
+                            color: var(--c-accent);
                         }
                     }
 
