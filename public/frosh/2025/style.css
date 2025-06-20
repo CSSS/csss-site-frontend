@@ -95,24 +95,20 @@ header {
     top: 0;
     background-color: var(--c-top-main);
     height: var(--header-h);
+    z-index: 5;
 
     &>nav {
         display: flex;
+        align-items: center;
 
         &>a {
-            height: var(--home-logo-size);
             padding: 0.5rem;
-
-            &>img {
-                height: 100%;
-                aspect-ratio: 1 / 1;
-            }
         }
 
         &>ul {
             display: flex;
             width: 100%;
-            justify-content: space-evenly;
+            justify-content: space-around;
             padding: 0;
 
             &>li {
@@ -286,18 +282,6 @@ main {
                 }
             }
         }
-    }
-}
-
-@keyframes pop-in {
-    0% {
-        opacity: 0;
-        transform: translateY(-5vh);
-    }
-
-    100% {
-        opacity: 1;
-        transform: translateY(0);
     }
 }
 
