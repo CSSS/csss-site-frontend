@@ -59,6 +59,7 @@ h3 {
     /* Structure */
     width: clamp(8rem, 22vw, 10rem);
     aspect-ratio: 6 / 1;
+    border-radius: 10px;
 
     /* Text */
     display: flex;
