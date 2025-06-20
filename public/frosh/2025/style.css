@@ -4,6 +4,7 @@
     --header-h: 3.5rem;
     --home-logo-size: clamp(2rem, 3vw, calc(var(--header-h) - 1rem));
     --hero-h: 120vh;
+    --hero-tb-padding: 25vh;
 
 
     /* Colour Palette */
@@ -130,7 +131,7 @@ header {
     align-items: center;
 
     height: 120vh;
-    padding: 25vh 1rem;
+    padding: var(--hero-tb-padding) 1rem;
 
     background-image: url('/frosh/2025/images/hero-mountain.png');
     background-size: cover;
@@ -171,23 +172,48 @@ header {
     }
 }
 
-.reeds {
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    z-index: 1;
-    pointer-events: none;
 
-    &>.left,
-    .right {
+
+@keyframes duckMove {
+    0% {
+        left: -120%;
+    }
+
+    100% {
+        left: 120%;
+    }
+}
+
+.top-screen {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    z-index: 10;
+
+    &>.animated-duck-container {
         position: absolute;
+        bottom: -1vh;
+        animation: duckMove 15s linear infinite;
+    }
+
+    &>.reeds {
+        position: fixed;
         bottom: 0;
         width: 100%;
-        height: 20vh;
+        pointer-events: none;
 
-        &>img {
-            position: fixed;
-            bottom: calc(72px - 25vw);
+        &>.left,
+        .right {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 20vh;
+
+            &>img {
+                position: fixed;
+                bottom: calc(72px - 25vw);
+            }
         }
     }
 }
