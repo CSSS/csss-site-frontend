@@ -4,6 +4,7 @@
     --header-h: 3.5rem;
     --home-logo-size: clamp(2rem, 3vw, calc(var(--header-h) - 1rem));
     --hero-h: 120vh;
+    --hero-tb-padding: 25vh;
 
 
     /* Colour Palette */
@@ -42,6 +43,10 @@ p {
     font-size: clamp(1rem, 2vw, 1.5rem);
 }
 
+h3 {
+    font-size: clamp(1.2rem, 2.1vw, 2.5rem);
+}
+
 .bg-box {
     background-color: var(--c-primary);
     box-shadow:
@@ -54,6 +59,7 @@ p {
     /* Structure */
     width: clamp(8rem, 22vw, 10rem);
     aspect-ratio: 6 / 1;
+    border-radius: 10px;
 
     /* Text */
     display: flex;
@@ -88,27 +94,22 @@ body {
 header {
     position: sticky;
     top: 0;
-    background-color: var(--c-primary);
+    background-color: var(--c-top-main);
     height: var(--header-h);
-    z-index: 10;
+    z-index: 5;
 
     &>nav {
         display: flex;
+        align-items: center;
 
         &>a {
-            height: var(--home-logo-size);
             padding: 0.5rem;
-
-            &>img {
-                height: 100%;
-                aspect-ratio: 1 / 1;
-            }
         }
 
         &>ul {
             display: flex;
             width: 100%;
-            justify-content: space-evenly;
+            justify-content: space-around;
             padding: 0;
 
             &>li {
@@ -126,9 +127,9 @@ header {
     align-items: center;
 
     height: 120vh;
-    padding: 25vh 1rem;
+    padding: var(--hero-tb-padding) 1rem;
 
-    background-image: url('/frosh/2025/images/mountains.png');
+    background-image: url('/frosh/2025/images/hero-mountain.png');
     background-size: cover;
     background-position: center;
 
@@ -167,23 +168,41 @@ header {
     }
 }
 
-.reeds {
-    position: fixed;
-    bottom: 0;
+.top-screen {
+    position: relative;
     width: 100%;
-    z-index: 1;
-    pointer-events: none;
+    height: 100vh;
+    overflow: hidden;
+    z-index: 10;
 
-    &>.left,
-    .right {
+    &>#animated-duck-container {
         position: absolute;
+        bottom: -1vh;
+        left: -120vw;
+        /* Keeping this in case the animation break */
+
+        &>svg {
+            height: 30vh;
+        }
+    }
+
+    &>.reeds {
+        position: fixed;
         bottom: 0;
         width: 100%;
-        height: 20vh;
+        pointer-events: none;
 
-        &>img {
-            position: fixed;
-            bottom: calc(72px - 25vw);
+        &>.left,
+        .right {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 20vh;
+
+            &>img {
+                position: fixed;
+                bottom: calc(72px - 27vw);
+            }
         }
     }
 }
@@ -195,24 +214,23 @@ main {
     &>article {
         display: grid;
         place-items: center;
-        row-gap: 2rem;
+        row-gap: 10rem;
 
         &>.jump-section {
             padding-top: calc(var(--header-h) + 1rem);
         }
 
         &>section {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+            display: grid;
+            place-items: center;
             width: 100%;
 
             &>.section-container {
-                width: clamp(10rem, 90%, 80rem);
+                min-width: 15rem;
+                text-align: center;
 
                 &>h2 {
                     display: block;
-                    text-align: center;
                     font-weight: 700;
                     color: var(--c-accent);
                 }
@@ -223,9 +241,6 @@ main {
                     gap: 1rem;
                     padding: 0.5rem;
 
-                    &>h3,
-                    p {}
-
                     &>h3 {
                         color: var(--c-secondary);
                     }
@@ -234,7 +249,7 @@ main {
                         color: white;
 
                         &>a {
-                            color: var(--c-top-main);
+                            color: var(--c-accent);
                         }
                     }
 
@@ -247,9 +262,9 @@ main {
                 &>.section-footer {
                     display: flex;
                     flex-wrap: wrap;
-                    justify-content: center;
+                    justify-content: space-evenly;
                     gap: 0.5rem;
-                    padding-bottom: 1rem;
+                    padding: 1rem 0;
 
                     &>* {
                         width: 50%;
@@ -262,13 +277,18 @@ main {
     }
 }
 
+.gallery {
+    display: none;
+}
+
 #calendar {
     display: flex;
     flex-direction: column;
+    align-items: center;
     gap: 1rem;
 
     &>.bg-box {
-        width: 100%;
+        width: 90%;
         padding: 1rem;
 
         & span {
@@ -288,7 +308,6 @@ main {
             font-size: 1rem;
         }
     }
-
 }
 
 footer {
@@ -310,22 +329,43 @@ footer {
 }
 
 .duck-fact {
-    width: clamp(15rem, 80%, 25rem);
+    display: none;
     background-color: var(--c-strong);
     padding: 1rem;
 
     &>h2 {
+        font-size: clamp(1rem, 2.5vw, 1.8rem);
         font-family: var(--f-heading);
         color: var(--c-accent);
     }
 
     &>p {
         color: white;
+        font-size: clamp(0.8rem, 2vw, 1.2rem);
     }
-
 }
 
 /* Media Queries */
+
+/* Calendar can display things in a row */
+@media (min-width: 570px) {
+    #calendar {
+        flex-direction: row;
+        align-items: flex-start;
+        flex-wrap: wrap;
+
+        &>.bg-box {
+            width: 100%;
+            flex: 1 1 30%;
+        }
+    }
+
+    .section-container {
+        max-width: 47rem;
+    }
+}
+
+/* Hero nav buttons display as a row */
 @media (min-width: 600px) {
     .hero-nav {
         width: 100%;
@@ -347,15 +387,30 @@ footer {
     }
 }
 
-@media (min-width: 570px) {
-    #calendar {
-        flex-direction: row;
-        align-items: flex-start;
-        flex-wrap: wrap;
+/* Aside stuff working */
+@media (min-width: 1280px) {
+    section {
+        grid-template-columns: [left] 1fr [mid] auto [right] 1fr;
+        grid-column-gap: 0.5rem;
 
-        &>.bg-box {
-            width: 100%;
-            flex: 1 1 30%;
+        .section-container {
+            grid-column: mid;
+        }
+    }
+
+    .duck-fact {
+        display: block;
+        width: min(80%, 25rem);
+    }
+
+    .gallery {
+        display: flex;
+        justify-content: space-around;
+
+        &>img {
+            width: 25vw;
+            height: auto;
+            animation: pop-in 0.3 ease;
         }
     }
 }
