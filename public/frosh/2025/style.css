@@ -167,16 +167,6 @@ header {
     }
 }
 
-@keyframes duck-move {
-    0% {
-        left: -120%;
-    }
-
-    100% {
-        left: 120%;
-    }
-}
-
 .top-screen {
     position: relative;
     width: 100%;
@@ -184,10 +174,11 @@ header {
     overflow: hidden;
     z-index: 10;
 
-    &>.animated-duck-container {
+    &>#animated-duck-container {
         position: absolute;
         bottom: -1vh;
-        animation: duck-move 15s linear infinite;
+        left: -120vw;
+        /* Keeping this in case the animation break */
 
         &>svg {
             height: 30vh;

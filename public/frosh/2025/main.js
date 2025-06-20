@@ -3,7 +3,7 @@ const styleVars = window.getComputedStyle(document.body);
 /**
  * Animates the reeds parting when scrolling down.
  */
-function reedsParting() {
+function animateReedsParting() {
   const scrollTrigger = {
     trigger: '.hero',
     start: 'top top',
@@ -20,6 +20,28 @@ function reedsParting() {
   gsap.to('.reeds > .right', {
     x: '100vw',
     scrollTrigger
+  });
+}
+
+/**
+ * Animates the duck swimming left to right.
+ */
+function animateDucky() {
+  const duck = document.getElementById('animated-duck-container');
+
+  const start = -duck.getBoundingClientRect().width;
+  const end = window.innerWidth;
+
+  const distance = end - start;
+  const duration = distance / 100; // measured in pixels
+
+  gsap.set(duck, { left: start });
+  gsap.to('#animated-duck-container', {
+    left: end,
+    repeat: -1, // infinitely loop
+    ease: 'none',
+    repeatDelay: 4,
+    duration
   });
 }
 
@@ -44,7 +66,11 @@ function imagePopIn() {
   });
 }
 
-function headerGradient() {
+/**
+ * Animation that changes the text color of the header items when
+ * scrolling down enough.
+ */
+function handleHeaderChanges() {
   gsap.to('header', {
     scrollTrigger: {
       trigger: 'main',
@@ -58,8 +84,7 @@ function headerGradient() {
   const navTrigger = {
     trigger: 'main',
     start: 'center center',
-    toggleActions: 'play none play reverse',
-    markers: true
+    toggleActions: 'play none play reverse'
   };
 
   gsap.to('header', {
@@ -76,9 +101,14 @@ function headerGradient() {
 
 window.addEventListener('load', _ => {
   gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
-  reedsParting();
-  headerGradient();
+  animateReedsParting();
+  handleHeaderChanges();
+  animateDucky();
   if (window.matchMedia('(min-width: 1280px').matches) {
     imagePopIn();
   }
+  window.addEventListener('resize', () => {
+    gsap.killTweensOf('#animated-duck-container');
+    animateDucky();
+  });
 });
