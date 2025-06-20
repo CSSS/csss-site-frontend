@@ -172,9 +172,7 @@ header {
     }
 }
 
-
-
-@keyframes duckMove {
+@keyframes duck-move {
     0% {
         left: -120%;
     }
@@ -189,12 +187,11 @@ header {
     width: 100%;
     height: 100vh;
     overflow: hidden;
-    z-index: 10;
 
     &>.animated-duck-container {
         position: absolute;
         bottom: -1vh;
-        animation: duckMove 15s linear infinite;
+        animation: duck-move 15s linear infinite;
     }
 
     &>.reeds {
@@ -212,7 +209,7 @@ header {
 
             &>img {
                 position: fixed;
-                bottom: calc(72px - 25vw);
+                bottom: calc(72px - 27vw);
             }
         }
     }
@@ -288,7 +285,19 @@ main {
     }
 }
 
-.img-gutter {
+@keyframes pop-in {
+    0% {
+        opacity: 0;
+        transform: translateY(-5vh);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.gallery {
     display: none;
 }
 
@@ -357,6 +366,26 @@ footer {
 }
 
 /* Media Queries */
+
+/* Calendar can display things in a row */
+@media (min-width: 570px) {
+    #calendar {
+        flex-direction: row;
+        align-items: flex-start;
+        flex-wrap: wrap;
+
+        &>.bg-box {
+            width: 100%;
+            flex: 1 1 30%;
+        }
+    }
+
+    .section-container {
+        max-width: 47rem;
+    }
+}
+
+/* Hero nav buttons display as a row */
 @media (min-width: 600px) {
     .hero-nav {
         width: 100%;
@@ -378,23 +407,7 @@ footer {
     }
 }
 
-@media (min-width: 570px) {
-    #calendar {
-        flex-direction: row;
-        align-items: flex-start;
-        flex-wrap: wrap;
-
-        &>.bg-box {
-            width: 100%;
-            flex: 1 1 30%;
-        }
-    }
-
-    .section-container {
-        max-width: 47rem;
-    }
-}
-
+/* Aside stuff working */
 @media (min-width: 1280px) {
     section {
         grid-template-columns: [left] 1fr [mid] auto [right] 1fr;
@@ -410,13 +423,14 @@ footer {
         width: min(80%, 25rem);
     }
 
-    .img-gutter {
+    .gallery {
         display: flex;
         justify-content: space-around;
 
         &>img {
             width: 25vw;
             height: auto;
+            animation: pop-in 0.3 ease;
         }
     }
 }
