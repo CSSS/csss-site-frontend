@@ -172,7 +172,7 @@ main {
         font-size: clamp(1.05rem, 2vw, 1.5rem);
       }
 
-      &>.section-content {
+      & .section-content {
         background-color: white;
         padding: max(1rem, 2vw);
         margin-bottom: 2rem;
@@ -223,13 +223,41 @@ main {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
-  font-size: min(5vw, 10rem);
+  height: fit-content;
+  font-size: min(3vw, 10rem);
 
-  &>h2 {
-    display: flex;
-    height: fit-content;
-    box-shadow: 5px 5px black;
+  &>.gallery {
+    display: grid;
+    width: 100%;
+    height: 100%;
+    place-items: center;
+    gap: 0.5rem;
+    grid-template-areas:
+      "a b c"
+      "d msg e"
+      "f g h";
+
+    &>h2 {
+      height: fit-content;
+      grid-area: msg;
+      box-shadow: 5px 5px black;
+    }
+
+    &>.gallery-content {
+      background-color: white;
+      padding: max(1rem, 2vw);
+      margin-bottom: 2rem;
+      width: clamp(15rem, 50vw, 40rem);
+
+      border-radius: 20px;
+      border: 1px solid black;
+      width: fit-content;
+
+      &>img {
+        border-radius: 20px;
+        object-fit: 'contain';
+      }
+    }
   }
 }
 
