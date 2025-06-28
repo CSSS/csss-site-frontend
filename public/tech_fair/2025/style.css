@@ -50,6 +50,7 @@ a:visited:active {
   top: 0;
   left: 0;
   z-index: 1;
+  transform: scaleX(-1);
   background-image: url('./images/push-pin.png');
   background-position: center;
   background-size: auto 1rem;
@@ -89,6 +90,8 @@ a:visited:active {
 
 .sticky-note {
   background-color: yellow;
+  box-shadow: 5px 5px 7px black;
+  aspect-ratio: 1 / 1;
 }
 
 header {
@@ -209,7 +212,6 @@ main {
         padding: max(1rem, 2vw);
         margin-bottom: 2rem;
         max-width: 40rem;
-
       }
 
       &>p,
@@ -241,39 +243,64 @@ main {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
   font-size: min(3vw, 10rem);
+
+  &>h2 {
+    height: fit-content;
+    box-shadow: 5px 5px 10px black;
+    text-align: center;
+  }
 
   &>.gallery {
     display: grid;
     width: 100%;
     height: 100%;
     place-items: center;
-    gap: 0.5rem;
+    /* row-gap: 1.5rem; */
     grid-template-areas:
       "a b c"
       "d msg e"
       "f g h";
 
-    &>h2 {
-      height: fit-content;
-      grid-area: msg;
-      box-shadow: 5px 5px black;
-    }
-
-    &>.gallery-content {
+    &>.polaroid {
+      position: relative;
       background-color: white;
       padding: max(1rem, 2vw);
       margin-bottom: 2rem;
       width: clamp(15rem, 50vw, 40rem);
+      box-shadow: 5px 5px 10px;
+      aspect-ratio: 1 / 1.25;
 
-      border-radius: 20px;
       border: 1px solid black;
       width: fit-content;
 
       &>img {
-        object-fit: cover;
+        max-width: 20rem;
+        object-fit: contain;
       }
+    }
+
+    &>.polaroid::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 10;
+      transform: scaleX(-1);
+      background-image: url('./images/push-pin.png');
+      background-position: center;
+      background-size: auto 1rem;
+      background-repeat: no-repeat;
+      height: 2rem;
+      width: 100%;
+    }
+
+    &>.polaroid:nth-child(odd) {
+      transform: rotate(-5deg);
+    }
+
+    &>.polaroid:nth-child(even) {
+      transform: rotate(5deg);
     }
   }
 }
