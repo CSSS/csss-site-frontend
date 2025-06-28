@@ -74,16 +74,13 @@ a:visited:active {
   width: 100%;
   max-width: var(--photo-w);
   height: auto;
+  transform: rotate(-5deg);
 
   &>img {
     object-fit: contain;
   }
 
-  &:nth-child(odd) {
-    transform: rotate(-5deg);
-  }
-
-  &:nth-child(even) {
+  &:nth-child(2n) {
     transform: rotate(5deg);
   }
 }
@@ -134,7 +131,7 @@ header {
 }
 
 .hero {
-  height: 100vh;
+  height: 110vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -320,16 +317,23 @@ footer {
           align-items: center;
         }
 
-        &>aside:nth-child(1) {
-          display: block;
-          grid-area: left;
-          padding: 0 10%;
+        &>aside {
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          row-gap: 5rem;
+          height: fit-content;
+          padding: var(--header-height) 0 0;
         }
 
-        &>aside:nth-child(2) {
-          display: block;
+        &>aside:nth-of-type(1) {
+          grid-area: left;
+          align-items: end;
+        }
+
+        &>aside:nth-of-type(2) {
           grid-area: right;
-          padding: 0 10%;
+          align-items: start;
         }
       }
     }
