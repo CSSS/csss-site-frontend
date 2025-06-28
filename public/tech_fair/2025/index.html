@@ -3,17 +3,52 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="/tech_fair/2025/reset.min.css" />
-    <link rel="stylesheet" href="/tech_fair/2025/style.css" />
+    <link rel="stylesheet" href="./reset.min.css" />
+    <link rel="stylesheet" href="./style.css" />
     <script defer src="main.js"></script>
     <link rel="icon" type="image/png" href="/static/icons/favicon_colourful.svg" />
+    <script defer src="/static/js/gsap.min.js"></script>
+    <script defer src="/static/js/ScrollTrigger.min.js"></script>
+    <!-- ScrollSmoother requires ScrollTrigger -->
+    <script defer src="/static/js/ScrollSmoother.min.js"></script>
     <title>Tech Fair 2025</title>
   </head>
   <body>
     <header id="header">
       <nav>
-        <a id="home-link" href="/">
-          <img id="home-logo" src="/static/icons/csss_logo.svg" alt="CSSS Logo" />
+        <a id="home-link" href="https://new.sfucsss.org" target="_blank">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            xml:space="preserve"
+            id="home-logo"
+            x="0"
+            y="0"
+            version="1.1"
+            viewBox="0 0 678 744"
+          >
+            <g id="g4" transform="translate(-56 -16)">
+              <path
+                id="path1"
+                d="M248 160v208c0 8.8 7.2 16 16 16h120c4.4 0 8 3.6 8 8v32c0 4.4-3.6 8-8 8H224c-13.2 0-24-10.8-24-24V120c0-13.2 10.8-24 24-24h160c4.4 0 8 3.6 8 8v32c0 4.4-3.6 8-8 8H264c-8.8 0-16 7.2-16 16z"
+                class="st0"
+              />
+              <path
+                id="path2"
+                d="M456 72v16c0 4.4 3.6 8 8 8h112c13.2 0 24 10.8 24 24v288c0 13.2-10.8 24-24 24H416c-4.4 0-8-3.6-8-8v-32c0-4.4 3.6-8 8-8h120c8.8 0 16-7.2 16-16V160c0-8.8-7.2-16-16-16H416c-4.4 0-8-3.6-8-8V40c0-13.2 10.8-24 24-24h160c4.4 0 8 3.6 8 8v32c0 4.4-3.6 8-8 8H464c-4.4 0-8 3.6-8 8z"
+                class="st0"
+              />
+              <path
+                id="path3"
+                d="M708 680H416c-4.4 0-8-3.6-8-8v-32c0-4.4 3.6-8 8-8h244c.5 0 1 0 1.5-.1 10.9-.8 17.2-10.2 15.2-22-.2-.8-.3-1.7-.6-2.5L661.6 554v-.2c-1.5-5.4-7.4-9.8-13.1-9.8H416c-4.4 0-8-3.6-8-8v-80c0-4.4 3.6-8 8-8h176c4.4 0 8 3.6 8 8v24c0 4.4-3.6 8-8 8H452c-2.2 0-4 1.8-4 4v8c0 2.2 1.8 4 4 4h216c11 0 22.8 8.6 26.2 19.6l6.5 20.4 28 88 3.4 10.7c6.5 20.3-4.2 37.3-24.1 37.3Z"
+                class="st0"
+              />
+              <path
+                id="path4"
+                d="M123.2 610c-2 11.7 4.3 21.1 15.2 22 .5 0 1.1.1 1.6.1h229.2c12.6 0 22.8 10.3 22.8 23.4V736c0 13.2-10.8 24-24 24H64c-4.4 0-8-3.6-8-8v-32c0-4.4 3.6-8 8-8h272c4.4 0 8-3.6 8-8v-16c0-4.4-3.6-8-8-8H92c-19.9 0-30.6-17-24.1-37.3l3.4-10.7 28-88 6.5-20.4C109.3 512.7 121 504 132 504h252c4.4 0 8 3.6 8 8v24c0 4.4-3.6 8-8 8H151.5c-5.7 0-11.6 4.3-13.1 9.8v.2l-14.6 53.4c-.2.9-.4 1.7-.6 2.6z"
+                class="st0"
+              />
+            </g>
+          </svg>
         </a>
         <ul id="nav-list" class="centering">
           <li><a href="#about">About</a></li>
@@ -24,140 +59,189 @@
     </header>
 
     <div class="hero">
-      <img src="/tech_fair/2025/images/mountain-laptop.svg" alt="Tech Fair Logo" />
-      <h1>Tech Fair 2025</h1>
-      <p>Oct 15, 2025 @ AQ North</p>
-      <p>brought to you by the CSSS</p>
+      <div class="hero-content">
+        <img src="./images/mountain-laptop.svg" alt="Tech Fair Logo" />
+        <h1>Tech Fair 2025</h1>
+        <p>Oct 15, 2025 @ AQ North</p>
+        <p>brought to you by the CSSS</p>
+      </div>
     </div>
 
     <main>
       <article>
         <section id="about">
-          <h2 class="section-content hidden left">What is Tech Fair?</h2>
-          <div class="section-content hidden right">
-            <p>
-              Long ago, when Java ran on less than 3 billion devices, Tech Fair was the CSSS's way
-              of making sure our society members learned about the world beyond SFU. As time marched
-              on, Tech Fair disappeared and was slowly forgotten...
-              <br /><br />
-              ...but, just like everything else, Tech Fair was rebooted! Since 2022, Tech Fair has
-              been growing which means more booths, more students and more LinkedIn connections.
-            </p>
-            <br />
-            <p>
-              Whether you're a first year or on your last semester, Tech Fair is your opportunity to
-              find out what companies are looking for. It's also-
-            </p>
+          <aside>
+            <img src="./images/long-shot1.jpg" class="photo" alt="Long shot 1" />
+            <img src="./images/tf-image-1.jpg" class="photo" alt="Old photo 1" />
+          </aside>
+          <div class="main">
+            <div class="section-content chat">
+              <h2>What is Tech Fair?</h2>
+              <br />
+              <p>
+                Long ago, when Java ran on less than 3 billion devices, Tech Fair was the CSSS's way
+                of making sure our society members learned about the world beyond SFU. As time
+                marched on, Tech Fair disappeared and was slowly forgotten...
+                <br /><br />
+                ...but, just like everything else, Tech Fair was rebooted! Since 2022, Tech Fair has
+                been growing which means more booths, more students and more LinkedIn connections.
+              </p>
+              <br />
+              <p>
+                Whether you're a first year or on your last semester, Tech Fair is your opportunity
+                to find out what companies are looking for. It's also-
+              </p>
+            </div>
+            <div class="chat-section">
+              <h2 class="chat section-content right">ChatGPT, summarize this section</h2>
+              <div class="chat section-content left">
+                <ul>
+                  <li>
+                    When: <strong>Wednesday, October 15, 2025</strong> from
+                    <strong>10AM - 4PM</strong>
+                  </li>
+                  <li>
+                    Where: <strong>SFU Burnaby campus</strong> in
+                    <strong>Academic Quadrangle's northern corridor</strong>
+                  </li>
+                  <li>
+                    Who: Over <strong>2,500 Computing Science students</strong>, tech companies in
+                    various sectors and <strong>you</strong>
+                  </li>
+                </ul>
+                <br />
+                <p>
+                  In summary, Tech Fair is an excellent opportunity to meet your future co-workers!
+                </p>
+              </div>
+            </div>
           </div>
-          <h2 class="section-content hidden left">ChatGPT, summarize this section</h2>
-          <div class="section-content hidden right">
-            <ul>
-              <li>
-                When: <strong>Wednesday, October 15, 2025</strong> from <strong>10AM - 4PM</strong>
-              </li>
-              <li>
-                Where: <strong>SFU Burnaby campus</strong> in
-                <strong>Academic Quadrangle's northern corridor</strong>
-              </li>
-              <li>
-                Who: Over <strong>2,500 Computing Science students</strong>, tech companies in
-                various sectors and <strong>you</strong>
-              </li>
-            </ul>
-            <br />
-            <p>In summary, Tech Fair is an excellent opportunity to meet your future co-workers!</p>
-          </div>
+          <aside>
+            <img src="./images/long-shot2.jpg" class="photo" alt="Long shot 2" />
+            <img src="./images/tf-image-2.jpg" class="photo" alt="Old photo 2" />
+          </aside>
         </section>
 
         <section id="students">
-          <h2 class="section-content hidden left">I'm a student, why should I go?</h2>
-          <div class="section-content hidden right">
-            <p>Here are 3 reasons:</p>
-            <ol>
-              <li>
-                <del
-                  >You saw content about people making $250k/year after a 6 month boot camp and
-                  thought it would be easy money.</del
-                >
-                <br />You are passionate about tech and want to use your highly technical skills to
-                solve difficult problems.
-              </li>
-              <li>
-                <del
-                  >You enrolled in CS after seeing the tech boom of 2020 and thought you'd walk into
-                  a job after graduation.</del
-                >
-                <br />You've always wanted to work in a tech related field, but you want to make
-                sure your skills are being used for the right company.
-              </li>
-              <li>
-                <del
-                  >You're super desperate after the tech gold rush ended and now you're trying to
-                  get a referral for any job related to your degree.</del
-                >
-                <br />You want to talk to industry professionals about their company and what you
-                can offer each other!
-              </li>
-            </ol>
-            <br />
-            <p>
-              Most importantly of all, Tech Fair is free and organized for <strong>YOU</strong>.
+          <aside>
+            <img src="./images/arista-booth2.jpg" class="photo" alt="Arista booth 2" />
+          </aside>
+          <div class="main">
+            <div class="section-content chat">
+              <h2>I'm a student, why should I go?</h2>
+              <p>Here are 3 reasons:</p>
+              <ol>
+                <li>
+                  <del
+                    >You saw content about people making $250k/year after a 6 month boot camp and
+                    thought it would be easy money.</del
+                  >
+                  <br />You are passionate about tech and want to use your highly technical skills
+                  to solve difficult problems.
+                </li>
+                <li>
+                  <del
+                    >You enrolled in CS after seeing the tech boom of 2020 and thought you'd walk
+                    into a job after graduation.</del
+                  >
+                  <br />You've always wanted to work in a tech related field, but you want to make
+                  sure your skills are being used for the right company.
+                </li>
+                <li>
+                  <del
+                    >You're super desperate after the tech gold rush ended and now you're trying to
+                    get a referral for any job related to your degree.</del
+                  >
+                  <br />You want to talk to industry professionals about their company and what you
+                  can offer each other!
+                </li>
+              </ol>
               <br />
-              <br />
-            </p>
+              <p>
+                Most importantly of all, Tech Fair is free and organized for <strong>YOU</strong>.
+                <br />
+                <br />
+              </p>
 
-            <div class="centering">
-              <a class="btn-anchor" href="http://discord.sfucsss.org/" target="_blank"
-                >Come chat with us!</a
-              >
+              <div class="centering">
+                <a class="btn-anchor" href="http://discord.sfucsss.org/" target="_blank">
+                  Join our Discord to learn more!
+                </a>
+              </div>
             </div>
           </div>
+          <aside>
+            <img src="./images/student-group.jpg" class="photo" alt="Group of students" />
+          </aside>
         </section>
 
         <section id="companies">
-          <h2 class="section-content hidden left">What if I am a company?</h2>
-          <div class="section-content hidden right">
-            <p>
-              Tech Fair is a great opportunity to expand your brand and market your company.
-              <br /><br />
-              Reach out to over 2,000 Computer Science students who are waiting be your next
-              rockstar!
-              <br /><br />
-              Influence aspiring developers by telling them about your company's culture,
-              opportunities, and impact. Who knows, you may find the perfect person that will thrive
-              in your workplace!
-            </p>
+          <aside>
+            <img src="./images/kardium-booth.jpg" class="photo" alt="Kardium booth" />
+          </aside>
+          <div class="main">
+            <div class="chat section-content">
+              <h2>I work for a company</h2>
+              <br />
+              <p>
+                Tech Fair is a great opportunity to expand your brand and market your company.
+                <br /><br />
+                Reach out to over 2,000 Computer Science students who are waiting be your next
+                rockstar!
+                <br /><br />
+                Influence aspiring developers by telling them about your company's culture,
+                opportunities, and impact. Who knows, you may find the perfect person that will
+                thrive in your workplace!
+              </p>
+            </div>
+            <div class="chat section-content">
+              <h2>My company is interested, what else can you tell me?</h2>
+              <br />
+              <p>
+                Your spot comes with a bulletin board, a table and <strong>free</strong> food.
+                <br /><br />
+                Our attendance fee for companies is <strong>$800</strong>. We want to ensure that as
+                many companies attend, so every single studio, enterprise, and startup in the area
+                is invited. To make sure costs are not an issue, if your company has
+                <strong>less than 50</strong> employees we offer a discounted price of
+                <strong>$500</strong>. <br /><br />
+                If you'd like to know more, check out our
+                <a href="" target="_blank">sponsorship package</a>. <br /><br />
+                Don't miss this chance to show off who you are!
+              </p>
+            </div>
+            <div class="chat section-content">
+              <h2>How do I sign up?</h2>
+              <br />
+              <p>
+                Send an email to
+                <a href="mailto:csss-techfair@sfu.ca">csss-techfair@sfu.ca</a> with:
+              </p>
+              <ul>
+                <li>Your company's name</li>
+                <li>Any questions about the event</li>
+              </ul>
+              <p>We promise to get back to you as soon as possible!</p>
+            </div>
           </div>
-          <h2 class="section-content hidden left">
-            My company is interested, what else can you tell me?
-          </h2>
-          <div class="section-content hidden right">
-            <p>
-              Your spot comes with a bulletin board, a table and <strong>free</strong> food.
-              <br /><br />
-              The cost for attending is <strong>$800</strong>, but if your company has
-              <strong>less than 50</strong> employees, we offer a discounted price of
-              <strong>$500</strong>. We want companies of all sizes to attend especially if you're a
-              smaller, local one! Don't miss this chance to show off who you are!
-            </p>
-          </div>
-          <h2 class="section-content hidden left">How do I sign up?</h2>
-          <div class="section-content hidden right">
-            <p>
-              Perfect! Send an email to
-              <a href="mailto:csss-techfair@sfu.ca">csss-techfair@sfu.ca</a> with:
-            </p>
-            <ul>
-              <li>Your company's name</li>
-              <li>Any questions about the event</li>
-            </ul>
-            <br />
-            <p>We promise to get back to you as soon as possible!</p>
-          </div>
+          <aside>
+            <img src="./images/astera-labs-booth.jpg" class="photo" alt="Astera Labs booth" />
+          </aside>
         </section>
 
         <section id="final">
-          <h2 class="section-content hidden">See You There!</h2>
+          <h2 class="chat section-content">See You There!</h2>
+          <div class="gallery">
+            <img src="./images/attendees1.jpg" class="photo" alt="Attendees 1" />
+            <img src="./images/attendees3.jpg" class="photo" alt="Attendees 2" />
+            <img src="./images/attendees2.jpg" class="photo" alt="Attendees 3" />
+            <img src="./images/arista-booth.jpg" class="photo" alt="Arista booth" />
+            <img src="./images/brave-booth.jpg" class="photo" alt="Brave booth" />
+            <img src="./images/fortinet-booth.jpg" class="photo" alt="Fortinet booth" />
+            <img src="./images/dark-vision-booth.jpg" class="photo" alt="Dark Vision booth" />
+            <img src="./images/vigilon-booth.jpg" class="photo" alt="Vigilon booth" />
+            <img src="./images/offworld-booth.jpg" class="photo" alt="Offworld booth" />
+          </div>
         </section>
       </article>
     </main>
@@ -198,11 +282,6 @@
           </svg>
         </a>
       </div>
-      <small>
-        <a href="https://www.vecteezy.com/free-vector/blue-ridge-mountains"
-          >Blue Ridge Mountains Vectors by Vecteezy</a
-        >
-      </small>
     </footer>
   </body>
 </html>
