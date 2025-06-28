@@ -38,6 +38,8 @@ function setScrolledEffect() {
     toggleActions: 'play none reverse none'
   };
 
+  const timing = 0.3;
+
   gsap.to('#header', {
     scrollTrigger,
     borderBottom: 'solid black 1px',
@@ -46,13 +48,25 @@ function setScrolledEffect() {
   gsap.to('#nav-list', {
     scrollTrigger,
     padding: 0,
-    duration: 0.1
+    duration: timing
+  });
+  gsap.to('#home-link', {
+    scrollTrigger,
+    height: 0,
+    width: 0,
+    x: '-5rem',
+    y: '-1rem',
+    duration: timing,
+    ease: 'none'
   });
   gsap.to('#home-logo', {
     scrollTrigger,
+    height: 0,
+    width: 0,
     x: '-5rem',
-    scale: 0,
-    duration: 0.3
+    y: '-1rem',
+    duration: timing,
+    ease: 'none'
   });
 }
 

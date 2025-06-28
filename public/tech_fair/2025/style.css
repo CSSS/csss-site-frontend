@@ -6,7 +6,7 @@
 :root {
   /* Structure */
   --header-height: 3rem;
-  --square-logo-dim: 2.8rem;
+  --square-logo-dim: 2.5rem;
   --paper-shadow: 5px 5px 7px black;
   --photo-w: 460px;
 }
@@ -111,8 +111,9 @@ header {
       /* This keeps the icon at the far left and the nav links centered */
       position: absolute;
       left: 1vw;
+      top: 1vh;
 
-      &>img {
+      &>#home-logo {
         width: var(--square-logo-dim);
         height: var(--square-logo-dim);
       }
