@@ -1,3 +1,4 @@
+/** Photos in the photo gallery element. */
 let photos;
 
 /** Variables declared in the :root component in `style.css` */
@@ -31,23 +32,34 @@ function setPopInEffect() {
 }
 
 function setScrolledEffect() {
-  const scrolledElements = [
-    document.getElementById('header'),
-    document.getElementById('nav-list'),
-    document.getElementById('home-logo')
-  ];
+  const scrollTrigger = {
+    trigger: '#header',
+    start: 'bottom top',
+    toggleActions: 'play none reverse none'
+  };
 
-  checkScrolledEffect(scrolledElements);
-
-  window.addEventListener('scroll', () => {
-    checkScrolledEffect(scrolledElements);
+  gsap.to('#header', {
+    scrollTrigger,
+    borderBottom: 'solid black 1px',
+    duration: 0.1
+  });
+  gsap.to('#nav-list', {
+    scrollTrigger,
+    padding: 0,
+    duration: 0.1
+  });
+  gsap.to('#home-logo', {
+    scrollTrigger,
+    x: '-5rem',
+    scale: 0,
+    duration: 0.3
   });
 }
 
-document.addEventListener('DOMContentLoaded', event => {
+document.addEventListener('DOMContentLoaded', () => {
   gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
   photos = document.querySelectorAll('.gallery-content');
 
   setPopInEffect();
-  // setScrolledEffect();
+  setScrolledEffect();
 });

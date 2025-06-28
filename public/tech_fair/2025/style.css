@@ -95,12 +95,8 @@ header {
   width: 100%;
   z-index: 10;
 
-  position: sticky;
+  position: fixed;
   top: 0;
-
-  &.scrolled {
-    border-bottom: solid black 1px;
-  }
 
   &>nav {
     display: flex;
@@ -121,19 +117,6 @@ header {
       &>img {
         width: var(--square-logo-dim);
         height: var(--square-logo-dim);
-
-        /* This portion force the home icon to go to the left when scrolling down */
-        transform: translateX(0);
-        transition:
-          transform var(--trans-short),
-          height var(--trans-short),
-          width var(--trans-short);
-      }
-
-      &>img.scrolled {
-        transform: translateX(-5rem);
-        width: 0;
-        height: 0;
       }
     }
 
@@ -153,10 +136,6 @@ header {
           padding: 0 1rem;
         }
       }
-    }
-
-    &>ul.scrolled {
-      padding: 0;
     }
   }
 }
@@ -212,8 +191,9 @@ main {
         margin-bottom: 2rem;
 
         &.right {
+          position: relative;
+          right: 0;
           display: block;
-          float: right;
           box-shadow: 5px 5px black;
           width: fit-content;
         }
