@@ -20,7 +20,7 @@ body {
 
 ul,
 ol {
-  padding-left: 0;
+  padding-left: 1rem;
 }
 
 a:link,
@@ -99,7 +99,7 @@ a:visited:active {
   box-shadow: var(--paper-shadow);
 }
 
-.polaroid {
+.photo {
   position: relative;
   background-color: white;
   box-shadow: var(--paper-shadow);
@@ -121,22 +121,6 @@ a:visited:active {
     transform: rotate(5deg);
   }
 }
-
-/* .polaroid::before { */
-/*   content: ''; */
-/*   position: absolute; */
-/*   top: 0; */
-/*   left: 0; */
-/*   z-index: 10; */
-/*   transform: scaleX(-1); */
-/*   background-image: url('./images/push-pin.png'); */
-/*   background-position: center; */
-/*   background-size: auto 1rem; */
-/*   background-repeat: no-repeat; */
-/*   height: 2rem; */
-/*   width: 100%; */
-/* } */
-/**/
 
 header {
   width: 100%;
@@ -282,7 +266,7 @@ main {
 
 #companies {
   a {
-    color: red;
+    color: #d16711;
   }
 }
 
@@ -297,7 +281,7 @@ main {
     display: grid;
     row-gap: -2rem;
     column-gap: -3rem;
-    grid-template-columns: repeat(auto-fill, minmax(min(20rem, 100%), 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(20rem, 100%), 1fr));
     width: 70%;
 
     &>h2 {
