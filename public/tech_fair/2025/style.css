@@ -83,6 +83,12 @@ a:visited:active {
   &:nth-child(2n) {
     transform: rotate(5deg);
   }
+
+  &:hover {
+    transform: scale(1.25);
+    z-index: 3;
+    transition: transform 0.1s linear;
+  }
 }
 
 header {
