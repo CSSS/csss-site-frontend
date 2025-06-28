@@ -7,12 +7,18 @@
   /* Structure */
   --header-height: 3rem;
   --square-logo-dim: 2.8rem;
+  --paper-shadow: 5px 5px 7px black;
 }
 
 body {
   font-family: 'Questrial';
   background-image: url('./images/corkboard.png');
   background-color: #cc893d;
+}
+
+ul,
+ol {
+  padding-left: 0;
 }
 
 a:link,
@@ -74,7 +80,6 @@ a:visited:active {
   mask:
     radial-gradient(calc(.5*var(--f)*1lh) at calc(.5*var(--b)),
       #0000 calc(100% - 1px), red) 0 0/ calc(100% - var(--b)) 1lh;
-  filter: drop-shadow(2px 2px 4px #000c);
 }
 
 .chat {
@@ -88,16 +93,15 @@ a:visited:active {
 
 .sticky-note {
   background-color: yellow;
-  box-shadow: 5px 5px 7px black;
   aspect-ratio: 1 / 1;
+  box-shadow: var(--paper-shadow);
 }
 
 .polaroid {
   position: relative;
   background-color: white;
-  margin-bottom: 2rem;
-  box-shadow: 5px 5px 10px;
-  border: 2px solid transparent;
+  box-shadow: var(--paper-shadow);
+  border: 5px solid transparent;
 
   width: fit-content;
   height: fit-content;
@@ -230,24 +234,28 @@ main {
         display: flex;
         flex-direction: column;
         align-items: center;
-        width: 100%;
-        padding: 0 3vw;
+        max-width: 42rem;
 
         &>.right {
           align-self: flex-end;
           display: block;
           box-shadow: 5px 5px black;
-          width: 80%;
+          width: fit-content;
+          max-width: 80%;
+          margin-right: 1rem;
         }
 
         &>.left {
           align-self: flex-start;
-          width: 90%;
+          width: fit-content;
+          max-width: 80%;
+          margin-left: 1rem;
         }
 
       }
 
       & .section-content {
+        margin-top: var(--header-height);
         padding: max(1.5rem, 2vw);
         margin-bottom: 2rem;
         max-width: 40rem;
@@ -261,7 +269,6 @@ main {
 
       &>ul,
       ol {
-        padding-left: inherit;
         margin: 0;
 
         del {
@@ -286,7 +293,6 @@ main {
 
   &>h2 {
     height: fit-content;
-    box-shadow: 5px 5px 10px black;
     text-align: center;
   }
 
