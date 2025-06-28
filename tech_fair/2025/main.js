@@ -1,3 +1,6 @@
+/** Photos in the photo gallery element. */
+let photos;
+
 /** Variables declared in the :root component in `style.css` */
 const cssVars = getComputedStyle(document.querySelector(':root'));
 
@@ -11,49 +14,66 @@ const headerSize = parseFloat(cssVars.getPropertyValue('--header-height')) * rem
 let isAtTop = window.scrollY > headerSize;
 
 function setPopInEffect() {
-  const observer = new IntersectionObserver(entries => {
-    for (const entry of entries) {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('show');
+  for (const photo of photos) {
+    gsap.fromTo(
+      photo,
+      {
+        opacity: 0,
+        y: 100,
+        duration: 2
+      },
+      {
+        scrollTrigger: photo,
+        opacity: 1,
+        y: 0
       }
-    }
-  });
-
-  const sections = document.querySelectorAll('.hidden');
-  for (const section of sections) {
-    observer.observe(section);
-  }
-}
-
-function checkScrolledEffect(scrolledElements) {
-  if (window.scrollY <= headerSize && !isAtTop) {
-    isAtTop = true;
-    for (const el of scrolledElements) {
-      el.classList.remove('scrolled');
-    }
-  } else if (window.scrollY > headerSize && isAtTop) {
-    isAtTop = false;
-    for (const el of scrolledElements) {
-      el.classList.add('scrolled');
-    }
+    );
   }
 }
 
 function setScrolledEffect() {
-  const scrolledElements = [
-    document.getElementById('header'),
-    document.getElementById('nav-list'),
-    document.getElementById('home-logo')
-  ];
+  const scrollTrigger = {
+    trigger: '#header',
+    start: 'bottom top',
+    toggleActions: 'play none reverse none'
+  };
 
-  checkScrolledEffect(scrolledElements);
+  const timing = 0.3;
 
-  window.addEventListener('scroll', () => {
-    checkScrolledEffect(scrolledElements);
+  gsap.to('#header', {
+    scrollTrigger,
+    borderBottom: 'solid black 1px',
+    duration: 0.1
+  });
+  gsap.to('#nav-list', {
+    scrollTrigger,
+    padding: 0,
+    duration: timing
+  });
+  gsap.to('#home-link', {
+    scrollTrigger,
+    height: 0,
+    width: 0,
+    x: '-5rem',
+    y: '-1rem',
+    duration: timing,
+    ease: 'none'
+  });
+  gsap.to('#home-logo', {
+    scrollTrigger,
+    height: 0,
+    width: 0,
+    x: '-5rem',
+    y: '-1rem',
+    duration: timing,
+    ease: 'none'
   });
 }
 
-(() => {
+document.addEventListener('DOMContentLoaded', () => {
+  gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
+  photos = document.querySelectorAll('.gallery-content');
+
   setPopInEffect();
   setScrolledEffect();
-})();
+});
