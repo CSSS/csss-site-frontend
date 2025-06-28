@@ -126,8 +126,6 @@ header {
       list-style-type: none;
       margin: 0;
       padding: 1rem 0 0;
-      transition:
-        padding var(--trans-short);
 
       &>li {
 
@@ -180,42 +178,53 @@ main {
     display: grid;
 
     &>section {
+      display: flex;
       padding: 2.5rem 12vw;
+      flex-direction: column;
+      align-items: center;
 
       &>h2 {
         font-size: clamp(1.05rem, 2vw, 1.5rem);
       }
 
-      & .section-content {
-        padding: max(1rem, 2vw);
-        margin-bottom: 2rem;
+      &>.chat-section {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
 
-        &.right {
-          position: relative;
-          right: 0;
+        &>.right {
+          align-self: flex-end;
           display: block;
           box-shadow: 5px 5px black;
           width: fit-content;
         }
 
-        &.left {
-          float: left;
+        &>.left {
+          align-self: flex-start;
         }
 
-        &>p,
-        ul,
-        ol {
-          font-size: clamp(1rem, 1.5vw, 1.05rem);
-        }
+      }
 
-        &>ul,
-        ol {
-          padding-left: inherit;
-          margin: 0;
+      & .section-content {
+        padding: max(1rem, 2vw);
+        margin-bottom: 2rem;
+        max-width: 40rem;
 
-          del {
-            color: #c5c5c5;
-          }
+      }
+
+      &>p,
+      ul,
+      ol {
+        font-size: clamp(1rem, 1.5vw, 1.05rem);
+      }
+
+      &>ul,
+      ol {
+        padding-left: inherit;
+        margin: 0;
+
+        del {
+          color: #c5c5c5;
         }
       }
     }
