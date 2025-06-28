@@ -70,11 +70,28 @@ function setScrolledEffect() {
   });
 }
 
+function setIncrementalText() {
+  let split = SplitText.create('.response', {
+    type: 'words'
+  });
+
+  gsap.from(split.words, {
+    scrollTrigger: {
+      trigger: '.response',
+      start: 'top bottom',
+      once: true
+    },
+    autoAlpha: 0,
+    stagger: 0.05
+  });
+}
+
 document.addEventListener('DOMContentLoaded', () => {
-  gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
+  gsap.registerPlugin(ScrollTrigger, SplitText, ScrollSmoother);
   photos = document.querySelectorAll('.gallery-content');
   document.body.style.display = 'block';
 
   setPopInEffect();
   setScrolledEffect();
+  setIncrementalText();
 });
