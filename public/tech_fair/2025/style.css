@@ -4,9 +4,6 @@
 }
 
 :root {
-  /* Animation */
-  --trans-short: 0.3s ease;
-
   /* Structure */
   --header-height: 3rem;
   --square-logo-dim: 2.8rem;
@@ -88,11 +85,52 @@ a:visited:active {
   width: fit-content;
 }
 
+
 .sticky-note {
   background-color: yellow;
   box-shadow: 5px 5px 7px black;
   aspect-ratio: 1 / 1;
 }
+
+.polaroid {
+  position: relative;
+  background-color: white;
+  margin-bottom: 2rem;
+  box-shadow: 5px 5px 10px;
+  border: 2px solid transparent;
+
+  width: fit-content;
+  height: fit-content;
+
+  &>img {
+    width: 100%;
+    object-fit: contain;
+  }
+
+  &:nth-child(odd) {
+    transform: rotate(-5deg);
+  }
+
+  &:nth-child(even) {
+    transform: rotate(5deg);
+  }
+}
+
+.polaroid::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  transform: scaleX(-1);
+  background-image: url('./images/push-pin.png');
+  background-position: center;
+  background-size: auto 1rem;
+  background-repeat: no-repeat;
+  height: 2rem;
+  width: 100%;
+}
+
 
 header {
   width: 100%;
@@ -108,7 +146,6 @@ header {
     justify-content: center;
     position: relative;
     padding: 0.25rem;
-    height: fit-content;
     width: 100%;
 
     /* CSSS Logo */
@@ -182,7 +219,6 @@ main {
 
     &>section {
       display: flex;
-      padding: 2.5rem 12vw;
       flex-direction: column;
       align-items: center;
 
@@ -194,22 +230,25 @@ main {
         display: flex;
         flex-direction: column;
         align-items: center;
+        width: 100%;
+        padding: 0 3vw;
 
         &>.right {
           align-self: flex-end;
           display: block;
           box-shadow: 5px 5px black;
-          width: fit-content;
+          width: 80%;
         }
 
         &>.left {
           align-self: flex-start;
+          width: 90%;
         }
 
       }
 
       & .section-content {
-        padding: max(1rem, 2vw);
+        padding: max(1.5rem, 2vw);
         margin-bottom: 2rem;
         max-width: 40rem;
       }
@@ -253,55 +292,11 @@ main {
 
   &>.gallery {
     display: grid;
-    width: 100%;
-    height: 100%;
-    place-items: center;
-    /* row-gap: 1.5rem; */
-    grid-template-areas:
-      "a b c"
-      "d msg e"
-      "f g h";
+    row-gap: -2rem;
+    column-gap: -3rem;
+    grid-template-columns: repeat(auto-fill, minmax(min(20rem, 100%), 1fr));
+    width: 70%;
 
-    &>.polaroid {
-      position: relative;
-      background-color: white;
-      padding: max(1rem, 2vw);
-      margin-bottom: 2rem;
-      width: clamp(15rem, 50vw, 40rem);
-      box-shadow: 5px 5px 10px;
-      aspect-ratio: 1 / 1.25;
-
-      border: 1px solid black;
-      width: fit-content;
-
-      &>img {
-        max-width: 20rem;
-        object-fit: contain;
-      }
-    }
-
-    &>.polaroid::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      z-index: 10;
-      transform: scaleX(-1);
-      background-image: url('./images/push-pin.png');
-      background-position: center;
-      background-size: auto 1rem;
-      background-repeat: no-repeat;
-      height: 2rem;
-      width: 100%;
-    }
-
-    &>.polaroid:nth-child(odd) {
-      transform: rotate(-5deg);
-    }
-
-    &>.polaroid:nth-child(even) {
-      transform: rotate(5deg);
-    }
   }
 }
 
