@@ -73,6 +73,7 @@ function setScrolledEffect() {
 document.addEventListener('DOMContentLoaded', () => {
   gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
   photos = document.querySelectorAll('.gallery-content');
+  document.body.style.display = 'block';
 
   setPopInEffect();
   setScrolledEffect();
