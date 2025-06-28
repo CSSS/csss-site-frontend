@@ -8,6 +8,7 @@
   --header-height: 3rem;
   --square-logo-dim: 2.8rem;
   --paper-shadow: 5px 5px 7px black;
+  --photo-w: 460px;
 }
 
 body {
@@ -49,41 +50,6 @@ a:visited:active {
   justify-content: center;
 }
 
-.paper::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 1;
-  transform: scaleX(-1);
-  background-image: url('./images/push-pin.png');
-  background-position: center;
-  background-size: auto 1rem;
-  background-repeat: no-repeat;
-  height: 2rem;
-  width: 100%;
-}
-
-.paper {
-  /* fraction of line the hole occupies */
-  --f: .7;
-  /* at least 1lh to fit */
-  --b: 1.5lh;
-  /* dashed line thickness */
-  --l: 2px;
-  position: relative;
-  border: solid 0 #0000;
-  border-width: 0 var(--b);
-  tab-size: 2;
-  line-height: 1.5;
-  background:
-    0 -.125lh/ calc(100% - var(--l)) .5lh padding-box,
-    linear-gradient(#e3edfc 50%, whitesmoke 0) 0 0/ 1% 2lh;
-  mask:
-    radial-gradient(calc(.5*var(--f)*1lh) at calc(.5*var(--b)),
-      #0000 calc(100% - 1px), red) 0 0/ calc(100% - var(--b)) 1lh;
-}
-
 .chat {
   background-color: white;
   box-shadow: -5px 5px black;
@@ -105,11 +71,11 @@ a:visited:active {
   box-shadow: var(--paper-shadow);
   border: 5px solid transparent;
 
-  width: fit-content;
-  height: fit-content;
+  width: 100%;
+  max-width: var(--photo-w);
+  height: auto;
 
   &>img {
-    width: 100%;
     object-fit: contain;
   }
 
@@ -125,18 +91,17 @@ a:visited:active {
 header {
   width: 100%;
   z-index: 10;
-
   position: fixed;
   top: 0;
 
   &>nav {
     display: flex;
-    background-color: white;
     align-items: center;
     justify-content: center;
     position: relative;
     padding: 0.25rem;
     width: 100%;
+    backdrop-filter: blur(5px);
 
     /* CSSS Logo */
     &>a {
@@ -213,51 +178,57 @@ main {
       align-items: center;
       padding: 0 1rem 0;
 
-      &>h2 {
-        font-size: clamp(1.05rem, 2vw, 1.5rem);
-      }
-
-      &>.chat-section {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-
-        &>.right {
-          align-self: flex-end;
-          display: block;
-          box-shadow: 5px 5px black;
-          width: fit-content;
-          max-width: 80%;
-          margin-right: 1rem;
-        }
-
-        &>.left {
-          align-self: flex-start;
-          width: fit-content;
-          max-width: 80%;
-          margin-left: 1rem;
-        }
-
+      &>aside {
+        display: none;
       }
 
       & .section-content {
         margin: var(--header-height) 0 2rem;
-        padding: max(1.5rem, 2vw);
+        padding: 1.5rem;
         max-width: 40rem;
       }
 
-      &>p,
-      ul,
-      ol {
-        font-size: clamp(1rem, 1.5vw, 1.05rem);
-      }
+      &>.main {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
 
-      &>ul,
-      ol {
-        margin: 0;
+        &>.chat-section {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
 
-        del {
-          color: #c5c5c5;
+          &>.right {
+            align-self: flex-end;
+            display: block;
+            box-shadow: 5px 5px black;
+            width: fit-content;
+            max-width: 80%;
+            margin-right: 1rem;
+          }
+
+          &>.left {
+            align-self: flex-start;
+            width: fit-content;
+            max-width: 80%;
+            margin-left: 1rem;
+          }
+
+        }
+
+        &>p,
+        ul,
+        ol {
+          font-size: clamp(1rem, 1.5vw, 1.05rem);
+        }
+
+        &>ul,
+        ol {
+          margin: 0;
+
+          del {
+            color: #c5c5c5;
+          }
         }
       }
     }
@@ -274,20 +245,18 @@ main {
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: min(3vw, 10rem);
   padding-bottom: 3rem;
 
-  &>.gallery {
-    display: grid;
-    row-gap: -2rem;
-    column-gap: -3rem;
-    grid-template-columns: repeat(auto-fit, minmax(min(20rem, 100%), 1fr));
-    width: 70%;
+  &>h2 {
+    text-align: center;
+    font-size: 2rem;
+  }
 
-    &>h2 {
-      height: fit-content;
-      text-align: center;
-    }
+  &>.gallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 70vw;
   }
 }
 
@@ -332,5 +301,37 @@ footer {
 
   #students {
     height: fit-content;
+  }
+}
+
+@media (min-width: 1200px) {
+  main {
+    &>article {
+      &>section {
+        display: grid;
+        grid-template-columns: 1fr 50% 1fr;
+        grid-template-areas:
+          'left center right';
+
+        &>.main {
+          grid-area: center;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+        }
+
+        &>aside:nth-child(1) {
+          display: block;
+          grid-area: left;
+          padding: 0 10%;
+        }
+
+        &>aside:nth-child(2) {
+          display: block;
+          grid-area: right;
+          padding: 0 10%;
+        }
+      }
+    }
   }
 }
