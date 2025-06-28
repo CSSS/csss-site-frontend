@@ -1,3 +1,5 @@
+let photos;
+
 /** Variables declared in the :root component in `style.css` */
 const cssVars = getComputedStyle(document.querySelector(':root'));
 
@@ -11,31 +13,20 @@ const headerSize = parseFloat(cssVars.getPropertyValue('--header-height')) * rem
 let isAtTop = window.scrollY > headerSize;
 
 function setPopInEffect() {
-  const observer = new IntersectionObserver(entries => {
-    for (const entry of entries) {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('show');
+  for (const photo of photos) {
+    gsap.fromTo(
+      photo,
+      {
+        opacity: 0,
+        x: -100,
+        duration: 2
+      },
+      {
+        scrollTrigger: photo,
+        opacity: 1,
+        x: 0
       }
-    }
-  });
-
-  const sections = document.querySelectorAll('.hidden');
-  for (const section of sections) {
-    observer.observe(section);
-  }
-}
-
-function checkScrolledEffect(scrolledElements) {
-  if (window.scrollY <= headerSize && !isAtTop) {
-    isAtTop = true;
-    for (const el of scrolledElements) {
-      el.classList.remove('scrolled');
-    }
-  } else if (window.scrollY > headerSize && isAtTop) {
-    isAtTop = false;
-    for (const el of scrolledElements) {
-      el.classList.add('scrolled');
-    }
+    );
   }
 }
 
@@ -53,7 +44,10 @@ function setScrolledEffect() {
   });
 }
 
-(() => {
+document.addEventListener('DOMContentLoaded', event => {
+  gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
+  photos = document.querySelectorAll('.gallery-content');
+
   setPopInEffect();
-  setScrolledEffect();
-})();
+  // setScrolledEffect();
+});

@@ -29,14 +29,6 @@ a:visited:active {
   color: black;
 }
 
-.hidden {
-  opacity: 0;
-}
-
-.show {
-  opacity: 1;
-}
-
 .btn-anchor {
   display: inline-block;
   margin: 0 auto;
@@ -84,7 +76,7 @@ a:visited:active {
   mask:
     radial-gradient(calc(.5*var(--f)*1lh) at calc(.5*var(--b)),
       #0000 calc(100% - 1px), red) 0 0/ calc(100% - var(--b)) 1lh;
-  filter: drop-shadow(10px 10px 4px #000c);
+  filter: drop-shadow(2px 2px 4px #000c);
 }
 
 .chat {
@@ -179,6 +171,7 @@ header {
   &>.hero-content {
     position: relative;
     height: 70%;
+    width: 90%;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -209,7 +202,6 @@ main {
 
     &>section {
       padding: 2.5rem 12vw;
-      min-height: 130vh;
 
       &>h2 {
         font-size: clamp(1.05rem, 2vw, 1.5rem);
@@ -338,15 +330,5 @@ footer {
 
   #students {
     height: fit-content;
-  }
-}
-
-/* Disables animations */
-@media(prefers-reduced-motion: no-preference) {
-  .hidden {
-    transition:
-      opacity 2s ease,
-      filter 1s,
-      transform 1s
   }
 }
