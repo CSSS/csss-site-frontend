@@ -14,9 +14,9 @@
 body {
   font-family: 'Questrial';
   background-image: url('./images/mountain-landscape.svg');
-  background-color: #cc893d;
   background-position: center;
   background-size: cover;
+  background-repeat: no-repeat;
 }
 
 ul,
@@ -33,16 +33,6 @@ a:visited {
 a:link:active,
 a:visited:active {
   color: black;
-}
-
-.btn-anchor {
-  display: inline-block;
-  margin: 0 auto;
-  cursor: pointer;
-  padding: 1rem;
-  background-color: pink;
-  border-radius: 20px;
-  box-shadow: 5px 5px black;
 }
 
 .centering {
@@ -190,6 +180,10 @@ main {
         margin: var(--header-height) 0 2rem;
         padding: 1.5rem;
         max-width: 40rem;
+
+        & a {
+          color: #d16711;
+        }
       }
 
       &>.main {
@@ -239,11 +233,6 @@ main {
   }
 }
 
-#companies {
-  a {
-    color: #d16711;
-  }
-}
 
 #final {
   display: flex;
