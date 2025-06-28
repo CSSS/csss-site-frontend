@@ -12,8 +12,10 @@
 
 body {
   font-family: 'Questrial';
-  background-image: url('./images/corkboard.png');
+  background-image: url('./images/mountain-landscape.svg');
   background-color: #cc893d;
+  background-position: center;
+  background-size: cover;
 }
 
 ul,
@@ -120,21 +122,21 @@ a:visited:active {
   }
 }
 
-.polaroid::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 10;
-  transform: scaleX(-1);
-  background-image: url('./images/push-pin.png');
-  background-position: center;
-  background-size: auto 1rem;
-  background-repeat: no-repeat;
-  height: 2rem;
-  width: 100%;
-}
-
+/* .polaroid::before { */
+/*   content: ''; */
+/*   position: absolute; */
+/*   top: 0; */
+/*   left: 0; */
+/*   z-index: 10; */
+/*   transform: scaleX(-1); */
+/*   background-image: url('./images/push-pin.png'); */
+/*   background-position: center; */
+/*   background-size: auto 1rem; */
+/*   background-repeat: no-repeat; */
+/*   height: 2rem; */
+/*   width: 100%; */
+/* } */
+/**/
 
 header {
   width: 100%;
@@ -225,6 +227,7 @@ main {
       display: flex;
       flex-direction: column;
       align-items: center;
+      padding: 0 1rem 0;
 
       &>h2 {
         font-size: clamp(1.05rem, 2vw, 1.5rem);
@@ -234,7 +237,6 @@ main {
         display: flex;
         flex-direction: column;
         align-items: center;
-        max-width: 42rem;
 
         &>.right {
           align-self: flex-end;
@@ -255,9 +257,8 @@ main {
       }
 
       & .section-content {
-        margin-top: var(--header-height);
+        margin: var(--header-height) 0 2rem;
         padding: max(1.5rem, 2vw);
-        margin-bottom: 2rem;
         max-width: 40rem;
       }
 
@@ -290,11 +291,7 @@ main {
   justify-content: center;
   align-items: center;
   font-size: min(3vw, 10rem);
-
-  &>h2 {
-    height: fit-content;
-    text-align: center;
-  }
+  padding-bottom: 3rem;
 
   &>.gallery {
     display: grid;
@@ -303,6 +300,10 @@ main {
     grid-template-columns: repeat(auto-fill, minmax(min(20rem, 100%), 1fr));
     width: 70%;
 
+    &>h2 {
+      height: fit-content;
+      text-align: center;
+    }
   }
 }
 
