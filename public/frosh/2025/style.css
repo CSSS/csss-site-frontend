@@ -411,6 +411,9 @@ footer {
             width: 25vw;
             height: auto;
             animation: pop-in 0.3 ease;
+            background-color: white;
+            border: 5px solid transparent;
+            box-shadow: 5px 5px 7px black;
         }
     }
 }
