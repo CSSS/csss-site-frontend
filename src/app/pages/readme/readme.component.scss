@@ -36,11 +36,19 @@ header {
     -webkit-mask-repeat: no-repeat;
     mask-repeat: no-repeat;
   }
+
+  &>fa-icon {
+    font-size: clamp(2rem, 3vw, 15rem);
+    position: absolute;
+    bottom: 30vh;
+    filter: drop-shadow(0px 2px 5px black);
+  }
 }
 
 .main-content {
   position: relative;
-  margin-top: 10vh;
+  margin: 10vh auto 0;
+  max-width: 75rem;
   z-index: 10;
 
   &>section {
@@ -50,9 +58,9 @@ header {
   &>.pres-container {
     display: flex;
     flex-wrap: wrap;
-    column-gap: 1rem;
-    align-items: flex-start;
-    padding: 0 1rem;
+    gap: 1rem;
+    width: 90%;
+    margin: 0 1rem 5rem;
 
     &>.pres-image-container {
       width: 80%;
@@ -68,8 +76,7 @@ header {
     }
 
     &>.pres-content {
-      flex: 1 1 0;
-      min-width: 20rem;
+      flex: 1 1 25rem;
 
       &>h2 {
         margin-top: 0;
@@ -78,7 +85,6 @@ header {
   }
 
   &>.nav {
-
     &>nav {
       display: flex;
       justify-content: center;
@@ -88,10 +94,8 @@ header {
 
       & .common-room {
         @include g.no-select;
-
-        width: 50%;
+        width: clamp(15rem, 90%, 50rem);
         aspect-ratio: 5 / 3;
-
       }
     }
   }
