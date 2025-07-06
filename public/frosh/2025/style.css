@@ -201,7 +201,7 @@ header {
     /* Keeping this in case the animation break */
 
     &>svg {
-      height: 30vh;
+      height: 12vh;
     }
   }
 
