@@ -25,17 +25,23 @@ function animateReedsParting() {
 
 /**
  * Animates the duck swimming left to right.
+ * Added code so it has a consistent velocity.
  */
 function animateDucky() {
   const duck = document.getElementById('animated-duck-container');
 
+  // Get the width of the duck and have it start off the screen, based on its width
   const start = -duck.getBoundingClientRect().width;
+  // and the width of the viewport
   const end = window.innerWidth;
 
+  // Get the distance the duck needs to travel and move it at a rate of 100px per second.
   const distance = end - start;
   const duration = distance / 100; // measured in pixels
 
+  // Set the duck to start at the left side
   gsap.set(duck, { left: start });
+  // Move it to the right, repeat infinitely
   gsap.to('#animated-duck-container', {
     left: end,
     repeat: -1, // infinitely loop
@@ -59,8 +65,8 @@ function imagePopIn() {
       },
       y: '5vh',
       opacity: 0,
-      duration: 1.2,
-      ease: 'power3.out',
+      duration: 0.5,
+      ease: 'none',
       stagger: 0.2
     });
   });
@@ -99,11 +105,53 @@ function handleHeaderChanges() {
   });
 }
 
+/**
+ * Controls the countdown on the hero
+ */
+function setCountdown() {
+  // Target time is September 8, 2025 PDT @ 1PM
+  const target = new Date('2025-09-08T13:00:00.000-07:00').getTime();
+
+  // Don't show the countdown if it's past the Frosh start date.
+  if (target < new Date().getTime()) {
+    document.getElementById('countdown').style.display = 'none';
+    return;
+  }
+  const secToMs = 1000;
+  const minToMs = secToMs * 60;
+  const hourToMs = minToMs * 60;
+  const dayToMs = hourToMs * 24;
+
+  const secEle = document.getElementById('cd-sec');
+  const minEle = document.getElementById('cd-min');
+  const hourEle = document.getElementById('cd-hour');
+  const dayEle = document.getElementById('cd-day');
+
+  let update = () => {
+    const now = new Date().getTime();
+    let difference = target - now;
+
+    let secs = Math.floor((difference / secToMs) % 60);
+    let mins = Math.floor((difference / minToMs) % 60);
+    let hours = Math.floor((difference / hourToMs) % 24);
+    let days = Math.floor(difference / dayToMs);
+
+    secEle.textContent = secs;
+    minEle.textContent = mins;
+    hourEle.textContent = hours;
+    dayEle.textContent = days;
+  };
+
+  update();
+  setInterval(update, 1000);
+}
+
 window.addEventListener('load', _ => {
   gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
   animateReedsParting();
   handleHeaderChanges();
   animateDucky();
+  setCountdown();
   if (window.matchMedia('(min-width: 1280px').matches) {
     imagePopIn();
   }
