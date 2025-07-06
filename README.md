@@ -36,6 +36,10 @@ The last two commands are equivalent. To view other npm commands, look at `packa
 
 ### Local development
 
+### Libraries used
+* FontAwesome (Icons)
+* Material CDK (some trickier component behaviours)
+
 # Everything below this is from the old new site.
 # csss-site-frontend
 
