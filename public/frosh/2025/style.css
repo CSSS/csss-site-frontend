@@ -246,10 +246,10 @@ main {
 
       &>.section-container {
         min-width: 15rem;
-        text-align: center;
 
         &>h2 {
           display: block;
+          text-align: center;
           font-weight: 700;
           color: var(--c-accent);
         }
@@ -291,6 +291,16 @@ main {
             flex: 1 1 auto;
           }
         }
+      }
+    }
+  }
+}
+
+#faq {
+  &>.section-container {
+    &>.section-content {
+      &>p {
+        margin-bottom: 3rem;
       }
     }
   }
