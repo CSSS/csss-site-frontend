@@ -1,6 +1,6 @@
 import { Directive, ElementRef, inject, OnDestroy, OnInit, Renderer2 } from '@angular/core';
 
-let uniqueId = 0;
+let rainbowId = 0;
 
 /**
  * Only used on Font Awesome Icon elements `<fa-icon>`.
@@ -53,14 +53,14 @@ export class RainbowDirective implements OnInit, OnDestroy {
   /**
    * Creates a vertical conveyor belt-like rainbow gradient on the fa-icon.
    */
-  renderGradient(svgEl: SVGSVGElement) {
+  renderGradient(svgEl: SVGSVGElement): void {
     const pathEl: SVGPathElement | null = svgEl.querySelector('path');
     if (!pathEl) {
       throw new Error('No path inside SVG');
     }
 
     // This is a directive, so multiple component could possibly be using it.
-    const gradientId = `rainbow-gradient__${uniqueId++}`;
+    const gradientId = `rainbow-gradient__${rainbowId++}`;
 
     // Create the linear gradient that will be the SVG's fill colour.
     // https://developer.mozilla.org/en-US/docs/Web/SVG/Reference/Element/linearGradient
@@ -118,7 +118,7 @@ export class RainbowDirective implements OnInit, OnDestroy {
 
     // Holds the objects that will be used later (the linear gradient)
     // https://developer.mozilla.org/en-US/docs/Web/SVG/Reference/Element/defs
-    const defs = this.renderer.createElement('defs', 'svg');
+    const defs: SVGDefsElement = this.renderer.createElement('defs', 'svg');
 
     // Put the new SVG together
     // The gradient is given an animation to be run

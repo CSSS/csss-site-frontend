@@ -17,8 +17,22 @@ h2 {
   font-size: 1.5rem;
 }
 
+@keyframes pulse {
+
+  0%,
+  100% {
+    filter: drop-shadow(0 0 4px rgba(255, 255, 200, 0.2));
+  }
+
+  50% {
+    filter: drop-shadow(0 0 8px rgba(255, 255, 200, 0.8));
+  }
+}
+
 .csss-logo {
   font-size: 15rem;
+  filter: drop-shadow(0 0 6px rgba(255, 255, 200, 0.4));
+  animation: pulse 4s ease-in-out infinite;
 }
 
 nav {
