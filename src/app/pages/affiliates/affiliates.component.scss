@@ -13,6 +13,7 @@ a {
   @include g.no-select;
 
   width: 20vw;
+  max-width: 15rem;
   min-width: 9rem;
   aspect-ratio: 1 / 1;
 }
