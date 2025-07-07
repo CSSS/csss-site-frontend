@@ -90,7 +90,7 @@ header {
   &>.nav {
     &>nav {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(min(29rem, 100%), 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(min(26rem, 100%), 1fr));
       place-items: center;
       height: 100%;
       width: 100%;
@@ -98,7 +98,7 @@ header {
 
       &>a {
         @include g.no-select;
-        width: clamp(15rem, 90%, 50rem);
+        width: clamp(15rem, 90%, 26rem);
         aspect-ratio: 5 / 3;
 
         & h2 {
