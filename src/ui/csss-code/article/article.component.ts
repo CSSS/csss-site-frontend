@@ -1,12 +1,13 @@
+import { BreakpointObserver } from '@angular/cdk/layout';
 import {
   AfterViewInit,
   ChangeDetectionStrategy,
   Component,
   computed,
-  contentChildren,
   ElementRef,
   inject,
   OnDestroy,
+  OnInit,
   Renderer2,
   signal,
   viewChild
@@ -30,11 +31,6 @@ export class ArticleComponent implements AfterViewInit, OnDestroy {
   renderer: Renderer2 = inject(Renderer2);
 
   /**
-   * Observer to watch when an element resizes.
-   */
-  private resizeObs!: ResizeObserver;
-
-  /**
    * How many lines should be printed in the line gutter.
    */
   numbersToPrint = signal(0);
@@ -44,7 +40,22 @@ export class ArticleComponent implements AfterViewInit, OnDestroy {
    */
   numbersToDisplay = computed(() => Array.from({ length: this.numbersToPrint() }, (_, i) => i + 1));
 
+  /**
+   * Observer to watch when an element resizes.
+   */
+  private resizeObs!: ResizeObserver;
+
+  /**
+   * Observer to view our breakpoint widths.
+   */
+  private breakpointObs = inject(BreakpointObserver);
+
   ngAfterViewInit(): void {
+    // Don't set the line numbers if we're on a smaller screen.
+    if (!this.breakpointObs.isMatched('(min-width: 968px)')) {
+      return;
+    }
+
     /**
      * This observer is set to watch the content of the page and if the height of the content reaches a point where it
      * can add/take away numbers, then we update the UI.
