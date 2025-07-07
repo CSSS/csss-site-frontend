@@ -5,6 +5,7 @@ $gradient: linear-gradient(to top, #1e1e1e 0%, transparent 100%);
 .card-gallery {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   gap: 1.3rem;
   margin: 2rem 0;
 }
@@ -42,5 +43,11 @@ a:hover .label-container {
   .label-container {
     opacity: 0;
     background: none;
+  }
+}
+
+@media (min-width: g.$sm-w) {
+  .card-gallery {
+    justify-content: space-evenly;
   }
 }

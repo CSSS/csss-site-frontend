@@ -47,6 +47,9 @@ export class NavbarComponent implements OnInit {
    */
   copyIcon = faCopy;
 
+  /**
+   * Observer to view our breakpoint widths.
+   */
   private breakpointObs = inject(BreakpointObserver);
 
   ngOnInit(): void {

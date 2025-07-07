@@ -36,7 +36,11 @@ code-article>article.content {
   font-family: globals.$static-font;
   height: fit-content;
 
-  h1,
+  h1 {
+    margin-top: 10vh;
+    text-align: center;
+  }
+
   h2,
   p {
     margin: 0 0 1rem 0;
