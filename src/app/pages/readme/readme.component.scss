@@ -47,19 +47,22 @@ header {
 
 .main-content {
   position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   margin: 10vh auto 0;
-  max-width: 75rem;
   z-index: 10;
+  max-width: 60rem;
 
   &>section {
     margin-bottom: 5rem;
+    width: 90%;
   }
 
   &>.pres-container {
     display: flex;
     flex-wrap: wrap;
     gap: 1rem;
-    width: 90%;
     margin: 0 1rem 5rem;
 
     &>.pres-image-container {
@@ -86,16 +89,24 @@ header {
 
   &>.nav {
     &>nav {
-      display: flex;
-      justify-content: center;
-      align-items: center;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(min(29rem, 100%), 1fr));
+      place-items: center;
       height: 100%;
       width: 100%;
+      gap: 1rem;
 
-      & .common-room {
+      &>a {
         @include g.no-select;
         width: clamp(15rem, 90%, 50rem);
         aspect-ratio: 5 / 3;
+
+        & h2 {
+          background-color: black;
+          margin: 0;
+          position: absolute;
+          bottom: 0.5rem;
+        }
       }
     }
   }
