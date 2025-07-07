@@ -1,5 +1,6 @@
 .container {
   display: grid;
+  position: relative;
   grid-template-rows: repeat(3, 1fr);
   background-repeat: no-repeat;
   background-size: cover;
