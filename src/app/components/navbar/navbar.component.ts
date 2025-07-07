@@ -12,21 +12,15 @@ import { NavbarItem } from '@csss-code/navbar/navbar-item/navbar-item.component'
 export class NavbarComponent {
   navbarEntries: NavbarItem[] = [
     {
-      key: 'readme',
-      label: 'README',
-      type: 'file',
-      link: '/readme'
-    },
-    {
       key: 'csss',
       label: 'The CSSS',
       type: 'folder',
       children: [
         {
-          key: 'about',
-          label: 'About',
+          key: 'readme',
+          label: 'README',
           type: 'file',
-          link: '/about'
+          link: '/readme'
         },
         {
           key: 'affiliates',
