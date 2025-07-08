@@ -1,8 +1,8 @@
 import { inject, Injectable, signal, WritableSignal } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { filter } from 'rxjs';
-import { Application, getApplicationById, routeApplicationMap } from './applications';
 import { addToSignalMap, removeFromSignalMap } from 'utils/signalUtils';
+import { Application, routeApplicationMap } from './applications';
 
 /**
  * Service that handles updating what applications are currently running.

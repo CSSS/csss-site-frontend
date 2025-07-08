@@ -1,11 +1,8 @@
-$tab-bar-h: '2rem';
-$status-line-h: '1rem';
+@forward 'breakpoints';
+@forward 'structure';
+
 $main-font: 'Inter', sans-serif;
 $static-font: 'Fira Code', monospace;
-
-// Media query breakpoints
-$act-bar-w: 3.5rem;
-$act-bar-h: 2rem;
 
 @mixin no-select {
   user-select: none;

@@ -15,6 +15,7 @@ import { CsssCodeModule } from '@csss-code/csss-code.module';
 import { Subscription } from 'rxjs';
 import { ApplicationService } from 'services/application.service';
 import { BREAKPOINT_STRING_MAP } from 'styles/breakpoints';
+import { STRUCTURE_MAP } from 'styles/structure';
 
 export interface TabBarItem {
   label: string;
@@ -31,7 +32,7 @@ export interface TabBarItem {
 export class TabsComponent implements AfterViewInit, OnDestroy {
   @HostBinding('style.height')
   get height() {
-    return this.isHidden() ? '0px' : '2rem';
+    return this.isHidden() ? '0px' : STRUCTURE_MAP['tab-bar-h'];
   }
 
   /**
@@ -52,6 +53,9 @@ export class TabsComponent implements AfterViewInit, OnDestroy {
     return result;
   });
 
+  /**
+   * True if the screen width is considered small, false otherwise.
+   */
   private isSmall: WritableSignal<boolean> = signal(false);
 
   isHidden: Signal<boolean> = computed(
