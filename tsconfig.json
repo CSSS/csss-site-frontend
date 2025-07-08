@@ -3,27 +3,28 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
+    "baseUrl": "src",
     "paths": {
       "assets/*": [
-        "./src/assets/*"
+        "assets/*"
       ],
       "pages/*": [
-        "./src/app/pages/*"
+        "app/pages/*"
       ],
       "styles/*": [
-        "./src/app/styles/*"
+        "styles/*"
       ],
       "services/*": [
-        "./src/app/services/*"
+        "app/services/*"
       ],
       "utils/*": [
-        "./src/app/utils/*"
+        "app/utils/*"
       ],
       "components/*": [
-        "./src/app/components/*"
+        "app/components/*"
       ],
       "@csss-code/*": [
-        "./src/ui/csss-code/*"
+        "ui/csss-code/*"
       ]
     },
     "outDir": "./dist/out-tsc",

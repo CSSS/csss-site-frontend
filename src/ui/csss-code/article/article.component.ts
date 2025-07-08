@@ -10,6 +10,7 @@ import {
   Renderer2,
   signal
 } from '@angular/core';
+import { VIEW_BREAKPOINTS } from 'styles/breakpoints';
 
 const LETTER_HEIGHT = 24;
 
@@ -53,7 +54,7 @@ export class ArticleComponent implements AfterContentInit, OnDestroy {
 
   ngAfterContentInit(): void {
     // Don't set the line numbers if we're on a smaller screen.
-    if (!this.breakpointObs.isMatched('(min-width: 968px)')) {
+    if (!this.breakpointObs.isMatched(`(min-width: ${VIEW_BREAKPOINTS.small}px)`)) {
       return;
     }
 
