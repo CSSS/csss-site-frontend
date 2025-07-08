@@ -1,9 +1,9 @@
 import { Component, inject } from '@angular/core';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { csssLogo } from 'assets/icons/csss-logo';
-import { CsssCodeModule } from '@csss-code/csss-code.module';
-import { faFile, faSquare } from '@fortawesome/free-solid-svg-icons';
 import { Router } from '@angular/router';
+import { CsssCodeModule } from '@csss-code/csss-code.module';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { faFile, faSquare } from '@fortawesome/free-solid-svg-icons';
+import { csssLogo } from 'assets/icons/csss-logo';
 import { RainbowDirective } from './directives/rainbow.directive';
 
 @Component({
@@ -18,10 +18,6 @@ export class HomeComponent {
   fileIcon = faFile;
 
   private router = inject(Router);
-
-  aboutAction() {
-    this.router.navigate(['/about']);
-  }
 
   readmeAction() {
     this.router.navigate(['/readme']);
