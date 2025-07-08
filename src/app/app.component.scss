@@ -1,5 +1,6 @@
 @use 'theme';
 @use 'globals' as g;
+@use 'breakpoints' as b;
 
 :host {
   display: grid;
@@ -17,7 +18,8 @@
   background-color: theme.$accent;
 }
 
-@media (min-width: g.$sm-w) {
+/* Change the grid layout when we hit a certain size. */
+@media (min-width: b.$breakpoint-small) {
   :host {
     grid-template-columns: min-content auto;
     grid-template-rows: #{g.$tab-bar-h} auto #{g.$status-line-h};
