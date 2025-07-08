@@ -19,6 +19,10 @@ export class HomeComponent {
 
   private router = inject(Router);
 
+  aboutAction() {
+    this.router.navigate(['/about']);
+  }
+
   readmeAction() {
     this.router.navigate(['/readme']);
   }

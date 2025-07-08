@@ -17,6 +17,12 @@ export class NavbarComponent {
       type: 'folder',
       children: [
         {
+          key: 'about',
+          label: 'About',
+          type: 'file',
+          link: '/about'
+        },
+        {
           key: 'readme',
           label: 'README',
           type: 'file',
