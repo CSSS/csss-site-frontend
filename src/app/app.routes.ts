@@ -11,6 +11,11 @@ export const routes: Routes = [
     path: 'readme',
     loadComponent: () => import('./pages/readme/readme.component').then(m => m.ReadMeComponent)
   },
+  {
+    path: 'common-room',
+    loadComponent: () =>
+      import('./pages/common-room/common-room.component').then(m => m.CommonRoomComponent)
+  },
   { path: '', component: HomeComponent },
   { path: '**', component: HomeComponent }
 ];
