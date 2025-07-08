@@ -1,4 +1,5 @@
 @use 'globals' as g;
+@use 'breakpoints' as b;
 
 $gradient: linear-gradient(to top, #1e1e1e 0%, transparent 100%);
 
@@ -46,7 +47,7 @@ a:hover .label-container {
   }
 }
 
-@media (min-width: g.$sm-w) {
+@media (min-width: b.$breakpoint-small) {
   .card-gallery {
     justify-content: space-evenly;
   }
