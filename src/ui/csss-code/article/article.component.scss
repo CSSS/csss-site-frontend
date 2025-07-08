@@ -6,8 +6,11 @@ aside {
 }
 
 article {
-  max-width: 75rem;
-  margin: 0 auto;
+  max-width: 60rem;
+  margin: 0 auto 3rem;
+  font-family: g.$static-font;
+  height: fit-content;
+  padding: 0 1rem;
 }
 
 @media (min-width: g.$sm-w) {

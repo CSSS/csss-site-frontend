@@ -1,16 +1,14 @@
 import { BreakpointObserver } from '@angular/cdk/layout';
 import {
-  AfterViewInit,
+  AfterContentInit,
   ChangeDetectionStrategy,
   Component,
   computed,
   ElementRef,
   inject,
   OnDestroy,
-  OnInit,
   Renderer2,
-  signal,
-  viewChild
+  signal
 } from '@angular/core';
 
 const LETTER_HEIGHT = 24;
@@ -22,13 +20,16 @@ const LETTER_HEIGHT = 24;
   styleUrl: './article.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ArticleComponent implements AfterViewInit, OnDestroy {
+export class ArticleComponent implements AfterContentInit, OnDestroy {
   /**
-   * The full article with the content inside.
+   * Angular's way of manipulating the DOM.
    */
-  readonly view = viewChild.required('article', { read: ElementRef });
-
   renderer: Renderer2 = inject(Renderer2);
+
+  /**
+   * Reference to the element projected.
+   */
+  elementRef: ElementRef = inject(ElementRef);
 
   /**
    * How many lines should be printed in the line gutter.
@@ -50,16 +51,16 @@ export class ArticleComponent implements AfterViewInit, OnDestroy {
    */
   private breakpointObs = inject(BreakpointObserver);
 
-  ngAfterViewInit(): void {
+  ngAfterContentInit(): void {
     // Don't set the line numbers if we're on a smaller screen.
     if (!this.breakpointObs.isMatched('(min-width: 968px)')) {
       return;
     }
 
     /**
-     * This observer is set to watch the content of the page and if the height of the content reaches a point where it
-     * can add/take away numbers, then we update the UI.
-     * This needs to run outside the zone to avoid a ton of change detection calls.
+     * This observer is set to watch the content of the content.
+     * It will recalculate the amount of line gutter numbers every time the
+     * height of the article element changes.
      */
     this.resizeObs = new ResizeObserver(entries => {
       for (const entry of entries) {
@@ -71,7 +72,7 @@ export class ArticleComponent implements AfterViewInit, OnDestroy {
       }
     });
 
-    this.resizeObs.observe(this.view().nativeElement);
+    this.resizeObs.observe(this.elementRef.nativeElement);
   }
 
   ngOnDestroy(): void {
