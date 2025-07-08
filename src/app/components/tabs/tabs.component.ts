@@ -15,6 +15,9 @@ export interface TabBarItem {
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TabsComponent {
+  /**
+   * Gives the tabs the applications to display.
+   */
   private applicationService = inject(ApplicationService);
 
   /**
@@ -27,6 +30,13 @@ export class TabsComponent {
     }
     return result;
   });
+
+  /**
+   *
+   */
+  isHidden: Signal<boolean> = computed(
+    () => this.applicationService.runningApplications().size === 0
+  );
 
   closeTab(index: number): void {
     this.applicationService.closeApplication(index);

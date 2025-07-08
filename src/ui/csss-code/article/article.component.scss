@@ -1,5 +1,6 @@
 @use 'theme';
 @use 'globals' as g;
+@use 'breakpoints' as b;
 
 aside {
   display: none;
@@ -13,7 +14,7 @@ article {
   padding: 0 1rem;
 }
 
-@media (min-width: g.$sm-w) {
+@media (min-width: b.$breakpoint-small) {
   :host {
     display: grid;
     grid-template-columns: 2.5rem auto;
