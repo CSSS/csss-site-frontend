@@ -3,16 +3,27 @@
 
 button {
   @include g.no-select;
-  border: 1px solid #1e1e1e;
-  border-radius: 50px;
-  padding: 0.5rem;
+  --border-cfg: 1px solid #adadad;
+  border-top: var(--border-cfg);
+  border-left: var(--border-cfg);
+  border-right: var(--border-cfg);
+  border-radius: 5px;
+  padding: 1rem;
   background-color: #111111;
+
+  transition: transform 0.1s ease;
+
+  &:hover {
+    background-color: #222222;
+  }
+
+  &:active {
+    transform: scale(0.95);
+  }
 }
 
 fa-icon {
   color: white;
 }
 
-button:hover {
-  background-color: #222222;
-}
+button:hover {}
