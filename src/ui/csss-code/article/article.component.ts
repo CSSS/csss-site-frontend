@@ -1,16 +1,16 @@
 import { BreakpointObserver } from '@angular/cdk/layout';
 import {
-  AfterContentInit,
-  ChangeDetectionStrategy,
-  Component,
-  computed,
-  ElementRef,
-  inject,
-  OnDestroy,
-  Renderer2,
-  signal
+    AfterContentInit,
+    ChangeDetectionStrategy,
+    Component,
+    computed,
+    ElementRef,
+    inject,
+    OnDestroy,
+    Renderer2,
+    signal
 } from '@angular/core';
-import { VIEW_BREAKPOINTS } from 'styles/breakpoints';
+import { BREAKPOINT_STRING_MAP } from 'styles/breakpoints';
 
 const LETTER_HEIGHT = 24;
 
@@ -54,7 +54,7 @@ export class ArticleComponent implements AfterContentInit, OnDestroy {
 
   ngAfterContentInit(): void {
     // Don't set the line numbers if we're on a smaller screen.
-    if (!this.breakpointObs.isMatched(`(min-width: ${VIEW_BREAKPOINTS.small}px)`)) {
+    if (!this.breakpointObs.isMatched(BREAKPOINT_STRING_MAP['small'])) {
       return;
     }
 

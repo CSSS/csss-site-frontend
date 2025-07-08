@@ -4,7 +4,7 @@
 
 :host {
   display: grid;
-  grid-template-rows: min-content #{g.$tab-bar-h} 1fr #{g.$status-line-h};
+  grid-template-rows: min-content auto 1fr #{g.$status-line-h};
   height: 100%;
 }
 
