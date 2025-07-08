@@ -1,0 +1,27 @@
+section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+h2>* {
+  background-color: black;
+}
+
+.right {
+  display: block;
+  text-align: right;
+}
+
+.center {
+  display: block;
+  text-align: center;
+}
+
+a {
+  display: block;
+  width: 100%;
+  max-width: 25rem;
+  aspect-ratio: 1.33 / 1;
+}
