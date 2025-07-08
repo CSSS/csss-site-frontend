@@ -1,12 +1,11 @@
 /**
  * Interface representing an Application that is registered to run.
  * Each application will be run in an activity.
- * Runtimes will be identified by their string name.
  * Applications that share a activity will share a tab, meaning the previous activity will be lost.
  */
 export interface Application {
   /**
-   * The unique ID of the application. Should be unique to every other application.
+   * The unique ID of the application. Should be unique to every application.
    */
   id: number;
 
@@ -44,21 +43,21 @@ export const routeApplicationMap: Map<string, Application> = new Map([
     }
   ],
   [
-    '/about',
-    {
-      id: 1,
-      label: 'About.md',
-      activityKey: '',
-      key: 'about'
-    }
-  ],
-  [
     '/affiliates',
     {
-      id: 2,
+      id: 1,
       label: 'Affiliates.md',
       activityKey: '',
       key: 'affiliates'
+    }
+  ],
+  [
+    '/common-room',
+    {
+      id: 2,
+      label: 'CommonRoom.md',
+      activityKey: '',
+      key: 'common-room'
     }
   ]
 ]);
