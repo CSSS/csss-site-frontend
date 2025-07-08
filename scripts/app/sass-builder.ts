@@ -1,4 +1,4 @@
-import { VIEW_BREAKPOINTS } from '../../src/styles/breakpoints';
+import { VIEW_BREAKPOINTS } from 'styles/breakpoints';
 import { writeFileSync } from 'fs';
 
 const output =
