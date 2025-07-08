@@ -47,9 +47,9 @@ header {
     &>.navbar-list {
       display: flex;
       flex-direction: column;
-      min-width: 15.5rem;
+      width: 20rem;
       row-gap: 0.25rem;
-      padding: 0 1rem;
+      padding-left: 0rem;
     }
   }
 }
