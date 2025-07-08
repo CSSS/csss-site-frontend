@@ -3,13 +3,17 @@ import { HomeComponent } from 'pages/home/home.component';
 
 export const routes: Routes = [
   {
-    path: 'affiliates',
-    loadComponent: () =>
-      import('./pages/affiliates/affiliates.component').then(m => m.AffiliatesComponent)
+    path: 'about',
+    loadComponent: () => import('./pages/about/about.component').then(m => m.AboutComponent)
   },
   {
     path: 'readme',
     loadComponent: () => import('./pages/readme/readme.component').then(m => m.ReadMeComponent)
+  },
+  {
+    path: 'affiliates',
+    loadComponent: () =>
+      import('./pages/affiliates/affiliates.component').then(m => m.AffiliatesComponent)
   },
   {
     path: 'common-room',
