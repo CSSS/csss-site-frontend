@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { CsssCodeModule } from '../../../ui/csss-code/csss-code.module';
-import { csssLogo } from '../../../assets/icons/csss-logo';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { csssLogo } from '../../../assets/icons/csss-logo';
+import { CsssCodeModule } from '../../../ui/csss-code/csss-code.module';
 
 @Component({
   selector: 'csss-about',

@@ -15,12 +15,12 @@ header {
   height: 100%;
   transform-style: preserve-3d;
 
-  &>h1 {
+  & > h1 {
     text-align: center;
     line-height: 4rem;
   }
 
-  &>.mural {
+  & > .mural {
     position: absolute;
     width: 100%;
     height: 100%;
@@ -37,7 +37,7 @@ header {
     mask-repeat: no-repeat;
   }
 
-  &>fa-icon {
+  & > fa-icon {
     font-size: clamp(2rem, 3vw, 15rem);
     position: absolute;
     bottom: 30vh;
@@ -54,41 +54,41 @@ header {
   z-index: 10;
   max-width: 60rem;
 
-  &>section {
+  & > section {
     margin-bottom: 5rem;
     width: 90%;
   }
 
-  &>.pres-container {
+  & > .pres-container {
     display: flex;
     flex-wrap: wrap;
     gap: 1rem;
     margin: 0 1rem 5rem;
 
-    &>.pres-image-container {
+    & > .pres-image-container {
       width: 80%;
       max-width: 20rem;
       flex: 0 0 auto;
       margin: 0 auto;
 
-      &>img {
+      & > img {
         max-width: 100%;
         height: auto;
         display: block;
       }
     }
 
-    &>.pres-content {
+    & > .pres-content {
       flex: 1 1 25rem;
 
-      &>h2 {
+      & > h2 {
         margin-top: 0;
       }
     }
   }
 
-  &>.nav {
-    &>nav {
+  & > .nav {
+    & > nav {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(min(26rem, 100%), 1fr));
       place-items: center;
@@ -96,7 +96,7 @@ header {
       width: 100%;
       gap: 1rem;
 
-      &>a {
+      & > a {
         @include g.no-select;
         width: clamp(15rem, 90%, 26rem);
         aspect-ratio: 5 / 3;

@@ -15,8 +15,8 @@
   transform-style: preserve-3d;
   transition: transform 1s ease;
 
-  &>.front,
-  &>.back {
+  & > .front,
+  & > .back {
     position: absolute;
     height: 100%;
     width: 100%;
@@ -24,11 +24,11 @@
     backface-visibility: hidden;
   }
 
-  &>.front {
+  & > .front {
     z-index: 1;
   }
 
-  &>.back {
+  & > .back {
     transform: rotateY(180deg);
   }
 }
@@ -72,14 +72,14 @@ code-card {
   column-gap: 0.2rem;
   width: 100%;
 
-  &>.timeslot {
+  & > .timeslot {
     flex: 1 0 auto;
 
-    &>.time-label {
+    & > .time-label {
       text-align: right;
     }
 
-    &>.line {
+    & > .line {
       min-width: 6rem;
       height: 0.2rem;
       background-color: aquamarine;

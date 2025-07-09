@@ -3,7 +3,8 @@
 @use 'breakpoints' as b;
 
 $item-spacing: 1rem; // Padding for the activity bar items.
-$header-space-sm: calc($item-spacing*2 + g.$act-bar-h + 1px); // size of the activity + tab bar for small device widths
+// size of the activity + tab bar for small device widths
+$header-space-sm: calc($item-spacing * 2 + g.$act-bar-h + 1px);
 $border: 1px solid #1e1e1e;
 
 :host {
@@ -27,7 +28,7 @@ header {
   border-bottom: $border;
 
   &>div {
-    padding: $item-spacing ;
+    padding: $item-spacing;
   }
 }
 
