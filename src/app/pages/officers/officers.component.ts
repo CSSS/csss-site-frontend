@@ -83,7 +83,7 @@ export class OfficersComponent implements AfterViewInit, OnDestroy {
    *
    * @param year - The year of the line clicked.
    */
-  protected lineClicked(year: number) {
+  protected lineClicked(year: number): void {
     let admin = this.cachedAdmins().get(year);
     if (!admin) {
       // TODO: Replace this with a request to the backend for election results.
@@ -98,16 +98,17 @@ export class OfficersComponent implements AfterViewInit, OnDestroy {
     this.displayExecs.set(admin);
     if (this.execCards()) {
       for (const card of this.execCards()) {
+        console.log(card);
       }
     }
   }
 
   /**
-   * Calculates the line width based on the timeline width.
+   * Calculates the line width based on the timeline width and sets it.
    *
    * @param width - Width of the timeline element.
    */
-  private calcLineWidth(width: number) {
+  private calcLineWidth(width: number): void {
     this.lineWidth.set(width / (LINE_WIDTH * REM));
   }
 }

@@ -72,7 +72,7 @@ export class NavbarComponent implements OnInit {
     });
   }
 
-  toggleNavbar() {
+  toggleNavbar(): void {
     this.isNavOpen.update(value => !value);
   }
 }
