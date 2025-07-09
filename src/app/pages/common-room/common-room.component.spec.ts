@@ -9,8 +9,7 @@ describe('CommonRoomComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [CommonRoomComponent]
-    })
-    .compileComponents();
+    }).compileComponents();
 
     fixture = TestBed.createComponent(CommonRoomComponent);
     component = fixture.componentInstance;
