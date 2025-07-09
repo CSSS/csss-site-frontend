@@ -1,12 +1,12 @@
 import { BreakpointObserver } from '@angular/cdk/layout';
 import {
-    ChangeDetectionStrategy,
-    Component,
-    computed,
-    inject,
-    input,
-    OnInit,
-    signal
+  ChangeDetectionStrategy,
+  Component,
+  computed,
+  inject,
+  input,
+  OnInit,
+  signal
 } from '@angular/core';
 import { faCopy } from '@fortawesome/free-solid-svg-icons';
 import { csssLogo } from 'assets/icons/csss-logo';
@@ -55,7 +55,7 @@ export class NavbarComponent implements OnInit {
 
   ngOnInit(): void {
     // On smaller screens, do not automatically open the navigation
-    this.isNavOpen.set(this.breakpointObs.isMatched(BREAKPOINT_STRING_MAP['small']));
+    this.isNavOpen.set(!this.breakpointObs.isMatched(BREAKPOINT_STRING_MAP['small']));
   }
 
   /**
