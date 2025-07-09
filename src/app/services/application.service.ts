@@ -41,11 +41,11 @@ export class ApplicationService {
    *
    * @param app - Target application
    */
-  private focusOnApplication(app: Application): void {
-    if (this.focusedApplication()?.id !== app.id) {
-      this.focusedApplication.set(app);
-    }
-  }
+  // private focusOnApplication(app: Application): void {
+  //   if (this.focusedApplication()?.id !== app.id) {
+  //     this.focusedApplication.set(app);
+  //   }
+  // }
 
   /**
    * Try to open the application.
@@ -88,7 +88,7 @@ export class ApplicationService {
    *
    * @param id - The ID of the application to close.
    */
-  closeApplication(id: number) {
+  closeApplication(id: number): void {
     removeFromSignalMap(this.runningApplications, id);
     if (this.runningApplications().size) {
       const nextApp = this.runningApplications().entries().next().value;

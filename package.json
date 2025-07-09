@@ -7,7 +7,8 @@
     "start": "npm run preBuild && ng serve",
     "build": "npm run preBuild && ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "lint": "eslint ./src ./scripts --ext .ts --config eslint.config.mjs"
   },
   "private": true,
   "dependencies": {

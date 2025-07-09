@@ -31,7 +31,7 @@ export interface TabBarItem {
 })
 export class TabsComponent implements AfterViewInit, OnDestroy {
   @HostBinding('style.height')
-  get height() {
+  get height(): string {
     return this.isHidden() ? '0px' : STRUCTURE_MAP['tab-bar-h'];
   }
 
