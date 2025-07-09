@@ -1,0 +1,32 @@
+@use 'globals' as g;
+
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+code-card {
+  display: block;
+  width: clamp(10rem, 15%, 25rem);
+  aspect-ratio: 1 / 1.5;
+}
+
+.footer-container {
+  backdrop-filter: blur(5px);
+
+  h3,
+  h4 {
+    @include g.no-select;
+    width: fit-content;
+    text-shadow: 0 0 15px black;
+  }
+
+  h3 {
+    margin-bottom: 0;
+  }
+
+  h4 {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+}

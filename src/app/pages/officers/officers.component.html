@@ -1,0 +1,20 @@
+<code-article>
+  <h1>Officers</h1>
+  <p>Executives are voted in by everyone in the CSSS and serve for a year.</p>
+  <p>
+    The exceptions to this are the <strong>Executives at Large</strong>, who are elected for just
+    <strong>one semester</strong>
+  </p>
+
+  <h2>Executives for {{ displayExecs().startYear }} - {{ displayExecs().endYear }}</h2>
+  <section class="gallery">
+    @for (exec of displayExecs().members; track $index) {
+      <code-card backgroundImage="images/{{ exec.photoUrl }}">
+        <div class="footer-container" ngProjectAs="card-footer">
+          <h3>{{ exec.name }}</h3>
+          <h4>{{ exec.position }}</h4>
+        </div>
+      </code-card>
+    }
+  </section>
+</code-article>

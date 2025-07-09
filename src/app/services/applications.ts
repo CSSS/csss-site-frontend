@@ -55,9 +55,18 @@ export const routeApplicationMap: Map<string, Application> = new Map([
     '/common-room',
     {
       id: 2,
-      label: 'CommonRoom.md',
+      label: 'Common Room.md',
       activityKey: '',
       key: 'common-room'
+    }
+  ],
+  [
+    '/officers',
+    {
+      id: 3,
+      label: 'Officers',
+      activityKey: '',
+      key: 'officers'
     }
   ]
 ]);

@@ -16,6 +16,11 @@ export const routes: Routes = [
     loadComponent: () =>
       import('./pages/common-room/common-room.component').then(m => m.CommonRoomComponent)
   },
+  {
+    path: 'officers',
+    loadComponent: () =>
+      import('./pages/officers/officers.component').then(m => m.OfficersComponent)
+  },
   { path: '', component: HomeComponent },
   { path: '**', component: HomeComponent }
 ];
