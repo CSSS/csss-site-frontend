@@ -1,14 +1,14 @@
 import { BreakpointObserver } from '@angular/cdk/layout';
 import {
-    AfterContentInit,
-    ChangeDetectionStrategy,
-    Component,
-    computed,
-    ElementRef,
-    inject,
-    OnDestroy,
-    Renderer2,
-    signal
+  AfterContentInit,
+  ChangeDetectionStrategy,
+  Component,
+  computed,
+  ElementRef,
+  inject,
+  OnDestroy,
+  Renderer2,
+  signal
 } from '@angular/core';
 import { BREAKPOINT_STRING_MAP } from 'styles/breakpoints';
 
@@ -25,22 +25,24 @@ export class ArticleComponent implements AfterContentInit, OnDestroy {
   /**
    * Angular's way of manipulating the DOM.
    */
-  renderer: Renderer2 = inject(Renderer2);
+  private renderer: Renderer2 = inject(Renderer2);
 
   /**
-   * Reference to the element projected.
+   * Reference to this element.
    */
-  elementRef: ElementRef = inject(ElementRef);
+  private elementRef: ElementRef = inject(ElementRef);
 
   /**
    * How many lines should be printed in the line gutter.
    */
-  numbersToPrint = signal(0);
+  protected numbersToPrint = signal(0);
 
   /**
    * The array to display the lines needed for the content.
    */
-  numbersToDisplay = computed(() => Array.from({ length: this.numbersToPrint() }, (_, i) => i + 1));
+  protected numbersToDisplay = computed(() =>
+    Array.from({ length: this.numbersToPrint() }, (_, i) => i + 1)
+  );
 
   /**
    * Observer to watch when an element resizes.
@@ -65,7 +67,7 @@ export class ArticleComponent implements AfterContentInit, OnDestroy {
      */
     this.resizeObs = new ResizeObserver(entries => {
       for (const entry of entries) {
-        const numbersToFit = Math.floor(entry.contentRect.height / LETTER_HEIGHT);
+        const numbersToFit = Math.trunc(entry.contentRect.height / LETTER_HEIGHT);
 
         if (this.numbersToPrint() !== numbersToFit) {
           this.numbersToPrint.set(numbersToFit);
