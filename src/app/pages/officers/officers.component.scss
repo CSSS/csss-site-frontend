@@ -3,11 +3,13 @@
 .gallery {
   display: flex;
   flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: center;
 }
 
 code-card {
   display: block;
-  width: clamp(10rem, 15%, 25rem);
+  width: clamp(9rem, 15%, 25rem);
   aspect-ratio: 1 / 1.5;
 }
 
@@ -28,5 +30,21 @@ code-card {
   h4 {
     margin-top: 0;
     margin-bottom: 0;
+  }
+}
+
+.timeline {
+  display: flex;
+  column-gap: 0.2rem;
+  width: 100%;
+
+  &>.timeslot {
+    flex: 1 0 auto;
+
+    &>.line {
+      min-width: 8rem;
+      height: 0.2rem;
+      background-color: aquamarine;
+    }
   }
 }
