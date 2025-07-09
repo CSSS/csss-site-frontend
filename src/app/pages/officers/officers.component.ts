@@ -1,13 +1,13 @@
 import {
-    AfterViewInit,
-    ChangeDetectionStrategy,
-    Component,
-    computed,
-    ElementRef,
-    OnDestroy,
-    signal,
-    viewChild,
-    viewChildren
+  AfterViewInit,
+  ChangeDetectionStrategy,
+  Component,
+  computed,
+  ElementRef,
+  OnDestroy,
+  signal,
+  viewChild,
+  viewChildren
 } from '@angular/core';
 import { CardComponent } from '@csss-code/card/card.component';
 import { CsssCodeModule } from '@csss-code/csss-code.module';
