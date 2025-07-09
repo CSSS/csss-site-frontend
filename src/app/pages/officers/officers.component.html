@@ -7,8 +7,8 @@
   </p>
   <div class="timeline" #timeline>
     @for (year of yearsToDisplay(); track $index) {
-      <div class="timeslot">
-        <div>{{ year }}</div>
+      <div class="timeslot clickable" (click)="lineClicked(year)">
+        <div class="time-label">{{ year }}</div>
         <div class="line"></div>
       </div>
     }

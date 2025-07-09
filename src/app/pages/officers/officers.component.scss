@@ -41,8 +41,12 @@ code-card {
   &>.timeslot {
     flex: 1 0 auto;
 
+    &>.time-label {
+      text-align: right;
+    }
+
     &>.line {
-      min-width: 8rem;
+      min-width: 6rem;
       height: 0.2rem;
       background-color: aquamarine;
     }
