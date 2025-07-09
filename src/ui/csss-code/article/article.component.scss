@@ -1,6 +1,5 @@
 @use 'theme';
 @use 'globals' as g;
-@use 'breakpoints' as b;
 
 aside {
   display: none;
@@ -9,12 +8,12 @@ aside {
 article {
   max-width: 75rem;
   margin: 0 auto 3rem;
-  font-family: g.$static-font;
+  font-family: g.$article-font;
   height: fit-content;
   padding: 0 1rem;
 }
 
-@media (min-width: b.$breakpoint-small) {
+@media (min-width: g.$breakpoint-small) {
   :host {
     display: grid;
     grid-template-columns: 2.5rem auto;
