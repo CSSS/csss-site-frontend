@@ -93,5 +93,71 @@ export const executives: ExecutiveAdministration[] = [
         photoUrl: 'giraffa-celeste.png'
       }
     ]
+  },
+  {
+    startYear: 2024,
+    endYear: 2025,
+    members: [
+      {
+        name: 'Isabelle Kwan',
+        position: 'President',
+        photoUrl: 'ballerina-cappuccina.png'
+      },
+      {
+        name: 'Jake Choi',
+        position: 'Vice President',
+        photoUrl: 'bobritto-bandito.png'
+      },
+      {
+        name: 'Mabel Ling',
+        position: 'Treasurer',
+        photoUrl: 'tralalero-tralala.png'
+      },
+      {
+        name: 'Aiya Bowman',
+        position: 'Director of Resources',
+        photoUrl: 'bombombini-gusini.png'
+      },
+      {
+        name: 'Emily Qin',
+        position: 'Director of Events',
+        photoUrl: 'brr-brr-patapim.png'
+      },
+      {
+        name: 'Elvin Zukic',
+        position: 'Director of Educational Events',
+        photoUrl: 'lirili-larila.png'
+      },
+      {
+        name: 'Taranveer Singh',
+        position: 'Assistant Director of Events',
+        photoUrl: 'chimpanzini-bananini.png'
+      },
+      {
+        name: 'Chloe Shen',
+        position: 'Director of Communications',
+        photoUrl: 'glorbo-fruttodrillo.png'
+      },
+      {
+        name: 'Annie Jiao',
+        position: 'Director of Multimedia',
+        photoUrl: 'tung-tung-tung-sahur.png'
+      },
+      {
+        name: 'Dina Zeng',
+        position: 'Director of Archives',
+        photoUrl: 'tric-trac-baraboom.png'
+      },
+      {
+        name: 'Rastko Koprivica',
+        position: 'Exec at Large',
+        photoUrl: 'trippi-troppi.png'
+      },
+      {
+        name: 'Michael Ho',
+        position: 'Exec at Large',
+        photoUrl: 'giraffa-celeste.png'
+      }
+    ]
   }
 ];
