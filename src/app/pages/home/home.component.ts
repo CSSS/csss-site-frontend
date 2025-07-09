@@ -19,7 +19,7 @@ export class HomeComponent {
 
   private router = inject(Router);
 
-  readmeAction() {
+  readmeAction(): void {
     this.router.navigate(['/readme']);
   }
 }

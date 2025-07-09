@@ -1,6 +1,5 @@
-import { ChangeDetectionStrategy, Component, computed, inject, input, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, input, signal } from '@angular/core';
 import { faChevronDown, faChevronRight, faFile } from '@fortawesome/free-solid-svg-icons';
-import { Router } from '@angular/router';
 
 export interface NavbarItem {
   key: string;
@@ -59,12 +58,10 @@ export class NavbarItemComponent {
     return entry.type === 'file' ? `${entry.label}.md` : entry.label;
   });
 
-  private router = inject(Router);
-
   /**
    *  Handler for when the item is clicked.
    */
-  itemClick() {
+  itemClick(): void {
     const entry = this.entry();
     switch (entry.type) {
       case 'folder': {
