@@ -17,7 +17,7 @@
   <h2>Executives for {{ displayExecs().startYear }} - {{ displayExecs().endYear }}</h2>
   <section class="gallery">
     @for (exec of displayExecs().members; track $index) {
-      <code-card backgroundImage="images/{{ exec.photoUrl }}">
+      <code-card class="front" backgroundImage="images/{{ exec.photoUrl }}" #execCard>
         <div class="footer-container" ngProjectAs="card-footer">
           <h3>{{ exec.name }}</h3>
           <h4>{{ exec.position }}</h4>

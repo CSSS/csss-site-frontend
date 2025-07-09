@@ -7,10 +7,44 @@
   justify-content: center;
 }
 
-code-card {
-  display: block;
+.card-wrapper {
+  position: relative;
   width: clamp(9rem, 15%, 25rem);
   aspect-ratio: 1 / 1.5;
+
+  transform-style: preserve-3d;
+  transition: transform 1s ease;
+
+  &>.front,
+  &>.back {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+  }
+
+  &>.front {
+    z-index: 1;
+  }
+
+  &>.back {
+    transform: rotateY(180deg);
+  }
+}
+
+.flip {
+  transform: translateY(180deg);
+}
+
+code-card {
+  position: relative;
+  width: clamp(9rem, 15%, 25rem);
+  aspect-ratio: 1 / 1.5;
+
+  transition-property: transform;
+  transition-duration: 100ms;
+  transition-delay: calc(200ms * var(--index));
 }
 
 .footer-container {

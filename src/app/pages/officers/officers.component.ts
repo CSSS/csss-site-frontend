@@ -1,12 +1,15 @@
 import {
-  AfterViewInit,
-  ChangeDetectionStrategy,
-  Component,
-  computed,
-  ElementRef,
-  signal,
-  viewChild
+    AfterViewInit,
+    ChangeDetectionStrategy,
+    Component,
+    computed,
+    ElementRef,
+    OnDestroy,
+    signal,
+    viewChild,
+    viewChildren
 } from '@angular/core';
+import { CardComponent } from '@csss-code/card/card.component';
 import { CsssCodeModule } from '@csss-code/csss-code.module';
 import { addToSignalMap } from 'utils/signalUtils';
 import { ExecutiveAdministration, executives } from './officers';
@@ -21,7 +24,7 @@ const LINE_WIDTH = 6;
   styleUrl: './officers.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class OfficersComponent implements AfterViewInit {
+export class OfficersComponent implements AfterViewInit, OnDestroy {
   protected displayExecs = signal<ExecutiveAdministration>(executives[0]);
 
   protected yearsToDisplay = computed(() => {
@@ -38,6 +41,8 @@ export class OfficersComponent implements AfterViewInit {
    */
   private timelineEl = viewChild.required<ElementRef<HTMLDivElement>>('timeline');
 
+  private execCards = viewChildren<CardComponent>('execCard');
+
   /**
    * Width of the lines in the timeline.
    */
@@ -48,6 +53,10 @@ export class OfficersComponent implements AfterViewInit {
    */
   private resizeObs!: ResizeObserver;
 
+  /**
+   * Cache the admins so we don't need to fetch them each time.
+   * Will probably need some way to remove older cached entries if memory becomes an issue.
+   */
   private cachedAdmins = signal<Map<number, ExecutiveAdministration>>(new Map());
 
   ngAfterViewInit(): void {
@@ -63,15 +72,22 @@ export class OfficersComponent implements AfterViewInit {
     this.calcLineWidth(this.timelineEl().nativeElement.offsetWidth);
   }
 
+  ngOnDestroy(): void {
+    this.resizeObs.disconnect();
+  }
+
   /**
    * Handles the line clicked.
+   * This will update the cache or pull new data, then animate the cards to display new
+   * information.
    *
    * @param year - The year of the line clicked.
    */
   protected lineClicked(year: number) {
     let admin = this.cachedAdmins().get(year);
     if (!admin) {
-      // TODO: We'll request it here from the API
+      // TODO: Replace this with a request to the backend for election results.
+      // Will probably write a Service for this and place the cache there.
       admin = executives.find(e => e.startYear === year);
       if (!admin) {
         throw new Error(`Administration for year ${year} not found.`);
@@ -80,6 +96,10 @@ export class OfficersComponent implements AfterViewInit {
     }
 
     this.displayExecs.set(admin);
+    if (this.execCards()) {
+      for (const card of this.execCards()) {
+      }
+    }
   }
 
   /**
