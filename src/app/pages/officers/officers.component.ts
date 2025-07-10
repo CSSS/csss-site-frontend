@@ -4,14 +4,15 @@ import {
   Component,
   computed,
   ElementRef,
+  inject,
   OnDestroy,
+  Renderer2,
   signal,
   viewChild,
   viewChildren
 } from '@angular/core';
 import { CsssCodeModule } from '@csss-code/csss-code.module';
 import gsap from 'gsap';
-import { addToSignalMap } from 'utils/signalUtils';
 import { ExecutiveAdministration, executives } from './officers';
 
 const REM = 16;
@@ -25,10 +26,10 @@ const LINE_WIDTH = 6;
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class OfficersComponent implements AfterViewInit, OnDestroy {
-  /**
-   * The executives currently being displayed.
-   */
-  protected displayExecs = signal<ExecutiveAdministration>(executives[0]);
+  private renderer = inject(Renderer2);
+
+  protected frontExecs = signal<ExecutiveAdministration>(executives[0]);
+  protected backExecs = signal<ExecutiveAdministration>(executives[0]);
 
   /**
    * The years to display on the line.
@@ -48,14 +49,9 @@ export class OfficersComponent implements AfterViewInit, OnDestroy {
   private timelineEl = viewChild.required<ElementRef<HTMLDivElement>>('timeline');
 
   /**
-   * Executive card elements.
+   * Executive card Angular elements.
    */
   private execCards = viewChildren('execCard', { read: ElementRef });
-
-  /**
-   * Width of the lines in the timeline.
-   */
-  private lineWidth = signal<number>(0);
 
   /**
    * Observer to recalculate the line widths if the viewport width changes.
@@ -63,14 +59,48 @@ export class OfficersComponent implements AfterViewInit, OnDestroy {
   private resizeObs!: ResizeObserver;
 
   /**
+   * Executive card native elements.
+   */
+  private execCardsEl?: HTMLDivElement[];
+
+  /**
+   * Width of the lines in the timeline.
+   */
+  private lineWidth = signal<number>(0);
+
+  /**
+   * The start year of the admins on the front side of the cards.
+   */
+  private frontYear = new Date().getFullYear();
+
+  /**
+   * The start year of the admins on the back side of the cards.
+   */
+  private backYear = this.frontYear;
+
+  /**
    * Cache the admins so we don't need to fetch them each time.
    * Will probably need some way to remove older cached entries if memory becomes an issue.
    */
-  private cachedAdmins = signal<Map<number, ExecutiveAdministration>>(new Map());
+  private cachedAdmins = new Map<number, ExecutiveAdministration>();
 
-  private cardAnimations?: gsap.core.Tween;
+  /**
+   * By how much the current cards are flipped (in degrees).
+   */
+  private currentCardRotationY = 0;
+
+  /**
+   * True if the cards are currently flipping, false otherwise.
+   */
+  private areCardsFlipping = false;
+
+  /**
+   * True if the cards are displaying their backside, false otherwise.
+   */
+  private areCardsFlipped = false;
 
   ngAfterViewInit(): void {
+    // Watch for viewport changes so we know how many lines to print.
     this.resizeObs = new ResizeObserver(entries => {
       for (const entry of entries) {
         const linesToDisplay = Math.trunc(entry.contentRect.width / (LINE_WIDTH * REM));
@@ -81,7 +111,9 @@ export class OfficersComponent implements AfterViewInit, OnDestroy {
     });
     this.resizeObs.observe(this.timelineEl().nativeElement);
     this.calcAndSetLineWidth(this.timelineEl().nativeElement.offsetWidth);
-    this.registerFlips();
+
+    // Get the native elements to manipulate with GSAP
+    this.execCardsEl = this.execCards().map(c => c.nativeElement);
   }
 
   ngOnDestroy(): void {
@@ -95,20 +127,76 @@ export class OfficersComponent implements AfterViewInit, OnDestroy {
    *
    * @param year - The year of the line clicked.
    */
-  protected lineClicked(year: number): void {
-    let admin = this.cachedAdmins().get(year);
-    if (!admin) {
-      // TODO: Replace this with a request to the backend for election results.
-      // Will probably write a Service for this and place the cache there.
-      admin = executives.find(e => e.startYear === year);
-      if (!admin) {
-        throw new Error(`Administration for year ${year} not found.`);
-      }
-      addToSignalMap(this.cachedAdmins, year, admin);
+  protected async lineClicked(year: number): Promise<void> {
+    // Don't allow another year to be selected while we're flipping
+    if (this.areCardsFlipping) {
+      return;
     }
 
-    this.cardAnimations?.play();
-    this.displayExecs.set(admin);
+    let newAdminToSet = this.cachedAdmins.get(year);
+    if (!newAdminToSet) {
+      // TODO: Replace this with a request to the backend for election results.
+      // Will probably write a Service for this and place the cache there.
+      newAdminToSet = executives.find(e => e.startYear === year);
+      if (!newAdminToSet) {
+        throw new Error(`Administration for year ${year} not found.`);
+      }
+      this.cachedAdmins.set(year, newAdminToSet);
+      if (this.areCardsFlipped) {
+        this.backYear = newAdminToSet.startYear;
+      } else {
+        this.frontYear = newAdminToSet.startYear;
+      }
+    }
+
+    if (!this.execCardsEl || !this.execCardsEl.length) {
+      throw new Error('No executive card elements found');
+    }
+
+    // Animate the cards flipping
+    if (this.execCardsEl) {
+      this.areCardsFlipping = true;
+      const newMembers = newAdminToSet.members;
+      for (let i = 0; i < newAdminToSet.members.length; i++) {
+        const tl = gsap.timeline();
+        const card = this.execCardsEl[i];
+        tl.to(card, {
+          rotateY: this.currentCardRotationY + 90,
+          duration: 0.25,
+          ease: 'none',
+          stagger: 0.1
+        })
+          .call(() => {
+            const querySide = this.areCardsFlipped ? '.card-front' : '.card-back';
+            const cardSide = card.querySelector(querySide);
+            if (!cardSide) {
+              throw new Error(`No card side ${querySide}`);
+            }
+            const name = cardSide.querySelector('h3');
+            const pos = cardSide.querySelector('h4');
+            if (name) {
+              this.renderer.setProperty(name, 'innerText', newMembers[i].name);
+            }
+            if (pos) {
+              this.renderer.setProperty(pos, 'innerText', newMembers[i].position);
+            }
+          })
+          .to(card, {
+            rotateY: this.currentCardRotationY + 180,
+            duration: 0.25,
+            ease: 'none'
+          })
+          .then(() => {
+            this.areCardsFlipped = true;
+          });
+      }
+      this.currentCardRotationY += 180;
+      // if (this.currentCardRotationY >= 360) {
+      //   this.currentCardRotationY = 0;
+      //   gsap.set(this.execCardsEl, { rotateY: 0 });
+      // }
+      this.areCardsFlipping = false;
+    }
   }
 
   /**
@@ -118,16 +206,5 @@ export class OfficersComponent implements AfterViewInit, OnDestroy {
    */
   private calcAndSetLineWidth(width: number): void {
     this.lineWidth.set(width / (LINE_WIDTH * REM));
-  }
-
-  private registerFlips(): void {
-    const cards = this.execCards().map(c => c.nativeElement);
-    this.cardAnimations = gsap.to(cards, {
-      rotateY: 180,
-      duration: 0.5,
-      paused: true,
-      ease: 'none',
-      stagger: 0.1
-    });
   }
 }
