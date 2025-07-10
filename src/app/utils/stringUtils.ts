@@ -8,10 +8,16 @@ export function prependHttps(url: string): string {
 }
 
 /**
- * Changes the string to a CSS image url.
+ * Changes the string to a CSS local image url.
  */
-export function toCssUrl(folder: ImagesFolder, fileName: string): string {
-  return `url(images/${folder}/${fileName})`;
+export function toLocalImageUrl(fileName: string, folder?: ImagesFolder): string {
+  let result = "url('images/";
+  if (folder) {
+    result += `${folder}/`;
+  }
+  result += fileName;
+
+  return result;
 }
 
 export function pathToCssUrl(path: string | undefined): string {
