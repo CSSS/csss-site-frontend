@@ -9,8 +9,8 @@ import {
   viewChild,
   viewChildren
 } from '@angular/core';
-import { CardComponent } from '@csss-code/card/card.component';
 import { CsssCodeModule } from '@csss-code/csss-code.module';
+import gsap from 'gsap';
 import { addToSignalMap } from 'utils/signalUtils';
 import { ExecutiveAdministration, executives } from './officers';
 
@@ -25,8 +25,14 @@ const LINE_WIDTH = 6;
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class OfficersComponent implements AfterViewInit, OnDestroy {
+  /**
+   * The executives currently being displayed.
+   */
   protected displayExecs = signal<ExecutiveAdministration>(executives[0]);
 
+  /**
+   * The years to display on the line.
+   */
   protected yearsToDisplay = computed(() => {
     const result = [];
     const currentYear = Math.trunc(new Date().getFullYear());
@@ -41,7 +47,10 @@ export class OfficersComponent implements AfterViewInit, OnDestroy {
    */
   private timelineEl = viewChild.required<ElementRef<HTMLDivElement>>('timeline');
 
-  private execCards = viewChildren<CardComponent>('execCard');
+  /**
+   * Executive card elements.
+   */
+  private execCards = viewChildren('execCard', { read: ElementRef });
 
   /**
    * Width of the lines in the timeline.
@@ -59,6 +68,8 @@ export class OfficersComponent implements AfterViewInit, OnDestroy {
    */
   private cachedAdmins = signal<Map<number, ExecutiveAdministration>>(new Map());
 
+  private cardAnimations?: gsap.core.Tween;
+
   ngAfterViewInit(): void {
     this.resizeObs = new ResizeObserver(entries => {
       for (const entry of entries) {
@@ -70,6 +81,7 @@ export class OfficersComponent implements AfterViewInit, OnDestroy {
     });
     this.resizeObs.observe(this.timelineEl().nativeElement);
     this.calcAndSetLineWidth(this.timelineEl().nativeElement.offsetWidth);
+    this.registerFlips();
   }
 
   ngOnDestroy(): void {
@@ -95,12 +107,8 @@ export class OfficersComponent implements AfterViewInit, OnDestroy {
       addToSignalMap(this.cachedAdmins, year, admin);
     }
 
+    this.cardAnimations?.play();
     this.displayExecs.set(admin);
-    if (this.execCards()) {
-      for (const card of this.execCards()) {
-        console.log(card);
-      }
-    }
   }
 
   /**
@@ -110,5 +118,16 @@ export class OfficersComponent implements AfterViewInit, OnDestroy {
    */
   private calcAndSetLineWidth(width: number): void {
     this.lineWidth.set(width / (LINE_WIDTH * REM));
+  }
+
+  private registerFlips(): void {
+    const cards = this.execCards().map(c => c.nativeElement);
+    this.cardAnimations = gsap.to(cards, {
+      rotateY: 180,
+      duration: 0.5,
+      paused: true,
+      ease: 'none',
+      stagger: 0.1
+    });
   }
 }
