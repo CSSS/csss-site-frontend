@@ -69,7 +69,7 @@ export class OfficersComponent implements AfterViewInit, OnDestroy {
       }
     });
     this.resizeObs.observe(this.timelineEl().nativeElement);
-    this.calcLineWidth(this.timelineEl().nativeElement.offsetWidth);
+    this.calcAndSetLineWidth(this.timelineEl().nativeElement.offsetWidth);
   }
 
   ngOnDestroy(): void {
@@ -108,7 +108,7 @@ export class OfficersComponent implements AfterViewInit, OnDestroy {
    *
    * @param width - Width of the timeline element.
    */
-  private calcLineWidth(width: number): void {
+  private calcAndSetLineWidth(width: number): void {
     this.lineWidth.set(width / (LINE_WIDTH * REM));
   }
 }
