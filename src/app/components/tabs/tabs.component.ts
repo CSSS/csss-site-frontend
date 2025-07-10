@@ -13,7 +13,7 @@ import {
 } from '@angular/core';
 import { CsssCodeModule } from '@csss-code/csss-code.module';
 import { Subscription } from 'rxjs';
-import { ApplicationService } from 'services/application.service';
+import { ApplicationService } from 'services/application/application.service';
 import { BREAKPOINT_STRING_MAP } from 'styles/breakpoints';
 import { STRUCTURE_MAP } from 'styles/structure';
 
