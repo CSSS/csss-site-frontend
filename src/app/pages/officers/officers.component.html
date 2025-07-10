@@ -21,13 +21,18 @@
         <code-card
           class="card-front"
           backgroundImage="images/{{ frontExecs().members[i].photoUrl }}"
+          #cardFront
         >
           <div class="footer-container" ngProjectAs="card-footer">
             <h3>{{ frontExecs().members[i].name }}</h3>
             <h4>{{ frontExecs().members[i].position }}</h4>
           </div>
         </code-card>
-        <code-card class="card-back" backgroundImage="images/{{ backExecs().members[i].photoUrl }}">
+        <code-card
+          class="card-back"
+          backgroundImage="images/{{ backExecs().members[i].photoUrl }}"
+          #cardBack
+        >
           <div class="footer-container" ngProjectAs="card-footer">
             <h3>{{ backExecs().members[i].name }}</h3>
             <h4>{{ backExecs().members[i].position }}</h4>

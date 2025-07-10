@@ -161,3 +161,32 @@ export const executives: ExecutiveAdministration[] = [
     ]
   }
 ];
+
+export const ALL_EXEC_IMAGES = [
+  'ballerina-cappuccina.png',
+  'bobritto-bandito.png',
+  'bombardiro-crocodillo.png',
+  'bombombini-gusini.png',
+  'boneca-ambalabu.png',
+  'brr-brr-patapim.png',
+  'burbaloni-luliloli.png',
+  'cappucino-asassino.png',
+  'chimpanzini-bananini.png',
+  'frigo-camelo.png',
+  'giraffa-celeste.png',
+  'glorbo-fruttodrillo.png',
+  'lirili-larila.png',
+  'orangutini-ananasini.png',
+  'tigrullini-watermellini.png',
+  'tralalero-tralala.png',
+  'tric-trac-baraboom.png',
+  'trippi-troppi.png',
+  'trulimero-trulicina.png',
+  'tung-tung-tung-sahur.png',
+  'uccelloburger.png',
+  'vacca-saturno-saturnita.png'
+];
+
+export function getRandomExecImage(): string {
+  return ALL_EXEC_IMAGES[Math.floor(Math.random() * ALL_EXEC_IMAGES.length)];
+}
