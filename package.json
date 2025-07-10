@@ -3,12 +3,14 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "preBuild": "tsx scripts/app/sass-builder.ts",
-    "start": "npm run preBuild && ng serve",
-    "build": "npm run preBuild && ng build",
+    "pre-build": "tsx scripts/app/sass-builder.ts",
+    "start": "npm run pre-build && ng serve",
+    "build": "npm run pre-build && ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "lint": "eslint ./src ./scripts --ext .ts --config eslint.config.mjs"
+    "lint": "eslint ./src ./scripts --ext .ts --config eslint.config.mjs",
+    "format": "prettier ./src ./sripts --write",
+    "pre-commit": "npm run lint && npm run format"
   },
   "private": true,
   "dependencies": {
@@ -24,6 +26,7 @@
     "@fortawesome/free-brands-svg-icons": "^6.7.1",
     "@fortawesome/free-regular-svg-icons": "^6.7.1",
     "@fortawesome/free-solid-svg-icons": "^6.7.1",
+    "gsap": "^3.13.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.15.0"
