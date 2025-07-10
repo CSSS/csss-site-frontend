@@ -11,9 +11,10 @@ import {
   viewChild,
   viewChildren
 } from '@angular/core';
+import { CardComponent } from '@csss-code/card/card.component';
 import { CsssCodeModule } from '@csss-code/csss-code.module';
 import gsap from 'gsap';
-import { ExecutiveAdministration, executives } from './officers';
+import { ExecutiveAdministration, executives, getRandomExecImage } from './officers';
 
 const REM = 16;
 const LINE_WIDTH = 6;
@@ -51,7 +52,10 @@ export class OfficersComponent implements AfterViewInit, OnDestroy {
   /**
    * Executive card Angular elements.
    */
-  private execCards = viewChildren('execCard', { read: ElementRef });
+  private execCardsWrapper = viewChildren<ElementRef<HTMLDivElement>>('execCard');
+
+  private execCardFronts = viewChildren<CardComponent>('cardFront');
+  private execCardBacks = viewChildren<CardComponent>('cardBack');
 
   /**
    * Observer to recalculate the line widths if the viewport width changes.
@@ -113,7 +117,7 @@ export class OfficersComponent implements AfterViewInit, OnDestroy {
     this.calcAndSetLineWidth(this.timelineEl().nativeElement.offsetWidth);
 
     // Get the native elements to manipulate with GSAP
-    this.execCardsEl = this.execCards().map(c => c.nativeElement);
+    this.execCardsEl = this.execCardsWrapper().map(c => c.nativeElement);
   }
 
   ngOnDestroy(): void {
@@ -153,14 +157,14 @@ export class OfficersComponent implements AfterViewInit, OnDestroy {
     }
 
     // Set the flag so no new flip animations can be run.
-    const stagger = 0.1;
     this.areCardsFlipping = true;
     this.areCardsFlipped = !this.areCardsFlipped;
+    const stagger = 0.1;
     const newMembers = newAdminToSet.members;
     const sideToReplace = this.areCardsFlipped ? '.card-back' : '.card-front';
+
     const tl = gsap.timeline({
       onComplete: () => {
-        console.log('hit');
         if (this.areCardsFlipped) {
           this.backYear = newAdminToSet.startYear;
         } else {
@@ -176,35 +180,28 @@ export class OfficersComponent implements AfterViewInit, OnDestroy {
     });
 
     for (let i = 0; i < newMembers.length; i++) {
-      const card = this.execCardsEl[i];
-      const cardTl = gsap.timeline();
+      const cardEl = this.execCardsEl[i];
+      const cardComp = this.areCardsFlipped ? this.execCardBacks()[i] : this.execCardFronts()[i];
+      const cardComponentEl = cardEl.querySelector(sideToReplace);
+      if (!cardComponentEl) {
+        throw new Error(`No card component at index ${i} for ${sideToReplace}`);
+      }
+      const name = cardComponentEl.querySelector('h3');
+      const pos = cardComponentEl.querySelector('h4');
+      if (name) {
+        this.renderer.setProperty(name, 'innerText', newMembers[i].name);
+      }
+      if (pos) {
+        this.renderer.setProperty(pos, 'innerText', newMembers[i].position);
+      }
+      cardComp.setBackground(`images/${getRandomExecImage()}`);
       tl.add(
-        cardTl
-          .to(card, {
-            rotateY: this.currentCardRotationY + 90,
-            duration: 0.25,
-            ease: 'none'
-          })
-          .call(() => {
-            const cardComponent = card.querySelector(sideToReplace);
-            if (!cardComponent) {
-              throw new Error(`No card component at index ${i} for ${sideToReplace}`);
-            }
-            const name = cardComponent.querySelector('h3');
-            const pos = cardComponent.querySelector('h4');
-            if (name) {
-              this.renderer.setProperty(name, 'innerText', newMembers[i].name);
-            }
-            if (pos) {
-              this.renderer.setProperty(pos, 'innerText', newMembers[i].position);
-            }
-          })
-          .to(card, {
-            rotateY: this.currentCardRotationY + 180,
-            duration: 0.25,
-            ease: 'none'
-          }),
-        `<+=${stagger}`
+        gsap.to(cardEl, {
+          rotateY: this.currentCardRotationY + 180,
+          duration: 0.2,
+          ease: 'none'
+        }),
+        `<+=${stagger}` // Start each animation `stagger` seconds after the previous one
       );
     }
   }

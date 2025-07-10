@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { CsssCodeModule } from '@csss-code/csss-code.module';
-import { prependHttps, toCssUrl } from 'utils/stringUtils';
+import { prependHttps, toLocalImageUrl } from 'utils/stringUtils';
 
 interface Affiliate {
   label: string;
@@ -66,7 +66,7 @@ export class AffiliatesComponent {
     return {
       ...aff,
       url: prependHttps(aff.url),
-      imgName: toCssUrl(`affiliates`, `${aff.imgName}.png`)
+      imgName: toLocalImageUrl(`${aff.imgName}.png`, 'affiliates')
     };
   });
 }
