@@ -127,7 +127,7 @@ export class OfficersComponent implements AfterViewInit, OnDestroy {
    *
    * @param year - The year of the line clicked.
    */
-  protected async lineClicked(year: number): Promise<void> {
+  protected lineClicked(year: number): void {
     // Don't allow another year to be selected while we're flipping
     if (this.areCardsFlipping) {
       return;
@@ -142,38 +142,56 @@ export class OfficersComponent implements AfterViewInit, OnDestroy {
         throw new Error(`Administration for year ${year} not found.`);
       }
       this.cachedAdmins.set(year, newAdminToSet);
-      if (this.areCardsFlipped) {
-        this.backYear = newAdminToSet.startYear;
-      } else {
-        this.frontYear = newAdminToSet.startYear;
-      }
     }
 
+    this.flipCards(newAdminToSet);
+  }
+
+  private flipCards(newAdminToSet: ExecutiveAdministration): void {
     if (!this.execCardsEl || !this.execCardsEl.length) {
       throw new Error('No executive card elements found');
     }
 
-    // Animate the cards flipping
-    if (this.execCardsEl) {
-      this.areCardsFlipping = true;
-      const newMembers = newAdminToSet.members;
-      for (let i = 0; i < newAdminToSet.members.length; i++) {
-        const tl = gsap.timeline();
-        const card = this.execCardsEl[i];
-        tl.to(card, {
-          rotateY: this.currentCardRotationY + 90,
-          duration: 0.25,
-          ease: 'none',
-          stagger: 0.1
-        })
+    // Set the flag so no new flip animations can be run.
+    const stagger = 0.1;
+    this.areCardsFlipping = true;
+    this.areCardsFlipped = !this.areCardsFlipped;
+    const newMembers = newAdminToSet.members;
+    const sideToReplace = this.areCardsFlipped ? '.card-back' : '.card-front';
+    const tl = gsap.timeline({
+      onComplete: () => {
+        console.log('hit');
+        if (this.areCardsFlipped) {
+          this.backYear = newAdminToSet.startYear;
+        } else {
+          this.frontYear = newAdminToSet.startYear;
+        }
+        this.currentCardRotationY += 180;
+        if (this.currentCardRotationY >= 360 && this.execCardsEl) {
+          this.currentCardRotationY = 0;
+          gsap.set(this.execCardsEl, { rotateY: 0 });
+        }
+        this.areCardsFlipping = false;
+      }
+    });
+
+    for (let i = 0; i < newMembers.length; i++) {
+      const card = this.execCardsEl[i];
+      const cardTl = gsap.timeline();
+      tl.add(
+        cardTl
+          .to(card, {
+            rotateY: this.currentCardRotationY + 90,
+            duration: 0.25,
+            ease: 'none'
+          })
           .call(() => {
-            const querySide = this.areCardsFlipped ? '.card-front' : '.card-back';
-            const cardSide = card.querySelector(querySide);
-            if (!cardSide) {
-              throw new Error(`No card side ${querySide}`);
+            const cardComponent = card.querySelector(sideToReplace);
+            if (!cardComponent) {
+              throw new Error(`No card component at index ${i} for ${sideToReplace}`);
             }
-            const name = cardSide.querySelector('h3');
-            const pos = cardSide.querySelector('h4');
+            const name = cardComponent.querySelector('h3');
+            const pos = cardComponent.querySelector('h4');
             if (name) {
               this.renderer.setProperty(name, 'innerText', newMembers[i].name);
             }
@@ -185,17 +203,9 @@ export class OfficersComponent implements AfterViewInit, OnDestroy {
             rotateY: this.currentCardRotationY + 180,
             duration: 0.25,
             ease: 'none'
-          })
-          .then(() => {
-            this.areCardsFlipped = true;
-          });
-      }
-      this.currentCardRotationY += 180;
-      // if (this.currentCardRotationY >= 360) {
-      //   this.currentCardRotationY = 0;
-      //   gsap.set(this.execCardsEl, { rotateY: 0 });
-      // }
-      this.areCardsFlipping = false;
+          }),
+        `<+=${stagger}`
+      );
     }
   }
 
