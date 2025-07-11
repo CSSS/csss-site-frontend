@@ -69,7 +69,7 @@ header {
   .activity-list {
     flex-direction: column;
     height: 100%;
-    border-right: solid 1px #1e1e1e;
+    border-right: $border;
   }
 
   .navbar {

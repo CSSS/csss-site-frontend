@@ -21,6 +21,7 @@ export interface TabBarItem {
   label: string;
   id: number;
   route: string;
+  focused: boolean;
 }
 
 @Component({
@@ -51,8 +52,14 @@ export class TabsComponent implements AfterViewInit, OnDestroy {
    */
   tabs: Signal<TabBarItem[]> = computed(() => {
     const result: TabBarItem[] = [];
+    const focusedApp = this.applicationService.focusedApplication()?.id;
     for (const app of this.applicationService.runningApplications().values()) {
-      result.push({ label: app.label, id: app.id, route: app.route });
+      result.push({
+        label: app.label,
+        id: app.id,
+        route: app.route,
+        focused: focusedApp === app.id
+      });
     }
     return result;
   });

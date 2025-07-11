@@ -37,6 +37,10 @@ export class ApplicationService {
         // `/<application>?=<query params>` or `/<runtime>/<application>?=<query params>`
         // or maybe they don't have any query params at all.
         route = route.split('?')[0]; // Just the route params
+        if (route === '/') {
+          this.focusedApplication.set(null);
+          return;
+        }
         const app = getApplicationByRoute(route);
         if (app) {
           this.openApplication(app);

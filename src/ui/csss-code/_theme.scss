@@ -1,7 +1,6 @@
 // Old colours used for the CSSS code theme that match the VSCode theme.
 // $bg1: #333333; // activity bar
 // $bg3: #252526; // tab bar, file explorer
-// $bg4: #1e1e1e; // code background, focused tab
 
 $bg0: #37373d; // file explorer hover
 $bg1: #111111; // activity bar
@@ -12,4 +11,5 @@ $bg5: #151515; // logo
 $icon: #adadad; // activity bar icons
 $code-text: #909090; // landing page text on the code section
 $accent: #99f0bc; // status bar
+$outline: #1e1e1e; // outline of the navbar/tabs
 $hov-glow: drop-shadow(0 0 4px rgba(255, 255, 200, 0.8)); // apply to a `filter`
