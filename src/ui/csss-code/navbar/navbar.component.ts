@@ -8,7 +8,6 @@ import {
   OnInit,
   signal
 } from '@angular/core';
-import { RouterModule } from '@angular/router';
 import { faCopy } from '@fortawesome/free-solid-svg-icons';
 import { csssLogo } from 'assets/icons/csss-logo';
 import { BREAKPOINT_STRING_MAP } from 'styles/breakpoints';
@@ -57,8 +56,6 @@ export class NavbarComponent implements OnInit {
    */
   private breakpointObs = inject(BreakpointObserver);
 
-  private router = inject(RouterModule);
-
   ngOnInit(): void {
     // On smaller screens, do not automatically open the navigation
     this.isNavOpen.set(!this.breakpointObs.isMatched(BREAKPOINT_STRING_MAP['small']));
@@ -84,6 +81,4 @@ export class NavbarComponent implements OnInit {
   toggleNavbar(): void {
     this.isNavOpen.update(value => !value);
   }
-
-  goHome(): void {}
 }
