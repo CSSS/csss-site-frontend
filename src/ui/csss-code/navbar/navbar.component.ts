@@ -34,7 +34,7 @@ export class NavbarComponent implements OnInit {
   /**
    * Flag representing if the navbar is closed or open.
    */
-  isNavOpen = signal<boolean>(false);
+  isFileSystemOpen = signal<boolean>(false);
 
   /**
    * Signal that converts the nav entries, in case they need to be dynamically instantiated.
@@ -58,7 +58,7 @@ export class NavbarComponent implements OnInit {
 
   ngOnInit(): void {
     // On smaller screens, do not automatically open the navigation
-    this.isNavOpen.set(!this.breakpointObs.isMatched(BREAKPOINT_STRING_MAP['small']));
+    this.isFileSystemOpen.set(this.breakpointObs.isMatched(BREAKPOINT_STRING_MAP['small']));
   }
 
   /**
@@ -78,7 +78,7 @@ export class NavbarComponent implements OnInit {
   /**
    * Changes the navbar state between open and closed
    */
-  toggleNavbar(): void {
-    this.isNavOpen.update(value => !value);
+  toggleFileSystem(): void {
+    this.isFileSystemOpen.update(value => !value);
   }
 }
