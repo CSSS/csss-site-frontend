@@ -16,15 +16,20 @@ li {
 
 .nav-entry {
   padding: 0.5rem 0 0.5rem 0.75rem;
-}
 
-.nav-entry.active {
-  background-color: theme.$bg0;
-}
+  &.active {
+    background-color: theme.$bg0;
+  }
 
-.nav-entry:hover {
-  cursor: pointer;
-  background-color: theme.$bg0;
+  &:hover {
+    cursor: pointer;
+    background-color: theme.$bg0;
+  }
+
+  &.disabled {
+    color: gray;
+    cursor: not-allowed;
+  }
 }
 
 fa-icon {

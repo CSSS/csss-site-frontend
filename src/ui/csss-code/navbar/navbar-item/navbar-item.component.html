@@ -7,8 +7,11 @@
 </ng-template>
 
 <!-- If the entry has a link, wrap it in an `a` tag, otherwise, use a `div`. -->
-<!-- This is for semantic purposes -->
-@if (entry().link) {
+@if (entry().type === 'wip') {
+  <div class="nav-entry disabled">
+    <ng-container [ngTemplateOutlet]="item"></ng-container>
+  </div>
+} @else if (entry().link) {
   <a class="nav-entry" [routerLink]="entry().link" routerLinkActive="active">
     <ng-container [ngTemplateOutlet]="item"></ng-container>
   </a>
