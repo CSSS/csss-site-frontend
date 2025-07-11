@@ -14,9 +14,7 @@ $gradient: linear-gradient(to top, #1e1e1e 0%, transparent 100%);
 a {
   @include g.no-select;
 
-  width: 20vw;
-  max-width: 15rem;
-  min-width: 9rem;
+  width: clamp(9rem, 20vw, 15rem);
   aspect-ratio: 1 / 1;
 }
 
@@ -35,7 +33,7 @@ a:hover .label-container {
 
 .label {
   text-align: center;
-  font-size: max(4vw, 1rem);
+  font-size: clamp(1rem, 4vw, 3rem);
   align-self: flex-end;
   text-shadow: 2px 2px 5px black;
 }
