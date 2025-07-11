@@ -6,7 +6,7 @@ import {
   faRoadBarrier
 } from '@fortawesome/free-solid-svg-icons';
 
-type NavIcon = 'file' | 'folder' | 'construction';
+type NavIcon = 'file' | 'folder' | 'wip';
 
 export interface NavbarItem {
   key: string;
@@ -57,7 +57,7 @@ export class NavbarItemComponent {
       case 'folder': {
         return this.isOpen() ? faChevronDown : faChevronRight;
       }
-      case 'construction': {
+      case 'wip': {
         return faRoadBarrier;
       }
     }
