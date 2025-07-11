@@ -1,5 +1,5 @@
 @use 'theme';
-@use 'globals';
+@use 'globals' as g;
 
 .label {
   overflow: hidden;
@@ -7,18 +7,27 @@
   white-space: nowrap;
 }
 
+.click-nav {
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+  align-content: start;
+}
+
 .tab {
-  @include globals.no-select;
+  @include g.no-select;
 
   display: grid;
-  grid-template-columns: 1fr 4fr 1fr;
+  grid-template-columns: 5fr 2rem;
   align-content: center;
   background-color: theme.$bg4;
-  width: clamp(9rem, 15vw, 10rem);
-  height: 100%;
+  width: clamp(9rem, 20vw, 12rem);
 
-  button {
-    place-self: center;
-    margin: 0 0.3rem 0 0.2rem;
+  & > .x-container {
+    text-align: center;
+    & > button {
+      &:hover {
+        filter: theme.$hov-glow;
+      }
+    }
   }
 }
