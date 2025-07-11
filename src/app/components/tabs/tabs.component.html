@@ -2,7 +2,7 @@
   @for (tab of tabs(); track $index) {
     <div class="tab clickable">
       <div class="left"></div>
-      <span class="label">{{ tab.label }}</span>
+      <div class="label">{{ tab.label }}</div>
       <button type="button" (click)="closeTab(tab.id)">&#x2715;</button>
     </div>
   }

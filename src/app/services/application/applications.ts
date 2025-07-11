@@ -37,7 +37,7 @@ export const routeApplicationMap: Map<string, Application> = new Map([
     '/readme',
     {
       id: 0,
-      label: 'README.md',
+      label: 'README',
       activityKey: '',
       key: 'readme'
     }
@@ -46,7 +46,7 @@ export const routeApplicationMap: Map<string, Application> = new Map([
     '/affiliates',
     {
       id: 1,
-      label: 'Affiliates.md',
+      label: 'Affiliates',
       activityKey: '',
       key: 'affiliates'
     }
@@ -55,7 +55,7 @@ export const routeApplicationMap: Map<string, Application> = new Map([
     '/common-room',
     {
       id: 2,
-      label: 'Common Room.md',
+      label: 'Common Room',
       activityKey: '',
       key: 'common-room'
     }

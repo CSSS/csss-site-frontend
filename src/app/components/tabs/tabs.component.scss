@@ -4,7 +4,7 @@
 .label {
   overflow: hidden;
   text-overflow: ellipsis;
-  align-self: center;
+  white-space: nowrap;
 }
 
 .tab {
@@ -12,10 +12,10 @@
 
   display: grid;
   grid-template-columns: 1fr 4fr 1fr;
+  align-content: center;
   background-color: theme.$bg4;
   width: clamp(9rem, 15vw, 10rem);
   height: 100%;
-  overflow: hidden;
 
   button {
     place-self: center;
