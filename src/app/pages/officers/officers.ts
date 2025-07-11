@@ -101,7 +101,7 @@ export const executives: ExecutiveAdministration[] = [
       {
         name: 'Isabelle Kwan',
         position: 'President',
-        photoUrl: 'ballerina-cappuccina.png'
+        photoUrl: 'bobritto-bandito.png'
       },
       {
         name: 'Jake Choi',
@@ -155,6 +155,72 @@ export const executives: ExecutiveAdministration[] = [
       },
       {
         name: 'Michael Ho',
+        position: 'Exec at Large',
+        photoUrl: 'giraffa-celeste.png'
+      }
+    ]
+  },
+  {
+    startYear: 2023,
+    endYear: 2024,
+    members: [
+      {
+        name: 'Justin Yan',
+        position: 'President',
+        photoUrl: 'ballerina-cappuccina.png'
+      },
+      {
+        name: 'Valerie Kistrina',
+        position: 'Vice President',
+        photoUrl: 'bobritto-bandito.png'
+      },
+      {
+        name: 'Gabe Stang',
+        position: 'Treasurer',
+        photoUrl: 'tralalero-tralala.png'
+      },
+      {
+        name: 'Sean Chan',
+        position: 'Director of Resources',
+        photoUrl: 'bombombini-gusini.png'
+      },
+      {
+        name: 'Patrick Peake',
+        position: 'Director of Events',
+        photoUrl: 'brr-brr-patapim.png'
+      },
+      {
+        name: 'Micah Baker',
+        position: 'Director of Educational Events',
+        photoUrl: 'lirili-larila.png'
+      },
+      {
+        name: 'Arya Faghihy',
+        position: 'Assistant Director of Events',
+        photoUrl: 'chimpanzini-bananini.png'
+      },
+      {
+        name: 'Isabelle Kwan',
+        position: 'Director of Communications',
+        photoUrl: 'glorbo-fruttodrillo.png'
+      },
+      {
+        name: 'Yolanda Lam',
+        position: 'Director of Multimedia',
+        photoUrl: 'tung-tung-tung-sahur.png'
+      },
+      {
+        name: 'Dina Zeng',
+        position: 'Director of Archives',
+        photoUrl: 'tric-trac-baraboom.png'
+      },
+      {
+        name: 'Jake Choi',
+        position: 'Exec at Large',
+        photoUrl: 'trippi-troppi.png'
+      },
+      {
+        name: 'Joyce Zhang',
         position: 'Exec at Large',
         photoUrl: 'giraffa-celeste.png'
       }
