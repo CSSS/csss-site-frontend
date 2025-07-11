@@ -27,7 +27,7 @@ header {
   background-color: theme.$bg1;
   border-bottom: $border;
 
-  & > fa-icon {
+  & > * {
     margin: $item-spacing;
 
     &:hover {
