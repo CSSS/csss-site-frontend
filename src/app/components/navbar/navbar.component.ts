@@ -62,13 +62,13 @@ export class NavbarComponent {
         {
           key: 'elections',
           label: 'Upcoming',
-          type: 'file',
+          type: 'construction',
           link: '/elections'
         },
         {
           key: 'speeches',
           label: 'Speeches',
-          type: 'file',
+          type: 'construction',
           link: '/speeches'
         }
       ]
@@ -81,13 +81,13 @@ export class NavbarComponent {
         {
           key: 'events',
           label: 'Upcoming',
-          type: 'file',
+          type: 'construction',
           link: '/events'
         },
         {
           key: 'events-archive',
           label: 'Archive',
-          type: 'file',
+          type: 'construction',
           link: '/events-archive'
         }
       ]
