@@ -12,9 +12,9 @@ export class CardComponent implements OnInit {
   /**
    * URL of the image to use.
    * This image will cover the entire card.
-   * Input should include the full path, plus the
+   * Input should include the full path.
    */
-  public backgroundImage = input('', { transform: pathToCssUrl });
+  public backgroundImage = input('');
 
   protected bgImage = signal<string>('');
 

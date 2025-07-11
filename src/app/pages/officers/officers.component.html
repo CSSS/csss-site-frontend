@@ -14,28 +14,25 @@
     }
   </div>
 
-  <h2>Executives for {{ frontExecs().startYear }} - {{ frontExecs().endYear }}</h2>
   <section class="gallery">
-    @for (_ of frontExecs().members; track $index; let i = $index) {
+    @for (_ of displayAdmin().members; track $index; let i = $index) {
       <div class="card-wrapper" #execCard>
         <code-card
           class="card-front"
-          backgroundImage="images/{{ frontExecs().members[i].photoUrl }}"
-          #cardFront
+          [backgroundImage]="toLocalUrl(frontAdmin().members[i].photoUrl)"
         >
           <div class="footer-container" ngProjectAs="card-footer">
-            <h3>{{ frontExecs().members[i].name }}</h3>
-            <h4>{{ frontExecs().members[i].position }}</h4>
+            <h3>{{ frontAdmin().members[i].name }}</h3>
+            <h4>{{ frontAdmin().members[i].position }}</h4>
           </div>
         </code-card>
         <code-card
           class="card-back"
-          backgroundImage="images/{{ backExecs().members[i].photoUrl }}"
-          #cardBack
+          [backgroundImage]="toLocalUrl(backAdmin().members[i].photoUrl)"
         >
           <div class="footer-container" ngProjectAs="card-footer">
-            <h3>{{ backExecs().members[i].name }}</h3>
-            <h4>{{ backExecs().members[i].position }}</h4>
+            <h3>{{ backAdmin().members[i].name }}</h3>
+            <h4>{{ backAdmin().members[i].position }}</h4>
           </div>
         </code-card>
       </div>
