@@ -1,6 +1,5 @@
 @use 'theme';
 @use 'globals' as g;
-@use 'breakpoints' as b;
 
 $item-spacing: 1rem; // Padding for the activity bar items.
 // size of the activity + tab bar for small device widths
@@ -31,7 +30,7 @@ header {
     margin: $item-spacing;
 
     &:hover {
-      filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.9));
+      filter: theme.$hov-glow;
     }
   }
 }
@@ -59,7 +58,7 @@ header {
   }
 }
 
-@media (min-width: b.$breakpoint-small) {
+@media (min-width: g.$breakpoint-small) {
   :host {
     display: grid;
     grid-template-columns: g.$act-bar-w min-content;

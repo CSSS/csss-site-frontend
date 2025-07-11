@@ -3,7 +3,7 @@
  * Each application will be run in an activity.
  * Applications that share a activity will share a tab, meaning the previous activity will be lost.
  */
-export interface Application {
+export interface AppInfo {
   /**
    * The unique ID of the application. Should be unique to every application.
    */
@@ -26,54 +26,72 @@ export interface Application {
    * Routes should be in the form `/<activity>/<application>` or `/<application>` to successfully launch apps.
    */
   key: string;
+
+  /**
+   * Route to access the application.
+   */
+  route: string;
 }
 
 /**
  * All registered applications should go here.
  * TODO:Need a way to dynamically generate this or the routes.
  */
-export const routeApplicationMap: Map<string, Application> = new Map([
+export const routeApplicationMap: Map<number, AppInfo> = new Map([
   [
-    '/readme',
+    0,
     {
       id: 0,
       label: 'README',
       activityKey: '',
-      key: 'readme'
+      key: 'readme',
+      route: '/readme'
     }
   ],
   [
-    '/affiliates',
+    1,
     {
       id: 1,
       label: 'Affiliates',
       activityKey: '',
-      key: 'affiliates'
+      key: 'affiliates',
+      route: '/affiliates'
     }
   ],
   [
-    '/common-room',
+    2,
     {
       id: 2,
       label: 'Common Room',
       activityKey: '',
-      key: 'common-room'
+      key: 'common-room',
+      route: '/common-room'
     }
   ],
   [
-    '/officers',
+    3,
     {
       id: 3,
       label: 'Officers',
       activityKey: '',
-      key: 'officers'
+      key: 'officers',
+      route: '/officers'
     }
   ]
 ]);
 
-export const getApplicationById = (id: number): Application | undefined => {
+export const getApplicationById = (id: number): AppInfo | undefined => {
   for (const app of routeApplicationMap.values()) {
     if (app.id === id) {
+      return app;
+    }
+  }
+  return;
+};
+
+export const getApplicationByRoute = (route: string): AppInfo | undefined => {
+  for (const app of routeApplicationMap.values()) {
+    if (app.route === route) {
       return app;
     }
   }

@@ -20,6 +20,7 @@ import { STRUCTURE_MAP } from 'styles/structure';
 export interface TabBarItem {
   label: string;
   id: number;
+  route: string;
 }
 
 @Component({
@@ -40,6 +41,9 @@ export class TabsComponent implements AfterViewInit, OnDestroy {
    */
   private applicationService = inject(ApplicationService);
 
+  /**
+   * Observer to watch when a breakpoint is hit.
+   */
   private breakpointObs = inject(BreakpointObserver);
 
   /**
@@ -48,7 +52,7 @@ export class TabsComponent implements AfterViewInit, OnDestroy {
   tabs: Signal<TabBarItem[]> = computed(() => {
     const result: TabBarItem[] = [];
     for (const app of this.applicationService.runningApplications().values()) {
-      result.push({ label: app.label, id: app.id });
+      result.push({ label: app.label, id: app.id, route: app.route });
     }
     return result;
   });
@@ -58,15 +62,14 @@ export class TabsComponent implements AfterViewInit, OnDestroy {
    */
   private isSmall: WritableSignal<boolean> = signal(false);
 
+  /**
+   * Hide the tab bar if the screen size is small and there are no applications running.
+   */
   isHidden: Signal<boolean> = computed(
     () => this.isSmall() && this.applicationService.runningApplications().size === 0
   );
 
   private breakpointSub?: Subscription;
-
-  /**
-   * Hide the tab bar if the screen size is small and there are no applications running.
-   */
 
   ngAfterViewInit(): void {
     this.breakpointSub = this.breakpointObs
@@ -82,6 +85,10 @@ export class TabsComponent implements AfterViewInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.breakpointSub?.unsubscribe();
+  }
+
+  focusTab(tab: TabBarItem): void {
+    this.applicationService.router.navigateByUrl(tab.route);
   }
 
   /**
