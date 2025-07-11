@@ -5,6 +5,7 @@ $item-spacing: 1rem; // Padding for the activity bar items.
 // size of the activity + tab bar for small device widths
 $header-space-sm: calc($item-spacing * 2 + g.$act-bar-h + 1px);
 $border: 1px solid #1e1e1e;
+$navbar-w: 20rem;
 
 :host {
   display: flex;
@@ -21,17 +22,27 @@ header {
 }
 
 .activity-list {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 4rem);
+  align-items: center;
   height: $header-space-sm;
   background-color: theme.$bg1;
   border-bottom: $border;
 
   & > * {
-    margin: $item-spacing;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
 
-    &:hover {
+    & > fa-icon:hover {
       filter: theme.$hov-glow;
     }
+  }
+
+  & > .focused {
+    background-color: theme.$bg0;
   }
 }
 
@@ -51,7 +62,7 @@ header {
     & > .navbar-list {
       display: flex;
       flex-direction: column;
-      width: 20rem;
+      width: $navbar-w;
       row-gap: 0.25rem;
       padding-left: 0rem;
     }
@@ -67,7 +78,8 @@ header {
   }
 
   .activity-list {
-    flex-direction: column;
+    grid-template-columns: none;
+    grid-template-rows: repeat(auto-fit, 4rem);
     height: 100%;
     border-right: $border;
   }
