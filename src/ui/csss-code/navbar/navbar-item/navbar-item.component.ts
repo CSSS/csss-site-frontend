@@ -53,11 +53,6 @@ export class NavbarItemComponent {
     }
   });
 
-  label = computed(() => {
-    const entry = this.entry();
-    return entry.type === 'file' ? `${entry.label}.md` : entry.label;
-  });
-
   /**
    *  Handler for when the item is clicked.
    */

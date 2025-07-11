@@ -3,7 +3,7 @@
   @if (icon(); as i) {
     <fa-icon class="fa-fw" [style.paddingLeft.em]="depth() * 1.5" [icon]="i" />
   }
-  <span>{{ label() }}</span>
+  <span>{{ entry().label }}</span>
 </ng-template>
 
 <!-- If the entry has a link, wrap it in an `a` tag, otherwise, use a `div`. -->
