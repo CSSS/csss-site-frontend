@@ -41,12 +41,15 @@ export class NavbarComponent implements OnInit {
    */
   navItems = computed(() => this.navEntryToItem(this.entries()));
 
-  csssIcon = csssLogo;
+  /**
+   * Icon for the CSSS Logo.
+   */
+  protected csssIcon = csssLogo;
 
   /**
    * Icon for the file explorer in the activity bar.
    */
-  copyIcon = faCopy;
+  protected copyIcon = faCopy;
 
   /**
    * Observer to view our breakpoint widths.

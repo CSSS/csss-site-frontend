@@ -27,8 +27,12 @@ header {
   background-color: theme.$bg1;
   border-bottom: $border;
 
-  &>div {
-    padding: $item-spacing;
+  & > fa-icon {
+    margin: $item-spacing;
+
+    &:hover {
+      filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.9));
+    }
   }
 }
 
@@ -40,12 +44,12 @@ header {
   border-right: $border;
   z-index: 100;
 
-  &>.navbar-header {
+  & > .navbar-header {
     padding: $item-spacing 2em;
   }
 
-  &>nav {
-    &>.navbar-list {
+  & > nav {
+    & > .navbar-list {
       display: flex;
       flex-direction: column;
       width: 20rem;
