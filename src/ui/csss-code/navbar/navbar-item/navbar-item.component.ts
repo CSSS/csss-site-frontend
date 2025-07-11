@@ -1,10 +1,17 @@
 import { ChangeDetectionStrategy, Component, computed, input, signal } from '@angular/core';
-import { faChevronDown, faChevronRight, faFile } from '@fortawesome/free-solid-svg-icons';
+import {
+  faChevronDown,
+  faChevronRight,
+  faFile,
+  faRoadBarrier
+} from '@fortawesome/free-solid-svg-icons';
+
+type NavIcon = 'file' | 'folder' | 'construction';
 
 export interface NavbarItem {
   key: string;
   label: string;
-  type: 'file' | 'folder';
+  type: NavIcon;
   children?: NavbarItem[];
   link?: string;
 }
@@ -49,6 +56,9 @@ export class NavbarItemComponent {
       }
       case 'folder': {
         return this.isOpen() ? faChevronDown : faChevronRight;
+      }
+      case 'construction': {
+        return faRoadBarrier;
       }
     }
   });
