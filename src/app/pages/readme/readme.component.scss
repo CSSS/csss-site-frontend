@@ -17,7 +17,7 @@ header {
 
   & > h1 {
     text-align: center;
-    line-height: 4rem;
+    font-size: clamp(2rem, 4vw, 4rem);
   }
 
   & > .mural {
@@ -110,4 +110,8 @@ header {
       }
     }
   }
+}
+
+.type-in {
+  display: block;
 }
