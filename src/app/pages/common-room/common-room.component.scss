@@ -1,22 +1,9 @@
-section {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-}
-
-h3 > * {
+code-card h3 > * {
   background-color: black;
 }
 
-.right {
-  display: block;
-  text-align: right;
-}
-
-.center {
-  display: block;
-  text-align: center;
+section + section {
+  margin-bottom: 2rem;
 }
 
 a {
