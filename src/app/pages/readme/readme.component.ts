@@ -9,7 +9,7 @@ import {
 import { RouterModule } from '@angular/router';
 import { CsssCodeModule } from '@csss-code/csss-code.module';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { faArrowDown } from '@fortawesome/free-solid-svg-icons';
+import { faArrowDown, faArrowUpRightFromSquare } from '@fortawesome/free-solid-svg-icons';
 import { gsap } from 'gsap';
 import { SplitText } from 'gsap/SplitText';
 
@@ -22,6 +22,7 @@ import { SplitText } from 'gsap/SplitText';
 })
 export class ReadMeComponent implements AfterViewInit {
   protected arrowIcon = faArrowDown;
+  protected externalLinkIcon = faArrowUpRightFromSquare;
 
   private typedText = viewChild.required<ElementRef<HTMLDivElement>>('typeIn');
   private typedTextEl = computed(() => this.typedText().nativeElement);
