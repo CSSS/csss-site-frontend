@@ -37,7 +37,7 @@ ng serve // only works after building
 
 4. Serve the app over your local network
 ```
-// Access the site on a device in your local network by going to `<IP of serving device>:8080`
+// Access the site on a device in your local network by going to `http://<IP of serving device>:8080`
 ng serve --host=0.0.0.0 // only works after building
 ```
 
@@ -48,3 +48,4 @@ This project uses:
 ### Libraries used
 * **FontAwesome**
 * **Material CDK**
+* **GSAP**
