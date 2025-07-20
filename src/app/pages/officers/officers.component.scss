@@ -26,12 +26,12 @@
 
 .gallery {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(9rem, 100%), 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(10rem, 100%), 1fr));
   gap: 1.5rem;
 
   & > .card-wrapper {
     position: relative;
-    width: clamp(9rem, 15%, 25rem);
+    width: 100%;
     aspect-ratio: 1 / 1.5;
 
     // This makes the card have its components respect 3D space

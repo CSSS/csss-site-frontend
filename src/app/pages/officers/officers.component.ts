@@ -216,7 +216,7 @@ export class OfficersComponent implements AfterViewInit, OnDestroy {
       tl.add(
         gsap.to(cardEl, {
           rotateY: this.currentCardRotationY + 180,
-          duration: 0.2,
+          duration: 0.05,
           ease: 'none'
         }),
         '<+=0.1' // START each animation 0.1 seconds after the previous one STARTS
