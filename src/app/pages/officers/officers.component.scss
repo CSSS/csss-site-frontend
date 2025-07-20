@@ -19,6 +19,9 @@
       background-color: aquamarine;
     }
   }
+  & > .timeslot[aria-selected='true'] > .line {
+    box-shadow: 0 0 10px 3px aquamarine;
+  }
 }
 
 .gallery {
