@@ -1,7 +1,8 @@
 @use 'globals' as g;
 @use 'breakpoints' as b;
+@use 'theme' as t;
 
-$gradient: linear-gradient(to top, #1e1e1e 0%, transparent 100%);
+$gradient: linear-gradient(to bottom, #1e1e1e 0%, transparent 100%);
 
 .card-gallery {
   display: flex;
@@ -11,36 +12,42 @@ $gradient: linear-gradient(to top, #1e1e1e 0%, transparent 100%);
   margin: 2rem 0;
 }
 
-a {
-  @include g.no-select;
-
-  width: clamp(9rem, 20vw, 15rem);
+code-card {
+  width: clamp(8rem, 20vw, 15rem);
   aspect-ratio: 1 / 1;
-}
 
-a:hover .label-container {
-  opacity: 1;
-  background: $gradient;
+  & img {
+    width: 100%;
+    object-fit: contain;
+  }
 }
 
 .label-container {
-  display: flex;
+  position: absolute;
   width: 100%;
-  height: 100%;
-  justify-content: center;
+  top: 0;
+  text-align: center;
   background: $gradient;
 }
 
 .label {
-  text-align: center;
-  font-size: clamp(1rem, 4vw, 3rem);
-  align-self: flex-end;
+  @include g.no-select;
+
   text-shadow: 2px 2px 5px black;
+}
+
+.card-footer {
+  & > .link-container {
+    display: flex;
+    justify-content: center;
+    box-sizing: border-box;
+    padding: 0.2rem;
+    background-color: t.$accent;
+  }
 }
 
 @media (hover: hover) {
   .label-container {
-    opacity: 0;
     background: none;
   }
 }
@@ -48,5 +55,14 @@ a:hover .label-container {
 @media (min-width: b.$breakpoint-small) {
   .card-gallery {
     justify-content: space-evenly;
+  }
+
+  code-card:hover .label-container {
+    opacity: 1;
+    background: $gradient;
+  }
+
+  .label-container {
+    opacity: 0;
   }
 }
