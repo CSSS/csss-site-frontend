@@ -36,5 +36,5 @@
 .tab.focused {
   background-color: theme.$bg4;
   border: none;
-  box-shadow: 0 3px teal inset;
+  box-shadow: 0 3px theme.$accent inset;
 }

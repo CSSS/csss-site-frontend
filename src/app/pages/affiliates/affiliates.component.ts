@@ -1,21 +1,38 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { CsssCodeModule } from '@csss-code/csss-code.module';
-import { prependHttps, toLocalImageUrl } from 'utils/stringUtils';
-import { AFFILIATES } from './affiliates';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { faDiscord } from '@fortawesome/free-brands-svg-icons';
+import { faArrowUpRightFromSquare } from '@fortawesome/free-solid-svg-icons';
+import { prependHttps } from 'utils/stringUtils';
+import { Affiliate, AFFILIATES } from './affiliates';
 
 @Component({
   selector: 'csss-affiliates',
-  imports: [CsssCodeModule],
+  imports: [CsssCodeModule, FontAwesomeModule],
   templateUrl: './affiliates.component.html',
   styleUrl: './affiliates.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AffiliatesComponent {
-  affiliates = AFFILIATES.map(aff => {
-    return {
-      ...aff,
-      url: prependHttps(aff.url),
-      imgName: toLocalImageUrl(`${aff.imgName}.png`, 'affiliates')
-    };
-  });
+  protected discordIcon = faDiscord;
+  protected websiteIcon = faArrowUpRightFromSquare;
+
+  protected societies: Affiliate[] = [];
+  protected clubs: Affiliate[] = [];
+
+  constructor() {
+    for (const aff of AFFILIATES) {
+      const newAff: Affiliate = {
+        ...aff,
+        websiteUrl: aff.websiteUrl ? prependHttps(aff.websiteUrl) : undefined,
+        discordUrl: aff.discordUrl ? prependHttps(aff.discordUrl) : undefined,
+        imgName: `images/affiliates/${aff.imgName}.png`
+      };
+      if (aff.type === 'society') {
+        this.societies.push(newAff);
+      } else {
+        this.clubs.push(newAff);
+      }
+    }
+  }
 }
