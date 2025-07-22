@@ -1,4 +1,11 @@
-import { ChangeDetectionStrategy, Component, HostBinding, inject, input } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  ElementRef,
+  HostBinding,
+  inject,
+  input
+} from '@angular/core';
 import { DomSanitizer, SafeStyle } from '@angular/platform-browser';
 import { pathToCssUrl } from 'utils/stringUtils';
 
@@ -24,19 +31,21 @@ export class CardComponent {
     return this.isHoverOn();
   }
 
+  public elementRef = inject(ElementRef);
+
   /**
    * URL of the image to use.
    * This image will cover the entire card.
    * Input should include the full path.
    */
-  bgImg = input('');
+  public bgImg = input('');
 
   /**
    * Flag for the hover effect.
    * If true hovering over the card makes it scale bigger,
    * false makes the card have no hover effects.
    */
-  protected isHoverOn = input(true);
+  public isHoverOn = input(true);
 
   /**
    * Sanitizes inputs for Angular.
