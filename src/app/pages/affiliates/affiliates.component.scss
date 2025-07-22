@@ -15,54 +15,34 @@ $gradient: linear-gradient(to bottom, #1e1e1e 0%, transparent 100%);
 code-card {
   width: clamp(8rem, 20vw, 15rem);
   aspect-ratio: 1 / 1;
-
-  & img {
-    width: 100%;
-    object-fit: contain;
-  }
 }
 
-.label-container {
+.card-header,
+.card-footer {
   position: absolute;
   width: 100%;
-  top: 0;
-  text-align: center;
-  background: $gradient;
+  height: fit-content;
 }
 
-.label {
+.card-header {
   @include g.no-select;
-
-  text-shadow: 2px 2px 5px black;
+  top: 0;
+  text-align: center;
 }
 
 .card-footer {
-  & > .link-container {
-    display: flex;
-    justify-content: center;
-    box-sizing: border-box;
-    padding: 0.2rem;
-    background-color: t.$accent;
-  }
+  display: flex;
+  justify-content: space-around;
+  bottom: 0;
+  background-color: t.$accent;
+}
+
+p > strong {
+  text-shadow: 1px 1px 5px black;
 }
 
 @media (hover: hover) {
-  .label-container {
-    background: none;
-  }
 }
 
 @media (min-width: b.$breakpoint-small) {
-  .card-gallery {
-    justify-content: space-evenly;
-  }
-
-  code-card:hover .label-container {
-    opacity: 1;
-    background: $gradient;
-  }
-
-  .label-container {
-    opacity: 0;
-  }
 }
