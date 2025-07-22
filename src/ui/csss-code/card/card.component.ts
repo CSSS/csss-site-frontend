@@ -16,6 +16,17 @@ export class CardComponent implements OnInit {
    */
   public backgroundImage = input('');
 
+  /**
+   * Flag for the hover effect.
+   * If true hovering over the card makes it scale bigger,
+   * false makes the card have no hover effects.
+   */
+  protected isHoverOn = input(true);
+
+  /**
+   * Background image of the card.
+   * Will take up the entire card size.
+   */
   protected bgImage = signal<string>('');
 
   ngOnInit(): void {

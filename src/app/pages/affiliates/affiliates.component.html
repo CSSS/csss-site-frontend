@@ -18,24 +18,16 @@
           </div>
           <div class="card-footer">
             @if (aff.websiteUrl) {
-              <a [href]="aff.websiteUrl"><fa-icon [icon]="websiteIcon"></fa-icon></a>
+              <a [href]="aff.websiteUrl" target="_blank"
+                ><fa-icon [icon]="websiteIcon"></fa-icon
+              ></a>
             }
             @if (aff.discordUrl) {
-              <a [href]="aff.discordUrl"><fa-icon [icon]="discordIcon"></fa-icon></a>
+              <a [href]="aff.discordUrl" target="_blank"
+                ><fa-icon [icon]="discordIcon"></fa-icon
+              ></a>
             }
           </div>
-          <!-- <div class="card-content" ngProjectAs="card-content"> -->
-          <!--   <div class="label-container"> -->
-          <!--     <p class="label"> -->
-          <!--       <strong>{{ aff.label }}</strong> -->
-          <!--     </p> -->
-          <!--   </div> -->
-          <!--   <img [src]="aff.imgName" [alt]="aff.fullName" /> -->
-          <!-- </div> -->
-          <!-- <div class="card-footer" ngProjectAs="card-footer"> -->
-          <!--   <div class="link-container"> -->
-          <!--   </div> -->
-          <!-- </div> -->
         </code-card>
       }
     </div>
