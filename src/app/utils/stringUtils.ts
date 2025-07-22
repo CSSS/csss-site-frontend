@@ -1,4 +1,4 @@
-export type ImagesFolder = 'root' | 'affiliates';
+export type ImagesFolder = 'root' | 'affiliates' | 'placeholders';
 
 /**
  * Adds `https://` to a string.
@@ -15,7 +15,7 @@ export function toLocalImageUrl(fileName: string, folder?: ImagesFolder): string
   if (folder) {
     result += `${folder}/`;
   }
-  result += fileName;
+  result += `${fileName}')`;
 
   return result;
 }

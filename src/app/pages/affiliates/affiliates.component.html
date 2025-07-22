@@ -10,7 +10,7 @@
     <h2>Student Societies</h2>
     <div class="card-gallery">
       @for (aff of societies; track aff.label) {
-        <code-card [backgroundImage]="aff.imgName">
+        <code-card [bgImg]="aff.imgName">
           <div class="content-wrapper">
             <div class="card-header">
               <p>
@@ -38,7 +38,7 @@
     <h2>Clubs</h2>
     <div class="card-gallery">
       @for (aff of clubs; track aff.label) {
-        <code-card [backgroundImage]="aff.imgName">
+        <code-card [bgImg]="aff.imgName">
           <div class="content-wrapper">
             <div class="card-header">
               <p>
