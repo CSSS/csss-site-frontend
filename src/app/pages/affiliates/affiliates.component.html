@@ -2,7 +2,7 @@
   <header>
     <h1>Affiliates</h1>
     <p>
-      Being a Computing Science major means you'll be mingling with other disciplines and groups, so
+      Being a Computing Science major means you'll be mingling with other disciplines and unions, so
       make sure to check them out too!
     </p>
   </header>
@@ -11,22 +11,52 @@
     <div class="card-gallery">
       @for (aff of societies; track aff.label) {
         <code-card [backgroundImage]="aff.imgName">
-          <div class="card-header">
-            <p>
-              <strong>{{ aff.label }}</strong>
-            </p>
+          <div class="content-wrapper">
+            <div class="card-header">
+              <p>
+                <strong>{{ aff.label }}</strong>
+              </p>
+            </div>
+            <div class="card-footer">
+              @if (aff.websiteUrl) {
+                <a [href]="aff.websiteUrl" target="_blank"
+                  ><fa-icon [icon]="websiteIcon"></fa-icon
+                ></a>
+              }
+              @if (aff.discordUrl) {
+                <a [href]="aff.discordUrl" target="_blank"
+                  ><fa-icon [icon]="discordIcon"></fa-icon
+                ></a>
+              }
+            </div>
           </div>
-          <div class="card-footer">
-            @if (aff.websiteUrl) {
-              <a [href]="aff.websiteUrl" target="_blank"
-                ><fa-icon [icon]="websiteIcon"></fa-icon
-              ></a>
-            }
-            @if (aff.discordUrl) {
-              <a [href]="aff.discordUrl" target="_blank"
-                ><fa-icon [icon]="discordIcon"></fa-icon
-              ></a>
-            }
+        </code-card>
+      }
+    </div>
+  </section>
+  <section>
+    <h2>Clubs</h2>
+    <div class="card-gallery">
+      @for (aff of clubs; track aff.label) {
+        <code-card [backgroundImage]="aff.imgName">
+          <div class="content-wrapper">
+            <div class="card-header">
+              <p>
+                <strong>{{ aff.label }}</strong>
+              </p>
+            </div>
+            <div class="card-footer">
+              @if (aff.websiteUrl) {
+                <a [href]="aff.websiteUrl" target="_blank"
+                  ><fa-icon [icon]="websiteIcon"></fa-icon
+                ></a>
+              }
+              @if (aff.discordUrl) {
+                <a [href]="aff.discordUrl" target="_blank"
+                  ><fa-icon [icon]="discordIcon"></fa-icon
+                ></a>
+              }
+            </div>
           </div>
         </code-card>
       }

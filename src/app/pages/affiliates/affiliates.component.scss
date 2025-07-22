@@ -17,6 +17,12 @@ code-card {
   aspect-ratio: 1 / 1;
 }
 
+.content-wrapper {
+  position: relative;
+  inset: 0;
+  height: 100%;
+}
+
 .card-header,
 .card-footer {
   position: absolute;
@@ -35,6 +41,7 @@ code-card {
   justify-content: space-around;
   bottom: 0;
   background-color: t.$accent;
+  font-size: clamp(1rem, 3vw, 1.5rem);
 }
 
 p > strong {
@@ -42,4 +49,24 @@ p > strong {
 }
 
 @media (hover: hover) {
+  .content-wrapper {
+    overflow: hidden;
+  }
+
+  .card-header,
+  .card-footer {
+    transition: transform 0.3s ease;
+  }
+
+  .card-header {
+    transform: translateY(-100%);
+  }
+  .card-footer {
+    transform: translateY(100%);
+  }
+
+  code-card:hover .card-header,
+  code-card:hover .card-footer {
+    transform: translateY(0);
+  }
 }
