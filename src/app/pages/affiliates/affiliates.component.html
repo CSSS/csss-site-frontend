@@ -10,7 +10,20 @@
     <h2>Student Societies</h2>
     <div class="card-gallery">
       @for (aff of societies; track aff.label) {
-        <code-card>
+        <code-card [backgroundImage]="aff.imgName">
+          <div class="card-header">
+            <p>
+              <strong>{{ aff.label }}</strong>
+            </p>
+          </div>
+          <div class="card-footer">
+            @if (aff.websiteUrl) {
+              <a [href]="aff.websiteUrl"><fa-icon [icon]="websiteIcon"></fa-icon></a>
+            }
+            @if (aff.discordUrl) {
+              <a [href]="aff.discordUrl"><fa-icon [icon]="discordIcon"></fa-icon></a>
+            }
+          </div>
           <!-- <div class="card-content" ngProjectAs="card-content"> -->
           <!--   <div class="label-container"> -->
           <!--     <p class="label"> -->
@@ -19,16 +32,10 @@
           <!--   </div> -->
           <!--   <img [src]="aff.imgName" [alt]="aff.fullName" /> -->
           <!-- </div> -->
-          <div class="card-footer" ngProjectAs="card-footer">
-            <div class="link-container">
-              @if (aff.websiteUrl) {
-                <a [href]="aff.websiteUrl"><fa-icon [icon]="websiteIcon" size="2x"></fa-icon></a>
-              }
-              @if (aff.discordUrl) {
-                <a [href]="aff.discordUrl"><fa-icon [icon]="discordIcon" size="2x"></fa-icon></a>
-              }
-            </div>
-          </div>
+          <!-- <div class="card-footer" ngProjectAs="card-footer"> -->
+          <!--   <div class="link-container"> -->
+          <!--   </div> -->
+          <!-- </div> -->
         </code-card>
       }
     </div>
