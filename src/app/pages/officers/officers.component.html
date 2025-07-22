@@ -1,17 +1,19 @@
 <code-article>
-  <h1>Officers</h1>
-  <p>Executives are voted in by everyone in the CSSS and serve for a year.</p>
-  <p>
-    The exceptions to this are the <strong>Executives at Large</strong>, who are elected for just
-    <strong>one semester</strong>.
-  </p>
+  <header>
+    <h1>Officers</h1>
+    <p>Executives are voted in by everyone in the CSSS and serve for a year.</p>
+    <p>
+      The exceptions to this are the <strong>Executives at Large</strong>, who are elected for just
+      <strong>one semester</strong>.
+    </p>
+  </header>
   <div class="timeline" #timeline>
     @for (year of yearsToDisplay(); track $index) {
       <div
         class="timeslot clickable"
         role="tab"
-        [ariaSelected]="this.displayAdmin().startYear === year"
-        (click)="lineClicked(year)"
+        [ariaSelected]="this.currentYear() === year"
+        (click)="currentYear.set(year)"
       >
         <div class="time-label">{{ year }}</div>
         <div class="line"></div>
@@ -19,28 +21,17 @@
     }
   </div>
 
-  <section class="gallery">
-    @for (_ of displayAdmin().members; track $index; let i = $index) {
-      <div class="card-wrapper" #execCard>
-        <code-card
-          class="card-front"
-          [backgroundImage]="toLocalUrl(frontAdmin().members[i].photoUrl)"
-        >
-          <div class="footer-container" ngProjectAs="card-footer">
-            <h3>{{ frontAdmin().members[i].name }}</h3>
-            <h4>{{ frontAdmin().members[i].position }}</h4>
+  <section>
+    <h2>Current Executives</h2>
+    <div class="gallery">
+      @for (exec of currentAdministration()?.members; track $index; let i = $index) {
+        <code-card [bgImg]="exec.photoName">
+          <div class="card-footer">
+            <h3>{{ exec.name }}</h3>
+            <h4>{{ exec.position }}</h4>
           </div>
         </code-card>
-        <code-card
-          class="card-back"
-          [backgroundImage]="toLocalUrl(backAdmin().members[i].photoUrl)"
-        >
-          <div class="footer-container" ngProjectAs="card-footer">
-            <h3>{{ backAdmin().members[i].name }}</h3>
-            <h4>{{ backAdmin().members[i].position }}</h4>
-          </div>
-        </code-card>
-      </div>
-    }
+      }
+    </div>
   </section>
 </code-article>

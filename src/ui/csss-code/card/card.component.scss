@@ -1,4 +1,5 @@
-.container {
+:host {
+  display: block;
   position: relative;
   background-repeat: no-repeat;
   background-size: cover;
@@ -8,8 +9,8 @@
   width: 100%;
   box-shadow: 10px 5px 5px black;
   transition: transform 0.3s ease;
-}
 
-.container.hoverable:hover {
-  transform: scale(1.1);
+  &.hoverable:hover {
+    transform: scale(1.1);
+  }
 }
