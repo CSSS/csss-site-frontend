@@ -17,7 +17,7 @@ type Semester = 'Spring' | 'Summer' | 'Fall';
 interface Executive {
   name: string;
   position: ExecPosition;
-  photoUrl: string;
+  photoName: string;
   semester?: Semester;
 }
 
@@ -35,62 +35,62 @@ export const executives: ExecutiveAdministration[] = [
       {
         name: 'Mabel Ling',
         position: 'President',
-        photoUrl: 'ballerina-cappuccina.png'
+        photoName: 'ballerina-cappuccina.png'
       },
       {
         name: 'Karen Yao',
         position: 'Vice President',
-        photoUrl: 'bobritto-bandito.png'
+        photoName: 'bobritto-bandito.png'
       },
       {
         name: 'Matthew Liu',
         position: 'Treasurer',
-        photoUrl: 'tralalero-tralala.png'
+        photoName: 'tralalero-tralala.png'
       },
       {
         name: 'Michael Ho',
         position: 'Director of Resources',
-        photoUrl: 'bombombini-gusini.png'
+        photoName: 'bombombini-gusini.png'
       },
       {
         name: 'Samantha Gan',
         position: 'Director of Events',
-        photoUrl: 'brr-brr-patapim.png'
+        photoName: 'brr-brr-patapim.png'
       },
       {
         name: 'Ilia Mosaddegh',
         position: 'Director of Educational Events',
-        photoUrl: 'lirili-larila.png'
+        photoName: 'lirili-larila.png'
       },
       {
         name: 'Nathan Huynh',
         position: 'Assistant Director of Events',
-        photoUrl: 'chimpanzini-bananini.png'
+        photoName: 'chimpanzini-bananini.png'
       },
       {
         name: 'Chloe Shen',
         position: 'Director of Communications',
-        photoUrl: 'glorbo-fruttodrillo.png'
+        photoName: 'glorbo-fruttodrillo.png'
       },
       {
         name: 'Chloe Xie',
         position: 'Director of Multimedia',
-        photoUrl: 'tung-tung-tung-sahur.png'
+        photoName: 'tung-tung-tung-sahur.png'
       },
       {
         name: 'Dina Zeng',
         position: 'Director of Archives',
-        photoUrl: 'tric-trac-baraboom.png'
+        photoName: 'tric-trac-baraboom.png'
       },
       {
         name: 'Aiya Bowman',
         position: 'Exec at Large',
-        photoUrl: 'trippi-troppi.png'
+        photoName: 'trippi-troppi.png'
       },
       {
         name: 'Alexander Ng',
         position: 'Exec at Large',
-        photoUrl: 'giraffa-celeste.png'
+        photoName: 'giraffa-celeste.png'
       }
     ]
   },
@@ -101,62 +101,62 @@ export const executives: ExecutiveAdministration[] = [
       {
         name: 'Isabelle Kwan',
         position: 'President',
-        photoUrl: 'bobritto-bandito.png'
+        photoName: 'bobritto-bandito.png'
       },
       {
         name: 'Jake Choi',
         position: 'Vice President',
-        photoUrl: 'bobritto-bandito.png'
+        photoName: 'bobritto-bandito.png'
       },
       {
         name: 'Mabel Ling',
         position: 'Treasurer',
-        photoUrl: 'tralalero-tralala.png'
+        photoName: 'tralalero-tralala.png'
       },
       {
         name: 'Aiya Bowman',
         position: 'Director of Resources',
-        photoUrl: 'bombombini-gusini.png'
+        photoName: 'bombombini-gusini.png'
       },
       {
         name: 'Emily Qin',
         position: 'Director of Events',
-        photoUrl: 'brr-brr-patapim.png'
+        photoName: 'brr-brr-patapim.png'
       },
       {
         name: 'Elvin Zukic',
         position: 'Director of Educational Events',
-        photoUrl: 'lirili-larila.png'
+        photoName: 'lirili-larila.png'
       },
       {
         name: 'Taranveer Singh',
         position: 'Assistant Director of Events',
-        photoUrl: 'chimpanzini-bananini.png'
+        photoName: 'chimpanzini-bananini.png'
       },
       {
         name: 'Chloe Shen',
         position: 'Director of Communications',
-        photoUrl: 'glorbo-fruttodrillo.png'
+        photoName: 'glorbo-fruttodrillo.png'
       },
       {
         name: 'Annie Jiao',
         position: 'Director of Multimedia',
-        photoUrl: 'tung-tung-tung-sahur.png'
+        photoName: 'tung-tung-tung-sahur.png'
       },
       {
         name: 'Dina Zeng',
         position: 'Director of Archives',
-        photoUrl: 'tric-trac-baraboom.png'
+        photoName: 'tric-trac-baraboom.png'
       },
       {
         name: 'Rastko Koprivica',
         position: 'Exec at Large',
-        photoUrl: 'trippi-troppi.png'
+        photoName: 'trippi-troppi.png'
       },
       {
         name: 'Michael Ho',
         position: 'Exec at Large',
-        photoUrl: 'giraffa-celeste.png'
+        photoName: 'giraffa-celeste.png'
       }
     ]
   },
@@ -167,62 +167,62 @@ export const executives: ExecutiveAdministration[] = [
       {
         name: 'Justin Yan',
         position: 'President',
-        photoUrl: 'ballerina-cappuccina.png'
+        photoName: 'ballerina-cappuccina.png'
       },
       {
         name: 'Valerie Kistrina',
         position: 'Vice President',
-        photoUrl: 'bobritto-bandito.png'
+        photoName: 'bobritto-bandito.png'
       },
       {
         name: 'Gabe Stang',
         position: 'Treasurer',
-        photoUrl: 'tralalero-tralala.png'
+        photoName: 'tralalero-tralala.png'
       },
       {
         name: 'Sean Chan',
         position: 'Director of Resources',
-        photoUrl: 'bombombini-gusini.png'
+        photoName: 'bombombini-gusini.png'
       },
       {
         name: 'Patrick Peake',
         position: 'Director of Events',
-        photoUrl: 'brr-brr-patapim.png'
+        photoName: 'brr-brr-patapim.png'
       },
       {
         name: 'Micah Baker',
         position: 'Director of Educational Events',
-        photoUrl: 'lirili-larila.png'
+        photoName: 'lirili-larila.png'
       },
       {
         name: 'Arya Faghihy',
         position: 'Assistant Director of Events',
-        photoUrl: 'chimpanzini-bananini.png'
+        photoName: 'chimpanzini-bananini.png'
       },
       {
         name: 'Isabelle Kwan',
         position: 'Director of Communications',
-        photoUrl: 'glorbo-fruttodrillo.png'
+        photoName: 'glorbo-fruttodrillo.png'
       },
       {
         name: 'Yolanda Lam',
         position: 'Director of Multimedia',
-        photoUrl: 'tung-tung-tung-sahur.png'
+        photoName: 'tung-tung-tung-sahur.png'
       },
       {
         name: 'Dina Zeng',
         position: 'Director of Archives',
-        photoUrl: 'tric-trac-baraboom.png'
+        photoName: 'tric-trac-baraboom.png'
       },
       {
         name: 'Jake Choi',
         position: 'Exec at Large',
-        photoUrl: 'trippi-troppi.png'
+        photoName: 'trippi-troppi.png'
       },
       {
         name: 'Joyce Zhang',
         position: 'Exec at Large',
-        photoUrl: 'giraffa-celeste.png'
+        photoName: 'giraffa-celeste.png'
       }
     ]
   }

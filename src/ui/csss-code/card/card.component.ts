@@ -1,4 +1,5 @@
-import { ChangeDetectionStrategy, Component, input, OnInit, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, HostBinding, inject, input } from '@angular/core';
+import { DomSanitizer, SafeStyle } from '@angular/platform-browser';
 import { pathToCssUrl } from 'utils/stringUtils';
 
 @Component({
@@ -8,13 +9,27 @@ import { pathToCssUrl } from 'utils/stringUtils';
   styleUrl: './card.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class CardComponent implements OnInit {
+export class CardComponent {
+  /**
+   * The CSS background image URL.
+   */
+  @HostBinding('style.background-image') protected get backgroundImage(): SafeStyle {
+    return this.sanitizer.bypassSecurityTrustStyle(pathToCssUrl(this.bgImg()));
+  }
+
+  /**
+   * The CSS class that enables this to be hoverable.
+   */
+  @HostBinding('class.hoverable') get hoverable(): boolean {
+    return this.isHoverOn();
+  }
+
   /**
    * URL of the image to use.
    * This image will cover the entire card.
    * Input should include the full path.
    */
-  public backgroundImage = input('');
+  bgImg = input('');
 
   /**
    * Flag for the hover effect.
@@ -24,16 +39,7 @@ export class CardComponent implements OnInit {
   protected isHoverOn = input(true);
 
   /**
-   * Background image of the card.
-   * Will take up the entire card size.
+   * Sanitizes inputs for Angular.
    */
-  protected bgImage = signal<string>('');
-
-  ngOnInit(): void {
-    this.setBackground(this.backgroundImage());
-  }
-
-  setBackground(imageURL: string): void {
-    this.bgImage.set(pathToCssUrl(imageURL));
-  }
+  private sanitizer = inject(DomSanitizer);
 }
