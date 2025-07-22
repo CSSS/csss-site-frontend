@@ -25,7 +25,7 @@
     <h2>Current Executives</h2>
     <div class="gallery">
       @for (exec of currentAdministration()?.members; track $index; let i = $index) {
-        <code-card [bgImg]="exec.photoName">
+        <code-card [bgImg]="exec.photoName" #execCard>
           <div class="card-footer">
             <h3>{{ exec.name }}</h3>
             <h4>{{ exec.position }}</h4>

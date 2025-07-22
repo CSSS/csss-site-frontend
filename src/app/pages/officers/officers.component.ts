@@ -3,12 +3,16 @@ import {
   ChangeDetectionStrategy,
   Component,
   computed,
+  effect,
   ElementRef,
   OnDestroy,
   signal,
-  viewChild
+  viewChild,
+  viewChildren
 } from '@angular/core';
+import { CardComponent } from '@csss-code/card/card.component';
 import { CsssCodeModule } from '@csss-code/csss-code.module';
+import { gsap } from 'gsap';
 import { ExecutiveAdministration, executives, getRandomExecImage } from './officers';
 
 const REM = 16;
@@ -33,11 +37,6 @@ export class OfficersComponent implements AfterViewInit, OnDestroy {
     }
     return result;
   });
-
-  /**
-   * Timeline element that wraps the lines.
-   */
-  private timelineEl = viewChild.required<ElementRef<HTMLDivElement>>('timeline');
 
   /**
    * The year currently selected.
@@ -67,6 +66,13 @@ export class OfficersComponent implements AfterViewInit, OnDestroy {
     return newAdmin;
   });
 
+  private execCards = viewChildren<CardComponent>('execCard');
+
+  /**
+   * Timeline element that wraps the lines.
+   */
+  private timelineEl = viewChild.required<ElementRef<HTMLDivElement>>('timeline');
+
   /**
    * Observer to recalculate the line widths if the viewport width changes.
    */
@@ -82,6 +88,16 @@ export class OfficersComponent implements AfterViewInit, OnDestroy {
    * Will probably need some way to remove older cached entries if memory becomes an issue.
    */
   private cachedAdmins = new Map<number, ExecutiveAdministration>();
+
+  constructor() {
+    effect(() => {
+      if (!this.currentAdministration() || !this.execCards().length) {
+        return;
+      }
+
+      this.animateCards();
+    });
+  }
 
   ngAfterViewInit(): void {
     // Watch for viewport changes so we know how many lines to print.
@@ -101,13 +117,28 @@ export class OfficersComponent implements AfterViewInit, OnDestroy {
     this.resizeObs.disconnect();
   }
 
+  private animateCards(): void {
+    const cards = this.execCards();
+    if (!cards || !cards.length) {
+      return;
+    }
+
+    const targets = cards.map(el => el.elementRef.nativeElement);
+    gsap.from(targets, {
+      bottom: -50,
+      opacity: 0,
+      duration: 0.3,
+      ease: 'power3.out'
+    });
+  }
+
   /**
    * Changes the files name to one that can be used to set the background image.
    *
    * @param fileName - The file name to change. Must be in the `public/images/` folder
    * @returns File name in the CSS URL form.
    */
-  protected toLocalUrl(fileName: string): string {
+  private toLocalUrl(fileName: string): string {
     return `images/placeholders/${getRandomExecImage()}`;
   }
 
