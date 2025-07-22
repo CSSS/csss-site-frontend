@@ -28,7 +28,7 @@ export class AffiliatesComponent {
         discordUrl: aff.discordUrl ? prependHttps(aff.discordUrl) : undefined,
         imgName: `images/affiliates/${aff.imgName}.png`
       };
-      if (aff.type === 'society') {
+      if (aff.type === 'union') {
         this.societies.push(newAff);
       } else {
         this.clubs.push(newAff);
