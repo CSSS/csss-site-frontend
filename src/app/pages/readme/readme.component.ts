@@ -35,7 +35,10 @@ export class ReadMeComponent implements AfterViewInit {
     gsap.from(split.chars, {
       display: 'none',
       delay: 0.5,
-      stagger: 0.05
+      stagger: 0.05,
+      onComplete() {
+        split.revert();
+      }
     });
   }
 }
