@@ -35,14 +35,16 @@ header {
     align-items: center;
     height: 100%;
     width: 100%;
-
-    & > fa-icon:hover {
-      filter: theme.$hov-glow;
-    }
   }
 
   & > .focused {
     background-color: theme.$bg0;
+  }
+}
+
+.act-button:hover {
+  > fa-icon {
+    filter: theme.$hov-glow;
   }
 }
 

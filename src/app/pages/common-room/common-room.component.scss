@@ -1,5 +1,8 @@
-code-card h3 > * {
+code-card h3 {
   background-color: black;
+  margin: 0;
+  position: absolute;
+  bottom: 0.5rem;
 }
 
 section + section {
