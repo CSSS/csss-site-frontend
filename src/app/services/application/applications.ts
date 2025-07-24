@@ -52,6 +52,26 @@ export const routeApplicationMap: Map<number, AppInfo> = new Map([
     1,
     {
       id: 1,
+      label: 'Officers',
+      activityKey: '',
+      key: 'officers',
+      route: '/officers'
+    }
+  ],
+  [
+    2,
+    {
+      id: 2,
+      label: 'Committees',
+      activityKey: '',
+      key: 'committees',
+      route: '/committees'
+    }
+  ],
+  [
+    3,
+    {
+      id: 3,
       label: 'Affiliates',
       activityKey: '',
       key: 'affiliates',
@@ -59,23 +79,13 @@ export const routeApplicationMap: Map<number, AppInfo> = new Map([
     }
   ],
   [
-    2,
+    4,
     {
-      id: 2,
+      id: 4,
       label: 'Common Room',
       activityKey: '',
       key: 'common-room',
       route: '/common-room'
-    }
-  ],
-  [
-    3,
-    {
-      id: 3,
-      label: 'Officers',
-      activityKey: '',
-      key: 'officers',
-      route: '/officers'
     }
   ]
 ]);

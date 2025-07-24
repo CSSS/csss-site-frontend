@@ -23,35 +23,35 @@ export class NavbarComponent {
           link: '/readme'
         },
         {
-          key: 'affiliates',
-          label: 'Affiliates',
+          key: 'officers',
+          label: 'Officers',
           type: 'file',
-          link: '/affiliates'
+          link: '/officers'
         },
-        // {
-        //   key: 'committees',
-        //   label: 'Committees',
-        //   type: 'file',
-        //   link: '/committees'
-        // },
+        {
+          key: 'committees',
+          label: 'Committees',
+          type: 'file',
+          link: '/committees'
+        },
         {
           key: 'common-room',
           label: 'Common Room',
           type: 'file',
           link: '/common-room'
         },
+        {
+          key: 'affiliates',
+          label: 'Affiliates',
+          type: 'file',
+          link: '/affiliates'
+        }
         // {
         //   key: 'documents',
         //   label: 'Documents',
         //   type: 'file',
         //   link: '/documents'
         // },
-        {
-          key: 'officers',
-          label: 'Officers',
-          type: 'file',
-          link: '/officers'
-        }
       ]
     },
     {
