@@ -9,7 +9,7 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "lint": "eslint ./src ./scripts --ext .ts --config eslint.config.mjs",
-    "format": "prettier ./src ./sripts --write",
+    "format": "prettier ./src ./scripts --write",
     "pre-commit": "npm run lint && npm run format"
   },
   "private": true,
