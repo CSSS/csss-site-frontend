@@ -1,5 +1,5 @@
 ---
-name: Planned feature
+name: Approved feature
 about: Feature that has been approved (for ones that don't have discussions)
 title: "[Feature] <feature name>"
 labels: enhancement
