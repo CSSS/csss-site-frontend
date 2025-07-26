@@ -86,7 +86,6 @@ export class ApplicationService {
     // The currently focused app shares the activity with the incoming app, so remove the old app.
     if (focusedApp.activityKey === application.activityKey) {
       this.closeApplication(focusedApp.id);
-      console.log(focusedApp.key);
       return;
     }
 
@@ -94,7 +93,6 @@ export class ApplicationService {
     for (const app of this.runningApplications().values()) {
       if (app.activityKey === application.key && app.id !== application.id) {
         this.closeApplication(app.id);
-        console.log(app.key);
         break;
       }
     }
