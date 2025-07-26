@@ -33,11 +33,10 @@ a {
 
 article.content {
   header {
-    font-size: 50px;
+    margin-top: 5vh;
   }
 
   h1 {
-    margin-top: 5vh;
     text-align: center;
     font-size: clamp(1.8rem, 2.5vw, 2.2rem);
   }
@@ -55,5 +54,9 @@ article.content {
   li,
   h3 {
     font-size: clamp(1rem, 1.4vw, 1.4rem);
+  }
+
+  section + section {
+    margin-top: 2rem;
   }
 }
