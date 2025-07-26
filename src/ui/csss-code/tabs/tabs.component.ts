@@ -1,11 +1,11 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
-  selector: 'code-tabbar',
+  selector: 'code-tab-bar',
   standalone: false,
-  templateUrl: './tabbar.component.html',
-  styleUrl: './tabbar.component.scss',
+  templateUrl: './tabs.component.html',
+  styleUrl: './tabs.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 // eslint-disable-next-line @typescript-eslint/no-extraneous-class
-export class TabBarComponent {}
+export class TabsComponent {}

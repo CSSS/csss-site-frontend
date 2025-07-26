@@ -25,7 +25,7 @@ export interface TabBarItem {
 }
 
 @Component({
-  selector: 'csss-tabs',
+  selector: 'csss-tab-bar',
   imports: [CsssCodeModule],
   templateUrl: './tabs.component.html',
   styleUrl: './tabs.component.scss',
@@ -38,7 +38,7 @@ export class TabsComponent implements AfterViewInit, OnDestroy {
   }
 
   /**
-   * Gives the tabs the applications to display.
+   * Gives the tab-bar the applications to display.
    */
   private applicationService = inject(ApplicationService);
 
@@ -48,7 +48,7 @@ export class TabsComponent implements AfterViewInit, OnDestroy {
   private breakpointObs = inject(BreakpointObserver);
 
   /**
-   * The tabs that should be displayed.
+   * The tab-bar that should be displayed.
    */
   tabs: Signal<TabBarItem[]> = computed(() => {
     const result: TabBarItem[] = [];

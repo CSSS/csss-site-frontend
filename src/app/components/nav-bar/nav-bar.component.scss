@@ -1,5 +1,5 @@
-@use 'theme';
-@use 'globals' as g;
+@use '../../../ui/csss-code/theme';
+@use '../../../styles/globals' as g;
 
 $item-spacing: 1rem; // Padding for the activity bar items.
 // size of the activity + tab bar for small device widths

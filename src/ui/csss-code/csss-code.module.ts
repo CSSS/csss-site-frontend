@@ -5,27 +5,21 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ArticleComponent } from './article/article.component';
 import { ButtonComponent } from './button/button.component';
 import { CardComponent } from './card/card.component';
-import { NavbarItemComponent } from './navbar/navbar-item/navbar-item.component';
-import { NavbarComponent } from './navbar/navbar.component';
-import { TabBarComponent } from './tabbar/tabbar.component';
+import { TabsComponent } from '@csss-code/tabs/tabs.component';
 
 @NgModule({
   declarations: [
     ArticleComponent,
     ButtonComponent,
     CardComponent,
-    NavbarComponent,
-    NavbarItemComponent,
-    TabBarComponent
+    TabsComponent
   ],
   imports: [CommonModule, RouterModule, FontAwesomeModule],
   exports: [
     ArticleComponent,
     ButtonComponent,
     CardComponent,
-    NavbarComponent,
-    NavbarItemComponent,
-    TabBarComponent
+    TabsComponent
   ]
 })
 // eslint-disable-next-line @typescript-eslint/no-extraneous-class

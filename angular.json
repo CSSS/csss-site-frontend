@@ -13,7 +13,7 @@
       },
       "root": "",
       "sourceRoot": "src",
-      "prefix": "csss",
+      "prefix": "cs",
       "architect": {
         "build": {
           "builder": "@angular/build:application",
