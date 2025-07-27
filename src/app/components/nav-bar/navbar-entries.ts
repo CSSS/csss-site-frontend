@@ -79,7 +79,7 @@ export const NAVBAR_ENTRIES: NavbarItem[] = [
       {
         key: 'events',
         label: 'Upcoming',
-        type: 'wip',
+        type: 'file',
         link: '/events'
       },
       {
