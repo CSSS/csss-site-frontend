@@ -7,6 +7,7 @@ import {
   OnInit,
   signal
 } from '@angular/core';
+import { RouterModule } from '@angular/router';
 import { MenuItemComponent } from '@csss-code/menu/menu-item/menu-item.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faCopy } from '@fortawesome/free-solid-svg-icons';
@@ -16,7 +17,7 @@ import { BREAKPOINT_STRING_MAP } from 'styles/breakpoints';
 
 @Component({
   selector: 'cs-nav-bar',
-  imports: [FontAwesomeModule, MenuItemComponent],
+  imports: [FontAwesomeModule, MenuItemComponent, RouterModule],
   templateUrl: './nav-bar.component.html',
   styleUrl: './nav-bar.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
