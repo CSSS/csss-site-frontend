@@ -35,6 +35,11 @@ export const routes: Routes = [
       import('./pages/affiliates/affiliates.component').then(m => m.AffiliatesComponent),
     title: makeTitle('Affiliates')
   },
+  {
+    path: 'events',
+    loadComponent: () => import('./pages/events/events.component').then(m => m.EventsComponent),
+    title: makeTitle('Events')
+  },
   { path: '', component: HomeComponent, title: 'Computing Science Student Society' },
   { path: '**', component: HomeComponent }
 ];
