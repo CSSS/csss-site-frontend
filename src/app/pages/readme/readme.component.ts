@@ -7,15 +7,15 @@ import {
   viewChild
 } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { CsssCodeModule } from '@csss-code/csss-code.module';
+import { CardComponent } from '@csss-code/card/card.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faArrowDown, faArrowUpRightFromSquare } from '@fortawesome/free-solid-svg-icons';
 import { gsap } from 'gsap';
 import { SplitText } from 'gsap/SplitText';
 
 @Component({
-  selector: 'csss-readme',
-  imports: [CsssCodeModule, RouterModule, FontAwesomeModule],
+  selector: 'cs-readme',
+  imports: [CardComponent, RouterModule, FontAwesomeModule],
   templateUrl: './readme.component.html',
   styleUrl: './readme.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush

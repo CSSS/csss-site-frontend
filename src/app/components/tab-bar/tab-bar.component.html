@@ -1,0 +1,11 @@
+@for (tab of tabs(); track $index) {
+  <div class="tab clickable" [class.focused]="tab.focused">
+    <div class="click-nav" (click)="focusTab(tab)">
+      <div class="icon"></div>
+      <div class="label">{{ tab.label }}</div>
+    </div>
+    <div class="x-container">
+      <button type="button" (click)="closeTab(tab.id)">&#x2715;</button>
+    </div>
+  </div>
+}

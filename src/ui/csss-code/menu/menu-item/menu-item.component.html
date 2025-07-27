@@ -1,4 +1,4 @@
-<!-- This is the template of the navbar item, i.e. the actual nav entry's look -->
+<!-- This is the template of the menu item, i.e. the actual nav entry's look -->
 <ng-template #item>
   @if (icon(); as i) {
     <fa-icon class="fa-fw" [style.paddingLeft.em]="depth() * 1.5" [icon]="i" />
@@ -25,7 +25,7 @@
 @if (isOpen() && entry().children?.length) {
   <ul>
     @for (entry of entry().children; track entry.key) {
-      <li><code-navbar-item [depth]="depth() + 1" [entry]="entry" /></li>
+      <li><code-menu-item [depth]="depth() + 1" [entry]="entry" /></li>
     }
   </ul>
 }

@@ -10,8 +10,8 @@ import {
   viewChild,
   viewChildren
 } from '@angular/core';
+import { ArticleComponent } from '@csss-code/article/article.component';
 import { CardComponent } from '@csss-code/card/card.component';
-import { CsssCodeModule } from '@csss-code/csss-code.module';
 import { gsap } from 'gsap';
 import { ExecutiveAdministration, executives, getRandomExecImage } from './officers';
 
@@ -19,8 +19,8 @@ const REM = 16;
 const LINE_WIDTH = 6;
 
 @Component({
-  selector: 'csss-officers',
-  imports: [CsssCodeModule],
+  selector: 'cs-officers',
+  imports: [CardComponent, ArticleComponent],
   templateUrl: './officers.component.html',
   styleUrl: './officers.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
@@ -138,6 +138,7 @@ export class OfficersComponent implements AfterViewInit, OnDestroy {
    * @param fileName - The file name to change. Must be in the `public/images/` folder
    * @returns File name in the CSS URL form.
    */
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   private toLocalUrl(fileName: string): string {
     return `images/placeholders/${getRandomExecImage()}`;
   }
