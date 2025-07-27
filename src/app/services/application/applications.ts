@@ -1,7 +1,7 @@
 /**
  * Interface representing an Application that is registered to run.
  * Each application will be run in an activity.
- * Applications that share a activity will share a tab, meaning the previous activity will be lost.
+ * Applications that share a activity will share a tabs, meaning the previous activity will be lost.
  */
 export interface AppInfo {
   /**
@@ -10,7 +10,7 @@ export interface AppInfo {
   id: number;
 
   /**
-   * The name on the tab for this application.
+   * The name on the tabs for this application.
    */
   label: string;
 

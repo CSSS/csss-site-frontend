@@ -4,7 +4,7 @@ import { faDiscord, faFacebook, faInstagram, faLinkedin } from '@fortawesome/fre
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
-  selector: 'csss-footer',
+  selector: 'cs-footer',
   imports: [FontAwesomeModule],
   templateUrl: './footer.component.html',
   styleUrl: './footer.component.scss',
