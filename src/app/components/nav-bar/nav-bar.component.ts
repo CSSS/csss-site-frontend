@@ -7,12 +7,12 @@ import {
   OnInit,
   signal
 } from '@angular/core';
+import { MenuItemComponent } from '@csss-code/menu/menu-item/menu-item.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faCopy } from '@fortawesome/free-solid-svg-icons';
 import { csssLogo } from 'assets/icons/csss-logo';
-import { BREAKPOINT_STRING_MAP } from 'styles/breakpoints';
 import { NAVBAR_ENTRIES, NavbarItem } from 'components/nav-bar/navbar-entries';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { MenuItemComponent } from '@csss-code/menu/menu-item/menu-item.component';
+import { BREAKPOINT_STRING_MAP } from 'styles/breakpoints';
 
 @Component({
   selector: 'cs-nav-bar',
@@ -22,11 +22,6 @@ import { MenuItemComponent } from '@csss-code/menu/menu-item/menu-item.component
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class NavBarComponent implements OnInit {
-  /**
-   * The title at the top of the header
-   */
-  title = 'SFU CSSS'
-
   /**
    * Navbar entries
    */

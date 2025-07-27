@@ -11,7 +11,6 @@ import {
   Signal,
   WritableSignal
 } from '@angular/core';
-import { CsssCodeModule } from '@csss-code/csss-code.module';
 import { Subscription } from 'rxjs';
 import { ApplicationService } from 'services/application/application.service';
 import { BREAKPOINT_STRING_MAP } from 'styles/breakpoints';
@@ -25,20 +24,23 @@ export interface TabBarItem {
 }
 
 @Component({
-  selector: 'csss-tab-bar',
-  imports: [CsssCodeModule],
-  templateUrl: './tabs.component.html',
-  styleUrl: './tabs.component.scss',
+  selector: 'cs-tab-bar',
+  templateUrl: './tab-bar.component.html',
+  styleUrl: './tab-bar.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class TabsComponent implements AfterViewInit, OnDestroy {
+export class TabBarComponent implements AfterViewInit, OnDestroy {
+  @HostBinding('attr.aria-role') get ariaRole(): string {
+    return 'tablist';
+  }
+
   @HostBinding('style.height')
   get height(): string {
     return this.isHidden() ? '0px' : STRUCTURE_MAP['tab-bar-h'];
   }
 
   /**
-   * Gives the tab-bar the applications to display.
+   * Gives the tabs-bar the applications to display.
    */
   private applicationService = inject(ApplicationService);
 
@@ -48,7 +50,7 @@ export class TabsComponent implements AfterViewInit, OnDestroy {
   private breakpointObs = inject(BreakpointObserver);
 
   /**
-   * The tab-bar that should be displayed.
+   * The tabs-bar that should be displayed.
    */
   tabs: Signal<TabBarItem[]> = computed(() => {
     const result: TabBarItem[] = [];
@@ -70,7 +72,7 @@ export class TabsComponent implements AfterViewInit, OnDestroy {
   private isSmall: WritableSignal<boolean> = signal(false);
 
   /**
-   * Hide the tab bar if the screen size is small and there are no applications running.
+   * Hide the tabs bar if the screen size is small and there are no applications running.
    */
   isHidden: Signal<boolean> = computed(
     () => this.isSmall() && this.applicationService.runningApplications().size === 0
@@ -99,9 +101,9 @@ export class TabsComponent implements AfterViewInit, OnDestroy {
   }
 
   /**
-   * Informs the application service to close a tab.
+   * Informs the application service to close a tabs.
    *
-   * @param index - The index of the tab to close.
+   * @param index - The index of the tabs to close.
    */
   closeTab(index: number): void {
     this.applicationService.closeApplication(index);

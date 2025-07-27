@@ -11,7 +11,6 @@ import { pathToCssUrl } from 'utils/stringUtils';
 
 @Component({
   selector: 'code-card',
-  standalone: false,
   templateUrl: './card.component.html',
   styleUrl: './card.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
