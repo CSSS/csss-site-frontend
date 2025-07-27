@@ -3,9 +3,12 @@ import {
   ChangeDetectionStrategy,
   Component,
   computed,
+  ElementRef,
+  HostListener,
   inject,
   OnInit,
-  signal
+  signal,
+  viewChild
 } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { MenuItemComponent } from '@csss-code/menu/menu-item/menu-item.component';
@@ -23,20 +26,49 @@ import { BREAKPOINT_STRING_MAP } from 'styles/breakpoints';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class NavBarComponent implements OnInit {
+  @HostListener('document:click', ['$event'])
+  handleOutsideClick(event: MouseEvent): void {
+    if (this.breakpointObs.isMatched(BREAKPOINT_STRING_MAP['small'])) {
+      return;
+    }
+    if (
+      !this.navBarEl()?.nativeElement.contains(event.target) &&
+      !this.toggleButtonEl()?.nativeElement.contains(event.target) &&
+      !this.activityListEl()?.nativeElement.contains(event.target)
+    ) {
+      this.isFileSystemOpen.set(false);
+    }
+  }
+
+  /**
+   * Navbar/file system element
+   */
+  navBarEl = viewChild<ElementRef>('navBar');
+
+  /**
+   * Button that toggles the visibility of the navbar
+   */
+  toggleButtonEl = viewChild<ElementRef>('toggleButton');
+
+  /**
+   * The activity list bar
+   */
+  activityListEl = viewChild<ElementRef>('activityList');
+
   /**
    * Navbar entries
    */
-  entries = signal<NavbarItem[]>(NAVBAR_ENTRIES);
+  protected entries = signal<NavbarItem[]>(NAVBAR_ENTRIES);
 
   /**
    * Flag representing if the menu is closed or open.
    */
-  isFileSystemOpen = signal<boolean>(false);
+  protected isFileSystemOpen = signal<boolean>(false);
 
   /**
    * Signal that converts the nav entries, in case they need to be dynamically instantiated.
    */
-  navItems = computed(() => this.navEntryToItem(this.entries()));
+  protected navItems = computed(() => this.navEntryToItem(this.entries()));
 
   /**
    * Icon for the CSSS Logo.

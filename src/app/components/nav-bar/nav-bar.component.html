@@ -1,13 +1,18 @@
-<aside class="activity-list">
+<aside class="activity-list" #activityList>
   <a class="act-button clickable" routerLink="/"
     ><fa-icon class="csss-logo" [icon]="csssIcon" size="2x"
   /></a>
-  <div class="act-button clickable fs-icon" [class.focused]="isFileSystemOpen()">
-    <fa-icon (click)="toggleFileSystem()" [icon]="copyIcon" size="2x" />
+  <div
+    class="act-button clickable fs-icon"
+    [class.focused]="isFileSystemOpen()"
+    (click)="toggleFileSystem()"
+    #toggleButton
+  >
+    <fa-icon [icon]="copyIcon" size="2x" />
   </div>
 </aside>
 
-<aside class="navbar" [hidden]="!isFileSystemOpen()">
+<aside class="navbar" [hidden]="!isFileSystemOpen()" #navBar>
   <header class="navbar-header">SFU CSSS</header>
   <nav>
     <ul class="navbar-list">
