@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { ArticleComponent } from '@csss-code/article/article.component';
 
 @Component({
-  selector: 'csss-committees',
+  selector: 'cs-committees',
   imports: [ArticleComponent],
   templateUrl: './committees.component.html',
   styleUrl: './committees.component.scss',

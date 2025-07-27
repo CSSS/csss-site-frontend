@@ -14,7 +14,7 @@ import { gsap } from 'gsap';
 import { SplitText } from 'gsap/SplitText';
 
 @Component({
-  selector: 'csss-readme',
+  selector: 'cs-readme',
   imports: [CardComponent, RouterModule, FontAwesomeModule],
   templateUrl: './readme.component.html',
   styleUrl: './readme.component.scss',

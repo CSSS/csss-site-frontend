@@ -8,7 +8,7 @@ import { prependHttps } from 'utils/stringUtils';
 import { Affiliate, AFFILIATES } from './affiliates';
 
 @Component({
-  selector: 'csss-affiliates',
+  selector: 'cs-affiliates',
   imports: [ArticleComponent, CardComponent, FontAwesomeModule],
   templateUrl: './affiliates.component.html',
   styleUrl: './affiliates.component.scss',

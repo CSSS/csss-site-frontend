@@ -7,7 +7,7 @@ import { csssLogo } from 'assets/icons/csss-logo';
 import { RainbowDirective } from './directives/rainbow.directive';
 
 @Component({
-  selector: 'csss-home',
+  selector: 'cs-home',
   imports: [FontAwesomeModule, RainbowDirective, ButtonComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'

@@ -5,7 +5,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faArrowUpRightFromSquare } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
-  selector: 'csss-common-room',
+  selector: 'cs-common-room',
   imports: [ArticleComponent, CardComponent, FontAwesomeModule],
   templateUrl: './common-room.component.html',
   styleUrl: './common-room.component.scss',

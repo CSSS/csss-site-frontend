@@ -19,7 +19,7 @@ const REM = 16;
 const LINE_WIDTH = 6;
 
 @Component({
-  selector: 'csss-officers',
+  selector: 'cs-officers',
   imports: [CardComponent, ArticleComponent],
   templateUrl: './officers.component.html',
   styleUrl: './officers.component.scss',
