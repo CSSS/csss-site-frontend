@@ -37,6 +37,7 @@ export class ApplicationService {
         // `/<application>?=<query params>` or `/<runtime>/<application>?=<query params>`
         // or maybe they don't have any query params at all.
         route = route.split('?')[0]; // Just the route params
+        console.log(route);
         if (route === '/') {
           this.focusedApplication.set(null);
           return;
@@ -46,21 +47,6 @@ export class ApplicationService {
           this.openApplication(app);
         }
       });
-  }
-
-  /**
-   * Focus on an application, making its outlet the visible one.
-   *
-   * @param id - Target application ID
-   */
-  private focusOnApplication(id: number): void {
-    if (this.focusedApplication()?.id !== id) {
-      const app = this.runningApplications().get(id);
-      if (!app) {
-        throw new Error(`No running app with id ${id}`);
-      }
-      this.focusedApplication.set(app);
-    }
   }
 
   /**
