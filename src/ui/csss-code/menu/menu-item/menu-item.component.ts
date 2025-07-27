@@ -1,4 +1,7 @@
+import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, computed, input, signal } from '@angular/core';
+import { RouterModule } from '@angular/router';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import {
   faChevronDown,
   faChevronRight,
@@ -6,9 +9,6 @@ import {
   faRoadBarrier
 } from '@fortawesome/free-solid-svg-icons';
 import { NavbarItem } from 'components/nav-bar/navbar-entries';
-import { CommonModule } from '@angular/common';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'code-menu-item',
