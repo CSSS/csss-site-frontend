@@ -1,9 +1,9 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { CsssCodeModule } from '@csss-code/csss-code.module';
+import { ArticleComponent } from '@csss-code/article/article.component';
 
 @Component({
-  selector: 'csss-committees',
-  imports: [CsssCodeModule],
+  selector: 'cs-committees',
+  imports: [ArticleComponent],
   templateUrl: './committees.component.html',
   styleUrl: './committees.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush

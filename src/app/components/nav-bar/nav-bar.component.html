@@ -8,13 +8,11 @@
 </aside>
 
 <aside class="navbar" [hidden]="!isFileSystemOpen()">
-  <header class="navbar-header">
-    {{ title() }}
-  </header>
+  <header class="navbar-header">SFU CSSS</header>
   <nav>
     <ul class="navbar-list">
       @for (entry of navItems(); track entry.key) {
-        <li><code-navbar-item [entry]="entry" /></li>
+        <li><code-menu-item [entry]="entry" /></li>
       }
     </ul>
   </nav>

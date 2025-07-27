@@ -16,7 +16,6 @@ const LETTER_HEIGHT = 24;
 
 @Component({
   selector: 'code-article',
-  standalone: false,
   templateUrl: './article.component.html',
   styleUrl: './article.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush

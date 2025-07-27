@@ -1,38 +1,30 @@
+import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, computed, input, signal } from '@angular/core';
+import { RouterModule } from '@angular/router';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import {
   faChevronDown,
   faChevronRight,
   faFile,
   faRoadBarrier
 } from '@fortawesome/free-solid-svg-icons';
+import { NavbarItem } from 'components/nav-bar/navbar-entries';
 
-type NavIcon = 'file' | 'folder' | 'wip';
-
-export interface NavbarItem {
-  key: string;
-  label: string;
-  type: NavIcon;
-  children?: NavbarItem[];
-  link?: string;
-}
-
-// TODO: Abstract this part out so that it's just the navigation section and
-// the rebuild the csss-navbar so that it has the activity bar and the navbar.
 @Component({
-  selector: 'code-navbar-item',
-  standalone: false,
-  templateUrl: './navbar-item.component.html',
-  styleUrl: './navbar-item.component.scss',
+  selector: 'code-menu-item',
+  imports: [CommonModule, FontAwesomeModule, RouterModule],
+  templateUrl: './menu-item.component.html',
+  styleUrl: './menu-item.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class NavbarItemComponent {
+export class MenuItemComponent {
   /**
-   * The navbar entry to render.
+   * The menu entry to render.
    */
   entry = input.required<NavbarItem>();
 
   /**
-   * How deep deeply nested the navbar item is.
+   * How deep deeply nested the menu item is.
    * Base level is 0, each nesting level increases depth by 1.
    */
   depth = input<number>(0);

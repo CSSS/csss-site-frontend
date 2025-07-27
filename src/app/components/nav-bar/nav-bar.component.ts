@@ -4,35 +4,31 @@ import {
   Component,
   computed,
   inject,
-  input,
   OnInit,
   signal
 } from '@angular/core';
+import { MenuItemComponent } from '@csss-code/menu/menu-item/menu-item.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faCopy } from '@fortawesome/free-solid-svg-icons';
 import { csssLogo } from 'assets/icons/csss-logo';
+import { NAVBAR_ENTRIES, NavbarItem } from 'components/nav-bar/navbar-entries';
 import { BREAKPOINT_STRING_MAP } from 'styles/breakpoints';
-import { NavbarItem } from './navbar-item/navbar-item.component';
 
 @Component({
-  selector: 'code-navbar',
-  standalone: false,
-  templateUrl: './navbar.component.html',
-  styleUrl: './navbar.component.scss',
+  selector: 'cs-nav-bar',
+  imports: [FontAwesomeModule, MenuItemComponent],
+  templateUrl: './nav-bar.component.html',
+  styleUrl: './nav-bar.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class NavbarComponent implements OnInit {
-  /**
-   * The title at the top of the header
-   */
-  title = input.required<string>();
-
+export class NavBarComponent implements OnInit {
   /**
    * Navbar entries
    */
-  entries = input.required<NavbarItem[]>();
+  entries = signal<NavbarItem[]>(NAVBAR_ENTRIES);
 
   /**
-   * Flag representing if the navbar is closed or open.
+   * Flag representing if the menu is closed or open.
    */
   isFileSystemOpen = signal<boolean>(false);
 
@@ -62,7 +58,7 @@ export class NavbarComponent implements OnInit {
   }
 
   /**
-   * Recursively converts all the navbar entries into object this navbar can use
+   * Recursively converts all the menu entries into object this menu can use
    */
   private navEntryToItem(entries: NavbarItem[]): NavbarItem[] {
     return entries.map(entry => {
@@ -76,7 +72,7 @@ export class NavbarComponent implements OnInit {
   }
 
   /**
-   * Changes the navbar state between open and closed
+   * Changes the menu state between open and closed
    */
   toggleFileSystem(): void {
     this.isFileSystemOpen.update(value => !value);
