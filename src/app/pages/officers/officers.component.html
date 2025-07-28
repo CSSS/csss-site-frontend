@@ -7,19 +7,19 @@
       <strong>one semester</strong>.
     </p>
   </header>
-  <div class="timeline" #timeline>
-    @for (year of yearsToDisplay(); track $index) {
-      <div
-        class="timeslot clickable"
-        role="tab"
-        [ariaSelected]="this.currentYear() === year"
-        (click)="currentYear.set(year)"
-      >
-        <div class="time-label">{{ year }}</div>
-        <div class="line"></div>
-      </div>
-    }
-  </div>
+  <!-- <div class="timeline" #timeline> -->
+  <!--   @for (year of yearsToDisplay(); track $index) { -->
+  <!--     <div -->
+  <!--       class="timeslot clickable" -->
+  <!--       role="tab" -->
+  <!--       [ariaSelected]="this.currentYear() === year" -->
+  <!--       (click)="currentYear.set(year)" -->
+  <!--     > -->
+  <!--       <div class="time-label">{{ year }}</div> -->
+  <!--       <div class="line"></div> -->
+  <!--     </div> -->
+  <!--   } -->
+  <!-- </div> -->
 
   <section>
     <h2>Current Executives</h2>
