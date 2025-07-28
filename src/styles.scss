@@ -12,6 +12,10 @@ body {
   color: white;
 }
 
+h1 {
+  margin: 0;
+}
+
 ol,
 ul {
   list-style: none;
@@ -40,6 +44,7 @@ article.content {
   h1 {
     text-align: center;
     font-size: clamp(1.8rem, 2.5vw, 2.2rem);
+    margin-bottom: 1.5rem;
   }
 
   p {

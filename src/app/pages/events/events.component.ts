@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { ArticleComponent } from '@csss-code/article/article.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { faUpRightFromSquare } from '@fortawesome/free-solid-svg-icons/faUpRightFromSquare';
+import { faUpRightFromSquare } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'cs-events',
