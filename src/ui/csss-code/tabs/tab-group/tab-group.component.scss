@@ -36,5 +36,8 @@ $selector-h: 3px;
     bottom: 0;
     height: $selector-h;
     border-bottom: $selector-h teal solid;
+    transition:
+      left 0.3s ease,
+      width 0.3s ease;
   }
 }
