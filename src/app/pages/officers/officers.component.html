@@ -22,20 +22,21 @@
   <!-- </div> -->
 
   <code-tab-group>
-    <code-tab label="Executives"><div>Content 1</div></code-tab>
-    <code-tab label="Roles"><div>Content 2</div></code-tab>
+    <code-tab label="Executives">
+      <section>
+        <h2>Current Executives</h2>
+        <div class="gallery">
+          @for (exec of currentAdministration()?.members; track $index; let i = $index) {
+            <code-card [bgImg]="exec.photoName" #execCard>
+              <div class="card-footer">
+                <h3>{{ exec.name }}</h3>
+                <h4>{{ exec.position }}</h4>
+              </div>
+            </code-card>
+          }
+        </div>
+      </section>
+    </code-tab>
+    <code-tab label="Roles"></code-tab>
   </code-tab-group>
-  <section>
-    <h2>Current Executives</h2>
-    <div class="gallery">
-      @for (exec of currentAdministration()?.members; track $index; let i = $index) {
-        <code-card [bgImg]="exec.photoName" #execCard>
-          <div class="card-footer">
-            <h3>{{ exec.name }}</h3>
-            <h4>{{ exec.position }}</h4>
-          </div>
-        </code-card>
-      }
-    </div>
-  </section>
 </code-article>

@@ -19,6 +19,7 @@ import {
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CodeTabComponent {
+  tabIndex = signal<number>(-1);
   label = input.required<string>();
   isActive = signal<boolean>(false);
   isDisabled = signal<boolean>(false);

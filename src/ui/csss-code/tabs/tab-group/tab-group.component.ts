@@ -1,9 +1,11 @@
 import { CommonModule } from '@angular/common';
 import {
   AfterContentInit,
+  AfterViewInit,
   ChangeDetectionStrategy,
   Component,
   contentChildren,
+  effect,
   ElementRef,
   signal,
   viewChildren
@@ -17,41 +19,50 @@ import { CodeTabComponent } from '../tab.component';
   styleUrl: './tab-group.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class CodeTabGroupComponent implements AfterContentInit {
-  protected tabs = contentChildren(CodeTabComponent);
-  protected tabEls = viewChildren<ElementRef<HTMLDivElement>>('tab');
-  protected activeTab = signal<CodeTabComponent>(this.tabs()[0]);
+export class CodeTabGroupComponent implements AfterViewInit, AfterContentInit {
+  protected tabComponents = contentChildren(CodeTabComponent);
+  protected tabLabelEls = viewChildren<ElementRef<HTMLDivElement>>('tab');
+  protected activeTab = signal<CodeTabComponent | null>(null);
   protected selectorStyles = signal<Record<string, string>>({});
 
-  ngAfterContentInit(): void {
-    if (!this.tabs() || !this.tabs().length) {
-      throw new Error('Empty tab group');
-    }
+  constructor() {
+    effect(() => {
+      const activeTab = this.activeTab();
+      if (!activeTab) {
+        return;
+      }
+      for (const tab of this.tabComponents()) {
+        if (activeTab !== tab) {
+          tab.isActive.set(false);
+          continue;
+        }
+        tab.isActive.set(true);
+        const selectedTabEl = this.tabLabelEls()[tab.tabIndex()];
+        this.selectorStyles.set({
+          left: `${selectedTabEl.nativeElement.offsetLeft}px`,
+          width: `${selectedTabEl.nativeElement.offsetWidth}px`
+        });
+      }
+    });
   }
 
-  selectTab(index: number): void {
-    const tabs = this.tabs();
-
-    if (index < 0 || index >= tabs.length) {
-      throw new Error(`Invalid tab index ${index}.`);
+  ngAfterContentInit(): void {
+    if (!this.tabComponents().length) {
+      throw new Error('No tab components found.');
     }
 
-    const currTab = this.activeTab();
-    const selectedTab = this.tabs()[index];
-    if (!selectedTab) {
-      throw new Error(`Tab at index ${index} does not exist.`);
+    for (const [index, tab] of this.tabComponents().entries()) {
+      tab.tabIndex.set(index);
+    }
+    // Set the first tab child as the active one.
+    this.tabComponents()[0].isActive.set(true);
+  }
+
+  ngAfterViewInit(): void {
+    if (!this.tabLabelEls().length) {
+      throw new Error('No tab labels found.');
     }
 
-    if (currTab === selectedTab) {
-      return;
-    }
-
-    const selectedTabEl = this.tabEls()[index];
-    currTab?.isActive.set(false);
-    this.activeTab.set(selectedTab);
-    this.selectorStyles.set({
-      left: `${selectedTabEl.nativeElement.offsetLeft}px`,
-      width: `${selectedTabEl.nativeElement.offsetWidth}px`
-    });
+    this.activeTab.set(this.tabComponents()[0]);
   }
 }

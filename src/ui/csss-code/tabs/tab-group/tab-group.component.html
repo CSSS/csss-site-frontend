@@ -1,8 +1,8 @@
 <div class="tab-group__header">
   <div class="tab-group__labels">
-    @for (tab of tabs(); track $index) {
+    @for (tab of tabComponents(); track $index) {
       <div class="tab-group__tab" [attr.aria-selected]="tab.isActive()" #tab>
-        <a class="tab-group__label" (click)="selectTab($index)">{{ tab.label() }}</a>
+        <a class="tab-group__label" (click)="this.activeTab.set(tab)">{{ tab.label() }}</a>
         <div class="tab-group__indicator"></div>
       </div>
     }
