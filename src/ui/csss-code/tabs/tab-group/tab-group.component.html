@@ -1,0 +1,9 @@
+<div class="tabs-container">
+  @for (tab of tabs(); track $index) {
+    <a (click)="selectTab(tab)">{{ tab.label() }}</a>
+  }
+</div>
+<div class="selection-indicator"></div>
+<div class="content-container">
+  <ng-content></ng-content>
+</div>

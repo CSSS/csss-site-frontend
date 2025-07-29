@@ -10,6 +10,8 @@ import {
 } from '@angular/core';
 import { ArticleComponent } from '@csss-code/article/article.component';
 import { CardComponent } from '@csss-code/card/card.component';
+import { CodeTabGroupComponent } from '@csss-code/tabs/tab-group/tab-group.component';
+import { CodeTabComponent } from '@csss-code/tabs/tab.component';
 import { gsap } from 'gsap';
 import { ExecutiveAdministration, executives, getRandomExecImage } from './officers.data';
 
@@ -18,7 +20,7 @@ import { ExecutiveAdministration, executives, getRandomExecImage } from './offic
 
 @Component({
   selector: 'cs-officers',
-  imports: [CardComponent, ArticleComponent],
+  imports: [CardComponent, ArticleComponent, CodeTabGroupComponent, CodeTabComponent],
   templateUrl: './officers.component.html',
   styleUrl: './officers.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
