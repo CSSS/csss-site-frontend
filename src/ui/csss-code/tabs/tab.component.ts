@@ -1,4 +1,11 @@
-import { ChangeDetectionStrategy, Component, input, signal } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  ElementRef,
+  inject,
+  input,
+  signal
+} from '@angular/core';
 
 @Component({
   selector: 'code-tab',
@@ -15,4 +22,5 @@ export class CodeTabComponent {
   label = input.required<string>();
   isActive = signal<boolean>(false);
   isDisabled = signal<boolean>(false);
+  elementRef = inject(ElementRef);
 }

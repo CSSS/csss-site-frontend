@@ -4,7 +4,9 @@ import {
   ChangeDetectionStrategy,
   Component,
   contentChildren,
-  signal
+  ElementRef,
+  signal,
+  viewChildren
 } from '@angular/core';
 import { CodeTabComponent } from '../tab.component';
 
@@ -16,28 +18,40 @@ import { CodeTabComponent } from '../tab.component';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CodeTabGroupComponent implements AfterContentInit {
-  tabs = contentChildren(CodeTabComponent);
-  activeTab = signal<CodeTabComponent | null>(null);
+  protected tabs = contentChildren(CodeTabComponent);
+  protected tabEls = viewChildren<ElementRef<HTMLDivElement>>('tab');
+  protected activeTab = signal<CodeTabComponent>(this.tabs()[0]);
+  protected selectorStyles = signal<Record<string, string>>({});
 
   ngAfterContentInit(): void {
     if (!this.tabs() || !this.tabs().length) {
       throw new Error('Empty tab group');
     }
-
-    const tab = this.tabs().find(tab => tab.isActive()) ?? this.tabs()[0];
-    if (!tab) {
-      throw new Error('No tab could be activated.');
-    }
-
-    this.selectTab(tab);
   }
 
-  selectTab(tab: CodeTabComponent): void {
-    const currTab = this.activeTab();
-    if (currTab) {
-      currTab.isActive.set(false);
+  selectTab(index: number): void {
+    const tabs = this.tabs();
+
+    if (index < 0 || index >= tabs.length) {
+      throw new Error(`Invalid tab index ${index}.`);
     }
-    this.activeTab.set(tab);
-    this.activeTab()?.isActive.set(true);
+
+    const currTab = this.activeTab();
+    const selectedTab = this.tabs()[index];
+    if (!selectedTab) {
+      throw new Error(`Tab at index ${index} does not exist.`);
+    }
+
+    if (currTab === selectedTab) {
+      return;
+    }
+
+    const selectedTabEl = this.tabEls()[index];
+    currTab?.isActive.set(false);
+    this.activeTab.set(selectedTab);
+    this.selectorStyles.set({
+      left: `${selectedTabEl.nativeElement.offsetLeft}px`,
+      width: `${selectedTabEl.nativeElement.offsetWidth}px`
+    });
   }
 }
