@@ -1,17 +1,19 @@
 @use 'theme' as t;
 
 $component: '.tab-group';
-$tab-w: 3rem;
+$tab-w: 7rem;
 $selector-h: 3px;
 
 #{$component} {
   &__header {
     position: relative;
+    margin-bottom: 1rem;
     width: 100%;
   }
 
   &__labels {
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax($tab-w, 1fr));
     width: 100%;
   }
 
