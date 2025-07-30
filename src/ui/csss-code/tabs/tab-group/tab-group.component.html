@@ -1,0 +1,14 @@
+<div class="tab-group__header">
+  <div class="tab-group__labels">
+    @for (tab of tabComponents(); track $index) {
+      <div class="tab-group__tab" [attr.aria-selected]="tab.isActive()" #tab>
+        <a class="tab-group__label" (click)="this.activeTab.set(tab)">{{ tab.label() }}</a>
+        <div class="tab-group__indicator"></div>
+      </div>
+    }
+  </div>
+  <div class="tab-group__selector" [ngStyle]="selectorStyles()"></div>
+</div>
+<div class="tab-group__body">
+  <ng-content></ng-content>
+</div>

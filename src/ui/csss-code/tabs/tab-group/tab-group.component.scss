@@ -1,0 +1,45 @@
+@use 'theme' as t;
+
+$component: '.tab-group';
+$tab-w: 7rem;
+$selector-h: 3px;
+
+#{$component} {
+  &__header {
+    position: relative;
+    margin-bottom: 1rem;
+    width: 100%;
+  }
+
+  &__labels {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax($tab-w, 1fr));
+    width: 100%;
+  }
+
+  &__tab {
+    min-width: $tab-w;
+    width: 100%;
+  }
+
+  &__label {
+    display: block;
+    text-align: center;
+    width: 100%;
+  }
+
+  &__indicator {
+    height: $selector-h;
+    border-bottom: 1px black solid;
+  }
+
+  &__selector {
+    position: absolute;
+    bottom: 0;
+    height: $selector-h;
+    border-bottom: $selector-h teal solid;
+    transition:
+      left 0.3s ease,
+      width 0.3s ease;
+  }
+}
