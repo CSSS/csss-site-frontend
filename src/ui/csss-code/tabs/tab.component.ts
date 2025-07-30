@@ -37,6 +37,7 @@ export class CodeTabComponent {
 
   /**
    * True if the tab is disabled, false otherwise.
+   * FIXME: Doesn't do anything yet.
    */
   isDisabled = signal<boolean>(false);
 
