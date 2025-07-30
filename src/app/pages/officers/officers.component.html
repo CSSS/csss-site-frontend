@@ -7,24 +7,11 @@
       <strong>one semester</strong>.
     </p>
   </header>
-  <div class="timeline" #timeline>
-    @for (year of yearsToDisplay(); track $index) {
-      <div
-        class="timeslot clickable"
-        role="tab"
-        [ariaSelected]="this.currentYear() === year"
-        (click)="currentYear.set(year)"
-      >
-        <div class="time-label">{{ year }}</div>
-        <div class="line"></div>
-      </div>
-    }
-  </div>
 
   <section>
     <h2>Current Executives</h2>
     <div class="gallery">
-      @for (exec of currentAdministration()?.members; track $index; let i = $index) {
+      @for (exec of currentAdministration()?.members; track $index) {
         <code-card [bgImg]="exec.photoName" #execCard>
           <div class="card-footer">
             <h3>{{ exec.name }}</h3>
