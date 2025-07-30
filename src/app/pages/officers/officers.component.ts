@@ -4,23 +4,23 @@ import {
   Component,
   computed,
   effect,
-  ElementRef,
   OnDestroy,
   signal,
-  viewChild,
   viewChildren
 } from '@angular/core';
 import { ArticleComponent } from '@csss-code/article/article.component';
 import { CardComponent } from '@csss-code/card/card.component';
+import { CodeTabGroupComponent } from '@csss-code/tabs/tab-group/tab-group.component';
+import { CodeTabComponent } from '@csss-code/tabs/tab.component';
 import { gsap } from 'gsap';
-import { ExecutiveAdministration, executives, getRandomExecImage } from './officers';
+import { ExecutiveAdministration, executives, getRandomExecImage } from './officers.data';
 
-const REM = 16;
-const LINE_WIDTH = 6;
+// const REM = 16;
+// const LINE_WIDTH = 6;
 
 @Component({
   selector: 'cs-officers',
-  imports: [CardComponent, ArticleComponent],
+  imports: [CardComponent, ArticleComponent, CodeTabGroupComponent, CodeTabComponent],
   templateUrl: './officers.component.html',
   styleUrl: './officers.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
@@ -71,12 +71,12 @@ export class OfficersComponent implements AfterViewInit, OnDestroy {
   /**
    * Timeline element that wraps the lines.
    */
-  private timelineEl = viewChild.required<ElementRef<HTMLDivElement>>('timeline');
+  // private timelineEl = viewChild.required<ElementRef<HTMLDivElement>>('timeline');
 
   /**
    * Observer to recalculate the line widths if the viewport width changes.
    */
-  private resizeObs!: ResizeObserver;
+  // private resizeObs!: ResizeObserver;
 
   /**
    * Width of the lines in the timeline.
@@ -101,20 +101,20 @@ export class OfficersComponent implements AfterViewInit, OnDestroy {
 
   ngAfterViewInit(): void {
     // Watch for viewport changes so we know how many lines to print.
-    this.resizeObs = new ResizeObserver(entries => {
-      for (const entry of entries) {
-        const linesToDisplay = Math.trunc(entry.contentRect.width / (LINE_WIDTH * REM));
-        if (this.lineWidth() !== linesToDisplay) {
-          this.lineWidth.set(linesToDisplay);
-        }
-      }
-    });
-    this.resizeObs.observe(this.timelineEl().nativeElement);
-    this.calcAndSetLineWidth(this.timelineEl().nativeElement.offsetWidth);
+    // this.resizeObs = new ResizeObserver(entries => {
+    //   for (const entry of entries) {
+    //     const linesToDisplay = Math.trunc(entry.contentRect.width / (LINE_WIDTH * REM));
+    //     if (this.lineWidth() !== linesToDisplay) {
+    //       this.lineWidth.set(linesToDisplay);
+    //     }
+    //   }
+    // });
+    // this.resizeObs.observe(this.timelineEl().nativeElement);
+    // this.calcAndSetLineWidth(this.timelineEl().nativeElement.offsetWidth);
   }
 
   ngOnDestroy(): void {
-    this.resizeObs.disconnect();
+    // this.resizeObs.disconnect();
   }
 
   private animateCards(): void {
@@ -148,7 +148,7 @@ export class OfficersComponent implements AfterViewInit, OnDestroy {
    *
    * @param width - Width of the timeline element.
    */
-  private calcAndSetLineWidth(width: number): void {
-    this.lineWidth.set(width / (LINE_WIDTH * REM));
-  }
+  // private calcAndSetLineWidth(width: number): void {
+  //   this.lineWidth.set(width / (LINE_WIDTH * REM));
+  // }
 }
