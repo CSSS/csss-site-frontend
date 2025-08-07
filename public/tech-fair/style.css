@@ -1,6 +1,6 @@
 @font-face {
   font-family: 'Questrial';
-  src: url('fonts/Questrial-Regular.ttf') format('truetype')
+  src: url('fonts/Questrial-Regular.ttf') format('truetype');
 }
 
 :root {
@@ -48,7 +48,6 @@ a:visited:active {
   width: fit-content;
 }
 
-
 .sticky-note {
   background-color: yellow;
   aspect-ratio: 1 / 1;
@@ -66,7 +65,7 @@ a:visited:active {
   height: auto;
   transform: rotate(-5deg);
 
-  &>img {
+  & > img {
     object-fit: contain;
   }
 
@@ -87,7 +86,7 @@ header {
   position: fixed;
   top: 0;
 
-  &>nav {
+  & > nav {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -97,28 +96,27 @@ header {
     backdrop-filter: blur(5px);
 
     /* CSSS Logo */
-    &>a {
+    & > a {
       /* This keeps the icon at the far left and the nav links centered */
       position: absolute;
       left: 1vw;
       top: 1vh;
 
-      &>#home-logo {
+      & > #home-logo {
         width: var(--square-logo-dim);
         height: var(--square-logo-dim);
       }
     }
 
-    &>ul {
+    & > ul {
       display: flex;
       justify-content: space-evenly;
       list-style-type: none;
       margin: 0;
       padding: 1rem 0 0;
 
-      &>li {
-
-        &>a {
+      & > li {
+        & > a {
           text-align: center;
           padding: 0 1rem;
         }
@@ -134,7 +132,7 @@ header {
   align-items: center;
   text-align: center;
 
-  &>.hero-content {
+  & > .hero-content {
     position: relative;
     height: 70%;
     width: 90%;
@@ -143,7 +141,7 @@ header {
     justify-content: center;
     align-items: center;
 
-    &>p {
+    & > p {
       font-size: max(1rem, 2vw);
     }
 
@@ -151,32 +149,32 @@ header {
       font-size: max(2rem, 5vw);
     }
 
-    &>img {
+    & > img {
       width: min(30vw, 30rem);
       height: auto;
     }
 
-    &>section {
+    & > section {
       padding: 1rem;
     }
   }
 }
 
 main {
-  &>article {
+  & > article {
     display: grid;
 
-    &>section {
+    & > section {
       display: flex;
       flex-direction: column;
       align-items: center;
       padding: 0 1rem 0;
 
-      &>aside {
+      & > aside {
         display: none;
       }
 
-      & .section-content {
+      & .section__content {
         margin: var(--header-height) 0 2rem;
         padding: 1.5rem;
         max-width: 40rem;
@@ -186,17 +184,17 @@ main {
         }
       }
 
-      &>.main {
+      & > .section__main {
         display: flex;
         flex-direction: column;
         align-items: center;
 
-        &>.chat-section {
+        & > .chat-section {
           display: flex;
           flex-direction: column;
           align-items: center;
 
-          &>.right {
+          & > .right {
             align-self: flex-end;
             display: block;
             box-shadow: 5px 5px black;
@@ -205,22 +203,21 @@ main {
             margin-right: 1rem;
           }
 
-          &>.left {
+          & > .left {
             align-self: flex-start;
             width: fit-content;
             max-width: 80%;
             margin-left: 1rem;
           }
-
         }
 
-        &>p,
+        & > p,
         ul,
         ol {
           font-size: clamp(1rem, 1.5vw, 1.05rem);
         }
 
-        &>ul,
+        & > ul,
         ol {
           margin: 0;
 
@@ -233,6 +230,55 @@ main {
   }
 }
 
+#company-gallery {
+  padding: 0;
+}
+
+ul.section__main {
+  padding-left: 0;
+}
+
+.company__gallery {
+  display: flex;
+  gap: 4vw;
+  width: 100vw;
+  max-height: 95vh;
+  padding: 1rem;
+
+  overflow-x: scroll;
+  overflow-y: hidden;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+}
+
+.company-card {
+  flex: 1 0 auto;
+  display: grid;
+  grid-template-rows: 50% 50%;
+  padding: 1.5rem;
+  width: 90vw;
+  max-width: 20rem;
+
+  scroll-snap-align: center;
+}
+
+.company-card__img {
+  display: flex;
+  justify-content: center;
+  width: 16rem;
+  aspect-ratio: 1 / 1;
+  padding: 1rem;
+
+  & > img {
+    object-fit: contain;
+  }
+}
+
+& .company-card__descriptor {
+  & h3 {
+    font-size: clamp(1.3rem, 60%, 1.7rem);
+  }
+}
 
 #final {
   display: flex;
@@ -240,12 +286,12 @@ main {
   align-items: center;
   padding-bottom: 3rem;
 
-  &>h2 {
+  & > h2 {
     text-align: center;
     font-size: 2rem;
   }
 
-  &>.gallery {
+  & > .gallery {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -263,7 +309,6 @@ footer {
     display: flex;
     gap: 0.5rem;
 
-
     & .icon {
       width: 1.5em;
       height: 1.5em;
@@ -273,21 +318,20 @@ footer {
 
 /* Media queries */
 @media (max-width: 400px) {
-  header>nav {
-
+  header > nav {
     /* These will ensure the nav links will be pushed to the right so CSSS icon will become 
      * part of the nav's flow again */
-    &>a {
+    & > a {
       position: relative;
       left: 0;
 
-      &>img {
+      & > img {
         height: 2rem;
         width: 2rem;
       }
     }
 
-    &>ul {
+    & > ul {
       flex-shrink: 0;
     }
   }
@@ -299,21 +343,20 @@ footer {
 
 @media (min-width: 1200px) {
   main {
-    &>article {
-      &>section {
+    & > article {
+      & > section {
         display: grid;
         grid-template-columns: 1fr 50% 1fr;
-        grid-template-areas:
-          'left center right';
+        grid-template-areas: 'left center right';
 
-        &>.main {
+        & > .main {
           grid-area: center;
           display: flex;
           flex-direction: column;
           align-items: center;
         }
 
-        &>aside {
+        & > aside {
           display: flex;
           flex-direction: column;
           justify-content: space-between;
@@ -322,12 +365,12 @@ footer {
           padding: var(--header-height) 0 0;
         }
 
-        &>aside:nth-of-type(1) {
+        & > aside:nth-of-type(1) {
           grid-area: left;
           align-items: end;
         }
 
-        &>aside:nth-of-type(2) {
+        & > aside:nth-of-type(2) {
           grid-area: right;
           align-items: start;
         }
