@@ -22,4 +22,8 @@ export class HomeComponent {
   readmeAction(): void {
     this.router.navigate(['/readme']);
   }
+
+  aFunction(): void {
+    return;
+  }
 }
