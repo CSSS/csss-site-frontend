@@ -92,7 +92,7 @@ header {
     justify-content: center;
     position: relative;
     padding: 0.25rem;
-    width: 100%;
+    width: 100vw;
     backdrop-filter: blur(5px);
 
     /* CSSS Logo */
@@ -242,30 +242,21 @@ ul.section__main {
   display: flex;
   gap: 4vw;
   width: 100vw;
-  max-height: 95vh;
   padding: 1rem;
-
-  overflow-x: scroll;
-  overflow-y: hidden;
-  scroll-snap-type: x mandatory;
-  scrollbar-width: none;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .company-card {
-  flex: 1 0 auto;
   display: grid;
+  flex: 0 0 auto;
   grid-template-rows: 50% 50%;
   padding: 1.5rem;
-  width: 90vw;
-  max-width: 20rem;
-
-  scroll-snap-align: center;
+  width: 21rem;
 }
 
 .company-card__img {
   display: flex;
-  justify-content: center;
-  width: 16rem;
   aspect-ratio: 1 / 1;
   padding: 1rem;
 
@@ -376,5 +367,25 @@ footer {
         }
       }
     }
+  }
+}
+
+@media (hover: none) {
+  ul.section__main {
+    padding-left: 0;
+  }
+
+  .company__gallery {
+    justify-content: flex-start;
+    flex-wrap: nowrap;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    /* scrollbar-width: none; */
+  }
+
+  .company-card {
+    width: 19rem;
+    scroll-snap-align: center;
   }
 }
