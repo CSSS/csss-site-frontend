@@ -75,8 +75,8 @@
             <img src="./images/long-shot1.jpg" class="photo" alt="Long shot 1" />
             <img src="./images/tf-image-1.jpg" class="photo" alt="Old photo 1" />
           </aside>
-          <div class="main">
-            <div class="section-content chat">
+          <div class="section__main">
+            <div class="section__content chat">
               <h2>What is Tech Fair?</h2>
               <br />
               <p>
@@ -94,8 +94,8 @@
               </p>
             </div>
             <div class="chat-section">
-              <h2 class="chat section-content right">ChatGPT, summarize this section</h2>
-              <div class="chat section-content response left">
+              <h2 class="chat section__content right">ChatGPT, summarize this section</h2>
+              <div class="chat section__content response left">
                 <ul>
                   <li>
                     When: <strong>Wednesday, October 15, 2025</strong> from
@@ -127,8 +127,8 @@
           <aside>
             <img src="./images/arista-booth2.jpg" class="photo" alt="Arista booth 2" />
           </aside>
-          <div class="main">
-            <div class="section-content chat">
+          <div class="section__main">
+            <div class="section__content chat">
               <h2>I'm a student, why should I go?</h2>
               <p>Here are 3 reasons:</p>
               <ol>
@@ -176,12 +176,118 @@
           </aside>
         </section>
 
+        <section>
+          <aside></aside>
+          <div class="section__main">
+            <div class="section__content chat">
+              <h2>Who's coming?</h2>
+              <p>Join this list of companies interested in hiring you!</p>
+            </div>
+          </div>
+          <aside></aside>
+        </section>
+
+        <section id="company-gallery">
+          <ul class="company__gallery">
+            <li class="company-card chat">
+              <div class="company-card__img">
+                <img src="./images/companies/icbc.png" alt="ICBC" />
+              </div>
+              <div class="company-card__descriptor">
+                <p>
+                  A career at ICBC is an opportunity to be part of a talented, diverse and inclusive
+                  team that is driven to serve its customers and community. Make the most of your
+                  skills and take the opportunity to grow and develop your career. Expect a
+                  competitive salary, comprehensive benefits and a challenging work environment.
+                  Drive your career with ICBC.
+                </p>
+              </div>
+              <div class="company-card__footer">
+                <p class="company-card__chip--insurance">Insurance</p>
+                <a href="https://www.icbc.com/about-icbc" target="_blank">Learn more</a>
+              </div>
+            </li>
+            <li class="company-card chat">
+              <div class="company-card__img">
+                <img src="./images/companies/kardium.png" alt="Kardium" />
+              </div>
+              <div class="company-card__descriptor">
+                <p>
+                  Kardium Inc. is a rapidly growing medical solutions company that has developed an
+                  advanced system for the treatment of atrial fibrillation (AF), which affects more
+                  than 59 million people worldwide. Learn about the Globe® Mapping and Ablation
+                  System and join Kardium's next step in their upcoming commercial launch.
+                </p>
+              </div>
+              <div class="company-card__footer">
+                <p class="company-card__chip--medical">Medical</p>
+                <a href="https://kardium.com/careers/" target="_blank">Learn more</a>
+              </div>
+            </li>
+            <li class="company-card chat">
+              <div class="company-card__img">
+                <img src="./images/companies/planview.png" alt="Planview" />
+              </div>
+              <div class="company-card__descriptor">
+                <p>
+                  A global leader in work and resource management software, Planview makes it easy
+                  for all organizations to achieve their goals. They provide the industry’s most
+                  comprehensive solutions designed for businesses around the world. Join Planview's
+                  more than 700 employees and serve over 5,000 customers worldwide.
+                </p>
+              </div>
+              <div class="company-card__footer">
+                <p class="company-card__chip--software">Software</p>
+                <a href="https://www.planview.com/about-us/" target="_blank">Learn more</a>
+              </div>
+            </li>
+            <li class="company-card chat">
+              <div class="company-card__img">
+                <img src="./images/companies/telus.png" alt="Telus" />
+              </div>
+              <div class="company-card__descriptor">
+                <p>
+                  TELUS' Graduate Technology Leadership Program (GTLP) is a one-of-a-kind technical
+                  development program for new grads in engineering and technology. With talented
+                  team members as mentors and a keen focus on cutting-edge technology, you can join
+                  innovators shaping Canada's tech landscape.
+                </p>
+              </div>
+              <div class="company-card__footer">
+                <p class="company-card__chip--telecom">Telecom</p>
+                <a
+                  href="https://www.telus.com/en/about/careers/graduate-technology-leadership-program "
+                  target="_blank"
+                  >Learn more</a
+                >
+              </div>
+            </li>
+            <li class="company-card chat">
+              <div class="company-card__img">
+                <img src="./images/companies/safe.png" alt="Safe Software" />
+              </div>
+              <div class="company-card__descriptor">
+                <p>
+                  Safe Software transforms organizations with FME, the only All-Data Any-AI
+                  Enterprise Integration Platform connecting all your data, anywhere. With over 30
+                  years of expertise and over 25,000 enterprise customers across 125 countries, Safe
+                  will simplify your data's journey.
+                </p>
+              </div>
+              <div class="company-card__footer">
+                <p class="company-card__chip--data-analytics">Data Analytics</p>
+                <a href="https://www.safe.com/careers/" target="_blank">Learn more</a>
+              </div>
+            </li>
+          </ul>
+        </section>
+
         <section id="companies">
           <aside>
             <img src="./images/kardium-booth.jpg" class="photo" alt="Kardium booth" />
           </aside>
-          <div class="main">
-            <div class="chat section-content">
+          <div class="section__main">
+            <div class="chat section__content">
               <h2>I work for a company</h2>
               <br />
               <p>
@@ -195,7 +301,7 @@
                 thrive in your workplace!
               </p>
             </div>
-            <div class="chat section-content">
+            <div class="chat section__content">
               <h2>My company is interested, what else can you tell me?</h2>
               <br />
               <p>
@@ -215,8 +321,8 @@
                 Don't miss this chance to show off who you are!
               </p>
             </div>
-            <div class="chat section-content">
-              <h2>How do I sign up?</h2>
+            <div class="chat section__content">
+              <h2>How do I sign us up?</h2>
               <br />
               <p>
                 Send an email to
@@ -235,7 +341,7 @@
         </section>
 
         <section id="final">
-          <h2 class="chat section-content">See You There!</h2>
+          <h2 class="chat section__content">See You There!</h2>
           <div class="gallery">
             <img src="./images/attendees1.jpg" class="photo" alt="Attendees 1" />
             <img src="./images/attendees3.jpg" class="photo" alt="Attendees 2" />
