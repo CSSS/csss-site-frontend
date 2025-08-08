@@ -4,7 +4,7 @@ import { CardComponent } from '@csss-code/card/card.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faDiscord } from '@fortawesome/free-brands-svg-icons';
 import { faArrowUpRightFromSquare } from '@fortawesome/free-solid-svg-icons';
-import { prependHttps } from 'utils/stringUtils';
+import { prependHttps } from 'utils/string-utils';
 import { Affiliate, AFFILIATES } from './affiliates';
 
 @Component({
