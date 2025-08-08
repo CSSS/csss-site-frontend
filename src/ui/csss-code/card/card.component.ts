@@ -7,7 +7,7 @@ import {
   input
 } from '@angular/core';
 import { DomSanitizer, SafeStyle } from '@angular/platform-browser';
-import { pathToCssUrl } from 'utils/stringUtils';
+import { pathToCssUrl } from 'utils/string-utils';
 
 @Component({
   selector: 'code-card',
