@@ -1,7 +1,7 @@
 import { inject, Injectable, signal, WritableSignal } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { filter } from 'rxjs';
-import { addToSignalMap, removeFromSignalMap } from 'utils/signalUtils';
+import { addToSignalMap, removeFromSignalMap } from 'utils/signal-utils';
 import { AppInfo, getApplicationByRoute } from './applications';
 
 /**

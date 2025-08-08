@@ -20,6 +20,10 @@ export function toLocalImageUrl(fileName: string, folder?: ImagesFolder): string
   return result;
 }
 
+/**
+ * Takes the whole path and formats it to be used as a CSS image.
+ * @param path Path to transform
+ */
 export function pathToCssUrl(path: string | undefined): string {
   if (path && path.startsWith('url(')) {
     return path;
