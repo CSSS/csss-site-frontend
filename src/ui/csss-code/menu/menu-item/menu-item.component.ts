@@ -1,14 +1,17 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, computed, input, signal } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import {
-  faChevronDown,
-  faChevronRight,
-  faFile,
-  faRoadBarrier
-} from '@fortawesome/free-solid-svg-icons';
-import { NavbarItem } from 'components/nav-bar/navbar-entries';
+import { FontAwesomeModule, IconDefinition } from '@fortawesome/angular-fontawesome';
+import { NavbarItem } from 'components/nav-bar/nav-bar.data';
+
+export interface MenuItem {
+  key: string;
+  label: string;
+  icon: IconDefinition | ((state: boolean) => IconDefinition);
+  children?: NavbarItem[];
+  link?: string;
+  isDisabled?: boolean;
+}
 
 @Component({
   selector: 'code-menu-item',
@@ -41,33 +44,18 @@ export class MenuItemComponent {
    * Signal derived from the entry type and the `isOpen` flag.
    */
   icon = computed(() => {
-    const entry = this.entry();
-    switch (entry.type) {
-      case 'file': {
-        return faFile;
-      }
-      case 'folder': {
-        return this.isOpen() ? faChevronDown : faChevronRight;
-      }
-      case 'wip': {
-        return faRoadBarrier;
-      }
-    }
+    const icon = this.entry().icon;
+    return typeof icon === 'function' ? icon(this.isOpen()) : icon;
   });
 
   /**
    *  Handler for when the item is clicked.
    */
   itemClick(): void {
-    const entry = this.entry();
-    switch (entry.type) {
-      case 'folder': {
-        this.isOpen.update(value => !value);
-        break;
-      }
-      default: {
-        return;
-      }
+    if (this.entry().link) {
+      return;
     }
+
+    this.isOpen.update(b => !b);
   }
 }

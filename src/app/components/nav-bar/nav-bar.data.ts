@@ -1,9 +1,12 @@
-type NavIcon = 'file' | 'folder' | 'wip';
+import { MenuItem } from '@csss-code/menu/menu-item/menu-item.component';
+import {
+  faChevronDown,
+  faChevronRight,
+  faFile,
+  faRoadBarrier
+} from '@fortawesome/free-solid-svg-icons';
 
-export interface NavbarItem {
-  key: string;
-  label: string;
-  type: NavIcon;
+export interface NavbarItem extends MenuItem {
   children?: NavbarItem[];
   link?: string;
 }
@@ -12,42 +15,48 @@ export const NAVBAR_ENTRIES: NavbarItem[] = [
   {
     key: 'csss',
     label: 'The CSSS',
-    type: 'folder',
+    icon: (state: boolean) => (state ? faChevronDown : faChevronRight),
     children: [
       {
         key: 'readme',
         label: 'README',
-        type: 'file',
+        icon: faFile,
         link: '/readme'
       },
       {
         key: 'officers',
         label: 'Officers',
-        type: 'file',
+        icon: faFile,
         link: '/officers'
       },
       {
         key: 'committees',
         label: 'Committees',
-        type: 'file',
+        icon: faFile,
         link: '/committees'
       },
       {
         key: 'common-room',
         label: 'Common Room',
-        type: 'file',
+        icon: faFile,
         link: '/common-room'
+      },
+      {
+        key: 'events',
+        label: 'Events',
+        icon: faFile,
+        link: '/events'
       },
       {
         key: 'affiliates',
         label: 'Affiliates',
-        type: 'file',
+        icon: faFile,
         link: '/affiliates'
       }
       // {
       //   key: 'documents',
       //   label: 'Documents',
-      //   type: 'file',
+      //   type: faFile,
       //   link: '/documents'
       // },
     ]
@@ -55,39 +64,28 @@ export const NAVBAR_ENTRIES: NavbarItem[] = [
   {
     key: 'elections',
     label: 'Elections',
-    type: 'folder',
+    icon: (state: boolean) => (state ? faChevronDown : faChevronRight),
     children: [
       {
         key: 'elections',
         label: 'Upcoming',
-        type: 'wip',
-        link: '/elections'
+        icon: faRoadBarrier,
+        link: '/elections',
+        isDisabled: true
       },
       {
         key: 'speeches',
         label: 'Speeches',
-        type: 'wip',
-        link: '/speeches'
+        icon: faRoadBarrier,
+        link: '/speeches',
+        isDisabled: true
       }
     ]
   },
   {
-    key: 'events',
-    label: 'Events',
-    type: 'folder',
-    children: [
-      {
-        key: 'events',
-        label: 'Upcoming',
-        type: 'file',
-        link: '/events'
-      },
-      {
-        key: 'events-archive',
-        label: 'Archive',
-        type: 'wip',
-        link: '/events-archive'
-      }
-    ]
+    key: 'documents',
+    label: 'Documents',
+    icon: (state: boolean) => (state ? faChevronDown : faChevronRight),
+    children: []
   }
 ];

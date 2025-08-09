@@ -15,7 +15,7 @@ import { MenuItemComponent } from '@csss-code/menu/menu-item/menu-item.component
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faCopy } from '@fortawesome/free-solid-svg-icons';
 import { csssLogo } from 'assets/icons/csss-logo';
-import { NAVBAR_ENTRIES, NavbarItem } from 'components/nav-bar/navbar-entries';
+import { NAVBAR_ENTRIES, NavbarItem } from 'components/nav-bar/nav-bar.data';
 import { BREAKPOINT_STRING_MAP } from 'styles/breakpoints';
 
 @Component({
