@@ -1,5 +1,5 @@
-@use '../../../ui/csss-code/theme';
-@use '../../../styles/globals' as g;
+@use 'theme';
+@use 'globals' as g;
 
 $item-spacing: 1rem; // Padding for the activity bar items.
 // size of the activity + tabs bar for small device widths
@@ -71,7 +71,7 @@ header {
   }
 }
 
-@media (min-width: g.$breakpoint-small) {
+@media (min-width: g.$breakpoint-large) {
   :host {
     display: grid;
     grid-template-columns: g.$act-bar-w min-content;

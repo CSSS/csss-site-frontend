@@ -1,8 +1,8 @@
 export const VIEW_BREAKPOINTS = {
-  small: 968
+  large: 968
 } as const;
 
-export const BREAKPOINT_STRING_MAP: Record<string, string> = Object.entries(
+export const BREAKPOINT_STRING_MAP: Record<keyof typeof VIEW_BREAKPOINTS, string> = Object.entries(
   VIEW_BREAKPOINTS
 ).reduce(
   (acc, [k, v]) => {

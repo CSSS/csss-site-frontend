@@ -27,8 +27,12 @@ import { BREAKPOINT_STRING_MAP } from 'styles/breakpoints';
 })
 export class NavBarComponent implements OnInit {
   @HostListener('document:click', ['$event'])
+  /**
+   * Handles mouse clicks that occur outside of the UI components.
+   * @param event - Mouse click
+   */
   handleOutsideClick(event: MouseEvent): void {
-    if (this.breakpointObs.isMatched(BREAKPOINT_STRING_MAP['small'])) {
+    if (this.breakpointObs.isMatched(BREAKPOINT_STRING_MAP['large'])) {
       return;
     }
     if (
