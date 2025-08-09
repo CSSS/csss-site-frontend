@@ -6,26 +6,28 @@
   <span>{{ entry().label }}</span>
 </ng-template>
 
-<!-- If the entry has a link, wrap it in an `a` tag, otherwise, use a `div`. -->
-@if (entry().isDisabled) {
-  <div class="nav-entry disabled">
-    <ng-container [ngTemplateOutlet]="item"></ng-container>
-  </div>
-} @else if (entry().link) {
-  <a class="nav-entry" [routerLink]="entry().link" routerLinkActive="active">
-    <ng-container [ngTemplateOutlet]="item"></ng-container>
-  </a>
-} @else {
-  <div class="nav-entry" (click)="itemClick()">
-    <ng-container [ngTemplateOutlet]="item"></ng-container>
-  </div>
-}
+<li>
+  <!-- If the entry has a link, wrap it in an `a` tag, otherwise, use a `div`. -->
+  @if (entry().isDisabled) {
+    <div class="nav-entry disabled">
+      <ng-container [ngTemplateOutlet]="item"></ng-container>
+    </div>
+  } @else if (entry().link) {
+    <a class="nav-entry" (click)="itemClick()" [ngClass]="{ active: entry().isHighlighted }">
+      <ng-container [ngTemplateOutlet]="item"></ng-container>
+    </a>
+  } @else {
+    <div class="nav-entry" (click)="itemClick()">
+      <ng-container [ngTemplateOutlet]="item"></ng-container>
+    </div>
+  }
+</li>
 
 <!-- Structure of items that have sub-items -->
 @if (isOpen() && entry().children?.length) {
   <ul>
     @for (entry of entry().children; track entry.key) {
-      <li><code-menu-item [depth]="depth() + 1" [entry]="entry" /></li>
+      <code-menu-item [depth]="depth() + 1" [entry]="entry" />
     }
   </ul>
 }

@@ -74,8 +74,6 @@ export class ApplicationService {
         break;
       }
     }
-
-    this.uiService.isFileSystemOpen.set(false);
   }
 
   /**

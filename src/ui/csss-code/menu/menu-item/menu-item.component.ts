@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component, computed, input, signal } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { ChangeDetectionStrategy, Component, computed, inject, input, signal } from '@angular/core';
+import { Router } from '@angular/router';
 import { FontAwesomeModule, IconDefinition } from '@fortawesome/angular-fontawesome';
 
 export interface MenuItem {
@@ -10,11 +10,13 @@ export interface MenuItem {
   children?: MenuItem[];
   link?: string;
   isDisabled?: boolean;
+  isHighlighted?: boolean;
+  action?: () => void;
 }
 
 @Component({
   selector: 'code-menu-item',
-  imports: [CommonModule, FontAwesomeModule, RouterModule],
+  imports: [CommonModule, FontAwesomeModule],
   templateUrl: './menu-item.component.html',
   styleUrl: './menu-item.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
@@ -46,12 +48,18 @@ export class MenuItemComponent {
     return typeof icon === 'function' ? icon(this.isOpen()) : icon;
   });
 
+  private router = inject(Router);
+
   /**
    *  Handler for when the item is clicked.
    */
   itemClick(): void {
+    const action = this.entry().action;
+    if (action) {
+      action();
+    }
     if (this.entry().link) {
-      return;
+      this.router.navigate([this.entry().link]);
     }
 
     this.isOpen.update(b => !b);

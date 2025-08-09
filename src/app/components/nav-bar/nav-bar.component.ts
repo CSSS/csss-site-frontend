@@ -2,11 +2,11 @@ import { BreakpointObserver } from '@angular/cdk/layout';
 import {
   ChangeDetectionStrategy,
   Component,
+  computed,
   ElementRef,
   HostListener,
   inject,
   OnInit,
-  signal,
   viewChild
 } from '@angular/core';
 import { RouterModule } from '@angular/router';
@@ -60,11 +60,6 @@ export class NavBarComponent implements OnInit {
   activityListEl = viewChild<ElementRef>('activityList');
 
   /**
-   * Navbar entries
-   */
-  protected entries = signal<MenuItem[]>(NAVBAR_ENTRIES);
-
-  /**
    * Icon for the CSSS Logo.
    */
   protected csssIcon = csssLogo;
@@ -78,6 +73,13 @@ export class NavBarComponent implements OnInit {
    * Service to control the UI
    */
   protected uiService = inject(UiService);
+
+  /**
+   * Navbar entries
+   */
+  protected entries = computed<MenuItem[]>(() =>
+    this.uiService.isLargeViewport() ? NAVBAR_ENTRIES : this.addActions(NAVBAR_ENTRIES)
+  );
 
   /**
    * Observer to view our breakpoint widths.
@@ -94,5 +96,25 @@ export class NavBarComponent implements OnInit {
    */
   toggleFileSystem(): void {
     this.uiService.isFileSystemOpen.update(value => !value);
+  }
+
+  private addActions(entries: MenuItem[]): MenuItem[] {
+    return entries.map(e => {
+      let newEntry = {
+        ...e
+      };
+      if (e.link) {
+        newEntry = {
+          ...newEntry,
+          action: (): void => this.uiService.isFileSystemOpen.set(false)
+        };
+      } else if (e.children) {
+        newEntry = {
+          ...newEntry,
+          children: this.addActions(e.children)
+        };
+      }
+      return newEntry;
+    });
   }
 }

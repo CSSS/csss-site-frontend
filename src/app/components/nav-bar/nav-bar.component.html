@@ -17,7 +17,7 @@
   <nav>
     <ul class="navbar-list">
       @for (entry of entries(); track entry.key) {
-        <li><code-menu-item [entry]="entry" /></li>
+        <code-menu-item [entry]="entry" />
       }
     </ul>
   </nav>
