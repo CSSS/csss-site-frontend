@@ -2,7 +2,6 @@ import { BreakpointObserver } from '@angular/cdk/layout';
 import {
   ChangeDetectionStrategy,
   Component,
-  computed,
   ElementRef,
   HostListener,
   inject,
@@ -11,11 +10,12 @@ import {
   viewChild
 } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { MenuItemComponent } from '@csss-code/menu/menu-item/menu-item.component';
+import { MenuItem, MenuItemComponent } from '@csss-code/menu/menu-item/menu-item.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faCopy } from '@fortawesome/free-solid-svg-icons';
 import { csssLogo } from 'assets/icons/csss-logo';
-import { NAVBAR_ENTRIES, NavbarItem } from 'components/nav-bar/nav-bar.data';
+import { NAVBAR_ENTRIES } from 'components/nav-bar/nav-bar.data';
+import { UiService } from 'services/ui/ui.service';
 import { BREAKPOINT_STRING_MAP } from 'styles/breakpoints';
 
 @Component({
@@ -40,7 +40,7 @@ export class NavBarComponent implements OnInit {
       !this.toggleButtonEl()?.nativeElement.contains(event.target) &&
       !this.activityListEl()?.nativeElement.contains(event.target)
     ) {
-      this.isFileSystemOpen.set(false);
+      this.uiService.isFileSystemOpen.set(false);
     }
   }
 
@@ -62,17 +62,7 @@ export class NavBarComponent implements OnInit {
   /**
    * Navbar entries
    */
-  protected entries = signal<NavbarItem[]>(NAVBAR_ENTRIES);
-
-  /**
-   * Flag representing if the menu is closed or open.
-   */
-  protected isFileSystemOpen = signal<boolean>(false);
-
-  /**
-   * Signal that converts the nav entries, in case they need to be dynamically instantiated.
-   */
-  protected navItems = computed(() => this.navEntryToItem(this.entries()));
+  protected entries = signal<MenuItem[]>(NAVBAR_ENTRIES);
 
   /**
    * Icon for the CSSS Logo.
@@ -85,33 +75,24 @@ export class NavBarComponent implements OnInit {
   protected copyIcon = faCopy;
 
   /**
+   * Service to control the UI
+   */
+  protected uiService = inject(UiService);
+
+  /**
    * Observer to view our breakpoint widths.
    */
   private breakpointObs = inject(BreakpointObserver);
 
   ngOnInit(): void {
     // On smaller screens, do not automatically open the navigation
-    this.isFileSystemOpen.set(this.breakpointObs.isMatched(BREAKPOINT_STRING_MAP['small']));
-  }
-
-  /**
-   * Recursively converts all the menu entries into object this menu can use
-   */
-  private navEntryToItem(entries: NavbarItem[]): NavbarItem[] {
-    return entries.map(entry => {
-      const children = entry.children?.length ? this.navEntryToItem(entry.children) : [];
-      return {
-        ...entry,
-        children,
-        isOpen: true
-      };
-    });
+    this.uiService.isFileSystemOpen.set(this.uiService.isLargeViewport());
   }
 
   /**
    * Changes the menu state between open and closed
    */
   toggleFileSystem(): void {
-    this.isFileSystemOpen.update(value => !value);
+    this.uiService.isFileSystemOpen.update(value => !value);
   }
 }

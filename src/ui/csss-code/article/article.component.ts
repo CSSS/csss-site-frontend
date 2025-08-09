@@ -1,4 +1,3 @@
-import { BreakpointObserver } from '@angular/cdk/layout';
 import {
   AfterContentInit,
   ChangeDetectionStrategy,
@@ -7,10 +6,9 @@ import {
   ElementRef,
   inject,
   OnDestroy,
-  Renderer2,
   signal
 } from '@angular/core';
-import { BREAKPOINT_STRING_MAP } from 'styles/breakpoints';
+import { UiService } from 'services/ui/ui.service';
 
 const LETTER_HEIGHT = 24;
 
@@ -21,11 +19,6 @@ const LETTER_HEIGHT = 24;
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ArticleComponent implements AfterContentInit, OnDestroy {
-  /**
-   * Angular's way of manipulating the DOM.
-   */
-  private renderer: Renderer2 = inject(Renderer2);
-
   /**
    * Reference to this element.
    */
@@ -48,23 +41,18 @@ export class ArticleComponent implements AfterContentInit, OnDestroy {
    */
   private resizeObs!: ResizeObserver;
 
-  /**
-   * Observer to view our breakpoint widths.
-   */
-  private breakpointObs = inject(BreakpointObserver);
+  private uiService = inject(UiService);
 
   ngAfterContentInit(): void {
-    // Don't set the line numbers if we're on a smaller screen.
-    if (!this.breakpointObs.isMatched(BREAKPOINT_STRING_MAP['small'])) {
-      return;
-    }
-
     /**
      * This observer is set to watch the content of the content.
      * It will recalculate the amount of line gutter numbers every time the
      * height of the article element changes.
      */
     this.resizeObs = new ResizeObserver(entries => {
+      if (!this.uiService.isLargeViewport()) {
+        return;
+      }
       for (const entry of entries) {
         const numbersToFit = Math.trunc(entry.contentRect.height / LETTER_HEIGHT);
 

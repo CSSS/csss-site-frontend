@@ -2,13 +2,12 @@ import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, computed, input, signal } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { FontAwesomeModule, IconDefinition } from '@fortawesome/angular-fontawesome';
-import { NavbarItem } from 'components/nav-bar/nav-bar.data';
 
 export interface MenuItem {
   key: string;
   label: string;
   icon: IconDefinition | ((state: boolean) => IconDefinition);
-  children?: NavbarItem[];
+  children?: MenuItem[];
   link?: string;
   isDisabled?: boolean;
 }
@@ -24,7 +23,7 @@ export class MenuItemComponent {
   /**
    * The menu entry to render.
    */
-  entry = input.required<NavbarItem>();
+  entry = input.required<MenuItem>();
 
   /**
    * How deep deeply nested the menu item is.
@@ -39,7 +38,6 @@ export class MenuItemComponent {
   isOpen = signal<boolean>(true);
 
   /**
-   * TODO: Make it so you can give it any icons you want.
    * Icon to display.
    * Signal derived from the entry type and the `isOpen` flag.
    */

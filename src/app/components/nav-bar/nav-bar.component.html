@@ -4,7 +4,7 @@
   /></a>
   <div
     class="act-button clickable fs-icon"
-    [class.focused]="isFileSystemOpen()"
+    [class.focused]="uiService.isFileSystemOpen()"
     (click)="toggleFileSystem()"
     #toggleButton
   >
@@ -12,11 +12,11 @@
   </div>
 </aside>
 
-<aside class="navbar" [hidden]="!isFileSystemOpen()" #navBar>
+<aside class="navbar" [hidden]="!uiService.isFileSystemOpen()" #navBar>
   <header class="navbar-header">SFU CSSS</header>
   <nav>
     <ul class="navbar-list">
-      @for (entry of navItems(); track entry.key) {
+      @for (entry of entries(); track entry.key) {
         <li><code-menu-item [entry]="entry" /></li>
       }
     </ul>

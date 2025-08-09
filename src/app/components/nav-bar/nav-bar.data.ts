@@ -6,12 +6,7 @@ import {
   faRoadBarrier
 } from '@fortawesome/free-solid-svg-icons';
 
-export interface NavbarItem extends MenuItem {
-  children?: NavbarItem[];
-  link?: string;
-}
-
-export const NAVBAR_ENTRIES: NavbarItem[] = [
+export const NAVBAR_ENTRIES: MenuItem[] = [
   {
     key: 'csss',
     label: 'The CSSS',
