@@ -13,18 +13,17 @@
 </aside>
 
 <aside class="navbar" [hidden]="!uiService.isFileSystemOpen()" #navBar>
-  <header class="navbar__header">SFU CSSS</header>
+  <h1 class="navbar__heading">SFU CSSS</h1>
   <nav>
     <ul class="navbar__list">
       @for (entry of navEntries(); track entry.key) {
-        <!-- This is the template of the menu item, i.e. the actual nav entry's look -->
-        <code-list-item
-          class="nav-entry clickable"
-          [entry]="entry"
-          (click)="toggleDirectory(entry.key)"
-        >
-          <button type="button">
-            <fa-icon class="nav-entry__icon" [icon]="getDirectoryIcon(entry.isOpen)" />
+        <code-list-item [entry]="entry">
+          <button class="nav-entry" type="button" (click)="toggleDirectory(entry.key)">
+            <fa-icon
+              class="nav-entry__icon"
+              [icon]="getDirectoryIcon(entry.isOpen)"
+              [fixedWidth]="true"
+            />
             <span>{{ entry.label }}</span>
           </button>
         </code-list-item>
@@ -32,17 +31,28 @@
           <ul class="navbar__list">
             @for (subItem of entry.children; track subItem.key) {
               <code-list-item
-                class="nav-entry clickable"
-                [class.active]="subItem.url === appService.focusedApplication()?.route"
-                [ariaDisabled]="subItem.isDisabled"
-                (click)="navigate(subItem.url)"
                 [entry]="subItem"
                 [depth]="1"
+                routerLinkActive="active"
+                [routerLinkActiveOptions]="{ exact: true }"
               >
-                <a>
-                  <fa-icon class="nav-entry__icon" [icon]="subItem.icon" />
-                  <span>{{ subItem.label }}</span>
-                </a>
+                @if (subItem.route) {
+                  <a
+                    class="nav-entry"
+                    (click)="navigate(subItem)"
+                    [routerLink]="subItem.route"
+                    [class.clickable]="!subItem.isDisabled"
+                    routerLinkActive="active"
+                  >
+                    <fa-icon class="nav-entry__icon" [icon]="subItem.icon" [fixedWidth]="true" />
+                    <span>{{ subItem.label }}</span>
+                  </a>
+                } @else {
+                  <a class="nav-entry clickable" [href]="subItem.href" target="_blank">
+                    <fa-icon class="nav-entry__icon" [icon]="subItem.icon" [fixedWidth]="true" />
+                    <span>{{ subItem.label }}</span>
+                  </a>
+                }
               </code-list-item>
             }
           </ul>

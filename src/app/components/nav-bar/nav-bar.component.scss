@@ -12,15 +12,6 @@ $navbar-w: 20rem;
   flex-direction: column;
 }
 
-button {
-  cursor: pointer;
-}
-
-header {
-  display: flex;
-  justify-content: space-between;
-}
-
 .activity-list {
   display: grid;
   grid-template-columns: repeat(auto-fill, 4rem);
@@ -49,8 +40,11 @@ header {
   background-color: theme.$bg3;
   border-right: $border;
   z-index: 100;
+  overflow: scroll;
 
-  &__header {
+  &__heading {
+    font-size: 1.1rem;
+    font-weight: 400;
     padding: $item-spacing 2em;
   }
 
@@ -62,23 +56,26 @@ header {
 }
 
 .nav-entry {
+  display: block;
+  height: 100%;
+  width: 100%;
   padding: 0.5rem 0 0.5rem 0;
 
   &[aria-disabled='true'] {
     color: gray;
-    cursor: not-allowed;
   }
 
   &__icon {
     margin-right: 0.5rem;
   }
 
-  &.active {
-    background-color: theme.$bg0;
+  &__link {
+    display: block;
+    width: 100%;
   }
 }
 
-.clickable:hover {
+.active {
   background-color: theme.$bg0;
 }
 
