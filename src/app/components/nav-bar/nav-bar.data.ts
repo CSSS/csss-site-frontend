@@ -1,16 +1,18 @@
-import { MenuItem } from '@csss-code/menu/menu-item/menu-item.component';
-import {
-  faChevronDown,
-  faChevronRight,
-  faFile,
-  faRoadBarrier
-} from '@fortawesome/free-solid-svg-icons';
+import { CodeMenuItem } from '@csss-code/list/list-item/list-item.component';
+import { IconDefinition } from '@fortawesome/angular-fontawesome';
+import { faChevronRight, faFile, faRoadBarrier } from '@fortawesome/free-solid-svg-icons';
 
-export const NAVBAR_ENTRIES: MenuItem[] = [
+export interface NavItem extends CodeMenuItem<NavItem> {
+  link?: string;
+  isOpen?: boolean;
+  icon: IconDefinition;
+}
+
+export const NAVBAR_ENTRIES: NavItem[] = [
   {
     key: 'csss',
     label: 'The CSSS',
-    icon: (state: boolean) => (state ? faChevronDown : faChevronRight),
+    icon: faChevronRight,
     children: [
       {
         key: 'readme',
@@ -59,7 +61,7 @@ export const NAVBAR_ENTRIES: MenuItem[] = [
   {
     key: 'elections',
     label: 'Elections',
-    icon: (state: boolean) => (state ? faChevronDown : faChevronRight),
+    icon: faChevronRight,
     children: [
       {
         key: 'elections',
@@ -80,7 +82,7 @@ export const NAVBAR_ENTRIES: MenuItem[] = [
   {
     key: 'documents',
     label: 'Documents',
-    icon: (state: boolean) => (state ? faChevronDown : faChevronRight),
+    icon: faChevronRight,
     children: []
   }
 ];

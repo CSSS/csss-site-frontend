@@ -1,5 +1,5 @@
 <aside class="activity-list" #activityList>
-  <a class="act-button clickable" routerLink="/"
+  <a class="<activity-list__home></activity-list__home> clickable" routerLink="/"
     ><fa-icon class="csss-logo" [icon]="csssIcon" size="2x"
   /></a>
   <div
@@ -13,11 +13,29 @@
 </aside>
 
 <aside class="navbar" [hidden]="!uiService.isFileSystemOpen()" #navBar>
-  <header class="navbar-header">SFU CSSS</header>
+  <header class="navbar__header">SFU CSSS</header>
   <nav>
-    <ul class="navbar-list">
-      @for (entry of entries(); track entry.key) {
-        <code-menu-item [entry]="entry" />
+    <ul class="navbar__list">
+      @for (entry of navEntries(); track entry.key) {
+        <!-- This is the template of the menu item, i.e. the actual nav entry's look -->
+        <code-list-item class="navbar__entry clickable" [entry]="entry">
+          <button type="button" (click)="toggleDirectory(entry.key)">
+            <fa-icon class="fa-fw" [icon]="entry.icon | icon" />
+            <span>{{ entry.label }}</span>
+          </button>
+        </code-list-item>
+        @if (entry.isOpen && entry.children?.length) {
+          <ul>
+            @for (child of entry.children; track child.key) {
+              <code-list-item class="navbar__entry clickable" [entry]="child" [depth]="1">
+                <a [routerLink]="child.link" routerLinkActive="active">
+                  <fa-icon class="fa-fw" [icon]="child.icon | icon" />
+                  <span>{{ child.label }}</span>
+                </a>
+              </code-list-item>
+            }
+          </ul>
+        }
       }
     </ul>
   </nav>

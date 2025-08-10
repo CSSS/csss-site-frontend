@@ -1,26 +1,28 @@
 import { BreakpointObserver } from '@angular/cdk/layout';
+import { CommonModule } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
-  computed,
   ElementRef,
   HostListener,
   inject,
   OnInit,
+  signal,
   viewChild
 } from '@angular/core';
-import { RouterModule } from '@angular/router';
-import { MenuItem, MenuItemComponent } from '@csss-code/menu/menu-item/menu-item.component';
+import { Router, RouterModule } from '@angular/router';
+import { CodeListItemComponent } from '@csss-code/list/list-item/list-item.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { faCopy } from '@fortawesome/free-solid-svg-icons';
+import { faChevronDown, faChevronRight, faCopy } from '@fortawesome/free-solid-svg-icons';
+import { IconPipe } from 'app/pipes/icon/icon.pipe';
 import { csssLogo } from 'assets/icons/csss-logo';
-import { NAVBAR_ENTRIES } from 'components/nav-bar/nav-bar.data';
+import { NAVBAR_ENTRIES, NavItem } from 'components/nav-bar/nav-bar.data';
 import { UiService } from 'services/ui/ui.service';
 import { BREAKPOINT_STRING_MAP } from 'styles/breakpoints';
 
 @Component({
   selector: 'cs-nav-bar',
-  imports: [FontAwesomeModule, MenuItemComponent, RouterModule],
+  imports: [CommonModule, FontAwesomeModule, CodeListItemComponent, RouterModule, IconPipe],
   templateUrl: './nav-bar.component.html',
   styleUrl: './nav-bar.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
@@ -77,14 +79,13 @@ export class NavBarComponent implements OnInit {
   /**
    * Navbar entries
    */
-  protected entries = computed<MenuItem[]>(() =>
-    this.uiService.isLargeViewport() ? NAVBAR_ENTRIES : this.addActions(NAVBAR_ENTRIES)
-  );
-
+  protected navEntries = signal<NavItem[]>(NAVBAR_ENTRIES);
   /**
    * Observer to view our breakpoint widths.
    */
   private breakpointObs = inject(BreakpointObserver);
+
+  private router = inject(Router);
 
   ngOnInit(): void {
     // On smaller screens, do not automatically open the navigation
@@ -98,23 +99,15 @@ export class NavBarComponent implements OnInit {
     this.uiService.isFileSystemOpen.update(value => !value);
   }
 
-  private addActions(entries: MenuItem[]): MenuItem[] {
-    return entries.map(e => {
-      let newEntry = {
-        ...e
-      };
-      if (e.link) {
-        newEntry = {
-          ...newEntry,
-          action: (): void => this.uiService.isFileSystemOpen.set(false)
-        };
-      } else if (e.children) {
-        newEntry = {
-          ...newEntry,
-          children: this.addActions(e.children)
-        };
-      }
-      return newEntry;
+  toggleDirectory(key: string): void {
+    this.navEntries.update(entries => {
+      return entries.map(e => {
+        if (e.key === key) {
+          e.isOpen = !e.isOpen;
+          e.icon = e.isOpen ? faChevronDown : faChevronRight;
+        }
+        return e;
+      });
     });
   }
 }

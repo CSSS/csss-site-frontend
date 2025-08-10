@@ -26,7 +26,6 @@ export class ApplicationService {
   );
 
   router = inject(Router);
-
   uiService = inject(UiService);
 
   constructor() {
@@ -64,9 +63,6 @@ export class ApplicationService {
       return;
     }
 
-    this.focusedApplication.set(application);
-    addToSignalMap(this.runningApplications, application.id, application);
-
     // The activity for this app might be open, but not focused. Try and remove it.
     for (const app of this.runningApplications().values()) {
       if (app.activityKey === application.activityKey && app.id !== application.id) {
@@ -74,6 +70,9 @@ export class ApplicationService {
         break;
       }
     }
+
+    addToSignalMap(this.runningApplications, application.id, application);
+    this.focusedApplication.set(application);
   }
 
   /**
