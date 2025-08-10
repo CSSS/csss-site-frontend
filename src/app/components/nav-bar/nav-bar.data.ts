@@ -51,12 +51,6 @@ export const NAVBAR_ENTRIES: NavItem[] = [
         icon: faFile,
         url: '/affiliates'
       }
-      // {
-      //   key: 'documents',
-      //   label: 'Documents',
-      //   type: faFile,
-      //   link: '/documents'
-      // },
     ]
   },
   {

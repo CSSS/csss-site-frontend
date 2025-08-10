@@ -30,17 +30,18 @@
         </code-list-item>
         @if (entry.isOpen && entry.children?.length) {
           <ul class="navbar__list">
-            @for (child of entry.children; track child.key) {
+            @for (subItem of entry.children; track subItem.key) {
               <code-list-item
                 class="nav-entry clickable"
-                [class.active]="child.url === appService.focusedApplication()?.route"
-                (click)="navigate(child.url)"
-                [entry]="child"
+                [class.active]="subItem.url === appService.focusedApplication()?.route"
+                [ariaDisabled]="subItem.isDisabled"
+                (click)="navigate(subItem.url)"
+                [entry]="subItem"
                 [depth]="1"
               >
                 <a>
-                  <fa-icon class="nav-entry__icon" [icon]="child.icon" />
-                  <span>{{ child.label }}</span>
+                  <fa-icon class="nav-entry__icon" [icon]="subItem.icon" />
+                  <span>{{ subItem.label }}</span>
                 </a>
               </code-list-item>
             }

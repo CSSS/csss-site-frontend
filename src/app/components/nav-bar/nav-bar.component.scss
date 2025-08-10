@@ -64,7 +64,7 @@ header {
 .nav-entry {
   padding: 0.5rem 0 0.5rem 0;
 
-  &--disabled {
+  &[aria-disabled='true'] {
     color: gray;
     cursor: not-allowed;
   }
