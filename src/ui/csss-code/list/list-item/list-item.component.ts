@@ -7,7 +7,6 @@ export interface CodeListItem<T extends CodeListItem<T>> {
   label: string;
   children?: T[];
   isDisabled?: boolean;
-  isHighlighted?: boolean;
 }
 
 @Component({

@@ -63,8 +63,6 @@ $navbar-w: 20rem;
 
   &[aria-disabled='true'] {
     color: gray;
-    pointer-events: none;
-    cursor: not-allowed;
   }
 
   &__icon {
@@ -77,8 +75,7 @@ $navbar-w: 20rem;
   }
 }
 
-.active,
-.clickable:hover {
+.active {
   background-color: theme.$bg0;
 }
 

@@ -41,7 +41,6 @@
                     class="nav-entry"
                     (click)="navigate(subItem)"
                     [routerLink]="subItem.route"
-                    [ariaDisabled]="subItem.isDisabled"
                     [class.clickable]="!subItem.isDisabled"
                     routerLinkActive="active"
                   >
@@ -49,12 +48,7 @@
                     <span>{{ subItem.label }}</span>
                   </a>
                 } @else {
-                  <a
-                    class="nav-entry clickable"
-                    [href]="subItem.href"
-                    target="_blank"
-                    [ariaDisabled]="subItem.isDisabled"
-                  >
+                  <a class="nav-entry clickable" [href]="subItem.href" target="_blank">
                     <fa-icon class="nav-entry__icon" [icon]="subItem.icon" [fixedWidth]="true" />
                     <span>{{ subItem.label }}</span>
                   </a>
