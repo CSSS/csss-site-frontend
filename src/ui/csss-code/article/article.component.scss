@@ -13,7 +13,7 @@ article {
   padding: 0 1rem;
 }
 
-@media (min-width: g.$breakpoint-small) {
+@media (min-width: g.$breakpoint-large) {
   :host {
     display: grid;
     grid-template-columns: 2.5rem auto;

@@ -1,0 +1,7 @@
+@use 'theme';
+@use 'globals';
+
+:host {
+  @include globals.no-select;
+  display: block;
+}

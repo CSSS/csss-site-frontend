@@ -1,10 +1,10 @@
 <aside class="activity-list" #activityList>
-  <a class="act-button clickable" routerLink="/"
+  <a class="<activity-list__home></activity-list__home> clickable" routerLink="/"
     ><fa-icon class="csss-logo" [icon]="csssIcon" size="2x"
   /></a>
   <div
     class="act-button clickable fs-icon"
-    [class.focused]="isFileSystemOpen()"
+    [class.focused]="uiService.isFileSystemOpen()"
     (click)="toggleFileSystem()"
     #toggleButton
   >
@@ -12,12 +12,41 @@
   </div>
 </aside>
 
-<aside class="navbar" [hidden]="!isFileSystemOpen()" #navBar>
-  <header class="navbar-header">SFU CSSS</header>
+<aside class="navbar" [hidden]="!uiService.isFileSystemOpen()" #navBar>
+  <header class="navbar__header">SFU CSSS</header>
   <nav>
-    <ul class="navbar-list">
-      @for (entry of navItems(); track entry.key) {
-        <li><code-menu-item [entry]="entry" /></li>
+    <ul class="navbar__list">
+      @for (entry of navEntries(); track entry.key) {
+        <!-- This is the template of the menu item, i.e. the actual nav entry's look -->
+        <code-list-item
+          class="nav-entry clickable"
+          [entry]="entry"
+          (click)="toggleDirectory(entry.key)"
+        >
+          <button type="button">
+            <fa-icon class="nav-entry__icon" [icon]="getDirectoryIcon(entry.isOpen)" />
+            <span>{{ entry.label }}</span>
+          </button>
+        </code-list-item>
+        @if (entry.isOpen && entry.children?.length) {
+          <ul class="navbar__list">
+            @for (subItem of entry.children; track subItem.key) {
+              <code-list-item
+                class="nav-entry clickable"
+                [class.active]="subItem.url === appService.focusedApplication()?.route"
+                [ariaDisabled]="subItem.isDisabled"
+                (click)="navigate(subItem.url)"
+                [entry]="subItem"
+                [depth]="1"
+              >
+                <a>
+                  <fa-icon class="nav-entry__icon" [icon]="subItem.icon" />
+                  <span>{{ subItem.label }}</span>
+                </a>
+              </code-list-item>
+            }
+          </ul>
+        }
       }
     </ul>
   </nav>
