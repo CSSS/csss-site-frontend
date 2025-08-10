@@ -16,11 +16,6 @@ button {
   cursor: pointer;
 }
 
-header {
-  display: flex;
-  justify-content: space-between;
-}
-
 .activity-list {
   display: grid;
   grid-template-columns: repeat(auto-fill, 4rem);
@@ -49,8 +44,11 @@ header {
   background-color: theme.$bg3;
   border-right: $border;
   z-index: 100;
+  overflow: scroll;
 
-  &__header {
+  &__heading {
+    font-size: 1.1rem;
+    font-weight: 400;
     padding: $item-spacing 2em;
   }
 

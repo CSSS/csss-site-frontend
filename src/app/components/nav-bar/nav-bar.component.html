@@ -13,7 +13,7 @@
 </aside>
 
 <aside class="navbar" [hidden]="!uiService.isFileSystemOpen()" #navBar>
-  <header class="navbar__header">SFU CSSS</header>
+  <h1 class="navbar__heading">SFU CSSS</h1>
   <nav>
     <ul class="navbar__list">
       @for (entry of navEntries(); track entry.key) {
