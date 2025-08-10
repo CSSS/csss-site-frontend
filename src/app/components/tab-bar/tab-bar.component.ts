@@ -1,19 +1,13 @@
-import { BreakpointObserver } from '@angular/cdk/layout';
 import {
-  AfterViewInit,
   ChangeDetectionStrategy,
   Component,
   computed,
   HostBinding,
   inject,
-  OnDestroy,
-  signal,
-  Signal,
-  WritableSignal
+  Signal
 } from '@angular/core';
-import { Subscription } from 'rxjs';
 import { ApplicationService } from 'services/application/application.service';
-import { BREAKPOINT_STRING_MAP } from 'styles/breakpoints';
+import { UiService } from 'services/ui/ui.service';
 import { STRUCTURE_MAP } from 'styles/structure';
 
 export interface TabBarItem {
@@ -29,7 +23,7 @@ export interface TabBarItem {
   styleUrl: './tab-bar.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class TabBarComponent implements AfterViewInit, OnDestroy {
+export class TabBarComponent {
   @HostBinding('attr.aria-role') get ariaRole(): string {
     return 'tablist';
   }
@@ -45,9 +39,9 @@ export class TabBarComponent implements AfterViewInit, OnDestroy {
   private applicationService = inject(ApplicationService);
 
   /**
-   * Observer to watch when a breakpoint is hit.
+   * Gives the tab bar notice of when breakpoints are hit.
    */
-  private breakpointObs = inject(BreakpointObserver);
+  private uiService = inject(UiService);
 
   /**
    * The tabs-bar that should be displayed.
@@ -67,34 +61,12 @@ export class TabBarComponent implements AfterViewInit, OnDestroy {
   });
 
   /**
-   * True if the screen width is considered small, false otherwise.
-   */
-  private isSmall: WritableSignal<boolean> = signal(false);
-
-  /**
    * Hide the tabs bar if the screen size is small and there are no applications running.
    */
   isHidden: Signal<boolean> = computed(
-    () => this.isSmall() && this.applicationService.runningApplications().size === 0
+    () =>
+      !this.uiService.isLargeViewport() && this.applicationService.runningApplications().size === 0
   );
-
-  private breakpointSub?: Subscription;
-
-  ngAfterViewInit(): void {
-    this.breakpointSub = this.breakpointObs
-      .observe(BREAKPOINT_STRING_MAP['small'])
-      .subscribe(res => {
-        if (res.breakpoints[BREAKPOINT_STRING_MAP['small']]) {
-          this.isSmall.set(false);
-        } else {
-          this.isSmall.set(true);
-        }
-      });
-  }
-
-  ngOnDestroy(): void {
-    this.breakpointSub?.unsubscribe();
-  }
 
   focusTab(tab: TabBarItem): void {
     this.applicationService.router.navigateByUrl(tab.route);

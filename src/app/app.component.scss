@@ -19,7 +19,7 @@
 }
 
 /* Change the grid layout when we hit a certain size. */
-@media (min-width: b.$breakpoint-small) {
+@media (min-width: b.$breakpoint-large) {
   :host {
     grid-template-columns: min-content auto;
     grid-template-rows: #{g.$tab-bar-h} auto #{g.$status-line-h};
