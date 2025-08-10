@@ -1,10 +1,8 @@
-# This website is being rewritten. Again.
-# Starting May 2025, all new pull requests will be not be merged until the rewrite has been merged to main.
-# No new updates will be made on the current codebase as well.
 # Target launch is before the Fall 2025 semester.
 
 ## Development
-
+Read the wiki to get started
+https://github.com/CSSS/csss-site-frontend/wiki
 ### Prereqs
 You will need:
 - `git`
