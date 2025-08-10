@@ -1,9 +1,9 @@
-import { CodeMenuItem } from '@csss-code/list/list-item/list-item.component';
+import { CodeListItem } from '@csss-code/list/list-item/list-item.component';
 import { IconDefinition } from '@fortawesome/angular-fontawesome';
 import { faChevronRight, faFile, faRoadBarrier } from '@fortawesome/free-solid-svg-icons';
 
-export interface NavItem extends CodeMenuItem<NavItem> {
-  link?: string;
+export interface NavItem extends CodeListItem<NavItem> {
+  url?: string;
   isOpen?: boolean;
   icon: IconDefinition;
 }
@@ -19,37 +19,37 @@ export const NAVBAR_ENTRIES: NavItem[] = [
         key: 'readme',
         label: 'README',
         icon: faFile,
-        link: '/readme'
+        url: '/readme'
       },
       {
         key: 'officers',
         label: 'Officers',
         icon: faFile,
-        link: '/officers'
+        url: '/officers'
       },
       {
         key: 'committees',
         label: 'Committees',
         icon: faFile,
-        link: '/committees'
+        url: '/committees'
       },
       {
         key: 'common-room',
         label: 'Common Room',
         icon: faFile,
-        link: '/common-room'
+        url: '/common-room'
       },
       {
         key: 'events',
         label: 'Events',
         icon: faFile,
-        link: '/events'
+        url: '/events'
       },
       {
         key: 'affiliates',
         label: 'Affiliates',
         icon: faFile,
-        link: '/affiliates'
+        url: '/affiliates'
       }
       // {
       //   key: 'documents',
@@ -69,14 +69,14 @@ export const NAVBAR_ENTRIES: NavItem[] = [
         key: 'elections',
         label: 'Upcoming',
         icon: faRoadBarrier,
-        link: '/elections',
+        url: '/elections',
         isDisabled: true
       },
       {
         key: 'speeches',
         label: 'Speeches',
         icon: faRoadBarrier,
-        link: '/speeches',
+        url: '/speeches',
         isDisabled: true
       }
     ]

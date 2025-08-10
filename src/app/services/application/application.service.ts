@@ -1,7 +1,6 @@
 import { inject, Injectable, signal, WritableSignal } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { filter } from 'rxjs';
-import { UiService } from 'services/ui/ui.service';
 import { addToSignalMap, removeFromSignalMap } from 'utils/signal-utils';
 import { AppInfo, getApplicationByRoute } from './applications';
 
@@ -26,7 +25,6 @@ export class ApplicationService {
   );
 
   router = inject(Router);
-  uiService = inject(UiService);
 
   constructor() {
     // Observable that emits when navigating to a new URL has completed.

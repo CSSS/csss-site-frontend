@@ -72,6 +72,10 @@ header {
   &__icon {
     margin-right: 0.5rem;
   }
+
+  &.active {
+    background-color: theme.$bg0;
+  }
 }
 
 .clickable:hover {

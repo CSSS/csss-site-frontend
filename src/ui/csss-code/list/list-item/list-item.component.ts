@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 
-export interface CodeMenuItem<T extends CodeMenuItem<T>> {
+export interface CodeListItem<T extends CodeListItem<T>> {
   key: string;
   label: string;
   children?: T[];
@@ -19,7 +19,7 @@ export interface CodeMenuItem<T extends CodeMenuItem<T>> {
     '[style.paddingLeft.em]': '0.5 + depth() * 1.5'
   }
 })
-export class CodeListItemComponent<T extends CodeMenuItem<T>> {
+export class CodeListItemComponent<T extends CodeListItem<T>> {
   /**
    * The menu entry to render.
    */

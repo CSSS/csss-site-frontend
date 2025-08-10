@@ -16,6 +16,7 @@ import { FontAwesomeModule, IconDefinition } from '@fortawesome/angular-fontawes
 import { faChevronDown, faChevronRight, faCopy } from '@fortawesome/free-solid-svg-icons';
 import { csssLogo } from 'assets/icons/csss-logo';
 import { NAVBAR_ENTRIES, NavItem } from 'components/nav-bar/nav-bar.data';
+import { ApplicationService } from 'services/application/application.service';
 import { UiService } from 'services/ui/ui.service';
 import { BREAKPOINT_STRING_MAP } from 'styles/breakpoints';
 
@@ -79,6 +80,8 @@ export class NavBarComponent implements OnInit {
    * Navbar entries
    */
   protected navEntries = signal<NavItem[]>(NAVBAR_ENTRIES);
+
+  protected appService = inject(ApplicationService);
   /**
    * Observer to view our breakpoint widths.
    */

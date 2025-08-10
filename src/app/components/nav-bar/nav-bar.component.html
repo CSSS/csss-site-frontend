@@ -33,7 +33,8 @@
             @for (child of entry.children; track child.key) {
               <code-list-item
                 class="nav-entry clickable"
-                (click)="navigate(child.link)"
+                [class.active]="child.url === appService.focusedApplication()?.route"
+                (click)="navigate(child.url)"
                 [entry]="child"
                 [depth]="1"
               >
