@@ -5,3 +5,17 @@
   @include globals.no-select;
   display: block;
 }
+
+li {
+  height: 100%;
+
+  &:not([aria-disabled='true']):hover {
+    cursor: pointer;
+    background-color: theme.$bg0;
+  }
+
+  &[aria-disabled='true'] {
+    color: gray;
+    pointer-events: none;
+  }
+}

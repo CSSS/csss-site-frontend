@@ -15,7 +15,7 @@ import { CodeListItemComponent } from '@csss-code/list/list-item/list-item.compo
 import { FontAwesomeModule, IconDefinition } from '@fortawesome/angular-fontawesome';
 import { faChevronDown, faChevronRight, faCopy } from '@fortawesome/free-solid-svg-icons';
 import { csssLogo } from 'assets/icons/csss-logo';
-import { NAVBAR_ENTRIES, NavItem } from 'components/nav-bar/nav-bar.data';
+import { NAVBAR_ENTRIES, NavItem } from 'components/nav-bar/nav-entries';
 import { ApplicationService } from 'services/application/application.service';
 import { UiService } from 'services/ui/ui.service';
 import { BREAKPOINT_STRING_MAP } from 'styles/breakpoints';
@@ -130,15 +130,14 @@ export class NavBarComponent implements OnInit {
   /**
    * Opens the route.
    *
-   * @param url - URL to navigate to
+   * @param route - URL to navigate to
    */
-  navigate(url?: string): void {
-    if (!url) {
-      return;
-    }
-    this.router.navigate([url]);
-    if (!this.uiService.isLargeViewport()) {
-      this.uiService.isFileSystemOpen.set(false);
+  navigate(entry: NavItem): void {
+    if (entry.route) {
+      this.router.navigate([entry.route]);
+      if (!this.uiService.isLargeViewport()) {
+        this.uiService.isFileSystemOpen.set(false);
+      }
     }
   }
 }
