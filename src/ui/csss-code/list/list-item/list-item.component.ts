@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, input } from '@angular/core';
+import { IconDefinition } from '@fortawesome/angular-fontawesome';
 
 export interface CodeListItem<T extends CodeListItem<T>> {
   key: string;
@@ -14,10 +15,7 @@ export interface CodeListItem<T extends CodeListItem<T>> {
   imports: [CommonModule],
   templateUrl: './list-item.component.html',
   styleUrl: './list-item.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  host: {
-    '[style.paddingLeft.em]': '0.5 + depth() * 1.5'
-  }
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CodeListItemComponent<T extends CodeListItem<T>> {
   /**
@@ -26,8 +24,10 @@ export class CodeListItemComponent<T extends CodeListItem<T>> {
   entry = input.required<T>();
 
   /**
-   * How deep deeply nested the menu item is.
+   * How deeply nested the menu item is.
    * Base level is 0, each nesting level increases depth by 1.
    */
   depth = input<number>(0);
+
+  icon = input<IconDefinition>();
 }

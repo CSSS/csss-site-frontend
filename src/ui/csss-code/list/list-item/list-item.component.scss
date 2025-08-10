@@ -5,3 +5,12 @@
   @include globals.no-select;
   display: block;
 }
+
+li {
+  height: 100%;
+
+  &:hover {
+    cursor: pointer;
+    background-color: theme.$bg0;
+  }
+}

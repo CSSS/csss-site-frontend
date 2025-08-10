@@ -6,6 +6,7 @@ function makeTitle(pageTitle: string): string {
 }
 
 export const routes: Routes = [
+  // The CSSS
   {
     path: 'readme',
     loadComponent: () => import('./pages/readme/readme.component').then(m => m.ReadMeComponent),
@@ -35,11 +36,14 @@ export const routes: Routes = [
       import('./pages/affiliates/affiliates.component').then(m => m.AffiliatesComponent),
     title: makeTitle('Affiliates')
   },
+  // Events
   {
     path: 'events',
     loadComponent: () => import('./pages/events/events.component').then(m => m.EventsComponent),
     title: makeTitle('Events')
   },
+  // Elections
+  // Docs
   { path: '', component: HomeComponent, title: 'Computing Science Student Society' },
   { path: '**', component: HomeComponent }
 ];

@@ -130,15 +130,15 @@ export class NavBarComponent implements OnInit {
   /**
    * Opens the route.
    *
-   * @param url - URL to navigate to
+   * @param route - URL to navigate to
    */
-  navigate(url?: string): void {
-    if (!url) {
-      return;
-    }
-    this.router.navigate([url]);
-    if (!this.uiService.isLargeViewport()) {
-      this.uiService.isFileSystemOpen.set(false);
+  navigate(entry: NavItem): void {
+    if (entry.route) {
+      this.router.navigate([entry.route]);
+      if (!this.uiService.isLargeViewport()) {
+        this.uiService.isFileSystemOpen.set(false);
+      }
+    } else if (entry.href) {
     }
   }
 }
