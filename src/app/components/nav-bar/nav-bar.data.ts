@@ -13,6 +13,7 @@ export const NAVBAR_ENTRIES: NavItem[] = [
     key: 'csss',
     label: 'The CSSS',
     icon: faChevronRight,
+    isOpen: true,
     children: [
       {
         key: 'readme',
@@ -62,6 +63,7 @@ export const NAVBAR_ENTRIES: NavItem[] = [
     key: 'elections',
     label: 'Elections',
     icon: faChevronRight,
+    isOpen: true,
     children: [
       {
         key: 'elections',
@@ -83,6 +85,7 @@ export const NAVBAR_ENTRIES: NavItem[] = [
     key: 'documents',
     label: 'Documents',
     icon: faChevronRight,
+    isOpen: true,
     children: []
   }
 ];

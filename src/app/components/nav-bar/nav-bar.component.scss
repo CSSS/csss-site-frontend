@@ -58,42 +58,24 @@ header {
     display: flex;
     flex-direction: column;
     width: $navbar-w;
-    row-gap: 0.25rem;
+  }
+}
+
+.nav-entry {
+  padding: 0.5rem 0 0.5rem 0;
+
+  &--disabled {
+    color: gray;
+    cursor: not-allowed;
   }
 
-  &__entry {
-    width: 100%;
-
-    &--offset {
-      padding: 0 0 0 1.5rem;
-    }
-
-    &:hover {
-      background-color: theme.$bg0;
-    }
+  &__icon {
+    margin-right: 0.5rem;
   }
 }
 
 .clickable:hover {
   background-color: theme.$bg0;
-}
-
-.nav-entry {
-  padding: 0.5rem 0 0.5rem 0.75rem;
-
-  &.active {
-    background-color: theme.$bg0;
-  }
-
-  &:hover {
-    cursor: pointer;
-    background-color: theme.$bg0;
-  }
-
-  &.disabled {
-    color: gray;
-    cursor: not-allowed;
-  }
 }
 
 @media (min-width: g.$breakpoint-large) {

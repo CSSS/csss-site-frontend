@@ -12,9 +12,8 @@ import {
 } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 import { CodeListItemComponent } from '@csss-code/list/list-item/list-item.component';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { FontAwesomeModule, IconDefinition } from '@fortawesome/angular-fontawesome';
 import { faChevronDown, faChevronRight, faCopy } from '@fortawesome/free-solid-svg-icons';
-import { IconPipe } from 'app/pipes/icon/icon.pipe';
 import { csssLogo } from 'assets/icons/csss-logo';
 import { NAVBAR_ENTRIES, NavItem } from 'components/nav-bar/nav-bar.data';
 import { UiService } from 'services/ui/ui.service';
@@ -22,7 +21,7 @@ import { BREAKPOINT_STRING_MAP } from 'styles/breakpoints';
 
 @Component({
   selector: 'cs-nav-bar',
-  imports: [CommonModule, FontAwesomeModule, CodeListItemComponent, RouterModule, IconPipe],
+  imports: [CommonModule, FontAwesomeModule, CodeListItemComponent, RouterModule],
   templateUrl: './nav-bar.component.html',
   styleUrl: './nav-bar.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
@@ -99,15 +98,44 @@ export class NavBarComponent implements OnInit {
     this.uiService.isFileSystemOpen.update(value => !value);
   }
 
+  /**
+   * Changes the icon based on the open state.
+   *
+   * @param isOpen - True if the directory is open, false otherwise.
+   * @returns Open icon if true, closed icon if false.
+   */
+  getDirectoryIcon(isOpen?: boolean): IconDefinition {
+    return isOpen ? faChevronDown : faChevronRight;
+  }
+
+  /**
+   * Opens or closes the nav entry.
+   *
+   * @param key - Key of the nav entry
+   */
   toggleDirectory(key: string): void {
     this.navEntries.update(entries => {
       return entries.map(e => {
         if (e.key === key) {
           e.isOpen = !e.isOpen;
-          e.icon = e.isOpen ? faChevronDown : faChevronRight;
         }
         return e;
       });
     });
+  }
+
+  /**
+   * Opens the route.
+   *
+   * @param url - URL to navigate to
+   */
+  async navigate(url?: string): Promise<void> {
+    if (!url) {
+      return;
+    }
+    await this.router.navigate([url]);
+    if (!this.uiService.isLargeViewport()) {
+      this.uiService.isFileSystemOpen.set(false);
+    }
   }
 }

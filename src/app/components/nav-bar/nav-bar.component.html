@@ -18,18 +18,18 @@
     <ul class="navbar__list">
       @for (entry of navEntries(); track entry.key) {
         <!-- This is the template of the menu item, i.e. the actual nav entry's look -->
-        <code-list-item class="navbar__entry clickable" [entry]="entry">
+        <code-list-item class="nav-entry clickable" [entry]="entry">
           <button type="button" (click)="toggleDirectory(entry.key)">
-            <fa-icon class="fa-fw" [icon]="entry.icon | icon" />
+            <fa-icon class="nav-entry__icon" [icon]="getDirectoryIcon(entry.isOpen)" />
             <span>{{ entry.label }}</span>
           </button>
         </code-list-item>
         @if (entry.isOpen && entry.children?.length) {
-          <ul>
+          <ul class="navbar__list">
             @for (child of entry.children; track child.key) {
-              <code-list-item class="navbar__entry clickable" [entry]="child" [depth]="1">
-                <a [routerLink]="child.link" routerLinkActive="active">
-                  <fa-icon class="fa-fw" [icon]="child.icon | icon" />
+              <code-list-item class="nav-entry clickable" [entry]="child" [depth]="1">
+                <a (click)="navigate(child.link)">
+                  <fa-icon class="nav-entry__icon" [icon]="child.icon" />
                   <span>{{ child.label }}</span>
                 </a>
               </code-list-item>

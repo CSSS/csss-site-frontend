@@ -7,7 +7,6 @@ export interface CodeMenuItem<T extends CodeMenuItem<T>> {
   children?: T[];
   isDisabled?: boolean;
   isHighlighted?: boolean;
-  action?: () => void;
 }
 
 @Component({
@@ -17,7 +16,7 @@ export interface CodeMenuItem<T extends CodeMenuItem<T>> {
   styleUrl: './list-item.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
   host: {
-    '[style.paddingLeft.em]': 'depth() * 1.5'
+    '[style.paddingLeft.em]': '0.5 + depth() * 1.5'
   }
 })
 export class CodeListItemComponent<T extends CodeMenuItem<T>> {
@@ -31,14 +30,4 @@ export class CodeListItemComponent<T extends CodeMenuItem<T>> {
    * Base level is 0, each nesting level increases depth by 1.
    */
   depth = input<number>(0);
-
-  /**
-   *  Handler for when the item is clicked.
-   */
-  itemClick(): void {
-    const action = this.entry().action;
-    if (action) {
-      action();
-    }
-  }
 }

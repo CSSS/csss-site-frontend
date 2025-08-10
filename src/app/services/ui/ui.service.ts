@@ -21,7 +21,6 @@ export class UiService {
   isLargeViewport = toSignal(
     this.breakpointObs.observe(BREAKPOINT_STRING_MAP['large']).pipe(
       map(bp => {
-        console.log(bp);
         return bp.breakpoints[BREAKPOINT_STRING_MAP['large']];
       })
     ),
