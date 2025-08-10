@@ -12,10 +12,6 @@ $navbar-w: 20rem;
   flex-direction: column;
 }
 
-button {
-  cursor: pointer;
-}
-
 .activity-list {
   display: grid;
   grid-template-columns: repeat(auto-fill, 4rem);
@@ -62,10 +58,12 @@ button {
 .nav-entry {
   display: block;
   height: 100%;
+  width: 100%;
   padding: 0.5rem 0 0.5rem 0;
 
   &[aria-disabled='true'] {
     color: gray;
+    pointer-events: none;
     cursor: not-allowed;
   }
 

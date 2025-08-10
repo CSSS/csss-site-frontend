@@ -38,10 +38,11 @@
               >
                 @if (subItem.route) {
                   <a
-                    class="nav-entry clickable"
+                    class="nav-entry"
                     (click)="navigate(subItem)"
                     [routerLink]="subItem.route"
                     [ariaDisabled]="subItem.isDisabled"
+                    [class.clickable]="!subItem.isDisabled"
                     routerLinkActive="active"
                   >
                     <fa-icon class="nav-entry__icon" [icon]="subItem.icon" [fixedWidth]="true" />

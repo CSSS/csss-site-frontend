@@ -86,14 +86,20 @@ export const NAVBAR_ENTRIES: NavItem[] = [
     isOpen: true,
     children: [
       {
-        key: 'elections',
+        key: 'elections.about',
+        label: 'About',
+        icon: faFile,
+        route: '/elections'
+      },
+      {
+        key: 'elections.upcoming',
         label: 'Upcoming',
         icon: faRoadBarrier,
-        route: '/elections',
+        route: '/upcoming-elections',
         isDisabled: true
       },
       {
-        key: 'speeches',
+        key: 'elections.speeches',
         label: 'Speeches',
         icon: faRoadBarrier,
         route: '/speeches',
