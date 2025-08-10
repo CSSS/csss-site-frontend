@@ -81,22 +81,13 @@ export const NAVBAR_ENTRIES: NavItem[] = [
         key: 'events.fall-hacks',
         label: 'Fall Hacks',
         icon: faUpRightFromSquare,
-        href: 'https://fall-hacks.sfucsss.org',
-        isDisabled: true
+        href: 'https://new.sfucsss.org/fall_hacks/2024/index.html'
       },
       {
         key: 'events.mountain-madness',
         label: 'Mountain Madness',
         icon: faUpRightFromSquare,
-        href: 'https://mountain-madness.sfucsss.org',
-        isDisabled: true
-      },
-      {
-        key: 'events.silicon-valley',
-        label: 'Silicon Valley Trip',
-        icon: faUpRightFromSquare,
-        href: 'https://mountain-madness.sfucsss.org',
-        isDisabled: true
+        href: 'https://new.sfucsss.org/mountain_madness/2024/index.html'
       }
     ]
   },
