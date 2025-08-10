@@ -129,11 +129,11 @@ export class NavBarComponent implements OnInit {
    *
    * @param url - URL to navigate to
    */
-  async navigate(url?: string): Promise<void> {
+  navigate(url?: string): void {
     if (!url) {
       return;
     }
-    await this.router.navigate([url]);
+    this.router.navigate([url]);
     if (!this.uiService.isLargeViewport()) {
       this.uiService.isFileSystemOpen.set(false);
     }
