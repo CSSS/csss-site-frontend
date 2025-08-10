@@ -61,23 +61,12 @@ export class ApplicationService {
       return;
     }
 
-    this.focusedApplication.set(application);
     addToSignalMap(this.runningApplications, application.id, application);
-
-    // No focused app, so there must be no other applications to check.
-    if (!focusedApp) {
-      return;
-    }
-
-    // The currently focused app shares the activity with the incoming app, so remove the old app.
-    if (focusedApp.activityKey === application.activityKey) {
-      this.closeApplication(focusedApp.id);
-      return;
-    }
+    this.focusedApplication.set(application);
 
     // The activity for this app might be open, but not focused. Try and remove it.
     for (const app of this.runningApplications().values()) {
-      if (app.activityKey === application.key && app.id !== application.id) {
+      if (app.activityKey === application.activityKey && app.id !== application.id) {
         this.closeApplication(app.id);
         break;
       }

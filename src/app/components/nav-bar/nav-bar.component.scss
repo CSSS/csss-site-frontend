@@ -1,5 +1,5 @@
-@use '../../../ui/csss-code/theme';
-@use '../../../styles/globals' as g;
+@use 'theme';
+@use 'globals' as g;
 
 $item-spacing: 1rem; // Padding for the activity bar items.
 // size of the activity + tabs bar for small device widths
@@ -42,12 +42,6 @@ header {
   }
 }
 
-.act-button:hover {
-  > fa-icon {
-    filter: theme.$hov-glow;
-  }
-}
-
 .navbar {
   position: absolute;
   top: calc($header-space-sm + 1px);
@@ -56,22 +50,39 @@ header {
   border-right: $border;
   z-index: 100;
 
-  & > .navbar-header {
+  &__header {
     padding: $item-spacing 2em;
   }
 
-  & > nav {
-    & > .navbar-list {
-      display: flex;
-      flex-direction: column;
-      width: $navbar-w;
-      row-gap: 0.25rem;
-      padding-left: 0rem;
-    }
+  &__list {
+    display: flex;
+    flex-direction: column;
+    width: $navbar-w;
   }
 }
 
-@media (min-width: g.$breakpoint-small) {
+.nav-entry {
+  padding: 0.5rem 0 0.5rem 0;
+
+  &[aria-disabled='true'] {
+    color: gray;
+    cursor: not-allowed;
+  }
+
+  &__icon {
+    margin-right: 0.5rem;
+  }
+
+  &.active {
+    background-color: theme.$bg0;
+  }
+}
+
+.clickable:hover {
+  background-color: theme.$bg0;
+}
+
+@media (min-width: g.$breakpoint-large) {
   :host {
     display: grid;
     grid-template-columns: g.$act-bar-w min-content;

@@ -1,8 +1,8 @@
 import { BreakpointObserver } from '@angular/cdk/layout';
+import { CommonModule } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
-  computed,
   ElementRef,
   HostListener,
   inject,
@@ -10,25 +10,31 @@ import {
   signal,
   viewChild
 } from '@angular/core';
-import { RouterModule } from '@angular/router';
-import { MenuItemComponent } from '@csss-code/menu/menu-item/menu-item.component';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { faCopy } from '@fortawesome/free-solid-svg-icons';
+import { Router, RouterModule } from '@angular/router';
+import { CodeListItemComponent } from '@csss-code/list/list-item/list-item.component';
+import { FontAwesomeModule, IconDefinition } from '@fortawesome/angular-fontawesome';
+import { faChevronDown, faChevronRight, faCopy } from '@fortawesome/free-solid-svg-icons';
 import { csssLogo } from 'assets/icons/csss-logo';
-import { NAVBAR_ENTRIES, NavbarItem } from 'components/nav-bar/navbar-entries';
+import { NAVBAR_ENTRIES, NavItem } from 'components/nav-bar/nav-bar.data';
+import { ApplicationService } from 'services/application/application.service';
+import { UiService } from 'services/ui/ui.service';
 import { BREAKPOINT_STRING_MAP } from 'styles/breakpoints';
 
 @Component({
   selector: 'cs-nav-bar',
-  imports: [FontAwesomeModule, MenuItemComponent, RouterModule],
+  imports: [CommonModule, FontAwesomeModule, CodeListItemComponent, RouterModule],
   templateUrl: './nav-bar.component.html',
   styleUrl: './nav-bar.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class NavBarComponent implements OnInit {
   @HostListener('document:click', ['$event'])
+  /**
+   * Handles mouse clicks that occur outside of the UI components.
+   * @param event - Mouse click
+   */
   handleOutsideClick(event: MouseEvent): void {
-    if (this.breakpointObs.isMatched(BREAKPOINT_STRING_MAP['small'])) {
+    if (this.breakpointObs.isMatched(BREAKPOINT_STRING_MAP['large'])) {
       return;
     }
     if (
@@ -36,7 +42,7 @@ export class NavBarComponent implements OnInit {
       !this.toggleButtonEl()?.nativeElement.contains(event.target) &&
       !this.activityListEl()?.nativeElement.contains(event.target)
     ) {
-      this.isFileSystemOpen.set(false);
+      this.uiService.isFileSystemOpen.set(false);
     }
   }
 
@@ -56,21 +62,6 @@ export class NavBarComponent implements OnInit {
   activityListEl = viewChild<ElementRef>('activityList');
 
   /**
-   * Navbar entries
-   */
-  protected entries = signal<NavbarItem[]>(NAVBAR_ENTRIES);
-
-  /**
-   * Flag representing if the menu is closed or open.
-   */
-  protected isFileSystemOpen = signal<boolean>(false);
-
-  /**
-   * Signal that converts the nav entries, in case they need to be dynamically instantiated.
-   */
-  protected navItems = computed(() => this.navEntryToItem(this.entries()));
-
-  /**
    * Icon for the CSSS Logo.
    */
   protected csssIcon = csssLogo;
@@ -81,33 +72,73 @@ export class NavBarComponent implements OnInit {
   protected copyIcon = faCopy;
 
   /**
+   * Service to control the UI
+   */
+  protected uiService = inject(UiService);
+
+  /**
+   * Navbar entries
+   */
+  protected navEntries = signal<NavItem[]>(NAVBAR_ENTRIES);
+
+  protected appService = inject(ApplicationService);
+  /**
    * Observer to view our breakpoint widths.
    */
   private breakpointObs = inject(BreakpointObserver);
 
+  private router = inject(Router);
+
   ngOnInit(): void {
     // On smaller screens, do not automatically open the navigation
-    this.isFileSystemOpen.set(this.breakpointObs.isMatched(BREAKPOINT_STRING_MAP['small']));
-  }
-
-  /**
-   * Recursively converts all the menu entries into object this menu can use
-   */
-  private navEntryToItem(entries: NavbarItem[]): NavbarItem[] {
-    return entries.map(entry => {
-      const children = entry.children?.length ? this.navEntryToItem(entry.children) : [];
-      return {
-        ...entry,
-        children,
-        isOpen: true
-      };
-    });
+    this.uiService.isFileSystemOpen.set(this.uiService.isLargeViewport());
   }
 
   /**
    * Changes the menu state between open and closed
    */
   toggleFileSystem(): void {
-    this.isFileSystemOpen.update(value => !value);
+    this.uiService.isFileSystemOpen.update(value => !value);
+  }
+
+  /**
+   * Changes the icon based on the open state.
+   *
+   * @param isOpen - True if the directory is open, false otherwise.
+   * @returns Open icon if true, closed icon if false.
+   */
+  getDirectoryIcon(isOpen?: boolean): IconDefinition {
+    return isOpen ? faChevronDown : faChevronRight;
+  }
+
+  /**
+   * Opens or closes the nav entry.
+   *
+   * @param key - Key of the nav entry
+   */
+  toggleDirectory(key: string): void {
+    this.navEntries.update(entries => {
+      return entries.map(e => {
+        if (e.key === key) {
+          e.isOpen = !e.isOpen;
+        }
+        return e;
+      });
+    });
+  }
+
+  /**
+   * Opens the route.
+   *
+   * @param url - URL to navigate to
+   */
+  navigate(url?: string): void {
+    if (!url) {
+      return;
+    }
+    this.router.navigate([url]);
+    if (!this.uiService.isLargeViewport()) {
+      this.uiService.isFileSystemOpen.set(false);
+    }
   }
 }
