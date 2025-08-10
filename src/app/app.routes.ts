@@ -43,7 +43,6 @@ export const routes: Routes = [
     title: makeTitle('Events')
   },
   // Elections
-  // Docs
   { path: '', component: HomeComponent, title: 'Computing Science Student Society' },
   { path: '**', component: HomeComponent }
 ];

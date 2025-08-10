@@ -106,6 +106,25 @@ export const NAVBAR_ENTRIES: NavItem[] = [
     label: 'Documentation',
     icon: faChevronRight,
     isOpen: true,
-    children: []
+    children: [
+      {
+        key: 'documentation.constitution',
+        label: 'Constitution',
+        icon: faUpRightFromSquare,
+        href: 'https://github.com/CSSS/public-docs/tree/master/constitutions'
+      },
+      {
+        key: 'documentation.policies',
+        label: 'Policies',
+        icon: faUpRightFromSquare,
+        href: 'https://github.com/CSSS/public-docs/tree/master/policies'
+      },
+      {
+        key: 'documentation.sfss-minutes',
+        label: 'SFSS Minutes',
+        icon: faUpRightFromSquare,
+        href: 'https://sfss.ca/about/meeting-times-minutes/council/'
+      }
+    ]
   }
 ];
