@@ -17,14 +17,17 @@
   <nav>
     <ul class="navbar__list">
       @for (entry of navEntries(); track entry.key) {
-        <!-- This is the template of the menu item, i.e. the actual nav entry's look -->
         <code-list-item
           class="nav-entry clickable"
           [entry]="entry"
           (click)="toggleDirectory(entry.key)"
         >
           <button type="button">
-            <fa-icon class="nav-entry__icon" [icon]="getDirectoryIcon(entry.isOpen)" />
+            <fa-icon
+              class="nav-entry__icon"
+              [icon]="getDirectoryIcon(entry.isOpen)"
+              [fixedWidth]="true"
+            />
             <span>{{ entry.label }}</span>
           </button>
         </code-list-item>
