@@ -47,7 +47,7 @@ export const routes: Routes = [
     path: 'elections',
     loadComponent: () =>
       import('./pages/elections/elections.component').then(m => m.ElectionsComponent),
-    title: makeTitle('elections')
+    title: makeTitle('Elections')
   },
   { path: '', component: HomeComponent, title: 'Computing Science Student Society' },
   { path: '**', component: HomeComponent }
