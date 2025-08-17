@@ -12,9 +12,25 @@ import { EXTERNAL_LINKS, ExternalLink } from './links';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class LinkComponent {
+  /**
+   * The link that should be used from `links.ts`
+   */
   link = input.required<ExternalLink>();
-  protected _label = computed(() => capitalize(this.link()));
+
+  /**
+   * Overrides the label that is displayed.
+   */
+  label = input<string>();
+
+  /**
+   * Label that is displayed in the element.
+   */
+  protected _label = computed(() => this.label() ?? capitalize(this.link()));
+
+  /**
+   * The href used to move the user to the external link/route.
+   */
   protected _href = computed(() => EXTERNAL_LINKS[this.link()]);
 
-  protected externalLink = faUpRightFromSquare;
+  protected externalLinkIcon = faUpRightFromSquare;
 }
