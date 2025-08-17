@@ -1,0 +1,1 @@
+var o={constitution:"https://github.com/CSSS/public-docs/blob/master/constitutions/",discord:"https://discord.sfucsss.org",commonRoomMap:"https://roomfinder.sfu.ca/apps/sfuroomfinder_web/?q=ASB%209971"};export{o as a};
