@@ -1,21 +1,20 @@
-import { ChangeDetectionStrategy, Component, computed, input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, input, Signal } from '@angular/core';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faUpRightFromSquare } from '@fortawesome/free-solid-svg-icons';
 import { capitalize } from 'utils/string-utils';
-import { EXTERNAL_LINKS, ExternalLink } from './links';
+import { CsssLink } from './links.data';
 
 @Component({
   selector: 'cs-external-link',
   imports: [FontAwesomeModule],
-  templateUrl: './link.component.html',
-  styleUrl: './link.component.scss',
+  template: '',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class LinkComponent {
+export abstract class BaseLinkComponent<T extends CsssLink> {
   /**
    * The link that should be used from `links.ts`
    */
-  link = input.required<ExternalLink>();
+  link = input.required<T>();
 
   /**
    * Overrides the label that is displayed.
@@ -30,7 +29,7 @@ export class LinkComponent {
   /**
    * The href used to move the user to the external link/route.
    */
-  protected _href = computed(() => EXTERNAL_LINKS[this.link()]);
+  protected abstract _href: Signal<string>;
 
   protected externalLinkIcon = faUpRightFromSquare;
 }

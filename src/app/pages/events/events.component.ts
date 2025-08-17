@@ -2,12 +2,12 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { ArticleComponent } from '@csss-code/article/article.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faUpRightFromSquare } from '@fortawesome/free-solid-svg-icons';
-import { LinkComponent } from 'components/external-link/link.component';
-import { EXTERNAL_LINKS } from 'components/external-link/links';
+import { ExternalLinkComponent } from 'components/url/external-link/external-link.component';
+import { EXTERNAL_LINKS } from 'components/url/links.data';
 
 @Component({
   selector: 'cs-events',
-  imports: [ArticleComponent, FontAwesomeModule, LinkComponent],
+  imports: [ArticleComponent, FontAwesomeModule, ExternalLinkComponent],
   templateUrl: './events.component.html',
   styleUrl: './events.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
