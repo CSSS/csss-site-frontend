@@ -1,18 +1,17 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ExternalLinkComponent } from './external-link.component';
+import { LinkComponent } from './link.component';
 
 describe('ExternalLinkComponent', () => {
-  let component: ExternalLinkComponent;
-  let fixture: ComponentFixture<ExternalLinkComponent>;
+  let component: LinkComponent;
+  let fixture: ComponentFixture<LinkComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ExternalLinkComponent]
-    })
-    .compileComponents();
+      imports: [LinkComponent]
+    }).compileComponents();
 
-    fixture = TestBed.createComponent(ExternalLinkComponent);
+    fixture = TestBed.createComponent(LinkComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

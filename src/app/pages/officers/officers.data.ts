@@ -137,14 +137,16 @@ export const ELECTED_DESCRIPTIONS: Array<ExecDescription> = [
     position: 'Elections Officer',
     duties: [
       'Organizes and manages a CSSS election',
-      'Receives all nominations for members and announces elections results'
+      'Receives all nominations for members and announces elections results',
+      'Holds this position until the conclusion of the election they were voted in for'
     ]
   },
   {
     position: 'Frosh Week Chair',
     duties: [
       'Responsible for organizing Frosh Week',
-      'Chairs the Frosh Week Committee and holds all planning meetings'
+      'Chairs the Frosh Week Committee and holds all planning meetings',
+      'Holds their position until the conclusion of all Frosh Week events'
     ]
   }
 ];
