@@ -1,10 +1,9 @@
 @use 'theme' as t;
 
-$component: '.tab-group';
 $tab-w: 7rem;
 $selector-h: 3px;
 
-#{$component} {
+.tab-group {
   &__header {
     position: relative;
     margin-bottom: 1rem;
@@ -26,6 +25,7 @@ $selector-h: 3px;
     display: block;
     text-align: center;
     width: 100%;
+    font-size: clamp(1.1rem, 1.4vw, 1.4rem);
   }
 
   &__indicator {
@@ -37,7 +37,7 @@ $selector-h: 3px;
     position: absolute;
     bottom: 0;
     height: $selector-h;
-    border-bottom: $selector-h teal solid;
+    border-bottom: $selector-h t.$accent solid;
     transition:
       left 0.3s ease,
       width 0.3s ease;

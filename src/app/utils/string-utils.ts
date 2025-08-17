@@ -1,6 +1,13 @@
 export type ImagesFolder = 'root' | 'affiliates' | 'placeholders';
 
 /**
+ * Capitalize the first letter of the word.
+ */
+export function capitalize(str: string): string {
+  return str.at(0)?.toUpperCase() + str.slice(1);
+}
+
+/**
  * Adds `https://` to a string.
  */
 export function prependHttps(url: string): string {

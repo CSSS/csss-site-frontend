@@ -6,7 +6,8 @@ import {
   ElementRef,
   inject,
   OnDestroy,
-  signal
+  signal,
+  viewChild
 } from '@angular/core';
 import { UiService } from 'services/ui/ui.service';
 
@@ -19,10 +20,7 @@ const LETTER_HEIGHT = 24;
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ArticleComponent implements AfterContentInit, OnDestroy {
-  /**
-   * Reference to this element.
-   */
-  private elementRef: ElementRef = inject(ElementRef);
+  private articleContent = viewChild.required<ElementRef<HTMLDivElement>>('article');
 
   /**
    * How many lines should be printed in the line gutter.
@@ -54,7 +52,7 @@ export class ArticleComponent implements AfterContentInit, OnDestroy {
         return;
       }
       for (const entry of entries) {
-        const numbersToFit = Math.trunc(entry.contentRect.height / LETTER_HEIGHT);
+        const numbersToFit = Math.ceil(entry.contentRect.height / LETTER_HEIGHT);
 
         if (this.numbersToPrint() !== numbersToFit) {
           this.numbersToPrint.set(numbersToFit);
@@ -62,7 +60,7 @@ export class ArticleComponent implements AfterContentInit, OnDestroy {
       }
     });
 
-    this.resizeObs.observe(this.elementRef.nativeElement);
+    this.resizeObs.observe(this.articleContent().nativeElement);
   }
 
   ngOnDestroy(): void {
