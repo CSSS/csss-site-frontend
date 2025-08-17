@@ -9,8 +9,11 @@ type ExecPosition =
   | 'Director of Communications'
   | 'Director of Multimedia'
   | 'Director of Archives'
-  | 'Exec at Large'
-  | 'First-Year Rep';
+  | 'SFSS Council Representative'
+  | 'Executive at Large'
+  | 'First-Year Representative';
+
+type ElectedRep = 'Elections Officer' | 'Frosh Week Chair';
 
 type Semester = 'Spring' | 'Summer' | 'Fall';
 
@@ -26,6 +29,127 @@ export interface ExecutiveAdministration {
   endYear: number;
   members: Executive[];
 }
+
+export interface ExecDescription {
+  position: ExecPosition | ElectedRep;
+  duties: string[];
+}
+
+export const EXEC_DESCRIPTIONS: Array<ExecDescription> = [
+  {
+    position: 'President',
+    duties: [
+      'Maintains the integrity of the CSSS and delegate duties as necessary',
+      'Calls General Meetings',
+      'Member of every committee within the CSSS and all committees the CSSS needs representation for',
+      'Official spokesperson, representative, and contact of the CSSS',
+      'Monitors all the projects funded through the CSSS'
+    ]
+  },
+  {
+    position: 'Vice President',
+    duties: [
+      'Chairs all meetings in the CSSS',
+      'Member of every committee within the CSSS and all committees the CSSS needs representation for',
+      'Coordinate volunteers for the operation of the CSSS',
+      'Promote CSSS events to external groups for sponsorship',
+      'Maintain relationships with alumni and outside groups'
+    ]
+  },
+  {
+    position: 'Treasurer',
+    duties: [
+      'Manages the finances of the CSSS, including subscriptions and revenue',
+      "Maintains all financial records and regularly reports on the society's financial state to our members"
+    ]
+  },
+  {
+    position: 'Director of Resources',
+    duties: [
+      'Maintains the resources available to the members, such as the common room, technical equipment, and vending machines',
+      'Acquires goods and assets that are necessary for the upkeep of the CSSS'
+    ]
+  },
+  {
+    position: 'Director of Events',
+    duties: ['Organizes large CSSS-sponsored events', 'Chairs the Events Committee']
+  },
+  {
+    position: 'Director of Educational Events',
+    duties: [
+      'Organizes professional and eductional CSSS-sponsored events',
+      'Member of the Events Committee'
+    ]
+  },
+  {
+    position: 'Assistant Director of Events',
+    duties: ['Organizes recurring CSSS-sponsored events', 'Member of the Events Committee']
+  },
+  {
+    position: 'Director of Communications',
+    duties: [
+      'Promotes and manages public relations for the CSSS',
+      'Maintains records of all correspondence between the CSSS and other organizations',
+      'Manages all the social media accounts of the CSSS and helps advertise events the society is a part of'
+    ]
+  },
+  {
+    position: 'Director of Multimedia',
+    duties: [
+      'Create and obtain media for promotional material, artwork and photographs for Executives'
+    ]
+  },
+  {
+    position: 'Director of Archives',
+    duties: [
+      'Manages the documentation for meetings, events, policies and other critical records for the CSSS',
+      'Ensures General Meetings are announced and takes meeting minutes',
+      'Maintains CSSS officer membership lists',
+      'Stay current with regulations and procedures of both the CSSS and the Simon Fraser Student Society'
+    ]
+  },
+  {
+    position: 'SFSS Council Representative',
+    duties: [
+      "The CSSS's Student Union Council Representative",
+      'Ensures the CSSS is represented fairly and advocates in the interest of our members'
+    ]
+  },
+  {
+    position: 'Executive at Large',
+    duties: [
+      'Helps the Director of Resources in maintaining the shared resources of the CSSS',
+      'Assists Executives in tasks related to the operation of the CSSS'
+    ]
+  },
+  {
+    position: 'First-Year Representative',
+    duties: [
+      'Advocates on behalf of members in their first year of post-secondary education',
+      'Sits on at least one CSSS committee',
+      'Assists Executives in tasks related to the operation of the CSSS'
+    ]
+  }
+];
+
+export const ELECTED_DESCRIPTIONS: Array<ExecDescription> = [
+  {
+    position: 'Elections Officer',
+    duties: [
+      'Organizes and manages a CSSS election',
+      'Receives all nominations for members and announces elections results',
+      'Holds this position until the conclusion of the election they were voted in for'
+    ]
+  },
+  {
+    position: 'Frosh Week Chair',
+    duties: [
+      'Responsible for organizing Frosh Week',
+      'Chairs the Frosh Week Committee and holds all planning meetings',
+      'Holds their position until the conclusion of all Frosh Week events'
+    ]
+  }
+];
 
 export const executives: ExecutiveAdministration[] = [
   {
@@ -84,12 +208,12 @@ export const executives: ExecutiveAdministration[] = [
       },
       {
         name: 'Aiya Bowman',
-        position: 'Exec at Large',
+        position: 'Executive at Large',
         photoName: 'trippi-troppi.png'
       },
       {
         name: 'Alexander Ng',
-        position: 'Exec at Large',
+        position: 'Executive at Large',
         photoName: 'giraffa-celeste.png'
       }
     ]
@@ -150,12 +274,12 @@ export const executives: ExecutiveAdministration[] = [
       },
       {
         name: 'Rastko Koprivica',
-        position: 'Exec at Large',
+        position: 'Executive at Large',
         photoName: 'trippi-troppi.png'
       },
       {
         name: 'Michael Ho',
-        position: 'Exec at Large',
+        position: 'Executive at Large',
         photoName: 'giraffa-celeste.png'
       }
     ]
@@ -216,12 +340,12 @@ export const executives: ExecutiveAdministration[] = [
       },
       {
         name: 'Jake Choi',
-        position: 'Exec at Large',
+        position: 'Executive at Large',
         photoName: 'trippi-troppi.png'
       },
       {
         name: 'Joyce Zhang',
-        position: 'Exec at Large',
+        position: 'Executive at Large',
         photoName: 'giraffa-celeste.png'
       }
     ]

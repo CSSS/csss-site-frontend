@@ -2,7 +2,7 @@
 @use 'theme' as t;
 
 .wrapper {
-  height: 96vh;
+  height: 96svh;
   overflow-y: auto;
   overflow-x: hidden;
   perspective: 10px;
@@ -41,7 +41,7 @@ header {
   & > fa-icon {
     font-size: clamp(2rem, 3vw, 15rem);
     position: absolute;
-    bottom: 30vh;
+    bottom: 30svh;
     filter: drop-shadow(0px 2px 5px black);
   }
 }
@@ -51,7 +51,7 @@ header {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 10vh auto 0;
+  margin: 10svh auto 0;
   z-index: 10;
   max-width: 60rem;
 

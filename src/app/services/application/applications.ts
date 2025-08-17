@@ -97,6 +97,16 @@ export const routeApplicationMap: Map<number, AppInfo> = new Map([
       key: 'events',
       route: '/events'
     }
+  ],
+  [
+    6,
+    {
+      id: 6,
+      label: 'Elections',
+      activityKey: '',
+      key: 'elections',
+      route: '/elections'
+    }
   ]
 ]);
 

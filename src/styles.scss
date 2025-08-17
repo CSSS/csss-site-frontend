@@ -1,6 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
 @use 'globals';
-@use 'theme';
 
 html,
 body {
@@ -38,7 +37,7 @@ a {
 
 article.content {
   header {
-    margin-top: 5vh;
+    margin-top: 5svh;
   }
 
   h1 {
@@ -66,6 +65,6 @@ article.content {
   }
 
   a.link {
-    color: theme.$accent3;
+    color: globals.$accent3;
   }
 }
