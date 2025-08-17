@@ -26,6 +26,7 @@ $selector-h: 3px;
     display: block;
     text-align: center;
     width: 100%;
+    font-size: clamp(1.1vw, 1.4rem, 1.4vw);
   }
 
   &__indicator {
@@ -37,7 +38,7 @@ $selector-h: 3px;
     position: absolute;
     bottom: 0;
     height: $selector-h;
-    border-bottom: $selector-h teal solid;
+    border-bottom: $selector-h t.$accent solid;
     transition:
       left 0.3s ease,
       width 0.3s ease;
