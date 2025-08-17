@@ -1,4 +1,3 @@
-import { BreakpointObserver } from '@angular/cdk/layout';
 import { CommonModule } from '@angular/common';
 import {
   ChangeDetectionStrategy,
@@ -18,7 +17,6 @@ import { csssLogo } from 'assets/icons/csss-logo';
 import { NAVBAR_ENTRIES, NavItem } from 'components/nav-bar/nav-entries';
 import { ApplicationService } from 'services/application/application.service';
 import { UiService } from 'services/ui/ui.service';
-import { BREAKPOINT_STRING_MAP } from 'styles/breakpoints';
 
 @Component({
   selector: 'cs-nav-bar',
@@ -34,13 +32,13 @@ export class NavBarComponent implements OnInit {
    * @param event - Mouse click
    */
   handleOutsideClick(event: MouseEvent): void {
-    if (this.breakpointObs.isMatched(BREAKPOINT_STRING_MAP['large'])) {
+    if (this.uiService.isLargeViewport()) {
       return;
     }
     if (
-      !this.navBarEl()?.nativeElement.contains(event.target) &&
-      !this.toggleButtonEl()?.nativeElement.contains(event.target) &&
-      !this.activityListEl()?.nativeElement.contains(event.target)
+      !this.navBarEl().nativeElement.contains(event.target) &&
+      !this.toggleButtonEl().nativeElement.contains(event.target) &&
+      !this.activityListEl().nativeElement.contains(event.target)
     ) {
       this.uiService.isFileSystemOpen.set(false);
     }
@@ -49,17 +47,17 @@ export class NavBarComponent implements OnInit {
   /**
    * Navbar/file system element
    */
-  navBarEl = viewChild<ElementRef>('navBar');
+  navBarEl = viewChild.required<ElementRef>('navBar');
 
   /**
    * Button that toggles the visibility of the navbar
    */
-  toggleButtonEl = viewChild<ElementRef>('toggleButton');
+  toggleButtonEl = viewChild.required<ElementRef>('toggleButton');
 
   /**
    * The activity list bar
    */
-  activityListEl = viewChild<ElementRef>('activityList');
+  activityListEl = viewChild.required<ElementRef>('activityList');
 
   /**
    * Icon for the CSSS Logo.
@@ -82,10 +80,6 @@ export class NavBarComponent implements OnInit {
   protected navEntries = signal<NavItem[]>(NAVBAR_ENTRIES);
 
   protected appService = inject(ApplicationService);
-  /**
-   * Observer to view our breakpoint widths.
-   */
-  private breakpointObs = inject(BreakpointObserver);
 
   private router = inject(Router);
 
