@@ -1,0 +1,71 @@
+<code-article>
+  <header>
+    <h1>Elections</h1>
+    <p>
+      The CSSS holds multiple elections a year to make sure the best people are helping our members.
+      If you'd like to get even more involved with the CS community then running for a position is a
+      great way to do that. Full rules for elected positions are in the
+      <cs-external-link link="constitution"></cs-external-link>
+    </p>
+  </header>
+  <section>
+    <h2>Eligibility</h2>
+    <ul class="fa-ul">
+      <li>
+        <span class="fa-li"><fa-icon [icon]="checkIcon"></fa-icon></span>The
+        <strong>President</strong>, <strong>Vice-President</strong>, <strong>Treasurer</strong>, and
+        <strong>SFSS Council Representative</strong> must be doing a <strong>major</strong>,
+        <strong>minor</strong>, or <strong>honours</strong> program offered by the School of
+        Computing Science.
+      </li>
+      <li>
+        <span class="fa-li"><fa-icon [icon]="checkIcon"></fa-icon></span>
+        Both the <strong>First Year Representatives</strong> must be doing a <strong>major</strong>,
+        <strong>minor</strong>, or <strong>honours</strong> program and be in their first year of
+        study.
+      </li>
+      <li>
+        <span class="fa-li"><fa-icon [icon]="checkIcon"></fa-icon></span><strong>No</strong> member
+        of the CSSS may hold more than one executive position at a time.
+      </li>
+    </ul>
+  </section>
+  <section>
+    <code-tab-group>
+      <code-tab label="Executive Positions">
+        <ng-container [ngTemplateOutlet]="execTab"></ng-container>
+      </code-tab>
+      <code-tab label="Elected Representatives">
+        <ng-container [ngTemplateOutlet]="repTab"></ng-container>
+      </code-tab>
+    </code-tab-group>
+  </section>
+</code-article>
+
+<ng-template #execTab>
+  <p>These executives hold office from May 1st to April 30th of the following year.</p>
+  <ul>
+    @for (exec of executives; track exec.position) {
+      <h3>{{ exec.position }}</h3>
+      <ul class="duty-list">
+        @for (duty of exec.duties; track $index) {
+          <li>{{ duty }}</li>
+        }
+      </ul>
+    }
+  </ul>
+</ng-template>
+
+<ng-template #repTab>
+  <p>These representatives hold their position for a specified amount of time.</p>
+  <ul>
+    @for (exec of representatives; track exec.position) {
+      <h3>{{ exec.position }}</h3>
+      <ul class="duty-list">
+        @for (duty of exec.duties; track $index) {
+          <li>{{ duty }}</li>
+        }
+      </ul>
+    }
+  </ul>
+</ng-template>

@@ -28,8 +28,7 @@
     "@fortawesome/free-solid-svg-icons": "^6.7.1",
     "gsap": "^3.13.0",
     "rxjs": "~7.8.0",
-    "tslib": "^2.3.0",
-    "zone.js": "~0.15.0"
+    "tslib": "^2.3.0"
   },
   "devDependencies": {
     "@angular/build": "^20.0.1",

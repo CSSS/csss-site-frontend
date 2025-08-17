@@ -1,6 +1,4 @@
-@use 'theme';
 @use 'globals' as g;
-@use 'breakpoints' as b;
 
 :host {
   display: grid;
@@ -9,17 +7,17 @@
 }
 
 #outlet {
-  background-color: theme.$bg4;
+  background-color: g.$bg4;
   overflow: auto;
 }
 
 #status-line {
   height: 1rem;
-  background-color: theme.$accent;
+  background-color: g.$accent;
 }
 
 /* Change the grid layout when we hit a certain size. */
-@media (min-width: b.$breakpoint-large) {
+@media (min-width: g.$breakpoint-large) {
   :host {
     grid-template-columns: min-content auto;
     grid-template-rows: #{g.$tab-bar-h} auto #{g.$status-line-h};
@@ -28,7 +26,7 @@
   #outlet {
     grid-row: 2 / 3;
     grid-column: 2 / 3;
-    background-color: theme.$bg4;
+    background-color: g.$bg4;
   }
 
   #status-line {
