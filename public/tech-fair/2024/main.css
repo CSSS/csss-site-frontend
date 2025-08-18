@@ -47,22 +47,22 @@ li {
 
 @font-face {
   font-family: 'darumadropOne';
-  src: url('fonts/DarumadropOne-Regular.ttf');
+  src: url('/static/fonts/DarumadropOne-Regular.ttf');
 }
 
 @font-face {
   font-family: 'NotoSansGeorgian-Regular';
-  src: url('fonts/NotoSansGeorgian-Regular.ttf');
+  src: url('/static/fonts/NotoSansGeorgian-Regular.ttf');
 }
 
 @font-face {
   font-family: 'Noto Sans Georgian';
-  src: url('fonts/NotoSansGeorgian-Regular.ttf');
+  src: url('/static/fonts/NotoSansGeorgian-Regular.ttf');
 }
 
 @font-face {
   font-family: 'NotoSansGeorgian-Bold';
-  src: url('fonts/NotoSansGeorgian-Bold.ttf');
+  src: url('/static/fonts/NotoSansGeorgian-Bold.ttf');
 }
 
 .pink {
