@@ -1,4 +1,3 @@
-@use 'theme';
 @use 'globals' as g;
 
 aside {
@@ -24,7 +23,7 @@ article {
     @include g.no-select;
     display: block;
     font-family: g.$static-font;
-    color: theme.$code-text;
+    color: g.$code-text;
     width: fit-content;
 
     div {
