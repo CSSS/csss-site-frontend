@@ -1,0 +1,1 @@
+function i(e,r){return e.length?e.length===1?e.at(0)?.toUpperCase()+e.slice(1):e.split(r??" ").reduce((t,n)=>t+n.at(0)?.toUpperCase()+e.slice(1),""):e}function s(e){return`https://${e}`}function l(e){return e&&e.startsWith("url(")?e:e?`url(${e})`:""}export{i as a,s as b,l as c};
