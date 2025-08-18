@@ -14,7 +14,7 @@ export abstract class BaseLinkComponent<T extends CsssLink> {
   /**
    * The link that should be used from `links.ts`
    */
-  link = input.required<T>();
+  key = input.required<T>();
 
   /**
    * Overrides the label that is displayed.
@@ -24,7 +24,7 @@ export abstract class BaseLinkComponent<T extends CsssLink> {
   /**
    * Label that is displayed in the element.
    */
-  protected _label = computed(() => this.label() ?? capitalize(this.link()));
+  protected _label = computed(() => this.label() ?? capitalize(this.key()));
 
   /**
    * The href used to move the user to the external link/route.

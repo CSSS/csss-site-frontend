@@ -11,6 +11,6 @@ import { EXTERNAL_LINKS, ExternalLink } from '../links.data';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ExternalLinkComponent extends BaseLinkComponent<ExternalLink> {
-  override link = input.required<ExternalLink>();
-  protected override _href = computed<string>(() => EXTERNAL_LINKS[this.link()]);
+  override key = input.required<ExternalLink>();
+  protected override _href = computed<string>(() => EXTERNAL_LINKS[this.key()]);
 }

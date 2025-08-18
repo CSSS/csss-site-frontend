@@ -1,10 +1,22 @@
 export type ImagesFolder = 'root' | 'affiliates' | 'placeholders';
 
 /**
- * Capitalize the first letter of the word.
+ * @param str - String to capitalize
+ * @param delimiter - Delimiter between words, default is `space`
+ * @returns The string with the first letter of every word capitalized
  */
-export function capitalize(str: string): string {
-  return str.at(0)?.toUpperCase() + str.slice(1);
+export function capitalize(str: string, delimiter?: string): string {
+  if (!str.length) {
+    return str;
+  }
+
+  if (str.length === 1) {
+    return str.at(0)?.toUpperCase() + str.slice(1);
+  }
+
+  return str.split(delimiter ?? ' ').reduce((acc, word) => {
+    return acc + word.at(0)?.toUpperCase() + str.slice(1);
+  }, '');
 }
 
 /**

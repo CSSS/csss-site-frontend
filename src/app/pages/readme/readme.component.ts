@@ -11,12 +11,19 @@ import { CardComponent } from '@csss-code/card/card.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faArrowDown, faArrowUpRightFromSquare } from '@fortawesome/free-solid-svg-icons';
 import { ExternalLinkComponent } from 'components/url/external-link/external-link.component';
+import { RouteLinkComponent } from 'components/url/route-link/route-link.component';
 import { gsap } from 'gsap';
 import { SplitText } from 'gsap/SplitText';
 
 @Component({
   selector: 'cs-readme',
-  imports: [CardComponent, RouterModule, FontAwesomeModule, ExternalLinkComponent],
+  imports: [
+    CardComponent,
+    RouterModule,
+    FontAwesomeModule,
+    ExternalLinkComponent,
+    RouteLinkComponent
+  ],
   templateUrl: './readme.component.html',
   styleUrl: './readme.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
