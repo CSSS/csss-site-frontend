@@ -2,7 +2,6 @@ import {
   AfterContentInit,
   ChangeDetectionStrategy,
   Component,
-  computed,
   ElementRef,
   inject,
   OnDestroy,
@@ -23,17 +22,9 @@ export class ArticleComponent implements AfterContentInit, OnDestroy {
   private articleContent = viewChild.required<ElementRef<HTMLDivElement>>('article');
 
   /**
-   * How many lines should be printed in the line gutter.
-   */
-  protected numbersToPrint = signal(0);
-
-  /**
    * The array to display the lines needed for the content.
    */
-  protected numbersToDisplay = computed(() =>
-    Array.from({ length: this.numbersToPrint() }, (_, i) => i + 1)
-  );
-
+  protected numbersToDisplay = signal<number[]>([]);
   /**
    * Observer to watch when an element resizes.
    */
@@ -54,8 +45,8 @@ export class ArticleComponent implements AfterContentInit, OnDestroy {
       for (const entry of entries) {
         const numbersToFit = Math.ceil(entry.contentRect.height / LETTER_HEIGHT);
 
-        if (this.numbersToPrint() !== numbersToFit) {
-          this.numbersToPrint.set(numbersToFit);
+        if (this.numbersToDisplay().length !== numbersToFit) {
+          this.numbersToDisplay.set(Array.from({ length: numbersToFit }, (_, i) => i + 1));
         }
       }
     });

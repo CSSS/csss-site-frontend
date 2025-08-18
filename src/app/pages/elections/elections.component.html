@@ -5,7 +5,7 @@
       The CSSS holds multiple elections a year to make sure the best people are helping our members.
       If you'd like to get even more involved with the CS community then running for a position is a
       great way to do that. Full rules for elected positions are in the
-      <cs-external-link link="constitution"></cs-external-link>
+      <cs-external-link key="constitution"></cs-external-link>
     </p>
   </header>
   <section>
@@ -43,7 +43,12 @@
 </code-article>
 
 <ng-template #execTab>
-  <p>These executives hold office from May 1st to April 30th of the following year.</p>
+  <p>
+    These executives hold office from <strong>May 1st to April 30th of the following year</strong>,
+    <strong>except</strong> for the <strong>Executives at Large</strong>, who are voted in at the
+    <strong>start of every semester</strong> and serve until the
+    <strong>end of that semester</strong>.
+  </p>
   <ul>
     @for (exec of executives; track exec.position) {
       <h3>{{ exec.position }}</h3>
