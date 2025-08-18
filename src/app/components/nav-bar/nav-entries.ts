@@ -6,6 +6,7 @@ import {
   faRoadBarrier,
   faUpRightFromSquare
 } from '@fortawesome/free-solid-svg-icons';
+import { EXTERNAL_LINKS } from 'components/url/links.data';
 
 export interface NavItem extends CodeListItem<NavItem> {
   route?: string; // Internal route
@@ -129,7 +130,7 @@ export const NAVBAR_ENTRIES: NavItem[] = [
         key: 'documentation.constitution',
         label: 'Constitution',
         icon: faUpRightFromSquare,
-        href: 'https://github.com/CSSS/public-docs/tree/master/constitutions'
+        href: EXTERNAL_LINKS['constitution']
       },
       {
         key: 'documentation.policies',
@@ -141,7 +142,7 @@ export const NAVBAR_ENTRIES: NavItem[] = [
         key: 'documentation.sfss-minutes',
         label: 'SFSS Minutes',
         icon: faUpRightFromSquare,
-        href: 'https://sfss.ca/about/meeting-times-minutes/council/'
+        href: 'https://sfss.ca/about/meeting-times-minutes/council'
       }
     ]
   }

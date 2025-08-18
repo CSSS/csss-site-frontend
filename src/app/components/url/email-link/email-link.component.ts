@@ -11,5 +11,6 @@ import { EmailLink, EMAILS } from '../links.data';
 })
 export class EmailLinkComponent extends BaseLinkComponent<EmailLink> {
   override link = input.required<EmailLink>();
-  protected override _href = computed(() => EMAILS[this.link()]);
+  protected override _href = computed(() => `mailto:${EMAILS[this.link()]}`);
+  protected override _label = computed(() => this.label() ?? EMAILS[this.link()]);
 }
