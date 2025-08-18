@@ -1,0 +1,639 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=0.6" />
+    <link rel="stylesheet" href="/static/css/reset.min.css" />
+    <link rel="stylesheet" href="main.css" />
+    <link rel="icon" type="image/png" href="/static/icons/favicon_white.png" />
+    <title>Tech Fair 2024</title>
+  </head>
+
+  <!-- if you dislike frontend: -->
+  <!-- python -m http.server 8080 --bind 127.0.0.1 --directory ./ -->
+
+  <body class="preload" onload="onload()" onresize="updateBanner()">
+    <div id="nav-bar">
+      <div>
+        <div class="nav-button" style="padding-left: 0">
+          <a href="https://sfucsss.org">
+            <img
+              class="csss-logo"
+              src="/static/files/csss_black.svg"
+              alt="CSSS Logo"
+              style="object-fit: contain"
+            />
+          </a>
+        </div>
+
+        <a href="#" class="nav-button nav-black">
+          <span>Tech Fair 2024</span>
+        </a>
+
+        <div class="noselect nav-divider"><span>|</span></div>
+
+        <a href="#booths" class="nav-button nav-pink">
+          <span>Booths</span>
+        </a>
+        <a href="#schedule" class="nav-button nav-pink">
+          <span>Schedule</span>
+        </a>
+        <a href="#students" class="nav-button nav-pink">
+          <span>For Students</span>
+        </a>
+
+        <div class="noselect nav-divider"><span>|</span></div>
+
+        <a href="#companies" class="nav-button nav-blue">
+          <span>For Companies</span>
+        </a>
+        <a href="company_package.html" class="nav-button nav-blue">
+          <span>Package Info</span>
+        </a>
+        <a href="#history" class="nav-button nav-blue">
+          <span>History</span>
+        </a>
+      </div>
+    </div>
+
+    <div id="column-container">
+      <div style="height: 75px"></div>
+
+      <header id="code-title">
+        <h1><span class="pink">SFU_CSSS</span>.TechFair(<span class="navy">2024</span>);</h1>
+        <h1>
+          <span class="lightpink" id="before-cursor"></span>
+          <span id="cursor" class="noselect">|</span>
+        </h1>
+      </header>
+
+      <header id="logo-title">
+        <div id="laptop">
+          <object
+            id="laptop-child"
+            class="noselect"
+            type="image/svg+xml"
+            data="images/laptop.svg"
+          ></object>
+        </div>
+        <div id="logo-title-text">
+          <div>Tech Fair</div>
+          <div>2024</div>
+        </div>
+      </header>
+
+      <img id="mountain" alt="mountain" src="images/mountain.svg" />
+
+      <!-- info-text -->
+      <div>
+        <div id="info-banner-bg" hidden></div>
+
+        <div id="info-text">
+          <div>
+            <br />
+            <img
+              id="info-img"
+              class="zoom"
+              title="Long Shot of Tech Fair 2022"
+              alt="Long Shot of Tech Fair 2022"
+              src="images/tf-image-1.jpg"
+            />
+            <div>
+              <h2>Welcome to Tech Fair!</h2>
+              <p>
+                Tech Fair is our annual career fair, bringing students and companies together. This
+                is a great opportunity to set up a booth and expand the name recognition of your
+                company!
+              </p>
+              <ul>
+                <li>
+                  Located in
+                  <a
+                    class="light-pink-link"
+                    href="https://roomfinder.sfu.ca/apps/sfuroomfinder_web/?q=ASB"
+                    >ASB Atrium</a
+                  >
+                  at SFU's Burnaby campus
+                </li>
+                <li>Over 2500 SFU Computing Science Students invited</li>
+                <li><b style="color: #84eb7a">October 9th, 2024</b> from 10:00am - 4:00pm</li>
+                <li>Meet your future employees!</li>
+              </ul>
+            </div>
+          </div>
+
+          <div style="height: 50px"></div>
+
+          <div id="info-buttons-container">
+            <div>
+              <p>Are you a <b>student</b> interested in stopping by?</p>
+              <br />
+              <a href="https://discord.gg/3RdXngW7sd" class="pink-button zoom2">Say Hi!</a>
+            </div>
+            <div>
+              <p>Are you a <b>company</b> interested in participating?</p>
+              <br />
+              <a href="company_package.html#join" class="join-tech-fair-button zoom2"
+                >Join Tech Fair</a
+              >
+            </div>
+          </div>
+
+          <div style="height: 50px"></div>
+
+          <p>
+            Feel free to reach out to us at
+            <a class="light-pink-link" href="mailto:csss-techfair@sfu.ca">csss-techfair@sfu.ca</a>
+            for any further questions.
+          </p>
+          <br />
+        </div>
+      </div>
+
+      <div style="height: 5px"></div>
+
+      <div id="booths-container">
+        <hr />
+        <div style="height: 50px"></div>
+
+        <a id="booths" href="#booths">So, who'll be there?</a>
+
+        <div style="height: 50px"></div>
+
+        <div id="company-card-list">
+          <div>
+            <img alt="Arista Networks" src="images/company_images/arista.jpg" />
+            <div>
+              <p>Arista Networks</p>
+              <p class="banded-hr noselect">////////////////////////////////////////</p>
+              <br /><br />
+
+              <div>
+                <br />
+                <p>
+                  Arista Networks is an industry leader in data-driven, client to cloud networking
+                  for large data center, campus and routing environments.
+                </p>
+                <br />
+
+                <div>
+                  <a href="#booths" class="tag" style="color: #cb4ecf">&lt;Networking&gt;</a>
+                </div>
+                <a href="https://www.arista.com/en/careers/" class="see-more white-link"
+                  >See more</a
+                >
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <img alt="Avigilon" src="images/company_images/avigilon.jpg" />
+            <div>
+              <p>Avigilon</p>
+              <p class="banded-hr noselect">////////////////////////////////////////</p>
+              <br /><br />
+
+              <div>
+                <br />
+                <p>
+                  Avigilon solutions help you find and share critical intelligence faster, so you
+                  can respond to events with the speed and decisiveness that keeps people,
+                  operations and assets safe.
+                </p>
+                <br />
+
+                <div>
+                  <a href="#booths" class="tag" style="color: #dd4e4e">&lt;Security&gt;</a>
+                </div>
+                <a
+                  href="https://www.motorolasolutions.com/en_us/about/careers.html"
+                  class="see-more white-link"
+                  >See more</a
+                >
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <img alt="Fortinet" src="images/company_images/fortinet.png" />
+            <div>
+              <p>Fortinet</p>
+              <p class="banded-hr noselect">////////////////////////////////////////</p>
+              <br /><br />
+
+              <div>
+                <br />
+                <p>
+                  Fortinet is a driving force in the evolution of cybersecurity and the convergence
+                  of networking and security. Securing people, devices, and data everywhere is their
+                  mission.
+                </p>
+                <br />
+
+                <div>
+                  <a href="#booths" class="tag" style="color: #2cbed1">&lt;Cybersecurity&gt;</a>
+                </div>
+                <a href="https://www.fortinet.com/" class="see-more white-link">See more</a>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <img alt="ICBC" src="images/company_images/icbc.png" />
+            <div>
+              <p>&nbsp;&nbsp;&nbsp;ICBC</p>
+              <p class="banded-hr noselect">////////////////////////////////////////</p>
+              <br /><br />
+
+              <div>
+                <br />
+                <p>
+                  At ICBC, it's our job to make sure the car insurance system works for everyone,
+                  today and in the future.
+                </p>
+                <br />
+
+                <div>
+                  <a href="#booths" class="tag" style="color: #51c46d">&lt;Public Services&gt;</a>
+                </div>
+                <a href="https://www.icbc.com/about-icbc/careers/" class="see-more white-link"
+                  >See more</a
+                >
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <img alt="Astera Labs" src="images/company_images/astera.png" />
+            <div>
+              <p>Astera Labs</p>
+              <p class="banded-hr noselect">////////////////////////////////////////</p>
+              <br /><br />
+
+              <div>
+                <br />
+                <p>
+                  Astera Labs, Inc. is a fabless semiconductor company that develops specialized
+                  connectivity solutions for data-centric systems. Their product portfolio includes
+                  system-aware semiconductor integrated circuits, boards, and services designed to
+                  enable robust PCIe connectivity.
+                </p>
+                <br />
+
+                <div>
+                  <a href="#booths" class="tag" style="color: #5a55b9">&lt;Semiconductors&gt;</a>
+                </div>
+                <a href="https://www.asteralabs.com/" class="see-more white-link">See more</a>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <img alt="Brave Technology Co-op" src="images/company_images/brave.png" />
+            <div>
+              <p>Brave Technology Co-op</p>
+              <p class="banded-hr noselect">////////////////////////////////////////</p>
+              <br /><br />
+
+              <div>
+                <br />
+                <p>
+                  Brave Technology Co-op develops tools that activate life-saving community
+                  responses for overdose situations, including the Brave App, Brave Buttons, and
+                  Brave Sensors.
+                </p>
+                <br />
+
+                <div>
+                  <a href="#booths" class="tag" style="color: #e46893">&lt;Harm Reduction&gt;</a>
+                </div>
+                <a href="https://brave.coop" class="see-more white-link">See more</a>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <img alt="Planview" src="images/company_images/planview.png" />
+            <div>
+              <p>Planview</p>
+              <p class="banded-hr noselect">////////////////////////////////////////</p>
+              <br /><br />
+
+              <div>
+                <br />
+                <p>
+                  Planview is a leader in portfolio and work management solutions that empower
+                  organizations to optimize resources, enhance productivity, and drive strategic
+                  initiatives.
+                </p>
+                <br />
+
+                <div>
+                  <a href="#booths" class="tag" style="color: #e4a868">&lt;Software&gt;</a>
+                </div>
+                <a href="https://www.planview.com/" class="see-more white-link">See more</a>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <img alt="Darkvision Technologies" src="images/company_images/darkvision.png" />
+            <div>
+              <p>Darkvision Technologies</p>
+              <p class="banded-hr noselect">////////////////////////////////////////</p>
+              <br /><br />
+
+              <div>
+                <br />
+                <p>
+                  DarkVision is transforming industrial asset inspection with its cutting-edge
+                  acoustic imaging technology, offering the highest fidelity and resolution in the
+                  market. Their proprietary system captures ultra-high-resolution 3D data, enabling
+                  the detection and quantification of previously undetectable defects.
+                </p>
+                <br />
+
+                <div>
+                  <a href="#booths" class="tag" style="color: #68e497">&lt;Imaging&gt;</a>
+                </div>
+                <a href="https://darkvisiontech.com/" class="see-more white-link">See more</a>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <img alt="OffWorld Industries" src="images/company_images/offworld.png" />
+            <div>
+              <p>OffWorld Industries</p>
+              <p class="banded-hr noselect">////////////////////////////////////////</p>
+              <br /><br />
+
+              <div>
+                <br />
+                <p>
+                  Offworld Industries is a groundbreaking game development studio focused on
+                  crafting immersive experiences. Evolving from the modding community, the team
+                  emphasizes realism and community engagement in titles like Squad, Starship
+                  Troopers: Extermination, Squad 44, and Beyond The Wire.
+                </p>
+                <br />
+
+                <div>
+                  <a href="#booths" class="tag" style="color: #68e497">&lt;Game Development&gt;</a>
+                </div>
+                <a href="https://www.offworldindustries.com/" class="see-more white-link"
+                  >See more</a
+                >
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <img alt="Kardium Inc" src="images/company_images/kardium.png" />
+            <div>
+              <p>Kardium Inc</p>
+              <p class="banded-hr noselect">////////////////////////////////////////</p>
+              <br /><br />
+
+              <div>
+                <br />
+                <p>
+                  Kardium Inc. is a medical solutions company focused on improving atrial
+                  fibrillation (AF) treatment. Its Globe® Mapping and Ablation System combines
+                  rapid pulmonary vein isolation, high-definition mapping, and atrial ablation into
+                  a single catheter, enhancing care for the 59 million people affected by AF
+                  worldwide.
+                </p>
+                <br />
+
+                <div>
+                  <a href="#booths" class="tag" style="color: #e46868">&lt;Medical Solutions&gt;</a>
+                </div>
+                <a href="https://kardium.com/" class="see-more white-link">See more</a>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <img alt="Walt Disney Animation Studios" src="images/company_images/disney.png" />
+            <div>
+              <p>Walt Disney Animation Studios</p>
+              <p class="banded-hr noselect">////////////////////////////////////////</p>
+              <br /><br />
+
+              <div>
+                <br />
+                <p>
+                  Walt Disney Animation Studios is an American animation studio that produces
+                  animated features and short films for The Walt Disney Company. As the
+                  longest-running animation studio in the world, it operates as a division of Walt
+                  Disney Studios.
+                </p>
+                <br />
+
+                <div>
+                  <a href="#booths" class="tag" style="color: #93e468">&lt;Animation&gt;</a>
+                </div>
+                <a href="https://www.disneyanimation.com/process/" class="see-more white-link"
+                  >See more</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div style="height: 75px"></div>
+
+        <p style="text-align: center">
+          If you'd like to see your company here for next Tech Fair, let us know at
+          <a class="dark-pink-link" href="mailto:csss-techfair@sfu.ca">csss-techfair@sfu.ca</a>!
+        </p>
+      </div>
+
+      <div style="height: 25px"></div>
+
+      <div id="schedule-container">
+        <a id="schedule" href="#schedule" class="noto-bold">Schedule</a>
+        <div style="height: 25px"></div>
+
+        <div id="day-schedule">
+          <p>Wednesday, October 9th</p>
+          <table>
+            <tr>
+              <td>
+                <span>8</span>
+                <span> AM</span>
+              </td>
+              <td>&nbsp;</td>
+            </tr>
+            <tr>
+              <td>
+                <span>10</span>
+                <span> AM</span>
+              </td>
+              <td id="techfair-balloon">
+                <div>
+                  <p><b>Tech Fair 2024</b></p>
+                  <p>(10:00am - 4:00pm)</p>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <span>12</span>
+                <span> PM</span>
+              </td>
+              <td>&nbsp;</td>
+            </tr>
+            <tr>
+              <td>
+                <span>2</span>
+                <span> PM</span>
+              </td>
+              <td>&nbsp;</td>
+            </tr>
+            <tr>
+              <td>
+                <span>4</span>
+                <span> PM</span>
+              </td>
+              <td>&nbsp;</td>
+            </tr>
+            <tr>
+              <td>
+                <span>6</span>
+                <span> PM</span>
+              </td>
+              <td>&nbsp;</td>
+            </tr>
+          </table>
+        </div>
+
+        <div style="height: 75px"></div>
+
+        <div id="bg-text-schedule" class="noto-bold noselect">Schedule</div>
+      </div>
+
+      <div style="height: 50px"></div>
+
+      <div id="students-container">
+        <a id="students" href="#students">Students</a>
+
+        <p>
+          As a student, Tech Fair is all about <u>you</u>, but why should you come to Tech Fair in
+          the first place?
+        </p>
+        <ul>
+          <li>Make connections with local companies</li>
+          <li>Learn about the computing industry in Vancouver</li>
+          <li>Build your professional image</li>
+        </ul>
+        <br />
+
+        <a href="https://discord.sfu.ca" target="_blank" class="pink-button zoom2">Say Hi!</a>
+      </div>
+
+      <div style="height: 50px"></div>
+
+      <div id="companies-container">
+        <a id="companies" href="#companies">For Companies</a>
+
+        <div style="display: table; clear: both; width: 100%">
+          <p>
+            Tech Fair 2024 gives you and your company the opportunity to expand your brand to
+            hundreds of talented and interested students who could become potential stars in your
+            company.
+          </p>
+          <ul>
+            <li>
+              Reach out to hundreds of passionate Computing Science students at various points in
+              their degree
+            </li>
+            <li>
+              Let students learn about you, your culture, and your opportunities - so you're first
+              in mind when they start their career journeys
+            </li>
+          </ul>
+          <br />
+
+          <p>
+            <b>Attend TechFair 2024</b>: our students might meet their next co-op, and you might
+            meet your next full-time employee!
+          </p>
+          <br />
+        </div>
+
+        <p class="banded-hr">//////////////////////////////////////////////////////</p>
+        <br />
+        <p>Interested in setting up a booth?</p>
+        <a href="company_package.html#join" class="join-tech-fair-button zoom2">Join Tech Fair</a>
+      </div>
+
+      <div style="height: 50px"></div>
+
+      <div id="history-container">
+        <a id="history" href="#history">History</a>
+        <p>
+          Just a short decade ago, Tech Fair was a standing CSSS tradition at SFU. Unforunately, due
+          to the curse of time, it's fallen out of favour in recent years.
+          <br /><br />
+
+          However! This all changed in 2022, when the event was brought back to life.
+          <br /><br />
+
+          This is the second year in a row we're running Tech Fair, and we've become much more
+          serious about it than before, with the ultimate goal of keeping this event going long
+          after we leave.
+        </p>
+        <br />
+
+        <div id="gallery">
+          <h4>Photo Gallery</h4>
+          <img
+            class="zoom"
+            title="Long Shot of Tech Fair 2022"
+            alt="Long Shot of Tech Fair 2022"
+            src="images/tf-image-1.jpg"
+          />
+          <img
+            class="zoom"
+            title="Students at Tech Fair 2022"
+            alt="Students at Tech Fair 2022"
+            src="images/tf-image-2.jpg"
+          />
+          <img
+            class="zoom"
+            title="A Booth at Tech Fair 2022"
+            alt="A Booth at Tech Fair 2022"
+            src="images/booth.jpg"
+          />
+          <img
+            class="zoom"
+            title="View from SFU's Burnaby Campus"
+            alt="View from SFU's Burnaby Campus"
+            src="images/sfu.jpg"
+          />
+        </div>
+      </div>
+
+      <div id="footer">
+        <p>
+          <em><span class="pink">SFU_CSSS</span>.TechFair(<span class="navy">2024</span>);</em>
+        </p>
+        <p>
+          <a href="mailto:csss-techfair@sfu.ca">csss-techfair@sfu.ca</a> |
+          <a href="https://www.linkedin.com/company/sfucsss/">LinkedIn</a> |
+          <a href="https://www.instagram.com/sfu_csss/">@sfu_csss</a> |
+          <a href="http://discord.sfucsss.org/">discord</a>
+        </p>
+      </div>
+    </div>
+
+    <script src="tech_fair.js"></script>
+    <script>
+      setTimeout(() => {
+        document.body.className = '';
+      }, 200);
+    </script>
+  </body>
+</html>
