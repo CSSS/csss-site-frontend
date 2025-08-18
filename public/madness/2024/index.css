@@ -55,21 +55,17 @@ body * {
 }
 
 #above-fold::before {
-  content: "";
+  content: '';
   position: absolute;
   top: 0;
   width: 100%;
   height: 100vh;
   z-index: -3;
   background-color: black;
-  background-image: radial-gradient(white 3px, transparent 2px),
-    radial-gradient(white 1px, transparent 2px),
+  background-image:
+    radial-gradient(white 3px, transparent 2px), radial-gradient(white 1px, transparent 2px),
     radial-gradient(rgba(255, 255, 255, 0.5) 2px, transparent 2px),
-    linear-gradient(
-      transparent 100vh,
-      var(--hill-color) 100vh,
-      var(--hill-color) 150vh
-    );
+    linear-gradient(transparent 100vh, var(--hill-color) 100vh, var(--hill-color) 150vh);
   background-size:
     550px 550px,
     350px 350px,
@@ -180,7 +176,7 @@ header > h4 b {
 
 #building::before {
   background: var(--red);
-  content: "SFU";
+  content: 'SFU';
   font-size: 1rem;
   color: white;
   position: relative;
@@ -218,7 +214,8 @@ header > h4 b {
   height: 100%;
   width: 2rem;
   height: 5rem;
-  background: linear-gradient(315deg, var(--hill-shadow) 25%, transparent 25%),
+  background:
+    linear-gradient(315deg, var(--hill-shadow) 25%, transparent 25%),
     linear-gradient(45deg, var(--hill-shadow) 25%, transparent 25%);
   background-color: var(--hill-color);
   background-position: 0 0;
@@ -285,7 +282,7 @@ header > h4 b {
 }
 
 .cloud::after {
-  content: "";
+  content: '';
   position: absolute;
   background: var(--cloud-color);
   height: calc(var(--width) / 3);
@@ -296,7 +293,7 @@ header > h4 b {
 }
 
 .cloud::before {
-  content: "";
+  content: '';
   position: absolute;
   background: var(--cloud-color);
   height: calc(var(--width) / 2);
@@ -321,12 +318,7 @@ header > h4 b {
 
 #info-container {
   background: var(--hill-color);
-  background: linear-gradient(
-    to bottom,
-    var(--hill-color) 10%,
-    #0a1f0a 40%,
-    #0a0a10 100%
-  );
+  background: linear-gradient(to bottom, var(--hill-color) 10%, #0a1f0a 40%, #0a0a10 100%);
   background: linear-gradient(to bottom, var(--hill-color) 10%, #0a1f0a 40%);
 
   color: white;
@@ -433,8 +425,7 @@ table td {
   margin: 0;
   margin: auto;
   */
-  margin: var(--foliage-height) var(--foliage-width) var(--trunk-height)
-    var(--foliage-width);
+  margin: var(--foliage-height) var(--foliage-width) var(--trunk-height) var(--foliage-width);
 }
 
 /*
@@ -444,7 +435,7 @@ table td {
 */
 
 .tree::before {
-  content: "";
+  content: '';
   position: absolute;
   background: brown;
   box-shadow: -3px 0 0 inset #533;
@@ -453,21 +444,13 @@ table td {
 }
 
 .tree::after {
-  content: "";
+  content: '';
   position: absolute;
   width: var(--foliage-width);
   height: var(--foliage-height);
   margin-left: calc(var(--foliage-width) / -2 + var(--trunk-width) / 2);
   margin-top: calc(-1 * var(--foliage-height));
-  clip-path: polygon(
-    50% 0%,
-    95% 60%,
-    75% 60%,
-    100% 100%,
-    0 100%,
-    25% 60%,
-    5% 60%
-  );
+  clip-path: polygon(50% 0%, 95% 60%, 75% 60%, 100% 100%, 0 100%, 25% 60%, 5% 60%);
   /*
   border: 1px solid #060;
   border-top-right-radius: 80%;
