@@ -1,6 +1,11 @@
 import { Routes } from '@angular/router';
 import { HomeComponent } from 'pages/home/home.component';
 
+/**
+ * Formats the title on the web browser's tab/window.
+ * @param pageTitle - Title of the page
+ * @returns Formatted page title.
+ */
 function makeTitle(pageTitle: string): string {
   return `${pageTitle} | CSSS`;
 }
@@ -50,5 +55,24 @@ export const routes: Routes = [
     title: makeTitle('Elections')
   },
   { path: '', component: HomeComponent, title: 'Computing Science Student Society' },
+  // 404 will go down there
   { path: '**', component: HomeComponent }
-];
+] as const;
+
+const BASE_ROUTES = routes.reduce((acc, route) => {
+  if (!route.path || route.path === '**') {
+    return acc;
+  }
+  acc.push(route.path);
+  return acc;
+}, [] as string[]);
+
+/**
+ * Gets the base route as a string.
+ *
+ * @param route - Route to get
+ * @returns The route if it exists or 404
+ */
+export function getBaseRoute(route: string): string {
+  return BASE_ROUTES.find(r => r === route) ?? '404';
+}

@@ -5,7 +5,7 @@ import { CodeTabGroupComponent } from '@csss-code/tabs/tab-group/tab-group.compo
 import { CodeTabComponent } from '@csss-code/tabs/tab.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faSquareCheck } from '@fortawesome/free-solid-svg-icons';
-import { LinkComponent } from 'components/external-link/link.component';
+import { ExternalLinkComponent } from 'components/url/external-link/external-link.component';
 import { ELECTED_DESCRIPTIONS, EXEC_DESCRIPTIONS } from 'pages/officers/officers.data';
 
 @Component({
@@ -14,7 +14,7 @@ import { ELECTED_DESCRIPTIONS, EXEC_DESCRIPTIONS } from 'pages/officers/officers
     NgTemplateOutlet,
     ArticleComponent,
     FontAwesomeModule,
-    LinkComponent,
+    ExternalLinkComponent,
     CodeTabGroupComponent,
     CodeTabComponent
   ],
