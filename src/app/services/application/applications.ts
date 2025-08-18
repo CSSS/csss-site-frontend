@@ -35,7 +35,6 @@ export interface AppInfo {
 
 /**
  * All registered applications should go here.
- * TODO:Need a way to dynamically generate this or the routes.
  */
 export const routeApplicationMap: Map<number, AppInfo> = new Map([
   [

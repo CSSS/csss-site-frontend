@@ -31,6 +31,11 @@ a {
   cursor: pointer;
 }
 
+a.csss-link {
+  color: globals.$accent2;
+  white-space: nowrap; // so the icons don't wrap without the link text
+}
+
 .clickable {
   cursor: pointer;
 }
@@ -40,24 +45,24 @@ article.content {
     margin-top: 5svh;
   }
 
+  p,
+  li,
+  h3 {
+    font-size: globals.$normal-font-size;
+  }
+
   h1 {
     text-align: center;
-    font-size: clamp(1.8rem, 2.5vw, 2.2rem);
+    font-size: globals.$h1-font-size;
     margin-bottom: 1.5rem;
+  }
+
+  h2 {
+    font-size: globals.$h2-font-size;
   }
 
   p {
     margin: 0 0 1rem 0;
-  }
-
-  h2 {
-    font-size: clamp(1.4rem, 2.2vw, 1.8rem);
-  }
-
-  p,
-  li,
-  h3 {
-    font-size: clamp(1rem, 1.4vw, 1.4rem);
   }
 
   section + section {
