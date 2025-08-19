@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=0.6" />
+    <link rel="stylesheet" href="/static/css/reset.min.css" />
+    <link rel="stylesheet" href="main.css" />
+    <link rel="stylesheet" href="company_package.css" />
+    <link rel="icon" type="image/png" href="/static/icons/favicon_white.png" />
+    <title>Tech Fair 2024</title>
+  </head>
+
+  <body class="preload" onload="onload()" onresize="updateBanner()">
+    <div id="nav-bar">
+      <div>
+        <div class="nav-button">
+          <a href="/">
+            <img class="csss-logo" src="/static/files/csss_black.svg" alt="CSSS Logo" />
+          </a>
+        </div>
+
+        <a href="index.html" class="nav-button nav-black">
+          <span>&lt;&lt; Tech Fair 2024</span>
+        </a>
+
+        <div class="noselect nav-divider"><span>|</span></div>
+
+        <a href="#package" class="nav-blue nav-button">
+          <span>Package Info</span>
+        </a>
+        <a href="#join" class="nav-blue nav-button">
+          <span>Join Tech Fair</span>
+        </a>
+      </div>
+    </div>
+
+    <div id="column-container">
+      <div style="height: min(34vw, 365px)"></div>
+
+      <header id="logo-title">
+        <div id="laptop">
+          <object
+            id="laptop-child"
+            class="noselect"
+            type="image/svg+xml"
+            data="images/laptop.svg"
+          ></object>
+        </div>
+        <div id="logo-title-text">
+          <div>Tech Fair</div>
+          <div>2024</div>
+        </div>
+      </header>
+
+      <img id="mountain" alt="mountain" src="images/mountain.svg" />
+
+      <!-- info-text (company package info) -->
+      <div>
+        <div id="info-banner-bg" hidden></div>
+
+        <div id="info-text">
+          <br />
+          <div>
+            <img
+              id="flowchart-img"
+              class="zoom"
+              title="Tech Fair's fee"
+              src="images/flowchart.png"
+            />
+            <a id="package" href="#package">Company Package Info</a>
+            <div style="width: 55%">
+              <p>
+                Companies attending our Tech Fair will be provided with a
+                <b>table</b>, <b>chairs</b>, <b>bulletin board</b>, and a
+                <b>10ft by 6ft space</b> to set up in. As mentioned before, Tech Fair will run from
+                <span class="pink"><b>10:00am</b></span> to
+                <span class="pink"><b>4:00pm</b></span> on
+                <span class="green"><b>October 9th, 2024</b></span
+                >. Lunch will be provided to all employees running the booths.
+              </p>
+              <br />
+              <p>
+                In order to support smaller local companies, Tech Fair's attendance fee depends on
+                the number of employees:
+              </p>
+              <ul>
+                <li>
+                  <span class="pink"><b>$400.00 CAD</b></span> for companies with under 50 employees
+                </li>
+                <li>
+                  <span class="pink"><b>$750.00 CAD</b></span> for companies with over 50 employees
+                </li>
+              </ul>
+              <div style="height: 75px"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div style="height: 125px"></div>
+
+      <div id="awesome-container">
+        <h2>
+          <span>This sounds awesome, <em>how do I join?</em></span>
+        </h2>
+        <p class="noselect" style="font-size: 2.5em">↓</p>
+        <!-- TODO: on hover, wiggle / move downwards -> transition -->
+      </div>
+
+      <div style="height: 50px"></div>
+
+      <div id="join-container">
+        <br />
+
+        <a id="join" href="#join">Join Tech Fair</a>
+
+        <br /><br />
+
+        <p>
+          If you'd like to join Tech Fair, please send us an email at
+          <a class="light-pink-link" href="mailto:csss-techfair@sfu.ca">csss-techfair@sfu.ca</a>,
+          indicating the following:
+        </p>
+        <ul>
+          <li>Your company's name</li>
+          <li>Any questions you have about the event</li>
+        </ul>
+        <br />
+
+        <p style="text-align: center">We look forwards to seeing you there!</p>
+        <br />
+      </div>
+
+      <div style="height: 50px"></div>
+
+      <div id="footer">
+        <p>
+          <em><span class="pink">SFU_CSSS</span>.TechFair(<span class="navy">2024</span>);</em>
+        </p>
+        <p>
+          <a href="mailto:csss-techfair@sfu.ca">csss-techfair@sfu.ca</a> |
+          <a href="https://www.linkedin.com/company/sfucsss/">LinkedIn</a> |
+          <a href="https://www.instagram.com/sfu_csss/">@sfu_csss</a> |
+          <a href="http://discord.sfucsss.org/">discord</a>
+        </p>
+      </div>
+    </div>
+
+    <script src="tech_fair.js"></script>
+    <script>
+      setTimeout(() => {
+        document.body.className = '';
+      }, 200);
+    </script>
+  </body>
+</html>
