@@ -56,7 +56,12 @@ export const routes: Routes = [
   },
   { path: '', component: HomeComponent, title: 'Computing Science Student Society' },
   // 404 will go down there
-  { path: '**', component: HomeComponent }
+  {
+    path: '**',
+    loadComponent: () =>
+      import('./pages/not-found/not-found.component').then(m => m.NotFoundComponent),
+    title: makeTitle('Not Found')
+  }
 ] as const;
 
 const BASE_ROUTES = routes.reduce((acc, route) => {
