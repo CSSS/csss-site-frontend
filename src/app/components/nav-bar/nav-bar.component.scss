@@ -40,7 +40,7 @@ $navbar-w: 20rem;
   background-color: theme.$bg3;
   border-right: $border;
   z-index: 100;
-  overflow: scroll;
+  overflow: auto;
 
   &__heading {
     font-size: 1.1rem;
