@@ -1,0 +1,941 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>SFU CSSS</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style type="text/css">
+      svg:not(:root).svg-inline--fa {
+        overflow: visible;
+      }
+      .svg-inline--fa {
+        display: inline-block;
+        font-size: inherit;
+        height: 1em;
+        overflow: visible;
+        vertical-align: -0.125em;
+      }
+      .svg-inline--fa.fa-lg {
+        vertical-align: -0.225em;
+      }
+      .svg-inline--fa.fa-w-1 {
+        width: 0.0625em;
+      }
+      .svg-inline--fa.fa-w-2 {
+        width: 0.125em;
+      }
+      .svg-inline--fa.fa-w-3 {
+        width: 0.1875em;
+      }
+      .svg-inline--fa.fa-w-4 {
+        width: 0.25em;
+      }
+      .svg-inline--fa.fa-w-5 {
+        width: 0.3125em;
+      }
+      .svg-inline--fa.fa-w-6 {
+        width: 0.375em;
+      }
+      .svg-inline--fa.fa-w-7 {
+        width: 0.4375em;
+      }
+      .svg-inline--fa.fa-w-8 {
+        width: 0.5em;
+      }
+      .svg-inline--fa.fa-w-9 {
+        width: 0.5625em;
+      }
+      .svg-inline--fa.fa-w-10 {
+        width: 0.625em;
+      }
+      .svg-inline--fa.fa-w-11 {
+        width: 0.6875em;
+      }
+      .svg-inline--fa.fa-w-12 {
+        width: 0.75em;
+      }
+      .svg-inline--fa.fa-w-13 {
+        width: 0.8125em;
+      }
+      .svg-inline--fa.fa-w-14 {
+        width: 0.875em;
+      }
+      .svg-inline--fa.fa-w-15 {
+        width: 0.9375em;
+      }
+      .svg-inline--fa.fa-w-16 {
+        width: 1em;
+      }
+      .svg-inline--fa.fa-w-17 {
+        width: 1.0625em;
+      }
+      .svg-inline--fa.fa-w-18 {
+        width: 1.125em;
+      }
+      .svg-inline--fa.fa-w-19 {
+        width: 1.1875em;
+      }
+      .svg-inline--fa.fa-w-20 {
+        width: 1.25em;
+      }
+      .svg-inline--fa.fa-pull-left {
+        margin-right: 0.3em;
+        width: auto;
+      }
+      .svg-inline--fa.fa-pull-right {
+        margin-left: 0.3em;
+        width: auto;
+      }
+      .svg-inline--fa.fa-border {
+        height: 1.5em;
+      }
+      .svg-inline--fa.fa-li {
+        width: 2em;
+      }
+      .svg-inline--fa.fa-fw {
+        width: 1.25em;
+      }
+      .fa-layers svg.svg-inline--fa {
+        bottom: 0;
+        left: 0;
+        margin: auto;
+        position: absolute;
+        right: 0;
+        top: 0;
+      }
+      .fa-layers {
+        display: inline-block;
+        height: 1em;
+        position: relative;
+        text-align: center;
+        vertical-align: -0.125em;
+        width: 1em;
+      }
+      .fa-layers svg.svg-inline--fa {
+        -webkit-transform-origin: center center;
+        transform-origin: center center;
+      }
+      .fa-layers-counter,
+      .fa-layers-text {
+        display: inline-block;
+        position: absolute;
+        text-align: center;
+      }
+      .fa-layers-text {
+        left: 50%;
+        top: 50%;
+        -webkit-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+        -webkit-transform-origin: center center;
+        transform-origin: center center;
+      }
+      .fa-layers-counter {
+        background-color: #ff253a;
+        border-radius: 1em;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        color: #fff;
+        height: 1.5em;
+        line-height: 1;
+        max-width: 5em;
+        min-width: 1.5em;
+        overflow: hidden;
+        padding: 0.25em;
+        right: 0;
+        text-overflow: ellipsis;
+        top: 0;
+        -webkit-transform: scale(0.25);
+        transform: scale(0.25);
+        -webkit-transform-origin: top right;
+        transform-origin: top right;
+      }
+      .fa-layers-bottom-right {
+        bottom: 0;
+        right: 0;
+        top: auto;
+        -webkit-transform: scale(0.25);
+        transform: scale(0.25);
+        -webkit-transform-origin: bottom right;
+        transform-origin: bottom right;
+      }
+      .fa-layers-bottom-left {
+        bottom: 0;
+        left: 0;
+        right: auto;
+        top: auto;
+        -webkit-transform: scale(0.25);
+        transform: scale(0.25);
+        -webkit-transform-origin: bottom left;
+        transform-origin: bottom left;
+      }
+      .fa-layers-top-right {
+        right: 0;
+        top: 0;
+        -webkit-transform: scale(0.25);
+        transform: scale(0.25);
+        -webkit-transform-origin: top right;
+        transform-origin: top right;
+      }
+      .fa-layers-top-left {
+        left: 0;
+        right: auto;
+        top: 0;
+        -webkit-transform: scale(0.25);
+        transform: scale(0.25);
+        -webkit-transform-origin: top left;
+        transform-origin: top left;
+      }
+      .fa-lg {
+        font-size: 1.33333em;
+        line-height: 0.75em;
+        vertical-align: -0.0667em;
+      }
+      .fa-xs {
+        font-size: 0.75em;
+      }
+      .fa-sm {
+        font-size: 0.875em;
+      }
+      .fa-1x {
+        font-size: 1em;
+      }
+      .fa-2x {
+        font-size: 2em;
+      }
+      .fa-3x {
+        font-size: 3em;
+      }
+      .fa-4x {
+        font-size: 4em;
+      }
+      .fa-5x {
+        font-size: 5em;
+      }
+      .fa-6x {
+        font-size: 6em;
+      }
+      .fa-7x {
+        font-size: 7em;
+      }
+      .fa-8x {
+        font-size: 8em;
+      }
+      .fa-9x {
+        font-size: 9em;
+      }
+      .fa-10x {
+        font-size: 10em;
+      }
+      .fa-fw {
+        text-align: center;
+        width: 1.25em;
+      }
+      .fa-ul {
+        list-style-type: none;
+        margin-left: 2.5em;
+        padding-left: 0;
+      }
+      .fa-ul > li {
+        position: relative;
+      }
+      .fa-li {
+        left: -2em;
+        position: absolute;
+        text-align: center;
+        width: 2em;
+        line-height: inherit;
+      }
+      .fa-border {
+        border: solid 0.08em #eee;
+        border-radius: 0.1em;
+        padding: 0.2em 0.25em 0.15em;
+      }
+      .fa-pull-left {
+        float: left;
+      }
+      .fa-pull-right {
+        float: right;
+      }
+      .fa.fa-pull-left,
+      .fab.fa-pull-left,
+      .fal.fa-pull-left,
+      .far.fa-pull-left,
+      .fas.fa-pull-left {
+        margin-right: 0.3em;
+      }
+      .fa.fa-pull-right,
+      .fab.fa-pull-right,
+      .fal.fa-pull-right,
+      .far.fa-pull-right,
+      .fas.fa-pull-right {
+        margin-left: 0.3em;
+      }
+      .fa-spin {
+        -webkit-animation: fa-spin 2s infinite linear;
+        animation: fa-spin 2s infinite linear;
+      }
+      .fa-pulse {
+        -webkit-animation: fa-spin 1s infinite steps(8);
+        animation: fa-spin 1s infinite steps(8);
+      }
+      @-webkit-keyframes fa-spin {
+        0% {
+          -webkit-transform: rotate(0);
+          transform: rotate(0);
+        }
+        100% {
+          -webkit-transform: rotate(360deg);
+          transform: rotate(360deg);
+        }
+      }
+      @keyframes fa-spin {
+        0% {
+          -webkit-transform: rotate(0);
+          transform: rotate(0);
+        }
+        100% {
+          -webkit-transform: rotate(360deg);
+          transform: rotate(360deg);
+        }
+      }
+      .fa-rotate-90 {
+        -webkit-transform: rotate(90deg);
+        transform: rotate(90deg);
+      }
+      .fa-rotate-180 {
+        -webkit-transform: rotate(180deg);
+        transform: rotate(180deg);
+      }
+      .fa-rotate-270 {
+        -webkit-transform: rotate(270deg);
+        transform: rotate(270deg);
+      }
+      .fa-flip-horizontal {
+        -webkit-transform: scale(-1, 1);
+        transform: scale(-1, 1);
+      }
+      .fa-flip-vertical {
+        -webkit-transform: scale(1, -1);
+        transform: scale(1, -1);
+      }
+      .fa-flip-horizontal.fa-flip-vertical {
+        -webkit-transform: scale(-1, -1);
+        transform: scale(-1, -1);
+      }
+      :root .fa-flip-horizontal,
+      :root .fa-flip-vertical,
+      :root .fa-rotate-180,
+      :root .fa-rotate-270,
+      :root .fa-rotate-90 {
+        -webkit-filter: none;
+        filter: none;
+      }
+      .fa-stack {
+        display: inline-block;
+        height: 2em;
+        position: relative;
+        width: 2em;
+      }
+      .fa-stack-1x,
+      .fa-stack-2x {
+        bottom: 0;
+        left: 0;
+        margin: auto;
+        position: absolute;
+        right: 0;
+        top: 0;
+      }
+      .svg-inline--fa.fa-stack-1x {
+        height: 1em;
+        width: 1em;
+      }
+      .svg-inline--fa.fa-stack-2x {
+        height: 2em;
+        width: 2em;
+      }
+      .fa-inverse {
+        color: #fff;
+      }
+      .sr-only {
+        border: 0;
+        clip: rect(0, 0, 0, 0);
+        height: 1px;
+        margin: -1px;
+        overflow: hidden;
+        padding: 0;
+        position: absolute;
+        width: 1px;
+      }
+      .sr-only-focusable:active,
+      .sr-only-focusable:focus {
+        clip: auto;
+        height: auto;
+        margin: 0;
+        overflow: visible;
+        position: static;
+        width: auto;
+      }
+    </style>
+    <link rel="stylesheet" href="submissions_files/bootstrap.min.css" />
+    <script src="submissions_files/jquery.min.js"></script>
+    <script src="submissions_files/bootstrap.min.js"></script>
+    <script defer="defer" src="submissions_files/all.js"></script>
+    <link rel="stylesheet" href="submissions_files/bulma.css" />
+    <link rel="stylesheet" href="submissions_files/csss_header_custom.css" />
+    <link rel="stylesheet" href="submissions_files/gh-fork-ribbon.min.css" />
+    <link rel="stylesheet" href="submissions_files/csss_custom.css" />
+    <style>
+      .github-fork-ribbon:before {
+        background-color: rgb(90, 185, 110);
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar is-light is-fixed-top" aria-label="main navigation">
+      <div class="navbar-brand">
+        <a class="navbar-item" href="https://sfucsss.org/">
+          <img src="submissions_files/logo.png" width="30" height="30" alt="CSSS Logo" />
+        </a>
+      </div>
+    </nav>
+
+    <!-- (slightly less) Hacky way to lower the hero so it's not covered by the fixed navbar-->
+    <div style="min-height: 3.25rem"></div>
+
+    <!--Hacky way to give the hero a background image-->
+    <div class="hero is-small" id="title-gradient">
+      <div class="hero-body">
+        <div class="container">
+          <div class="columns is-vcentered" style="text-align: center">
+            <img
+              src="submissions_files/logo.png"
+              alt="CSSS Logo"
+              title="our logo!"
+              style="width: 142px; padding: 16px"
+            />
+            <b id="title-text">SFU Computing Science Student Society</b>
+            <img
+              src="submissions_files/csss_frog_pixel_art.png"
+              alt="pixel coding frog"
+              title="coding hard"
+              style="width: 142px; padding: 16px 0px"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <link rel="stylesheet" href="submissions_files/csss_custom_002.css" />
+    <section id="above-fold">
+      <header>
+        <h1 class="title is-size-2">CSSS Mountain Madness Hackathon 2021 Submissions</h1>
+      </header>
+
+      <div id="building" aria-hidden="true"></div>
+
+      <div id="mountain" aria-hidden="true">
+        <div class="grass"></div>
+        <div class="grass"></div>
+        <div class="grass"></div>
+      </div>
+    </section>
+    Please note, these projects may have been made private or changed since submission. Run at your
+    own risk.
+
+    <table>
+      <tbody>
+        <tr>
+          <th>Prize</th>
+          <th>Project Name</th>
+          <th>Project Description</th>
+          <th>Project Link</th>
+        </tr>
+        <tr>
+          <td class="csss_mountain_madness_submission_row">First Place</td>
+          <td class="csss_mountain_madness_submission_row">Cosmos</td>
+          <td class="csss_mountain_madness_submission_row">
+            Cosmos, an Android app guiding a rocket through levels
+          </td>
+          <td class="csss_mountain_madness_submission_row">
+            <a href="https://github.com/Jimson123/MountainMadness2021---Cosmos"
+              >https://github.com/Jimson123/MountainMadness2021---Cosmos</a
+            >
+          </td>
+        </tr>
+        <tr>
+          <td class="csss_mountain_madness_submission_row">Second Place</td>
+          <td class="csss_mountain_madness_submission_row">Interrupting Chicken</td>
+          <td class="csss_mountain_madness_submission_row">
+            Interrupting Chicken, an annoying typing game that interrupts your typing
+          </td>
+          <td class="csss_mountain_madness_submission_row">
+            <a href="https://github.com/jacksonn-gtc/MountainMadness2021"
+              >https://github.com/jacksonn-gtc/MountainMadness2021</a
+            >
+          </td>
+        </tr>
+        <tr>
+          <td class="csss_mountain_madness_submission_row">Third Place</td>
+          <td class="csss_mountain_madness_submission_row">The Meme Machine</td>
+          <td class="csss_mountain_madness_submission_row">
+            The Meme Machine, website that shows and allows for creation and sharing of memes
+          </td>
+          <td class="csss_mountain_madness_submission_row">
+            <a href="https://github.com/asim-shrestha/mountain-madness-2021"
+              >https://github.com/asim-shrestha/mountain-madness-2021</a
+            >
+          </td>
+        </tr>
+        <tr>
+          <td class="csss_mountain_madness_submission_row">The Rubey</td>
+          <td class="csss_mountain_madness_submission_row">Nightwatch</td>
+          <td class="csss_mountain_madness_submission_row">
+            Nightwatch, a discord bot "built to be your companion under starry night"
+          </td>
+          <td class="csss_mountain_madness_submission_row">
+            <a href="https://github.com/AshCatchEmAll/NightWatch"
+              >https://github.com/AshCatchEmAll/NightWatch</a
+            >
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <br />
+    <table>
+      <tbody>
+        <tr>
+          <th>Project Name</th>
+          <th>Project Description</th>
+          <th>Project Link</th>
+        </tr>
+        <tr>
+          <td class="csss_mountain_madness_submission_row">Rent a girlfriend</td>
+          <td class="csss_mountain_madness_submission_row">
+            Alone on Valentine? Rent an automated girlfriend in the comfort of your own home.
+          </td>
+          <td class="csss_mountain_madness_submission_row">
+            <a href="https://github.com/sebastianbugal/MountainMadnessHackathon2021/tree/main"
+              >https://github.com/sebastianbugal/MountainMadnessHackathon2021/tree/main</a
+            >
+          </td>
+        </tr>
+        <tr>
+          <td class="csss_mountain_madness_submission_row">20,000 Leagues Under the Sea</td>
+          <td class="csss_mountain_madness_submission_row">
+            This game is an endless sidescroller, where the player plays as a submarine traversing
+            the depths of the sea. On the player’s journey, they will be met with various obstacles
+            such as geysers, naval mines, and the denizens of the sea who will stop at nothing to
+            stop the player in their tracks. How long will the player be able to survive the harsh
+            conditions of the deep?
+          </td>
+          <td class="csss_mountain_madness_submission_row">
+            <a href="https://github.com/myang0/mm-game">https://github.com/myang0/mm-game</a>
+          </td>
+        </tr>
+        <tr>
+          <td class="csss_mountain_madness_submission_row">Interrupting Chicken</td>
+          <td class="csss_mountain_madness_submission_row">
+            A typing test that interrupts you with a chicken that pops up occasionally.
+          </td>
+          <td class="csss_mountain_madness_submission_row">
+            <a href="https://github.com/jacksonn-gtc/MountainMadness2021"></a
+            >https://github.com/jacksonn-gtc/MountainMadness2021
+          </td>
+        </tr>
+        <tr>
+          <td class="csss_mountain_madness_submission_row">Cyberpunk Stle Face ID System</td>
+          <td class="csss_mountain_madness_submission_row">
+            This a stand-alone system that is able to identify people in frames from static images,
+            captured video, or live camera feeds. This technology is mentioned in many books like
+            1984 where big government uses big data and AI to track its citizens. This is a
+            prototype version of this technology.
+          </td>
+          <td class="csss_mountain_madness_submission_row">
+            <a href="https://github.com/kvalemi/Mountain-Madness-Hackathon"></a
+            >https://github.com/kvalemi/Mountain-Madness-Hackathon
+          </td>
+        </tr>
+        <tr>
+          <td class="csss_mountain_madness_submission_row">CarbonCounter</td>
+          <td class="csss_mountain_madness_submission_row">
+            A calculator/tracker for carbon emissions based on what the user does on a daily/weekly
+            basis.
+          </td>
+          <td class="csss_mountain_madness_submission_row">
+            <a href="https://csil-git1.cs.surrey.sfu.ca/jma165/carboncounter"></a
+            >https://csil-git1.cs.surrey.sfu.ca/jma165/carboncounter
+          </td>
+        </tr>
+        <tr>
+          <td class="csss_mountain_madness_submission_row">Saur0n3ye</td>
+          <td class="csss_mountain_madness_submission_row">
+            An android app that finds books on a bookshelf and extracts information about them.
+          </td>
+          <td class="csss_mountain_madness_submission_row">
+            <a href="https://github.com/jryzkns/mtn_madness_2021"></a
+            >https://github.com/jryzkns/mtn_madness_2021
+          </td>
+        </tr>
+        <tr>
+          <td class="csss_mountain_madness_submission_row">
+            Oh the Places You'll Go (After COVID)
+          </td>
+          <td class="csss_mountain_madness_submission_row">
+            Generates a destination for the user to travel to and provides information on the place
+            place.
+          </td>
+          <td class="csss_mountain_madness_submission_row">
+            <a href="https://csil-git1.cs.surrey.sfu.ca/kmc36/oh-the-places-youll-go"></a
+            >https://csil-git1.cs.surrey.sfu.ca/kmc36/oh-the-places-youll-go
+          </td>
+        </tr>
+        <tr>
+          <td class="csss_mountain_madness_submission_row">The Giving Tree</td>
+          <td class="csss_mountain_madness_submission_row">
+            Clicker game where you click on a tree and it spawns apples.
+          </td>
+          <td class="csss_mountain_madness_submission_row">
+            <a href="https://github.com/ColinKYuen/Mountain-Madness-2021"
+              >https://github.com/ColinKYuen/Mountain-Madness-2021</a
+            >
+          </td>
+        </tr>
+        <tr>
+          <td class="csss_mountain_madness_submission_row">
+            One Fish, Two Fish, Red Fish, Flippy fish
+          </td>
+          <td class="csss_mountain_madness_submission_row">
+            The game is flippy fish which the player controls a fish that has to swim while avoiding
+            fish hooks and seaweed
+          </td>
+          <td class="csss_mountain_madness_submission_row">
+            <a href="https://github.com/CarStereo/Mountain-Madness-2021"
+              >https://github.com/CarStereo/Mountain-Madness-2021</a
+            >
+          </td>
+        </tr>
+        <tr>
+          <td class="csss_mountain_madness_submission_row">The Meme Machine</td>
+          <td class="csss_mountain_madness_submission_row">
+            A website for sharing, generating, and learning about memes.
+          </td>
+          <td class="csss_mountain_madness_submission_row">
+            <a
+              href="https://sfucsss.org/events/mm/2021/www.github.com/asim-shrestha/mountain-madness-2021"
+              >www.github.com/asim-shrestha/mountain-madness-2021</a
+            >
+          </td>
+        </tr>
+        <tr>
+          <td class="csss_mountain_madness_submission_row">The Art of Sorting.</td>
+          <td class="csss_mountain_madness_submission_row">
+            Interactive sorting algorithm simulator.
+          </td>
+          <td class="csss_mountain_madness_submission_row">
+            <a href="https://bitbucket.org/holychicken99/proj_main/src/master/"
+              >https://bitbucket.org/holychicken99/proj_main/src/master/</a
+            >
+          </td>
+        </tr>
+        <tr>
+          <td class="csss_mountain_madness_submission_row">Cosmos</td>
+          <td class="csss_mountain_madness_submission_row">
+            Cosmos (first published 1980) by Carl Sagan explores the history of the universe,
+            science, and our understanding of the world. Your task is to guide a rocket through
+            several levels without blowing up.
+          </td>
+          <td class="csss_mountain_madness_submission_row">
+            <a href="https://github.com/Jimson123/MountainMadness2021---Cosmos"
+              >https://github.com/Jimson123/MountainMadness2021---Cosmos</a
+            >
+          </td>
+        </tr>
+        <tr>
+          <td class="csss_mountain_madness_submission_row">Snowy Valentine</td>
+          <td class="csss_mountain_madness_submission_row">
+            Web storybook based on Snowy Valentine by David Petersen
+          </td>
+          <td class="csss_mountain_madness_submission_row">
+            <a href="https://github.com/jmardjuki/mountain-madness2021"
+              >https://github.com/jmardjuki/mountain-madness2021</a
+            >
+          </td>
+        </tr>
+        <tr>
+          <td class="csss_mountain_madness_submission_row">The book of tomorrow</td>
+          <td class="csss_mountain_madness_submission_row">
+            A discord bot that lets the user store books they have read/reading and provides
+            recommendations based on the books stored or based on what genre/subject that the user
+            asked for.
+          </td>
+          <td class="csss_mountain_madness_submission_row">
+            <a href="https://github.com/TheNextLevelPlay/MountainHacks-2021-LGC.git"
+              >https://github.com/TheNextLevelPlay/MountainHacks-2021-LGC.git</a
+            >
+          </td>
+        </tr>
+        <tr>
+          <td class="csss_mountain_madness_submission_row">Invisible-Man</td>
+          <td class="csss_mountain_madness_submission_row">
+            By uploading an image of yourself against a background, and then posting an image of the
+            background by its self, We will remove you from the original image. Will be doing this
+            by using edge detection to map the pixels where you are and then take the equivalent
+            area on the background image and camouflage you with it.
+          </td>
+          <td class="csss_mountain_madness_submission_row">
+            <a href="https://github.com/maheeppartap/Invisible-Man"
+              >https://github.com/maheeppartap/Invisible-Man</a
+            >
+          </td>
+        </tr>
+        <tr>
+          <td class="csss_mountain_madness_submission_row">Salt Fat Acid Heat - Anti-Fitbit</td>
+          <td class="csss_mountain_madness_submission_row">
+            An anti-fitness tracker app for android. Sends notifications when you're moving too much
+            and tracks your calories to make sure you're eating your goal
+          </td>
+          <td class="csss_mountain_madness_submission_row">
+            <a href="https://github.com/bryanniwa/Salt-Fat-Acid-Heat-Anti-Fitbit.git"
+              >https://github.com/bryanniwa/Salt-Fat-Acid-Heat-Anti-Fitbit.git</a
+            >
+          </td>
+        </tr>
+        <tr>
+          <td class="csss_mountain_madness_submission_row">No Longer Human</td>
+          <td class="csss_mountain_madness_submission_row">
+            Extra-complicated method of solving a CAPTCHA
+          </td>
+          <td class="csss_mountain_madness_submission_row">
+            <a href="https://github.com/EarthenSky/mountain-madness-2021"
+              >https://github.com/EarthenSky/mountain-madness-2021</a
+            >
+          </td>
+        </tr>
+        <tr>
+          <td class="csss_mountain_madness_submission_row">Clippy but pepe</td>
+          <td class="csss_mountain_madness_submission_row">It's clippy, but pepe</td>
+          <td class="csss_mountain_madness_submission_row">
+            <a href="http://github.com/ssttevee/clippy-but-pepe"
+              >http://github.com/ssttevee/clippy-but-pepe</a
+            >
+          </td>
+        </tr>
+        <tr>
+          <td class="csss_mountain_madness_submission_row">MagicWandSimulator</td>
+          <td class="csss_mountain_madness_submission_row">Brief Project Description</td>
+          <td class="csss_mountain_madness_submission_row">
+            <a href="https://github.com/sun950605/MagicWandSimulator"
+              >https://github.com/sun950605/MagicWandSimulator</a
+            >
+          </td>
+        </tr>
+        <tr>
+          <td class="csss_mountain_madness_submission_row">The Speed of Light</td>
+          <td class="csss_mountain_madness_submission_row">
+            A small reaction based game where you click a button when prompted. Your reaction time
+            is given as the distance that light travels before you click the button.
+          </td>
+          <td class="csss_mountain_madness_submission_row">
+            <a href="https://github.com/IAmTheRedSpy/the-speed-of-light"
+              >https://github.com/IAmTheRedSpy/the-speed-of-light</a
+            >
+          </td>
+        </tr>
+        <tr>
+          <td class="csss_mountain_madness_submission_row">Twitter-Bot</td>
+          <td class="csss_mountain_madness_submission_row">
+            Twitter bot that censors tweets based on "newspeech" vocabulary.
+          </td>
+          <td class="csss_mountain_madness_submission_row">
+            <a href="https://github.com/chhokara/Twitter-Bot"
+              >https://github.com/chhokara/Twitter-Bot</a
+            >
+          </td>
+        </tr>
+        <tr>
+          <td class="csss_mountain_madness_submission_row">The Weatherman</td>
+          <td class="csss_mountain_madness_submission_row">
+            A web application that allows the user to see the current weather in any city. Developed
+            using HTML, CSS, and JavaScript.
+          </td>
+          <td class="csss_mountain_madness_submission_row">
+            <a href="https://github.com/hakimbashe/The-Weatherman/tree/main"
+              >https://github.com/hakimbashe/The-Weatherman/tree/main</a
+            >
+          </td>
+        </tr>
+        <tr>
+          <td class="csss_mountain_madness_submission_row">Banking_UI-Java</td>
+          <td class="csss_mountain_madness_submission_row">
+            A bank application book name: An Introduction to Banking by Steen Blaafalk
+          </td>
+          <td class="csss_mountain_madness_submission_row">
+            <a href="https://github.com/tejpooni/Banking_UI-Java"
+              >https://github.com/tejpooni/Banking_UI-Java</a
+            >
+          </td>
+        </tr>
+        <tr>
+          <td class="csss_mountain_madness_submission_row">
+            Into the Wild (By John Krakauer) RESUBMISSION
+          </td>
+          <td class="csss_mountain_madness_submission_row">
+            Into the Wild is a book about a man who hitchhiked into the wild and was forced to
+            survive off of the available resources. Our team made a rudimentary child friendly
+            website that easily allows the user to access more information on certain wildlife
+            topics.
+          </td>
+          <td class="csss_mountain_madness_submission_row">
+            <a href="https://github.com/leevictorr/MountainMadness-2021"
+              >https://github.com/leevictorr/MountainMadness-2021</a
+            >
+          </td>
+        </tr>
+        <tr>
+          <td class="csss_mountain_madness_submission_row">Business Adventures</td>
+          <td class="csss_mountain_madness_submission_row">
+            This is an android app that allows users to quickly view stock charts and values,
+            powered by the Yahoo Finance API. To run this app, please clone the repo into android
+            studio and run the app on an emulator. I found using a Pixel 2 API 27 emulator worked
+            best for me. Thanks!
+          </td>
+          <td class="csss_mountain_madness_submission_row">
+            <a href="https://github.com/Evan-Coulter/BusinessAdventures"
+              >https://github.com/Evan-Coulter/BusinessAdventures</a
+            >
+          </td>
+        </tr>
+        <tr>
+          <td class="csss_mountain_madness_submission_row">NightWatch</td>
+          <td class="csss_mountain_madness_submission_row">
+            NightWatch is a discord bot that will your companion under a starry sky. It will tell u
+            about your horoscope, give you details about solar system bodies (like mass, volume,
+            gravity, dimension, etc), tell you what time will it be dark enough to see the stars,
+            and much more.
+          </td>
+          <td class="csss_mountain_madness_submission_row">
+            <a href="https://github.com/AshCatchEmAll/NightWatch"
+              >https://github.com/AshCatchEmAll/NightWatch</a
+            >
+          </td>
+        </tr>
+        <tr>
+          <td class="csss_mountain_madness_submission_row">Knockout!</td>
+          <td class="csss_mountain_madness_submission_row">
+            Punch the sand bag, then buy items to punch it harder!
+          </td>
+          <td class="csss_mountain_madness_submission_row">
+            <a href="https://github.com/PigeonZow/knockout"
+              >https://github.com/PigeonZow/knockout</a
+            >
+          </td>
+        </tr>
+        <tr>
+          <td class="csss_mountain_madness_submission_row">Stock at There</td>
+          <td class="csss_mountain_madness_submission_row">
+            Our project topic is stock. We have created three different shinny app with. The app has
+            different tab which could allow the user select different desire information for
+            different stock and properties. The app functions include data visualization, and
+            forecasting. by transforming the data into easy-reading visluzation, our project enabled
+            people gain better insight of stock.
+          </td>
+          <td class="csss_mountain_madness_submission_row">
+            <a href="https://github.com/JJimLee/MountainMadness.git"
+              >https://github.com/JJimLee/MountainMadness.git</a
+            >
+          </td>
+        </tr>
+        <tr>
+          <td class="csss_mountain_madness_submission_row">Hands-On Web Scraping with Python</td>
+          <td class="csss_mountain_madness_submission_row">
+            A horrible website built using flask that allow user to look up course information and
+            prof rating (Only work with Summer 2021 CMPT right now)
+          </td>
+          <td class="csss_mountain_madness_submission_row">
+            <a href="https://github.com/muvda/finder_website"
+              >https://github.com/muvda/finder_website</a
+            >
+          </td>
+        </tr>
+        <tr>
+          <td class="csss_mountain_madness_submission_row">Tic Tac Tome</td>
+          <td class="csss_mountain_madness_submission_row">
+            Our project is an expanded version of tic tac toe. The grid size is increased by 2 every
+            time a game ends in a tie. Some blocks in the grid are blocked with every expansion to
+            introduce challenge. The project is coded in css, html and javascript.It is a web based
+            implementation.
+          </td>
+          <td class="csss_mountain_madness_submission_row">
+            <a href="https://csil-git1.cs.surrey.sfu.ca/ksparmar/hackathon-2021"
+              >https://csil-git1.cs.surrey.sfu.ca/ksparmar/hackathon-2021</a
+            >
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <br />
+    <br />
+    <br />
+    <footer class="csss_fix_footer_placement">
+      <div class="container-fluid csss_footer_text_margins">
+        <div id="footer-links">
+          <p>
+            <a href="mailto:csss-exec-current@sfu.ca" target="blank">Contact</a> |
+            <a href="https://www.facebook.com/sfucsss/" target="blank">Facebook</a> |
+            <a href="https://twitter.com/sfucsss" target="blank">Twitter</a> |
+            <a href="https://www.instagram.com/sfu_csss/" target="blank">Instagram</a> |
+            <a href="http://discord.sfucsss.org/" target="blank">CSSS Discord Guild</a>
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      $(document).ready(function () {
+        // Check for click events on the navbar burger icon
+        $('.navbar-burger').click(function () {
+          // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
+          $('.navbar-burger').toggleClass('is-active');
+          $('.navbar-menu').toggleClass('is-active');
+        });
+      });
+
+      //This javascript changes the hero when on mobile
+
+      if ($(window).width() < 600) {
+        $('#logo_id').hide();
+        $('#hero_title_id').removeClass('is-size-2');
+        $('#hero_title_id').addClass('is-size-3');
+      } else {
+        $('#logo_id').show();
+        $('#hero_title_id').removeClass('is-size-3');
+        $('#hero_title_id').addClass('is-size-2');
+      }
+
+      $(window).resize(function () {
+        if ($(window).width() < 600) {
+          $('#logo_id').hide();
+          $('#hero_title_id').removeClass('is-size-2');
+          $('#hero_title_id').addClass('is-size-3');
+        } else {
+          $('#logo_id').show();
+          $('#hero_title_id').removeClass('is-size-3');
+          $('#hero_title_id').addClass('is-size-2');
+        }
+      });
+    </script>
+
+    <!--Fork me on github image-->
+    <a
+      class="github-fork-ribbon is-hidden-mobile is-fixed-top"
+      href="https://github.com/CSSS/csss-site"
+      data-ribbon="Fork me on GitHub"
+      title="Fork me on GitHub"
+      >Fork me on GitHub</a
+    >
+  </body>
+</html>
