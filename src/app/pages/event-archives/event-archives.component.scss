@@ -26,6 +26,11 @@
     padding: 1rem;
   }
 }
+
+.event__icon {
+  // color: hsl(0 100% 43.1%);
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .event__link {
     transition: background-color 0.5s ease;

@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { ArticleComponent } from '@csss-code/article/article.component';
+import { FallHacksIconComponent } from 'assets/icons/fall-hacks-icon/fall-hacks-icon.component';
 import {
   FALL_HACKS_YEARS,
   FROSH_YEARS,
@@ -9,16 +10,16 @@ import {
 
 @Component({
   selector: 'cs-event-archives',
-  imports: [ArticleComponent],
+  imports: [ArticleComponent, FallHacksIconComponent],
   templateUrl: './event-archives.component.html',
   styleUrl: './event-archives.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class EventArchivesComponent {
-  froshYears = FROSH_YEARS;
-  fallHacksYears = FALL_HACKS_YEARS;
-  techFairYears = TECH_FAIR_YEARS;
-  mountainMadnessYears = MOUNTAIN_MADNESS_YEARS;
+  protected froshYears = FROSH_YEARS;
+  protected fallHacksYears = FALL_HACKS_YEARS;
+  protected techFairYears = TECH_FAIR_YEARS;
+  protected mountainMadnessYears = MOUNTAIN_MADNESS_YEARS;
 
   makeHref(event: string, year: number): string {
     return `https://${event}.sfucsss.org/${year}`;
