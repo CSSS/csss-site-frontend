@@ -126,8 +126,7 @@ header {
 }
 
 header > h2,
-header > h3,
-header > h4 {
+header > h3 {
   text-shadow: 1px 1px 1px black;
 }
 
@@ -138,19 +137,6 @@ header > h1 {
   font-family: Bungee;
   font-size: 2rem;
   text-shadow: 0 5px 0 black;
-}
-
-header > h3 {
-  font-size: 1.5rem;
-}
-
-header > h4 {
-  font-weight: 400;
-  margin: 0 0 2rem 0;
-}
-
-header > h4 b {
-  font-weight: 800;
 }
 
 #building {
@@ -317,6 +303,10 @@ header > h4 b {
 }
 
 #info-container {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: baseline;
   background: var(--hill-color);
   background: linear-gradient(to bottom, var(--hill-color) 10%, #0a1f0a 40%, #0a0a10 100%);
   background: linear-gradient(to bottom, var(--hill-color) 10%, #0a1f0a 40%);
@@ -347,23 +337,13 @@ header > h4 b {
 
 /* if have more sponsors, add sponsors here too */
 #schedule,
+#faq,
 #prize,
 #sponsors {
   display: flex;
   flex-flow: row wrap;
   justify-content: center;
   max-width: 100%;
-}
-
-/* new layout: single column*/
-.center {
-  box-sizing: content-box;
-  display: block;
-  margin: 0 auto;
-}
-
-.stack > * + * {
-  margin-block-start: 2rem;
 }
 
 /*
@@ -381,6 +361,7 @@ header > h4 b {
 */
 
 #schedule div,
+#faq div,
 #prize div,
 #sponsors div {
   max-width: calc(100% - 2em);
@@ -509,15 +490,6 @@ h2 > a {
   padding: 7px 5px 5px 5px;
 }
 
-#join-discord {
-  font-weight: lighter;
-}
-
-#join-discord a {
-  font-weight: bold;
-  text-decoration: underline white;
-}
-
 a > img {
   max-width: calc(100% - 4em);
   height: auto;
@@ -538,19 +510,13 @@ a:hover > img {
   opacity: 1;
 }
 
-@media (max-width: 770px) {
-  article > div {
-    padding: 0 2rem;
-  }
-}
-
 @media (min-width: 770px) {
   header > h1 {
     font-size: calc(100vw / 24);
     font-size: 4rem;
     text-shadow: 0 10px 0 black;
   }
-  #info-container > article {
+  #info-container > article > div {
     max-width: 500px;
   }
   #mountain {
@@ -579,3 +545,4 @@ footer a {
 footer p {
   color: white;
 }
+
