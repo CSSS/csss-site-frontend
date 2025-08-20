@@ -43,8 +43,8 @@ a.csss-link {
 article.content {
   line-height: 1.5;
 
-  hgroup,
-  header {
+  hgroup:nth-child(1),
+  header:nth-child(1) {
     margin-top: 5svh;
   }
 
