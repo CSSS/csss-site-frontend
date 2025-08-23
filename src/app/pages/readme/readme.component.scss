@@ -1,5 +1,4 @@
 @use 'globals' as g;
-@use 'theme' as t;
 
 .wrapper {
   height: 96svh;
@@ -46,7 +45,7 @@ header {
   }
 }
 
-.main-content {
+.content {
   position: relative;
   display: flex;
   flex-direction: column;
@@ -111,12 +110,4 @@ header {
       }
     }
   }
-}
-
-.type-in {
-  display: block;
-}
-
-.faq a {
-  color: t.$accent;
 }
