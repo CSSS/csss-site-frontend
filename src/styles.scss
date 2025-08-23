@@ -41,6 +41,7 @@ a.csss-link {
 }
 
 article.content {
+  line-height: 1.5;
   header {
     margin-top: 5svh;
   }
@@ -59,6 +60,12 @@ article.content {
 
   h2 {
     font-size: globals.$h2-font-size;
+    margin: 1.5rem 0 0.5rem;
+  }
+
+  h3 {
+    margin: 1.5rem 0 0.5rem;
+    font-size: globals.$h3-font-size;
   }
 
   p {
