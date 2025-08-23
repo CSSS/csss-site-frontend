@@ -11,15 +11,13 @@
   --photo-w: 460px;
 
   /* Colours */
-  --medical: hsl(124 47.4% 50%);
   --insurance: hsl(356 49.5% 49.3%);
   --telecom: hsl(41 49.5% 49.3%);
+  --energy: hsl(65 100% 35.5%);
+  --medical: hsl(124 47.4% 50%);
   --software: hsl(194 59.3% 50%);
+  --networking: hsl(235 100% 35.5%);
   --data-analytics: hsl(284 59.3% 50%);
-}
-
-[class*='--medical'] {
-  --clr-main: var(--medical);
 }
 
 [class*='--insurance'] {
@@ -30,8 +28,20 @@
   --clr-main: var(--telecom);
 }
 
+[class*='--energy'] {
+  --clr-main: var(--energy);
+}
+
+[class*='--medical'] {
+  --clr-main: var(--medical);
+}
+
 [class*='--software'] {
   --clr-main: var(--software);
+}
+
+[class*='--networking'] {
+  --clr-main: var(--networking);
 }
 
 [class*='--data-analytics'] {
@@ -277,18 +287,20 @@ ul.section__main {
 .company__gallery {
   display: flex;
   gap: 4vw;
-  padding: 1rem;
+  padding: 1rem 5rem;
   flex-wrap: wrap;
   justify-content: center;
 }
 
 .company-card {
-  display: grid;
   flex: 0 0 auto;
+
+  display: grid;
   place-items: center;
-  grid-template-rows: 40% 55% 5%;
+  grid-template-rows: 35% 60% 5%;
   padding: 1.5rem;
   width: 20.75rem;
+  height: calc(700px - 5rem);
 }
 
 .company-card__img {
@@ -302,12 +314,18 @@ ul.section__main {
   }
 }
 
+.company-card__descriptor {
+  overflow: auto;
+  height: 100%;
+}
+
 .company-card__footer {
   display: flex;
   justify-content: space-between;
   width: 100%;
   position: relative;
   bottom: 0;
+  margin-top: 1rem;
 
   & > * {
     color: white;
@@ -366,7 +384,7 @@ footer {
 /* Media queries */
 @media (max-width: 400px) {
   header > nav {
-    /* These will ensure the nav links will be pushed to the right so CSSS icon will become 
+    /* These will ensure the nav links will be pushed to the right so CSSS icon will become
      * part of the nav's flow again */
     & > a {
       position: relative;
