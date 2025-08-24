@@ -1,0 +1,56 @@
+<code-article>
+  <hgroup>
+    <h1>Event Archives</h1>
+    <p>Here's a list of all the past pages the CSSS used to promote their events.</p>
+    <p>
+      <strong>
+        Note: The links and the functionality of some of these pages were slightly altered, but
+        please be cautious clicking links within these sites.
+      </strong>
+    </p>
+  </hgroup>
+  <section class="events">
+    <section class="event">
+      <section>
+        <h2><span>Frosh</span></h2>
+        <ul class="event__list">
+          @for (year of froshYears; track year) {
+            <li class="event__link">
+              <a [href]="makeHref('frosh', year)" target="_blank">{{ year }}</a>
+            </li>
+          }
+        </ul>
+      </section>
+      <section>
+        <h2><span>Tech Fair</span></h2>
+        <ul class="event__list">
+          @for (year of techFairYears; track year) {
+            <li class="event__link">
+              <a [href]="makeHref('tech-fair', year)" target="_blank">{{ year }}</a>
+            </li>
+          }
+        </ul>
+      </section>
+      <section>
+        <h2><span>Fall Hacks</span></h2>
+        <ul class="event__list">
+          @for (year of fallHacksYears; track year) {
+            <li class="event__link">
+              <a [href]="makeHref('fall-hacks', year)" target="_blank">{{ year }}</a>
+            </li>
+          }
+        </ul>
+      </section>
+      <section>
+        <h2><span>Mountain Madness</span></h2>
+        <ul class="event__list">
+          @for (year of mountainMadnessYears; track year) {
+            <li class="event__link">
+              <a [href]="makeHref('madness', year)" target="_blank">{{ year }}</a>
+            </li>
+          }
+        </ul>
+      </section>
+    </section>
+  </section>
+</code-article>

@@ -1,6 +1,7 @@
 import { CodeListItem } from '@csss-code/list/list-item/list-item.component';
 import { IconDefinition } from '@fortawesome/angular-fontawesome';
 import {
+  faBook,
   faChevronRight,
   faFile,
   faRoadBarrier,
@@ -89,6 +90,12 @@ export const NAVBAR_ENTRIES: NavItem[] = [
         label: 'Mountain Madness',
         icon: faUpRightFromSquare,
         href: 'https://new.sfucsss.org/mountain_madness/2024/index.html'
+      },
+      {
+        key: 'events.archives',
+        label: 'Archives',
+        icon: faBook,
+        route: '/event-archives'
       }
     ]
   },

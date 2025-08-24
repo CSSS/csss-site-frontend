@@ -47,6 +47,12 @@ export const routes: Routes = [
     loadComponent: () => import('./pages/events/events.component').then(m => m.EventsComponent),
     title: makeTitle('Events')
   },
+  {
+    path: 'event-archives',
+    loadComponent: () =>
+      import('pages/event-archives/event-archives.component').then(m => m.EventArchivesComponent),
+    title: makeTitle('Event Archives')
+  },
   // Elections
   {
     path: 'elections',
