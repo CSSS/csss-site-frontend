@@ -1,0 +1,443 @@
+/* Global stuff */
+:root {
+  /* Structure Sizes */
+  --header-h: 3.5rem;
+  --home-logo-size: clamp(2rem, 3vw, calc(var(--header-h) - 1rem));
+  --hero-h: 120vh;
+  --hero-tb-padding: 25vh;
+
+  /* Colour Palette */
+  --c-primary: #77a290;
+  --c-secondary: #dde1c9;
+  --c-tertiary: #f2f3ee;
+  --c-accent: #ffd754;
+  --c-top-main: #5c889c;
+  --c-bot-main: #11191c;
+  --c-strong: #14331f;
+
+  /* Fonts */
+  --f-heading: 'League Spartan', sans-serif;
+  --f-subheading: 'Monstserrat', sans-serif;
+  --f-main: 'DM Sans', sans-serif;
+}
+
+a {
+  all: unset;
+
+  cursor: pointer;
+}
+
+h1 {
+  font-family: var(--f-heading);
+  font-weight: 800;
+}
+
+h2 {
+  font-size: clamp(1.5rem, 3vw, 3rem);
+  font-family: var(--f-subheading);
+  font-weight: 500;
+}
+
+p {
+  font-size: clamp(1rem, 2vw, 1.5rem);
+}
+
+h3 {
+  font-size: clamp(1.2rem, 2.1vw, 2.5rem);
+}
+
+.bg-box {
+  background-color: var(--c-primary);
+  box-shadow: var(--c-accent) 5px 5px 0px 0px;
+  padding: 0.5rem 0.25rem;
+  border: solid 2px var(--c-strong);
+}
+
+.button {
+  /* Structure */
+  width: clamp(8rem, 22vw, 10rem);
+  aspect-ratio: 6 / 1;
+  border-radius: 10px;
+
+  /* Text */
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  color: white;
+  font-family: var(--f-subheading);
+  font-size: clamp(1rem, 8vw, 1.5rem);
+  font-weight: 700;
+
+  cursor: pointer;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.icon {
+  width: 1.5em;
+  height: 1.5em;
+}
+
+.st0 {
+  fill: white;
+}
+
+/* Specific styles */
+body {
+  font-family: var(--f-main);
+  font-weight: 300;
+}
+
+header {
+  position: sticky;
+  top: 0;
+  background-color: var(--c-top-main);
+  height: var(--header-h);
+  z-index: 5;
+
+  & > nav {
+    display: flex;
+    align-items: center;
+
+    & > a {
+      padding: 0.5rem;
+    }
+
+    & > ul {
+      display: flex;
+      width: 100%;
+      justify-content: space-around;
+      padding: 0;
+
+      & > li {
+        display: block;
+        flex: 1 1 0;
+        text-align: center;
+      }
+    }
+  }
+}
+
+.hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  height: 120vh;
+  padding: var(--hero-tb-padding) 1rem;
+
+  background-image: url('images/hero-mountain.png');
+  background-size: cover;
+  background-position: center;
+
+  & > hgroup {
+    text-align: center;
+
+    & > .title-container {
+      & > h1 {
+        width: 100%;
+        font-size: clamp(2.5rem, 10vw, 8rem);
+        color: var(--c-accent);
+        text-shadow: var(--c-strong) 2px 2px 0px;
+      }
+    }
+
+    & > p {
+      font-family: var(--f-subheading);
+      font-size: clamp(1rem, 3vw, 2rem);
+      font-weight: 200;
+    }
+  }
+
+  & > #countdown {
+    display: flex;
+    justify-content: center;
+    column-gap: clamp(0.5rem, 3vw, 2rem);
+    text-align: center;
+    width: 90vw;
+    max-width: 25rem;
+
+    & > .cd-col {
+      flex: 0 0 25%;
+
+      & > .value {
+        font-size: clamp(2.5rem, 10vw, 5rem);
+        color: var(--c-accent);
+        text-shadow: var(--c-strong) 2px 2px;
+      }
+    }
+  }
+
+  & > nav {
+    & > ul {
+      padding: 0;
+
+      & > li {
+        display: block;
+      }
+
+      li + li {
+        margin-top: 1rem;
+      }
+    }
+  }
+}
+
+.top-screen {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  z-index: 10;
+
+  & > #animated-duck-container {
+    position: absolute;
+    bottom: -1vh;
+    left: -120vw;
+    /* Keeping this in case the animation break */
+
+    & > svg {
+      height: 12vh;
+    }
+  }
+
+  & > .reeds {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    pointer-events: none;
+
+    & > .left,
+    .right {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      height: 20vh;
+
+      & > img {
+        position: fixed;
+        bottom: calc(72px - 27vw);
+      }
+    }
+  }
+}
+
+main {
+  background: linear-gradient(to bottom, var(--c-top-main) 0, var(--c-bot-main) 100%);
+  padding-bottom: 5rem;
+
+  & > article {
+    display: grid;
+    place-items: center;
+    row-gap: 10rem;
+
+    & > .jump-section {
+      padding-top: calc(var(--header-h) + 1rem);
+    }
+
+    & > section {
+      display: grid;
+      place-items: center;
+      width: 100%;
+
+      & > .section-container {
+        min-width: 15rem;
+
+        & > h2 {
+          display: block;
+          padding: 0.5rem;
+          font-weight: 700;
+          color: var(--c-accent);
+        }
+
+        & > .section-content {
+          display: flex;
+          flex-direction: column;
+          gap: 1rem;
+          padding: 0.5rem;
+
+          & > h3 {
+            color: var(--c-secondary);
+          }
+
+          & > p {
+            color: white;
+
+            & > a {
+              color: var(--c-accent);
+            }
+          }
+
+          & strong {
+            font-weight: 900;
+          }
+        }
+
+        & > .section-footer {
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: space-evenly;
+          gap: 0.5rem;
+          padding: 1rem 0;
+
+          & > * {
+            width: 50%;
+            max-width: 15rem;
+            flex: 1 1 auto;
+          }
+        }
+      }
+    }
+  }
+}
+
+#faq {
+  & > .section-container {
+    & > .section-content {
+      & > p {
+        margin-bottom: 3rem;
+      }
+    }
+  }
+}
+
+.gallery {
+  display: none;
+}
+
+#calendar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+
+  & > .bg-box {
+    width: 90%;
+    padding: 1rem;
+
+    & span {
+      float: right;
+    }
+
+    & > h3 {
+      color: var(--c-accent);
+    }
+
+    & > h4 {
+      color: var(--c-strong);
+    }
+
+    & > p {
+      color: var(--c-tertiary);
+      font-size: 1rem;
+    }
+  }
+}
+
+footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: var(--c-accent);
+  background-color: var(--c-primary);
+
+  .icons {
+    display: flex;
+    gap: 0.5rem;
+
+    & .icon {
+      width: 1.5em;
+      height: 1.5em;
+    }
+  }
+}
+
+.duck-fact {
+  display: none;
+  background-color: var(--c-strong);
+  padding: 1rem;
+
+  & > h2 {
+    font-size: clamp(1rem, 2.5vw, 1.8rem);
+    font-family: var(--f-heading);
+    color: var(--c-accent);
+  }
+
+  & > p {
+    color: white;
+    font-size: clamp(0.8rem, 2vw, 1.2rem);
+  }
+}
+
+/* Media Queries */
+
+/* Calendar can display things in a row */
+@media (min-width: 570px) {
+  #calendar {
+    flex-direction: row;
+    align-items: flex-start;
+    flex-wrap: wrap;
+
+    & > .bg-box {
+      width: 100%;
+      flex: 1 1 30%;
+    }
+  }
+
+  .section-container {
+    max-width: 47rem;
+  }
+}
+
+/* Hero nav buttons display as a row */
+@media (min-width: 600px) {
+  .hero-nav {
+    width: 100%;
+
+    & > ul {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      flex-direction: row;
+      gap: 1rem;
+
+      & > li {
+        margin: 0 !important;
+        padding: 0;
+      }
+    }
+  }
+}
+
+/* Aside stuff working */
+@media (min-width: 1280px) {
+  section {
+    grid-template-columns: [left] 1fr [mid] auto [right] 1fr;
+    grid-column-gap: 0.5rem;
+
+    .section-container {
+      grid-column: mid;
+    }
+  }
+
+  .duck-fact {
+    display: block;
+    width: min(80%, 25rem);
+  }
+
+  .gallery {
+    display: flex;
+    justify-content: space-around;
+
+    & > .photo {
+      width: 25vw;
+      height: auto;
+      animation: pop-in 0.3 ease;
+      background-color: white;
+      border: 5px solid transparent;
+      box-shadow: 5px 5px 7px black;
+    }
+  }
+}

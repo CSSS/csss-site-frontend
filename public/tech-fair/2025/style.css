@@ -1,6 +1,6 @@
 @font-face {
   font-family: 'Questrial';
-  src: url('fonts/Questrial-Regular.ttf') format('truetype')
+  src: url('fonts/Questrial-Regular.ttf') format('truetype');
 }
 
 :root {
@@ -9,11 +9,48 @@
   --square-logo-dim: 2.5rem;
   --paper-shadow: 5px 5px 7px black;
   --photo-w: 460px;
+
+  /* Colours */
+  --insurance: hsl(356 49.5% 49.3%);
+  --telecom: hsl(41 49.5% 49.3%);
+  --energy: hsl(65 100% 35.5%);
+  --medical: hsl(124 47.4% 50%);
+  --software: hsl(194 59.3% 50%);
+  --networking: hsl(235 100% 35.5%);
+  --data-analytics: hsl(284 59.3% 50%);
+}
+
+[class*='--insurance'] {
+  --clr-main: var(--insurance);
+}
+
+[class*='--telecom'] {
+  --clr-main: var(--telecom);
+}
+
+[class*='--energy'] {
+  --clr-main: var(--energy);
+}
+
+[class*='--medical'] {
+  --clr-main: var(--medical);
+}
+
+[class*='--software'] {
+  --clr-main: var(--software);
+}
+
+[class*='--networking'] {
+  --clr-main: var(--networking);
+}
+
+[class*='--data-analytics'] {
+  --clr-main: var(--data-analytics);
 }
 
 body {
   font-family: 'Questrial';
-  background-image: url('./images/mountain-landscape.svg');
+  background-image: url('images/mountain-landscape.svg');
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -26,13 +63,7 @@ ol {
 
 a:link,
 a:visited {
-  color: black;
   text-decoration: none;
-}
-
-a:link:active,
-a:visited:active {
-  color: black;
 }
 
 .centering {
@@ -47,7 +78,6 @@ a:visited:active {
   border: 1px solid black;
   width: fit-content;
 }
-
 
 .sticky-note {
   background-color: yellow;
@@ -65,8 +95,9 @@ a:visited:active {
   max-width: var(--photo-w);
   height: auto;
   transform: rotate(-5deg);
+  transition: transform 0.1s linear;
 
-  &>img {
+  & > img {
     object-fit: contain;
   }
 
@@ -77,8 +108,11 @@ a:visited:active {
   &:hover {
     transform: scale(1.25);
     z-index: 3;
-    transition: transform 0.1s linear;
   }
+}
+
+.btn-anchor {
+  color: #d16711;
 }
 
 header {
@@ -87,38 +121,44 @@ header {
   position: fixed;
   top: 0;
 
-  &>nav {
+  & > nav {
     display: flex;
     align-items: center;
     justify-content: center;
     position: relative;
     padding: 0.25rem;
-    width: 100%;
+    width: 100vw;
     backdrop-filter: blur(5px);
 
     /* CSSS Logo */
-    &>a {
+    & > a {
       /* This keeps the icon at the far left and the nav links centered */
       position: absolute;
       left: 1vw;
       top: 1vh;
 
-      &>#home-logo {
+      & > #home-logo {
         width: var(--square-logo-dim);
         height: var(--square-logo-dim);
       }
     }
 
-    &>ul {
+    & a:visited,
+    a:active,
+    a:link,
+    a:hover {
+      color: black;
+    }
+
+    & > ul {
       display: flex;
       justify-content: space-evenly;
       list-style-type: none;
       margin: 0;
       padding: 1rem 0 0;
 
-      &>li {
-
-        &>a {
+      & > li {
+        & > a {
           text-align: center;
           padding: 0 1rem;
         }
@@ -134,7 +174,7 @@ header {
   align-items: center;
   text-align: center;
 
-  &>.hero-content {
+  & > .hero-content {
     position: relative;
     height: 70%;
     width: 90%;
@@ -143,7 +183,7 @@ header {
     justify-content: center;
     align-items: center;
 
-    &>p {
+    & > p {
       font-size: max(1rem, 2vw);
     }
 
@@ -151,52 +191,55 @@ header {
       font-size: max(2rem, 5vw);
     }
 
-    &>img {
+    & > img {
       width: min(30vw, 30rem);
       height: auto;
     }
 
-    &>section {
+    & > section {
       padding: 1rem;
     }
   }
 }
 
 main {
-  &>article {
+  & > article {
     display: grid;
 
-    &>section {
+    & a:visited,
+    a:active,
+    a:link,
+    a:hover {
+      color: #d16711;
+    }
+
+    & > section {
       display: flex;
       flex-direction: column;
       align-items: center;
       padding: 0 1rem 0;
 
-      &>aside {
+      & > aside {
         display: none;
       }
 
-      & .section-content {
+      & .section__content {
         margin: var(--header-height) 0 2rem;
         padding: 1.5rem;
         max-width: 40rem;
-
-        & a {
-          color: #d16711;
-        }
       }
 
-      &>.main {
+      & > .section__main {
         display: flex;
         flex-direction: column;
         align-items: center;
 
-        &>.chat-section {
+        & > .chat-section {
           display: flex;
           flex-direction: column;
           align-items: center;
 
-          &>.right {
+          & > .right {
             align-self: flex-end;
             display: block;
             box-shadow: 5px 5px black;
@@ -205,22 +248,21 @@ main {
             margin-right: 1rem;
           }
 
-          &>.left {
+          & > .left {
             align-self: flex-start;
             width: fit-content;
             max-width: 80%;
             margin-left: 1rem;
           }
-
         }
 
-        &>p,
+        & > p,
         ul,
         ol {
           font-size: clamp(1rem, 1.5vw, 1.05rem);
         }
 
-        &>ul,
+        & > ul,
         ol {
           margin: 0;
 
@@ -233,6 +275,75 @@ main {
   }
 }
 
+#company-gallery {
+  padding: 0;
+  display: block;
+}
+
+ul.section__main {
+  padding-left: 0;
+}
+
+.company__gallery {
+  display: flex;
+  gap: 4vw;
+  padding: 1rem 5rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.company-card {
+  flex: 0 0 auto;
+
+  display: grid;
+  place-items: center;
+  grid-template-rows: 35% 60% 5%;
+  padding: 1.5rem;
+  width: 20.75rem;
+  height: calc(700px - 5rem);
+}
+
+.company-card__img {
+  display: flex;
+  height: 100%;
+  aspect-ratio: 1 / 1;
+  padding: 1rem;
+
+  & > img {
+    object-fit: contain;
+  }
+}
+
+.company-card__descriptor {
+  overflow: auto;
+  height: 100%;
+}
+
+.company-card__footer {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  position: relative;
+  bottom: 0;
+  margin-top: 1rem;
+
+  & > * {
+    color: white;
+    border-radius: 50px;
+    padding: 0.5rem;
+    font-size: clamp(1rem, 60%, 1.7rem);
+    -webkit-user-select: none;
+    user-select: none;
+  }
+
+  & > a {
+    color: #d16711;
+  }
+
+  & > p {
+    background-color: var(--clr-main);
+  }
+}
 
 #final {
   display: flex;
@@ -240,12 +351,12 @@ main {
   align-items: center;
   padding-bottom: 3rem;
 
-  &>h2 {
+  & > h2 {
     text-align: center;
     font-size: 2rem;
   }
 
-  &>.gallery {
+  & > .gallery {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -263,7 +374,6 @@ footer {
     display: flex;
     gap: 0.5rem;
 
-
     & .icon {
       width: 1.5em;
       height: 1.5em;
@@ -273,21 +383,20 @@ footer {
 
 /* Media queries */
 @media (max-width: 400px) {
-  header>nav {
-
-    /* These will ensure the nav links will be pushed to the right so CSSS icon will become 
+  header > nav {
+    /* These will ensure the nav links will be pushed to the right so CSSS icon will become
      * part of the nav's flow again */
-    &>a {
+    & > a {
       position: relative;
       left: 0;
 
-      &>img {
+      & > img {
         height: 2rem;
         width: 2rem;
       }
     }
 
-    &>ul {
+    & > ul {
       flex-shrink: 0;
     }
   }
@@ -299,21 +408,20 @@ footer {
 
 @media (min-width: 1200px) {
   main {
-    &>article {
-      &>section {
+    & > article {
+      & > section {
         display: grid;
         grid-template-columns: 1fr 50% 1fr;
-        grid-template-areas:
-          'left center right';
+        grid-template-areas: 'left center right';
 
-        &>.main {
+        & > .main {
           grid-area: center;
           display: flex;
           flex-direction: column;
           align-items: center;
         }
 
-        &>aside {
+        & > aside {
           display: flex;
           flex-direction: column;
           justify-content: space-between;
@@ -322,16 +430,37 @@ footer {
           padding: var(--header-height) 0 0;
         }
 
-        &>aside:nth-of-type(1) {
+        & > aside:nth-of-type(1) {
           grid-area: left;
           align-items: end;
         }
 
-        &>aside:nth-of-type(2) {
+        & > aside:nth-of-type(2) {
           grid-area: right;
           align-items: start;
         }
       }
     }
+  }
+}
+
+@media (hover: none) {
+  ul.section__main {
+    padding-left: 0;
+  }
+
+  .company__gallery {
+    width: 100vw;
+    justify-content: flex-start;
+    flex-wrap: nowrap;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+  }
+
+  .company-card {
+    width: 19rem;
+    scroll-snap-align: center;
   }
 }
