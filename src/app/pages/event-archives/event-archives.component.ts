@@ -1,6 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { ArticleComponent } from '@csss-code/article/article.component';
-import { FallHacksIconComponent } from 'assets/icons/fall-hacks-icon/fall-hacks-icon.component';
 import {
   FALL_HACKS_YEARS,
   FROSH_YEARS,
@@ -10,7 +9,7 @@ import {
 
 @Component({
   selector: 'cs-event-archives',
-  imports: [ArticleComponent, FallHacksIconComponent],
+  imports: [ArticleComponent],
   templateUrl: './event-archives.component.html',
   styleUrl: './event-archives.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
