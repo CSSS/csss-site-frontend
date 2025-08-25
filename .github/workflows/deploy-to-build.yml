@@ -20,10 +20,10 @@ jobs:
         with:
           node-version: '22.x'
       - run: npm ci
-      - run: npm run build --if-present
+      - run: npm run build
 
       - name: Preserve build output when moving branches
-        run: mv build ../build-tmp
+        run: mv dist/csss-ng-frontend/browser ../build-tmp
 
       - name: Switch to the build branch and clean it
         run: |
@@ -37,14 +37,13 @@ jobs:
         run: |
           # Set up a dummy user and email for identification purposes
           cp -R ../build-tmp/* .
-          rm -f ./js/*.LICENSE.txt
 
       - name: Commit and push
         run: |
           git config --global user.name "${{ github.actor }}"
           git config --global user.email "${{ github.actor }}@user.noreply.github.com"
           git add .
-          git commit -m "Updating `build` with PR#${{ github.event.pull_request.number }}: ${{ github.event.pull_request.title }}"
+          git commit -m "${{ github.event.pull_request.title }}"
           git push origin build
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
