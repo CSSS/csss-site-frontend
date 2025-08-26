@@ -1,10 +1,11 @@
 @use 'globals' as g;
 
-.wrapper {
-  height: 96svh;
+.parallax {
+  height: 100%;
   overflow-y: auto;
   overflow-x: hidden;
   perspective: 10px;
+  scroll-behavior: smooth;
 }
 
 hgroup {
@@ -37,11 +38,13 @@ hgroup {
     mask-repeat: no-repeat;
   }
 
-  & > fa-icon {
-    font-size: clamp(2rem, 3vw, 15rem);
+  & > a {
     position: absolute;
     bottom: 30svh;
-    filter: drop-shadow(0px 2px 5px black);
+    & > fa-icon {
+      font-size: clamp(2rem, 3vw, 15rem);
+      filter: drop-shadow(0px 2px 5px black);
+    }
   }
 }
 

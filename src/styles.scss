@@ -1,6 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
 @use 'globals';
 
+html {
+  scroll-behavior: smooth;
+}
+
 html,
 body {
   height: 100%;

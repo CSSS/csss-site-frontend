@@ -24,4 +24,11 @@ import { RouteLinkComponent } from 'components/url/route-link/route-link.compone
 export class ReadMeComponent {
   protected arrowIcon = faArrowDown;
   protected externalLinkIcon = faArrowUpRightFromSquare;
+
+  scrollTo(id: string): void {
+    const target = document.getElementById(id);
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth' });
+    }
+  }
 }
