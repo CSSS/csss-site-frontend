@@ -4,6 +4,9 @@ import eslintConfigPrettier from 'eslint-config-prettier/flat';
 import tseslint from 'typescript-eslint';
 
 export default tseslint.config(
+  {
+    ignores: ['src/libs/backend-api/**']
+  },
   eslint.configs.recommended,
   tseslint.configs.recommended,
   tseslint.configs.strict,

@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "pre-build": "tsx scripts/app/sass-builder.ts",
+    "pre-build": "tsx scripts/app/sass-builder.ts && openapi-generator-cli generate",
     "start": "npm run pre-build && ng serve",
     "build": "npm run pre-build && ng build",
     "watch": "ng build --watch --configuration development",
