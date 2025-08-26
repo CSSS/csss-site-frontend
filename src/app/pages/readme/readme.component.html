@@ -1,29 +1,21 @@
-<div class="wrapper">
-  <header>
+<div class="parallax">
+  <hgroup>
     <img class="mural" src="images/mural.png" alt="Mural" />
     <h1>
       Welcome to the
-      <div class="type-in" #typeIn>Computing Science Student Society</div>
+      <om-typewriter
+        styleClass="typed"
+        [words]="['Computing Science Student Society']"
+        [disableLoop]="true"
+      ></om-typewriter>
     </h1>
-    <fa-icon [icon]="arrowIcon" animation="bounce"></fa-icon>
-  </header>
+    <a (click)="scrollTo('intro')"><fa-icon [icon]="arrowIcon" animation="bounce"></fa-icon></a>
+  </hgroup>
 
   <article class="content">
-    <section>
-      <h2>History</h2>
-      <p>
-        Since its founding in the 1970s, the Computing Science Student Society has existed to
-        promote the interests of students within the School of Computing Science at Simon Fraser
-        University. The Society strives to support and build a vibrant community of individuals and
-        create an environment that produces social, academic, and professional success. The CSSS
-        continues this tradition today by running numerous social events throughout the school year,
-        as well as hosting workshops, talks by industry speakers, and development contests for
-        budding programmers.
-      </p>
-    </section>
-    <section class="pres-container">
+    <section id="intro" class="pres-container">
       <div class="pres-image-container">
-        <img src="images/president-mabel.png" alt="President of the CSSS" />
+        <img src="images/president.png" alt="President of the CSSS" />
       </div>
       <div class="pres-content">
         <h2>President's Address</h2>
@@ -44,6 +36,18 @@
           CSSS President
         </p>
       </div>
+    </section>
+    <section>
+      <h2>History</h2>
+      <p>
+        Since its founding in the 1970s, the Computing Science Student Society has existed to
+        promote the interests of students within the School of Computing Science at Simon Fraser
+        University. The Society strives to support and build a vibrant community of individuals and
+        create an environment that produces social, academic, and professional success. The CSSS
+        continues this tradition today by running numerous social events throughout the school year,
+        as well as hosting workshops, talks by industry speakers, and development contests for
+        budding programmers.
+      </p>
     </section>
     <section class="faq">
       <h2>FAQ</h2>

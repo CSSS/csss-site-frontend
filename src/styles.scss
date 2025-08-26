@@ -1,6 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
 @use 'globals';
 
+html {
+  scroll-behavior: smooth;
+}
+
 html,
 body {
   height: 100%;
@@ -81,4 +85,8 @@ article.content {
   a.link {
     color: globals.$accent3;
   }
+}
+
+.typed {
+  margin: 0;
 }

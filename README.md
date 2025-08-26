@@ -8,7 +8,8 @@ You will need:
 - `node` v22
 - `npm` v10
 - Install the Angular CLI globally
-```
+```sh
+# use Angular v20.2
 npm install -g @angular/cli
 ```
 - SSH keys
@@ -26,23 +27,22 @@ npm ci
 ```
 
 3. Start the frontend server:
-```
-npm run start // will run some pre-build scripts
+```sh
+npm run start # will run some pre-build scripts
 or
-ng serve // only works after building
+ng serve # only works after building
 ```
 
 4. Serve the app over your local network
-```
-// Access the site on a device in your local network by going to `http://<IP of serving device>:8080`
+```sh
+# Access the site on a device in your local network by going to `http://<IP of serving device>:8080`
 ng serve --host=0.0.0.0 // only works after building
 ```
 
 To view other npm commands, look at `package.json` under the "scripts" key.
 ### Local development
-This project uses:
-
+If you'd like to contribute, you can start reading here https://github.com/CSSS/csss-site-frontend/wiki/Contributing
 ### Libraries used
-* **FontAwesome**
-* **Material CDK**
-* **GSAP**
+* **FontAwesome 6.7.1** https://fontawesome.com/v6/icons
+* **Material CDK** https://material.angular.dev/cdk/categories
+* **NGXUI** https://ngxui.com/
