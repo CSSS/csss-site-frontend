@@ -1,19 +1,12 @@
-import {
-  ChangeDetectionStrategy,
-  Component,
-  computed,
-  effect,
-  signal,
-  viewChildren
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, signal } from '@angular/core';
 import { ArticleComponent } from '@csss-code/article/article.component';
 import { CardComponent } from '@csss-code/card/card.component';
-import { gsap } from 'gsap';
+import { NgxFadeComponent } from '@omnedia/ngx-fade';
 import { ExecutiveAdministration, executives, getRandomExecImage } from './officers.data';
 
 @Component({
   selector: 'cs-officers',
-  imports: [CardComponent, ArticleComponent],
+  imports: [CardComponent, ArticleComponent, NgxFadeComponent],
   templateUrl: './officers.component.html',
   styleUrl: './officers.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
@@ -47,38 +40,11 @@ export class OfficersComponent {
     return newAdmin;
   });
 
-  private execCards = viewChildren<CardComponent>('execCard');
-
   /**
    * Cache the admins so we don't need to fetch them each time.
    * Will probably need some way to remove older cached entries if memory becomes an issue.
    */
   private cachedAdmins = new Map<number, ExecutiveAdministration>();
-
-  constructor() {
-    effect(() => {
-      if (!this.currentAdministration() || !this.execCards().length) {
-        return;
-      }
-
-      this.animateCards();
-    });
-  }
-
-  private animateCards(): void {
-    const cards = this.execCards();
-    if (!cards || !cards.length) {
-      return;
-    }
-
-    const targets = cards.map(el => el.elementRef.nativeElement);
-    gsap.from(targets, {
-      bottom: -50,
-      opacity: 0,
-      duration: 0.3,
-      ease: 'power3.out'
-    });
-  }
 
   /**
    * Changes the files name to one that can be used to set the background image.
