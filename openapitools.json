@@ -1,0 +1,21 @@
+{
+  "$schema": "./node_modules/@openapitools/openapi-generator-cli/config.schema.json",
+  "spaces": 2,
+  "generator-cli": {
+    "version": "7.15.0",
+    "generators": {
+      "csss-backend": {
+        "generatorName": "typescript-angular",
+        "inputSpec": "#{cwd}/scripts/api/backend-api.json",
+        "output": "#{cwd}/src/libs/#{name}",
+        "additionalProperties": {
+          "ngVersion": "20.0.0",
+          "supportsES6": "true",
+          "useSingleRequestParameter": true,
+          "fileNaming": "kebab-case",
+          "withInterfaces": true
+        }
+      }
+    }
+  }
+}

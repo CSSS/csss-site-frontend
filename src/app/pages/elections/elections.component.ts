@@ -23,8 +23,8 @@ import { ELECTED_DESCRIPTIONS, EXEC_DESCRIPTIONS } from 'pages/officers/officers
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ElectionsComponent {
-  checkIcon = faSquareCheck;
+  protected checkIcon = faSquareCheck;
 
-  executives = EXEC_DESCRIPTIONS;
-  representatives = ELECTED_DESCRIPTIONS;
+  protected executives = EXEC_DESCRIPTIONS;
+  protected representatives = ELECTED_DESCRIPTIONS;
 }

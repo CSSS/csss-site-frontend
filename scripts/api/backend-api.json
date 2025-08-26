@@ -1,0 +1,890 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "CSSS Site Backend",
+    "description": "CSSS backend API",
+    "version": "0.1.0"
+  },
+  "servers": [{ "url": "/api" }],
+  "paths": {
+    "/elections/list": {
+      "get": {
+        "tags": ["elections"],
+        "summary": "List Elections",
+        "description": "Returns a list of all elections & their status",
+        "operationId": "get_elections_list",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": { "$ref": "#/components/schemas/ElectionModel" },
+                  "type": "array",
+                  "title": "Response List Elections Elections List Get"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/elections/{election_name}": {
+      "get": {
+        "tags": ["elections"],
+        "summary": "Get Election",
+        "description": "Retrieves the election data for an election by name.\n    Returns private details when the time is allowed.\n    If user is an admin or elections officer, returns computing ids for each candidate as well.",
+        "operationId": "get_election",
+        "parameters": [
+          {
+            "name": "election_name",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string", "title": "Election Name" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/ElectionModel" } }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": ["elections"],
+        "summary": "Create Election",
+        "description": "Creates an election and places it in the database. Returns election json on success",
+        "operationId": "create_election",
+        "parameters": [
+          {
+            "name": "election_name",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string", "title": "Election Name" }
+          },
+          {
+            "name": "election_type",
+            "in": "query",
+            "required": true,
+            "schema": { "type": "string", "title": "Election Type" }
+          },
+          {
+            "name": "datetime_start_nominations",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "date-time",
+              "title": "Datetime Start Nominations"
+            }
+          },
+          {
+            "name": "datetime_start_voting",
+            "in": "query",
+            "required": true,
+            "schema": { "type": "string", "format": "date-time", "title": "Datetime Start Voting" }
+          },
+          {
+            "name": "datetime_end_voting",
+            "in": "query",
+            "required": true,
+            "schema": { "type": "string", "format": "date-time", "title": "Datetime End Voting" }
+          },
+          {
+            "name": "available_positions",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string" }, { "type": "null" }],
+              "title": "Available Positions"
+            }
+          },
+          {
+            "name": "survey_link",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string" }, { "type": "null" }],
+              "title": "Survey Link"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/ElectionModel" } }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      },
+      "patch": {
+        "tags": ["elections"],
+        "summary": "Update Election",
+        "description": "Updates an election in the database.\n\n        Note that this doesn't let you change the name of an election, unless the new\n        name produces the same slug.\n\n        Returns election json on success.",
+        "operationId": "update_election",
+        "parameters": [
+          {
+            "name": "election_name",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string", "title": "Election Name" }
+          },
+          {
+            "name": "election_type",
+            "in": "query",
+            "required": true,
+            "schema": { "type": "string", "title": "Election Type" }
+          },
+          {
+            "name": "datetime_start_nominations",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "date-time",
+              "title": "Datetime Start Nominations"
+            }
+          },
+          {
+            "name": "datetime_start_voting",
+            "in": "query",
+            "required": true,
+            "schema": { "type": "string", "format": "date-time", "title": "Datetime Start Voting" }
+          },
+          {
+            "name": "datetime_end_voting",
+            "in": "query",
+            "required": true,
+            "schema": { "type": "string", "format": "date-time", "title": "Datetime End Voting" }
+          },
+          {
+            "name": "available_positions",
+            "in": "query",
+            "required": true,
+            "schema": { "type": "string", "title": "Available Positions" }
+          },
+          {
+            "name": "survey_link",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string" }, { "type": "null" }],
+              "title": "Survey Link"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/ElectionModel" } }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": ["elections"],
+        "summary": "Delete Election",
+        "description": "Deletes an election from the database. Returns whether the election exists after deletion.",
+        "operationId": "delete_election",
+        "parameters": [
+          {
+            "name": "election_name",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string", "title": "Election Name" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/SuccessFailModel" } }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/elections/registration/{election_name}": {
+      "get": {
+        "tags": ["elections"],
+        "summary": "Get Election Registrations",
+        "description": "get your election registration(s)",
+        "operationId": "get_election_registration",
+        "parameters": [
+          {
+            "name": "election_name",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string", "title": "Election Name" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": { "application/json": { "schema": {} } }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": ["elections"],
+        "summary": "Register In Election",
+        "description": "register for a specific position in this election, but doesn't set a speech",
+        "operationId": "create_election_registration",
+        "parameters": [
+          {
+            "name": "election_name",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string", "title": "Election Name" }
+          },
+          {
+            "name": "position",
+            "in": "query",
+            "required": true,
+            "schema": { "type": "string", "title": "Position" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": { "application/json": { "schema": {} } }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/elections/registration/{election_name}/{ccid_of_registrant}": {
+      "patch": {
+        "tags": ["elections"],
+        "summary": "Update Registration",
+        "description": "update the application of a specific registrant",
+        "operationId": "update_election_registration",
+        "parameters": [
+          {
+            "name": "election_name",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string", "title": "Election Name" }
+          },
+          {
+            "name": "ccid_of_registrant",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string", "title": "Ccid Of Registrant" }
+          },
+          {
+            "name": "position",
+            "in": "query",
+            "required": true,
+            "schema": { "type": "string", "title": "Position" }
+          },
+          {
+            "name": "speech",
+            "in": "query",
+            "required": true,
+            "schema": { "anyOf": [{ "type": "string" }, { "type": "null" }], "title": "Speech" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": { "application/json": { "schema": {} } }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/elections/registration/{election_name}/{position}": {
+      "delete": {
+        "tags": ["elections"],
+        "summary": "Delete Registration",
+        "description": "revoke your registration for a specific position in this election",
+        "operationId": "delete_election_registration",
+        "parameters": [
+          {
+            "name": "election_name",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string", "title": "Election Name" }
+          },
+          {
+            "name": "position",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string", "title": "Position" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": { "application/json": { "schema": {} } }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/elections/nominee/info": {
+      "get": {
+        "tags": ["elections"],
+        "summary": "Get Nominee Info",
+        "description": "Nominee info is always publically tied to elections, so be careful!",
+        "operationId": "get_nominee_info",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/NomineeInfoModel" } }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": ["elections"],
+        "summary": "Provide Nominee Info",
+        "description": "Will create or update nominee info. Returns an updated copy of their nominee info.",
+        "operationId": "put_nominee_info",
+        "parameters": [
+          {
+            "name": "full_name",
+            "in": "query",
+            "required": false,
+            "schema": { "anyOf": [{ "type": "string" }, { "type": "null" }], "title": "Full Name" }
+          },
+          {
+            "name": "linked_in",
+            "in": "query",
+            "required": false,
+            "schema": { "anyOf": [{ "type": "string" }, { "type": "null" }], "title": "Linked In" }
+          },
+          {
+            "name": "instagram",
+            "in": "query",
+            "required": false,
+            "schema": { "anyOf": [{ "type": "string" }, { "type": "null" }], "title": "Instagram" }
+          },
+          {
+            "name": "email",
+            "in": "query",
+            "required": false,
+            "schema": { "anyOf": [{ "type": "string" }, { "type": "null" }], "title": "Email" }
+          },
+          {
+            "name": "discord_username",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string" }, { "type": "null" }],
+              "title": "Discord Username"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/NomineeInfoModel" } }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/officers/current": {
+      "get": {
+        "tags": ["officers"],
+        "summary": "Current Officers",
+        "description": "Get information about all the officers. More information is given if you're authenticated & have access to private executive data.",
+        "operationId": "get_current_officers",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": { "application/json": { "schema": {} } }
+          }
+        }
+      }
+    },
+    "/officers/all": {
+      "get": {
+        "tags": ["officers"],
+        "summary": "All Officers",
+        "description": "Information for all execs from all exec terms",
+        "operationId": "get_officers",
+        "parameters": [
+          {
+            "name": "include_future_terms",
+            "in": "query",
+            "required": false,
+            "schema": { "type": "boolean", "default": false, "title": "Include Future Terms" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": { "application/json": { "schema": {} } }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/officers/terms/{computing_id}": {
+      "get": {
+        "tags": ["officers"],
+        "summary": "Get Officer Terms",
+        "description": "Get term info for an executive. All term info is public for all past or active terms.\n        Future terms can only be accessed by website admins.",
+        "operationId": "get_officer_terms",
+        "parameters": [
+          {
+            "name": "computing_id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string", "title": "Computing Id" }
+          },
+          {
+            "name": "include_future_terms",
+            "in": "query",
+            "required": false,
+            "schema": { "type": "boolean", "default": false, "title": "Include Future Terms" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": { "application/json": { "schema": {} } }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/officers/info/{computing_id}": {
+      "get": {
+        "tags": ["officers"],
+        "summary": "Get Officer Info",
+        "description": "Get officer info for the current user, if they've ever been an exec. Only admins can get info about another user.",
+        "operationId": "get_officer_info",
+        "parameters": [
+          {
+            "name": "computing_id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string", "title": "Computing Id" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": { "application/json": { "schema": {} } }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      },
+      "patch": {
+        "tags": ["officers"],
+        "summary": "Update Info",
+        "description": "After elections, officer computing ids are input into our system.\n        If you have been elected as a new officer, you may authenticate with SFU CAS,\n        then input your information & the valid token for us. Admins may update this info.",
+        "operationId": "update_officer_info",
+        "parameters": [
+          {
+            "name": "computing_id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string", "title": "Computing Id" }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": { "schema": { "$ref": "#/components/schemas/OfficerInfoUpload" } }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": { "application/json": { "schema": {} } }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/officers/term": {
+      "post": {
+        "tags": ["officers"],
+        "summary": "New Officer Term",
+        "description": "Only the sysadmin, president, or DoA can submit this request. It will usually be the DoA.\n        Updates the system with a new officer, and enables the user to login to the system to input their information.",
+        "operationId": "update_officer_term",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "items": { "$ref": "#/components/schemas/InitialOfficerInfo" },
+                "type": "array",
+                "title": "Officer Info List"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": { "application/json": { "schema": {} } }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/officers/term/{term_id}": {
+      "patch": {
+        "tags": ["officers"],
+        "summary": "Update Term",
+        "description": "A website admin may change the position & term length however they wish.",
+        "operationId": "update_term_officers_term__term_id__patch",
+        "parameters": [
+          {
+            "name": "term_id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "integer", "title": "Term Id" }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": { "schema": { "$ref": "#/components/schemas/OfficerTermUpload" } }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": { "application/json": { "schema": {} } }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": ["officers"],
+        "summary": "Remove Officer",
+        "description": "Remove the specified officer term. Only website admins can run this endpoint. BE CAREFUL WITH THIS!",
+        "operationId": "remove_officer_officers_term__term_id__delete",
+        "parameters": [
+          {
+            "name": "term_id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "integer", "title": "Term Id" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": { "application/json": { "schema": {} } }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/permission/is_admin": {
+      "get": {
+        "tags": ["permission"],
+        "summary": "Is Admin",
+        "description": "checks if the current user has the admin permission",
+        "operationId": "is_admin_permission_is_admin_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": { "application/json": { "schema": {} } }
+          }
+        }
+      }
+    },
+    "/": {
+      "get": {
+        "summary": "Read Root",
+        "operationId": "read_root__get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": { "application/json": { "schema": {} } }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "ElectionModel": {
+        "properties": {
+          "slug": { "type": "string", "title": "Slug" },
+          "name": { "type": "string", "title": "Name" },
+          "type": { "$ref": "#/components/schemas/ElectionTypeEnum" },
+          "datetime_start_nominations": { "type": "string", "title": "Datetime Start Nominations" },
+          "datetime_start_voting": { "type": "string", "title": "Datetime Start Voting" },
+          "datetime_end_voting": { "type": "string", "title": "Datetime End Voting" },
+          "available_positions": { "type": "string", "title": "Available Positions" },
+          "survey_link": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Survey Link"
+          }
+        },
+        "type": "object",
+        "required": [
+          "slug",
+          "name",
+          "type",
+          "datetime_start_nominations",
+          "datetime_start_voting",
+          "datetime_end_voting",
+          "available_positions",
+          "survey_link"
+        ],
+        "title": "ElectionModel"
+      },
+      "ElectionTypeEnum": {
+        "type": "string",
+        "enum": ["general_election", "by_election", "council_rep_election"],
+        "title": "ElectionTypeEnum"
+      },
+      "HTTPValidationError": {
+        "properties": {
+          "detail": {
+            "items": { "$ref": "#/components/schemas/ValidationError" },
+            "type": "array",
+            "title": "Detail"
+          }
+        },
+        "type": "object",
+        "title": "HTTPValidationError"
+      },
+      "InitialOfficerInfo": {
+        "properties": {
+          "computing_id": { "type": "string", "title": "Computing Id" },
+          "position": { "type": "string", "title": "Position" },
+          "start_date": { "type": "string", "format": "date", "title": "Start Date" }
+        },
+        "type": "object",
+        "required": ["computing_id", "position", "start_date"],
+        "title": "InitialOfficerInfo"
+      },
+      "NomineeInfoModel": {
+        "properties": {
+          "computing_id": { "type": "string", "title": "Computing Id" },
+          "full_name": { "type": "string", "title": "Full Name" },
+          "linked_in": { "type": "string", "title": "Linked In" },
+          "instagram": { "type": "string", "title": "Instagram" },
+          "email": { "type": "string", "title": "Email" },
+          "discord_username": { "type": "string", "title": "Discord Username" }
+        },
+        "type": "object",
+        "required": [
+          "computing_id",
+          "full_name",
+          "linked_in",
+          "instagram",
+          "email",
+          "discord_username"
+        ],
+        "title": "NomineeInfoModel"
+      },
+      "OfficerInfoUpload": {
+        "properties": {
+          "legal_name": { "type": "string", "title": "Legal Name" },
+          "phone_number": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Phone Number"
+          },
+          "discord_name": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Discord Name"
+          },
+          "github_username": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Github Username"
+          },
+          "google_drive_email": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Google Drive Email"
+          }
+        },
+        "type": "object",
+        "required": ["legal_name"],
+        "title": "OfficerInfoUpload"
+      },
+      "OfficerTermUpload": {
+        "properties": {
+          "computing_id": { "type": "string", "title": "Computing Id" },
+          "position": { "type": "string", "title": "Position" },
+          "start_date": { "type": "string", "format": "date", "title": "Start Date" },
+          "end_date": {
+            "anyOf": [{ "type": "string", "format": "date" }, { "type": "null" }],
+            "title": "End Date"
+          },
+          "nickname": { "anyOf": [{ "type": "string" }, { "type": "null" }], "title": "Nickname" },
+          "favourite_course_0": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Favourite Course 0"
+          },
+          "favourite_course_1": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Favourite Course 1"
+          },
+          "favourite_pl_0": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Favourite Pl 0"
+          },
+          "favourite_pl_1": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Favourite Pl 1"
+          },
+          "biography": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Biography"
+          },
+          "photo_url": { "anyOf": [{ "type": "string" }, { "type": "null" }], "title": "Photo Url" }
+        },
+        "type": "object",
+        "required": ["computing_id", "position", "start_date"],
+        "title": "OfficerTermUpload"
+      },
+      "SuccessFailModel": {
+        "properties": { "success": { "type": "boolean", "title": "Success" } },
+        "type": "object",
+        "required": ["success"],
+        "title": "SuccessFailModel"
+      },
+      "ValidationError": {
+        "properties": {
+          "loc": {
+            "items": { "anyOf": [{ "type": "string" }, { "type": "integer" }] },
+            "type": "array",
+            "title": "Location"
+          },
+          "msg": { "type": "string", "title": "Message" },
+          "type": { "type": "string", "title": "Error Type" }
+        },
+        "type": "object",
+        "required": ["loc", "msg", "type"],
+        "title": "ValidationError"
+      }
+    }
+  }
+}
