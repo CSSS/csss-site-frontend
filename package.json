@@ -26,6 +26,7 @@
     "@fortawesome/free-brands-svg-icons": "^6.7.1",
     "@fortawesome/free-regular-svg-icons": "^6.7.1",
     "@fortawesome/free-solid-svg-icons": "^6.7.1",
+    "@omnedia/ngx-fade": "^3.0.0",
     "@omnedia/ngx-typewriter": "^3.1.1",
     "gsap": "^3.13.0",
     "rxjs": "~7.8.0",

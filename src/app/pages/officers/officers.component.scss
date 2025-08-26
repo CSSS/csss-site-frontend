@@ -1,34 +1,15 @@
 @use 'globals' as g;
-@use 'theme' as t;
 
 .timeline {
   display: flex;
   column-gap: 0.2rem;
   width: 100%;
   margin-bottom: 2rem;
-
-  & > .timeslot {
-    flex: 1 0 auto;
-
-    & > .time-label {
-      text-align: right;
-    }
-
-    & > .line {
-      min-width: 6rem;
-      height: 0.2rem;
-      background-color: aquamarine;
-    }
-  }
-
-  & > .timeslot[aria-selected='true'] > .line {
-    box-shadow: 0 0 10px 3px aquamarine;
-  }
 }
 
 .gallery {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(15rem, 100%), 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(10rem, 100%), 1fr));
   gap: 1.8rem;
 }
 
@@ -39,17 +20,23 @@
   grid-template-rows: auto auto;
 }
 
-code-card > img {
-  width: 100%;
-  object-fit: contain;
-}
-
-.card-footer {
+.card__footer {
   position: absolute;
   bottom: 0;
   width: 100%;
   height: fit-content;
-  padding: 0.3rem;
+  background-color: g.$bg3;
 
-  background-color: t.$bg3;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.card__name,
+.card__position {
+  width: fit-content;
+}
+
+.card__position {
+  color: g.$code-text;
 }
