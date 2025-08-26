@@ -12,12 +12,14 @@
     <h2>Current Executives</h2>
     <div class="gallery">
       @for (exec of currentAdministration()?.members; track $index) {
-        <code-card [bgImg]="exec.photoName" #execCard>
-          <div class="card-footer">
-            <h3>{{ exec.name }}</h3>
-            <h4>{{ exec.position }}</h4>
-          </div>
-        </code-card>
+        <om-fade direction="up" [animateOnlyOnce]="true">
+          <code-card [bgImg]="exec.photoName" #execCard>
+            <div class="card__footer">
+              <strong class="card__name">{{ exec.name }}</strong>
+              <strong class="card__position">{{ exec.position }}</strong>
+            </div>
+          </code-card>
+        </om-fade>
       }
     </div>
   </section>

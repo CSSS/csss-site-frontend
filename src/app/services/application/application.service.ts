@@ -34,9 +34,9 @@ export class ApplicationService {
       .subscribe((event: NavigationEnd) => {
         let route = event.urlAfterRedirects;
         // Discard other params. This assumes that the URLs will have the form:
-        // `/<application>?=<query params>` or `/<runtime>/<application>?=<query params>`
+        // `/<application>?=<query params>#<hash>` or `/<runtime>/<application>?=<query params>#<hash>`
         // or maybe they don't have any query params at all.
-        route = route.split('?')[0]; // Just the route params
+        route = route.split('?')[0].split('#')[0]; // Just the route params
         console.log(route);
         if (route === '/') {
           this.focusedApplication.set(null);
