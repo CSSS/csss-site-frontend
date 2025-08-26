@@ -9,6 +9,7 @@ You will need:
 - `npm` v10
 - Install the Angular CLI globally
 ```
+// use Angular v20.2
 npm install -g @angular/cli
 ```
 - SSH keys
@@ -43,5 +44,6 @@ To view other npm commands, look at `package.json` under the "scripts" key.
 This project uses:
 
 ### Libraries used
-* **FontAwesome**
-* **Material CDK**
+* **FontAwesome 6.7.1** https://fontawesome.com/v6/icons
+* **Material CDK** https://material.angular.dev/cdk/categories
+* **NGXUI** https://ngxui.com/
