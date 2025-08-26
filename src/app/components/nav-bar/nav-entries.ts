@@ -124,6 +124,12 @@ export const NAVBAR_ENTRIES: NavItem[] = [
         icon: faRoadBarrier,
         route: '/speeches',
         isDisabled: true
+      },
+      {
+        key: 'elections.archive',
+        label: 'Archives',
+        icon: faBook,
+        route: '/elections-archives'
       }
     ]
   },

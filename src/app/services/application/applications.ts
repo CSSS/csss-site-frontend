@@ -36,7 +36,7 @@ export interface AppInfo {
 /**
  * All registered applications should go here.
  */
-export const routeApplicationMap: Map<number, AppInfo> = new Map([
+const routeApplicationMap: Map<number, AppInfo> = new Map([
   [
     0,
     {
@@ -116,16 +116,21 @@ export const routeApplicationMap: Map<number, AppInfo> = new Map([
       key: 'elections',
       route: '/elections'
     }
+  ],
+  [
+    8,
+    {
+      id: 8,
+      label: 'Elections Archive',
+      activityKey: '',
+      key: 'election-archives',
+      route: '/elections-archives'
+    }
   ]
 ]);
 
 export const getApplicationById = (id: number): AppInfo | undefined => {
-  for (const app of routeApplicationMap.values()) {
-    if (app.id === id) {
-      return app;
-    }
-  }
-  return;
+  return routeApplicationMap.get(id);
 };
 
 export const getApplicationByRoute = (route: string): AppInfo | undefined => {
