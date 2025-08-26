@@ -1,19 +1,11 @@
-import {
-  AfterViewInit,
-  ChangeDetectionStrategy,
-  Component,
-  computed,
-  ElementRef,
-  viewChild
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { CardComponent } from '@csss-code/card/card.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faArrowDown, faArrowUpRightFromSquare } from '@fortawesome/free-solid-svg-icons';
+import { NgxTypewriterComponent } from '@omnedia/ngx-typewriter';
 import { ExternalLinkComponent } from 'components/url/external-link/external-link.component';
 import { RouteLinkComponent } from 'components/url/route-link/route-link.component';
-import { gsap } from 'gsap';
-import { SplitText } from 'gsap/SplitText';
 
 @Component({
   selector: 'cs-readme',
@@ -22,31 +14,14 @@ import { SplitText } from 'gsap/SplitText';
     RouterModule,
     FontAwesomeModule,
     ExternalLinkComponent,
-    RouteLinkComponent
+    RouteLinkComponent,
+    NgxTypewriterComponent
   ],
   templateUrl: './readme.component.html',
   styleUrl: './readme.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ReadMeComponent implements AfterViewInit {
+export class ReadMeComponent {
   protected arrowIcon = faArrowDown;
   protected externalLinkIcon = faArrowUpRightFromSquare;
-
-  private typedText = viewChild.required<ElementRef<HTMLDivElement>>('typeIn');
-  private typedTextEl = computed(() => this.typedText().nativeElement);
-
-  ngAfterViewInit(): void {
-    const split = SplitText.create(this.typedTextEl(), {
-      type: 'chars'
-    });
-
-    gsap.from(split.chars, {
-      display: 'none',
-      delay: 0.5,
-      stagger: 0.05,
-      onComplete() {
-        split.revert();
-      }
-    });
-  }
 }
