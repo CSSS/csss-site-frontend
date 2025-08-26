@@ -45,4 +45,3 @@ This project uses:
 ### Libraries used
 * **FontAwesome**
 * **Material CDK**
-* **GSAP**
