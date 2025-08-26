@@ -1,12 +1,5 @@
 @use 'globals' as g;
 
-.timeline {
-  display: flex;
-  column-gap: 0.2rem;
-  width: 100%;
-  margin-bottom: 2rem;
-}
-
 .gallery {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(min(10rem, 100%), 1fr));
