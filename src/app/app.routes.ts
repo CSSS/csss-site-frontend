@@ -61,14 +61,14 @@ export const routes: Routes = [
       import('./pages/elections/elections.component').then(m => m.ElectionsComponent),
     title: makeTitle('Elections')
   },
-  {
-    path: 'elections-archives',
-    loadComponent: () =>
-      import('./pages/elections-archives/elections-archives.component').then(
-        m => m.ElectionsArchivesComponent
-      ),
-    title: makeTitle('Elections Archive')
-  },
+  // {
+  //   path: 'elections-archives',
+  //   loadComponent: () =>
+  //     import('./pages/elections-archives/elections-archives.component').then(
+  //       m => m.ElectionsArchivesComponent
+  //     ),
+  //   title: makeTitle('Elections Archive')
+  // },
   // Home
   { path: '', component: HomeComponent, title: 'Computing Science Student Society' },
   // 404

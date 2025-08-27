@@ -129,7 +129,8 @@ export const NAVBAR_ENTRIES: NavItem[] = [
         key: 'elections.archive',
         label: 'Archives',
         icon: faBook,
-        route: '/elections-archives'
+        route: '/elections-archives',
+        isDisabled: true
       }
     ]
   },
