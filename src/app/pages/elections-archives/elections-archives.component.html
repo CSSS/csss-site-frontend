@@ -1,0 +1,18 @@
+<code-article>
+  <hgroup>
+    <h1>Elections Archives</h1>
+    <p>Explore the past elections and (coming soon) download data for your own analysis.</p>
+  </hgroup>
+  <section>
+    <select name="year-select" id="election__year">
+      @for (year of years(); track year) {
+        <option value="year">{{ year }}</option>
+      }
+    </select>
+    <ul>
+      @for (election of elections(); track election.slug) {
+        <li>{{ election.name }}</li>
+      }
+    </ul>
+  </section>
+</code-article>
