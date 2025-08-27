@@ -4,15 +4,20 @@
     <p>Explore the past elections and (coming soon) download data for your own analysis.</p>
   </hgroup>
   <section>
-    <select name="year-select" id="election__year">
-      @for (year of years(); track year) {
-        <option value="year">{{ year }}</option>
-      }
-    </select>
-    <ul>
-      @for (election of elections(); track election.slug) {
-        <li>{{ election.name }}</li>
-      }
-    </ul>
+    <p-select
+      [options]="selectorYears()"
+      (onChange)="selectedYear.set($event.value)"
+      name="year"
+      placeholder="Year"
+    />
+    <p-select
+      [options]="selectorElections()"
+      [disabled]="selectorElections().length === 0"
+      (onChange)="selectedElection.set($event.value)"
+      optionLabel="name"
+      name="name"
+      placeholder="Election"
+    />
+    <!-- TODO: Display a graph of the selected election. -->
   </section>
 </code-article>
