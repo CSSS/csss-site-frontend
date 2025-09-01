@@ -83,13 +83,13 @@ export const NAVBAR_ENTRIES: NavItem[] = [
         key: 'events.fall-hacks',
         label: 'Fall Hacks',
         icon: faUpRightFromSquare,
-        href: 'https://new.sfucsss.org/fall_hacks/2024/index.html'
+        href: 'https://fall-hacks.sfucsss.org'
       },
       {
         key: 'events.mountain-madness',
         label: 'Mountain Madness',
         icon: faUpRightFromSquare,
-        href: 'https://new.sfucsss.org/mountain_madness/2024/index.html'
+        href: 'https://madness.sfucsss.org'
       },
       {
         key: 'events.archives',
