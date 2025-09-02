@@ -1,0 +1,529 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=0.6" />
+    <link rel="stylesheet" href="/static/css/reset.min.css" />
+    <link rel="stylesheet" href="main.css" />
+    <link rel="shortcut icon" type="image/svg" href="/static/icons/csss_logo.svg" />
+    <title>Tech Fair 2023</title>
+  </head>
+
+  <body class="preload" onload="onload()" onresize="updateBanner()">
+    <div id="nav-bar">
+      <div>
+        <div class="nav-button" style="padding-left: 0">
+          <a href="/">
+            <img
+              class="csss-logo"
+              src="/static/icons/csss_logo.svg"
+              alt="CSSS Logo"
+              style="object-fit: contain"
+            />
+          </a>
+        </div>
+        <a href="timeline.html" class="nav-button nav-black">
+          <span>&lt;&lt; Timeline</span>
+        </a>
+        <a href="#" class="nav-button nav-black">
+          <span>Tech Fair 2023</span>
+        </a>
+
+        <div class="noselect nav-divider"><span>|</span></div>
+
+        <a href="#booths" class="nav-button nav-pink">
+          <span>Booths</span>
+        </a>
+        <a href="#schedule" class="nav-button nav-pink">
+          <span>Schedule</span>
+        </a>
+        <a href="#students" class="nav-button nav-pink">
+          <span>For Students</span>
+        </a>
+
+        <div class="noselect nav-divider"><span>|</span></div>
+
+        <a href="#companies" class="nav-button nav-blue">
+          <span>For Companies</span>
+        </a>
+        <a href="company_package.html" class="nav-button nav-blue">
+          <span>Package Info</span>
+        </a>
+        <a href="#history" class="nav-button nav-blue">
+          <span>History</span>
+        </a>
+      </div>
+    </div>
+
+    <div id="column-container">
+      <div style="height: 75px"></div>
+
+      <header id="code-title">
+        <h1><span class="pink">SFU_CSSS</span>.TechFair(<span class="navy">2023</span>);</h1>
+        <h1>
+          <span class="lightpink" id="before-cursor"></span>
+          <span id="cursor" class="noselect">|</span>
+        </h1>
+      </header>
+
+      <header id="logo-title">
+        <div id="laptop">
+          <object
+            id="laptop-child"
+            class="noselect"
+            type="image/svg+xml"
+            data="images/laptop.svg"
+          ></object>
+        </div>
+        <div id="logo-title-text">
+          <div>Tech Fair</div>
+          <div>2023</div>
+        </div>
+      </header>
+
+      <img id="mountain" alt="mountain" src="images/mountain.svg" />
+
+      <!-- info-text -->
+      <div>
+        <div id="info-banner-bg" hidden></div>
+
+        <div id="info-text">
+          <div>
+            <br />
+            <img
+              id="info-img"
+              class="zoom"
+              title="Long Shot of Tech Fair 2022"
+              alt="Long Shot of Tech Fair 2022"
+              src="images/tf-image-1.jpg"
+            />
+            <div>
+              <h2>Welcome to Tech Fair!</h2>
+              <p>
+                Tech Fair is our annual career fair, bringing students and companies together. This
+                is a great opportunity to set up a booth and expand the name recognition of your
+                company!
+              </p>
+              <ul>
+                <li>
+                  Located in
+                  <a
+                    class="light-pink-link"
+                    href="https://roomfinder.sfu.ca/apps/sfuroomfinder_web/?q=AQ"
+                    >AQ North</a
+                  >
+                  at SFU's Burnaby campus
+                </li>
+                <li>Over 2000 SFU Computing Science Students invited</li>
+                <li title="Postponed due to TSSU strike activity">
+                  <b style="color: #84eb7a">November 15th, 2023</b> from 10:00am - 4:00pm
+                  <span style="color: #777"
+                    >(postponed from October 25th due to TSSU strike activity)</span
+                  >
+                </li>
+                <li>Meet your future employees!</li>
+              </ul>
+            </div>
+          </div>
+
+          <div style="height: 50px"></div>
+
+          <div id="info-buttons-container">
+            <div>
+              <p>Are you a <b>student</b> interested in stopping by?</p>
+              <br />
+              <a href="https://discord.gg/3RdXngW7sd" class="pink-button zoom2">Say Hi!</a>
+            </div>
+            <div>
+              <p>Are you a <b>company</b> interested in participating?</p>
+              <br />
+              <a href="/2023/company_package.html#join" class="join-tech-fair-button zoom2"
+                >Join Tech Fair</a
+              >
+            </div>
+          </div>
+
+          <div style="height: 50px"></div>
+
+          <p>
+            Feel free to reach out to us at
+            <a class="light-pink-link" href="mailto:csss-techfair@sfu.ca">csss-techfair@sfu.ca</a>
+            for any further questions.
+          </p>
+          <br />
+        </div>
+      </div>
+
+      <div style="height: 50px"></div>
+
+      <div id="complete-container">
+        <a id="complete" href="#complete">Tech Fair 2023 is Over!</a>
+        <div id="complete-container-inner">
+          <p>But don't fret if you missed it, we run Tech Fair every year.</p>
+          <p>
+            If you'd like to attend Tech Fair 2024, please contact us at
+            <a class="dark-pink-link" href="mailto:csss-techfair@sfu.ca">csss-techfair@sfu.ca</a>
+            with the subject line "Tech Fair 2024"
+          </p>
+          <p>See you there!</p>
+        </div>
+      </div>
+
+      <div style="height: 5px"></div>
+
+      <div id="booths-container">
+        <hr />
+        <div style="height: 50px"></div>
+
+        <a id="booths" href="#booths">Who Attended in 2023?</a>
+
+        <div style="height: 50px"></div>
+
+        <div id="company-card-list">
+          <div>
+            <img alt="Arista Networks" src="images/company_images/arista.jpg" />
+            <div>
+              <p>Arista Networks</p>
+              <p class="banded-hr noselect">////////////////////////////////////////</p>
+              <br /><br />
+
+              <div>
+                <br />
+                <p>
+                  Arista Networks is an industry leader in data-driven, client to cloud networking
+                  for large data center, campus and routing environments.
+                </p>
+                <br />
+
+                <div>
+                  <a href="#booths" class="tag" style="color: #cb4ecf">&lt;Networking&gt;</a>
+                </div>
+                <a href="https://www.arista.com/en/careers/" class="see-more white-link"
+                  >See more</a
+                >
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <img alt="Avigilon" src="images/company_images/avigilon.jpg" />
+            <div>
+              <p>Avigilon</p>
+              <p class="banded-hr noselect">////////////////////////////////////////</p>
+              <br /><br />
+
+              <div>
+                <br />
+                <p>
+                  Avigilon solutions help you find and share critical intelligence faster, so you
+                  can respond to events with the speed and decisiveness that keeps people,
+                  operations and assets safe.
+                </p>
+                <br />
+
+                <div><a href="#booths" class="tag" style="color: #dd4e4e">&lt;Security&gt;</a></div>
+                <a
+                  href="https://www.motorolasolutions.com/en_us/about/careers.html"
+                  class="see-more white-link"
+                  >See more</a
+                >
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <img alt="Fortinet" src="images/company_images/fortinet.png" />
+            <div>
+              <p>Fortinet</p>
+              <p class="banded-hr noselect">////////////////////////////////////////</p>
+              <br /><br />
+
+              <div>
+                <br />
+                <p>
+                  Fortinet is a driving force in the evolution of cybersecurity and the convergence
+                  of networking and security. Securing people, devices, and data everywhere is their
+                  mission.
+                </p>
+                <br />
+
+                <div>
+                  <a href="#booths" class="tag" style="color: #2cbed1">&lt;Cybersecurity&gt;</a>
+                </div>
+                <a href="https://www.fortinet.com/" class="see-more white-link">See more</a>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <img alt="ICBC" src="images/company_images/icbc.png" />
+            <div>
+              <p>&nbsp;&nbsp;&nbsp;ICBC</p>
+              <p class="banded-hr noselect">////////////////////////////////////////</p>
+              <br /><br />
+
+              <div>
+                <br />
+                <p>
+                  At ICBC, it's our job to make sure the car insurance system works for everyone,
+                  today and in the future.
+                </p>
+                <br />
+
+                <div>
+                  <a href="#booths" class="tag" style="color: #51c46d">&lt;Public Services&gt;</a>
+                </div>
+                <a href="https://www.icbc.com/about-icbc/careers/" class="see-more white-link"
+                  >See more</a
+                >
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <img alt="LMI Technologies" src="images/company_images/lmi.png" />
+            <div>
+              <p>LMI Technologies</p>
+              <p class="banded-hr noselect">////////////////////////////////////////</p>
+              <br /><br />
+
+              <div>
+                <br />
+                <p>
+                  Since 1998, LMI Technologies has worked to advance 3D smart sensor technology for
+                  fast and accurate measurement.
+                </p>
+                <br />
+
+                <div>
+                  <a href="#booths" class="tag" style="color: #d69028">&lt;Sensors and Data&gt;</a>
+                </div>
+                <a href="https://lmi3d.com/company/careers/" class="see-more white-link"
+                  >See more</a
+                >
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <img alt="TransLink" src="images/company_images/translink.png" />
+            <div>
+              <p>Translink</p>
+              <p class="banded-hr noselect">////////////////////////////////////////</p>
+              <br /><br />
+
+              <div>
+                <br />
+                <p>
+                  TransLink is dedicated to creating and sustaining a transportation system that
+                  meets everyone's needs in a way that protects the environment and supports the
+                  objectives of Metro Vancouver.
+                </p>
+                <br />
+
+                <div>
+                  <a href="#booths" class="tag" style="color: #51c46d">&lt;Public Services&gt;</a>
+                </div>
+                <a href="https://www.translink.ca/about-us/careers/" class="see-more white-link"
+                  >See more</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div style="height: 75px"></div>
+
+        <p style="text-align: center">
+          If you'd like to see your company here for next Tech Fair, let us know at
+          <a class="dark-pink-link" href="mailto:csss-techfair@sfu.ca">csss-techfair@sfu.ca</a>!
+        </p>
+      </div>
+
+      <div style="height: 25px"></div>
+
+      <div id="schedule-container">
+        <a id="schedule" href="#schedule" class="noto-bold">Schedule</a>
+        <div style="height: 25px"></div>
+
+        <div id="day-schedule">
+          <p>Wednesday, November 15th</p>
+          <table>
+            <tr>
+              <td>
+                <span>8</span>
+                <span> AM</span>
+              </td>
+              <td>&nbsp;</td>
+            </tr>
+            <tr>
+              <td>
+                <span>10</span>
+                <span> AM</span>
+              </td>
+              <td id="techfair-balloon">
+                <div>
+                  <p><b>Tech Fair 2023</b></p>
+                  <p>(10:00am - 4:00pm)</p>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <span>12</span>
+                <span> PM</span>
+              </td>
+              <td>&nbsp;</td>
+            </tr>
+            <tr>
+              <td>
+                <span>2</span>
+                <span> PM</span>
+              </td>
+              <td>&nbsp;</td>
+            </tr>
+            <tr>
+              <td>
+                <span>4</span>
+                <span> PM</span>
+              </td>
+              <td>&nbsp;</td>
+            </tr>
+            <tr>
+              <td>
+                <span>6</span>
+                <span> PM</span>
+              </td>
+              <td>&nbsp;</td>
+            </tr>
+          </table>
+        </div>
+
+        <div style="height: 75px"></div>
+
+        <div id="bg-text-schedule" class="noto-bold noselect">Schedule</div>
+      </div>
+
+      <div style="height: 50px"></div>
+
+      <div id="students-container">
+        <a id="students" href="#students">Students</a>
+
+        <p>
+          As a student, Tech Fair is all about <u>you</u>, but why should you come to Tech Fair in
+          the first place?
+        </p>
+        <ul>
+          <li>Make connections with local companies</li>
+          <li>Learn about the computing industry in Vancouver</li>
+          <li>Build your professional image</li>
+        </ul>
+        <br />
+
+        <a href="https://discord.sfucsss.org" class="pink-button zoom2">Say Hi!</a>
+      </div>
+
+      <div style="height: 50px"></div>
+
+      <div id="companies-container">
+        <a id="companies" href="#companies">For Companies</a>
+
+        <div style="display: table; clear: both; width: 100%">
+          <p>
+            Tech Fair 2023 gives you and your company the opportunity to expand your brand to
+            hundreds of talented and interested students who could become potential stars in your
+            company.
+          </p>
+          <ul>
+            <li>
+              Reach out to hundreds of passionate Computing Science students at various points in
+              their degree
+            </li>
+            <li>
+              Let students learn about you, your culture, and your opportunities - so you're first
+              in mind when they start their career journeys
+            </li>
+          </ul>
+          <br />
+
+          <p>
+            <b>Attend TechFair 2023</b>: our students might meet their next co-op, and you might
+            meet your next full-time employee!
+          </p>
+          <br />
+        </div>
+
+        <p class="banded-hr">//////////////////////////////////////////////////////</p>
+        <br />
+        <p>Interested in setting up a booth?</p>
+        <a href="company_package.html#join" class="join-tech-fair-button zoom2">Join Tech Fair</a>
+      </div>
+
+      <div style="height: 50px"></div>
+
+      <div id="history-container">
+        <a id="history" href="#history">History</a>
+        <p>
+          Just a short decade ago, Tech Fair was a standing CSSS tradition at SFU. Unforunately, due
+          to the curse of time, it's fallen out of favour in recent years.
+          <br /><br />
+
+          However! This all changed in 2022, when the event was brought back to life.
+          <br /><br />
+
+          This is the second year in a row we're running Tech Fair, and we've become much more
+          serious about it than before, with the ultimate goal of keeping this event going long
+          after we leave.
+        </p>
+        <br />
+
+        <div id="gallery">
+          <h4>Photo Gallery</h4>
+          <img
+            class="zoom"
+            title="Long Shot of Tech Fair 2022"
+            alt="Long Shot of Tech Fair 2022"
+            src="images/tf-image-1.jpg"
+          />
+          <img
+            class="zoom"
+            title="Students at Tech Fair 2022"
+            alt="Students at Tech Fair 2022"
+            src="images/tf-image-2.jpg"
+          />
+          <img
+            class="zoom"
+            title="A Booth at Tech Fair 2022"
+            alt="A Booth at Tech Fair 2022"
+            src="images/booth.jpg"
+          />
+          <img
+            class="zoom"
+            title="View from SFU's Burnaby Campus"
+            alt="View from SFU's Burnaby Campus"
+            src="images/sfu.jpg"
+          />
+        </div>
+      </div>
+
+      <div id="footer">
+        <p>
+          <em><span class="pink">SFU_CSSS</span>.TechFair(<span class="navy">2023</span>);</em>
+        </p>
+        <p>
+          <a href="mailto:csss-techfair@sfu.ca">csss-techfair@sfu.ca</a> |
+          <a href="https://www.linkedin.com/company/sfucsss/">LinkedIn</a> |
+          <a href="https://www.instagram.com/sfu_csss/">@sfu_csss</a> |
+          <a href="http://discord.sfucsss.org/">discord</a>
+        </p>
+      </div>
+    </div>
+
+    <script src="tech_fair_2023.js"></script>
+    <script>
+      setTimeout(() => {
+        document.body.className = '';
+      }, 200);
+    </script>
+  </body>
+</html>

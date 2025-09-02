@@ -127,7 +127,7 @@ header {
   height: 120vh;
   padding: var(--hero-tb-padding) 1rem;
 
-  background-image: url('/frosh/2025/images/hero-mountain.png');
+  background-image: url('images/hero-mountain.png');
   background-size: cover;
   background-position: center;
 

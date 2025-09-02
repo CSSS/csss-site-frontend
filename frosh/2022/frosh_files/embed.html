@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="en" data-ui-kind="20" data-base-title="CSSS Frosh Week 2022"><head><script src="embed_data_002/cb=gapi.es" nonce="" async=""></script><title>CSSS Frosh Week 2022</title><style nonce="">body, html {font-family:"Google Sans Text","Google Sans",Helvetica,Arial,sans-serif;}@font-face {
+  font-family: 'Material Icons Extended';
+  font-style: normal;
+  font-weight: 400;
+  src: url(//fonts.gstatic.com/s/materialiconsextended/v152/kJEjBvgX7BgnkSrUwT8UnLVc38YydejYY-oE_LvJ.woff2) format('woff2');
+}
+@font-face {
+  font-family: 'Google Material Icons';
+  font-style: normal;
+  font-weight: 400;
+  src: url(//fonts.gstatic.com/s/googlematerialicons/v144/Gw6kwdfw6UnXLJCcmafZyFRXb3BL9rvi0QZG3Q.woff2) format('woff2');
+}
+
+.google-material-icons {
+  font-family: 'Google Material Icons';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  -moz-font-feature-settings: 'liga';
+  -moz-osx-font-smoothing: grayscale;
+}
+@font-face {
+  font-family: 'Google Material Icons Filled';
+  font-style: normal;
+  font-weight: 400;
+  src: url(//fonts.gstatic.com/s/googlematerialiconsfilled/v118/WWXFlimHYg6HKI3TavMkbKdhBmDvgach8TVpeGsuueSZJH0.woff2) format('woff2');
+}
+
+.google-material-icons-filled {
+  font-family: 'Google Material Icons Filled';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  -moz-font-feature-settings: 'liga';
+  -moz-osx-font-smoothing: grayscale;
+}
+/* armenian */
+@font-face {
+  font-family: 'Google Sans';
+  font-style: normal;
+  font-weight: 400;
+  src: url(//fonts.gstatic.com/s/googlesans/v58/4UaRrENHsxJlGDuGo1OIlJfC6l_24rlCK1Yo_Iq2rgCIlsw.woff2) format('woff2');
+  unicode-range: U+0308, U+0530-058F, U+2010, U+2024, U+25CC, U+FB13-FB17;
+}
+/* bengali */
+@font-face {
+  font-family: 'Google Sans';
+  font-style: normal;
+  font-weight: 400;
+  src: url(//fonts.gstatic.com/s/googlesans/v58/4UaRrENHsxJlGDuGo1OIlJfC6l_24rlCK1Yo_Iq2rACIlsw.woff2) format('woff2');
+  unicode-range: U+0951-0952, U+0964-0965, U+0980-09FE, U+1CD0, U+1CD2, U+1CD5-1CD6, U+1CD8, U+1CE1, U+1CEA, U+1CED, U+1CF2, U+1CF5-1CF7, U+200C-200D, U+20B9, U+25CC, U+A8F1;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Google Sans';
+  font-style: normal;
+  font-weight: 400;
+  src: url(//fonts.gstatic.com/s/googlesans/v58/4UaRrENHsxJlGDuGo1OIlJfC6l_24rlCK1Yo_Iq2swCIlsw.woff2) format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Google Sans';
+  font-style: normal;
+  font-weight: 400;
+  src: url(//fonts.gstatic.com/s/googlesans/v58/4UaRrENHsxJlGDuGo1OIlJfC6l_24rlCK1Yo_Iq2ugCIlsw.woff2) format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* devanagari */
+@font-face {
+  font-family: 'Google Sans';
+  font-style: normal;
+  font-weight: 400;
+  src: url(//fonts.gstatic.com/s/googlesans/v58/4UaRrENHsxJlGDuGo1OIlJfC6l_24rlCK1Yo_Iq2vwCIlsw.woff2) format('woff2');
+  unicode-range: U+0900-097F, U+1CD0-1CF9, U+200C-200D, U+20A8, U+20B9, U+20F0, U+25CC, U+A830-A839, U+A8E0-A8FF, U+11B00-11B09;
+}
+/* ethiopic */
+@font-face {
+  font-family: 'Google Sans';
+  font-style: normal;
+  font-weight: 400;
+  src: url(//fonts.gstatic.com/s/googlesans/v58/4UaRrENHsxJlGDuGo1OIlJfC6l_24rlCK1Yo_Iq2rwCIlsw.woff2) format('woff2');
+  unicode-range: U+030E, U+1200-1399, U+2D80-2DDE, U+AB01-AB2E, U+1E7E0-1E7E6, U+1E7E8-1E7EB, U+1E7ED-1E7EE, U+1E7F0-1E7FE;
+}
+/* georgian */
+@font-face {
+  font-family: 'Google Sans';
+  font-style: normal;
+  font-weight: 400;
+  src: url(//fonts.gstatic.com/s/googlesans/v58/4UaRrENHsxJlGDuGo1OIlJfC6l_24rlCK1Yo_Iq2oQCIlsw.woff2) format('woff2');
+  unicode-range: U+0589, U+10A0-10FF, U+1C90-1CBA, U+1CBD-1CBF, U+205A, U+2D00-2D2F, U+2E31;
+}
+/* greek */
+@font-face {
+  font-family: 'Google Sans';
+  font-style: normal;
+  font-weight: 400;
+  src: url(//fonts.gstatic.com/s/googlesans/v58/4UaRrENHsxJlGDuGo1OIlJfC6l_24rlCK1Yo_Iq2vQCIlsw.woff2) format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* gujarati */
+@font-face {
+  font-family: 'Google Sans';
+  font-style: normal;
+  font-weight: 400;
+  src: url(//fonts.gstatic.com/s/googlesans/v58/4UaRrENHsxJlGDuGo1OIlJfC6l_24rlCK1Yo_Iq2pQCIlsw.woff2) format('woff2');
+  unicode-range: U+0951-0952, U+0964-0965, U+0A80-0AFF, U+200C-200D, U+20B9, U+25CC, U+A830-A839;
+}
+/* gurmukhi */
+@font-face {
+  font-family: 'Google Sans';
+  font-style: normal;
+  font-weight: 400;
+  src: url(//fonts.gstatic.com/s/googlesans/v58/4UaRrENHsxJlGDuGo1OIlJfC6l_24rlCK1Yo_Iq2nQCIlsw.woff2) format('woff2');
+  unicode-range: U+0951-0952, U+0964-0965, U+0A01-0A76, U+200C-200D, U+20B9, U+25CC, U+262C, U+A830-A839;
+}
+/* hebrew */
+@font-face {
+  font-family: 'Google Sans';
+  font-style: normal;
+  font-weight: 400;
+  src: url(//fonts.gstatic.com/s/googlesans/v58/4UaRrENHsxJlGDuGo1OIlJfC6l_24rlCK1Yo_Iq2vACIlsw.woff2) format('woff2');
+  unicode-range: U+0307-0308, U+0590-05FF, U+200C-2010, U+20AA, U+25CC, U+FB1D-FB4F;
+}
+/* khmer */
+@font-face {
+  font-family: 'Google Sans';
+  font-style: normal;
+  font-weight: 400;
+  src: url(//fonts.gstatic.com/s/googlesans/v58/4UaRrENHsxJlGDuGo1OIlJfC6l_24rlCK1Yo_Iq2tQCIlsw.woff2) format('woff2');
+  unicode-range: U+1780-17FF, U+19E0-19FF, U+200C-200D, U+25CC;
+}
+/* lao */
+@font-face {
+  font-family: 'Google Sans';
+  font-style: normal;
+  font-weight: 400;
+  src: url(//fonts.gstatic.com/s/googlesans/v58/4UaRrENHsxJlGDuGo1OIlJfC6l_24rlCK1Yo_Iq2twCIlsw.woff2) format('woff2');
+  unicode-range: U+0E81-0EDF, U+200C-200D, U+25CC;
+}
+/* oriya */
+@font-face {
+  font-family: 'Google Sans';
+  font-style: normal;
+  font-weight: 400;
+  src: url(//fonts.gstatic.com/s/googlesans/v58/4UaRrENHsxJlGDuGo1OIlJfC6l_24rlCK1Yo_Iq2pwCIlsw.woff2) format('woff2');
+  unicode-range: U+0951-0952, U+0964-0965, U+0B01-0B77, U+1CDA, U+1CF2, U+200C-200D, U+20B9, U+25CC;
+}
+/* sinhala */
+@font-face {
+  font-family: 'Google Sans';
+  font-style: normal;
+  font-weight: 400;
+  src: url(//fonts.gstatic.com/s/googlesans/v58/4UaRrENHsxJlGDuGo1OIlJfC6l_24rlCK1Yo_Iq2owCIlsw.woff2) format('woff2');
+  unicode-range: U+0964-0965, U+0D81-0DF4, U+1CF2, U+200C-200D, U+25CC, U+111E1-111F4;
+}
+/* tamil */
+@font-face {
+  font-family: 'Google Sans';
+  font-style: normal;
+  font-weight: 400;
+  src: url(//fonts.gstatic.com/s/googlesans/v58/4UaRrENHsxJlGDuGo1OIlJfC6l_24rlCK1Yo_Iq2qACIlsw.woff2) format('woff2');
+  unicode-range: U+0964-0965, U+0B82-0BFA, U+200C-200D, U+20B9, U+25CC;
+}
+/* telugu */
+@font-face {
+  font-family: 'Google Sans';
+  font-style: normal;
+  font-weight: 400;
+  src: url(//fonts.gstatic.com/s/googlesans/v58/4UaRrENHsxJlGDuGo1OIlJfC6l_24rlCK1Yo_Iq2ogCIlsw.woff2) format('woff2');
+  unicode-range: U+0951-0952, U+0964-0965, U+0C00-0C7F, U+1CDA, U+1CF2, U+200C-200D, U+25CC;
+}
+/* thai */
+@font-face {
+  font-family: 'Google Sans';
+  font-style: normal;
+  font-weight: 400;
+  src: url(//fonts.gstatic.com/s/googlesans/v58/4UaRrENHsxJlGDuGo1OIlJfC6l_24rlCK1Yo_Iq2qgCIlsw.woff2) format('woff2');
+  unicode-range: U+02D7, U+0303, U+0331, U+0E01-0E5B, U+200C-200D, U+25CC;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Google Sans';
+  font-style: normal;
+  font-weight: 400;
+  src: url(//fonts.gstatic.com/s/googlesans/v58/4UaRrENHsxJlGDuGo1OIlJfC6l_24rlCK1Yo_Iq2sQCIlsw.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Google Sans';
+  font-style: normal;
+  font-weight: 400;
+  src: url(//fonts.gstatic.com/s/googlesans/v58/4UaRrENHsxJlGDuGo1OIlJfC6l_24rlCK1Yo_Iq2sACIlsw.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Google Sans';
+  font-style: normal;
+  font-weight: 400;
+  src: url(//fonts.gstatic.com/s/googlesans/v58/4UaRrENHsxJlGDuGo1OIlJfC6l_24rlCK1Yo_Iq2vgCI.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* armenian */
+@font-face {
+  font-family: 'Google Sans';
+  font-style: normal;
+  font-weight: 500;
+  src: url(//fonts.gstatic.com/s/googlesans/v58/4UaRrENHsxJlGDuGo1OIlJfC6l_24rlCK1Yo_Iq2rgCIlsw.woff2) format('woff2');
+  unicode-range: U+0308, U+0530-058F, U+2010, U+2024, U+25CC, U+FB13-FB17;
+}
+/* bengali */
+@font-face {
+  font-family: 'Google Sans';
+  font-style: normal;
+  font-weight: 500;
+  src: url(//fonts.gstatic.com/s/googlesans/v58/4UaRrENHsxJlGDuGo1OIlJfC6l_24rlCK1Yo_Iq2rACIlsw.woff2) format('woff2');
+  unicode-range: U+0951-0952, U+0964-0965, U+0980-09FE, U+1CD0, U+1CD2, U+1CD5-1CD6, U+1CD8, U+1CE1, U+1CEA, U+1CED, U+1CF2, U+1CF5-1CF7, U+200C-200D, U+20B9, U+25CC, U+A8F1;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Google Sans';
+  font-style: normal;
+  font-weight: 500;
+  src: url(//fonts.gstatic.com/s/googlesans/v58/4UaRrENHsxJlGDuGo1OIlJfC6l_24rlCK1Yo_Iq2swCIlsw.woff2) format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Google Sans';
+  font-style: normal;
+  font-weight: 500;
+  src: url(//fonts.gstatic.com/s/googlesans/v58/4UaRrENHsxJlGDuGo1OIlJfC6l_24rlCK1Yo_Iq2ugCIlsw.woff2) format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* devanagari */
+@font-face {
+  font-family: 'Google Sans';
+  font-style: normal;
+  font-weight: 500;
+  src: url(//fonts.gstatic.com/s/googlesans/v58/4UaRrENHsxJlGDuGo1OIlJfC6l_24rlCK1Yo_Iq2vwCIlsw.woff2) format('woff2');
+  unicode-range: U+0900-097F, U+1CD0-1CF9, U+200C-200D, U+20A8, U+20B9, U+20F0, U+25CC, U+A830-A839, U+A8E0-A8FF, U+11B00-11B09;
+}
+/* ethiopic */
+@font-face {
+  font-family: 'Google Sans';
+  font-style: normal;
+  font-weight: 500;
+  src: url(//fonts.gstatic.com/s/googlesans/v58/4UaRrENHsxJlGDuGo1OIlJfC6l_24rlCK1Yo_Iq2rwCIlsw.woff2) format('woff2');
+  unicode-range: U+030E, U+1200-1399, U+2D80-2DDE, U+AB01-AB2E, U+1E7E0-1E7E6, U+1E7E8-1E7EB, U+1E7ED-1E7EE, U+1E7F0-1E7FE;
+}
+/* georgian */
+@font-face {
+  font-family: 'Google Sans';
+  font-style: normal;
+  font-weight: 500;
+  src: url(//fonts.gstatic.com/s/googlesans/v58/4UaRrENHsxJlGDuGo1OIlJfC6l_24rlCK1Yo_Iq2oQCIlsw.woff2) format('woff2');
+  unicode-range: U+0589, U+10A0-10FF, U+1C90-1CBA, U+1CBD-1CBF, U+205A, U+2D00-2D2F, U+2E31;
+}
+/* greek */
+@font-face {
+  font-family: 'Google Sans';
+  font-style: normal;
+  font-weight: 500;
+  src: url(//fonts.gstatic.com/s/googlesans/v58/4UaRrENHsxJlGDuGo1OIlJfC6l_24rlCK1Yo_Iq2vQCIlsw.woff2) format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* gujarati */
+@font-face {
+  font-family: 'Google Sans';
+  font-style: normal;
+  font-weight: 500;
+  src: url(//fonts.gstatic.com/s/googlesans/v58/4UaRrENHsxJlGDuGo1OIlJfC6l_24rlCK1Yo_Iq2pQCIlsw.woff2) format('woff2');
+  unicode-range: U+0951-0952, U+0964-0965, U+0A80-0AFF, U+200C-200D, U+20B9, U+25CC, U+A830-A839;
+}
+/* gurmukhi */
+@font-face {
+  font-family: 'Google Sans';
+  font-style: normal;
+  font-weight: 500;
+  src: url(//fonts.gstatic.com/s/googlesans/v58/4UaRrENHsxJlGDuGo1OIlJfC6l_24rlCK1Yo_Iq2nQCIlsw.woff2) format('woff2');
+  unicode-range: U+0951-0952, U+0964-0965, U+0A01-0A76, U+200C-200D, U+20B9, U+25CC, U+262C, U+A830-A839;
+}
+/* hebrew */
+@font-face {
+  font-family: 'Google Sans';
+  font-style: normal;
+  font-weight: 500;
+  src: url(//fonts.gstatic.com/s/googlesans/v58/4UaRrENHsxJlGDuGo1OIlJfC6l_24rlCK1Yo_Iq2vACIlsw.woff2) format('woff2');
+  unicode-range: U+0307-0308, U+0590-05FF, U+200C-2010, U+20AA, U+25CC, U+FB1D-FB4F;
+}
+/* khmer */
+@font-face {
+  font-family: 'Google Sans';
+  font-style: normal;
+  font-weight: 500;
+  src: url(//fonts.gstatic.com/s/googlesans/v58/4UaRrENHsxJlGDuGo1OIlJfC6l_24rlCK1Yo_Iq2tQCIlsw.woff2) format('woff2');
+  unicode-range: U+1780-17FF, U+19E0-19FF, U+200C-200D, U+25CC;
+}
+/* lao */
+@font-face {
+  font-family: 'Google Sans';
+  font-style: normal;
+  font-weight: 500;
+  src: url(//fonts.gstatic.com/s/googlesans/v58/4UaRrENHsxJlGDuGo1OIlJfC6l_24rlCK1Yo_Iq2twCIlsw.woff2) format('woff2');
+  unicode-range: U+0E81-0EDF, U+200C-200D, U+25CC;
+}
+/* oriya */
+@font-face {
+  font-family: 'Google Sans';
+  font-style: normal;
+  font-weight: 500;
+  src: url(//fonts.gstatic.com/s/googlesans/v58/4UaRrENHsxJlGDuGo1OIlJfC6l_24rlCK1Yo_Iq2pwCIlsw.woff2) format('woff2');
+  unicode-range: U+0951-0952, U+0964-0965, U+0B01-0B77, U+1CDA, U+1CF2, U+200C-200D, U+20B9, U+25CC;
+}
+/* sinhala */
+@font-face {
+  font-family: 'Google Sans';
+  font-style: normal;
+  font-weight: 500;
+  src: url(//fonts.gstatic.com/s/googlesans/v58/4UaRrENHsxJlGDuGo1OIlJfC6l_24rlCK1Yo_Iq2owCIlsw.woff2) format('woff2');
+  unicode-range: U+0964-0965, U+0D81-0DF4, U+1CF2, U+200C-200D, U+25CC, U+111E1-111F4;
+}
+/* tamil */
+@font-face {
+  font-family: 'Google Sans';
+  font-style: normal;
+  font-weight: 500;
+  src: url(//fonts.gstatic.com/s/googlesans/v58/4UaRrENHsxJlGDuGo1OIlJfC6l_24rlCK1Yo_Iq2qACIlsw.woff2) format('woff2');
+  unicode-range: U+0964-0965, U+0B82-0BFA, U+200C-200D, U+20B9, U+25CC;
+}
+/* telugu */
+@font-face {
+  font-family: 'Google Sans';
+  font-style: normal;
+  font-weight: 500;
+  src: url(//fonts.gstatic.com/s/googlesans/v58/4UaRrENHsxJlGDuGo1OIlJfC6l_24rlCK1Yo_Iq2ogCIlsw.woff2) format('woff2');
+  unicode-range: U+0951-0952, U+0964-0965, U+0C00-0C7F, U+1CDA, U+1CF2, U+200C-200D, U+25CC;
+}
+/* thai */
+@font-face {
+  font-family: 'Google Sans';
+  font-style: normal;
+  font-weight: 500;
+  src: url(//fonts.gstatic.com/s/googlesans/v58/4UaRrENHsxJlGDuGo1OIlJfC6l_24rlCK1Yo_Iq2qgCIlsw.woff2) format('woff2');
+  unicode-range: U+02D7, U+0303, U+0331, U+0E01-0E5B, U+200C-200D, U+25CC;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Google Sans';
+  font-style: normal;
+  font-weight: 500;
+  src: url(//fonts.gstatic.com/s/googlesans/v58/4UaRrENHsxJlGDuGo1OIlJfC6l_24rlCK1Yo_Iq2sQCIlsw.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Google Sans';
+  font-style: normal;
+  font-weight: 500;
+  src: url(//fonts.gstatic.com/s/googlesans/v58/4UaRrENHsxJlGDuGo1OIlJfC6l_24rlCK1Yo_Iq2sACIlsw.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Google Sans';
+  font-style: normal;
+  font-weight: 500;
+  src: url(//fonts.gstatic.com/s/googlesans/v58/4UaRrENHsxJlGDuGo1OIlJfC6l_24rlCK1Yo_Iq2vgCI.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* armenian */
+@font-face {
+  font-family: 'Google Sans';
+  font-style: normal;
+  font-weight: 700;
+  src: url(//fonts.gstatic.com/s/googlesans/v58/4UaRrENHsxJlGDuGo1OIlJfC6l_24rlCK1Yo_Iq2rgCIlsw.woff2) format('woff2');
+  unicode-range: U+0308, U+0530-058F, U+2010, U+2024, U+25CC, U+FB13-FB17;
+}
+/* bengali */
+@font-face {
+  font-family: 'Google Sans';
+  font-style: normal;
+  font-weight: 700;
+  src: url(//fonts.gstatic.com/s/googlesans/v58/4UaRrENHsxJlGDuGo1OIlJfC6l_24rlCK1Yo_Iq2rACIlsw.woff2) format('woff2');
+  unicode-range: U+0951-0952, U+0964-0965, U+0980-09FE, U+1CD0, U+1CD2, U+1CD5-1CD6, U+1CD8, U+1CE1, U+1CEA, U+1CED, U+1CF2, U+1CF5-1CF7, U+200C-200D, U+20B9, U+25CC, U+A8F1;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Google Sans';
+  font-style: normal;
+  font-weight: 700;
+  src: url(//fonts.gstatic.com/s/googlesans/v58/4UaRrENHsxJlGDuGo1OIlJfC6l_24rlCK1Yo_Iq2swCIlsw.woff2) format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Google Sans';
+  font-style: normal;
+  font-weight: 700;
+  src: url(//fonts.gstatic.com/s/googlesans/v58/4UaRrENHsxJlGDuGo1OIlJfC6l_24rlCK1Yo_Iq2ugCIlsw.woff2) format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* devanagari */
+@font-face {
+  font-family: 'Google Sans';
+  font-style: normal;
+  font-weight: 700;
+  src: url(//fonts.gstatic.com/s/googlesans/v58/4UaRrENHsxJlGDuGo1OIlJfC6l_24rlCK1Yo_Iq2vwCIlsw.woff2) format('woff2');
+  unicode-range: U+0900-097F, U+1CD0-1CF9, U+200C-200D, U+20A8, U+20B9, U+20F0, U+25CC, U+A830-A839, U+A8E0-A8FF, U+11B00-11B09;
+}
+/* ethiopic */
+@font-face {
+  font-family: 'Google Sans';
+  font-style: normal;
+  font-weight: 700;
+  src: url(//fonts.gstatic.com/s/googlesans/v58/4UaRrENHsxJlGDuGo1OIlJfC6l_24rlCK1Yo_Iq2rwCIlsw.woff2) format('woff2');
+  unicode-range: U+030E, U+1200-1399, U+2D80-2DDE, U+AB01-AB2E, U+1E7E0-1E7E6, U+1E7E8-1E7EB, U+1E7ED-1E7EE, U+1E7F0-1E7FE;
+}
+/* georgian */
+@font-face {
+  font-family: 'Google Sans';
+  font-style: normal;
+  font-weight: 700;
+  src: url(//fonts.gstatic.com/s/googlesans/v58/4UaRrENHsxJlGDuGo1OIlJfC6l_24rlCK1Yo_Iq2oQCIlsw.woff2) format('woff2');
+  unicode-range: U+0589, U+10A0-10FF, U+1C90-1CBA, U+1CBD-1CBF, U+205A, U+2D00-2D2F, U+2E31;
+}
+/* greek */
+@font-face {
+  font-family: 'Google Sans';
+  font-style: normal;
+  font-weight: 700;
+  src: url(//fonts.gstatic.com/s/googlesans/v58/4UaRrENHsxJlGDuGo1OIlJfC6l_24rlCK1Yo_Iq2vQCIlsw.woff2) format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* gujarati */
+@font-face {
+  font-family: 'Google Sans';
+  font-style: normal;
+  font-weight: 700;
+  src: url(//fonts.gstatic.com/s/googlesans/v58/4UaRrENHsxJlGDuGo1OIlJfC6l_24rlCK1Yo_Iq2pQCIlsw.woff2) format('woff2');
+  unicode-range: U+0951-0952, U+0964-0965, U+0A80-0AFF, U+200C-200D, U+20B9, U+25CC, U+A830-A839;
+}
+/* gurmukhi */
+@font-face {
+  font-family: 'Google Sans';
+  font-style: normal;
+  font-weight: 700;
+  src: url(//fonts.gstatic.com/s/googlesans/v58/4UaRrENHsxJlGDuGo1OIlJfC6l_24rlCK1Yo_Iq2nQCIlsw.woff2) format('woff2');
+  unicode-range: U+0951-0952, U+0964-0965, U+0A01-0A76, U+200C-200D, U+20B9, U+25CC, U+262C, U+A830-A839;
+}
+/* hebrew */
+@font-face {
+  font-family: 'Google Sans';
+  font-style: normal;
+  font-weight: 700;
+  src: url(//fonts.gstatic.com/s/googlesans/v58/4UaRrENHsxJlGDuGo1OIlJfC6l_24rlCK1Yo_Iq2vACIlsw.woff2) format('woff2');
+  unicode-range: U+0307-0308, U+0590-05FF, U+200C-2010, U+20AA, U+25CC, U+FB1D-FB4F;
+}
+/* khmer */
+@font-face {
+  font-family: 'Google Sans';
+  font-style: normal;
+  font-weight: 700;
+  src: url(//fonts.gstatic.com/s/googlesans/v58/4UaRrENHsxJlGDuGo1OIlJfC6l_24rlCK1Yo_Iq2tQCIlsw.woff2) format('woff2');
+  unicode-range: U+1780-17FF, U+19E0-19FF, U+200C-200D, U+25CC;
+}
+/* lao */
+@font-face {
+  font-family: 'Google Sans';
+  font-style: normal;
+  font-weight: 700;
+  src: url(//fonts.gstatic.com/s/googlesans/v58/4UaRrENHsxJlGDuGo1OIlJfC6l_24rlCK1Yo_Iq2twCIlsw.woff2) format('woff2');
+  unicode-range: U+0E81-0EDF, U+200C-200D, U+25CC;
+}
+/* oriya */
+@font-face {
+  font-family: 'Google Sans';
+  font-style: normal;
+  font-weight: 700;
+  src: url(//fonts.gstatic.com/s/googlesans/v58/4UaRrENHsxJlGDuGo1OIlJfC6l_24rlCK1Yo_Iq2pwCIlsw.woff2) format('woff2');
+  unicode-range: U+0951-0952, U+0964-0965, U+0B01-0B77, U+1CDA, U+1CF2, U+200C-200D, U+20B9, U+25CC;
+}
+/* sinhala */
+@font-face {
+  font-family: 'Google Sans';
+  font-style: normal;
+  font-weight: 700;
+  src: url(//fonts.gstatic.com/s/googlesans/v58/4UaRrENHsxJlGDuGo1OIlJfC6l_24rlCK1Yo_Iq2owCIlsw.woff2) format('woff2');
+  unicode-range: U+0964-0965, U+0D81-0DF4, U+1CF2, U+200C-200D, U+25CC, U+111E1-111F4;
+}
+/* tamil */
+@font-face {
+  font-family: 'Google Sans';
+  font-style: normal;
+  font-weight: 700;
+  src: url(//fonts.gstatic.com/s/googlesans/v58/4UaRrENHsxJlGDuGo1OIlJfC6l_24rlCK1Yo_Iq2qACIlsw.woff2) format('woff2');
+  unicode-range: U+0964-0965, U+0B82-0BFA, U+200C-200D, U+20B9, U+25CC;
+}
+/* telugu */
+@font-face {
+  font-family: 'Google Sans';
+  font-style: normal;
+  font-weight: 700;
+  src: url(//fonts.gstatic.com/s/googlesans/v58/4UaRrENHsxJlGDuGo1OIlJfC6l_24rlCK1Yo_Iq2ogCIlsw.woff2) format('woff2');
+  unicode-range: U+0951-0952, U+0964-0965, U+0C00-0C7F, U+1CDA, U+1CF2, U+200C-200D, U+25CC;
+}
+/* thai */
+@font-face {
+  font-family: 'Google Sans';
+  font-style: normal;
+  font-weight: 700;
+  src: url(//fonts.gstatic.com/s/googlesans/v58/4UaRrENHsxJlGDuGo1OIlJfC6l_24rlCK1Yo_Iq2qgCIlsw.woff2) format('woff2');
+  unicode-range: U+02D7, U+0303, U+0331, U+0E01-0E5B, U+200C-200D, U+25CC;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Google Sans';
+  font-style: normal;
+  font-weight: 700;
+  src: url(//fonts.gstatic.com/s/googlesans/v58/4UaRrENHsxJlGDuGo1OIlJfC6l_24rlCK1Yo_Iq2sQCIlsw.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Google Sans';
+  font-style: normal;
+  font-weight: 700;
+  src: url(//fonts.gstatic.com/s/googlesans/v58/4UaRrENHsxJlGDuGo1OIlJfC6l_24rlCK1Yo_Iq2sACIlsw.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Google Sans';
+  font-style: normal;
+  font-weight: 700;
+  src: url(//fonts.gstatic.com/s/googlesans/v58/4UaRrENHsxJlGDuGo1OIlJfC6l_24rlCK1Yo_Iq2vgCI.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+</style><link rel="stylesheet" data-id="_cl" href="embed_data_002/rs=ABFko39n72eaqkV-XF0VRZ4qQaKdMyLTxA.css" nonce=""><script data-id="_gd" nonce="">window.WIZ_global_data = {"K1cgmc":"%.@.[null,null,null,[1,1,[1755536468,182402000],4],null,3]]","TSDtV":"%.@.[[null,[[45684760,null,true,null,null,null,\"FzOIXe\"],[105057732,null,false,null,null,null,\"UgN4sd\"],[45662509,null,false,null,null,null,\"fLCtnf\"],[102142781,null,false,null,null,null,\"a3yivf\"],[102748112,null,false,null,null,null,\"th0P5b\"],[45713329,null,false,null,null,null,\"TzH3fe\"],[45657263,null,false,null,null,null,\"ByEExb\"],[103344683,null,false,null,null,null,\"L1NGcf\"],[45532476,null,false,null,null,null,\"AlT7Gc\"],[45532484,null,false,null,null,null,\"javCS\"],[45674978,null,false,null,null,null,\"x4QBkb\"],[45701294,null,false,null,null,null,\"LsTHVd\"],[45719034,null,false,null,null,null,\"ve5aPd\"],[45644642,null,null,null,\"X-WS exp!\",null,\"rsrxGc\"],[45532472,null,false,null,null,null,\"IQ9eXe\"],[45532471,null,false,null,null,null,\"JBcHMe\"],[45617395,null,true,null,null,null,\"RAfhxd\"],[102690069,null,true,null,null,null,\"SIHSd\"],[45696305,null,false,null,null,null,\"Uujhbc\"],[45718464,null,false,null,null,null,\"MmyjKe\"],[45615319,null,true,null,null,null,\"P08xo\"],[45532461,null,false,null,null,null,\"aYwDPe\"],[45532479,null,false,null,null,null,\"qy6Yfe\"],[45532520,null,true,null,null,null,\"cs47xb\"],[45688879,null,true,null,null,null,\"xZC1Dc\"],[45532455,null,false,null,null,null,\"SAfgab\"],[45641838,null,false,null,null,null,\"fLPxhf\"],[105032844,null,true,null,null,null,\"Yazsqc\"],[45664160,null,true,null,null,null,\"Eiio6\"],[45643359,null,false,null,null,null,\"GcxuKe\"],[45681191,null,true,null,null,null,\"RiWeg\"],[45532456,null,false,null,null,null,\"CLa75b\"],[45674562,null,true,null,null,null,\"WeoRQe\"],[104656403,null,false,null,null,null,\"lafMW\"],[45670693,null,false,null,null,null,\"V7Wemb\"],[45701339,null,true,null,null,null,\"cI7nPc\"],[45717711,null,false,null,null,null,\"lhxHkd\"],[45660690,null,false,null,null,null,\"ovKHsb\"],[45712967,null,false,null,null,null,\"rZW8ld\"],[103345459,null,false,null,null,null,\"WHHesd\"],[45701747,null,false,null,null,null,\"BJ0Jme\"],[45532498,null,true,null,null,null,\"jh9W6\"],[45677461,null,null,null,null,null,\"qb66hd\",[\"[]\"]],[104948522,null,false,null,null,null,\"uB9G2\"],[104918499,null,false,null,null,null,\"xT1j6c\"],[105340737,null,false,null,null,null,\"Fckv0d\"],[105246644,null,false,null,null,null,\"pM59ue\"],[45681145,null,false,null,null,null,\"hV6kcd\"],[45532468,null,false,null,null,null,\"rJqi7d\"],[45678265,null,false,null,null,null,\"P7qpdc\"],[103045336,null,false,null,null,null,\"ix5pe\"],[102854333,null,true,null,null,null,\"FshjQd\"],[45660287,null,false,null,null,null,\"nIuPDe\"],[102924446,null,false,null,null,null,\"dKWMc\"],[102713311,null,true,null,null,null,\"doX1zc\"],[45532467,null,false,null,null,null,\"ZGKLTc\"],[45692064,null,false,null,null,null,\"wZ64Sb\"],[104903899,null,false,null,null,null,\"t0MBkb\"],[45714356,null,false,null,null,null,\"uJfQbe\"],[102285376,null,true,null,null,null,\"djz3af\"],[45711477,null,true,null,null,null,\"Rnlerd\"],[45674560,null,false,null,null,null,\"RJGjed\"],[105059894,null,false,null,null,null,\"lZwLLd\"],[45701743,null,false,null,null,null,\"D98G6d\"],[45532510,null,true,null,null,null,\"X6RrBc\"],[45643092,null,false,null,null,null,\"Vu4kKe\"],[105151722,null,true,null,null,null,\"lW3q5d\"],[104779340,null,true,null,null,null,\"lnFsPb\"],[102412919,null,false,null,null,null,\"AX3mgf\"],[103110187,null,false,null,null,null,\"a16NK\"],[45706188,null,false,null,null,null,\"OF1zrd\"],[45532533,null,false,null,null,null,\"KNY5b\"],[45671506,null,true,null,null,null,\"j9Dhe\"],[45532459,null,false,null,null,null,\"gc0hYb\"],[103077325,null,false,null,null,null,\"pw5OB\"],[45532460,null,false,null,null,null,\"kQBdHd\"],[105173054,null,false,null,null,null,\"hLyJR\"],[104556494,null,false,null,null,null,\"UvyqJd\"],[105083311,null,false,null,null,null,\"NMaRze\"],[45678908,null,false,null,null,null,\"V6Qvvf\"],[45699204,null,false,null,null,null,\"XWRwod\"],[45532509,null,false,null,null,null,\"gb8g4\"],[45701746,null,false,null,null,null,\"slpXhf\"],[45700150,null,false,null,null,null,\"RLRykc\"],[45532473,null,true,null,null,null,\"rY1UYc\"],[45532511,null,false,null,null,null,\"RF0nW\"],[45678679,null,false,null,null,null,\"HbebVe\"],[45677690,null,true,null,null,null,\"VLTUHb\"],[45697151,null,false,null,null,null,\"eu5Lwc\"],[102495965,null,false,null,null,null,\"sOjXfb\"],[45657229,null,true,null,null,null,\"UgzHWc\"],[45532465,null,false,null,null,null,\"DVK3Xd\"],[102669362,null,false,null,null,null,\"hPpfcc\"],[45644640,42,null,null,null,null,\"xbuGR\"],[45687747,null,true,null,null,null,\"n1Nom\"],[102513733,null,false,null,null,null,\"aJ6Sw\"],[45715074,null,false,null,null,null,\"xxxPgb\"],[45651862,null,true,null,null,null,\"eClokb\"],[45708977,null,false,null,null,null,\"AxurIf\"],[45700770,null,false,null,null,null,\"Mk7a4d\"],[45681147,null,false,null,null,null,\"pgDArb\"],[102387198,null,false,null,null,null,\"qlMIIf\"],[104595160,null,false,null,null,null,\"uiPKjf\"],[45638834,null,true,null,null,null,\"Qvny4b\"],[45697152,null,false,null,null,null,\"u3w61c\"],[45677445,null,false,null,null,null,\"rPYk8\"],[45623947,null,true,null,null,null,\"TDYaDf\"],[45700504,null,false,null,null,null,\"u6ksOd\"],[45714257,null,false,null,null,null,\"EnbSP\"],[45648275,null,false,null,null,null,\"X5yyz\"],[45701295,null,false,null,null,null,\"Fxdqse\"],[45626223,null,true,null,null,null,\"jNM53\"],[103312821,null,true,null,null,null,\"C2mGWb\"],[104918511,null,false,null,null,null,\"eatMke\"],[103128329,null,false,null,null,null,\"jr1eKf\"],[45532537,null,false,null,null,null,\"l1Skxe\"],[103038876,null,true,null,null,null,\"JoVMDd\"],[45684108,null,false,null,null,null,\"IHwhDb\"],[45674285,null,false,null,null,null,\"zRoGXc\"],[45532477,null,false,null,null,null,\"CTTarb\"],[45614263,null,false,null,null,null,\"vjLUF\"],[102192030,null,true,null,null,null,\"N6tmhe\"],[45684730,null,false,null,null,null,\"aW7Ggd\"],[102903080,null,true,null,null,null,\"i9TA7\"],[103193045,null,true,null,null,null,\"F9HKQc\"],[102149321,null,true,null,null,null,\"gvNuze\"],[45701744,null,false,null,null,null,\"Yp6lv\"],[45677444,null,false,null,null,null,\"WYEV9b\"],[45666019,null,false,null,null,null,\"wbyKCf\"],[45661802,null,false,null,null,null,\"I09lfd\"],[45658199,null,true,null,null,null,\"UXqG3c\"],[102727276,null,true,null,null,null,\"V46R2c\"],[103237685,null,false,null,null,null,\"Vi6dVd\"],[45707279,null,false,null,null,null,\"CkuQKe\"],[45720335,null,false,null,null,null,\"i6dpAc\"],[45683429,null,false,null,null,null,\"q1sPR\"],[45532487,null,false,null,null,null,\"QmVtWe\"],[45639541,null,false,null,null,null,\"LHinid\"],[104755252,null,false,null,null,null,\"H7ga2\"],[45532515,null,false,null,null,null,\"iJoSx\"],[45709238,null,false,null,null,null,\"jQTN0e\"],[45719766,null,false,null,null,null,\"A3eSQd\"],[45532518,null,true,null,null,null,\"B8bEpb\"],[45696085,null,false,null,null,null,\"g3Gc7d\"],[104930518,null,false,null,null,null,\"kv71Ld\"],[45654291,null,false,null,null,null,\"rhP5uf\"],[45653421,null,true,null,null,null,\"K2C7od\"],[45644639,null,true,null,null,null,\"GoJCRc\"],[45657471,null,null,null,null,null,\"kMR5pc\",[\"[]\"]],[45461790,null,true,null,null,null,\"fYosoc\"],[45621619,null,false,null,null,null,\"PfkIr\"],[45701745,null,false,null,null,null,\"GexZee\"],[45572250,null,false,null,null,null,\"B3nrSd\"],[45532469,null,false,null,null,null,\"PsmxOd\"],[45666088,null,false,null,null,null,\"MgfT5\"],[104728268,null,false,null,null,null,\"UdrPIe\"],[104967738,null,false,null,null,null,\"vAtoTc\"],[105140868,null,false,null,null,null,\"C6T5Ne\"],[45701337,null,true,null,null,null,\"vVzeS\"],[45696263,null,null,null,null,null,\"W12Bse\",[\"[]\"]],[45653615,null,null,null,null,null,\"lwF00d\",[\"[[\\\"es\\\",\\\"pt\\\",\\\"ja\\\",\\\"ko\\\",\\\"fr\\\",\\\"it\\\",\\\"de\\\",\\\"zh\\\",\\\"nl\\\",\\\"iw\\\",\\\"tr\\\",\\\"cs\\\",\\\"sv\\\",\\\"da\\\",\\\"no\\\",\\\"pl\\\",\\\"vi\\\",\\\"th\\\",\\\"fi\\\",\\\"uk\\\",\\\"ar\\\",\\\"ru\\\",\\\"hu\\\",\\\"ro\\\"]]\"]],[45532470,null,false,null,null,null,\"nkW9Bd\"],[45532482,null,false,null,null,null,\"MCyLtd\"],[45681790,null,true,null,null,null,\"uPCxtc\"],[45425708,null,false,null,null,null,\"paB7Mc\"],[45647060,null,true,null,null,null,\"uYjPWb\"],[105151160,null,false,null,null,null,\"UexQGe\"],[45720439,null,false,null,null,null,\"UFhFZb\"],[45690176,null,false,null,null,null,\"qF6xVc\"],[45644641,null,null,3.14159,null,null,\"FX1FL\"],[103202868,null,true,null,null,null,\"BI3Voe\"],[45694562,null,false,null,null,null,\"D50qNc\"],[45697234,null,false,null,null,null,\"cUoIXb\"],[103171308,null,false,null,null,null,\"hQAFBf\"],[45654169,null,false,null,null,null,\"HCu2yf\"],[45532475,null,true,null,null,null,\"R9Zxyf\"],[45718842,null,false,null,null,null,\"Ywwwdb\"],[45696619,null,false,null,null,null,\"U7gqEe\"]],\"CAMSqAEdogb995oSDfamlQUdn/jFDR3eoCUdx9wPHaCMDYEPtO/fDQmO1QjD3gUJsa4Ah9eQBAOXBQPPlAMdsocMCeWMHgjDygUIlkMD/ZMCCObaDQPa/AocvR4D6pwGuToDzygcs+cACLllA5GdBapMA+aBAwPknAaNqQYD4o8GCK+zDgjJSwj33QEIvMhKAR0BpeUP+YkECPXdDwOw5gG0BK6aAACdww3n0AY\\u003d\"]]]","nQyAE":{"UgN4sd":"false","a3yivf":"false","th0P5b":"false","L1NGcf":"false","AlT7Gc":"false","javCS":"false","LsTHVd":"false","ve5aPd":"false","IQ9eXe":"false","RAfhxd":"true","SIHSd":"true","qy6Yfe":"false","cs47xb":"true","SAfgab":"false","Yazsqc":"true","CLa75b":"false","lafMW":"false","WHHesd":"false","BJ0Jme":"false","jh9W6":"true","uB9G2":"false","xT1j6c":"false","Fckv0d":"false","pM59ue":"false","rJqi7d":"false","ix5pe":"false","FshjQd":"true","ZGKLTc":"false","t0MBkb":"false","djz3af":"true","lZwLLd":"false","D98G6d":"false","X6RrBc":"true","Vu4kKe":"false","lnFsPb":"true","AX3mgf":"false","a16NK":"false","KNY5b":"false","gc0hYb":"false","pw5OB":"false","hLyJR":"false","UvyqJd":"false","NMaRze":"false","slpXhf":"false","rY1UYc":"true","RF0nW":"false","eu5Lwc":"false","UgzHWc":"true","DVK3Xd":"false","hPpfcc":"false","aJ6Sw":"false","eClokb":"true","qlMIIf":"false","uiPKjf":"false","u3w61c":"false","TDYaDf":"true","EnbSP":"false","Fxdqse":"false","jNM53":"true","C2mGWb":"true","eatMke":"false","jr1eKf":"false","l1Skxe":"false","JoVMDd":"true","CTTarb":"false","vjLUF":"false","N6tmhe":"true","i9TA7":"true","F9HKQc":"true","gvNuze":"true","Yp6lv":"false","wbyKCf":"false","V46R2c":"true","CkuQKe":"false","q1sPR":"false","QmVtWe":"false","H7ga2":"false","kv71Ld":"false","fYosoc":"true","GexZee":"false","B3nrSd":"false","PsmxOd":"false","UdrPIe":"false","vAtoTc":"false","C6T5Ne":"false","nkW9Bd":"false","MCyLtd":"false","paB7Mc":"false","UexQGe":"false","hQAFBf":"false","R9Zxyf":"true"},"ozi0wb":"%.@.\"embed.EmbedInitialData\",[\"AIzaSyDOtGM5jr8bNp1utVpG2_gSRH03RNGBkI8\",[\"v3\",\"https://clients6.google.com\"]],[[\"ml5r3onmd8r5iolhgmnq4k6nb4@group.calendar.google.com\",[null,4],\"CSSS Frosh Week 2022\"]],[\"prod-05-us.web\",\"calendar.web_20250813.11_p0\",\"build-label: calendar.web_20250813.11_p0, cl/794646938, io.prod-05-us.web.14\",1755579645010],[\"America/Vancouver\",\"(GMT-07:00) Pacific Time - Vancouver\",null,\"-bo{guzj0{-dc{gyvko{-bo{h67z0{-dc{ha40o{-bo{hhgf0{-dc{hlcgo{-bo{hsov0{-dc{hwsoo{-bo{i4530{-dc{i814o{-bo{ifdj0{-dc{ij9ko{-bo{iqlz0{-dc{iui0o{-bo\"],\"2025b\",[false,false,false,true,true,false,true,false,false,false],null,\"week\",1,false,\"MDY\",\"en\",\"20220912\",\"CSSS Frosh Week 2022\"]","wd3Loc":[44530662,104922065,102999075,102912728,102854346,103038889,104900996,102866958,101448280,102259519,102034851,99379775,101738211,102200770,94691047,105033277,103312834,105151727,105110468,101489850,104627935,102690094,104779353,102727301,105351915,105101802,102149334,71425103,104584615,101775400,44529797,102192043,104897994,102514957,103021363,102721184,104793034,101489572,71963846,102285389,71637239,103193058,49023378,105324298,71797527,71092550,102275108,104897924,101962593,104584581,105242973,102693358,71654715,105196909,105052417,104897890,102461236,105264297,102564581,94811038,102979135,94390537,104897972,71424974,101557918,102999654,103202881,105080088,48961113,48961111,44530654,104922060,102713308,102912723,102854330,103038873,104900991,102866953,101448275,102259170,102034846,99379760,101738196,102200765,94691032,105032841,103312818,105151719,105110463,101489845,104627929,102690066,104779337,102727273,102903077,105101797,102149318,71425076,104584608,101775395,44529786,102192027,104897989,102514952,103021358,102721179,104793029,101489567,71962815,102285373,71637226,103193042,49023351,104728266,71797500,71092523,102275103,104897919,101672713,104584574,105242968,102693353,71654688,105196904,105052412,104897885,102461231,105264292,102564576,94646803,102979130,94390522,104897967,71424947,101557891,102999649,103202865,48961078,48960529]};</script><meta http-equiv="content-type" content="text/html; charset=UTF-8"><link rel="icon" type="image/x-icon" href="https://calendar.google.com/googlecalendar/images/favicons_2020q4/calendar_31.ico"><meta name="viewport" content="width=device-width, initial-scale=1"><meta property="og:title" content="CSSS Frosh Week 2022"><link rel="preconnect" href="https://apis.google.com/"><link rel="preconnect" href="https://clients6.google.com/"><link rel="preload" href="embed_data_002/api.js" as="script" nonce=""><script type="text/javascript" nonce="">(function(){/*
+
+ Copyright The Closure Library Authors.
+ SPDX-License-Identifier: Apache-2.0
+*/
+var b=this||self;/*
+
+ Copyright 2024 Google, Inc
+ SPDX-License-Identifier: MIT
+*/
+var c=["focus","blur","error","load","toggle"];function h(a){return a==="mouseenter"?"mouseover":a==="mouseleave"?"mouseout":a==="pointerenter"?"pointerover":a==="pointerleave"?"pointerout":a};var m=function(){var a=new k;this.j={};this.m={};this.i=null;this.g=[];this.o=a};m.prototype.handleEvent=function(a,d,e){p(this,{eventType:a,event:d,targetElement:d.target,eic:e,timeStamp:Date.now(),eia:void 0,eirp:void 0,eiack:void 0})};
+var p=function(a,d){if(a.i)a.i(d);else{d.eirp=!0;var e;(e=a.g)==null||e.push(d)}},q=function(a,d,e){if(!(d in a.j)&&a.o){var g=function(l,f,x){a.handleEvent(l,f,x)};a.j[d]=g;e=h(e||d);if(e!==d){var n=a.m[e]||[];n.push(d);a.m[e]=n}a.o.addEventListener(e,function(l){return function(f){g(d,f,l)}},void 0)}};m.prototype.l=function(a){return this.j[a]};m.prototype.ecrd=function(a){this.i=a;var d;if((d=this.g)==null?0:d.length){for(a=0;a<this.g.length;a++)p(this,this.g[a]);this.g=null}};var r=typeof navigator!=="undefined"&&/iPhone|iPad|iPod/.test(navigator.userAgent),k=function(){this.element=window.document.documentElement;this.u=[]};k.prototype.addEventListener=function(a,d,e){r&&(this.element.style.cursor="pointer");var g=this.u,n=g.push,l=this.element;d=d(this.element);var f=!1;c.indexOf(a)>=0&&(f=!0);l.addEventListener(a,d,typeof e==="boolean"?{capture:f,passive:e}:f);n.call(g,{eventType:a,l:d,capture:f,passive:e})};var t=new m;q(t,"blur");q(t,"click");q(t,"dblclick");q(t,"focus");q(t,"focusin");q(t,"focusout");q(t,"gotpointercapture");q(t,"input");q(t,"keydown");q(t,"keypress");q(t,"keyup");q(t,"load");q(t,"lostpointercapture");q(t,"mousedown");q(t,"mouseenter");q(t,"mouseleave");q(t,"mousemove");q(t,"mouseover");q(t,"mouseout");q(t,"mouseup");q(t,"pointercancel");q(t,"pointerdown");q(t,"pointerenter");q(t,"pointerleave");q(t,"pointermove");q(t,"pointerout");q(t,"pointerover");q(t,"pointerup");q(t,"change");
+q(t,"contextmenu");q(t,"paste");q(t,"transitionend","onwebkittransitionend"in window?"webkitTransitionEnd":void 0);q(t,"animationend","onwebkitanimationend"in window?"webkitAnimationEnd":void 0);
+for(var u=function(a){return{trigger:function(d){var e=a.l(d.type);e||(q(a,d.type),e=a.l(d.type));var g=d.target||d.srcElement;e&&e(d.type,d,g.ownerDocument.documentElement)},configure:function(d){d(a)}}}(t),v=["_GCAL_wizbind"],w=window||b,y;v.length&&(y=v.shift());)v.length||u===void 0?w=w[y]&&w[y]!==Object.prototype[y]?w[y]:w[y]={}:w[y]=u;}).call(this);
+</script><script id="base-js" src="embed_data_002/m=base.es" async="" nonce=""></script><script nonce="">Error.stackTraceLimit = 25; function reportLoadErrorToServer() {const xhr = new XMLHttpRequest(); xhr.open('POST', '\/calendar\/bmlf'); xhr.send();}document.getElementById('base-js').addEventListener( 'error', reportLoadErrorToServer, false);</script><meta name="google" value="notranslate"><script src="embed_data_002/api.js" nonce="" gapi_processed="true"></script></head><body id="yDmH0d" class="yDmH0d geSgge GrxScd EIlDfe" jsaction="coyz0e:.CLIENT;c7OXCd:.CLIENT;GvneHb:.CLIENT;xJqPre:.CLIENT;keydown:.CLIENT;keyup:.CLIENT;keypress:.CLIENT"><div class="O0O81b" jscontroller="Gois3b" jsaction="rcuQ6b:npT2md;ASTbff:rcuQ6b;GeD47d:lVIrAe;rBcAz:ALJPCd;mIL4me:URN5wf;NQ5d2b:if9IVb;jB84Te:cIKxIe;rwMyCf:MlWXp;Nxrg1b:CQ5rSd;d5OR2:rUfL9c;dXB3wc:fofv3b;mfOvT:Dkhmcc;"><div jscontroller="oJz28e" class="ErQSec-qNpTzb-MkD1Ye LyKlYb" data-progressvalue="0" data-buffervalue="1" jsaction="transitionend:e204de" aria-hidden="true"><div class="ErQSec-qNpTzb-P1ekSe ErQSec-qNpTzb-P1ekSe-OWXEXe-A9y3zc ErQSec-qNpTzb-P1ekSe-OWXEXe-OiiCO-IhfUye ErQSec-qNpTzb-P1ekSe-OWXEXe-xTMeO ErQSec-qNpTzb-P1ekSe-OWXEXe-xTMeO-OiiCO-Xhs9z" role="progressbar" aria-label="Loading calendar" jsname="LbNpof"><div class="ErQSec-qNpTzb-BEcm3d-LK5yu" style="" jsname="XCKw4c"></div><div class="ErQSec-qNpTzb-OcUoKf-LK5yu" style="" jsname="IGn7me"></div><div class="ErQSec-qNpTzb-oLOYtf-uDEFge" jsname="NIZIe"></div><div class="ErQSec-qNpTzb-OcUoKf-qwU8Me" style="" jsname="YUkMeb"></div><div class="ErQSec-qNpTzb-BEcm3d-qwU8Me" style="" jsname="SBP9"><div class="ErQSec-qNpTzb-ajuXxc-RxYbNe"></div></div><div class="ErQSec-qNpTzb-Ejc3of-uDEFge" jsname="MMMbxf"></div></div></div><header class="lDz5J" jsaction="FzgWvd:dGfhef;lKn4nc: trigger.dXB3wc;z4PzBe: trigger.mfOvT;JIbuQc:PEFSMe(egqlre),feqbab(wAA5dc)" jscontroller="AOOoIf"><div class="ABpxKf fXx9Lc"><div class="lokmme kgzTjb"></div><div class="lokmme"></div></div></header><main id="YPCqFe" class="FqmGCf"><div class="EuOD6"><div class="eVeNLd j0nwNb" jslog="34350; track:impression" jsaction="rcuQ6b:npT2md;ASTbff:KbbOyc;n2FbAf:ailHJb;LIZpcd:wbM2Wc;RJcxM:KbbOyc;nHyby:KbbOyc;yu3jad:ZcHfI;BfU09d:g0fzbf;KBginb:KbbOyc" aria-label=" Week of September 12, 2022, 10 events" jscontroller="mI2wfb"><div role="grid" aria-readonly="true" jsname="mOIbvc" aria-owns="c52" jscontroller="dexBRe" jsaction="focusin:npT2md;A2tHXd:a50Grf;jv3ZKb:mkWPrb" data-enable-grid-navigation="true" class="pbeTDb YoVtqb EFNx4d eh5oYe" style="--column-view-ewl-rows: 0;"><div jsname="ixxhSe" data-is-column-view-context="true" jscontroller="IMqiXc" jsaction="rk1UBd:BR1XE; click: cOuCgd;t5vq6e:N97sMe;JIbuQc:BR1XE(xaTImb);rcuQ6b:c6Oz3c" class="BfTITd  fipZNe" data-start-date-key="26924" data-end-date-key="26930" data-chip-offset-top="0" data-disable-all-day-creation="false" data-is-horizontally-scrollable="true"><div class="UqLcs"><div class="kL3bhb" aria-hidden="true"><div class="JMX7ge Xc6hQ TzA9Ye"><div class="gpQ66b ouBNcf">GMT-07</div><div class="gpQ66b iHNmdb">12 AM</div><div class="gpQ66b iHNmdb">1 AM</div><div class="gpQ66b iHNmdb">2 AM</div><div class="gpQ66b iHNmdb">3 AM</div><div class="gpQ66b iHNmdb">4 AM</div><div class="gpQ66b iHNmdb">5 AM</div><div class="gpQ66b iHNmdb">6 AM</div><div class="gpQ66b iHNmdb">7 AM</div><div class="gpQ66b iHNmdb">8 AM</div><div class="gpQ66b iHNmdb">9 AM</div><div class="gpQ66b iHNmdb">10 AM</div><div class="gpQ66b iHNmdb">11 AM</div><div class="gpQ66b iHNmdb">12 PM</div><div class="gpQ66b iHNmdb">1 PM</div><div class="gpQ66b iHNmdb">2 PM</div><div class="gpQ66b iHNmdb">3 PM</div><div class="gpQ66b iHNmdb">4 PM</div><div class="gpQ66b iHNmdb">5 PM</div><div class="gpQ66b iHNmdb">6 PM</div><div class="gpQ66b iHNmdb">7 PM</div><div class="gpQ66b iHNmdb">8 PM</div><div class="gpQ66b iHNmdb">9 PM</div><div class="gpQ66b iHNmdb">10 PM</div><div class="gpQ66b iHNmdb">11 PM</div></div></div><div aria-hidden="true" class="SrADx"><div class="sS0sZd" jscontroller="eg8UTd" jsaction="focus: eGiyHb;mouseenter: eGiyHb; touchstart: eGiyHb" data-text="GMT-07" data-tooltip-position="bottom" data-tooltip-vertical-offset="0" data-tooltip-horizontal-offset="0" data-tooltip-only-if-necessary="false"><div class="H4QSac ouBNcf">GMT-07</div><div class="JMX7ge"><div class="gpQ66b ouBNcf">GMT-07</div><div class="gpQ66b iHNmdb">12 AM</div><div class="gpQ66b iHNmdb">1 AM</div><div class="gpQ66b iHNmdb">2 AM</div><div class="gpQ66b iHNmdb">3 AM</div><div class="gpQ66b iHNmdb">4 AM</div><div class="gpQ66b iHNmdb">5 AM</div><div class="gpQ66b iHNmdb">6 AM</div><div class="gpQ66b iHNmdb">7 AM</div><div class="gpQ66b iHNmdb">8 AM</div><div class="gpQ66b iHNmdb">9 AM</div><div class="gpQ66b iHNmdb">10 AM</div><div class="gpQ66b iHNmdb">11 AM</div><div class="gpQ66b iHNmdb">12 PM</div><div class="gpQ66b iHNmdb">1 PM</div><div class="gpQ66b iHNmdb">2 PM</div><div class="gpQ66b iHNmdb">3 PM</div><div class="gpQ66b iHNmdb">4 PM</div><div class="gpQ66b iHNmdb">5 PM</div><div class="gpQ66b iHNmdb">6 PM</div><div class="gpQ66b iHNmdb">7 PM</div><div class="gpQ66b iHNmdb">8 PM</div><div class="gpQ66b iHNmdb">9 PM</div><div class="gpQ66b iHNmdb">10 PM</div><div class="gpQ66b iHNmdb">11 PM</div></div></div></div></div><div role="presentation" class="Zf8VQe"><div class="R9tCRe"><div class="dgndR" jsname="kCV3k"><div class="FDbe8b"></div><div class="djb5I"><div class="INK2ed"></div><div class="INK2ed"></div><div class="INK2ed"></div><div class="INK2ed"></div><div class="INK2ed"></div><div class="INK2ed"></div><div class="INK2ed"></div></div></div></div><div role="row" class="fhpo2c"><div role="presentation" jsname="ShISi" class="EYcIbe"><div class="FDbe8b"></div><div class="yzWBv  ChfiMc pCcXPe" role="columnheader" aria-readonly="true" tabindex="-1" data-dragsource-type="8"><div class="PdjKid"></div><h2 class="hI2jVc" aria-label="Monday, September 12" jsaction="JIbuQc:ptX2ze(KpB2Ud)"><div aria-hidden="true" class="sVASAd tWjOu   pCcXPe">Mon</div><div jslog="184671" class="sVASAd nSCxEf pCcXPe" aria-label="Monday, September 12">12</div></h2></div><div class="yzWBv  ChfiMc pCcXPe" role="columnheader" aria-readonly="true" tabindex="-1" data-dragsource-type="8"><div class="PdjKid"></div><h2 class="hI2jVc" aria-label="Tuesday, September 13" jsaction="JIbuQc:ptX2ze(KpB2Ud)"><div aria-hidden="true" class="sVASAd tWjOu   pCcXPe">Tue</div><div jslog="184671" class="sVASAd nSCxEf pCcXPe" aria-label="Tuesday, September 13">13</div></h2></div><div class="yzWBv  ChfiMc pCcXPe" role="columnheader" aria-readonly="true" tabindex="-1" data-dragsource-type="8"><div class="PdjKid"></div><h2 class="hI2jVc" aria-label="Wednesday, September 14" jsaction="JIbuQc:ptX2ze(KpB2Ud)"><div aria-hidden="true" class="sVASAd tWjOu   pCcXPe">Wed</div><div jslog="184671" class="sVASAd nSCxEf pCcXPe" aria-label="Wednesday, September 14">14</div></h2></div><div class="yzWBv  ChfiMc pCcXPe" role="columnheader" aria-readonly="true" tabindex="-1" data-dragsource-type="8"><div class="PdjKid"></div><h2 class="hI2jVc" aria-label="Thursday, September 15" jsaction="JIbuQc:ptX2ze(KpB2Ud)"><div aria-hidden="true" class="sVASAd tWjOu   pCcXPe">Thu</div><div jslog="184671" class="sVASAd nSCxEf pCcXPe" aria-label="Thursday, September 15">15</div></h2></div><div class="yzWBv  ChfiMc pCcXPe" role="columnheader" aria-readonly="true" tabindex="-1" data-dragsource-type="8"><div class="PdjKid"></div><h2 class="hI2jVc" aria-label="Friday, September 16" jsaction="JIbuQc:ptX2ze(KpB2Ud)"><div aria-hidden="true" class="sVASAd tWjOu   pCcXPe">Fri</div><div jslog="184671" class="sVASAd nSCxEf pCcXPe" aria-label="Friday, September 16">16</div></h2></div><div class="yzWBv  ChfiMc pCcXPe" role="columnheader" aria-readonly="true" tabindex="-1" data-dragsource-type="8"><div class="PdjKid"></div><h2 class="hI2jVc" aria-label="Saturday, September 17" jsaction="JIbuQc:ptX2ze(KpB2Ud)"><div aria-hidden="true" class="sVASAd tWjOu   pCcXPe">Sat</div><div jslog="184671" class="sVASAd nSCxEf pCcXPe" aria-label="Saturday, September 17">17</div></h2></div><div class="yzWBv  ChfiMc pCcXPe" role="columnheader" aria-readonly="true" tabindex="-1" data-dragsource-type="8"><div class="PdjKid"></div><h2 class="hI2jVc" aria-label="Sunday, September 18" jsaction="JIbuQc:ptX2ze(KpB2Ud)"><div aria-hidden="true" class="sVASAd tWjOu   pCcXPe">Sun</div><div jslog="184671" class="sVASAd nSCxEf pCcXPe" aria-label="Sunday, September 18">18</div></h2></div><div aria-hidden="true" class="VPNtpe"></div></div></div><div jsname="sZR1Lb" role="presentation" aria-hidden="true" class="Qotkjb" style="max-height: 1em;"><div class="FDbe8b"></div><div role="presentation" class="ZDEHt"><ul aria-hidden="true" class="bOyeud" jsname="GkYald"><li jsname="LF4U9b" class="gZ8fdb" data-datekey="26924"></li><li jsname="LF4U9b" class="gZ8fdb" data-datekey="26925"></li><li jsname="LF4U9b" class="gZ8fdb" data-datekey="26926"></li><li jsname="LF4U9b" class="gZ8fdb" data-datekey="26927"></li><li jsname="LF4U9b" class="gZ8fdb" data-datekey="26928"></li><li jsname="LF4U9b" class="gZ8fdb" data-datekey="26929"></li><li jsname="LF4U9b" class="gZ8fdb" data-datekey="26930"></li></ul><div role="presentation" data-dragsource-type="8" class="PTdDEc ChfiMc enpite" style="height: 0em;" jscontroller="YVjRCf"><div role="gridcell" class="qLWd9c" aria-labelledby="c53" tabindex="-1"><h2 class="CqwSk XuJrye" id="c53">No all day events, Monday, September 12</h2></div><div role="gridcell" class="qLWd9c" aria-labelledby="c54" tabindex="-1"><h2 class="CqwSk XuJrye" id="c54">No all day events, Tuesday, September 13</h2></div><div role="gridcell" class="qLWd9c" aria-labelledby="c55" tabindex="-1"><h2 class="CqwSk XuJrye" id="c55">No all day events, Wednesday, September 14</h2></div><div role="gridcell" class="qLWd9c" aria-labelledby="c56" tabindex="-1"><h2 class="CqwSk XuJrye" id="c56">No all day events, Thursday, September 15</h2></div><div role="gridcell" class="qLWd9c" aria-labelledby="c57" tabindex="-1"><h2 class="CqwSk XuJrye" id="c57">No all day events, Friday, September 16</h2></div><div role="gridcell" class="qLWd9c" aria-labelledby="c58" tabindex="-1"><h2 class="CqwSk XuJrye" id="c58">No all day events, Saturday, September 17</h2></div><div role="gridcell" class="qLWd9c" aria-labelledby="c59" tabindex="-1"><h2 class="CqwSk XuJrye" id="c59">No all day events, Sunday, September 18</h2></div></div></div><div aria-hidden="true" class="noVOyb"></div></div></div></div><div jscontroller="bZy7L" jsaction="rcuQ6b:npT2md;vn0Yh:GqvQmd; click:cOuCgd" data-type="1" data-start-date-key="26924" data-end-date-key="26930" class="RuAPDb tkd8cb oXZ1yb T8M5bd"><div class="uEzZIb" jsname="DWFnre"><div aria-hidden="true" jsname="UEmuKf" tabindex="-1" class="lqYlwe"><div class="R6TFwe"><div class="XsRa1c "><span class="wO6pL iHNmdb">12 AM</span></div><div class="XsRa1c "><span class="wO6pL iHNmdb">1 AM</span></div><div class="XsRa1c "><span class="wO6pL iHNmdb">2 AM</span></div><div class="XsRa1c "><span class="wO6pL iHNmdb">3 AM</span></div><div class="XsRa1c "><span class="wO6pL iHNmdb">4 AM</span></div><div class="XsRa1c "><span class="wO6pL iHNmdb">5 AM</span></div><div class="XsRa1c "><span class="wO6pL iHNmdb">6 AM</span></div><div class="XsRa1c "><span class="wO6pL iHNmdb">7 AM</span></div><div class="XsRa1c "><span class="wO6pL iHNmdb">8 AM</span></div><div class="XsRa1c "><span class="wO6pL iHNmdb">9 AM</span></div><div class="XsRa1c "><span class="wO6pL iHNmdb">10 AM</span></div><div class="XsRa1c "><span class="wO6pL iHNmdb">11 AM</span></div><div class="XsRa1c "><span class="wO6pL iHNmdb">12 PM</span></div><div class="XsRa1c "><span class="wO6pL iHNmdb">1 PM</span></div><div class="XsRa1c "><span class="wO6pL iHNmdb">2 PM</span></div><div class="XsRa1c "><span class="wO6pL iHNmdb">3 PM</span></div><div class="XsRa1c "><span class="wO6pL iHNmdb">4 PM</span></div><div class="XsRa1c "><span class="wO6pL iHNmdb">5 PM</span></div><div class="XsRa1c "><span class="wO6pL iHNmdb">6 PM</span></div><div class="XsRa1c "><span class="wO6pL iHNmdb">7 PM</span></div><div class="XsRa1c "><span class="wO6pL iHNmdb">8 PM</span></div><div class="XsRa1c "><span class="wO6pL iHNmdb">9 PM</span></div><div class="XsRa1c "><span class="wO6pL iHNmdb">10 PM</span></div><div class="XsRa1c "><span class="wO6pL iHNmdb">11 PM</span></div><div class="JMX7ge"><div class="gpQ66b ouBNcf">GMT-07</div><div class="gpQ66b iHNmdb">12 AM</div><div class="gpQ66b iHNmdb">1 AM</div><div class="gpQ66b iHNmdb">2 AM</div><div class="gpQ66b iHNmdb">3 AM</div><div class="gpQ66b iHNmdb">4 AM</div><div class="gpQ66b iHNmdb">5 AM</div><div class="gpQ66b iHNmdb">6 AM</div><div class="gpQ66b iHNmdb">7 AM</div><div class="gpQ66b iHNmdb">8 AM</div><div class="gpQ66b iHNmdb">9 AM</div><div class="gpQ66b iHNmdb">10 AM</div><div class="gpQ66b iHNmdb">11 AM</div><div class="gpQ66b iHNmdb">12 PM</div><div class="gpQ66b iHNmdb">1 PM</div><div class="gpQ66b iHNmdb">2 PM</div><div class="gpQ66b iHNmdb">3 PM</div><div class="gpQ66b iHNmdb">4 PM</div><div class="gpQ66b iHNmdb">5 PM</div><div class="gpQ66b iHNmdb">6 PM</div><div class="gpQ66b iHNmdb">7 PM</div><div class="gpQ66b iHNmdb">8 PM</div><div class="gpQ66b iHNmdb">9 PM</div><div class="gpQ66b iHNmdb">10 PM</div><div class="gpQ66b iHNmdb">11 PM</div></div></div></div><div class="mDPmMe" jsname="QbbJ2c"><div role="row" class="Tmdkcc ChfiMc" jsname="ff2wFe" id="c52" data-dragsource-type="4"><div aria-hidden="true" class="aLC8Le"><div class="sJ9Raf"></div><div class="sJ9Raf"></div><div class="sJ9Raf"></div><div class="sJ9Raf"></div><div class="sJ9Raf"></div><div class="sJ9Raf"></div><div class="sJ9Raf"></div><div class="sJ9Raf"></div><div class="sJ9Raf"></div><div class="sJ9Raf"></div><div class="sJ9Raf"></div><div class="sJ9Raf"></div><div class="sJ9Raf Izq6pb"></div><div class="sJ9Raf"></div><div class="sJ9Raf"></div><div class="sJ9Raf"></div><div class="sJ9Raf"></div><div class="sJ9Raf"></div><div class="sJ9Raf"></div><div class="sJ9Raf"></div><div class="sJ9Raf"></div><div class="sJ9Raf"></div><div class="sJ9Raf"></div><div class="sJ9Raf"></div></div><div class="EDDeke"></div><div role="gridcell" tabindex="-1" jsname="RjPD4e" aria-labelledby="tsc-0" data-column-index="0" data-datekey="26924" data-principal-ids="" class="BiKU4b"><h2 class="XuJrye" id="tsc-0">2 events, Monday, September 12</h2><div class="QIYAPb"></div><div class="feMFof A3o4Oe"><div role="button" data-eventchip="" data-opens-details="true" tabindex="0" data-eventid="MW5va2l1ZXJtOTRkcjkyMW9zMTFucG5oaDUgbWw1cjNvbm1kOHI1aW9saGdtbnE0azZuYjRAZw" data-keyboardactiontype="0;1" data-focusable="" jscontroller="NAKBTc" jsaction="click:cOuCgd; contextmenu:mg9Pef; dblclick:Reio8; mouseenter:tfO1Yc; mouseleave:JywGue;Bp7Oie:rfjeo;urdzG:Hu9wEd" jslog="35463; 2:[&quot;1nokiuerm94dr921os11npnhh5&quot;,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,6];1:[&quot;ml5r3onmd8r5iolhgmnq4k6nb4@group.calendar.google.com&quot;,2];track:impression,click,dblclick,rfjeo,Hu9wEd; mutable:true" data-dragsource-type="5" class="GTG3wb ChfiMc rFUW1c  EiZ8Dd" style="top: 519px; height: 78px; left: calc(0% + 0px); width: calc(100% - 0px); z-index: 5; background-color: rgb(244, 81, 30); border-color: rgb(244, 81, 30);"><div class="XuJrye">1pm
+ to 3pm, Ice Cream Social, Calendar: CSSS Frosh Week 2022, Location: 
+CSIL - Computing Lab, Applied Sciences Bldg, Burnaby, BC V5A 0A7, 
+Canada, September 12, 2022</div><div aria-hidden="true" class="Jcb6qd"><div class="fFwDnf"><div class="lhydbb RIOtYe EiZ8Dd TuM9nf" style="max-height: 30px;"><span class="KcY3wb"><span class="I0UMhf">Ice Cream Social</span></span></div><div class="lhydbb gVNoLb  EiZ8Dd TuM9nf">1 – 3pm</div><div class="lhydbb K9QN7e  EiZ8Dd TuM9nf">CSIL - Computing Lab, Applied Sciences Bldg, Burnaby, BC V5A 0A7, Canada</div></div></div></div><div role="button" data-eventchip="" data-opens-details="true" tabindex="0" data-eventid="N2FjM3ZsMWgxNHI3cjhubmJodDVuZDk1OGEgbWw1cjNvbm1kOHI1aW9saGdtbnE0azZuYjRAZw" data-keyboardactiontype="0;1" data-focusable="" jscontroller="NAKBTc" jsaction="click:cOuCgd; contextmenu:mg9Pef; dblclick:Reio8; mouseenter:tfO1Yc; mouseleave:JywGue;Bp7Oie:rfjeo;urdzG:Hu9wEd" jslog="35463; 2:[&quot;7ac3vl1h14r7r8nnbht5nd958a&quot;,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,6];1:[&quot;ml5r3onmd8r5iolhgmnq4k6nb4@group.calendar.google.com&quot;,2];track:impression,click,dblclick,rfjeo,Hu9wEd; mutable:true" data-dragsource-type="5" class="GTG3wb ChfiMc rFUW1c  EiZ8Dd" style="top: 619px; height: 58px; left: calc(0% + 0px); width: calc(100% - 0px); z-index: 5; background-color: rgb(244, 81, 30); border-color: rgb(244, 81, 30);"><div class="XuJrye">3:30pm
+ to 5pm, Scavenger Hunt, Calendar: CSSS Frosh Week 2022, Location: CSIL -
+ Computing Lab, Applied Sciences Bldg, Burnaby, BC V5A 0A7, Canada, 
+September 12, 2022</div><div aria-hidden="true" class="Jcb6qd"><div class="fFwDnf"><div class="lhydbb RIOtYe EiZ8Dd TuM9nf" style="max-height: 15px;"><span class="KcY3wb"><span class="I0UMhf">Scavenger Hunt</span></span></div><div class="lhydbb gVNoLb  EiZ8Dd TuM9nf">3:30 – 5pm</div><div class="lhydbb K9QN7e  EiZ8Dd TuM9nf">CSIL - Computing Lab, Applied Sciences Bldg, Burnaby, BC V5A 0A7, Canada</div></div></div></div></div></div><div role="gridcell" tabindex="-1" jsname="RjPD4e" aria-labelledby="tsc-1" data-column-index="1" data-datekey="26925" data-principal-ids="" class="BiKU4b"><h2 class="XuJrye" id="tsc-1">1 event, Tuesday, September 13</h2><div class="QIYAPb"></div><div class="feMFof A3o4Oe"><div role="button" data-eventchip="" data-opens-details="true" tabindex="0" data-eventid="MDdiMWRpcDZzMDNwYjNmYmJhNWNjZDRpaXAgbWw1cjNvbm1kOHI1aW9saGdtbnE0azZuYjRAZw" data-keyboardactiontype="0;1" data-focusable="" jscontroller="NAKBTc" jsaction="click:cOuCgd; contextmenu:mg9Pef; dblclick:Reio8; mouseenter:tfO1Yc; mouseleave:JywGue;Bp7Oie:rfjeo;urdzG:Hu9wEd" jslog="35463; 2:[&quot;07b1dip6s03pb3fbba5ccd4iip&quot;,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,6];1:[&quot;ml5r3onmd8r5iolhgmnq4k6nb4@group.calendar.google.com&quot;,2];track:impression,click,dblclick,rfjeo,Hu9wEd; mutable:true" data-dragsource-type="5" class="GTG3wb ChfiMc rFUW1c  EiZ8Dd" style="top: 539px; height: 118px; left: calc(0% + 0px); width: calc(100% - 0px); z-index: 5; background-color: rgb(244, 81, 30); border-color: rgb(244, 81, 30);"><div class="XuJrye">1:30pm
+ to 4:30pm, Burnaby Mountain Hike, Calendar: CSSS Frosh Week 2022, 
+Location: CSIL - Computing Lab, Applied Sciences Bldg, Burnaby, BC V5A 
+0A7, Canada, September 13, 2022</div><div aria-hidden="true" class="Jcb6qd"><div class="fFwDnf"><div class="lhydbb RIOtYe EiZ8Dd TuM9nf" style="max-height: 75px;"><span class="KcY3wb"><span class="I0UMhf">Burnaby Mountain Hike</span></span></div><div class="lhydbb gVNoLb  EiZ8Dd TuM9nf">1:30 – 4:30pm</div><div class="lhydbb K9QN7e  EiZ8Dd TuM9nf">CSIL - Computing Lab, Applied Sciences Bldg, Burnaby, BC V5A 0A7, Canada</div></div></div></div></div></div><div role="gridcell" tabindex="-1" jsname="RjPD4e" aria-labelledby="tsc-2" data-column-index="2" data-datekey="26926" data-principal-ids="" class="BiKU4b"><h2 class="XuJrye" id="tsc-2">1 event, Wednesday, September 14</h2><div class="QIYAPb"></div><div class="feMFof A3o4Oe"><div role="button" data-eventchip="" data-opens-details="true" tabindex="0" data-eventid="M3U4djViNzYzbmtzZjRiY3I0M3AwdDEzMjkgbWw1cjNvbm1kOHI1aW9saGdtbnE0azZuYjRAZw" data-keyboardactiontype="0;1" data-focusable="" jscontroller="NAKBTc" jsaction="click:cOuCgd; contextmenu:mg9Pef; dblclick:Reio8; mouseenter:tfO1Yc; mouseleave:JywGue;Bp7Oie:rfjeo;urdzG:Hu9wEd" jslog="35463; 2:[&quot;3u8v5b763nksf4bcr43p0t1329&quot;,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,6];1:[&quot;ml5r3onmd8r5iolhgmnq4k6nb4@group.calendar.google.com&quot;,2];track:impression,click,dblclick,rfjeo,Hu9wEd; mutable:true" data-dragsource-type="5" class="GTG3wb ChfiMc rFUW1c  EiZ8Dd" style="top: 679px; height: 158px; left: calc(0% + 0px); width: calc(100% - 0px); z-index: 5; background-color: rgb(244, 81, 30); border-color: rgb(244, 81, 30);"><div class="XuJrye">5pm to 9pm, Board Games and BBQ, Calendar: CSSS Frosh Week 2022, Location: 49.276821, -122.914166, September 14, 2022</div><div aria-hidden="true" class="Jcb6qd"><div class="fFwDnf"><div class="lhydbb RIOtYe EiZ8Dd TuM9nf" style="max-height: 120px;"><span class="KcY3wb"><span class="I0UMhf">Board Games and BBQ</span></span></div><div class="lhydbb gVNoLb  EiZ8Dd TuM9nf">5 – 9pm</div><div class="lhydbb K9QN7e  EiZ8Dd TuM9nf">49.276821, -122.914166</div></div></div></div></div></div><div role="gridcell" tabindex="-1" jsname="RjPD4e" aria-labelledby="tsc-3" data-column-index="3" data-datekey="26927" data-principal-ids="" class="BiKU4b"><h2 class="XuJrye" id="tsc-3">3 events, Thursday, September 15</h2><div class="QIYAPb"></div><div class="feMFof A3o4Oe"><div role="button" data-eventchip="" data-opens-details="true" tabindex="0" data-eventid="NzU1bWs3OWcydWowbjFvY2FiM2I3Nm1ndnMgbWw1cjNvbm1kOHI1aW9saGdtbnE0azZuYjRAZw" data-keyboardactiontype="0;1" data-focusable="" jscontroller="NAKBTc" jsaction="click:cOuCgd; contextmenu:mg9Pef; dblclick:Reio8; mouseenter:tfO1Yc; mouseleave:JywGue;Bp7Oie:rfjeo;urdzG:Hu9wEd" jslog="35463; 2:[&quot;755mk79g2uj0n1ocab3b76mgvs&quot;,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,6];1:[&quot;ml5r3onmd8r5iolhgmnq4k6nb4@group.calendar.google.com&quot;,2];track:impression,click,dblclick,rfjeo,Hu9wEd; mutable:true" data-dragsource-type="5" class="GTG3wb ChfiMc rFUW1c  EiZ8Dd" style="top: 539px; height: 58px; left: calc(0% + 0px); width: calc(100% - 0px); z-index: 5; background-color: rgb(244, 81, 30); border-color: rgb(244, 81, 30);"><div class="XuJrye">1:30pm to 3pm, CS Info Session, Calendar: CSSS Frosh Week 2022, No location, September 15, 2022</div><div aria-hidden="true" class="Jcb6qd"><div class="fFwDnf"><div class="lhydbb RIOtYe EiZ8Dd TuM9nf" style="max-height: 30px;"><span class="KcY3wb"><span class="I0UMhf">CS Info Session</span></span></div><div class="lhydbb gVNoLb  EiZ8Dd TuM9nf">1:30 – 3pm</div><div class="lhydbb K9QN7e  EiZ8Dd TuM9nf"></div></div></div></div><div role="button" data-eventchip="" data-opens-details="true" tabindex="0" data-eventid="NXE1Y29ha240NWlmZmxtcmd1aGIyZ3RrdjggbWw1cjNvbm1kOHI1aW9saGdtbnE0azZuYjRAZw" data-keyboardactiontype="0;1" data-focusable="" jscontroller="NAKBTc" jsaction="click:cOuCgd; contextmenu:mg9Pef; dblclick:Reio8; mouseenter:tfO1Yc; mouseleave:JywGue;Bp7Oie:rfjeo;urdzG:Hu9wEd" jslog="35463; 2:[&quot;5q5coakn45ifflmrguhb2gtkv8&quot;,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,6];1:[&quot;ml5r3onmd8r5iolhgmnq4k6nb4@group.calendar.google.com&quot;,2];track:impression,click,dblclick,rfjeo,Hu9wEd; mutable:true" data-dragsource-type="5" class="GTG3wb ChfiMc rFUW1c  EiZ8Dd" style="top: 599px; height: 118px; left: calc(0% + 0px); width: calc(100% - 0px); z-index: 5; background-color: rgb(244, 81, 30); border-color: rgb(244, 81, 30);"><div class="XuJrye">3pm to 6pm, Pac Macro, Calendar: CSSS Frosh Week 2022, Location: 49.276821, -122.914166, September 15, 2022</div><div aria-hidden="true" class="Jcb6qd"><div class="fFwDnf"><div class="lhydbb RIOtYe EiZ8Dd TuM9nf" style="max-height: 75px;"><span class="KcY3wb"><span class="I0UMhf">Pac Macro</span></span></div><div class="lhydbb gVNoLb  EiZ8Dd TuM9nf">3 – 6pm</div><div class="lhydbb K9QN7e  EiZ8Dd TuM9nf">49.276821, -122.914166</div></div></div></div><div role="button" data-eventchip="" data-opens-details="true" tabindex="0" data-eventid="Mjltb2o2YXNvNmVqbDk3YmRwZ2dpMGFtbzggbWw1cjNvbm1kOHI1aW9saGdtbnE0azZuYjRAZw" data-keyboardactiontype="0;1" data-focusable="" jscontroller="NAKBTc" jsaction="click:cOuCgd; contextmenu:mg9Pef; dblclick:Reio8; mouseenter:tfO1Yc; mouseleave:JywGue;Bp7Oie:rfjeo;urdzG:Hu9wEd" jslog="35463; 2:[&quot;29moj6aso6ejl97bdpggi0amo8&quot;,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,6];1:[&quot;ml5r3onmd8r5iolhgmnq4k6nb4@group.calendar.google.com&quot;,2];track:impression,click,dblclick,rfjeo,Hu9wEd; mutable:true" data-dragsource-type="5" class="GTG3wb ChfiMc rFUW1c  EiZ8Dd" style="top: 759px; height: 78px; left: calc(0% + 0px); width: calc(100% - 0px); z-index: 5; background-color: rgb(244, 81, 30); border-color: rgb(244, 81, 30);"><div class="XuJrye">7pm to 9pm, Dinner, Calendar: CSSS Frosh Week 2022, Location: 49.276821, -122.914166, September 15, 2022</div><div aria-hidden="true" class="Jcb6qd"><div class="fFwDnf"><div class="lhydbb RIOtYe EiZ8Dd TuM9nf" style="max-height: 30px;"><span class="KcY3wb"><span class="I0UMhf">Dinner</span></span></div><div class="lhydbb gVNoLb  EiZ8Dd TuM9nf">7 – 9pm</div><div class="lhydbb K9QN7e  EiZ8Dd TuM9nf">49.276821, -122.914166</div></div></div></div></div></div><div role="gridcell" tabindex="-1" jsname="RjPD4e" aria-labelledby="tsc-4" data-column-index="4" data-datekey="26928" data-principal-ids="" class="BiKU4b"><h2 class="XuJrye" id="tsc-4">1 event, Friday, September 16</h2><div class="QIYAPb"></div><div class="feMFof A3o4Oe"><div role="button" data-eventchip="" data-opens-details="true" tabindex="0" data-eventid="N2w4aWNyMDlydmJ2aGRrNjQ4bzdudWNkbzYgbWw1cjNvbm1kOHI1aW9saGdtbnE0azZuYjRAZw" data-keyboardactiontype="0;1" data-focusable="" jscontroller="NAKBTc" jsaction="click:cOuCgd; contextmenu:mg9Pef; dblclick:Reio8; mouseenter:tfO1Yc; mouseleave:JywGue;Bp7Oie:rfjeo;urdzG:Hu9wEd" jslog="35463; 2:[&quot;7l8icr09rvbvhdk648o7nucdo6&quot;,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,6];1:[&quot;ml5r3onmd8r5iolhgmnq4k6nb4@group.calendar.google.com&quot;,2];track:impression,click,dblclick,rfjeo,Hu9wEd; mutable:true" data-dragsource-type="5" class="GTG3wb ChfiMc rFUW1c  EiZ8Dd" style="top: 759px; height: 198px; left: calc(0% + 0px); width: calc(100% - 0px); z-index: 5; background-color: rgb(244, 81, 30); border-color: rgb(244, 81, 30);"><div class="XuJrye">September
+ 16, 2022 at 7pm to September 17, 2022 at 8am, Midnight Madness, 
+Calendar: CSSS Frosh Week 2022, Location: 49.276821, -122.914166, </div><div aria-hidden="true" class="Jcb6qd"><div class="fFwDnf"><div class="lhydbb RIOtYe EiZ8Dd TuM9nf" style="max-height: 150px;"><span class="KcY3wb"><span class="I0UMhf">Midnight Madness</span></span></div><div class="lhydbb gVNoLb  EiZ8Dd TuM9nf">7pm – 8am</div><div class="lhydbb K9QN7e  EiZ8Dd TuM9nf">49.276821, -122.914166</div></div></div></div></div></div><div role="gridcell" tabindex="-1" jsname="RjPD4e" aria-labelledby="tsc-5" data-column-index="5" data-datekey="26929" data-principal-ids="" class="BiKU4b"><h2 class="XuJrye" id="tsc-5">3 events, Saturday, September 17</h2><div class="QIYAPb"></div><div class="feMFof A3o4Oe"><div role="button" data-eventchip="" data-opens-details="true" tabindex="0" data-eventid="N2w4aWNyMDlydmJ2aGRrNjQ4bzdudWNkbzYgbWw1cjNvbm1kOHI1aW9saGdtbnE0azZuYjRAZw" data-keyboardactiontype="0;1" data-focusable="" jscontroller="NAKBTc" jsaction="click:cOuCgd; contextmenu:mg9Pef; dblclick:Reio8; mouseenter:tfO1Yc; mouseleave:JywGue;Bp7Oie:rfjeo;urdzG:Hu9wEd" jslog="35463; 2:[&quot;7l8icr09rvbvhdk648o7nucdo6&quot;,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,6];1:[&quot;ml5r3onmd8r5iolhgmnq4k6nb4@group.calendar.google.com&quot;,2];track:impression,click,dblclick,rfjeo,Hu9wEd; mutable:true" data-dragsource-type="5" class="GTG3wb ChfiMc rFUW1c  EiZ8Dd" style="top: -1px; height: 318px; left: calc(0% + 0px); width: calc(100% - 0px); z-index: 5; background-color: rgb(244, 81, 30); border-color: rgb(244, 81, 30);"><div class="XuJrye">September
+ 16, 2022 at 7pm to September 17, 2022 at 8am, Midnight Madness, 
+Calendar: CSSS Frosh Week 2022, Location: 49.276821, -122.914166, </div><div aria-hidden="true" class="Jcb6qd"><div class="fFwDnf"><div class="lhydbb RIOtYe EiZ8Dd TuM9nf" style="max-height: 270px;"><span class="KcY3wb"><span class="I0UMhf">Midnight Madness</span></span></div><div class="lhydbb gVNoLb  EiZ8Dd TuM9nf">7pm – 8am</div><div class="lhydbb K9QN7e  EiZ8Dd TuM9nf">49.276821, -122.914166</div></div></div></div><div role="button" data-eventchip="" data-opens-details="true" tabindex="0" data-eventid="NmU5azFsMW1wMHBwNzhhN2F1ODIwYW0wbmogbWw1cjNvbm1kOHI1aW9saGdtbnE0azZuYjRAZw" data-keyboardactiontype="0;1" data-focusable="" jscontroller="NAKBTc" jsaction="click:cOuCgd; contextmenu:mg9Pef; dblclick:Reio8; mouseenter:tfO1Yc; mouseleave:JywGue;Bp7Oie:rfjeo;urdzG:Hu9wEd" jslog="35463; 2:[&quot;6e9k1l1mp0pp78a7au820am0nj&quot;,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,6];1:[&quot;ml5r3onmd8r5iolhgmnq4k6nb4@group.calendar.google.com&quot;,2];track:impression,click,dblclick,rfjeo,Hu9wEd; mutable:true" data-dragsource-type="5" class="GTG3wb ChfiMc rFUW1c  EiZ8Dd Hrn1mc MmaWIb" style="top: 239px; height: 38px; left: calc(5% + 0px); width: calc(95% - 0px); z-index: 6; background-color: rgb(244, 81, 30); border-color: rgb(244, 81, 30);"><div class="XuJrye">6am to 7am, RAMing Ceremony, Calendar: CSSS Frosh Week 2022, Location: 0N 0E, September 17, 2022</div><div aria-hidden="true" class="Jcb6qd"><div class="fFwDnf"><div class="lhydbb RIOtYe cpCWFd EiZ8Dd TuM9nf" style="max-height: 15px;"><span class="KcY3wb"><span class="I0UMhf">RAMing Ceremony</span></span></div><div class="lhydbb gVNoLb  EiZ8Dd TuM9nf"><span class="b0NTye">6am</span><span class="pttLke">,&nbsp;</span><span class="k7JKz">0N 0E</span></div></div></div></div><div role="button" data-eventchip="" data-opens-details="true" tabindex="0" data-eventid="MnRvZDJpbjQxdm01c2wzY2N1YzVybjl0cHMgbWw1cjNvbm1kOHI1aW9saGdtbnE0azZuYjRAZw" data-keyboardactiontype="0;1" data-focusable="" jscontroller="NAKBTc" jsaction="click:cOuCgd; contextmenu:mg9Pef; dblclick:Reio8; mouseenter:tfO1Yc; mouseleave:JywGue;Bp7Oie:rfjeo;urdzG:Hu9wEd" jslog="35463; 2:[&quot;2tod2in41vm5sl3ccuc5rn9tps&quot;,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,6];1:[&quot;ml5r3onmd8r5iolhgmnq4k6nb4@group.calendar.google.com&quot;,2];track:impression,click,dblclick,rfjeo,Hu9wEd; mutable:true" data-dragsource-type="5" class="GTG3wb ChfiMc rFUW1c  EiZ8Dd Hrn1mc MmaWIb" style="top: 279px; height: 38px; left: calc(5% + 0px); width: calc(95% - 0px); z-index: 6; background-color: rgb(244, 81, 30); border-color: rgb(244, 81, 30);"><div class="XuJrye">7am
+ to 8am, Breakfast, Calendar: CSSS Frosh Week 2022, Location: SFU Dining
+ Hall, 8888 University Dr W, Burnaby, BC V5A 1S6, Canada, September 17, 
+2022</div><div aria-hidden="true" class="Jcb6qd"><div class="fFwDnf"><div class="lhydbb RIOtYe cpCWFd EiZ8Dd TuM9nf" style="max-height: 15px;"><span class="KcY3wb"><span class="I0UMhf">Breakfast</span></span></div><div class="lhydbb gVNoLb  EiZ8Dd TuM9nf"><span class="b0NTye">7am</span><span class="pttLke">,&nbsp;</span><span class="k7JKz">SFU Dining Hall, 8888 University Dr W, Burnaby, BC V5A 1S6, Canada</span></div></div></div></div></div></div><div role="gridcell" tabindex="-1" jsname="RjPD4e" aria-labelledby="tsc-6" data-column-index="6" data-datekey="26930" data-principal-ids="" class="BiKU4b Qbfsob"><h2 class="XuJrye" id="tsc-6">No events, Sunday, September 18</h2><div class="QIYAPb"></div><div class="feMFof A3o4Oe"></div></div></div></div></div></div></div></div></div></main><footer class="W6Tqvc" jsaction="JIbuQc:YCxUD(NKQgDd)" jscontroller="TftYBf"><div class="Sp1EOc"><div class="vhFatb"><span jscontroller="eg8UTd" jsaction="focus: eGiyHb;mouseenter: eGiyHb; touchstart: eGiyHb" data-text="CSSS Frosh Week 2022" data-tooltip-position="bottom" data-tooltip-vertical-offset="0" data-tooltip-horizontal-offset="0" data-tooltip-only-if-necessary="true">CSSS Frosh Week 2022</span></div><div class="UrczRe"><span class="HRWqjc">Events shown in time zone: (GMT-07:00) Pacific Time - Vancouver</span><span class="DVrpac"><span aria-hidden="true">GMT-07</span><span class="XuJrye">Events shown in time zone: (GMT-07:00) Pacific Time - Vancouver</span></span></div><button class="mUIrbf-LgbsSe mUIrbf-kSE8rc-FoKg4d-sLO9V-YoZ4jf jiL72" jscontroller="O626Fe" jsaction="click:h5M12e;clickmod:h5M12e;pointerdown:FEiYhc;pointerup:mF5Elf;pointerenter:EX0mI;pointerleave:vpvbp;pointercancel:xyn4sd;contextmenu:xexox; focus:h06R8; blur:zjh6rb;mlnRJb:fLiPzd" data-idom-class="jiL72" jsname="NKQgDd" aria-label="Add to Google Calendar (opens a new tab)" jslog="220094; track:click;"><span class="OiePBf-zPjgPe"></span><span class="RBHQF-ksKsZd" jscontroller="LBaJxb" jsname="m9ZlFb"></span><span jsname="Xr1QTb" class="mUIrbf-kBDsod-Rtc0Jf mUIrbf-kBDsod-Rtc0Jf-OWXEXe-M1Soyc"></span><span jsname="V67aGc" class="mUIrbf-vQzf8d" aria-hidden="true">Add to Google Calendar</span><span jsname="UkTUqb" class="mUIrbf-kBDsod-Rtc0Jf mUIrbf-kBDsod-Rtc0Jf-OWXEXe-UbuQg"></span></button><span data-is-tooltip-wrapper="true" class="UiSlg"><button class="pYTkkf-Bz112c-LgbsSe pYTkkf-Bz112c-LgbsSe-OWXEXe-SfQLQb-suEOdc OIZKz" jscontroller="PIVayb" jsaction="click:h5M12e;clickmod:h5M12e;pointerdown:FEiYhc;pointerup:mF5Elf;pointerenter:EX0mI;pointerleave:vpvbp;pointercancel:xyn4sd;contextmenu:xexox;focus:h06R8; blur:zjh6rb;mlnRJb:fLiPzd" data-idom-class="OIZKz" data-use-native-focus-logic="true" jsname="NKQgDd" aria-label="Add to Google Calendar (opens a new tab)" data-tooltip-enabled="true" data-tooltip-id="tt-c43" jslog="220094; track:click;"><span class="OiePBf-zPjgPe pYTkkf-Bz112c-UHGRz"></span><span class="RBHQF-ksKsZd" jscontroller="LBaJxb" jsname="m9ZlFb"></span><span jsname="S5tZuc" aria-hidden="true" class="pYTkkf-Bz112c-kBDsod-Rtc0Jf"><span class="notranslate VfPpkd-kBDsod" aria-hidden="true"><svg focusable="false" width="18" height="18" viewBox="0 0 24 24" class=" NMm5M"><path d="M20 13h-7v7h-2v-7H4v-2h7V4h2v7h7v2z"></path></svg></span></span><div class="pYTkkf-Bz112c-RLmnJb"></div></button><div class="ne2Ple-oshW8e-V67aGc" role="tooltip" aria-hidden="true" id="tt-c43">Add to Google Calendar (opens a new tab)</div></span></div><div class="JNpOJd" aria-hidden="true"><img src="embed_data_002/googlelogo_clr_60x24px.svg" width="60" height="24" role="presentation" class="E4lqtc">&nbsp;Calendar</div></footer></div><script nonce="">function _DumpException(e) {throw e;}window['gcal'] = window['gcal'] || {}; window['gcal']['_DumpException'] = _DumpException; window['INITIAL_UI_RENDERED'] = new Date().getTime();</script></body></html>
