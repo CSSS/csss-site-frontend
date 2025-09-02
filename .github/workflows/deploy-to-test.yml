@@ -23,7 +23,8 @@ jobs:
       - run: npm run build --if-present
 
       - name: Preserve build output when moving branches
-        run: mv build ../build-tmp
+        # If this is not done then the build folder will be lost when we switch branches
+        run: mv dist/csss-ng-frontend/browser ../build-tmp
 
       - name: Switch to the build branch and clean it
         run: |
