@@ -15,50 +15,74 @@ export const routes: Routes = [
   {
     path: 'readme',
     loadComponent: () => import('./pages/readme/readme.component').then(m => m.ReadMeComponent),
-    title: makeTitle('README')
+    title: makeTitle('README'),
+    data: {
+      description: 'Welcome to the Computing Science Student Society!'
+    }
   },
   {
     path: 'officers',
     loadComponent: () =>
       import('./pages/officers/officers.component').then(m => m.OfficersComponent),
-    title: makeTitle('Officers')
+    title: makeTitle('Officers'),
+    data: {
+      description: 'Meet the officers that keep the CSSS running.'
+    }
   },
   {
     path: 'committees',
     loadComponent: () =>
       import('./pages/committees/committees.component').then(m => m.CommitteesComponent),
-    title: makeTitle('Committees')
+    title: makeTitle('Committees'),
+    data: {
+      description: 'Learn about the committees that make up the CSSS.'
+    }
   },
   {
     path: 'common-room',
     loadComponent: () =>
       import('./pages/common-room/common-room.component').then(m => m.CommonRoomComponent),
-    title: makeTitle('Common Room')
+    title: makeTitle('Common Room'),
+    data: {
+      description: 'Come hang out with us in the Common Room.'
+    }
   },
   {
     path: 'affiliates',
     loadComponent: () =>
       import('./pages/affiliates/affiliates.component').then(m => m.AffiliatesComponent),
-    title: makeTitle('Affiliates')
+    title: makeTitle('Affiliates'),
+    data: {
+      description: 'Find out about other societies and clubs that our members interact with'
+    }
   },
   // Events
   {
     path: 'events',
     loadComponent: () => import('./pages/events/events.component').then(m => m.EventsComponent),
-    title: makeTitle('Events')
+    title: makeTitle('Events'),
+    data: {
+      description: 'Discover the events the CSSS hosts.'
+    }
   },
   {
     path: 'event-archives',
     loadComponent: () =>
       import('pages/event-archives/event-archives.component').then(m => m.EventArchivesComponent),
-    title: makeTitle('Event Archives')
+    title: makeTitle('Event Archives'),
+    data: {
+      description: 'Explore the old event pages past executive teams created.'
+    }
   },
   // Elections
   {
     path: 'elections',
     loadComponent: () =>
       import('./pages/elections/elections.component').then(m => m.ElectionsComponent),
-    title: makeTitle('Elections')
+    title: makeTitle('Elections'),
+    data: {
+      description: 'Learn about the responsibilities of our executives and how you can become one.'
+    }
   },
   { path: '', component: HomeComponent, title: 'Computing Science Student Society' },
   // 404 will go down there
@@ -66,7 +90,10 @@ export const routes: Routes = [
     path: '**',
     loadComponent: () =>
       import('./pages/not-found/not-found.component').then(m => m.NotFoundComponent),
-    title: makeTitle('Not Found')
+    title: makeTitle('Not Found'),
+    data: {
+      meta: 'noindex'
+    }
   }
 ] as const;
 
