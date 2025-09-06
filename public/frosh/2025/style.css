@@ -278,13 +278,11 @@ main {
           display: flex;
           flex-wrap: wrap;
           justify-content: space-evenly;
-          gap: 0.5rem;
+          gap: 1rem;
           padding: 1rem 0;
 
           & > * {
-            width: 50%;
-            max-width: 15rem;
-            flex: 1 1 auto;
+            flex: 0 1 200px;
           }
         }
       }
