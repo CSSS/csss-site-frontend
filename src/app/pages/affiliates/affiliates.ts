@@ -15,11 +15,19 @@ export interface Affiliate {
 export const AFFILIATES: Affiliate[] = [
   // Student Unions
   {
-    label: 'SSSS',
-    imgName: 'ssss',
-    websiteUrl: 'sfussss.org',
-    discordUrl: 'discord.gg/hY7WjXt',
-    fullName: 'Software Systems Student Society',
+    label: 'CS Alumni Group',
+    imgName: 'alumni',
+    websiteUrl: 'www.sfu.ca/alumni',
+    discordUrl: 'discord.gg/fZ8xVw3PtN',
+    fullName: 'Computing Science Alumni Group',
+    type: 'union'
+  },
+  {
+    label: 'CSGSA',
+    imgName: 'csga',
+    websiteUrl: 'www.sfu.ca/csgsa',
+    discordUrl: 'discord.gg/DEkf7Bp',
+    fullName: 'Computing Science Graduate Student Association',
     type: 'union'
   },
   {
@@ -34,7 +42,7 @@ export const AFFILIATES: Affiliate[] = [
     label: 'ESSS',
     imgName: 'esss',
     websiteUrl: 'www.sfu.ca/esss/?page=home',
-    discordUrl: 'https://discord.gg/7gZGQJ6',
+    discordUrl: 'discord.gg/7gZGQJ6',
     fullName: 'Engineering Science Student Society',
     type: 'union'
   },
@@ -47,6 +55,14 @@ export const AFFILIATES: Affiliate[] = [
     type: 'union'
   },
   {
+    label: 'MSU',
+    imgName: 'msu',
+    websiteUrl: 'sfumsu.github.io',
+    discordUrl: 'discord.gg/nYXZYNTE4G',
+    fullName: 'Mathematics Student Union',
+    type: 'union'
+  },
+  {
     label: 'SEESS',
     imgName: 'seess',
     websiteUrl: 'seess.ca',
@@ -55,11 +71,11 @@ export const AFFILIATES: Affiliate[] = [
     type: 'union'
   },
   {
-    label: 'MSU',
-    imgName: 'msu',
-    websiteUrl: 'sfumsu.github.io',
-    discordUrl: 'discord.gg/nYXZYNTE4G',
-    fullName: 'Mathematics Student Union',
+    label: 'SSSS',
+    imgName: 'ssss',
+    websiteUrl: 'sfussss.org',
+    discordUrl: 'discord.gg/hY7WjXt',
+    fullName: 'Software Systems Student Society',
     type: 'union'
   },
   {
@@ -86,37 +102,21 @@ export const AFFILIATES: Affiliate[] = [
     fullName: 'Women in Engineering',
     type: 'union'
   },
-  {
-    label: 'CSGSA',
-    imgName: 'csga',
-    websiteUrl: 'www.sfu.ca/csgsa',
-    discordUrl: 'discord.gg/DEkf7Bp',
-    fullName: 'Computing Science Graduate Student Association',
-    type: 'union'
-  },
-  {
-    label: 'CS Alumni Group',
-    imgName: 'alumni',
-    websiteUrl: 'www.sfu.ca/alumni',
-    discordUrl: 'discord.gg/fZ8xVw3PtN',
-    fullName: 'Computing Science Alumni Group',
-    type: 'union'
-  },
   // Clubs
-  {
-    label: 'Surge',
-    imgName: 'surge',
-    websiteUrl: 'sfusurge.com/',
-    discordUrl: 'discord.com/invite/xu7CqKc',
-    fullName: 'Surge',
-    type: 'club'
-  },
   {
     label: 'Competitive Programming',
     imgName: 'competitive-programming',
     websiteUrl: 'go.sfss.ca/clubs/857/info',
     discordUrl: 'discord.gg/2mFZD2F',
     fullName: 'Competitive Programming',
+    type: 'club'
+  },
+  {
+    label: 'DNS',
+    imgName: 'dns',
+    websiteUrl: 'sfudns.co',
+    discordUrl: 'discord.gg/cWV8PktVXR',
+    fullName: 'Developers & Systems Club',
     type: 'club'
   },
   {
@@ -136,11 +136,11 @@ export const AFFILIATES: Affiliate[] = [
     type: 'club'
   },
   {
-    label: 'DNS',
-    imgName: 'dns',
-    websiteUrl: 'sfudns.co',
-    discordUrl: 'discord.gg/cWV8PktVXR',
-    fullName: 'Developers & Systems Club',
+    label: 'Surge',
+    imgName: 'surge',
+    websiteUrl: 'sfusurge.com/',
+    discordUrl: 'discord.com/invite/xu7CqKc',
+    fullName: 'Surge',
     type: 'club'
   }
 ];
