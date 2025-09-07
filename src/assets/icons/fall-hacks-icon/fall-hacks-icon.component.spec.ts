@@ -9,8 +9,7 @@ describe('FallHacksIconComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [FallHacksIconComponent]
-    })
-    .compileComponents();
+    }).compileComponents();
 
     fixture = TestBed.createComponent(FallHacksIconComponent);
     component = fixture.componentInstance;

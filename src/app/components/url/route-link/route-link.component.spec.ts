@@ -9,8 +9,7 @@ describe('RouteLinkComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [RouteLinkComponent]
-    })
-    .compileComponents();
+    }).compileComponents();
 
     fixture = TestBed.createComponent(RouteLinkComponent);
     component = fixture.componentInstance;
