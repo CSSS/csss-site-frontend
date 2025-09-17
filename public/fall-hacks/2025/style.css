@@ -1,19 +1,22 @@
 /* IBM Plex Mono */
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700#display=swap');
 
-body {
-  background-color: black;
+html {
+  scroll-behavior: smooth;
 }
 
-pre {
+body {
+  margin: 0;
+  padding: 0;
+  background-color: black;
   font-family: 'IBM Plex Mono', monospace;
-  color: lightgreen;
   font-weight: 400;
-  font-size: clamp(0.1rem, 1.5vw, 1rem);
-  width: 100ch;
-  margin: auto;
-  margin-top: 32px;
-  margin-bottom: 32px;
+  color: white;
+}
+
+ol,
+ul {
+  list-style: none;
 }
 
 b {
@@ -26,7 +29,7 @@ i {
 }
 
 a {
-  color: lightblue;
+  color: green;
 }
 
 s {
@@ -48,3 +51,54 @@ img {
   border: 1px solid gray;
 }
 
+.hero {
+  height: 100svh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero__intro {
+  font-size: clamp(1.5rem, 3vw, 4rem);
+}
+
+.hero__year {
+  color: darkgreen;
+  font-size: clamp(1.5rem, 3vw, 4rem);
+}
+
+pre {
+  color: lightgreen;
+  font-size: clamp(0.1rem, 1.5vw, 1rem);
+  width: 100ch;
+  margin: auto;
+  margin-top: 32px;
+  margin-bottom: 32px;
+}
+
+header {
+  position: sticky;
+  padding: 1rem;
+  top: 0;
+  z-index: 10;
+  background-color: black;
+}
+
+.nav-list {
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+
+  > li {
+    margin: 0 auto;
+  }
+}
+
+main {
+  width: clamp(20rem, 90%, 75rem);
+  margin: 0 auto;
+
+  display: flex;
+  flex-direction: column;
+}
