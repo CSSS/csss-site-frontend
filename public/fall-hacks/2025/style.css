@@ -41,14 +41,15 @@ s {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  gap: 1ch;
+  gap: 1rem;
 }
 
 img {
-  width: 18rem;
+  width: 17.5rem;
   aspect-ratio: 1.33 / 1;
   object-fit: cover;
   border: 1px solid gray;
+  flex: 0 1 auto;
 }
 
 .hero {
@@ -116,10 +117,8 @@ section > h2 {
   color: grey;
 }
 
-#info {
-  span {
-    display: inline-block;
-  }
+span {
+  display: inline-block;
 }
 
 .register__list > li {
