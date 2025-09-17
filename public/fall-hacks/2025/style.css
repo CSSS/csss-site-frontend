@@ -1,0 +1,50 @@
+/* IBM Plex Mono */
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700#display=swap');
+
+body {
+  background-color: black;
+}
+
+pre {
+  font-family: 'IBM Plex Mono', monospace;
+  color: lightgreen;
+  font-weight: 400;
+  font-size: clamp(0.1rem, 1.5vw, 1rem);
+  width: 100ch;
+  margin: auto;
+  margin-top: 32px;
+  margin-bottom: 32px;
+}
+
+b {
+  color: white;
+  font-weight: 700;
+}
+
+i {
+  color: gray;
+}
+
+a {
+  color: lightblue;
+}
+
+s {
+  color: gray;
+}
+
+.img-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 1ch;
+}
+
+img {
+  width: calc(49ch - 2px);
+  height: calc(30ch - 2px);
+  object-fit: cover;
+  border: 1px solid gray;
+}
+
