@@ -17,6 +17,7 @@ body {
 ol,
 ul {
   list-style: none;
+  padding: 0;
 }
 
 b {
@@ -79,7 +80,7 @@ pre {
 
 header {
   position: sticky;
-  padding: 1rem;
+  padding: 0.5rem;
   top: 0;
   z-index: 10;
   background-color: black;
@@ -96,9 +97,48 @@ header {
 }
 
 main {
-  width: clamp(20rem, 90%, 75rem);
+  width: clamp(15rem, 90%, 75rem);
   margin: 0 auto;
 
   display: flex;
   flex-direction: column;
+}
+
+section {
+  display: flex;
+  flex-direction: column;
+}
+
+section[id] {
+  padding-top: 3rem;
+}
+
+section > h2 {
+  color: grey;
+}
+
+#info {
+  span {
+    display: inline-block;
+  }
+}
+
+.register__list > li {
+  margin-bottom: 0.5rem;
+}
+
+footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .icons {
+    display: flex;
+    gap: 0.5rem;
+
+    & .icon {
+      width: 1.5em;
+      height: 1.5em;
+    }
+  }
 }
