@@ -41,13 +41,12 @@ s {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: space-between;
   gap: 1ch;
 }
 
 img {
-  width: calc(49ch - 2px);
-  height: calc(30ch - 2px);
+  width: 18rem;
+  aspect-ratio: 1.33 / 1;
   object-fit: cover;
   border: 1px solid gray;
 }
@@ -131,6 +130,8 @@ footer {
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-top: 1rem;
+  padding: 1rem;
 
   .icons {
     display: flex;
