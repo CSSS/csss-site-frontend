@@ -38,14 +38,14 @@ s {
 }
 
 .img-container {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(17.5rem, 1fr));
+  margin: 0 auto;
   gap: 1rem;
 }
 
 img {
-  width: 17.5rem;
+  width: 100%;
   aspect-ratio: 1.33 / 1;
   object-fit: cover;
   border: 1px solid gray;
@@ -65,7 +65,7 @@ img {
 }
 
 .hero__year {
-  color: darkgreen;
+  color: #006400;
   font-size: clamp(1.5rem, 3vw, 4rem);
 }
 
