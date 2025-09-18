@@ -46,7 +46,7 @@ s {
 
 img {
   width: 100%;
-  aspect-ratio: 1.33 / 1;
+  aspect-ratio: 1.5 / 1;
   object-fit: cover;
   border: 1px solid gray;
   flex: 0 1 auto;
