@@ -9,8 +9,7 @@ describe('EventsArchiveComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [EventArchivesComponent]
-    })
-    .compileComponents();
+    }).compileComponents();
 
     fixture = TestBed.createComponent(EventArchivesComponent);
     component = fixture.componentInstance;
