@@ -34,6 +34,13 @@ code-card {
   @include g.no-select;
   top: 0;
   text-align: center;
+
+  backdrop-filter: brightness(50%);
+  background-color: transparent;
+
+  > p {
+    margin: 0;
+  }
 }
 
 .card-footer {
