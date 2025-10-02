@@ -1,0 +1,144 @@
+/* IBM Plex Mono */
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700#display=swap');
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: black;
+  font-family: 'IBM Plex Mono', monospace;
+  font-weight: 400;
+  color: white;
+}
+
+ol,
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+b {
+  color: white;
+  font-weight: 700;
+}
+
+i {
+  color: gray;
+}
+
+a {
+  color: green;
+}
+
+s {
+  color: gray;
+}
+
+.img-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(17.5rem, 1fr));
+  margin: 0 auto;
+  gap: 1rem;
+}
+
+img {
+  width: 100%;
+  aspect-ratio: 1.5 / 1;
+  object-fit: cover;
+  border: 1px solid gray;
+  flex: 0 1 auto;
+}
+
+.hero {
+  height: 100svh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero__intro {
+  font-size: clamp(1.5rem, 3vw, 4rem);
+}
+
+.hero__year {
+  color: #006400;
+  font-size: clamp(1.5rem, 3vw, 4rem);
+}
+
+pre {
+  color: lightgreen;
+  font-size: clamp(0.1rem, 1.5vw, 1rem);
+  width: 100ch;
+  margin: auto;
+  margin-top: 32px;
+  margin-bottom: 32px;
+}
+
+header {
+  position: sticky;
+  padding: 0.5rem;
+  top: 0;
+  z-index: 10;
+  background-color: black;
+}
+
+.nav-list {
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+
+  > li {
+    margin: 0 auto;
+  }
+}
+
+main {
+  width: clamp(15rem, 90%, 75rem);
+  margin: 0 auto;
+
+  display: flex;
+  flex-direction: column;
+}
+
+section {
+  display: flex;
+  flex-direction: column;
+}
+
+section[id] {
+  padding-top: 3rem;
+}
+
+section > h2 {
+  color: grey;
+}
+
+span {
+  display: inline-block;
+}
+
+.register__list > li {
+  margin-bottom: 0.5rem;
+}
+
+footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 1rem;
+  padding: 1rem;
+
+  .icons {
+    display: flex;
+    gap: 0.5rem;
+
+    & .icon {
+      width: 1.5em;
+      height: 1.5em;
+    }
+  }
+}
