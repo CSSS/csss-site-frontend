@@ -19,6 +19,10 @@ $selector-h: 3px;
   &__tab {
     min-width: $tab-w;
     width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
   }
 
   &__label {

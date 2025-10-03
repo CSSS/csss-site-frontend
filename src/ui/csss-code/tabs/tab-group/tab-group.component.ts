@@ -99,7 +99,6 @@ export class CodeTabGroupComponent implements AfterViewInit, AfterContentInit {
 
   /**
    * Changes the style of the tab selector, which makes it move to the currently active tab.
-   *
    */
   private setSelectorStyle(): void {
     const activeTab = this.activeTab();
