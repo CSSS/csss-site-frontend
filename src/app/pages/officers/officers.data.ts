@@ -207,6 +207,82 @@ export const executives: ExecutiveAdministration[] = [
         photoName: 'tric-trac-baraboom.png'
       },
       {
+        name: 'Arielle Felicia',
+        position: 'Executive at Large',
+        photoName: 'trippi-troppi.png'
+      },
+      {
+        name: 'Barsin Tafazzoli',
+        position: 'Executive at Large',
+        photoName: 'giraffa-celeste.png'
+      },
+      {
+        name: 'Laurenzo Maddatu',
+        position: 'First-Year Representative',
+        photoName: 'frigo-camelo.png'
+      },
+      {
+        name: 'Mengna Ma',
+        position: 'First-Year Representative',
+        photoName: 'cappucino-assassino.png'
+      }
+    ]
+  },
+  {
+    startYear: 2025,
+    endYear: 2026,
+    members: [
+      {
+        name: 'Mabel Ling',
+        position: 'President',
+        photoName: 'ballerina-cappuccina.png'
+      },
+      {
+        name: 'Karen Yao',
+        position: 'Vice President',
+        photoName: 'bobritto-bandito.png'
+      },
+      {
+        name: 'Matthew Liu',
+        position: 'Treasurer',
+        photoName: 'tralalero-tralala.png'
+      },
+      {
+        name: 'Michael Ho',
+        position: 'Director of Resources',
+        photoName: 'bombombini-gusini.png'
+      },
+      {
+        name: 'Samantha Gan',
+        position: 'Director of Events',
+        photoName: 'brr-brr-patapim.png'
+      },
+      {
+        name: 'Ilia Mosaddegh',
+        position: 'Director of Educational Events',
+        photoName: 'lirili-larila.png'
+      },
+      {
+        name: 'Nathan Huynh',
+        position: 'Assistant Director of Events',
+        photoName: 'chimpanzini-bananini.png'
+      },
+      {
+        name: 'Chloe Shen',
+        position: 'Director of Communications',
+        photoName: 'glorbo-fruttodrillo.png'
+      },
+      {
+        name: 'Chloe Xie',
+        position: 'Director of Multimedia',
+        photoName: 'tung-tung-tung-sahur.png'
+      },
+      {
+        name: 'Dina Zeng',
+        position: 'Director of Archives',
+        photoName: 'tric-trac-baraboom.png'
+      },
+      {
         name: 'Aiya Bowman',
         position: 'Executive at Large',
         photoName: 'trippi-troppi.png'
