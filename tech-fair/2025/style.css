@@ -18,6 +18,7 @@
   --software: hsl(194 59.3% 50%);
   --networking: hsl(235 100% 35.5%);
   --data-analytics: hsl(284 59.3% 50%);
+  --cybersecurity: hsl(13 100% 60%);
 }
 
 [class*='--insurance'] {
@@ -46,6 +47,10 @@
 
 [class*='--data-analytics'] {
   --clr-main: var(--data-analytics);
+}
+
+[class*='--cybersecurity'] {
+  --clr-main: var(--cybersecurity);
 }
 
 body {
