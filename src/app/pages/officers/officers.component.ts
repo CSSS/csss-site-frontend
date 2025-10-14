@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, computed, signal } from '@angular/c
 import { ArticleComponent } from '@csss-code/article/article.component';
 import { CardComponent } from '@csss-code/card/card.component';
 import { NgxFadeComponent } from '@omnedia/ngx-fade';
-import { ExecutiveAdministration, executives, getRandomExecImage } from './officers.data';
+import { ExecutiveAdministration, executives } from './officers.data';
 
 @Component({
   selector: 'cs-officers',
@@ -30,7 +30,7 @@ export class OfficersComponent {
       newAdmin.members = newAdmin.members.map(exec => {
         return {
           ...exec,
-          photoName: this.toLocalUrl('')
+          photoName: this.toLocalUrl(exec.photoName)
         };
       });
       // end of FIXME:
@@ -52,8 +52,7 @@ export class OfficersComponent {
    * @param fileName - The file name to change. Must be in the `public/images/` folder
    * @returns File name in the CSS URL form.
    */
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   private toLocalUrl(fileName: string): string {
-    return `images/placeholders/${getRandomExecImage()}`;
+    return `images/placeholders/${fileName}`;
   }
 }
