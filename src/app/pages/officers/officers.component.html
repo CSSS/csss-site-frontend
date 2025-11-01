@@ -12,14 +12,27 @@
     <h2>Current Executives</h2>
     <div class="gallery">
       @for (exec of currentAdministration()?.members; track $index) {
-        <om-fade direction="up" [animateOnlyOnce]="true">
-          <code-card [bgImg]="exec.photoName" #execCard>
-            <div class="card__footer">
-              <strong class="card__name">{{ exec.name }}</strong>
-              <strong class="card__position">{{ exec.position }}</strong>
-            </div>
-          </code-card>
-        </om-fade>
+        <!-- <code-card [bgImg]="exec.photoName" #execCard> -->
+        <!--   <div class="card__footer"> -->
+        <!--     <strong class="card__name">{{ exec.name }}</strong> -->
+        <!--     <strong class="card__position">{{ exec.position }}</strong> -->
+        <!--   </div> -->
+        <!-- </code-card> -->
+        <div class="card">
+          <img
+            class="card__img"
+            [ngSrc]="exec.photoName"
+            [alt]="exec.photoName"
+            width="300"
+            height="400"
+            sizes="50vw"
+            priority
+          />
+          <div class="card__info">
+            <div>{{ exec.name }}</div>
+            <div>{{ exec.position }}</div>
+          </div>
+        </div>
       }
     </div>
   </section>

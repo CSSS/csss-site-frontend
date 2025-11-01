@@ -1,12 +1,12 @@
+import { NgOptimizedImage } from '@angular/common';
 import { ChangeDetectionStrategy, Component, computed, signal } from '@angular/core';
 import { ArticleComponent } from '@csss-code/article/article.component';
 import { CardComponent } from '@csss-code/card/card.component';
-import { NgxFadeComponent } from '@omnedia/ngx-fade';
 import { ExecutiveAdministration, executives } from './officers.data';
 
 @Component({
   selector: 'cs-officers',
-  imports: [CardComponent, ArticleComponent, NgxFadeComponent],
+  imports: [CardComponent, ArticleComponent, NgOptimizedImage],
   templateUrl: './officers.component.html',
   styleUrl: './officers.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
@@ -53,6 +53,6 @@ export class OfficersComponent {
    * @returns File name in the CSS URL form.
    */
   private toLocalUrl(fileName: string): string {
-    return `images/placeholders/${fileName}`;
+    return `images/executives/${this.currentYear()}/${fileName}`;
   }
 }
