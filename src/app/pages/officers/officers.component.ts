@@ -1,12 +1,10 @@
-import { NgOptimizedImage } from '@angular/common';
 import { ChangeDetectionStrategy, Component, computed, signal } from '@angular/core';
 import { ArticleComponent } from '@csss-code/article/article.component';
-import { CardComponent } from '@csss-code/card/card.component';
 import { ExecutiveAdministration, executives } from './officers.data';
 
 @Component({
   selector: 'cs-officers',
-  imports: [CardComponent, ArticleComponent, NgOptimizedImage],
+  imports: [ArticleComponent],
   templateUrl: './officers.component.html',
   styleUrl: './officers.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
@@ -22,7 +20,7 @@ export class OfficersComponent {
     let newAdmin = this.cachedAdmins.get(year);
     if (!newAdmin) {
       // TODO: Fetch this from the back end.
-      newAdmin = executives.find(e => e.startYear === year);
+      newAdmin = structuredClone(executives.find(e => e.startYear === year));
       if (!newAdmin) {
         throw new Error(`Administration for year ${year} not found.`);
       }

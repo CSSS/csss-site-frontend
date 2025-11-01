@@ -12,25 +12,17 @@
     <h2>Current Executives</h2>
     <div class="gallery">
       @for (exec of currentAdministration()?.members; track $index) {
-        <!-- <code-card [bgImg]="exec.photoName" #execCard> -->
-        <!--   <div class="card__footer"> -->
-        <!--     <strong class="card__name">{{ exec.name }}</strong> -->
-        <!--     <strong class="card__position">{{ exec.position }}</strong> -->
-        <!--   </div> -->
-        <!-- </code-card> -->
         <div class="card">
-          <img
-            class="card__img"
-            [ngSrc]="exec.photoName"
-            [alt]="exec.photoName"
-            width="300"
-            height="400"
-            sizes="50vw"
-            priority
-          />
-          <div class="card__info">
-            <div>{{ exec.name }}</div>
-            <div>{{ exec.position }}</div>
+          <div class="card__frame">
+            <img class="card__img" [src]="exec.photoName" [alt]="exec.photoName" />
+            <div class="card__info">
+              <div class="card__name">
+                <strong>{{ exec.name }}</strong>
+              </div>
+              <div class="card__position">
+                <strong>{{ exec.position }}</strong>
+              </div>
+            </div>
           </div>
         </div>
       }
