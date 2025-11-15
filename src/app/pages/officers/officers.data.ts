@@ -179,7 +179,7 @@ export const executives: ExecutiveAdministration[] = [
       {
         name: 'Samantha Gan',
         position: 'Director of Events',
-        photoName: 'brr-brr-patapim.png'
+        photoName: 'doe.png'
       },
       {
         name: 'Ilia Mosaddegh',
@@ -189,7 +189,7 @@ export const executives: ExecutiveAdministration[] = [
       {
         name: 'Nathan Huynh',
         position: 'Assistant Director of Events',
-        photoName: 'chimpanzini-bananini.png'
+        photoName: 'adoe.png'
       },
       {
         name: 'Chloe Shen',
