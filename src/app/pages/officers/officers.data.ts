@@ -207,16 +207,6 @@ export const executives: ExecutiveAdministration[] = [
         photoName: 'doa.png'
       },
       {
-        name: 'Arielle Felicia',
-        position: 'Executive at Large',
-        photoName: 'eal-1.png'
-      },
-      {
-        name: 'Barsin Tafazzoli',
-        position: 'Executive at Large',
-        photoName: 'eal-2.png'
-      },
-      {
         name: 'Laurenzo Maddatu',
         position: 'First-Year Representative',
         photoName: 'fyr-2.png'
@@ -225,6 +215,16 @@ export const executives: ExecutiveAdministration[] = [
         name: 'Mengna Ma',
         position: 'First-Year Representative',
         photoName: 'fyr-1.png'
+      },
+      {
+        name: 'Arielle Felicia',
+        position: 'Executive at Large',
+        photoName: 'eal-1.png'
+      },
+      {
+        name: 'Barsin Tafazzoli',
+        position: 'Executive at Large',
+        photoName: 'eal-2.png'
       }
     ]
   },
