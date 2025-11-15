@@ -209,12 +209,12 @@ export const executives: ExecutiveAdministration[] = [
       {
         name: 'Laurenzo Maddatu',
         position: 'First-Year Representative',
-        photoName: 'fyr-2.png'
+        photoName: 'fyr-1.png'
       },
       {
         name: 'Mengna Ma',
         position: 'First-Year Representative',
-        photoName: 'fyr-1.png'
+        photoName: 'fyr-2.png'
       },
       {
         name: 'Arielle Felicia',
