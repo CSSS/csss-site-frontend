@@ -5,11 +5,12 @@ aside {
 }
 
 article {
-  max-width: 65rem;
-  margin: 0 auto 3rem;
+  max-width: 80rem;
+  margin: 0 auto;
   font-family: g.$article-font;
   height: fit-content;
-  padding: 0 1rem;
+  padding: 0 1rem 3rem;
+  line-height: 1.5;
 }
 
 @media (min-width: g.$breakpoint-large) {

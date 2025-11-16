@@ -1,25 +1,35 @@
 <code-article>
   <header>
     <h1>Officers</h1>
-    <p>Executives are voted in by everyone in the CSSS and serve for a year.</p>
+    <p>The Executives at the CSSS are here to represent the Computing Science program at SFU.</p>
     <p>
-      The exceptions to this are the <strong>Executives at Large</strong>, who are elected for just
-      <strong>one semester</strong>.
+      They're here to plan events, create an inclusive community, and provide resources to the
+      students they represent.
+    </p>
+    <p>
+      Find them hanging out in the <cs-route-link key="common-room" label="Common Room" />, at one
+      of our <cs-route-link key="events" label="events" />, or on
+      <cs-external-link key="discord" />.
     </p>
   </header>
 
   <section>
-    <h2>Current Executives</h2>
+    <h2>Our Executives</h2>
     <div class="gallery">
       @for (exec of currentAdministration()?.members; track $index) {
-        <om-fade direction="up" [animateOnlyOnce]="true">
-          <code-card [bgImg]="exec.photoName" #execCard>
-            <div class="card__footer">
-              <strong class="card__name">{{ exec.name }}</strong>
-              <strong class="card__position">{{ exec.position }}</strong>
+        <div class="card">
+          <div class="card__frame">
+            <img class="card__img" [src]="exec.photoName" [alt]="exec.photoName" />
+            <div class="card__info">
+              <div class="card__name">
+                <strong class="card__text">{{ exec.name }}</strong>
+              </div>
+              <div class="card__position">
+                <strong class="card__text">{{ exec.position }}</strong>
+              </div>
             </div>
-          </code-card>
-        </om-fade>
+          </div>
+        </div>
       }
     </div>
   </section>

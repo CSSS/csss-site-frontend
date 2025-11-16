@@ -1,12 +1,12 @@
 import { ChangeDetectionStrategy, Component, computed, signal } from '@angular/core';
 import { ArticleComponent } from '@csss-code/article/article.component';
-import { CardComponent } from '@csss-code/card/card.component';
-import { NgxFadeComponent } from '@omnedia/ngx-fade';
+import { ExternalLinkComponent } from 'components/url/external-link/external-link.component';
+import { RouteLinkComponent } from 'components/url/route-link/route-link.component';
 import { ExecutiveAdministration, executives } from './officers.data';
 
 @Component({
   selector: 'cs-officers',
-  imports: [CardComponent, ArticleComponent, NgxFadeComponent],
+  imports: [ArticleComponent, RouteLinkComponent, ExternalLinkComponent],
   templateUrl: './officers.component.html',
   styleUrl: './officers.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
@@ -22,7 +22,7 @@ export class OfficersComponent {
     let newAdmin = this.cachedAdmins.get(year);
     if (!newAdmin) {
       // TODO: Fetch this from the back end.
-      newAdmin = executives.find(e => e.startYear === year);
+      newAdmin = structuredClone(executives.find(e => e.startYear === year));
       if (!newAdmin) {
         throw new Error(`Administration for year ${year} not found.`);
       }
@@ -53,6 +53,6 @@ export class OfficersComponent {
    * @returns File name in the CSS URL form.
    */
   private toLocalUrl(fileName: string): string {
-    return `images/placeholders/${fileName}`;
+    return `images/executives/${this.currentYear()}/${fileName}`;
   }
 }

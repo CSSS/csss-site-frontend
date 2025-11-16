@@ -159,72 +159,72 @@ export const executives: ExecutiveAdministration[] = [
       {
         name: 'Mabel Ling',
         position: 'President',
-        photoName: 'ballerina-cappuccina.png'
+        photoName: 'president.png'
       },
       {
         name: 'Karen Yao',
         position: 'Vice President',
-        photoName: 'bobritto-bandito.png'
+        photoName: 'vp.png'
       },
       {
         name: 'Matthew Liu',
         position: 'Treasurer',
-        photoName: 'tralalero-tralala.png'
+        photoName: 'treasurer.png'
       },
       {
         name: 'Michael Ho',
         position: 'Director of Resources',
-        photoName: 'bombombini-gusini.png'
+        photoName: 'dor.png'
       },
       {
         name: 'Samantha Gan',
         position: 'Director of Events',
-        photoName: 'brr-brr-patapim.png'
+        photoName: 'doe.png'
       },
       {
         name: 'Ilia Mosaddegh',
         position: 'Director of Educational Events',
-        photoName: 'lirili-larila.png'
+        photoName: 'doee.png'
       },
       {
         name: 'Nathan Huynh',
         position: 'Assistant Director of Events',
-        photoName: 'chimpanzini-bananini.png'
+        photoName: 'adoe.png'
       },
       {
         name: 'Chloe Shen',
         position: 'Director of Communications',
-        photoName: 'glorbo-fruttodrillo.png'
+        photoName: 'doc.png'
       },
       {
         name: 'Chloe Xie',
         position: 'Director of Multimedia',
-        photoName: 'tung-tung-tung-sahur.png'
+        photoName: 'domm.png'
       },
       {
         name: 'Dina Zeng',
         position: 'Director of Archives',
-        photoName: 'tric-trac-baraboom.png'
-      },
-      {
-        name: 'Arielle Felicia',
-        position: 'Executive at Large',
-        photoName: 'trippi-troppi.png'
-      },
-      {
-        name: 'Barsin Tafazzoli',
-        position: 'Executive at Large',
-        photoName: 'giraffa-celeste.png'
+        photoName: 'doa.png'
       },
       {
         name: 'Laurenzo Maddatu',
         position: 'First-Year Representative',
-        photoName: 'frigo-camelo.png'
+        photoName: 'fyr-1.png'
       },
       {
         name: 'Mengna Ma',
         position: 'First-Year Representative',
-        photoName: 'cappucino-assassino.png'
+        photoName: 'fyr-2.png'
+      },
+      {
+        name: 'Arielle Felicia',
+        position: 'Executive at Large',
+        photoName: 'eal-1.png'
+      },
+      {
+        name: 'Barsin Tafazzoli',
+        position: 'Executive at Large',
+        photoName: 'eal-2.png'
       }
     ]
   },
