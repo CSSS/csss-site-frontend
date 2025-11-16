@@ -1,35 +1,38 @@
 @use 'globals' as g;
 
 .gallery {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(10rem, 100%), 1fr));
-  gap: 1.8rem;
-}
-
-.gallery code-card {
-  display: grid;
-  width: 100%;
-  aspect-ratio: 1 / 1.5;
-  grid-template-rows: auto auto;
-}
-
-.card__footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  height: fit-content;
-  background-color: g.$bg3;
-
   display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
 }
 
-.card__name,
-.card__position {
-  width: fit-content;
-}
+.card {
+  display: flex;
+  justify-content: center;
 
-.card__position {
-  color: g.$code-text;
+  &__frame {
+    width: max(300px, 100%);
+    position: relative;
+  }
+
+  &__img {
+    width: 300px;
+    aspect-ratio: 3 / 4;
+    box-shadow: 10px 10px 5px black;
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 100%;
+    position: absolute;
+    bottom: 0.75rem;
+  }
+
+  &__text {
+    padding: 0.5rem;
+    background-color: g.$accent2;
+  }
 }
