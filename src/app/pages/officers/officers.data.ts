@@ -159,273 +159,273 @@ export const executives: ExecutiveAdministration[] = [
       {
         name: 'Mabel Ling',
         position: 'President',
-        photoName: 'president.png'
+        photoName: 'president.jpg'
       },
       {
         name: 'Karen Yao',
         position: 'Vice President',
-        photoName: 'vp.png'
+        photoName: 'vp.jpg'
       },
       {
         name: 'Matthew Liu',
         position: 'Treasurer',
-        photoName: 'treasurer.png'
+        photoName: 'treasurer.jpg'
       },
       {
         name: 'Michael Ho',
         position: 'Director of Resources',
-        photoName: 'dor.png'
+        photoName: 'dor.jpg'
       },
       {
         name: 'Samantha Gan',
         position: 'Director of Events',
-        photoName: 'doe.png'
+        photoName: 'doe.jpg'
       },
       {
         name: 'Ilia Mosaddegh',
         position: 'Director of Educational Events',
-        photoName: 'doee.png'
+        photoName: 'doee.jpg'
       },
       {
         name: 'Nathan Huynh',
         position: 'Assistant Director of Events',
-        photoName: 'adoe.png'
+        photoName: 'adoe.jpg'
       },
       {
         name: 'Chloe Shen',
         position: 'Director of Communications',
-        photoName: 'doc.png'
+        photoName: 'doc.jpg'
       },
       {
         name: 'Chloe Xie',
         position: 'Director of Multimedia',
-        photoName: 'domm.png'
+        photoName: 'domm.jpg'
       },
       {
         name: 'Dina Zeng',
         position: 'Director of Archives',
-        photoName: 'doa.png'
+        photoName: 'doa.jpg'
       },
       {
         name: 'Laurenzo Maddatu',
         position: 'First-Year Representative',
-        photoName: 'fyr-1.png'
+        photoName: 'fyr-1.jpg'
       },
       {
         name: 'Mengna Ma',
         position: 'First-Year Representative',
-        photoName: 'fyr-2.png'
+        photoName: 'fyr-2.jpg'
       },
       {
         name: 'Arielle Felicia',
         position: 'Executive at Large',
-        photoName: 'eal-1.png'
+        photoName: 'eal-1.jpg'
       },
       {
         name: 'Barsin Tafazzoli',
         position: 'Executive at Large',
-        photoName: 'eal-2.png'
-      }
-    ]
-  },
-  {
-    startYear: 2025,
-    endYear: 2026,
-    members: [
-      {
-        name: 'Mabel Ling',
-        position: 'President',
-        photoName: 'ballerina-cappuccina.png'
-      },
-      {
-        name: 'Karen Yao',
-        position: 'Vice President',
-        photoName: 'bobritto-bandito.png'
-      },
-      {
-        name: 'Matthew Liu',
-        position: 'Treasurer',
-        photoName: 'tralalero-tralala.png'
-      },
-      {
-        name: 'Michael Ho',
-        position: 'Director of Resources',
-        photoName: 'bombombini-gusini.png'
-      },
-      {
-        name: 'Samantha Gan',
-        position: 'Director of Events',
-        photoName: 'brr-brr-patapim.png'
-      },
-      {
-        name: 'Ilia Mosaddegh',
-        position: 'Director of Educational Events',
-        photoName: 'lirili-larila.png'
-      },
-      {
-        name: 'Nathan Huynh',
-        position: 'Assistant Director of Events',
-        photoName: 'chimpanzini-bananini.png'
-      },
-      {
-        name: 'Chloe Shen',
-        position: 'Director of Communications',
-        photoName: 'glorbo-fruttodrillo.png'
-      },
-      {
-        name: 'Chloe Xie',
-        position: 'Director of Multimedia',
-        photoName: 'tung-tung-tung-sahur.png'
-      },
-      {
-        name: 'Dina Zeng',
-        position: 'Director of Archives',
-        photoName: 'tric-trac-baraboom.png'
-      },
-      {
-        name: 'Aiya Bowman',
-        position: 'Executive at Large',
-        photoName: 'trippi-troppi.png'
-      },
-      {
-        name: 'Alexander Ng',
-        position: 'Executive at Large',
-        photoName: 'giraffa-celeste.png'
-      }
-    ]
-  },
-  {
-    startYear: 2024,
-    endYear: 2025,
-    members: [
-      {
-        name: 'Isabelle Kwan',
-        position: 'President',
-        photoName: 'bobritto-bandito.png'
-      },
-      {
-        name: 'Jake Choi',
-        position: 'Vice President',
-        photoName: 'bobritto-bandito.png'
-      },
-      {
-        name: 'Mabel Ling',
-        position: 'Treasurer',
-        photoName: 'tralalero-tralala.png'
-      },
-      {
-        name: 'Aiya Bowman',
-        position: 'Director of Resources',
-        photoName: 'bombombini-gusini.png'
-      },
-      {
-        name: 'Emily Qin',
-        position: 'Director of Events',
-        photoName: 'brr-brr-patapim.png'
-      },
-      {
-        name: 'Elvin Zukic',
-        position: 'Director of Educational Events',
-        photoName: 'lirili-larila.png'
-      },
-      {
-        name: 'Taranveer Singh',
-        position: 'Assistant Director of Events',
-        photoName: 'chimpanzini-bananini.png'
-      },
-      {
-        name: 'Chloe Shen',
-        position: 'Director of Communications',
-        photoName: 'glorbo-fruttodrillo.png'
-      },
-      {
-        name: 'Annie Jiao',
-        position: 'Director of Multimedia',
-        photoName: 'tung-tung-tung-sahur.png'
-      },
-      {
-        name: 'Dina Zeng',
-        position: 'Director of Archives',
-        photoName: 'tric-trac-baraboom.png'
-      },
-      {
-        name: 'Rastko Koprivica',
-        position: 'Executive at Large',
-        photoName: 'trippi-troppi.png'
-      },
-      {
-        name: 'Michael Ho',
-        position: 'Executive at Large',
-        photoName: 'giraffa-celeste.png'
-      }
-    ]
-  },
-  {
-    startYear: 2023,
-    endYear: 2024,
-    members: [
-      {
-        name: 'Justin Yan',
-        position: 'President',
-        photoName: 'ballerina-cappuccina.png'
-      },
-      {
-        name: 'Valerie Kistrina',
-        position: 'Vice President',
-        photoName: 'bobritto-bandito.png'
-      },
-      {
-        name: 'Gabe Stang',
-        position: 'Treasurer',
-        photoName: 'tralalero-tralala.png'
-      },
-      {
-        name: 'Sean Chan',
-        position: 'Director of Resources',
-        photoName: 'bombombini-gusini.png'
-      },
-      {
-        name: 'Patrick Peake',
-        position: 'Director of Events',
-        photoName: 'brr-brr-patapim.png'
-      },
-      {
-        name: 'Micah Baker',
-        position: 'Director of Educational Events',
-        photoName: 'lirili-larila.png'
-      },
-      {
-        name: 'Arya Faghihy',
-        position: 'Assistant Director of Events',
-        photoName: 'chimpanzini-bananini.png'
-      },
-      {
-        name: 'Isabelle Kwan',
-        position: 'Director of Communications',
-        photoName: 'glorbo-fruttodrillo.png'
-      },
-      {
-        name: 'Yolanda Lam',
-        position: 'Director of Multimedia',
-        photoName: 'tung-tung-tung-sahur.png'
-      },
-      {
-        name: 'Dina Zeng',
-        position: 'Director of Archives',
-        photoName: 'tric-trac-baraboom.png'
-      },
-      {
-        name: 'Jake Choi',
-        position: 'Executive at Large',
-        photoName: 'trippi-troppi.png'
-      },
-      {
-        name: 'Joyce Zhang',
-        position: 'Executive at Large',
-        photoName: 'giraffa-celeste.png'
+        photoName: 'eal-2.jpg'
       }
     ]
   }
+  // {
+  //   startYear: 2025,
+  //   endYear: 2026,
+  //   members: [
+  //     {
+  //       name: 'Mabel Ling',
+  //       position: 'President',
+  //       photoName: 'ballerina-cappuccina.png'
+  //     },
+  //     {
+  //       name: 'Karen Yao',
+  //       position: 'Vice President',
+  //       photoName: 'bobritto-bandito.png'
+  //     },
+  //     {
+  //       name: 'Matthew Liu',
+  //       position: 'Treasurer',
+  //       photoName: 'tralalero-tralala.png'
+  //     },
+  //     {
+  //       name: 'Michael Ho',
+  //       position: 'Director of Resources',
+  //       photoName: 'bombombini-gusini.png'
+  //     },
+  //     {
+  //       name: 'Samantha Gan',
+  //       position: 'Director of Events',
+  //       photoName: 'brr-brr-patapim.png'
+  //     },
+  //     {
+  //       name: 'Ilia Mosaddegh',
+  //       position: 'Director of Educational Events',
+  //       photoName: 'lirili-larila.png'
+  //     },
+  //     {
+  //       name: 'Nathan Huynh',
+  //       position: 'Assistant Director of Events',
+  //       photoName: 'chimpanzini-bananini.png'
+  //     },
+  //     {
+  //       name: 'Chloe Shen',
+  //       position: 'Director of Communications',
+  //       photoName: 'glorbo-fruttodrillo.png'
+  //     },
+  //     {
+  //       name: 'Chloe Xie',
+  //       position: 'Director of Multimedia',
+  //       photoName: 'tung-tung-tung-sahur.png'
+  //     },
+  //     {
+  //       name: 'Dina Zeng',
+  //       position: 'Director of Archives',
+  //       photoName: 'tric-trac-baraboom.png'
+  //     },
+  //     {
+  //       name: 'Aiya Bowman',
+  //       position: 'Executive at Large',
+  //       photoName: 'trippi-troppi.png'
+  //     },
+  //     {
+  //       name: 'Alexander Ng',
+  //       position: 'Executive at Large',
+  //       photoName: 'giraffa-celeste.png'
+  //     }
+  //   ]
+  // },
+  // {
+  //   startYear: 2024,
+  //   endYear: 2025,
+  //   members: [
+  //     {
+  //       name: 'Isabelle Kwan',
+  //       position: 'President',
+  //       photoName: 'bobritto-bandito.png'
+  //     },
+  //     {
+  //       name: 'Jake Choi',
+  //       position: 'Vice President',
+  //       photoName: 'bobritto-bandito.png'
+  //     },
+  //     {
+  //       name: 'Mabel Ling',
+  //       position: 'Treasurer',
+  //       photoName: 'tralalero-tralala.png'
+  //     },
+  //     {
+  //       name: 'Aiya Bowman',
+  //       position: 'Director of Resources',
+  //       photoName: 'bombombini-gusini.png'
+  //     },
+  //     {
+  //       name: 'Emily Qin',
+  //       position: 'Director of Events',
+  //       photoName: 'brr-brr-patapim.png'
+  //     },
+  //     {
+  //       name: 'Elvin Zukic',
+  //       position: 'Director of Educational Events',
+  //       photoName: 'lirili-larila.png'
+  //     },
+  //     {
+  //       name: 'Taranveer Singh',
+  //       position: 'Assistant Director of Events',
+  //       photoName: 'chimpanzini-bananini.png'
+  //     },
+  //     {
+  //       name: 'Chloe Shen',
+  //       position: 'Director of Communications',
+  //       photoName: 'glorbo-fruttodrillo.png'
+  //     },
+  //     {
+  //       name: 'Annie Jiao',
+  //       position: 'Director of Multimedia',
+  //       photoName: 'tung-tung-tung-sahur.png'
+  //     },
+  //     {
+  //       name: 'Dina Zeng',
+  //       position: 'Director of Archives',
+  //       photoName: 'tric-trac-baraboom.png'
+  //     },
+  //     {
+  //       name: 'Rastko Koprivica',
+  //       position: 'Executive at Large',
+  //       photoName: 'trippi-troppi.png'
+  //     },
+  //     {
+  //       name: 'Michael Ho',
+  //       position: 'Executive at Large',
+  //       photoName: 'giraffa-celeste.png'
+  //     }
+  //   ]
+  // },
+  // {
+  //   startYear: 2023,
+  //   endYear: 2024,
+  //   members: [
+  //     {
+  //       name: 'Justin Yan',
+  //       position: 'President',
+  //       photoName: 'ballerina-cappuccina.png'
+  //     },
+  //     {
+  //       name: 'Valerie Kistrina',
+  //       position: 'Vice President',
+  //       photoName: 'bobritto-bandito.png'
+  //     },
+  //     {
+  //       name: 'Gabe Stang',
+  //       position: 'Treasurer',
+  //       photoName: 'tralalero-tralala.png'
+  //     },
+  //     {
+  //       name: 'Sean Chan',
+  //       position: 'Director of Resources',
+  //       photoName: 'bombombini-gusini.png'
+  //     },
+  //     {
+  //       name: 'Patrick Peake',
+  //       position: 'Director of Events',
+  //       photoName: 'brr-brr-patapim.png'
+  //     },
+  //     {
+  //       name: 'Micah Baker',
+  //       position: 'Director of Educational Events',
+  //       photoName: 'lirili-larila.png'
+  //     },
+  //     {
+  //       name: 'Arya Faghihy',
+  //       position: 'Assistant Director of Events',
+  //       photoName: 'chimpanzini-bananini.png'
+  //     },
+  //     {
+  //       name: 'Isabelle Kwan',
+  //       position: 'Director of Communications',
+  //       photoName: 'glorbo-fruttodrillo.png'
+  //     },
+  //     {
+  //       name: 'Yolanda Lam',
+  //       position: 'Director of Multimedia',
+  //       photoName: 'tung-tung-tung-sahur.png'
+  //     },
+  //     {
+  //       name: 'Dina Zeng',
+  //       position: 'Director of Archives',
+  //       photoName: 'tric-trac-baraboom.png'
+  //     },
+  //     {
+  //       name: 'Jake Choi',
+  //       position: 'Executive at Large',
+  //       photoName: 'trippi-troppi.png'
+  //     },
+  //     {
+  //       name: 'Joyce Zhang',
+  //       position: 'Executive at Large',
+  //       photoName: 'giraffa-celeste.png'
+  //     }
+  //   ]
+  // }
 ];
 
 export const ALL_EXEC_IMAGES = [
