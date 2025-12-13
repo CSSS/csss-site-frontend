@@ -1,6 +1,19 @@
 import { Routes } from '@angular/router';
 import { HomeComponent } from 'pages/home/home.component';
 
+export enum SiteRoute {
+  ReadMe = '/readme',
+  Officers = '/officers',
+  Committees = '/committees',
+  Affiliates = '/affiliates',
+  CommonRoom = '/common-room',
+  Events = '/events',
+  EventsArchives = '/events/archives',
+  Elections = '/elections',
+  ElectionsSchedule = '/elections/schedule',
+  ElectionsSpeeches = '/elections/speeches'
+}
+
 /**
  * Formats the title on the web browser's tab/window.
  * @param pageTitle - Title of the page
@@ -66,7 +79,7 @@ export const routes: Routes = [
     }
   },
   {
-    path: 'event-archives',
+    path: 'events/archives',
     loadComponent: () =>
       import('pages/event-archives/event-archives.component').then(m => m.EventArchivesComponent),
     title: makeTitle('Event Archives'),
@@ -82,6 +95,28 @@ export const routes: Routes = [
     title: makeTitle('Elections'),
     data: {
       description: 'Learn about the responsibilities of our executives and how you can become one.'
+    }
+  },
+  {
+    path: 'elections/schedule',
+    loadComponent: () =>
+      import('pages/elections/upcoming/elections-schedule.component').then(
+        m => m.ElectionsScheduleComponent
+      ),
+    title: makeTitle('Elections'),
+    data: {
+      description: 'View upcoming, current, and past elections.'
+    }
+  },
+  {
+    path: 'elections/speeches',
+    loadComponent: () =>
+      import('./pages/elections/election-speeches/election-speeches.component').then(
+        m => m.ElectionSpeechesComponent
+      ),
+    title: makeTitle('Elections'),
+    data: {
+      description: 'Learn more about the candidates who want to make our society a better place.'
     }
   },
   { path: '', component: HomeComponent, title: 'Computing Science Student Society' },

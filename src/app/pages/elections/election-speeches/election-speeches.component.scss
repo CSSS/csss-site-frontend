@@ -1,0 +1,22 @@
+@use 'globals' as g;
+
+.nominees {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.nominee {
+  border: 1px black solid;
+  padding: 1rem;
+  box-shadow: 10px 10px 5px black;
+
+  &__name {
+    margin: 0;
+    color: g.$accent2;
+  }
+
+  &__speech {
+    white-space: pre-line;
+  }
+}

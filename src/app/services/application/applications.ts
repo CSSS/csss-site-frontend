@@ -1,3 +1,5 @@
+import { SiteRoute } from 'app/app.routes';
+
 /**
  * Interface representing an Application that is registered to run.
  * Each application will be run in an activity.
@@ -23,14 +25,14 @@ export interface AppInfo {
   /**
    * The key of the application.
    * This should be unique to each activity.
-   * Routes should be in the form `/<activity>/<application>` or `/<application>` to successfully launch apps.
    */
   key: string;
 
   /**
    * Route to access the application.
+   * Routes should be in the form `/<activity>/<application>` or `/<application>` to successfully launch apps.
    */
-  route: string;
+  route: SiteRoute;
 }
 
 /**
@@ -44,7 +46,7 @@ export const routeApplicationMap: Map<number, AppInfo> = new Map([
       label: 'README',
       activityKey: '',
       key: 'readme',
-      route: '/readme'
+      route: SiteRoute.ReadMe
     }
   ],
   [
@@ -54,7 +56,7 @@ export const routeApplicationMap: Map<number, AppInfo> = new Map([
       label: 'Officers',
       activityKey: '',
       key: 'officers',
-      route: '/officers'
+      route: SiteRoute.Officers
     }
   ],
   [
@@ -64,7 +66,7 @@ export const routeApplicationMap: Map<number, AppInfo> = new Map([
       label: 'Committees',
       activityKey: '',
       key: 'committees',
-      route: '/committees'
+      route: SiteRoute.Committees
     }
   ],
   [
@@ -74,7 +76,7 @@ export const routeApplicationMap: Map<number, AppInfo> = new Map([
       label: 'Affiliates',
       activityKey: '',
       key: 'affiliates',
-      route: '/affiliates'
+      route: SiteRoute.Affiliates
     }
   ],
   [
@@ -84,7 +86,7 @@ export const routeApplicationMap: Map<number, AppInfo> = new Map([
       label: 'Common Room',
       activityKey: '',
       key: 'common-room',
-      route: '/common-room'
+      route: SiteRoute.CommonRoom
     }
   ],
   [
@@ -94,17 +96,17 @@ export const routeApplicationMap: Map<number, AppInfo> = new Map([
       label: 'Events',
       activityKey: '',
       key: 'events',
-      route: '/events'
+      route: SiteRoute.Events
     }
   ],
   [
     6,
     {
       id: 6,
-      label: 'Event Archives',
+      label: 'Events Archives',
       activityKey: '',
       key: 'event-archives',
-      route: '/event-archives'
+      route: SiteRoute.EventsArchives
     }
   ],
   [
@@ -114,7 +116,27 @@ export const routeApplicationMap: Map<number, AppInfo> = new Map([
       label: 'Elections',
       activityKey: '',
       key: 'elections',
-      route: '/elections'
+      route: SiteRoute.Elections
+    }
+  ],
+  [
+    8,
+    {
+      id: 8,
+      label: 'Upcoming',
+      activityKey: '',
+      key: 'elections-upcoming',
+      route: SiteRoute.ElectionsSchedule
+    }
+  ],
+  [
+    9,
+    {
+      id: 9,
+      label: 'Speeches',
+      activityKey: '',
+      key: 'elections-speeches',
+      route: SiteRoute.ElectionsSpeeches
     }
   ]
 ]);
