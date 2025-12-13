@@ -37,17 +37,18 @@
                 [routerLinkActiveOptions]="{ exact: true }"
               >
                 @if (subItem.route) {
+                  <!-- For routes on the site -->
                   <a
                     class="nav-entry"
                     (click)="navigate(subItem)"
                     [routerLink]="subItem.route"
                     [class.clickable]="!subItem.isDisabled"
-                    routerLinkActive="active"
                   >
                     <fa-icon class="nav-entry__icon" [icon]="subItem.icon" [fixedWidth]="true" />
                     <span>{{ subItem.label }}</span>
                   </a>
                 } @else {
+                  <!-- For external links -->
                   <a class="nav-entry clickable" [href]="subItem.href" target="_blank">
                     <fa-icon class="nav-entry__icon" [icon]="subItem.icon" [fixedWidth]="true" />
                     <span>{{ subItem.label }}</span>
