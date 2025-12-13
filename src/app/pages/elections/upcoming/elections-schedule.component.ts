@@ -1,6 +1,8 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { Router } from '@angular/router';
 import { ArticleComponent } from '@csss-code/article/article.component';
 import { ButtonComponent } from '@csss-code/button/button.component';
+import { SiteRoute } from 'app/app.routes';
 
 @Component({
   selector: 'cs-upcoming',
@@ -10,5 +12,11 @@ import { ButtonComponent } from '@csss-code/button/button.component';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 // FIXME: Make this dynamic
-// eslint-disable-next-line @typescript-eslint/no-extraneous-class
-export class ElectionsScheduleComponent {}
+export class ElectionsScheduleComponent {
+  private router = inject(Router);
+
+  navigate(): void {
+    console.log(SiteRoute.ElectionsSpeeches);
+    this.router.navigate([SiteRoute.ElectionsSpeeches]);
+  }
+}
