@@ -8,5 +8,6 @@ import { ArticleComponent } from '@csss-code/article/article.component';
   styleUrl: './elections-schedule.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
+// FIXME: Make this dynamic
 // eslint-disable-next-line @typescript-eslint/no-extraneous-class
 export class ElectionsScheduleComponent {}

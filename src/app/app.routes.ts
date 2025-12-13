@@ -105,16 +105,18 @@ export const routes: Routes = [
       ),
     title: makeTitle('Elections'),
     data: {
-      description: 'Learn about the responsibilities of our executives and how you can become one.'
+      description: 'View upcoming, current, and past elections.'
     }
   },
   {
     path: 'elections/speeches',
     loadComponent: () =>
-      import('./pages/elections/elections.component').then(m => m.ElectionsComponent),
+      import('./pages/elections/election-speeches/election-speeches.component').then(
+        m => m.ElectionSpeechesComponent
+      ),
     title: makeTitle('Elections'),
     data: {
-      description: 'Learn about the responsibilities of our executives and how you can become one.'
+      description: 'Learn more about the candidates who want to make our society a better place.'
     }
   },
   { path: '', component: HomeComponent, title: 'Computing Science Student Society' },
