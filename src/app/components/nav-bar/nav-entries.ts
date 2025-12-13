@@ -112,10 +112,10 @@ export const NAVBAR_ENTRIES: NavItem[] = [
         route: SiteRoute.Elections
       },
       {
-        key: 'elections.upcoming',
-        label: 'Upcoming',
+        key: 'elections.schedule',
+        label: 'Schedule',
         icon: faFile,
-        route: SiteRoute.ElectionsUpcoming
+        route: SiteRoute.ElectionsSchedule
       },
       {
         key: 'elections.speeches',

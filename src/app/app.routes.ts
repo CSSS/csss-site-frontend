@@ -10,7 +10,7 @@ export enum SiteRoute {
   Events = '/events',
   EventsArchives = '/events/archives',
   Elections = '/elections',
-  ElectionsUpcoming = '/elections/upcoming',
+  ElectionsSchedule = '/elections/schedule',
   ElectionsSpeeches = '/elections/speeches'
 }
 
@@ -98,9 +98,11 @@ export const routes: Routes = [
     }
   },
   {
-    path: 'elections/upcoming',
+    path: 'elections/schedule',
     loadComponent: () =>
-      import('./pages/elections/upcoming/upcoming.component').then(m => m.UpcomingComponent),
+      import('pages/elections/upcoming/elections-schedule.component').then(
+        m => m.ElectionsScheduleComponent
+      ),
     title: makeTitle('Elections'),
     data: {
       description: 'Learn about the responsibilities of our executives and how you can become one.'
