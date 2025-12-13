@@ -1,20 +1,14 @@
-@use 'theme';
 @use 'globals' as g;
 
 button {
   @include g.no-select;
-  --border-cfg: 1px solid #adadad;
-  border-top: var(--border-cfg);
-  border-left: var(--border-cfg);
-  border-right: var(--border-cfg);
-  border-radius: 5px;
-  padding: 1rem;
+  padding: 0.5rem;
   background-color: #111111;
 
   transition: transform 0.1s ease;
 
   &:hover {
-    background-color: #222222;
+    background-color: g.$accent2;
   }
 
   &:active {
