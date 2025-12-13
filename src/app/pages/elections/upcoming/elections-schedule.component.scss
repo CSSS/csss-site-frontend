@@ -1,0 +1,14 @@
+.post {
+  border: 1px black solid;
+  padding: 1rem;
+  box-shadow: 10px 10px 5px black;
+
+  &__title {
+    margin: 0;
+  }
+
+  &__list {
+    list-style-position: inside;
+    list-style-type: circle;
+  }
+}

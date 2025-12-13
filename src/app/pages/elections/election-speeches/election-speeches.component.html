@@ -1,0 +1,15 @@
+<code-article>
+  <header>
+    <h1>Nominees</h1>
+    <p>Learn more about our candidates and what they will do for our society.<br /></p>
+    <section class="nominees">
+      <h2>Director of Multi-Media</h2>
+      @for (nominee of nominees; track $index) {
+        <div class="nominee">
+          <h2 class="nominee__name">> {{ nominee.name }}</h2>
+          <p class="nominee__speech">{{ nominee.speech }}</p>
+        </div>
+      }
+    </section>
+  </header>
+</code-article>
