@@ -6,4 +6,9 @@
   &__title {
     margin: 0;
   }
+
+  &__list {
+    list-style-position: inside;
+    list-style-type: circle;
+  }
 }
