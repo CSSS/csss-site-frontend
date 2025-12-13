@@ -123,9 +123,9 @@ export const routeApplicationMap: Map<number, AppInfo> = new Map([
     8,
     {
       id: 8,
-      label: 'Upcoming',
+      label: 'Schedule',
       activityKey: '',
-      key: 'elections-upcoming',
+      key: 'elections-schedule',
       route: SiteRoute.ElectionsSchedule
     }
   ],
