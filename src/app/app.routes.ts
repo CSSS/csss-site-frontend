@@ -100,7 +100,7 @@ export const routes: Routes = [
   {
     path: 'elections/upcoming',
     loadComponent: () =>
-      import('./pages/elections/elections.component').then(m => m.ElectionsComponent),
+      import('./pages/elections/upcoming/upcoming.component').then(m => m.UpcomingComponent),
     title: makeTitle('Elections'),
     data: {
       description: 'Learn about the responsibilities of our executives and how you can become one.'
