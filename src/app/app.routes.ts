@@ -103,7 +103,7 @@ export const routes: Routes = [
       import('pages/elections/upcoming/elections-schedule.component').then(
         m => m.ElectionsScheduleComponent
       ),
-    title: makeTitle('Elections'),
+    title: makeTitle('Election Schedule'),
     data: {
       description: 'View upcoming, current, and past elections.'
     }
@@ -114,7 +114,7 @@ export const routes: Routes = [
       import('./pages/elections/election-speeches/election-speeches.component').then(
         m => m.ElectionSpeechesComponent
       ),
-    title: makeTitle('Elections'),
+    title: makeTitle('Speeches'),
     data: {
       description: 'Learn more about the candidates who want to make our society a better place.'
     }
