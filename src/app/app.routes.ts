@@ -66,7 +66,7 @@ export const routes: Routes = [
     }
   },
   {
-    path: 'event-archives',
+    path: 'events/archive',
     loadComponent: () =>
       import('pages/event-archives/event-archives.component').then(m => m.EventArchivesComponent),
     title: makeTitle('Event Archives'),
@@ -77,6 +77,24 @@ export const routes: Routes = [
   // Elections
   {
     path: 'elections',
+    loadComponent: () =>
+      import('./pages/elections/elections.component').then(m => m.ElectionsComponent),
+    title: makeTitle('Elections'),
+    data: {
+      description: 'Learn about the responsibilities of our executives and how you can become one.'
+    }
+  },
+  {
+    path: 'elections/upcoming',
+    loadComponent: () =>
+      import('./pages/elections/elections.component').then(m => m.ElectionsComponent),
+    title: makeTitle('Elections'),
+    data: {
+      description: 'Learn about the responsibilities of our executives and how you can become one.'
+    }
+  },
+  {
+    path: 'elections/speeches',
     loadComponent: () =>
       import('./pages/elections/elections.component').then(m => m.ElectionsComponent),
     title: makeTitle('Elections'),
