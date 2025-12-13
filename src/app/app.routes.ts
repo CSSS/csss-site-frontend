@@ -1,6 +1,19 @@
 import { Routes } from '@angular/router';
 import { HomeComponent } from 'pages/home/home.component';
 
+export enum SiteRoute {
+  ReadMe = '/readme',
+  Officers = '/officers',
+  Committees = '/committees',
+  Affiliates = '/affiliates',
+  CommonRoom = '/common-room',
+  Events = '/events',
+  EventsArchives = '/events/archives',
+  Elections = '/elections',
+  ElectionsUpcoming = '/elections/upcoming',
+  ElectionsSpeeches = '/elections/speeches'
+}
+
 /**
  * Formats the title on the web browser's tab/window.
  * @param pageTitle - Title of the page
@@ -66,7 +79,7 @@ export const routes: Routes = [
     }
   },
   {
-    path: 'events/archive',
+    path: 'events/archives',
     loadComponent: () =>
       import('pages/event-archives/event-archives.component').then(m => m.EventArchivesComponent),
     title: makeTitle('Event Archives'),

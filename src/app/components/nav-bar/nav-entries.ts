@@ -4,9 +4,9 @@ import {
   faBook,
   faChevronRight,
   faFile,
-  faRoadBarrier,
   faUpRightFromSquare
 } from '@fortawesome/free-solid-svg-icons';
+import { SiteRoute } from 'app/app.routes';
 import { EXTERNAL_LINKS } from 'components/url/links.data';
 
 export interface NavItem extends CodeListItem<NavItem> {
@@ -27,31 +27,31 @@ export const NAVBAR_ENTRIES: NavItem[] = [
         key: 'readme',
         label: 'README',
         icon: faFile,
-        route: '/readme'
+        route: SiteRoute.ReadMe
       },
       {
         key: 'officers',
         label: 'Officers',
         icon: faFile,
-        route: '/officers'
+        route: SiteRoute.Officers
       },
       {
         key: 'committees',
         label: 'Committees',
         icon: faFile,
-        route: '/committees'
+        route: SiteRoute.Committees
       },
       {
         key: 'common-room',
         label: 'Common Room',
         icon: faFile,
-        route: '/common-room'
+        route: SiteRoute.CommonRoom
       },
       {
         key: 'affiliates',
         label: 'Affiliates',
         icon: faFile,
-        route: '/affiliates'
+        route: SiteRoute.Affiliates
       }
     ]
   },
@@ -65,7 +65,7 @@ export const NAVBAR_ENTRIES: NavItem[] = [
         key: 'events.about',
         label: 'About',
         icon: faFile,
-        route: '/events'
+        route: SiteRoute.Events
       },
       {
         key: 'events.tech-fair',
@@ -95,7 +95,7 @@ export const NAVBAR_ENTRIES: NavItem[] = [
         key: 'events.archives',
         label: 'Archives',
         icon: faBook,
-        route: '/event-archives'
+        route: SiteRoute.EventsArchives
       }
     ]
   },
@@ -109,21 +109,19 @@ export const NAVBAR_ENTRIES: NavItem[] = [
         key: 'elections.about',
         label: 'About',
         icon: faFile,
-        route: '/elections'
+        route: SiteRoute.Elections
       },
       {
         key: 'elections.upcoming',
         label: 'Upcoming',
-        icon: faRoadBarrier,
-        route: '/upcoming-elections',
-        isDisabled: true
+        icon: faFile,
+        route: SiteRoute.ElectionsUpcoming
       },
       {
         key: 'elections.speeches',
         label: 'Speeches',
-        icon: faRoadBarrier,
-        route: '/speeches',
-        isDisabled: true
+        icon: faFile,
+        route: SiteRoute.ElectionsSpeeches
       }
     ]
   },
