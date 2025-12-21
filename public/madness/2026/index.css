@@ -1,6 +1,4 @@
 :root {
-  height: 100svh;
-  width: 100vw;
   --hill-height: 50vh;
   --hill-padding: 5vh;
   --hill-shadow: #002805;
@@ -12,13 +10,17 @@
 
 html,
 body {
+  width: 100%;
   margin: 0;
   padding: 0;
+  min-height: 100svh;
 }
 
 body {
+  position: relative;
   width: 100%;
   font-family: sans-serif;
+  overflow-y: hidden;
   background: linear-gradient(
     to right,
     var(--hill-shadow) 3px,
@@ -287,6 +289,9 @@ table td {
 }
 
 #nav-links {
+  position: sticky;
+  top: 0;
+  z-index: 10;
   background: rgba(255, 255, 255, 0.1);
   width: 100%;
   display: flex;
