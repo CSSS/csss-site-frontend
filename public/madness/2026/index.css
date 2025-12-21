@@ -1,29 +1,22 @@
-html {
+:root {
+  height: 100svh;
+  width: 100vw;
+  --hill-height: 50vh;
+  --hill-padding: 5vh;
+  --hill-shadow: #002805;
+  --hill-color: #004208;
+  --red: #880500;
+  --darkred: #550500;
+  --lightred: #aa1500;
+}
+
+html,
+body {
   margin: 0;
   padding: 0;
-  width: 100vw;
-  max-width: 100%;
 }
 
 body {
-  --hill-width: 40vw;
-  --hill-height: 50vh;
-  --hill-padding: 5vh;
-  --hill-shadow: #0d5;
-  --hill-shadow: #002805;
-  --hill-color: #22ff77;
-  --hill-color: #004208;
-  --sky-color: #2277ff;
-  --sky-color: #001c1f;
-  --sky-color: #000c0f;
-  --cloud-color: #ccc;
-  --red: #550400;
-  --red: #880500;
-  --darkred: #330300;
-  --darkred: #550500;
-  --lightred: #aa1500;
-  margin: 0;
-  padding: 0;
   width: 100%;
   font-family: sans-serif;
   background: linear-gradient(
@@ -58,7 +51,7 @@ body * {
   position: absolute;
   top: 0;
   width: 100%;
-  height: 100vh;
+  height: 100%;
   z-index: -3;
   background-color: black;
   background-image:
@@ -79,7 +72,7 @@ body * {
 
 #above-fold {
   width: 100%;
-  min-height: 100vh;
+  min-height: 100%;
   display: flex;
   flex-flow: column nowrap;
   align-items: center;
@@ -97,8 +90,7 @@ button {
   white-space: nowrap;
   border: none;
   text-align: center;
-  /* TODO: Uncomment me when enabling the button */
-  /* cursor: pointer; */
+  cursor: pointer;
   font-size: 1em;
   box-shadow: 0 6px 0 var(--darkred);
   transition:
@@ -107,18 +99,17 @@ button {
     background 0.2s;
 }
 
-/* TODO: Uncomment me when enabling the button */
-/* .btn:focus, */
-/* button:focus, */
-/* .btn:hover, */
-/* button:hover { */
-/*   background: var(--lightred); */
-/* } */
-/**/
-/* .btn:active, */
-/* button:active { */
-/*   background: var(--darkred); */
-/* } */
+.btn:focus,
+button:focus,
+.btn:hover,
+button:hover {
+  background: var(--lightred);
+}
+
+.btn:active,
+button:active {
+  background: var(--darkred);
+}
 
 header {
   text-align: center;
@@ -158,10 +149,10 @@ header > h4 b {
   position: relative;
   z-index: -2;
   margin: 3em 0 0 0;
-  min-width: 90px;
+  min-width: 5.625rem;
   width: 20vw;
-  max-width: 125px;
-  height: 70px;
+  max-width: 7.8125rem;
+  height: 5rem;
   background: gray;
   box-shadow:
     inset -20px 0 0 gray,
@@ -175,7 +166,6 @@ header > h4 b {
   color: white;
   position: relative;
   top: -6px;
-  left: 52.5px;
   left: calc(100% - 50px);
   width: 50px;
   height: 70px;
@@ -194,7 +184,7 @@ header > h4 b {
   justify-content: space-around;
   align-content: flex-start;
   padding-top: var(--hill-padding);
-  min-width: 320px;
+  min-width: 20rem;
   width: 100%;
   min-height: calc(var(--hill-height) + 1em);
   background: var(--hill-color);
@@ -204,15 +194,12 @@ header > h4 b {
   position: relative;
   border-top-left-radius: 30%;
   border-top-right-radius: 30%;
-  width: 100%;
-  height: 100%;
   width: 2rem;
   height: 5rem;
   background:
     linear-gradient(315deg, var(--hill-shadow) 25%, transparent 25%),
     linear-gradient(45deg, var(--hill-shadow) 25%, transparent 25%);
   background-color: var(--hill-color);
-  background-position: 0 0;
   background-position: bottom left;
 }
 
@@ -229,80 +216,6 @@ header > h4 b {
 .grass:nth-child(3) {
   top: 7em;
   left: 1em;
-}
-
-#clouds-container {
-  overflow-x: hidden;
-  position: absolute;
-  z-index: -2;
-  width: 100%;
-  top: 0;
-  margin-top: 8vh;
-}
-
-@keyframes cross {
-  0% {
-    left: 100%;
-  }
-  100% {
-    left: -100%;
-  }
-}
-
-.clouds {
-  --width: 5vmax;
-  --height: calc(var(--width) / 2);
-  margin-top: 30vh;
-  width: 100%;
-  opacity: 0.8;
-  display: flex;
-  justify-content: space-between;
-  position: relative;
-  z-index: 5;
-  animation: cross 120s infinite linear;
-}
-
-.cloud {
-  background: var(--cloud-color);
-  width: var(--width);
-  height: var(--height);
-  border-radius: calc(var(--width) / 3);
-  position: relative;
-}
-
-.cloud::after {
-  content: '';
-  position: absolute;
-  background: var(--cloud-color);
-  height: calc(var(--width) / 3);
-  width: calc(var(--width) / 3);
-  border-radius: 50%;
-  top: calc(var(--height) / -5);
-  left: calc(var(--height) / 6);
-}
-
-.cloud::before {
-  content: '';
-  position: absolute;
-  background: var(--cloud-color);
-  height: calc(var(--width) / 2);
-  width: calc(var(--width) / 2);
-  border-radius: 50%;
-  top: calc(var(--height) / -2);
-  left: calc(var(--width) / 3);
-}
-
-.clouds:nth-child(even) {
-  --width: 10vmax;
-  animation: cross 50s infinite linear;
-}
-
-.clouds:nth-child(even) > .cloud:nth-child(odd) {
-  top: -20vh;
-}
-
-.clouds > .cloud:nth-child(odd) {
-  top: -15vh;
 }
 
 #info-container {
@@ -327,14 +240,8 @@ header > h4 b {
   text-align: center;
 }
 
-#sponsors > .btn {
-  text-align: center;
-}
-
 /* if have more sponsors, add sponsors here too */
-#schedule,
-#prize,
-#sponsors {
+#schedule {
   display: flex;
   flex-flow: row wrap;
   justify-content: center;
@@ -352,9 +259,7 @@ header > h4 b {
   margin-block-start: 2rem;
 }
 
-#schedule div,
-#prize div,
-#sponsors div {
+#schedule div {
   max-width: calc(100% - 2em);
   margin-left: 1em;
   margin-right: 1em;
@@ -368,51 +273,8 @@ table td {
 #schedule > h2,
 #schedule > h3,
 #faq > h2,
-#prize > h2,
-#sponsors > h2 {
+#prize > h2 {
   flex: 1 0 100%;
-}
-
-.forest {
-  position: relative;
-  display: flex;
-  z-index: 99999;
-  flex-flow: row nowrap;
-  justify-content: space-around;
-  align-items: space-around;
-  max-width: 95vw;
-  height: calc(var(--trunk-height) + var(--foliage-height));
-  overflow: hidden;
-}
-
-.tree {
-  --trunk-width: 1vmax;
-  --trunk-height: 2vmax;
-  --foliage-width: 3vmax;
-  --foliage-height: 5vmax;
-  flex: 1 0 auto;
-  margin: var(--foliage-height) var(--foliage-width) var(--trunk-height) var(--foliage-width);
-}
-
-.tree::before {
-  content: '';
-  position: absolute;
-  background: brown;
-  box-shadow: -3px 0 0 inset #533;
-  width: var(--trunk-width);
-  height: var(--trunk-height);
-}
-
-.tree::after {
-  content: '';
-  position: absolute;
-  width: var(--foliage-width);
-  height: var(--foliage-height);
-  margin-left: calc(var(--foliage-width) / -2 + var(--trunk-width) / 2);
-  margin-top: calc(-1 * var(--foliage-height));
-  clip-path: polygon(50% 0%, 95% 60%, 75% 60%, 100% 100%, 0 100%, 25% 60%, 5% 60%);
-  background: green;
-  background: var(--hill-shadow);
 }
 
 .home {
@@ -447,10 +309,6 @@ table td {
   text-align: center;
 }
 
-th {
-  text-align: left;
-}
-
 td:first-child {
   text-align: right;
   font-weight: 700;
@@ -460,14 +318,6 @@ td:first-child {
 a {
   text-decoration: none;
   color: inherit;
-}
-
-h2 > a {
-  transition:
-    box-shadow 0.2s,
-    background 0.2s,
-    color 0.2s;
-  padding: 7px 5px 5px 5px;
 }
 
 #join-discord {
@@ -490,15 +340,6 @@ a > img {
     filter 0.2s;
 }
 
-#mobify-logo {
-  width: 100%;
-}
-
-a:hover > img {
-  filter: none;
-  opacity: 1;
-}
-
 @media (max-width: 770px) {
   article > div {
     padding: 0 2rem;
@@ -517,22 +358,4 @@ a:hover > img {
   #mountain {
     max-width: 500px;
   }
-}
-
-footer {
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: center;
-  align-items: baseline;
-}
-
-footer a {
-  font-size: 1rem;
-  color: white;
-  text-decoration: none;
-  transition: text-shadow 0.2s;
-}
-
-footer p {
-  color: white;
 }
