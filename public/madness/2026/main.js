@@ -1,5 +1,6 @@
 /* eslint-disable */
 const sky = document.getElementById('sky');
+const stars = document.getElementById('stars');
 
 const skyColours = [
   'linear-gradient(to bottom, #0a0a2e 0%, #1a1a3e 50%, #2a2a4e 100%)', // Dark pre-dawn
@@ -43,17 +44,35 @@ function updateSkyColour() {
   const nextIndex = Math.min(currentIndex + 1, skyColours.length - 1);
   const blendFactor = colorIndex - currentIndex;
 
-  // Parse current and next gradient colors
   const currentColors = parseGradient(skyColours[currentIndex]);
   const nextColors = parseGradient(skyColours[nextIndex]);
 
-  // Interpolate between gradients
   const color1 = interpolateColor(currentColors[0], nextColors[0], blendFactor);
   const color2 = interpolateColor(currentColors[1], nextColors[1], blendFactor);
   const color3 = interpolateColor(currentColors[2], nextColors[2], blendFactor);
 
   sky.style.background = `linear-gradient(to bottom, rgb(${color1.join(',')}) 0%, rgb(${color2.join(',')}) 50%, rgb(${color3.join(',')}) 100%)`;
+
+  if (scrollPercent > 0.7) {
+    stars.style.opacity = Math.min((scrollPercent - 0.7) / 0.3, 1);
+  } else {
+    stars.style.opacity = 0;
+  }
+}
+
+function makeStars() {
+  for (let i = 0; i < 100; i++) {
+    const star = document.createElement('div');
+    star.className = 'star';
+    star.style.width = Math.random() * 3 + 'px';
+    star.style.height = star.style.width;
+    star.style.left = Math.random() * 100 + '%';
+    star.style.top = Math.random() * 100 + '%';
+    star.style.animationDelay = Math.random() * 2 + 's';
+    stars.appendChild(star);
+  }
 }
 
 window.addEventListener('scroll', updateSkyColour);
 updateSkyColour(skyColours[0]);
+makeStars();

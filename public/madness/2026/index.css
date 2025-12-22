@@ -84,6 +84,30 @@ button:active {
   height: 100svh;
 }
 
+#stars {
+  position: fixed;
+  width: 100%;
+  height: 100svh;
+  opacity: 0;
+  animation: opacity 0.5s ease;
+}
+
+.star {
+  position: absolute;
+  background: white;
+  border-radius: 50%;
+  animation: twinkle 1s ease-in-out infinite alternate;
+}
+
+@keyframes twinkle {
+  from {
+    opacity: 0.3;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
 #above-fold::before {
   content: '';
   position: absolute;
