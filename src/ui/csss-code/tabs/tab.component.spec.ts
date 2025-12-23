@@ -1,17 +1,17 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CodeTabsComponent } from './tabs.component';
+import { CodeTabComponent } from './tab.component';
 
-describe('CodeTabsComponent', () => {
-  let component: CodeTabsComponent;
-  let fixture: ComponentFixture<CodeTabsComponent>;
+describe('CodeTabComponent', () => {
+  let component: CodeTabComponent;
+  let fixture: ComponentFixture<CodeTabComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [CodeTabsComponent]
+      imports: [CodeTabComponent]
     }).compileComponents();
 
-    fixture = TestBed.createComponent(CodeTabsComponent);
+    fixture = TestBed.createComponent(CodeTabComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
