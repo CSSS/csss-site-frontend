@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { ArticleComponent } from '@csss-code/article/article.component';
+import { CodeArticleComponent } from '@csss-code/article/article.component';
 import { CardComponent } from '@csss-code/card/card.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faDiscord } from '@fortawesome/free-brands-svg-icons';
@@ -9,7 +9,7 @@ import { Affiliate, AFFILIATES } from './affiliates';
 
 @Component({
   selector: 'cs-affiliates',
-  imports: [ArticleComponent, CardComponent, FontAwesomeModule],
+  imports: [CodeArticleComponent, CardComponent, FontAwesomeModule],
   templateUrl: './affiliates.component.html',
   styleUrl: './affiliates.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush

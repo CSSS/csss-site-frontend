@@ -18,7 +18,7 @@ const LETTER_HEIGHT = 24;
   styleUrl: './article.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ArticleComponent implements AfterContentInit, OnDestroy {
+export class CodeArticleComponent implements AfterContentInit, OnDestroy {
   private articleContent = viewChild.required<ElementRef<HTMLDivElement>>('article');
 
   /**
