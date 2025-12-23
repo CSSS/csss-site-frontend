@@ -1,6 +1,6 @@
 import { NgTemplateOutlet } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { ArticleComponent } from '@csss-code/article/article.component';
+import { CodeArticleComponent } from '@csss-code/article/article.component';
 import { CodeTabGroupComponent } from '@csss-code/tabs/tab-group/tab-group.component';
 import { CodeTabComponent } from '@csss-code/tabs/tab.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
@@ -12,7 +12,7 @@ import { ELECTED_DESCRIPTIONS, EXEC_DESCRIPTIONS } from 'pages/officers/officers
   selector: 'cs-elections',
   imports: [
     NgTemplateOutlet,
-    ArticleComponent,
+    CodeArticleComponent,
     FontAwesomeModule,
     ExternalLinkComponent,
     CodeTabGroupComponent,
