@@ -1,6 +1,6 @@
 {
   "name": "csss-ng-frontend",
-  "version": "0.0.0",
+  "version": "2.2.0",
   "scripts": {
     "ng": "ng",
     "pre-build": "tsx scripts/app/sass-builder.ts",
