@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+
 import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 import { IconDefinition } from '@fortawesome/angular-fontawesome';
 
@@ -11,7 +11,7 @@ export interface CodeListItem<T extends CodeListItem<T>> {
 
 @Component({
   selector: 'code-list-item',
-  imports: [CommonModule],
+  imports: [],
   templateUrl: './list-item.component.html',
   styleUrl: './list-item.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush

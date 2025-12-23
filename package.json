@@ -15,13 +15,13 @@
   "private": true,
   "dependencies": {
     "@angular/cdk": "^19.2.16",
-    "@angular/common": "^20.0.2",
-    "@angular/compiler": "^20.0.2",
-    "@angular/core": "^20.0.2",
-    "@angular/forms": "^20.0.2",
-    "@angular/platform-browser": "^20.0.2",
-    "@angular/platform-browser-dynamic": "^20.0.2",
-    "@angular/router": "^20.0.2",
+    "@angular/common": "^21.0.6",
+    "@angular/compiler": "^21.0.6",
+    "@angular/core": "^21.0.6",
+    "@angular/forms": "^21.0.6",
+    "@angular/platform-browser": "^21.0.6",
+    "@angular/platform-browser-dynamic": "^21.0.6",
+    "@angular/router": "^21.0.6",
     "@fortawesome/angular-fontawesome": "^2.0.0",
     "@fortawesome/free-brands-svg-icons": "^6.7.1",
     "@fortawesome/free-regular-svg-icons": "^6.7.1",
@@ -32,9 +32,9 @@
     "tslib": "^2.3.0"
   },
   "devDependencies": {
-    "@angular/build": "^20.0.1",
-    "@angular/cli": "^20.0.1",
-    "@angular/compiler-cli": "^20.0.2",
+    "@angular/build": "^21.0.4",
+    "@angular/cli": "^21.0.4",
+    "@angular/compiler-cli": "^21.0.6",
     "@eslint/js": "^9.30.1",
     "@types/jasmine": "~5.1.0",
     "eslint": "^9.39.2",
@@ -48,7 +48,7 @@
     "prettier": "3.6.2",
     "prettier-plugin-organize-imports": "^4.1.0",
     "tsx": "^4.20.3",
-    "typescript": "~5.8.3",
+    "typescript": "~5.9.3",
     "typescript-eslint": "^8.50.1"
   }
 }
