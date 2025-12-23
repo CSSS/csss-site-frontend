@@ -12,7 +12,6 @@ You will need:
 # use Angular v21.0.6
 npm install -g @angular/cli
 ```
-- SSH keys
 
 To install the correct versions of `node` and `npm`, you might want to install and setup [nvm](https://github.com/nvm-sh/nvm).
 
