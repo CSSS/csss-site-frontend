@@ -1,4 +1,3 @@
-
 import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 import { IconDefinition } from '@fortawesome/angular-fontawesome';
 
