@@ -1,17 +1,21 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { MenuItemComponent } from './list-item.component';
+import { CodeListItem, CodeListItemComponent } from './list-item.component';
+
+interface DummyItem extends CodeListItem<DummyItem> {
+  foo?: 'bar';
+}
 
 describe('NavbarItemItemComponent', () => {
-  let component: MenuItemComponent;
-  let fixture: ComponentFixture<MenuItemComponent>;
+  let component: CodeListItemComponent<DummyItem>;
+  let fixture: ComponentFixture<CodeListItemComponent<DummyItem>>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [MenuItemComponent]
+      declarations: [CodeListItemComponent]
     }).compileComponents();
 
-    fixture = TestBed.createComponent(MenuItemComponent);
+    fixture = TestBed.createComponent(CodeListItemComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

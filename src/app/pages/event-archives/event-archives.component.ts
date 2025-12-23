@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { ArticleComponent } from '@csss-code/article/article.component';
+import { CodeArticleComponent } from '@csss-code/article/article.component';
 import {
   FALL_HACKS_YEARS,
   FROSH_YEARS,
@@ -9,7 +9,7 @@ import {
 
 @Component({
   selector: 'cs-event-archives',
-  imports: [ArticleComponent],
+  imports: [CodeArticleComponent],
   templateUrl: './event-archives.component.html',
   styleUrl: './event-archives.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush

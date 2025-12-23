@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { ArticleComponent } from '@csss-code/article/article.component';
+import { CodeArticleComponent } from '@csss-code/article/article.component';
 
 interface Nominee {
   name: string;
@@ -8,7 +8,7 @@ interface Nominee {
 
 @Component({
   selector: 'cs-election-speeches',
-  imports: [ArticleComponent],
+  imports: [CodeArticleComponent],
   templateUrl: './election-speeches.component.html',
   styleUrl: './election-speeches.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
