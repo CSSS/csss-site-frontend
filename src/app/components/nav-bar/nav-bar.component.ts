@@ -1,4 +1,3 @@
-import { CommonModule } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -20,7 +19,7 @@ import { UiService } from 'services/ui/ui.service';
 
 @Component({
   selector: 'cs-nav-bar',
-  imports: [CommonModule, FontAwesomeModule, CodeListItemComponent, RouterModule],
+  imports: [FontAwesomeModule, CodeListItemComponent, RouterModule],
   templateUrl: './nav-bar.component.html',
   styleUrl: './nav-bar.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
