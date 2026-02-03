@@ -22,20 +22,16 @@ export class OfficersComponent {
     let newAdmin = this.cachedAdmins.get(year);
     if (!newAdmin) {
       // TODO: Fetch this from the back end.
-      newAdmin = structuredClone(executives.find(e => e.startYear === year));
+      newAdmin = structuredClone(executives.find(e => e.startYear <= year));
       if (!newAdmin) {
-        // Fall back to the most recent administration if current year not found.
-        const mostRecent = executives.reduce((latest, exec) =>
-          exec.startYear > latest.startYear ? exec : latest
-        );
-        newAdmin = structuredClone(mostRecent);
+        throw new Error(`Administration not found for any year.`);
       }
-      const actualYear = newAdmin.startYear;
+      const foundYear = newAdmin.startYear;
       // FIXME: Remove this once admins are properly fetched.
       newAdmin.members = newAdmin.members.map(exec => {
         return {
           ...exec,
-          photoName: `images/executives/${actualYear}/${exec.photoName}`
+          photoName: `images/executives/${foundYear}/${exec.photoName}`
         };
       });
       // end of FIXME:
