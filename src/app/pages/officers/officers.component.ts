@@ -22,15 +22,16 @@ export class OfficersComponent {
     let newAdmin = this.cachedAdmins.get(year);
     if (!newAdmin) {
       // TODO: Fetch this from the back end.
-      newAdmin = structuredClone(executives.find(e => e.startYear === year));
+      newAdmin = structuredClone(executives.find(e => e.startYear <= year));
       if (!newAdmin) {
-        throw new Error(`Administration for year ${year} not found.`);
+        throw new Error(`Administration not found for any year.`);
       }
+      const foundYear = newAdmin.startYear;
       // FIXME: Remove this once admins are properly fetched.
       newAdmin.members = newAdmin.members.map(exec => {
         return {
           ...exec,
-          photoName: this.toLocalUrl(exec.photoName)
+          photoName: `images/executives/${foundYear}/${exec.photoName}`
         };
       });
       // end of FIXME:
@@ -45,14 +46,4 @@ export class OfficersComponent {
    * Will probably need some way to remove older cached entries if memory becomes an issue.
    */
   private cachedAdmins = new Map<number, ExecutiveAdministration>();
-
-  /**
-   * Changes the files name to one that can be used to set the background image.
-   *
-   * @param fileName - The file name to change. Must be in the `public/images/` folder
-   * @returns File name in the CSS URL form.
-   */
-  private toLocalUrl(fileName: string): string {
-    return `images/executives/${this.currentYear()}/${fileName}`;
-  }
 }
