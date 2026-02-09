@@ -1,12 +1,12 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { Router } from '@angular/router';
-import { ArticleComponent } from '@csss-code/article/article.component';
-import { ButtonComponent } from '@csss-code/button/button.component';
+import { CodeArticleComponent } from '@csss-code/article/article.component';
+import { CodeButtonComponent } from '@csss-code/button/button.component';
 import { SiteRoute } from 'app/app.routes';
 
 @Component({
   selector: 'cs-upcoming',
-  imports: [ArticleComponent, ButtonComponent],
+  imports: [CodeArticleComponent, CodeButtonComponent],
   templateUrl: './elections-schedule.component.html',
   styleUrl: './elections-schedule.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
