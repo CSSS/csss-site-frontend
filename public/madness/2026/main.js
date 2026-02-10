@@ -1,21 +1,24 @@
-/* eslint-disable */
-const sky = document.getElementById('sky');
 const stars = document.getElementById('stars');
+const content = document.getElementById('info-container');
+
+const menuNav = document.getElementById('menu');
+const overlay = document.getElementById('overlay');
+
+const goodCounter = document.getElementById('good-counter');
+const evilCounter = document.getElementById('evil-counter');
+
+const scheduleDays = document.querySelectorAll('.schedule__day');
 
 const skyColours = [
   'linear-gradient(to bottom, #0a0a2e 0%, #1a1a3e 50%, #2a2a4e 100%)', // Dark pre-dawn
   'linear-gradient(to bottom, #1e3a5f 0%, #4a5f7f 50%, #7a8f9f 100%)', // Dawn
-  'linear-gradient(to bottom, #87CEEB 0%, #B0E0E6 50%, #FFE4B5 100%)', // Morning
+  // 'linear-gradient(to bottom, #87CEEB 0%, #B0E0E6 50%, #FFE4B5 100%)', // Morning
   'linear-gradient(to bottom, #4A90E2 0%, #87CEEB 50%, #F0E68C 100%)', // Mid-morning
   'linear-gradient(to bottom, #1090FF 0%, #4A90E2 50%, #87CEEB 100%)', // Noon
   'linear-gradient(to bottom, #FF8C42 0%, #FFA07A 50%, #FFD700 100%)', // Afternoon
   'linear-gradient(to bottom, #FF6B6B 0%, #FF8E53 50%, #FEB47B 100%)', // Evening
-  'linear-gradient(to bottom, #4A148C 0%, #6A1B9A 50%, #7B1FA2 100%)', // Dusk
   'linear-gradient(to bottom, #0a0a2e 0%, #1a1a3e 50%, #2a2a4e 100%)' // Night
 ];
-
-let currentColorIndex = 0;
-let lastScrollY = 0;
 
 function interpolateColor(color1, color2, factor) {
   const result = color1.slice();
@@ -37,8 +40,7 @@ function parseGradient(gradientStr) {
 }
 
 function updateSkyColour() {
-  const scrollPercent =
-    window.scrollY / (document.documentElement.scrollHeight - window.innerHeight);
+  const scrollPercent = content.scrollTop / (content.scrollHeight - content.clientHeight);
   const colorIndex = scrollPercent * (skyColours.length - 1);
   const currentIndex = Math.floor(colorIndex);
   const nextIndex = Math.min(currentIndex + 1, skyColours.length - 1);
@@ -73,6 +75,55 @@ function makeStars() {
   }
 }
 
-window.addEventListener('scroll', updateSkyColour);
-updateSkyColour(skyColours[0]);
-makeStars();
+function openMenu() {
+  menuNav.classList.remove('hidden');
+  overlay.classList.remove('hidden');
+  content.style.overflow = 'hidden';
+}
+
+function closeMenu() {
+  menuNav.classList.add('hidden');
+  overlay.classList.add('hidden');
+  content.style.overflow = 'auto';
+}
+
+// TODO: Replace these buttons with counts from the backend
+function incrementGood() {
+  goodCounter.textContent = parseInt(goodCounter.textContent) + 1;
+}
+
+function incrementEvil() {
+  evilCounter.textContent = parseInt(evilCounter.textContent) + 1;
+}
+
+function main() {
+  // Day selector
+  document.querySelectorAll('input[name="schedule-day"]').forEach(radio => {
+    radio.addEventListener('change', e => {
+      const selectedDay = e.target.value;
+      scheduleDays.forEach(day => {
+        day.classList.add('hidden');
+      });
+      document
+        .querySelector(`.schedule__day[data-day="${selectedDay}"]`)
+        ?.classList.remove('hidden');
+    });
+  });
+
+  // Initially hide Sunday
+  document.querySelector('.schedule__day[data-day="sunday"]')?.classList.add('hidden');
+
+  // Handles the sky changing colours
+  content.addEventListener('scroll', updateSkyColour);
+  updateSkyColour();
+  makeStars();
+
+  // Menu handling
+  const links = document.getElementsByClassName('menu__link');
+  for (const link of links) {
+    link.addEventListener('click', closeMenu);
+  }
+  document.getElementById('home').addEventListener('click', closeMenu);
+}
+
+main();
