@@ -1,0 +1,3 @@
+User-agent: *
+Disallow:
+Sitemap: https://madness.sfucsss.org/madness-sitemap2026.xml
