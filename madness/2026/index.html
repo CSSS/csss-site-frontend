@@ -4,15 +4,57 @@
     <title>Mountain Madness 2026</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="index.css" />
-    <script src="main.js" defer></script>
+    <link rel="stylesheet" href="index.full.css" />
+    <script src="index.js" defer></script>
     <link rel="icon" type="image/svg+xml" href="favicon-96x96.png" />
+    <!-- SEO STUFF -->
+    <meta name="google-site-verification" content="kLQrP7x1UHeNBstljjGrwAM9HqWkrcld30A7B6DzFN0" />
+    <meta
+      name="description"
+      content="Mountain Madness 2026 is a 24-hour hackathon hosted by SFU CSSS on Burnaby Mountain, Feb 28 – Mar 1. Free for all hack!"
+    />
+    <meta
+      name="keywords"
+      content="hackathon, SFU, Simon Fraser University, Mountain Madness, CSSS, Burnaby, coding competition, student hackathon 2026"
+    />
+    <link rel="canonical" href="https://madness.sfucsss.org/" />
+    <meta property="og:title" content="Mountain Madness 2026 — SFU Hackathon" />
+    <meta
+      property="og:description"
+      content="A 24-hour hackathon at SFU Burnaby Mountain. Feb 28 – Mar 1, 2026. Free for all hackers!"
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://madness.sfucsss.org/" />
+    <meta property="og:image" content="https://madness.sfucsss.org/mm-logo_512.svg" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Event",
+        "name": "Mountain Madness 2026",
+        "startDate": "2026-02-28",
+        "endDate": "2026-03-01",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "location": {
+          "@type": "Place",
+          "name": "SFU Burnaby Campus",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Burnaby",
+            "addressRegion": "BC",
+            "addressCountry": "CA"
+          }
+        },
+        "organizer": {
+          "@type": "Organization",
+          "name": "SFU Computing Science Student Society",
+          "url": "https://sfucsss.org"
+        },
+        "isAccessibleForFree": true,
+        "description": "A 24-hour hackathon hosted by the SFU CSSS on Burnaby Mountain, free for all hackers."
+      }
+    </script>
   </head>
   <body>
     <a
@@ -22,33 +64,33 @@
         max-width: 100px;
         min-width: 60px;
         position: fixed;
-        right: 20px;
+        right: 3vw;
         top: 0;
         width: 10%;
-        z-index: 10000;
+        z-index: 11000;
       "
-      href="https://mlh.io/na?utm_source=na-hackathon&utm_medium=TrustBadge&utm_campaign=2026-season&utm_content=black"
+      href="https://mlh.io/na?utm_source=na-hackathon&utm_medium=TrustBadge&utm_campaign=2026-season&utm_content=white"
       target="_blank"
       ><img
-        src="https://s3.amazonaws.com/logged-assets/trust-badge/2026/mlh-trust-badge-2026-black.svg"
+        src="https://s3.amazonaws.com/logged-assets/trust-badge/2026/mlh-trust-badge-2026-white.svg"
         alt="Major League Hacking 2026 Hackathon Season"
         style="width: 100%"
     /></a>
     <div id="sky"></div>
     <div id="stars"></div>
-    <div id="peak">
-      <picture class="mountain-svg">
-        <source srcset="mountain_sm.svg" media="(width < 1280px)" />
-        <img src="mountain.svg" alt="mountain" />
-      </picture>
-    </div>
+    <!-- <div id="peak"> -->
+    <!--   <picture class="mountain-svg"> -->
+    <!--     <source srcset="mountain_sm.svg" media="(width < 1280px)" /> -->
+    <!--     <img src="mountain.svg" alt="mountain" loading="eager" /> -->
+    <!--   </picture> -->
+    <!-- </div> -->
 
     <div id="overlay" class="hidden"></div>
 
     <!-- Small header -->
     <header class="sm">
       <button id="menu-open" class="menu__button clickable sm" onclick="openMenu()">
-        <img src="/static/icons/hamburger.svg" alt="open menu" />
+        <img src="hamburger.svg" alt="open menu" />
       </button>
       <nav id="menu" class="hidden">
         <div class="menu__actions sm">
@@ -56,7 +98,7 @@
             <img src="mm-logo_512.svg" alt="home" />
           </a>
           <button class="menu__button clickable" onclick="closeMenu()">
-            <img src="/static/icons/close.svg" alt="close menu" />
+            <img src="close.svg" alt="close menu" />
           </button>
         </div>
         <ul class="menu__list">
@@ -73,7 +115,13 @@
 
     <!-- Large header -->
     <header class="lg">
-      <img class="logo lg" src="mm-logotext.svg" alt="mountain madness" />
+      <div class="site-header">
+        <img class="logo" src="mm-logo_512.svg" alt="Mountain Madness logo" />
+        <h1>
+          Mountain <br />
+          Madness
+        </h1>
+      </div>
       <ul class="menu__list">
         <li><a class="menu__link clickable" href="#hero"> Join Us </a></li>
         <li><a class="menu__link clickable" href="#about"> About </a></li>
@@ -81,24 +129,27 @@
         <li><a class="menu__link clickable" href="#sponsors"> Sponsors </a></li>
         <li><a class="menu__link clickable" href="#faq"> FAQ </a></li>
         <li><a class="menu__link clickable" href="#conduct">Code of Conduct</a></li>
+        <li><a class="menu__link clickable" href="doom.html">Doom</a></li>
       </ul>
     </header>
 
     <div id="info-container">
       <section id="hero">
-        <img class="logo sm" src="mm-logotext.svg" alt="mountain madness" />
+        <div class="site-header sm">
+          <img class="logo" src="mm-logo_512.svg" alt="Mountain Madness logo" />
+          <h1>
+            Mountain <br />
+            Madness
+          </h1>
+        </div>
         <div class="hero__info">
-          <h3>Feb 28<sup>th</sup> - Mar 1<sup>st</sup></h3>
-          <h3>@ SFU Burnaby Mountain</h3>
+          <h2>
+            Feb 28<sup>th</sup> - Mar 1<sup>st</sup><br />
+            @ SFU Burnaby Mountain
+          </h2>
         </div>
         <div class="externals">
-          <h2>Join us now!</h2>
           <div class="externals__btns">
-            <div class="col-btns">
-              <a class="btn">HACKER</a>
-              <a class="btn">VOLUNTEER</a>
-              <a class="btn">JUDGE</a>
-            </div>
             <div class="col-btns">
               <a class="social__icon" href="https://discord.sfucsss.org" target="_blank">
                 <img src="discord.svg" alt="Discord link"
@@ -133,7 +184,7 @@
           interesting. Mountain Madness is the perfect event for everyone from fresh-faced hackers
           to seasoned CS veterans.
         </p>
-        <h3>This year's theme: <strong>TBA</strong></h3>
+        <div class="graphic"><img src="images/jekyll-hyde-1.png" alt="Jekyll Hyde" /></div>
       </section>
 
       <section id="schedule">
@@ -145,47 +196,195 @@
             <input type="radio" name="schedule-day" id="day-saturday" value="sunday" />
             <label for="day-saturday">Sunday</label>
           </div>
-          <div>
-            <table class="schedule__day" data-day="saturday">
-              <tr>
-                <td>9:00 AM</td>
-                <td>Sign-in and Registration</td>
-              </tr>
-              <tr>
-                <td>9:30 AM</td>
-                <td>Opening Presentation (Theme Announced)</td>
-              </tr>
-              <tr>
-                <td>10:00 AM</td>
-                <td>Hacking Begins</td>
-              </tr>
-              <tr>
-                <td>1:00 PM</td>
-                <td>Lunch</td>
-              </tr>
-              <tr>
-                <td>7:00 PM</td>
-                <td>Dinner</td>
-              </tr>
-            </table>
-            <table class="schedule__day" data-day="sunday">
-              <tr>
-                <td>8:30 AM</td>
-                <td>Submissions Open</td>
-              </tr>
-              <tr>
-                <td>10:00 AM</td>
-                <td>Hacking Ends (Submission Deadline)</td>
-              </tr>
-              <tr>
-                <td>10:30 AM</td>
-                <td>Project Presentations</td>
-              </tr>
-              <tr>
-                <td>12:30 PM</td>
-                <td>END</td>
-              </tr>
-            </table>
+
+          <!-- Saturday Timeline -->
+          <div class="timeline" data-day="saturday">
+            <div class="timeline__track">
+              <div class="timeline__line"></div>
+
+              <div class="timeline__event left" data-minutes="570">
+                <div class="timeline__node"></div>
+                <div class="timeline__content">
+                  <span class="timeline__time">09:30-12:00</span>
+                  <span class="timeline__label">Hacker check-in</span>
+                </div>
+              </div>
+
+              <div class="timeline__event right" data-minutes="600">
+                <div class="timeline__node"></div>
+                <div class="timeline__content">
+                  <span class="timeline__time">10:00-12:00</span>
+                  <span class="timeline__label">Opening Ceremony</span>
+                </div>
+              </div>
+
+              <div class="timeline__event left" data-minutes="720">
+                <div class="timeline__node"></div>
+                <div class="timeline__content">
+                  <span class="timeline__time">12:00</span>
+                  <span class="timeline__label">Begin Hacking</span>
+                </div>
+              </div>
+
+              <div class="timeline__event right" data-minutes="735">
+                <div class="timeline__node"></div>
+                <div class="timeline__content">
+                  <span class="timeline__time">12:15</span>
+                  <span class="timeline__label">Lunch</span>
+                </div>
+              </div>
+
+              <div class="timeline__event left" data-minutes="810">
+                <div class="timeline__node"></div>
+                <div class="timeline__content">
+                  <span class="timeline__time">13:30-14:30</span>
+                  <span class="timeline__label">MKB Typing Competition</span>
+                </div>
+              </div>
+
+              <div class="timeline__event right" data-minutes="810">
+                <div class="timeline__node"></div>
+                <div class="timeline__content">
+                  <span class="timeline__time">13:30-15:00</span>
+                  <span class="timeline__label">Company Workshop</span>
+                </div>
+              </div>
+
+              <div class="timeline__event left" data-minutes="885">
+                <div class="timeline__node"></div>
+                <div class="timeline__content">
+                  <span class="timeline__time">14:45-15:30</span>
+                  <span class="timeline__label">Ricing Showcase</span>
+                </div>
+              </div>
+
+              <div class="timeline__event right" data-minutes="960">
+                <div class="timeline__node"></div>
+                <div class="timeline__content">
+                  <span class="timeline__time">16:00-16:30</span>
+                  <span class="timeline__label">Cracker Eating</span>
+                </div>
+              </div>
+
+              <div class="timeline__event right" data-minutes="1080">
+                <div class="timeline__node"></div>
+                <div class="timeline__content">
+                  <span class="timeline__time">18:00</span>
+                  <span class="timeline__label">Dinner</span>
+                </div>
+              </div>
+
+              <div class="timeline__event left" data-minutes="1110">
+                <div class="timeline__node"></div>
+                <div class="timeline__content">
+                  <span class="timeline__time">18:30-21:30</span>
+                  <span class="timeline__label">Valorant Tournament</span>
+                </div>
+              </div>
+
+              <div class="timeline__event left" data-minutes="1110">
+                <div class="timeline__node"></div>
+                <div class="timeline__content">
+                  <span class="timeline__time">18:45-19:15</span>
+                  <span class="timeline__label">MLH Tech Meetup for Underrepresented People</span>
+                </div>
+              </div>
+
+              <div class="timeline__event right" data-minutes="1380">
+                <div class="timeline__node"></div>
+                <div class="timeline__content">
+                  <span class="timeline__time">23:00-05:00</span>
+                  <span class="timeline__label">Slime Space (WiCS × CSSS)</span>
+                </div>
+              </div>
+
+              <div class="timeline__event left" data-minutes="1410">
+                <div class="timeline__node"></div>
+                <div class="timeline__content">
+                  <span class="timeline__time">23:30-03:00</span>
+                  <span class="timeline__label">Midnight Snacks</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Sunday Timeline -->
+          <div class="timeline hidden" data-day="sunday">
+            <div class="timeline__track">
+              <div class="timeline__line"></div>
+
+              <div class="timeline__event left" data-minutes="0">
+                <div class="timeline__node"></div>
+                <div class="timeline__content">
+                  <span class="timeline__time">00:00-05:00</span>
+                  <span class="timeline__label">Karaoke</span>
+                </div>
+              </div>
+
+              <div class="timeline__event right" data-minutes="0">
+                <div class="timeline__node"></div>
+                <div class="timeline__content">
+                  <span class="timeline__time">00:00-07:00</span>
+                  <span class="timeline__label">Sleeping Rooms open</span>
+                </div>
+              </div>
+
+              <div class="timeline__event left" data-minutes="210">
+                <div class="timeline__node"></div>
+                <div class="timeline__content">
+                  <span class="timeline__time">03:30-04:30</span>
+                  <span class="timeline__label">Recocting Resume Review</span>
+                </div>
+              </div>
+
+              <div class="timeline__event left" data-minutes="430">
+                <div class="timeline__node"></div>
+                <div class="timeline__content">
+                  <span class="timeline__time">07:00-07:15</span>
+                  <span class="timeline__label">Recocting Resume Review</span>
+                </div>
+              </div>
+
+              <div class="timeline__event right" data-minutes="510">
+                <div class="timeline__node"></div>
+                <div class="timeline__content">
+                  <span class="timeline__time">08:30</span>
+                  <span class="timeline__label">Breakfast</span>
+                </div>
+              </div>
+
+              <div class="timeline__event left" data-minutes="720">
+                <div class="timeline__node"></div>
+                <div class="timeline__content">
+                  <span class="timeline__time">12:00</span>
+                  <span class="timeline__label">End Hacking</span>
+                </div>
+              </div>
+
+              <div class="timeline__event right" data-minutes="735">
+                <div class="timeline__node"></div>
+                <div class="timeline__content">
+                  <span class="timeline__time">12:15</span>
+                  <span class="timeline__label">Lunch</span>
+                </div>
+              </div>
+
+              <div class="timeline__event left" data-minutes="780">
+                <div class="timeline__node"></div>
+                <div class="timeline__content">
+                  <span class="timeline__time">13:00-14:30</span>
+                  <span class="timeline__label">Judging Time</span>
+                </div>
+              </div>
+
+              <div class="timeline__event right" data-minutes="900">
+                <div class="timeline__node"></div>
+                <div class="timeline__content">
+                  <span class="timeline__time">15:00-16:45</span>
+                  <span class="timeline__label">Closing Ceremony</span>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -193,53 +392,66 @@
       <section id="sponsors">
         <h2>Sponsors</h2>
         <div class="sponsors__t1">
-          <div class="sponsor__card">
-            <img class="sponsor__logo" src="mm-logo_512_dark.svg" alt="sponsor 1" />
-          </div>
-          <div class="sponsor__card">
-            <img class="sponsor__logo" src="mm-logo_512_dark.svg" alt="sponsor 1" />
-          </div>
-          <div class="sponsor__card">
-            <img class="sponsor__logo" src="mm-logo_512_dark.svg" alt="sponsor 1" />
-          </div>
+          <a
+            class="sponsor__card"
+            href="https://www.rbcroyalbank.com/personal.html"
+            target="_blank"
+          >
+            <img class="sponsor__logo" src="logos/rbc.png" alt="RBC logo" />
+          </a>
         </div>
         <div class="sponsors__t2">
-          <div class="sponsor__card">
-            <img class="sponsor__logo" src="mm-logo_512_dark.svg" alt="sponsor 1" />
-          </div>
-          <div class="sponsor__card">
-            <img class="sponsor__logo" src="mm-logo_512_dark.svg" alt="sponsor 1" />
-          </div>
-          <div class="sponsor__card">
-            <img class="sponsor__logo" src="mm-logo_512_dark.svg" alt="sponsor 1" />
-          </div>
+          <a class="sponsor__card" href="https://www.stevespokebar.ca/" target="_blank">
+            <img class="sponsor__logo" src="logos/steves-poke.png" alt="Steve's Poke logo" />
+          </a>
+          <a class="sponsor__card" href="https://indomieonline.ca/" target="_blank">
+            <img class="sponsor__logo" src="logos/indomie.png" alt="Indomie logo" />
+          </a>
         </div>
         <div class="sponsors__t3">
-          <div class="sponsor__card">
-            <img class="sponsor__logo" src="mm-logo_512_dark.svg" alt="sponsor 1" />
-          </div>
-          <div class="sponsor__card">
-            <img class="sponsor__logo" src="mm-logo_512_dark.svg" alt="sponsor 1" />
-          </div>
-          <div class="sponsor__card">
-            <img class="sponsor__logo" src="mm-logo_512_dark.svg" alt="sponsor 1" />
-          </div>
-          <div class="sponsor__card">
-            <img class="sponsor__logo" src="mm-logo_512_dark.svg" alt="sponsor 1" />
-          </div>
+          <a class="sponsor__card" href="https://steelseries.com/en-ca" target="_blank">
+            <img class="sponsor__logo" src="logos/steelseries.png" alt="Steelseries logo" />
+          </a>
+          <a class="sponsor__card" href="https://www.huion.com/" target="_blank">
+            <img class="sponsor__logo" src="logos/huion.png" alt="Huion logo" />
+          </a>
+          <a class="sponsor__card" href="https://prexhobby.com" target="_blank">
+            <img class="sponsor__logo" src="logos/p-rex.jpg" alt="P-rex Hobby logo" />
+          </a>
+        </div>
+        <div class="sponsors__t4">
+          <a class="sponsor__card" href="https://www.ea.com/en-ca" target="_blank">
+            <img class="sponsor__logo" src="logos/ea.svg" alt="EA logo" />
+          </a>
+          <a
+            class="sponsor__card"
+            href="https://mlh.link/MLH-PureButtons-hackathons"
+            target="_blank"
+          >
+            <img class="sponsor__logo" src="logos/pure-logo.svg" alt="Pure logo" />
+          </a>
+          <a class="sponsor__card" href="https://hiveclimbing.com" target="_blank">
+            <img class="sponsor__logo" src="logos/hive.png" alt="Hive logo" />
+          </a>
+          <a class="sponsor__card" href="https://www.chess.com/" target="_blank">
+            <img class="sponsor__logo" src="logos/chess_com.png" alt="Chess.com logo" />
+          </a>
+          <a class="sponsor__card" href="https://sfussss.org/" target="_blank">
+            <img class="sponsor__logo" src="logos/ssss.svg" alt="SSSS logo" />
+          </a>
         </div>
       </section>
 
       <section id="vote" class="vote">
         <div class="vote-wrapper">
-          <h2>VOTE!</h2>
+          <p class="text-decorative">FINAL TALLY!</p>
           <div class="vote-container">
-            <button class="vote-btn good clickable" onclick="incrementGood()">Good</button>
-            <span>VS</span>
-            <button class="vote-btn evil clickable" onclick="incrementEvil()">Evil</button>
-            <div id="good-counter" class="counter">0</div>
+            <button class="vote-btn good" disabled>Good</button>
             <span></span>
-            <div id="evil-counter" class="counter">0</div>
+            <button class="vote-btn evil" disabled>Evil</button>
+            <div id="good-counter" class="counter">12430622</div>
+            <span></span>
+            <div id="evil-counter" class="counter">5709642</div>
           </div>
         </div>
       </section>
@@ -247,8 +459,8 @@
       <section id="faq">
         <h2>Frequently Asked Questions</h2>
         <h3 class="question">
-          <img class="chevron" src="/static/icons/angle-bracket-right.svg" alt="" />Wait, what
-          actually is a hackathon?
+          <img class="chevron" src="angle-bracket-right.svg" alt="" />Wait, what actually is a
+          hackathon?
         </h3>
         <p class="answer">
           A hackathon is an event where teams work on a project inspired by an event-provided theme.
@@ -257,8 +469,7 @@
         </p>
 
         <h3 class="question">
-          <img class="chevron" src="/static/icons/angle-bracket-right.svg" alt="" />Where is
-          Mountain Madness?
+          <img class="chevron" src="angle-bracket-right.svg" alt="" />Where is Mountain Madness?
         </h3>
         <p class="answer">
           Registration and administration is in front of SSCC 9001 on SFU's Burnaby Campus. You are
@@ -266,8 +477,7 @@
         </p>
 
         <h3 class="question">
-          <img class="chevron" src="/static/icons/angle-bracket-right.svg" alt="" />Why should I
-          participate?
+          <img class="chevron" src="angle-bracket-right.svg" alt="" />Why should I participate?
         </h3>
         <p class="answer">
           You get experience with new technologies and navigate teamwork dynamics to accomplish a
@@ -275,8 +485,8 @@
         </p>
 
         <h3 class="question">
-          <img class="chevron" src="/static/icons/angle-bracket-right.svg" alt="" />I am in my first
-          year/don't have much experience, should I still participate?
+          <img class="chevron" src="angle-bracket-right.svg" alt="" />I am in my first year/don't
+          have much experience, should I still participate?
         </h3>
         <p class="answer">
           Yes! This hackathon is a great learning opportunity for people with less development
@@ -284,8 +494,8 @@
         </p>
 
         <h3 class="question">
-          <img class="chevron" src="/static/icons/angle-bracket-right.svg" alt="" />Do I need to
-          stay during the entire event?
+          <img class="chevron" src="angle-bracket-right.svg" alt="" />Do I need to stay during the
+          entire event?
         </h3>
         <p class="answer">
           No! You may leave and enter the venue whenever (note that most doors are locked during the
@@ -294,8 +504,7 @@
         </p>
 
         <h3 class="question">
-          <img class="chevron" src="/static/icons/angle-bracket-right.svg" alt="" />How do we
-          declare teams?
+          <img class="chevron" src="angle-bracket-right.svg" alt="" />How do we declare teams?
         </h3>
         <p class="answer">
           You do not need to know your team when you register. You can form groups before or during
@@ -304,24 +513,23 @@
         </p>
 
         <h3 class="question">
-          <img class="chevron" src="/static/icons/angle-bracket-right.svg" alt="" />Will there be
-          food?
+          <img class="chevron" src="angle-bracket-right.svg" alt="" />Will there be food?
         </h3>
         <p class="answer">Yes! We will be providing food for in person attendees.</p>
 
         <h3 class="question">
-          <img class="chevron" src="/static/icons/angle-bracket-right.svg" alt="" />Can I have
-          Non-SFU people and Alumni join my team?
+          <img class="chevron" src="angle-bracket-right.svg" alt="" />Can I have Non-SFU people and
+          Alumni join my team?
         </h3>
         <p class="answer">
-          Yes! We will allow groups to be made up of non-SFU students however we want a majority
-          (50%) of the team to be made up of SFU students. So a group of 4 can have up to 2 non-SFU
-          participants.
+          Yes! We will allow groups to be made up of non-SFU students however we recommend a
+          majority (50%) of the team to be made up of SFU students (don't sweat it if you can't we
+          won't be checking).
         </p>
 
         <h3 class="question">
-          <img class="chevron" src="/static/icons/angle-bracket-right.svg" alt="" />Can I work on my
-          previous projects?
+          <img class="chevron" src="angle-bracket-right.svg" alt="" />Can I work on my previous
+          projects?
         </h3>
         <p class="answer">
           No, we want you to create awesome things from scratch in 24 hours. Starting from an
@@ -330,8 +538,7 @@
         </p>
 
         <h3 class="question">
-          <img class="chevron" src="/static/icons/angle-bracket-right.svg" alt="" />What size should
-          my team be?
+          <img class="chevron" src="angle-bracket-right.svg" alt="" />What size should my team be?
         </h3>
         <p class="answer">
           Teams can have between 1 and 4 members inclusive. You can work alone if you really want
@@ -341,33 +548,44 @@
         </p>
 
         <h3 class="question">
-          <img class="chevron" src="/static/icons/angle-bracket-right.svg" alt="" />How much does it
-          cost?
+          <img class="chevron" src="angle-bracket-right.svg" alt="" />How much does it cost?
         </h3>
         <p class="answer">F R E E</p>
 
         <h3 class="question">
-          <img class="chevron" src="/static/icons/angle-bracket-right.svg" alt="" />Why is there a
-          Good vs Evil Counter?
+          <img class="chevron" src="angle-bracket-right.svg" alt="" />Why is there a Good vs Evil
+          Counter?
         </h3>
         <p class="answer">You'll see in the closing ceremony ;)</p>
       </section>
 
       <section id="conduct">
         <h2>Major League Hacking (MLH)</h2>
-        Major League Hacking (MLH) stands for inclusivity. We believe that every single person has
-        the right to hack in a safe and welcoming environment. The
-        <a class="mlh" href="https://github.com/MLH/mlh-policies/blob/main/code-of-conduct.md"
-          >MLH Code of Conduct</a
-        >
-        applies to all Mountain Madness attendees.
+        <p>
+          Major League Hacking stands for inclusivity. We believe that every single person has the
+          right to hack in a safe and welcoming environment. The
+          <a class="mlh" href="https://github.com/MLH/mlh-policies/blob/main/code-of-conduct.md"
+            >MLH Code of Conduct</a
+          >
+          applies to all Mountain Madness attendees.
 
+          <br />
+          <br />
+          Be respectful. Harassment and abuse are never tolerated. If you are in a situation that
+          makes you uncomfortable at an MLH Member Event, if the event itself creates an unsafe or
+          inappropriate environment, or if interacting with an MLH representative or event organizer
+          makes you uncomfortable, please report it using the procedures included in this document.
+        </p>
         <br />
-        <br />
-        Be respectful. Harassment and abuse are never tolerated. If you are in a situation that
-        makes you uncomfortable at an MLH Member Event, if the event itself creates an unsafe or
-        inappropriate environment, or if interacting with an MLH representative or event organizer
-        makes you uncomfortable, please report it using the procedures included in this document.
+        <h2>Land Acknowledgement</h2>
+        <p>
+          Simon Fraser University respectfully acknowledges the unceded traditional territories of
+          the Coast Salish peoples, including the səl̓ilw̓ətaʔɬ (Tsleil-Waututh), kʷikʷəƛ̓əm
+          (Kwikwetlem), Sḵwx̱wú7mesh Úxwumixw (Squamish) and xʷməθkʷəy̓əm (Musqueam) Nations, on which
+          SFU Burnaby is located. We, the Computing Science Student Society and organizers of
+          Mountain Madness, would like to extend appreciation for the opportunity to hold this event
+          on this territory.
+        </p>
       </section>
     </div>
   </body>
