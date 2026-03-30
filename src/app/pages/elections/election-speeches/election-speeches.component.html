@@ -1,14 +1,17 @@
 <code-article>
   <header>
     <h1>Nominees</h1>
-    <p>Learn more about our candidates and what they will do for our society.<br /></p>
+    <p>Check out the candidates for the 2026 General Election.</p>
+    <p>Voting starts on <strong>March 30</strong> and ends <strong>11:59PM on April 9</strong></p>
     <section class="nominees">
-      <h2>Director of Multi-Media</h2>
-      @for (nominee of nominees; track $index) {
-        <div class="nominee">
-          <h2 class="nominee__name">> {{ nominee.name }}</h2>
-          <p class="nominee__speech">{{ nominee.speech }}</p>
-        </div>
+      @for (entry of positionEntries; track entry.key) {
+        <h2>{{ entry.key }}</h2>
+        @for (candidate of entry.value; track $index) {
+          <div class="nominee">
+            <h2 class="nominee__name">> {{ candidate.name }}</h2>
+            <p class="nominee__speech">{{ candidate.speech }}</p>
+          </div>
+        }
       }
     </section>
   </header>
