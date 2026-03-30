@@ -1,1 +1,39 @@
-<svg xmlns="http://www.w3.org/2000/svg" version="1.2" viewBox="0 0 512 512"><path fill-rule="evenodd" d="M585 201 463 351l221 319H108l162-145-12 102 190-7 41-170-123-14-36 132 67-29-16-52 45 5 3 61-136 62 32-227-90 48 50-44z" style="fill:#fff" transform="matrix(0.88888889,0,0,0.88888889,-96,-83.555556)"/></svg>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   version="1.2"
+   viewBox="0 0 512 417"
+   id="svg1"
+   width="512"
+   height="417"
+   sodipodi:docname="mm-logo_512.svg"
+   inkscape:version="1.4.2 (ebf0e94, 2025-05-08)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:zoom="2.2519531"
+     inkscape:cx="256"
+     inkscape:cy="256"
+     inkscape:window-width="2560"
+     inkscape:window-height="1397"
+     inkscape:window-x="1080"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg1" />
+  <defs
+     id="defs1" />
+  <path
+     fill-rule="evenodd"
+     d="M 424,0 315.55556,133.33333 512,416.88889 H 0 L 144,288 l -10.66667,90.66667 168.88889,-6.22223 36.44445,-151.11111 -109.33334,-12.44444 -32,117.33333 59.55556,-25.77778 -14.22222,-46.22222 40,4.44445 2.66666,54.22222 L 164.44444,368 l 28.44445,-201.77778 -80,42.66667 44.44444,-39.11111 z"
+     style="fill:#fcf4ca;stroke-width:0.888889"
+     id="path1" />
+</svg>
