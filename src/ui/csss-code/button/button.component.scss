@@ -3,7 +3,7 @@
 button {
   @include g.no-select;
   padding: 0.5rem;
-  background-color: #111111;
+  background-color: g.$accent;
 
   transition: transform 0.1s ease;
 
