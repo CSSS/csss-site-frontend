@@ -138,6 +138,16 @@ export const routeApplicationMap: Map<number, AppInfo> = new Map([
       key: 'elections-speeches',
       route: SiteRoute.ElectionsSpeeches
     }
+  ],
+  [
+    10,
+    {
+      id: 10,
+      label: 'Elections Archives',
+      activityKey: '',
+      key: 'elections-archives',
+      route: SiteRoute.ElectionsArchives
+    }
   ]
 ]);
 

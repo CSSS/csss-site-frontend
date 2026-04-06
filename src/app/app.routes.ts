@@ -11,7 +11,8 @@ export enum SiteRoute {
   EventsArchives = '/events/archives',
   Elections = '/elections',
   ElectionsSchedule = '/elections/schedule',
-  ElectionsSpeeches = '/elections/speeches'
+  ElectionsSpeeches = '/elections/speeches',
+  ElectionsArchives = '/elections/archives'
 }
 
 /**
@@ -95,6 +96,17 @@ export const routes: Routes = [
     title: makeTitle('Elections'),
     data: {
       description: 'Learn about the responsibilities of our executives and how you can become one.'
+    }
+  },
+  {
+    path: 'elections/archives',
+    loadComponent: () =>
+      import('./pages/elections-archives/elections-archives.component').then(
+        m => m.ElectionsArchivesComponent
+      ),
+    title: makeTitle('Election Archives'),
+    data: {
+      description: 'View past election candidates and speeches.'
     }
   },
   {

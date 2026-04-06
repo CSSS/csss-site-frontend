@@ -122,6 +122,12 @@ export const NAVBAR_ENTRIES: NavItem[] = [
         label: 'Speeches',
         icon: faFile,
         route: SiteRoute.ElectionsSpeeches
+      },
+      {
+        key: 'elections.archives',
+        label: 'Archives',
+        icon: faBook,
+        route: SiteRoute.ElectionsArchives
       }
     ]
   },
