@@ -1,12 +1,12 @@
 import { ChangeDetectionStrategy, Component, computed, signal } from '@angular/core';
-import { ArticleComponent } from '@csss-code/article/article.component';
+import { CodeArticleComponent } from '@csss-code/article/article.component';
 import { ExternalLinkComponent } from 'components/url/external-link/external-link.component';
 import { RouteLinkComponent } from 'components/url/route-link/route-link.component';
 import { ExecutiveAdministration, executives } from './officers.data';
 
 @Component({
   selector: 'cs-officers',
-  imports: [ArticleComponent, RouteLinkComponent, ExternalLinkComponent],
+  imports: [CodeArticleComponent, RouteLinkComponent, ExternalLinkComponent],
   templateUrl: './officers.component.html',
   styleUrl: './officers.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush

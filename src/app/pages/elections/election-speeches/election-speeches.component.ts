@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { ArticleComponent } from '@csss-code/article/article.component';
+import { CodeArticleComponent } from '@csss-code/article/article.component';
 import { NOMINEES } from './speeches/general2026';
 
 type GeneralPosition =
@@ -44,7 +44,7 @@ interface CandidateSpeech {
 
 @Component({
   selector: 'cs-election-speeches',
-  imports: [ArticleComponent],
+  imports: [CodeArticleComponent],
   templateUrl: './election-speeches.component.html',
   styleUrl: './election-speeches.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
