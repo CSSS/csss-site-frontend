@@ -9,7 +9,7 @@ import { IconDefinition } from '@fortawesome/free-solid-svg-icons';
   styleUrl: './button.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ButtonComponent {
+export class CodeButtonComponent {
   /**
    * The text on the button.
    */
