@@ -2,6 +2,7 @@ import { Component, inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { CodeButtonComponent } from '@csss-code/button/button.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { faDiscord } from '@fortawesome/free-brands-svg-icons';
 import { faFile, faSquare } from '@fortawesome/free-solid-svg-icons';
 import { csssLogo } from 'assets/icons/csss-logo';
 import { RainbowDirective } from './directives/rainbow.directive';
@@ -16,10 +17,15 @@ export class HomeComponent {
   csssIcon = csssLogo;
   squareIcon = faSquare;
   fileIcon = faFile;
+  discordIcon = faDiscord;
 
   private router = inject(Router);
 
   readmeAction(): void {
     this.router.navigate(['/readme']);
+  }
+
+  discordAction(): void {
+    window.open('https://discord.gg/sfucsss', '_blank');
   }
 }
