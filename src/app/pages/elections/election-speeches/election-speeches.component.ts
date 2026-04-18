@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { CodeArticleComponent } from '@csss-code/article/article.component';
-import { NOMINEES } from './speeches/general2026';
+import { NOMINEES } from './speeches/adoe-spring2026';
 
 type GeneralPosition =
   | 'President'
