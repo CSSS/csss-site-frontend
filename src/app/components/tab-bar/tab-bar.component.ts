@@ -24,10 +24,6 @@ export interface TabBarItem {
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TabBarComponent {
-  @HostBinding('attr.aria-role') get ariaRole(): string {
-    return 'tablist';
-  }
-
   @HostBinding('style.height')
   get height(): string {
     return this.isHidden() ? '0px' : STRUCTURE_MAP['tab-bar-h'];
