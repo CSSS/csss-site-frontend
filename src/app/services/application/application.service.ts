@@ -37,7 +37,6 @@ export class ApplicationService {
         // `/<application>?=<query params>#<hash>` or `/<runtime>/<application>?=<query params>#<hash>`
         // or maybe they don't have any query params at all.
         route = route.split('?')[0].split('#')[0]; // Just the route params
-        console.log(route);
         if (route === '/') {
           this.focusedApplication.set(null);
           return;
