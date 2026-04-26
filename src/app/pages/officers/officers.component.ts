@@ -1,3 +1,4 @@
+import { NgOptimizedImage } from '@angular/common';
 import { ChangeDetectionStrategy, Component, computed, signal } from '@angular/core';
 import { CodeArticleComponent } from '@csss-code/article/article.component';
 import { ExternalLinkComponent } from 'components/url/external-link/external-link.component';
@@ -6,12 +7,13 @@ import { ExecutiveAdministration, executives } from './officers.data';
 
 @Component({
   selector: 'cs-officers',
-  imports: [CodeArticleComponent, RouteLinkComponent, ExternalLinkComponent],
+  imports: [CodeArticleComponent, RouteLinkComponent, ExternalLinkComponent, NgOptimizedImage],
   templateUrl: './officers.component.html',
   styleUrl: './officers.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class OfficersComponent {
+  protected PRIORITY = 10;
   /**
    * The year currently selected.
    */
@@ -46,4 +48,16 @@ export class OfficersComponent {
    * Will probably need some way to remove older cached entries if memory becomes an issue.
    */
   private cachedAdmins = new Map<number, ExecutiveAdministration>();
+
+  private loadedImages = signal(new Set<number>());
+
+  areImagesLoaded = computed(
+    () =>
+      this.loadedImages().size >= (this.currentAdministration()?.members ?? []).length ||
+      this.loadedImages().size >= this.PRIORITY
+  );
+
+  onLoad(id: number): void {
+    this.loadedImages.update(ids => new Set([...ids, id]));
+  }
 }
