@@ -1,5 +1,5 @@
 <aside class="activity-list" #activityList>
-  <a class="<activity-list__home></activity-list__home> clickable" routerLink="/"
+  <a class="activity-list__home clickable" routerLink="/" aria-label="Go to home"
     ><fa-icon class="csss-logo" [icon]="csssIcon" size="2x"
   /></a>
   <div
@@ -17,7 +17,7 @@
   <nav>
     <ul class="navbar__list">
       @for (entry of navEntries(); track entry.key) {
-        <code-list-item [entry]="entry">
+        <li code-list-item [entry]="entry">
           <button class="nav-entry" type="button" (click)="toggleDirectory(entry.key)">
             <fa-icon
               class="nav-entry__icon"
@@ -26,37 +26,40 @@
             />
             <span>{{ entry.label }}</span>
           </button>
-        </code-list-item>
+        </li>
         @if (entry.isOpen && entry.children?.length) {
-          <ul class="navbar__list">
-            @for (subItem of entry.children; track subItem.key) {
-              <code-list-item
-                [entry]="subItem"
-                [depth]="1"
-                routerLinkActive="active"
-                [routerLinkActiveOptions]="{ exact: true }"
-              >
-                @if (subItem.route) {
-                  <!-- For routes on the site -->
-                  <a
-                    class="nav-entry"
-                    (click)="navigate(subItem)"
-                    [routerLink]="subItem.route"
-                    [class.clickable]="!subItem.isDisabled"
-                  >
-                    <fa-icon class="nav-entry__icon" [icon]="subItem.icon" [fixedWidth]="true" />
-                    <span>{{ subItem.label }}</span>
-                  </a>
-                } @else {
-                  <!-- For external links -->
-                  <a class="nav-entry clickable" [href]="subItem.href" target="_blank">
-                    <fa-icon class="nav-entry__icon" [icon]="subItem.icon" [fixedWidth]="true" />
-                    <span>{{ subItem.label }}</span>
-                  </a>
-                }
-              </code-list-item>
-            }
-          </ul>
+          <li>
+            <ul class="navbar__list">
+              @for (subItem of entry.children; track subItem.key) {
+                <li
+                  code-list-item
+                  [entry]="subItem"
+                  [depth]="1"
+                  routerLinkActive="active"
+                  [routerLinkActiveOptions]="{ exact: true }"
+                >
+                  @if (subItem.route) {
+                    <!-- For routes on the site -->
+                    <a
+                      class="nav-entry"
+                      (click)="navigate(subItem)"
+                      [routerLink]="subItem.route"
+                      [class.clickable]="!subItem.isDisabled"
+                    >
+                      <fa-icon class="nav-entry__icon" [icon]="subItem.icon" [fixedWidth]="true" />
+                      <span>{{ subItem.label }}</span>
+                    </a>
+                  } @else {
+                    <!-- For external links -->
+                    <a class="nav-entry clickable" [href]="subItem.href" target="_blank">
+                      <fa-icon class="nav-entry__icon" [icon]="subItem.icon" [fixedWidth]="true" />
+                      <span>{{ subItem.label }}</span>
+                    </a>
+                  }
+                </li>
+              }
+            </ul>
+          </li>
         }
       }
     </ul>

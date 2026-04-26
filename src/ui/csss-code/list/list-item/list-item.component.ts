@@ -9,11 +9,15 @@ export interface CodeListItem<T extends CodeListItem<T>> {
 }
 
 @Component({
-  selector: 'code-list-item',
+  selector: '[code-list-item]',
   imports: [],
   templateUrl: './list-item.component.html',
   styleUrl: './list-item.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  host: {
+    '[attr.aria-disabled]': 'entry().isDisabled',
+    '[style.paddingLeft.em]': '0.5 + depth() * 1.5'
+  }
 })
 export class CodeListItemComponent<T extends CodeListItem<T>> {
   /**

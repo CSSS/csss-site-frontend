@@ -2,18 +2,18 @@
 // $bg1: #333333; // activity bar
 // $bg3: #252526; // tabs bar, file explorer
 
-$bg0: #37373d; // file explorer hover
-$bg1: #111111; // activity bar
-$bg2: #2d2d2d; // unfocused tabs
-$bg3: #111111; // tabs bar, file explorer
-$bg4: #333333; // code background, focused tabs
-$bg5: #151515; // logo
-$icon: #adadad; // activity bar icons
-$code-text: #909090; // landing page text on the code section
-$accent: #3b7765; // status bar
-$outline: #1e1e1e; // outline of the menu/tabs-bar
+$bg0: oklch(33.91% 0.01 285.83); // file explorer hover
+$bg1: oklch(17.76% 0 0); // activity bar
+$bg2: oklch(29.72% 0 0); // unfocused tabs
+$bg3: oklch(17.76% 0 0); // tabs bar, file explorer
+$bg4: oklch(32.11% 0 0); // code background, focused tabs
+$bg5: oklch(19.57% 0 0); // logo
+$accent: oklch(52.33% 0.069 171.72); // status bar
+$accent1: oklch(44.61% 0.114 150.28);
+$accent2: oklch(63.5% 0.159 152.37);
+$accent3: oklch(70.1% 0.119 185deg); //
+$accent4: oklch(88.3% 0.1 146deg); //
+$icon: oklch(74.7% 0 0deg); //
+$code-text: oklch(65.3% 0 0deg); // landing page text
+$outline: oklch(23.6% 0 0deg); // outline
 $hov-glow: drop-shadow(0 0 4px rgba(255, 255, 200, 0.8)); // apply to a `filter`
-$accent1: #116530;
-$accent2: #18a558;
-$accent3: #21b6a8;
-$accent4: #acebb1;
