@@ -1,3 +1,4 @@
+import { isPlatformBrowser } from '@angular/common';
 import {
   AfterContentInit,
   ChangeDetectionStrategy,
@@ -5,6 +6,7 @@ import {
   ElementRef,
   inject,
   OnDestroy,
+  PLATFORM_ID,
   signal,
   viewChild
 } from '@angular/core';
@@ -19,8 +21,6 @@ const LETTER_HEIGHT = 24;
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CodeArticleComponent implements AfterContentInit, OnDestroy {
-  private articleContent = viewChild.required<ElementRef<HTMLDivElement>>('article');
-
   /**
    * The array to display the lines needed for the content.
    */
@@ -32,7 +32,15 @@ export class CodeArticleComponent implements AfterContentInit, OnDestroy {
 
   private uiService = inject(UiService);
 
+  private articleContent = viewChild.required<ElementRef<HTMLDivElement>>('article');
+
+  private platformId = inject(PLATFORM_ID);
+
   ngAfterContentInit(): void {
+    if (!isPlatformBrowser(this.platformId)) {
+      return;
+    }
+
     /**
      * This observer is set to watch the content of the content.
      * It will recalculate the amount of line gutter numbers every time the
