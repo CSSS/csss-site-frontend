@@ -1,6 +1,31 @@
 /* You can add global styles to this file, and also import other style files */
 @use 'globals';
 
+/* Fonts are meant to work with the following browsers: Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+@font-face {
+  font-display: swap;
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 400;
+  src: url('/fonts/montserrat-regular.woff2') format('woff2');
+}
+
+@font-face {
+  font-display: swap;
+  font-family: 'Fira Code';
+  font-style: normal;
+  font-weight: 400;
+  src: url('/fonts/fira-code-regular.woff2') format('woff2');
+}
+
+@font-face {
+  font-display: swap;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  src: url('/fonts/inter-regular.woff2') format('woff2');
+}
+
 html {
   scroll-behavior: smooth;
 }
