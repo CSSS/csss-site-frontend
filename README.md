@@ -5,11 +5,11 @@ https://github.com/CSSS/csss-site-frontend/wiki
 ### Prereqs
 You will need:
 - `git`
-- `node` v24.14.1
-- `npm` v11.11.0
+- `node` v24.14
+- `npm` v11.11
 - Install the Angular CLI globally
 ```sh
-# use Angular v21.0.6
+# use Angular v21
 npm install -g @angular/cli
 ```
 
