@@ -28,7 +28,7 @@ export class ReadMeComponent {
   scrollTo(id: string): void {
     const target = document.getElementById(id);
     if (target) {
-      target.scrollIntoView({ behavior: 'smooth' });
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
   }
 }
