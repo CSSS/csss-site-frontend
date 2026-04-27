@@ -1,3 +1,4 @@
+import { NgOptimizedImage } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { CardComponent } from '@csss-code/card/card.component';
@@ -15,7 +16,8 @@ import { RouteLinkComponent } from 'components/url/route-link/route-link.compone
     FontAwesomeModule,
     ExternalLinkComponent,
     RouteLinkComponent,
-    NgxTypewriterComponent
+    NgxTypewriterComponent,
+    NgOptimizedImage
   ],
   templateUrl: './readme.component.html',
   styleUrl: './readme.component.scss',
