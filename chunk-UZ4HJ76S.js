@@ -1,4 +1,4 @@
-import{a as u}from"./chunk-36BML2GM.js";import"./chunk-72JM6EHK.js";import{Ia as a,Jb as i,Kb as l,Lb as g,Va as d,gb as h,ib as c,jb as p,lb as n,mb as s}from"./chunk-PJWJ2PPM.js";var v=[{name:"Sia Garg",positions:[{position:"Assistant Director of Events",speech:`
+import{a as u}from"./chunk-SJHIMYT4.js";import"./chunk-4JK5TRHX.js";import{Ia as a,Jb as i,Kb as l,Lb as g,Va as d,gb as h,ib as c,jb as p,lb as n,mb as s}from"./chunk-NZNB5LAZ.js";var v=[{name:"Sia Garg",positions:[{position:"Assistant Director of Events",speech:`
 Hi everyone,
 
 My name is Sia Garg, and I\u2019m running for Assistant Director of Events.
