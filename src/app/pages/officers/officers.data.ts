@@ -1,3 +1,9 @@
+import { Indices } from 'utils/type-utils';
+
+export const SEMESTERS = ['Spring', 'Summer', 'Fall'] as const;
+
+type Semester = Indices<typeof SEMESTERS>;
+
 type ExecPosition =
   | 'President'
   | 'Vice President'
@@ -9,13 +15,12 @@ type ExecPosition =
   | 'Director of Communications'
   | 'Director of Multimedia'
   | 'Director of Archives'
+  | 'Secretary'
   | 'SFSS Council Representative'
-  | 'Executive at Large'
-  | 'First-Year Representative';
+  | 'First-Year Representative'
+  | 'Executive at Large';
 
 type ElectedRep = 'Elections Officer' | 'Frosh Week Chair';
-
-type Semester = 'Spring' | 'Summer' | 'Fall';
 
 interface Executive {
   name: string;
@@ -219,12 +224,14 @@ export const executives: ExecutiveAdministration[] = [
       {
         name: 'Arielle Felicia',
         position: 'Executive at Large',
-        photoName: 'eal-1.jpg'
+        photoName: 'eal-1.jpg',
+        semester: 2
       },
       {
         name: 'Barsin Tafazzoli',
         position: 'Executive at Large',
-        photoName: 'eal-2.jpg'
+        photoName: 'eal-2.jpg',
+        semester: 2
       }
     ]
   }
