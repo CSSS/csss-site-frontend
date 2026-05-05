@@ -7,7 +7,15 @@
   font-family: 'Montserrat';
   font-style: normal;
   font-weight: 400;
-  src: url('/fonts/montserrat-regular.woff2') format('woff2');
+  src: url('/fonts/montserrat-latin-regular.woff2') format('woff2');
+}
+
+@font-face {
+  font-display: swap;
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 700;
+  src: url('/fonts/montserrat-latin-700.woff2') format('woff2');
 }
 
 @font-face {
@@ -15,15 +23,31 @@
   font-family: 'Fira Code';
   font-style: normal;
   font-weight: 400;
-  src: url('/fonts/fira-code-regular.woff2') format('woff2');
+  src: url('/fonts/fira-code-latin-regular.woff2') format('woff2');
+}
+
+@font-face {
+  font-display: swap;
+  font-family: 'Fira Code';
+  font-style: normal;
+  font-weight: 700;
+  src: url('/fonts/fira-code-latin-700.woff2') format('woff2');
 }
 
 @font-face {
   font-display: swap;
   font-family: 'Inter';
   font-style: normal;
-  font-weight: 400;
-  src: url('/fonts/inter-regular.woff2') format('woff2');
+  font-weight: 100;
+  src: url('/fonts/inter-latin-regular.woff2') format('woff2');
+}
+
+@font-face {
+  font-display: swap;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 900;
+  src: url('/fonts/inter-latin-700.woff2') format('woff2');
 }
 
 html {

@@ -1,36 +1,18 @@
-import {
-  ChangeDetectionStrategy,
-  Component,
-  ElementRef,
-  HostBinding,
-  inject,
-  input
-} from '@angular/core';
-import { DomSanitizer, SafeStyle } from '@angular/platform-browser';
-import { pathToCssUrl } from 'utils/string-utils';
+import { NgOptimizedImage } from '@angular/common';
+import { ChangeDetectionStrategy, Component, ElementRef, inject, input } from '@angular/core';
 
 @Component({
   selector: 'code-card',
+  imports: [NgOptimizedImage],
   templateUrl: './card.component.html',
   styleUrl: './card.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  host: {
+    '[class.hoverable]': 'isHoverOn()'
+  }
 })
 export class CardComponent {
-  /**
-   * The CSS background image URL.
-   */
-  @HostBinding('style.background-image') protected get backgroundImage(): SafeStyle {
-    return this.sanitizer.bypassSecurityTrustStyle(pathToCssUrl(this.bgImg()));
-  }
-
-  /**
-   * The CSS class that enables this to be hoverable.
-   */
-  @HostBinding('class.hoverable') get hoverable(): boolean {
-    return this.isHoverOn();
-  }
-
-  public elementRef = inject(ElementRef);
+  elementRef = inject(ElementRef);
 
   /**
    * URL of the image to use.
@@ -45,9 +27,4 @@ export class CardComponent {
    * false makes the card have no hover effects.
    */
   public isHoverOn = input(true);
-
-  /**
-   * Sanitizes inputs for Angular.
-   */
-  private sanitizer = inject(DomSanitizer);
 }

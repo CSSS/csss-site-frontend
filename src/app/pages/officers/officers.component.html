@@ -16,10 +16,18 @@
   <section>
     <h2>Our Executives</h2>
     <div class="gallery">
-      @for (exec of currentAdministration()?.members; track $index) {
-        <div class="card">
+      @for (exec of currentAdministration()?.members; track exec.photoName; let i = $index) {
+        <div class="card" [style.visibility]="areImagesLoaded() ? 'visible' : 'hidden'">
           <div class="card__frame">
-            <img class="card__img" [src]="exec.photoName" [alt]="exec.photoName" />
+            <img
+              class="card__img"
+              [ngSrc]="exec.photoName"
+              width="300"
+              height="400"
+              [alt]="exec.photoName"
+              [priority]="i < PRIORITY"
+              (load)="onLoad(i)"
+            />
             <div class="card__info">
               <div class="card__name">
                 <strong class="card__text">{{ exec.name }}</strong>
