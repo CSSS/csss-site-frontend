@@ -12,12 +12,12 @@
   justify-content: center;
 
   &__frame {
-    width: max(300px, 100%);
+    width: max(18.75rem, 100%);
     position: relative;
   }
 
   &__img {
-    width: 300px;
+    width: 18.75rem;
     aspect-ratio: 3 / 4;
     box-shadow: 10px 10px 5px black;
   }
