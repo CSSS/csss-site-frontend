@@ -157,6 +157,74 @@ export const ELECTED_DESCRIPTIONS: Array<ExecDescription> = [
 ];
 
 export const executives: ExecutiveAdministration[] = [
+  // {
+  //   startYear: 2026,
+  //   endYear: 2027,
+  //   members: [
+  //     {
+  //       name: 'Samantha Gan',
+  //       position: 'President',
+  //       photoName: 'president.jpg'
+  //     },
+  //     {
+  //       name: 'Mengna Ma',
+  //       position: 'Vice President',
+  //       photoName: 'vp.jpg'
+  //     },
+  //     {
+  //       name: '',
+  //       position: 'Treasurer',
+  //       photoName: 'treasurer.jpg'
+  //     },
+  //     {
+  //       name: '',
+  //       position: 'Director of Resources',
+  //       photoName: 'dor.jpg'
+  //     },
+  //     {
+  //       name: '',
+  //       position: 'Director of Events',
+  //       photoName: 'doe.jpg'
+  //     },
+  //     {
+  //       name: '',
+  //       position: 'Director of Educational Events',
+  //       photoName: 'doee.jpg'
+  //     },
+  //     {
+  //       name: '',
+  //       position: 'Assistant Director of Events',
+  //       photoName: 'adoe.jpg'
+  //     },
+  //     {
+  //       name: '',
+  //       position: 'Director of Communications',
+  //       photoName: 'doc.jpg'
+  //     },
+  //     {
+  //       name: '',
+  //       position: 'Secretary',
+  //       photoName: 'doa.jpg'
+  //     },
+  //     {
+  //       name: 'Melody Oh',
+  //       position: 'SFSS Council Representative',
+  //       photoName: 'doa.jpg'
+  //     },
+  //     {
+  //       name: '',
+  //       position: 'Executive at Large',
+  //       photoName: 'eal-1.jpg',
+  //       semester: 2
+  //     },
+  //     {
+  //       name: '',
+  //       position: 'Executive at Large',
+  //       photoName: 'eal-2.jpg',
+  //       semester: 2
+  //     }
+  //   ]
+  // },
   {
     startYear: 2025,
     endYear: 2026,
