@@ -1,3 +1,9 @@
+import { Indices } from 'utils/type-utils';
+
+export const SEMESTERS = ['Spring', 'Summer', 'Fall'] as const;
+
+type Semester = Indices<typeof SEMESTERS>;
+
 type ExecPosition =
   | 'President'
   | 'Vice President'
@@ -9,13 +15,12 @@ type ExecPosition =
   | 'Director of Communications'
   | 'Director of Multimedia'
   | 'Director of Archives'
+  | 'Secretary'
   | 'SFSS Council Representative'
-  | 'Executive at Large'
-  | 'First-Year Representative';
+  | 'First-Year Representative'
+  | 'Executive at Large';
 
 type ElectedRep = 'Elections Officer' | 'Frosh Week Chair';
-
-type Semester = 'Spring' | 'Summer' | 'Fall';
 
 interface Executive {
   name: string;
@@ -152,6 +157,74 @@ export const ELECTED_DESCRIPTIONS: Array<ExecDescription> = [
 ];
 
 export const executives: ExecutiveAdministration[] = [
+  // {
+  //   startYear: 2026,
+  //   endYear: 2027,
+  //   members: [
+  //     {
+  //       name: 'Samantha Gan',
+  //       position: 'President',
+  //       photoName: 'president.jpg'
+  //     },
+  //     {
+  //       name: 'Mengna Ma',
+  //       position: 'Vice President',
+  //       photoName: 'vp.jpg'
+  //     },
+  //     {
+  //       name: '',
+  //       position: 'Treasurer',
+  //       photoName: 'treasurer.jpg'
+  //     },
+  //     {
+  //       name: '',
+  //       position: 'Director of Resources',
+  //       photoName: 'dor.jpg'
+  //     },
+  //     {
+  //       name: '',
+  //       position: 'Director of Events',
+  //       photoName: 'doe.jpg'
+  //     },
+  //     {
+  //       name: '',
+  //       position: 'Director of Educational Events',
+  //       photoName: 'doee.jpg'
+  //     },
+  //     {
+  //       name: '',
+  //       position: 'Assistant Director of Events',
+  //       photoName: 'adoe.jpg'
+  //     },
+  //     {
+  //       name: '',
+  //       position: 'Director of Communications',
+  //       photoName: 'doc.jpg'
+  //     },
+  //     {
+  //       name: '',
+  //       position: 'Secretary',
+  //       photoName: 'doa.jpg'
+  //     },
+  //     {
+  //       name: 'Melody Oh',
+  //       position: 'SFSS Council Representative',
+  //       photoName: 'doa.jpg'
+  //     },
+  //     {
+  //       name: '',
+  //       position: 'Executive at Large',
+  //       photoName: 'eal-1.jpg',
+  //       semester: 2
+  //     },
+  //     {
+  //       name: '',
+  //       position: 'Executive at Large',
+  //       photoName: 'eal-2.jpg',
+  //       semester: 2
+  //     }
+  //   ]
+  // },
   {
     startYear: 2025,
     endYear: 2026,
@@ -219,12 +292,14 @@ export const executives: ExecutiveAdministration[] = [
       {
         name: 'Arielle Felicia',
         position: 'Executive at Large',
-        photoName: 'eal-1.jpg'
+        photoName: 'eal-1.jpg',
+        semester: 2
       },
       {
         name: 'Barsin Tafazzoli',
         position: 'Executive at Large',
-        photoName: 'eal-2.jpg'
+        photoName: 'eal-2.jpg',
+        semester: 2
       }
     ]
   }
