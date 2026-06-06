@@ -1,8 +1,10 @@
-import { inject, Injectable, signal, WritableSignal } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
+import { inject, Injectable, PLATFORM_ID, signal, WritableSignal } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { filter } from 'rxjs';
 import { addToSignalMap, removeFromSignalMap } from 'utils/signal-utils';
-import { AppInfo, getApplicationByRoute } from './applications';
+import { AppInfo, getApplicationById, getApplicationByRoute } from './applications';
+import { readTabSession } from './tab-session-state';
 
 /**
  * Service that handles updating what applications are currently running.
@@ -26,7 +28,11 @@ export class ApplicationService {
 
   router = inject(Router);
 
+  private platformId = inject(PLATFORM_ID);
+
   constructor() {
+    this.restoreSession();
+
     // Observable that emits when navigating to a new URL has completed.
     // Used to check if the route should launch an application or change the content of an application.
     this.router.events
@@ -46,6 +52,43 @@ export class ApplicationService {
           this.openApplication(app);
         }
       });
+  }
+
+  /**
+   * Rebuilds open tabs from the tab session saved in local storage.
+   * Invalid or removed application IDs are skipped.
+   */
+  private restoreSession(): void {
+    if (!isPlatformBrowser(this.platformId)) {
+      return;
+    }
+
+    const session = readTabSession(this.platformId);
+    if (!session) {
+      return;
+    }
+
+    const restoredApplications = new Map<number, AppInfo>();
+
+    for (const id of session.applicationIds) {
+      const application = getApplicationById(id);
+      if (!application) {
+        continue;
+      }
+
+      const hasConflictingActivity = [...restoredApplications.values()].some(
+        app => app.activityKey === application.activityKey
+      );
+      if (hasConflictingActivity) {
+        continue;
+      }
+
+      restoredApplications.set(application.id, application);
+    }
+
+    if (restoredApplications.size) {
+      this.runningApplications.set(restoredApplications);
+    }
   }
 
   /**
