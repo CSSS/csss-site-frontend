@@ -55,9 +55,10 @@
   z-index: 9999;
   pointer-events: none;
 
-  background-color: oklch(10% 0 0);
+  background-color: theme.$bg1;
   color: theme.$code-text;
-  font-size: 0.72rem;
+  font-family: g.$main-font;
+  font-size: g.$small-font-size;
   white-space: nowrap;
   padding: 3px 8px;
   border-radius: 3px;

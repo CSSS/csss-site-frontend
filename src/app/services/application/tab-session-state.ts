@@ -1,3 +1,5 @@
+import { error } from "console";
+
 export const TAB_SESSION_STORAGE_KEY = 'csss-tab-session';
 const TAB_SESSION_VERSION = 1;
 
@@ -104,7 +106,7 @@ export const writeTabSession = (applicationIds: number[]): void => {
 
   try {
     localStorage.setItem(TAB_SESSION_STORAGE_KEY, serializeTabSession(applicationIds));
-  } catch {
-    // Ignore errors.
+  } catch (error) {
+    console.warn('Failed to write tab session to local storage', error);
   }
 };
