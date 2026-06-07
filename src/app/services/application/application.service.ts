@@ -3,8 +3,13 @@ import { inject, Injectable, PLATFORM_ID, signal, WritableSignal } from '@angula
 import { NavigationEnd, Router } from '@angular/router';
 import { filter } from 'rxjs';
 import { addToSignalMap, removeFromSignalMap } from 'utils/signal-utils';
-import { AppInfo, getApplicationById, getApplicationByRoute } from './applications';
-import { readTabSession } from './tab-session-state';
+import {
+  AppInfo,
+  buildRunningApplicationsFromIds,
+  getApplicationByRoute,
+  shareSameActivityGroup
+} from './applications';
+import { readTabSession, serializeTabSession, writeTabSession } from './tab-session-state';
 
 /**
  * Service that handles updating what applications are currently running.
@@ -29,6 +34,8 @@ export class ApplicationService {
   router = inject(Router);
 
   private platformId = inject(PLATFORM_ID);
+
+  private lastPersisted: string | null = null;
 
   constructor() {
     this.restoreSession();
@@ -55,6 +62,29 @@ export class ApplicationService {
   }
 
   /**
+   * Closes the application based on the unique ID.
+   *
+   * @param id - The ID of the application to close.
+   */
+  closeApplication(id: number): void {
+    if (!this.isApplicationRunning(id)) {
+      return;
+    }
+
+    this.removeRunningApplication(id);
+
+    if (this.runningApplications().size) {
+      const nextApp = this.runningApplications().entries().next().value;
+      if (nextApp) {
+        this.focusApplication(nextApp[1]);
+      }
+    } else {
+      this.focusedApplication.set(null);
+      this.router.navigate(['/']);
+    }
+  }
+
+  /**
    * Rebuilds open tabs from the tab session saved in local storage.
    * Invalid or removed application IDs are skipped.
    */
@@ -68,27 +98,31 @@ export class ApplicationService {
       return;
     }
 
-    const restoredApplications = new Map<number, AppInfo>();
-
-    for (const id of session.applicationIds) {
-      const application = getApplicationById(id);
-      if (!application) {
-        continue;
-      }
-
-      const hasConflictingActivity = [...restoredApplications.values()].some(
-        app => app.activityKey === application.activityKey
-      );
-      if (hasConflictingActivity) {
-        continue;
-      }
-
-      restoredApplications.set(application.id, application);
-    }
+    const restoredApplications = buildRunningApplicationsFromIds(session.applicationIds);
 
     if (restoredApplications.size) {
       this.runningApplications.set(restoredApplications);
+      this.lastPersisted = serializeTabSession([...restoredApplications.keys()]);
     }
+  }
+
+  /**
+   * Saves the current open applications to local storage.
+   */
+  private persistRunningApplications(): void {
+    if (!isPlatformBrowser(this.platformId)) {
+      return;
+    }
+
+    const applicationIds = [...this.runningApplications().keys()];
+    const serialized = serializeTabSession(applicationIds);
+
+    if (serialized === this.lastPersisted) {
+      return;
+    }
+
+    writeTabSession(applicationIds, this.platformId);
+    this.lastPersisted = serialized;
   }
 
   /**
@@ -97,38 +131,64 @@ export class ApplicationService {
    * @param application - Application to try and launch.
    */
   private openApplication(application: AppInfo): void {
-    const focusedApp = this.focusedApplication();
-
-    if (focusedApp?.id === application.id) {
+    if (this.isAlreadyFocused(application)) {
       return;
     }
 
-    addToSignalMap(this.runningApplications, application.id, application);
-    this.focusedApplication.set(application);
+    if (this.isApplicationRunning(application.id)) {
+      this.focusApplication(application);
+      return;
+    }
 
-    // The activity for this app might be open, but not focused. Try and remove it.
+    this.addRunningApplication(application);
+  }
+
+  /**
+   * Updates focus without changing which applications are open.
+   */
+  private focusApplication(application: AppInfo): void {
+    if (this.isAlreadyFocused(application)) {
+      return;
+    }
+
+    this.focusedApplication.set(application);
+  }
+
+  /**
+   * Adds an application to the running set and persists the update.
+   */
+  private addRunningApplication(application: AppInfo): void {
+    addToSignalMap(this.runningApplications, application.id, application);
+    this.focusApplication(application);
+    this.removeConflictingApplications(application);
+    this.persistRunningApplications();
+  }
+
+  /**
+   * Removes an application from the running set and persists the update.
+   */
+  private removeRunningApplication(id: number): void {
+    removeFromSignalMap(this.runningApplications, id);
+    this.persistRunningApplications();
+  }
+
+  /**
+   * Removes applications that cannot run alongside the given application.
+   */
+  private removeConflictingApplications(application: AppInfo): void {
     for (const app of this.runningApplications().values()) {
-      if (app.activityKey === application.activityKey && app.id !== application.id) {
-        this.closeApplication(app.id);
+      if (shareSameActivityGroup(app, application) && app.id !== application.id) {
+        removeFromSignalMap(this.runningApplications, app.id);
         break;
       }
     }
   }
 
-  /**
-   * Closes the application based on the unique ID.
-   *
-   * @param id - The ID of the application to close.
-   */
-  closeApplication(id: number): void {
-    removeFromSignalMap(this.runningApplications, id);
-    if (this.runningApplications().size) {
-      const nextApp = this.runningApplications().entries().next().value;
-      if (nextApp) {
-        this.openApplication(nextApp[1]);
-      }
-    } else {
-      this.router.navigate(['/']);
-    }
+  private isAlreadyFocused(application: AppInfo): boolean {
+    return this.focusedApplication()?.id === application.id;
+  }
+
+  private isApplicationRunning(id: number): boolean {
+    return this.runningApplications().has(id);
   }
 }

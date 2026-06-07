@@ -18,7 +18,8 @@ export interface AppInfo {
 
   /**
    * The key activity this applications will use.
-   * Applications that have the same key can't run alongside each other.
+   * Applications that share the same non-empty key can't run alongside each other.
+   * An empty key means the application is standalone.
    */
   activityKey: string;
 
@@ -157,4 +158,34 @@ export const getApplicationByRoute = (route: string): AppInfo | undefined => {
     }
   }
   return;
+};
+
+export const isStandaloneActivity = (activityKey: string): boolean => activityKey === '';
+
+export const shareSameActivityGroup = (first: AppInfo, second: AppInfo): boolean => {
+  return !isStandaloneActivity(first.activityKey) && first.activityKey === second.activityKey;
+};
+
+export const buildRunningApplicationsFromIds = (
+  applicationIds: number[]
+): Map<number, AppInfo> => {
+  const runningApplications = new Map<number, AppInfo>();
+
+  for (const id of applicationIds) {
+    const application = getApplicationById(id);
+    if (!application) {
+      continue;
+    }
+
+    const hasConflictingActivity = [...runningApplications.values()].some(app =>
+      shareSameActivityGroup(app, application)
+    );
+    if (hasConflictingActivity) {
+      continue;
+    }
+
+    runningApplications.set(application.id, application);
+  }
+
+  return runningApplications;
 };
