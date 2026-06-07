@@ -12,6 +12,8 @@ import {
 import { ApplicationService } from 'services/application/application.service';
 import { UiService } from 'services/ui/ui.service';
 import { STRUCTURE_MAP } from 'styles/structure';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { faXmark } from '@fortawesome/free-solid-svg-icons';
 
 interface TooltipData {
   text: string;
@@ -29,11 +31,14 @@ export interface TabBarItem {
 
 @Component({
   selector: 'cs-tab-bar',
+  imports: [FontAwesomeModule],
   templateUrl: './tab-bar.component.html',
   styleUrl: './tab-bar.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TabBarComponent {
+  protected closeIcon = faXmark;
+
   @HostBinding('style.height')
   get height(): string {
     return this.isHidden() ? '0px' : STRUCTURE_MAP['tab-bar-h'];

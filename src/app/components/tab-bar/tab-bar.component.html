@@ -22,7 +22,7 @@
         (click)="closeTab(tab.id); $event.stopPropagation()"
         [id]="'tab-close-' + tab.id"
       >
-        &#x2715;
+        <fa-icon [icon]="closeIcon"></fa-icon>
       </button>
     </div>
   </div>
