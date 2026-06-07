@@ -63,6 +63,7 @@ export class ApplicationService {
 
   /**
    * Closes the application based on the unique ID.
+   * When the closed tab was focused, switches to the nearest neighbor.
    *
    * @param id - The ID of the application to close.
    */
@@ -71,16 +72,32 @@ export class ApplicationService {
       return;
     }
 
+    const wasFocused = this.focusedApplication()?.id === id;
+
+    // Determine the adjacent tab before removal so we can switch to it.
+    let nextRoute: string | null = null;
+    if (wasFocused) {
+      const entries = [...this.runningApplications().entries()];
+      const index = entries.findIndex(([appId]) => appId === id);
+
+      if (index > 0) {
+        // Prefer the tab to the left.
+        nextRoute = entries[index - 1][1].route;
+      } else if (index < entries.length - 1) {
+        // Fall back to the tab on the right.
+        nextRoute = entries[index + 1][1].route;
+      }
+    }
+
     this.removeRunningApplication(id);
 
-    if (this.runningApplications().size) {
-      const nextApp = this.runningApplications().entries().next().value;
-      if (nextApp) {
-        this.focusApplication(nextApp[1]);
+    if (wasFocused) {
+      if (nextRoute) {
+        this.router.navigateByUrl(nextRoute);
+      } else {
+        this.focusedApplication.set(null);
+        this.router.navigate(['/']);
       }
-    } else {
-      this.focusedApplication.set(null);
-      this.router.navigate(['/']);
     }
   }
 
@@ -93,7 +110,7 @@ export class ApplicationService {
       return;
     }
 
-    const session = readTabSession(this.platformId);
+    const session = readTabSession();
     if (!session) {
       return;
     }
@@ -121,7 +138,7 @@ export class ApplicationService {
       return;
     }
 
-    writeTabSession(applicationIds, this.platformId);
+    writeTabSession(applicationIds);
     this.lastPersisted = serialized;
   }
 

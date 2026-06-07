@@ -2,10 +2,12 @@ import {
   ChangeDetectionStrategy,
   Component,
   computed,
+  effect,
   HostBinding,
   inject,
   signal,
-  Signal
+  Signal,
+  untracked
 } from '@angular/core';
 import { ApplicationService } from 'services/application/application.service';
 import { UiService } from 'services/ui/ui.service';
@@ -35,6 +37,13 @@ export class TabBarComponent {
   @HostBinding('style.height')
   get height(): string {
     return this.isHidden() ? '0px' : STRUCTURE_MAP['tab-bar-h'];
+  }
+
+  constructor() {
+    effect(() => {
+      this.tabs();
+      untracked(() => this.hideTooltip());
+    });
   }
 
   /**
@@ -84,12 +93,14 @@ export class TabBarComponent {
    */
   showTooltip(tab: TabBarItem, event: MouseEvent): void {
     const el = event.currentTarget as HTMLElement;
+    const label = el.querySelector<HTMLElement>('.label');
+
+    // Only show the tooltip when the label text is actually being clipped.
+    if (!label || label.scrollWidth <= label.clientWidth) {
+      return;
+    }
+
     const rect = el.getBoundingClientRect();
-    const tabWidth = rect.width;
-
-    // Only show when the tab label is actually clipped (~7rem = 112px)
-    if (tabWidth >= 112) return;
-
     this.tooltipData.set({
       text: tab.label,
       x: rect.left + rect.width / 2,
@@ -115,6 +126,7 @@ export class TabBarComponent {
    * @param index - The index of the tabs to close.
    */
   closeTab(index: number): void {
+    this.hideTooltip();
     this.applicationService.closeApplication(index);
   }
 }

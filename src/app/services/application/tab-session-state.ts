@@ -1,5 +1,3 @@
-import { isPlatformBrowser } from '@angular/common';
-
 export const TAB_SESSION_STORAGE_KEY = 'csss-tab-session';
 const TAB_SESSION_VERSION = 1;
 
@@ -68,13 +66,8 @@ export const parseTabSession = (raw: string): TabSessionState | null => {
   }
 };
 
-/**
- * Reads the stored tab session from local storage.
- *
- * @param platformId - Angular platform ID used to guard browser-only access.
- */
-export const readTabSession = (platformId: object): TabSessionState | null => {
-  if (!isPlatformBrowser(platformId)) {
+export const readTabSession = (): TabSessionState | null => {
+  if (typeof window === 'undefined' || typeof localStorage === 'undefined') {
     return null;
   }
 
@@ -94,10 +87,9 @@ export const readTabSession = (platformId: object): TabSessionState | null => {
  * Writes open application IDs to local storage.
  *
  * @param applicationIds - Open application IDs in tab order.
- * @param platformId - Angular platform ID used to guard browser-only access.
  */
-export const writeTabSession = (applicationIds: number[], platformId: object): void => {
-  if (!isPlatformBrowser(platformId)) {
+export const writeTabSession = (applicationIds: number[]): void => {
+  if (typeof window === 'undefined' || typeof localStorage === 'undefined') {
     return;
   }
 

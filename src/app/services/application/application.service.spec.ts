@@ -10,6 +10,7 @@ describe('ApplicationService', () => {
   let service: ApplicationService;
   let routerEvents: Subject<NavigationEnd>;
   let navigateSpy: ReturnType<typeof vi.fn>;
+  let navigateByUrlSpy: ReturnType<typeof vi.fn>;
 
   const getStoredApplicationIds = (): number[] => {
     const raw = localStorage.getItem(TAB_SESSION_STORAGE_KEY);
@@ -28,10 +29,11 @@ describe('ApplicationService', () => {
     localStorage.clear();
     routerEvents = new Subject<NavigationEnd>();
     navigateSpy = vi.fn();
+    navigateByUrlSpy = vi.fn();
 
     TestBed.configureTestingModule({
       providers: [
-        { provide: Router, useValue: { events: routerEvents.asObservable(), navigate: navigateSpy } },
+        { provide: Router, useValue: { events: routerEvents.asObservable(), navigate: navigateSpy, navigateByUrl: navigateByUrlSpy } },
         { provide: PLATFORM_ID, useValue: 'browser' }
       ]
     });
@@ -52,7 +54,7 @@ describe('ApplicationService', () => {
     TestBed.resetTestingModule();
     TestBed.configureTestingModule({
       providers: [
-        { provide: Router, useValue: { events: routerEvents.asObservable(), navigate: navigateSpy } },
+        { provide: Router, useValue: { events: routerEvents.asObservable(), navigate: navigateSpy, navigateByUrl: navigateByUrlSpy } },
         { provide: PLATFORM_ID, useValue: 'browser' }
       ]
     });
@@ -94,5 +96,38 @@ describe('ApplicationService', () => {
 
     expect(getStoredApplicationIds()).toEqual([]);
     expect(navigateSpy).toHaveBeenCalledWith(['/']);
+  });
+
+  it('should navigate to the left neighbor when closing a focused tab', () => {
+    navigateTo('/readme');
+    navigateTo('/officers');
+    navigateTo('/committees');
+
+    service.closeApplication(2);
+
+    expect(navigateByUrlSpy).toHaveBeenCalledWith('/officers');
+  });
+
+  it('should navigate to the right neighbor when there is no left neighbor', () => {
+    navigateTo('/readme');
+    navigateTo('/officers');
+
+    // Focus the leftmost tab so it has no left neighbor.
+    navigateTo('/readme');
+
+    service.closeApplication(0);
+
+    expect(navigateByUrlSpy).toHaveBeenCalledWith('/officers');
+  });
+
+  it('should not navigate when closing a background tab', () => {
+    navigateTo('/readme');
+    navigateTo('/officers');
+
+    service.closeApplication(0);
+
+    expect(navigateByUrlSpy).not.toHaveBeenCalled();
+    expect(navigateSpy).not.toHaveBeenCalled();
+    expect(service.focusedApplication()?.id).toBe(1);
   });
 });
