@@ -172,14 +172,22 @@ export const buildRunningApplicationsFromIds = (
   const runningApplications = new Map<number, AppInfo>();
 
   for (const id of applicationIds) {
+    if (runningApplications.has(id)) {
+      continue;
+    }
+
     const application = getApplicationById(id);
     if (!application) {
       continue;
     }
 
-    const hasConflictingActivity = [...runningApplications.values()].some(app =>
-      shareSameActivityGroup(app, application)
-    );
+    let hasConflictingActivity = false;
+    for (const existing of runningApplications.values()) {
+      if (shareSameActivityGroup(existing, application)) {
+        hasConflictingActivity = true;
+        break;
+      }
+    }
     if (hasConflictingActivity) {
       continue;
     }

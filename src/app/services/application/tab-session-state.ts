@@ -66,6 +66,11 @@ export const parseTabSession = (raw: string): TabSessionState | null => {
   }
 };
 
+/**
+ * Reads the stored tab session from local storage.
+ * If the stored value is corrupt or outdated, the key is removed so it
+ * does not cause repeated parse failures on every subsequent boot.
+ */
 export const readTabSession = (): TabSessionState | null => {
   if (typeof window === 'undefined' || typeof localStorage === 'undefined') {
     return null;
@@ -77,7 +82,11 @@ export const readTabSession = (): TabSessionState | null => {
       return null;
     }
 
-    return parseTabSession(raw);
+    const parsed = parseTabSession(raw);
+    if (parsed === null) {
+      localStorage.removeItem(TAB_SESSION_STORAGE_KEY);
+    }
+    return parsed;
   } catch {
     return null;
   }
