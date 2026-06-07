@@ -4,11 +4,19 @@ import {
   computed,
   HostBinding,
   inject,
+  signal,
   Signal
 } from '@angular/core';
 import { ApplicationService } from 'services/application/application.service';
 import { UiService } from 'services/ui/ui.service';
 import { STRUCTURE_MAP } from 'styles/structure';
+
+interface TooltipData {
+  text: string;
+  x: number;
+  y: number;
+  visible: boolean;
+}
 
 export interface TabBarItem {
   label: string;
@@ -56,6 +64,13 @@ export class TabBarComponent {
     return result;
   });
 
+  tooltipData = signal<TooltipData>({
+    text: '',
+    x: 0,
+    y: 0,
+    visible: false
+  });
+
   /**
    * Hide the tabs bar if the screen size is small and there are no applications running.
    */
@@ -63,6 +78,32 @@ export class TabBarComponent {
     () =>
       !this.uiService.isLargeViewport() && this.applicationService.runningApplications().size === 0
   );
+
+  /**
+   * Shows a popup of label when tab is hovered and smaller tabs.
+   */
+  showTooltip(tab: TabBarItem, event: MouseEvent): void {
+    const el = event.currentTarget as HTMLElement;
+    const rect = el.getBoundingClientRect();
+    const tabWidth = rect.width;
+
+    // Only show when the tab label is actually clipped (~7rem = 112px)
+    if (tabWidth >= 112) return;
+
+    this.tooltipData.set({
+      text: tab.label,
+      x: rect.left + rect.width / 2,
+      y: rect.bottom + 6,
+      visible: true
+    });
+  }
+
+  hideTooltip(): void {
+    this.tooltipData.update(state => ({
+      ...state,
+      visible: false
+    }));
+  }
 
   focusTab(tab: TabBarItem): void {
     this.applicationService.router.navigateByUrl(tab.route);

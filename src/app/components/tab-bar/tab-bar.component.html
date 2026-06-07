@@ -1,5 +1,10 @@
 @for (tab of tabs(); track $index) {
-  <div class="tab clickable" [class.focused]="tab.focused">
+  <div
+    class="tab clickable"
+    [class.focused]="tab.focused"
+    (mouseenter)="showTooltip(tab, $event)"
+    (mouseleave)="hideTooltip()"
+  >
     <div class="click-nav" (click)="focusTab(tab)">
       <div class="icon"></div>
       <div class="label">{{ tab.label }}</div>
@@ -9,3 +14,10 @@
     </div>
   </div>
 }
+
+<div
+  class="tab-tooltip"
+  [class.visible]="tooltipData().visible"
+  [style.left.px]="tooltipData().x"
+  [style.top.px]="tooltipData().y"
+>{{ tooltipData().text }}</div>
