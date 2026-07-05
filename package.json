@@ -25,7 +25,6 @@
     "@angular/platform-server": "^21.2.14",
     "@angular/router": "^21.2.14",
     "@angular/ssr": "^21.2.12",
-    "@calendarjs/ce": "^1.1.0",
     "@fortawesome/angular-fontawesome": "^4.0.0",
     "@fortawesome/free-brands-svg-icons": "^6.7.1",
     "@fortawesome/free-regular-svg-icons": "^6.7.1",
