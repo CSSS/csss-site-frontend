@@ -2,19 +2,42 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { CodeArticleComponent } from '@csss-code/article/article.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faUpRightFromSquare } from '@fortawesome/free-solid-svg-icons';
+import {
+  CalendarDatePipe,
+  CalendarDayViewComponent,
+  CalendarEvent,
+  CalendarMonthViewComponent,
+  CalendarNextViewDirective,
+  CalendarPreviousViewDirective,
+  CalendarTodayDirective,
+  CalendarView,
+  CalendarWeekViewComponent,
+  DateAdapter,
+  provideCalendar
+} from 'angular-calendar';
+import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 import { ExternalLinkComponent } from 'components/url/external-link/external-link.component';
 import { EXTERNAL_LINKS } from 'components/url/links.data';
-import { DateAdapter, provideCalendar, CalendarPreviousViewDirective, CalendarTodayDirective, CalendarNextViewDirective, CalendarMonthViewComponent, CalendarWeekViewComponent, CalendarDayViewComponent, CalendarEvent, CalendarView, CalendarDatePipe } from 'angular-calendar';
-import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 
 @Component({
   selector: 'cs-events',
-  imports: [CodeArticleComponent, FontAwesomeModule, ExternalLinkComponent, CalendarPreviousViewDirective, CalendarTodayDirective, CalendarNextViewDirective, CalendarMonthViewComponent, CalendarWeekViewComponent, CalendarDayViewComponent, CalendarDatePipe],
+  imports: [
+    CodeArticleComponent,
+    FontAwesomeModule,
+    ExternalLinkComponent,
+    CalendarPreviousViewDirective,
+    CalendarTodayDirective,
+    CalendarNextViewDirective,
+    CalendarMonthViewComponent,
+    CalendarWeekViewComponent,
+    CalendarDayViewComponent,
+    CalendarDatePipe
+  ],
   providers: [
     provideCalendar({
       provide: DateAdapter,
-      useFactory: adapterFactory,
-    }),
+      useFactory: adapterFactory
+    })
   ],
   templateUrl: './events.component.html',
   styleUrl: './events.component.scss',
@@ -37,11 +60,11 @@ export class EventsComponent {
   events: CalendarEvent[] = [
     {
       start: new Date(),
-      title: 'CSSS Events',
-    },
+      title: 'CSSS Events'
+    }
   ];
 
-  setView(view: CalendarView) {
+  setView(view: CalendarView): void {
     this.view = view;
   }
 }
