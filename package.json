@@ -30,6 +30,8 @@
     "@fortawesome/free-regular-svg-icons": "^6.7.1",
     "@fortawesome/free-solid-svg-icons": "^6.7.1",
     "@omnedia/ngx-typewriter": "^4.0.1",
+    "angular-calendar": "^0.32.2",
+    "date-fns": "^4.4.0",
     "express": "^5.1.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0"
@@ -52,5 +54,8 @@
     "typescript": "~5.9.3",
     "typescript-eslint": "^8.58.2",
     "vitest": "^4.0.16"
+  },
+  "scarfSettings": {
+    "enabled": false
   }
 }
