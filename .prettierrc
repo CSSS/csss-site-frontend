@@ -8,5 +8,13 @@
   "tabWidth": 2,
   "trailingComma": "none",
   "useTabs": false,
-  "plugins": ["prettier-plugin-organize-imports"]
+  "plugins": ["prettier-plugin-astro"],
+  "overrides": [
+    {
+      "files": "*.astro",
+      "options": {
+        "parser": "astro"
+      }
+    }
+  ]
 }

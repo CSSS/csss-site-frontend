@@ -1,48 +1,58 @@
+# CSSS website
+
+The SFU Computing Science Student Society website is a statically generated Astro site. Page
+content is written in MDX, and shared site chrome is implemented with Astro components.
+
+## Requirements
+
+- Node.js 22.12 or newer; Node.js 24 is recommended
+- npm 9.6.5 or newer
+
 ## Development
-If you'd like to contribute, the wiki is the best place to start
-https://github.com/CSSS/csss-site-frontend/wiki
 
-### Prereqs
-You will need:
-- `git`
-- `node` v24.14
-- `npm` v11.11
-- Install the Angular CLI globally
 ```sh
-# use Angular v21
-npm install -g @angular/cli
-```
-
-To install the correct versions of `node` and `npm`, you might want to install and setup [nvm](https://github.com/nvm-sh/nvm).
-
-### Set-up
-1. Clone the repo (use SSH):
-```
-git clone git@github.com:CSSS/csss-site-frontend.git
-```
-2. Install the node modules:
-```
 npm ci
+npm run dev
 ```
 
-3. Start the frontend server:
+The development server prints its local URL. A production build is generated in `dist/`:
+
 ```sh
-npm run start # will run some pre-build scripts
-or
-ng serve # only works after building
+npm run build
+npm run preview
 ```
 
-4. Serve the app over your local network
+Run the project checks before opening a pull request:
+
 ```sh
-# Access the site on a device in your local network by going to `http://<IP of serving device>:8080`
-ng serve --host=0.0.0.0 // only works after building
+npm run format:check
+npm run lint
+npm run check
 ```
 
-To view other npm commands, look at `package.json` under the "scripts" key.
-### Local development
-If you'd like to contribute, you can start reading here https://github.com/CSSS/csss-site-frontend/wiki/Contributing
+Use `npm run format` to apply Prettier formatting.
 
-### Libraries used
-* **FontAwesome 6.7.1** https://fontawesome.com/v6/icons
-* **Material CDK** https://material.angular.dev/cdk/categories
-* **NGXUI** https://ngxui.com/
+## Adding or replacing pages
+
+Files in `src/pages/` define the URL structure. An MDX page can use the shared site shell with
+frontmatter:
+
+```mdx
+---
+layout: ../layouts/SiteLayout.astro
+title: Page title
+description: A short page description.
+---
+
+# Page title
+
+Page content goes here.
+```
+
+Adjust the relative layout path for nested pages. Ordinary `.astro` pages can import and render
+the same `SiteLayout.astro` component with `title` and optional `description` props.
+
+## Deployment
+
+When a pull request is merged into `main`, GitHub Actions builds the static site and replaces the
+contents of the remote `build` branch with `dist/`.

@@ -1,10 +1,16 @@
-name: Builds and pushes the results to the `build` branch when a pull request is merged into `main`
+name: Build and publish the site to the build branch
 
 on:
   pull_request:
     types: [closed]
-    branches:
-      - main
+    branches: [main]
+
+permissions:
+  contents: write
+
+concurrency:
+  group: deploy-build-branch
+  cancel-in-progress: false
 
 jobs:
   deploy-to-branch:
@@ -12,39 +18,51 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout `main`
+      - name: Check out the merged main branch
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
-      - name: Set up Node.js, install dependencies and build
+      - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '24.x'
-      - run: npm ci
-      - run: npm run build
+          node-version: 24.x
+          cache: npm
 
-      - name: Preserve build output when moving branches
-        # If this is not done then the build folder will be lost when we switch branches
-        run: mv dist/csss-ng-frontend/browser ../build-tmp
+      - name: Install dependencies
+        run: npm ci
 
-      - name: Switch to the build branch and clean it
-        run: |
-          # Get the latest on the branch that builds are held in and switch to it
-          git fetch origin build
-          git switch build
-          # Remove everything in order to copy everything over
-          rm -rf *
+      - name: Check formatting
+        run: npm run format:check
 
-      - name: Copy the built files over to the root directory and push to `build`
-        run: |
-          cp -R ../build-tmp/* .
+      - name: Lint
+        run: npm run lint
 
-      - name: Commit and push
-        run: |
-          # Set up a dummy user and email for identification purposes
-          git config --global user.name "${{ github.actor }}"
-          git config --global user.email "${{ github.actor }}@user.noreply.github.com"
-          git add .
-          git commit -m "${{ github.event.pull_request.title }}"
-          git push origin build
+      - name: Type-check Astro and MDX
+        run: npm run check
+
+      - name: Build static site
+        run: npm run build
+
+      - name: Publish dist to the remote build branch
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          COMMIT_MESSAGE: >-
+            Deploy PR #${{ github.event.pull_request.number }}:
+            ${{ github.event.pull_request.title }}
+        run: |
+          git fetch origin build
+          git worktree add --force ../build-output origin/build
+          cd ../build-output
+          git rm -rf .
+          cp -a "$GITHUB_WORKSPACE/dist/." .
+          git add --all
+
+          if git diff --cached --quiet; then
+            echo "Build output is unchanged; nothing to publish."
+            exit 0
+          fi
+
+          git config user.name "${{ github.actor }}"
+          git config user.email "${{ github.actor }}@users.noreply.github.com"
+          git commit -m "$COMMIT_MESSAGE"
+          git push origin HEAD:build
