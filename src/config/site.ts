@@ -10,35 +10,35 @@ export const navItems: NavItem[] = [
   {
     label: 'The CSSS',
     children: [
-      { label: 'README', href: '/readme/' },
-      { label: 'Officers', href: '/officers/' },
-      { label: 'Committees', href: '/committees/' },
-      { label: 'Common Room', href: '/common-room/' },
-      { label: 'Affiliates', href: '/affiliates/' }
+      { label: 'README', href: '/readme' },
+      { label: 'Officers', href: '/officers' },
+      { label: 'Committees', href: '/committees' },
+      { label: 'Common Room', href: '/common-room' },
+      { label: 'Affiliates', href: '/affiliates' }
     ]
   },
   {
     label: 'Events',
     children: [
       { label: 'About', href: '/events/' },
-      { label: 'Archives', href: '/events/archives/' }
+      { label: 'Archives', href: '/events/archives' }
     ]
   },
   {
     label: 'Elections',
     children: [
-      { label: 'About', href: '/elections/' },
-      { label: 'Schedule', href: '/elections/schedule/' },
-      { label: 'Speeches', href: '/elections/speeches/' }
+      { label: 'About', href: '/elections' },
+      { label: 'Schedule', href: '/elections/schedule' },
+      { label: 'Speeches', href: '/elections/speeches' }
     ]
   }
 ];
 
 export const footerNavItems: NavItem[] = [
   { label: 'Home', href: '/' },
-  { label: 'README', href: '/readme/' },
-  { label: 'Events', href: '/events/' },
-  { label: 'Elections', href: '/elections/' }
+  { label: 'README', href: '/readme' },
+  { label: 'Events', href: '/events' },
+  { label: 'Elections', href: '/elections' }
 ];
 
 export const socialLinks = {
