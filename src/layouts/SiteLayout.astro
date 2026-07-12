@@ -4,10 +4,10 @@ import Footer from '../components/Footer.astro';
 import Navbar from '../components/Navbar.astro';
 import CsssIcon from '../icons/CsssIcon.astro';
 import { footerNavItems, navItems, siteConfig } from '../config/site';
-import '../styles/font-faces/ancizar-serif.css';
 import '../styles/font-faces/cal-sans.css';
-import ancizarSerifFont from '../assets/fonts/ancizar-serif-v8-latin-regular.woff2?url';
+import '../styles/font-faces/geist-mono.css';
 import calSansFont from '../assets/fonts/cal-sans-v2-latin-regular.woff2?url';
+import geistMonoRegularFont from '../assets/fonts/geist-mono-v6-latin-regular.woff2?url';
 
 interface PageMetadata {
   title: string;
@@ -32,10 +32,10 @@ const pageNoindex = frontmatter?.noindex ?? noindex ?? false;
 
 <BaseLayout pageTitle={pageTitle} description={pageDescription} noindex={pageNoindex}>
   <Fragment slot="head">
-    <link rel="preload" href={ancizarSerifFont} as="font" type="font/woff2" crossorigin />
     <link rel="preload" href={calSansFont} as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href={geistMonoRegularFont} as="font" type="font/woff2" crossorigin />
   </Fragment>
-  <Navbar title="CSSS" items={navItems}>
+  <Navbar title="SFU CSSS" items={navItems}>
     <CsssIcon slot="icon" size={36} />
   </Navbar>
   <main class="page-content">

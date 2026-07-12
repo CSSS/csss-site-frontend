@@ -8,37 +8,37 @@ export const siteConfig: SiteConfig = {
 
 export const navItems: NavItem[] = [
   {
-    label: 'The CSSS',
+    label: 'THE CSSS',
     children: [
       { label: 'README', href: '/readme' },
-      { label: 'Officers', href: '/officers' },
-      { label: 'Committees', href: '/committees' },
-      { label: 'Common Room', href: '/common-room' },
-      { label: 'Affiliates', href: '/affiliates' }
+      { label: 'OFFICERS', href: '/officers' },
+      { label: 'COMMITTEES', href: '/committees' },
+      { label: 'COMMON ROOM', href: '/common-room' },
+      { label: 'AFFILIATES', href: '/affiliates' }
     ]
   },
   {
-    label: 'Events',
+    label: 'EVENTS',
     children: [
-      { label: 'About', href: '/events/' },
-      { label: 'Archives', href: '/events/archives' }
+      { label: 'ABOUT', href: '/events/' },
+      { label: 'ARCHIVES', href: '/events/archives' }
     ]
   },
   {
-    label: 'Elections',
+    label: 'ELECTIONS',
     children: [
-      { label: 'About', href: '/elections' },
-      { label: 'Schedule', href: '/elections/schedule' },
-      { label: 'Speeches', href: '/elections/speeches' }
+      { label: 'ABOUT', href: '/elections' },
+      { label: 'SCHEDULE', href: '/elections/schedule' },
+      { label: 'SPEECHES', href: '/elections/speeches' }
     ]
   }
 ];
 
 export const footerNavItems: NavItem[] = [
-  { label: 'Home', href: '/' },
+  { label: 'HOME', href: '/' },
   { label: 'README', href: '/readme' },
-  { label: 'Events', href: '/events' },
-  { label: 'Elections', href: '/elections' }
+  { label: 'EVENTS', href: '/events' },
+  { label: 'ELECTIONS', href: '/elections' }
 ];
 
 export const socialLinks = {

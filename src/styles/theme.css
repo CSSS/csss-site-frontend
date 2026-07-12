@@ -63,7 +63,8 @@
     /* CSSS brand palette */
     /* Don't override these in the sites */
     --csss-brand-black: hsl(0, 0%, 0%);
-    --csss-brand-cream: hsl(55, 44%, 89%);
+    --csss-brand-cream: hsl(55, 76%, 97%);
+    --csss-brand-selago: hsl(235, 76%, 97%);
     --csss-brand-teal: hsl(166, 57%, 43%);
     --csss-brand-blue: hsl(240, 100%, 28%);
     --csss-brand-pink: hsl(357, 98%, 74%);
@@ -72,20 +73,22 @@
 
     /* Color tokens */
     --clr-surface-base: var(--csss-brand-cream);
-    --clr-surface-inverse: var(--csss-brand-grey);
-    --clr-border-default: hsl(0, 0%, 0%, 0.15);
+    --clr-surface-inverse: var(--csss-brand-black);
 
     --clr-text-primary: var(--csss-brand-black);
     --clr-text-inverse: var(--csss-brand-cream);
 
+    --clr-surface-hover: var(--csss-brand-selago);
     --clr-accent-blue: var(--csss-brand-blue);
-    --clr-accent-blue-contrast: var(--csss-brand-cream);
+    --clr-accent-blue-fg: var(--csss-brand-cream);
     --clr-accent-pink: var(--csss-brand-pink);
-    --clr-accent-pink-contrast: var(--csss-brand-cream);
+    --clr-accent-pink-fg: var(--csss-brand-cream);
     --clr-accent-red: var(--csss-brand-red);
-    --clr-accent-red-contrast: var(--csss-brand-cream);
+    --clr-accent-red-fg: var(--csss-brand-cream);
     --clr-accent-teal: var(--csss-brand-teal);
-    --clr-accent-teal-contrast: var(--csss-brand-cream);
+    --clr-accent-teal-fg: var(--csss-brand-cream);
+
+    --clr-border-default: var(--csss-brand-black);
 
     /* Spacing tokens */
     --sp-0: 0;
@@ -101,7 +104,8 @@
     --sp-10: 8rem;
 
     /* Typography tokens */
-    --font-body: 'Ancizar Serif', serif;
+    --font-body: 'Geist Mono', monospace;
+    --font-navbar: 'Geist Mono', monospace;
     --font-title: 'Cal Sans', sans-serif;
     --font-heading: 'Cal Sans', sans-serif;
     --font-fancy: 'Workbench', sans-serif;
@@ -133,8 +137,16 @@
     /* Miscellaneous tokens */
     --animation-duration-regular: 0.3s;
     --corner-radius: 10px;
-    --border-radius-default: 18px;
+    --border-radius-default: 15px;
     --border-radius-lg: 48px;
+    --border-default: 1.5px solid var(--clr-surface-inverse);
+  }
+
+  .chip {
+    padding-inline: 0.375rem;
+    padding-block: 0.125rem;
+    border: var(--border-default);
+    border-radius: var(--border-radius-default);
   }
 
   .brand--red {

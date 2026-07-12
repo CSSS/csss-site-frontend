@@ -1,8 +1,7 @@
 ---
 import type { ImageMetadata } from 'astro';
-import { getImage } from 'astro:assets';
 import Seo from '../components/Seo.astro';
-import brandTexture from '../assets/images/brand-texture-primary.png';
+import { ClientRouter } from 'astro:transitions';
 import '../styles/reset.css';
 import '../styles/fonts.css';
 import '../styles/theme.css';
@@ -15,21 +14,17 @@ interface Props {
 }
 
 const { pageTitle, description, image, noindex = false } = Astro.props;
-const optimizedBrandTexture = await getImage({
-  src: brandTexture,
-  format: 'avif',
-  quality: 'low'
-});
 ---
 
 <!doctype html>
-<html lang="en" style={`--csss-texture-bg: url(${optimizedBrandTexture.src})`}>
+<html lang="en" transition:animate="none">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/svg+xml" href="/static/icons/favicon_colourful.svg" />
     <Seo title={pageTitle} description={description} image={image} noindex={noindex} />
     <slot name="head" />
+    <ClientRouter fallback="swap" />
   </head>
   <body>
     <slot />
