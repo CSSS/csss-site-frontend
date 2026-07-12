@@ -8,6 +8,62 @@
 
 @layer base {
   :root {
+    /* Spacing tokens */
+    --sp-0: 0;
+    --sp-1: 0.25rem;
+    --sp-2: 0.5rem;
+    --sp-3: 0.75rem;
+    --sp-4: 1rem;
+    --sp-5: 1.5rem;
+    --sp-6: 2rem;
+    --sp-7: 3rem;
+    --sp-8: 4rem;
+    --sp-9: 6rem;
+    --sp-10: 8rem;
+
+    /* Typography tokens */
+    --font-body: 'Geist Mono', monospace;
+    --font-navbar: 'Geist Mono', monospace;
+    --font-title: 'Cal Sans', sans-serif;
+    --font-heading: 'Cal Sans', sans-serif;
+    --font-fancy: 'Workbench', sans-serif;
+
+    --font-size-0: 0.75rem;
+    --font-size-1: 0.875rem;
+    --font-size-2: 1rem;
+    --font-size-3: 1.125rem;
+    --font-size-4: 1.25rem;
+    --font-size-5: 1.5rem;
+    --font-size-6: 2rem;
+    --font-size-7: 2.5rem;
+    --font-size-8: 3rem;
+
+    --font-size-heading-1: clamp(var(--font-size-5), 6vw, var(--font-size-7));
+    --font-size-heading-2: clamp(var(--font-size-4), 4vw, var(--font-size-6));
+    --font-size-heading-3: clamp(var(--font-size-3), 3vw, var(--font-size-5));
+    --font-size-body: clamp(var(--font-size-2), 2.5vw, var(--font-size-4));
+
+    --line-height-tight: 1.3;
+    --line-height-normal: 1.5;
+    --line-height-relaxed: 1.7;
+
+    --font-weight-regular: 400;
+    --font-weight-medium: 500;
+    --font-weight-semibold: 600;
+    --font-weight-bold: 700;
+
+    --padding-inline: 1rem;
+    --site-content-width: 70rem;
+    --site-breakout-width: 90rem;
+    --breakout-width: calc((var(--site-breakout-width) - var(--site-content-width)) / 2);
+
+    /* Miscellaneous tokens */
+    --animation-duration-regular: 0.3s;
+    --corner-radius: 10px;
+    --border-radius-default: 15px;
+    --border-radius-lg: 48px;
+    --border-default: 1.5px solid var(--clr-surface-inverse);
+
     /* Height of the navbar header element */
     --navbar-height: 5rem;
     --navbar-height-scrolled: calc(var(--navbar-height) - 2rem);
@@ -19,9 +75,6 @@
 
     /* Colour of a link in a paragraph */
     --clr-link-inline: var(--clr-accent-blue);
-
-    --site-content-width: 60rem;
-    --site-body-texture: var(--csss-texture-bg);
   }
 
   html {
@@ -56,6 +109,30 @@
   :target {
     scroll-margin-top: var(--navbar-height);
   }
+
+  /* Allows the user to define if some content should be wider than the site content */
+  .content-grid {
+    display: grid;
+    grid-template-columns:
+      [full-width-start] minmax(var(--padding-inline), 1fr)
+      [breakout-start] minmax(0, var(--breakout-width))
+      [content-start] min(100% - (var(--padding-inline) * 2), var(--site-content-width))
+      [content-end]
+      minmax(0, var(--breakout-width)) [breakout-end]
+      minmax(var(--padding-inline), 1fr) [full-width-end];
+  }
+
+  .content-grid > * {
+    grid-column: content;
+  }
+
+  .content-grid > .breakout {
+    grid-column: breakout;
+  }
+
+  .content-grid > .full-width {
+    grid-column: full-width;
+  }
 }
 
 @layer theme {
@@ -89,57 +166,6 @@
     --clr-accent-teal-fg: var(--csss-brand-cream);
 
     --clr-border-default: var(--csss-brand-black);
-
-    /* Spacing tokens */
-    --sp-0: 0;
-    --sp-1: 0.25rem;
-    --sp-2: 0.5rem;
-    --sp-3: 0.75rem;
-    --sp-4: 1rem;
-    --sp-5: 1.5rem;
-    --sp-6: 2rem;
-    --sp-7: 3rem;
-    --sp-8: 4rem;
-    --sp-9: 6rem;
-    --sp-10: 8rem;
-
-    /* Typography tokens */
-    --font-body: 'Geist Mono', monospace;
-    --font-navbar: 'Geist Mono', monospace;
-    --font-title: 'Cal Sans', sans-serif;
-    --font-heading: 'Cal Sans', sans-serif;
-    --font-fancy: 'Workbench', sans-serif;
-
-    --font-size-0: 0.75rem;
-    --font-size-1: 0.875rem;
-    --font-size-2: 1rem;
-    --font-size-3: 1.125rem;
-    --font-size-4: 1.25rem;
-    --font-size-5: 1.5rem;
-    --font-size-6: 2rem;
-    --font-size-7: 2.5rem;
-    --font-size-8: 3rem;
-
-    --font-size-body: var(--font-size-4);
-    --font-size-heading-1: var(--font-size-8);
-    --font-size-heading-2: var(--font-size-6);
-    --font-size-heading-3: var(--font-size-5);
-
-    --line-height-tight: 1.3;
-    --line-height-normal: 1.5;
-    --line-height-relaxed: 1.7;
-
-    --font-weight-regular: 400;
-    --font-weight-medium: 500;
-    --font-weight-semibold: 600;
-    --font-weight-bold: 700;
-
-    /* Miscellaneous tokens */
-    --animation-duration-regular: 0.3s;
-    --corner-radius: 10px;
-    --border-radius-default: 15px;
-    --border-radius-lg: 48px;
-    --border-default: 1.5px solid var(--clr-surface-inverse);
   }
 
   .chip {

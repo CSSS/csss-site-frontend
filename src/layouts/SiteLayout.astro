@@ -38,7 +38,7 @@ const pageNoindex = frontmatter?.noindex ?? noindex ?? false;
   <Navbar title="SFU CSSS" items={navItems}>
     <CsssIcon slot="icon" size={36} />
   </Navbar>
-  <main class="page-content">
+  <main class="page-content content-grid">
     <slot />
   </main>
   <Footer config={siteConfig} navItems={footerNavItems} />
@@ -46,13 +46,8 @@ const pageNoindex = frontmatter?.noindex ?? noindex ?? false;
 
 <style is:global>
   .page-content {
-    display: flex;
     min-height: calc(100vh - var(--navbar-height));
-    width: min(100% - (2 * var(--sp-4)), var(--site-content-width));
-    margin: 0 auto;
-    padding: var(--sp-8) 0;
-    flex-direction: column;
-    gap: var(--sp-5);
+    row-gap: var(--sp-5);
   }
 
   .page-content :is(ul, ol) {
