@@ -1,0 +1,68 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import Footer from '../components/Footer.astro';
+import Navbar from '../components/Navbar.astro';
+import CsssIcon from '../icons/CsssIcon.astro';
+import { footerNavItems, navItems, siteConfig } from '../config/site';
+import '../styles/font-faces/ancizar-serif.css';
+import '../styles/font-faces/boldonse.css';
+import '../styles/font-faces/cal-sans.css';
+import ancizarSerifFont from '../assets/fonts/ancizar-serif-v8-latin-regular.woff2?url';
+import boldonseFont from '../assets/fonts/boldonse-v1-latin-regular.woff2?url';
+import calSansFont from '../assets/fonts/cal-sans-v2-latin-regular.woff2?url';
+
+interface PageMetadata {
+  title: string;
+  description?: string;
+  noindex?: boolean;
+}
+
+interface Props extends Partial<PageMetadata> {
+  frontmatter?: PageMetadata;
+}
+
+const { frontmatter, title, description, noindex } = Astro.props;
+const pageTitle = frontmatter?.title ?? title;
+
+if (!pageTitle) {
+  throw new Error('SiteLayout requires a page title.');
+}
+
+const pageDescription = frontmatter?.description ?? description ?? siteConfig.description;
+const pageNoindex = frontmatter?.noindex ?? noindex ?? false;
+---
+
+<BaseLayout pageTitle={pageTitle} description={pageDescription} noindex={pageNoindex}>
+  <Fragment slot="head">
+    <link rel="preload" href={ancizarSerifFont} as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href={boldonseFont} as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href={calSansFont} as="font" type="font/woff2" crossorigin />
+  </Fragment>
+  <Navbar title="CSSS" items={navItems}>
+    <CsssIcon slot="icon" size={36} />
+  </Navbar>
+  <main class="page-content">
+    <slot />
+  </main>
+  <Footer config={siteConfig} navItems={footerNavItems} />
+</BaseLayout>
+
+<style is:global>
+  .page-content {
+    display: flex;
+    min-height: calc(100vh - var(--navbar-height));
+    width: min(100% - (2 * var(--sp-4)), var(--site-content-width));
+    margin: 0 auto;
+    padding: var(--sp-8) 0;
+    flex-direction: column;
+    gap: var(--sp-5);
+  }
+
+  .page-content :is(ul, ol) {
+    padding-left: var(--sp-6);
+  }
+
+  .page-content li {
+    list-style: revert;
+  }
+</style>

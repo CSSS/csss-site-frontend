@@ -1,0 +1,159 @@
+/**
+* reset: removes unwanted browser defaults
+* base: structural component styling
+* theme: everything related to the CSSS branding
+* components: styles that affect package components
+*/
+@layer reset, base, theme;
+
+@layer base {
+  :root {
+    /* Height of the navbar header element */
+    --navbar-height: 5rem;
+    --navbar-height-scrolled: calc(var(--navbar-height) - 2rem);
+    --navbar-z-index: 1000;
+    --z-top-content: 100;
+
+    /* Gap between sections within an article */
+    --section-gap: var(--sp-8);
+
+    /* Colour of a link in a paragraph */
+    --clr-link-inline: var(--clr-accent-blue);
+
+    --site-content-width: 60rem;
+    --site-body-texture: var(--csss-texture-bg);
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    position: relative;
+    padding-top: var(--navbar-height, 0);
+    background-color: var(--csss-brand-cream);
+  }
+
+  body::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-position: center;
+    opacity: 0.5;
+    pointer-events: none;
+  }
+
+  p > a {
+    color: var(--clr-link-inline);
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  :target {
+    scroll-margin-top: var(--navbar-height);
+  }
+}
+
+@layer theme {
+  :root {
+    /* CSSS brand palette */
+    /* Don't override these in the sites */
+    --csss-brand-black: hsl(0, 0%, 0%);
+    --csss-brand-cream: hsl(55, 44%, 89%);
+    --csss-brand-teal: hsl(166, 57%, 43%);
+    --csss-brand-blue: hsl(240, 100%, 28%);
+    --csss-brand-pink: hsl(357, 98%, 74%);
+    --csss-brand-red: hsl(358, 98%, 65%);
+    --csss-brand-grey: hsl(0, 0%, 27%);
+
+    /* Color tokens */
+    --clr-surface-base: var(--csss-brand-cream);
+    --clr-surface-inverse: var(--csss-brand-grey);
+    --clr-border-default: hsl(0, 0%, 0%, 0.15);
+
+    --clr-text-primary: var(--csss-brand-black);
+    --clr-text-inverse: var(--csss-brand-cream);
+
+    --clr-accent-blue: var(--csss-brand-blue);
+    --clr-accent-blue-contrast: var(--csss-brand-cream);
+    --clr-accent-pink: var(--csss-brand-pink);
+    --clr-accent-pink-contrast: var(--csss-brand-cream);
+    --clr-accent-red: var(--csss-brand-red);
+    --clr-accent-red-contrast: var(--csss-brand-cream);
+    --clr-accent-teal: var(--csss-brand-teal);
+    --clr-accent-teal-contrast: var(--csss-brand-cream);
+
+    /* Spacing tokens */
+    --sp-0: 0;
+    --sp-1: 0.25rem;
+    --sp-2: 0.5rem;
+    --sp-3: 0.75rem;
+    --sp-4: 1rem;
+    --sp-5: 1.5rem;
+    --sp-6: 2rem;
+    --sp-7: 3rem;
+    --sp-8: 4rem;
+    --sp-9: 6rem;
+    --sp-10: 8rem;
+
+    /* Typography tokens */
+    --font-body: 'Ancizar Serif', serif;
+    --font-title: 'Boldonse', sans-serif;
+    --font-heading: 'Cal Sans', sans-serif;
+    --font-fancy: 'Workbench', sans-serif;
+
+    --font-size-0: 0.75rem;
+    --font-size-1: 0.875rem;
+    --font-size-2: 1rem;
+    --font-size-3: 1.125rem;
+    --font-size-4: 1.25rem;
+    --font-size-5: 1.5rem;
+    --font-size-6: 2rem;
+    --font-size-7: 2.5rem;
+    --font-size-8: 3rem;
+
+    --font-size-body: var(--font-size-4);
+    --font-size-heading-1: var(--font-size-8);
+    --font-size-heading-2: var(--font-size-6);
+    --font-size-heading-3: var(--font-size-5);
+
+    --line-height-tight: 1.3;
+    --line-height-normal: 1.5;
+    --line-height-relaxed: 1.7;
+
+    --font-weight-regular: 400;
+    --font-weight-medium: 500;
+    --font-weight-semibold: 600;
+    --font-weight-bold: 700;
+
+    /* Miscellaneous tokens */
+    --animation-duration-regular: 0.3s;
+    --corner-radius: 10px;
+    --border-radius-default: 18px;
+    --border-radius-lg: 48px;
+  }
+
+  .brand--red {
+    color: var(--clr-text-inverse);
+    background-color: var(--clr-accent-red);
+  }
+
+  .brand--blue {
+    color: var(--clr-text-inverse);
+    background-color: var(--clr-accent-blue);
+  }
+
+  .brand--pink {
+    color: var(--clr-text-inverse);
+    background-color: var(--clr-accent-pink);
+  }
+
+  .brand--teal {
+    color: var(--clr-text-inverse);
+    background-color: var(--clr-accent-teal);
+  }
+}

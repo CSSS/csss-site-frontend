@@ -1,0 +1,109 @@
+---
+import type { SiteConfig, NavItem } from '../types';
+import DiscordIcon from '../icons/DiscordIcon.astro';
+import FacebookIcon from '../icons/FacebookIcon.astro';
+import InstagramIcon from '../icons/InstagramIcon.astro';
+import LinkedInIcon from '../icons/LinkedInIcon.astro';
+import CsssIcon from '../icons/CsssIcon.astro';
+import { socialLinks } from '../config/site';
+
+interface Props {
+  config: SiteConfig;
+  navItems: NavItem[];
+}
+
+const { config, navItems } = Astro.props;
+
+const navLinks = navItems.filter(nav => 'href' in nav).slice(0, 4);
+const currentYear = new Date().getFullYear();
+---
+
+<footer>
+  <div class="footer__container">
+    <a href="/"><h2>{config.name}</h2></a>
+    <nav>
+      {
+        navLinks.map(nav => (
+          <div>
+            <a href={nav.href}>{nav.label}</a>
+          </div>
+        ))
+      }
+    </nav>
+    <p>Follow the CSSS to join our other events!</p>
+    <ul class="socials">
+      <li>
+        <a href={socialLinks.website} target="_blank" rel="noopener noreferrer"><CsssIcon /></a>
+      </li>
+      <li>
+        <a href={socialLinks.discord} target="_blank" rel="noopener noreferrer"><DiscordIcon /></a>
+      </li>
+      <li>
+        <a href={socialLinks.instagram} target="_blank" rel="noopener noreferrer"
+          ><InstagramIcon /></a
+        >
+      </li>
+      <li>
+        <a href={socialLinks.linkedin} target="_blank" rel="noopener noreferrer"><LinkedInIcon /></a
+        >
+      </li>
+      <li>
+        <a href={socialLinks.facebook} target="_blank" rel="noopener noreferrer"><FacebookIcon /></a
+        >
+      </li>
+    </ul>
+    <p class="copyright">
+      &copy; {currentYear} Computing Science Student Society. All rights reserved.
+    </p>
+  </div>
+</footer>
+
+<style>
+  footer {
+    display: flex;
+    justify-content: center;
+    margin-top: var(--sp-6);
+    padding: var(--sp-8) var(--sp-4) var(--sp-4);
+    color: var(--clr-text-inverse);
+    background-color: var(--clr-surface-inverse);
+    font-family: var(--font-heading);
+  }
+
+  .footer__container {
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-5);
+    text-align: center;
+    max-width: var(--site-content-width);
+  }
+
+  nav {
+    display: grid;
+    padding: var(--sp-4);
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    row-gap: var(--font-size-1);
+    font-size: var(--font-size-1);
+  }
+
+  .socials {
+    display: flex;
+    justify-content: center;
+    gap: var(--sp-5);
+  }
+
+  p {
+    font-size: var(--font-size-2);
+  }
+
+  .copyright {
+    font-size: var(--font-size-0);
+  }
+
+  @media (min-width: 36rem) {
+    nav {
+      grid-template-columns: repeat(4, 1fr);
+      grid-template-rows: none;
+    }
+  }
+</style>

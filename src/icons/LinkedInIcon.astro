@@ -1,0 +1,26 @@
+---
+interface Props {
+  size?: number;
+  color?: string; // Accepts a CSS colour or variable
+}
+
+const { size = 24, color = 'currentColor' } = Astro.props;
+---
+
+<svg
+  role="img"
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 24 24"
+  id="svg1"
+  width={size}
+  height={size}
+  fill={color}
+>
+  <defs id="defs1"></defs>
+  <!--!Font Awesome Free 7.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.-->
+  <title>LinkedIn</title>
+  <path
+    d="M 22.285714,0 H 1.7089286 C 0.76607143,0 0,0.77678571 0,1.7303571 V 22.269643 C 0,23.223214 0.76607143,24 1.7089286,24 H 22.285714 C 23.228571,24 24,23.223214 24,22.269643 V 1.7303571 C 24,0.77678571 23.228571,0 22.285714,0 Z M 7.2535714,20.571429 H 3.6964286 V 9.1178571 h 3.5625 V 20.571429 Z M 5.475,3.4285714 c 1.1410714,0 2.0625,0.9214286 2.0625,2.0625 0,1.1410715 -0.9214286,2.0625 -2.0625,2.0625 -1.1410714,0 -2.0625,-0.9214285 -2.0625,-2.0625 0,-1.1410714 0.9214286,-2.0625 2.0625,-2.0625 z M 20.5875,20.571429 H 17.030357 V 15 c 0,-1.328571 -0.02679,-3.0375 -1.848214,-3.0375 -1.853572,0 -2.1375,1.446429 -2.1375,2.941071 v 5.667858 H 9.4875 V 9.1178571 H 12.9 v 1.5642859 h 0.04821 C 13.425,9.7821429 14.5875,8.8339286 16.317857,8.8339286 c 3.6,0 4.269643,2.3732144 4.269643,5.4589284 z"
+    id="path1"
+    style="stroke-width:0.0535714"></path>
+</svg>

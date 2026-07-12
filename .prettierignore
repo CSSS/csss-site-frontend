@@ -1,0 +1,7 @@
+.astro/
+dist/
+node_modules/
+public/
+package-lock.json
+.github/ISSUE_TEMPLATE/
+.github/pull_request_template.md

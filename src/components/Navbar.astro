@@ -1,0 +1,371 @@
+---
+import type { NavItem } from '../types';
+import { Menu, X, ChevronDown } from '@lucide/astro';
+
+interface Props {
+  title: string;
+  items?: NavItem[];
+}
+
+const { title, items = [] } = Astro.props;
+---
+
+<header class="navbar">
+  <div class="navbar__content">
+    <a class="navbar__left" href="/">
+      <slot name="icon" />
+      <span class="navbar__title">{title}</span>
+    </a>
+    <nav class="navbar__nav" id="navbar-menu">
+      <div class="navbar__menu-header">
+        <button class="navbar__close" type="button" aria-label="Close navigation">
+          <X />
+        </button>
+      </div>
+      <ul class="navbar__list">
+        {
+          items.map(item => (
+            <li>
+              {'href' in item ? (
+                <a class="navbar__link" href={item.href}>
+                  {item.label}
+                </a>
+              ) : (
+                <div class="dropdown">
+                  <button class="navbar__link" type="button">
+                    {item.label}
+                    <ChevronDown size={16} />
+                  </button>
+                  <ul class="dropdown__menu">
+                    {item.children.map(child => (
+                      <li>
+                        {'href' in child ? (
+                          <a class="navbar__link" href={child.href}>
+                            {child.label}
+                          </a>
+                        ) : (
+                          <span class="navbar__link">{child.label}</span>
+                        )}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+    <div class="navbar__right">
+      <button
+        class="navbar__toggle"
+        type="button"
+        aria-controls="navbar-menu"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <Menu />
+      </button>
+    </div>
+  </div>
+</header>
+
+<script>
+  const navbar = document.querySelector<HTMLElement>('.navbar');
+
+  if (!navbar) {
+    throw new Error('Navbar script could not find the navbar element.');
+  }
+  const navbarElement = navbar;
+  const toggleButton = navbarElement.querySelector('.navbar__toggle') as HTMLButtonElement | null;
+  const closeButton = navbarElement.querySelector('.navbar__close') as HTMLButtonElement | null;
+  const navLinks = navbarElement.querySelectorAll('a.navbar__link');
+  const dropdownButtons = navbarElement.querySelectorAll('.dropdown > button');
+
+  function closeMenu() {
+    navbarElement.classList.add('navbar--menu-animate');
+    navbarElement.classList.remove('navbar--menu-open');
+    toggleButton?.setAttribute('aria-expanded', 'false');
+  }
+
+  // If the user has scrolled down the navbar recedes a bit
+  const observer = new IntersectionObserver(
+    entries => {
+      const entry = entries[0];
+      if (entry) {
+        navbarElement.classList.toggle('navbar--scrolled', !entry.isIntersecting);
+      }
+    },
+    { threshold: 0 }
+  );
+
+  const sentinel = document.createElement('div');
+  sentinel.style.position = 'absolute';
+  sentinel.style.top = '0';
+  document.body.prepend(sentinel);
+  observer.observe(sentinel);
+
+  if (toggleButton) {
+    toggleButton.addEventListener('click', () => {
+      navbarElement.classList.add('navbar--menu-animate');
+      const isOpen = navbarElement.classList.toggle('navbar--menu-open');
+      toggleButton.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    });
+  }
+
+  navLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      closeMenu();
+    });
+  });
+
+  dropdownButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      button.closest('.dropdown')?.classList.toggle('dropdown--open');
+    });
+  });
+
+  if (closeButton) {
+    closeButton.addEventListener('click', () => {
+      closeMenu();
+    });
+  }
+
+  const resetMenuForViewport = () => {
+    navbarElement.classList.remove('navbar--menu-open');
+    navbarElement.classList.remove('navbar--menu-animate');
+    toggleButton?.setAttribute('aria-expanded', 'false');
+    navbarElement.querySelectorAll('.dropdown--open').forEach(dropdown => {
+      dropdown.classList.remove('dropdown--open');
+    });
+  };
+
+  window.matchMedia('(max-width: 36rem)').addEventListener('change', resetMenuForViewport);
+</script>
+
+<style>
+  .navbar {
+    --nav-clr-bg: var(--clr-surface-base);
+    --nav-clr-fg: var(--clr-surface-inverse);
+    --menu-clr-bg: var(--clr-surface-inverse);
+    --menu-clr-fg: var(--clr-surface-base);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: var(--navbar-z-index);
+    width: 100vw;
+    background-color: var(--nav-clr-bg);
+    color: var(--nav-clr-fg);
+    height: var(--navbar-height);
+    transition:
+      height var(--animation-duration-regular) ease,
+      box-shadow var(--animation-duration-regular) ease;
+    padding: 0 var(--sp-2);
+
+    display: flex;
+    align-items: center;
+  }
+
+  .navbar__content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--sp-6);
+    width: 100%;
+    max-width: var(--site-content-width);
+  }
+
+  .navbar__nav {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 16.5rem;
+    max-width: 100vw;
+    height: 100vh;
+    background-color: var(--menu-clr-bg);
+    transform: translateX(100%);
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    gap: var(--sp-4);
+    padding: var(--sp-6);
+    overflow-y: auto;
+    z-index: 1;
+  }
+
+  .navbar--menu-animate .navbar__nav {
+    transition: transform var(--animation-duration-regular) ease;
+  }
+
+  .navbar--menu-open .navbar__nav {
+    transform: translateX(0);
+    color: var(--clr-surface-base);
+  }
+
+  .navbar--scrolled {
+    height: var(--navbar-height-scrolled);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    --nav-clr-bg: var(--clr-surface-inverse);
+    --nav-clr-fg: var(--clr-surface-base);
+  }
+
+  .navbar__left {
+    display: flex;
+    align-items: center;
+    gap: var(--sp-3);
+  }
+
+  .navbar__title {
+    font-size: var(--font-size-3);
+    font-family: var(--font-title);
+    white-space: nowrap;
+  }
+
+  .navbar__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: baseline;
+    gap: var(--sp-4);
+  }
+
+  .navbar__link {
+    font-family: var(--font-heading);
+    font-weight: var(--font-weight-regular);
+    text-decoration: none;
+    color: var(--menu-clr-fg);
+  }
+
+  .dropdown {
+    position: relative;
+  }
+
+  .dropdown button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: inherit;
+  }
+
+  .dropdown__menu {
+    display: none;
+    top: 100%;
+    left: 0;
+    flex-direction: column;
+    gap: 0;
+    min-width: 10rem;
+    padding: 0 var(--sp-2);
+    background-color: var(--clr-surface-inverse);
+  }
+
+  .dropdown--open .dropdown__menu {
+    display: flex;
+  }
+
+  .dropdown__menu li {
+    width: 100%;
+    list-style: none;
+  }
+
+  .dropdown__menu a {
+    display: block;
+    padding: var(--sp-2) 0rem;
+    white-space: nowrap;
+  }
+
+  .navbar__right {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .navbar__toggle {
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.35rem;
+    padding: var(--sp-2);
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: inherit;
+  }
+
+  .navbar__menu-header {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+  }
+
+  .navbar__close {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--sp-2);
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: inherit;
+  }
+
+  @media (min-width: 36rem) {
+    .navbar {
+      --menu-clr-bg: var(--clr-surface-base);
+      --menu-clr-fg: var(--clr-surface-inverse);
+      justify-content: center;
+      padding: 0;
+    }
+
+    .navbar__content {
+      display: grid;
+      grid-template-columns: 1fr 2fr 0;
+      max-width: var(--site-content-width);
+      padding: 0 var(--sp-4);
+    }
+
+    .navbar__nav {
+      position: static;
+      width: auto;
+      max-width: none;
+      height: auto;
+      transform: none;
+      padding: 0;
+      background-color: transparent;
+      justify-content: center;
+      overflow: visible;
+      transition: none;
+    }
+
+    .navbar__list {
+      flex-direction: row;
+      justify-content: flex-end;
+      gap: var(--sp-5);
+    }
+
+    .navbar__toggle {
+      display: none;
+    }
+
+    .navbar__menu-header {
+      display: none;
+    }
+
+    .navbar--scrolled {
+      --menu-clr-bg: var(--clr-surface-inverse);
+      --menu-clr-fg: var(--clr-surface-base);
+    }
+
+    .dropdown__menu {
+      position: absolute;
+      background-color: var(--menu-clr-bg);
+      border: 1px solid var(--menu-clr-fg);
+    }
+
+    .dropdown:hover .dropdown__menu,
+    .dropdown:focus-within .dropdown__menu {
+      display: flex;
+    }
+  }
+</style>
