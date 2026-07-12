@@ -392,6 +392,8 @@ const { title, items = [] } = Astro.props;
     .navbar__nav {
       position: static;
       width: auto;
+      max-width: none;
+      height: auto;
       transform: none;
       background-color: transparent;
       justify-content: center;
@@ -430,21 +432,30 @@ const { title, items = [] } = Astro.props;
       display: block;
     }
 
-    .dropdown--desktop::after {
-      content: '';
-      position: absolute;
-      top: 100%;
-      left: 0;
-      width: 100%;
-      min-width: 10rem;
-      height: var(--sp-2);
-    }
-
     .navbar__list > li > a.navbar__link,
     .dropdown--desktop > button.navbar__link {
       padding: 0.125rem 0.375rem;
       border: var(--border-default);
       border-radius: var(--border-radius-default);
+    }
+
+    .dropdown--desktop > button.navbar__link {
+      position: relative;
+    }
+
+    .dropdown--desktop > button.navbar__link::after {
+      content: '';
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      height: var(--sp-2);
+      pointer-events: none;
+    }
+
+    .dropdown--desktop:hover > button.navbar__link::after,
+    .dropdown--desktop:focus-within > button.navbar__link::after {
+      pointer-events: auto;
     }
 
     .dropdown--desktop:hover .dropdown__menu,
