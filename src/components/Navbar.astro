@@ -10,7 +10,7 @@ interface Props {
 const { title, items = [] } = Astro.props;
 ---
 
-<header class="navbar">
+<header class="navbar" transition:persist="site-navbar">
   <div class="navbar__content">
     <a class="navbar__left" href="/">
       <span class="navbar__title chip">{title}</span>
@@ -106,12 +106,22 @@ const { title, items = [] } = Astro.props;
     toggleButton?.setAttribute('aria-expanded', 'false');
   }
 
+  let isNavigating = false;
+
   const updateScrolledState = () => {
-    navbarElement.classList.toggle('navbar--scrolled', window.scrollY > 24);
+    if (!isNavigating) {
+      navbarElement.classList.toggle('navbar--scrolled', window.scrollY > 24);
+    }
   };
 
   updateScrolledState();
   window.addEventListener('scroll', updateScrolledState, { passive: true });
+  document.addEventListener('astro:before-preparation', () => {
+    isNavigating = true;
+  });
+  document.addEventListener('astro:page-load', () => {
+    isNavigating = false;
+  });
 
   if (toggleButton) {
     toggleButton.addEventListener('click', () => {
