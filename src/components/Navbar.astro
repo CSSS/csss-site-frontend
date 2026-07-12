@@ -1,6 +1,6 @@
 ---
 import type { NavItem } from '../types';
-import { Menu, X } from '@lucide/astro';
+import { ExternalLink, Menu, X } from '@lucide/astro';
 
 interface Props {
   title: string;
@@ -26,8 +26,14 @@ const { title, items = [] } = Astro.props;
           items.map(item => (
             <li>
               {'href' in item ? (
-                <a class="navbar__link" href={item.href}>
+                <a
+                  class="navbar__link"
+                  href={item.href}
+                  target={item.external ? '_blank' : undefined}
+                  rel={item.external ? 'noopener noreferrer' : undefined}
+                >
                   {item.label}
+                  {item.external && <ExternalLink size={14} aria-hidden="true" />}
                 </a>
               ) : (
                 <Fragment>
@@ -39,8 +45,14 @@ const { title, items = [] } = Astro.props;
                       {item.children.map(child => (
                         <li>
                           {'href' in child ? (
-                            <a class="navbar__link" href={child.href}>
+                            <a
+                              class="navbar__link"
+                              href={child.href}
+                              target={child.external ? '_blank' : undefined}
+                              rel={child.external ? 'noopener noreferrer' : undefined}
+                            >
                               {child.label}
+                              {child.external && <ExternalLink size={14} aria-hidden="true" />}
                             </a>
                           ) : (
                             <span class="navbar__link">{child.label}</span>
@@ -57,8 +69,14 @@ const { title, items = [] } = Astro.props;
                       {item.children.map(child => (
                         <li>
                           {'href' in child ? (
-                            <a class="navbar__link" href={child.href}>
+                            <a
+                              class="navbar__link"
+                              href={child.href}
+                              target={child.external ? '_blank' : undefined}
+                              rel={child.external ? 'noopener noreferrer' : undefined}
+                            >
                               {child.label}
+                              {child.external && <ExternalLink size={14} aria-hidden="true" />}
                             </a>
                           ) : (
                             <span class="navbar__link">{child.label}</span>
@@ -95,10 +113,11 @@ const { title, items = [] } = Astro.props;
   const navbarElement = navbar;
   const toggleButton = navbarElement.querySelector('.navbar__toggle') as HTMLButtonElement | null;
   const closeButton = navbarElement.querySelector('.navbar__close') as HTMLButtonElement | null;
-  const navLinks = navbarElement.querySelectorAll('a.navbar__link');
+  const navLinks = navbarElement.querySelectorAll<HTMLAnchorElement>('a.navbar__link');
   const dropdownButtons = navbarElement.querySelectorAll<HTMLButtonElement>(
     '.dropdown--mobile > button'
   );
+  const desktopDropdowns = navbarElement.querySelectorAll<HTMLElement>('.dropdown--desktop');
 
   function closeMenu() {
     navbarElement.classList.add('navbar--menu-animate');
@@ -134,6 +153,20 @@ const { title, items = [] } = Astro.props;
   navLinks.forEach(link => {
     link.addEventListener('click', () => {
       closeMenu();
+      const desktopDropdown = link.closest('.dropdown--desktop');
+      if (desktopDropdown) {
+        desktopDropdown.classList.add('dropdown--dismissed');
+        link.blur();
+      }
+    });
+  });
+
+  desktopDropdowns.forEach(dropdown => {
+    dropdown.addEventListener('pointerleave', () => {
+      dropdown.classList.remove('dropdown--dismissed');
+    });
+    dropdown.querySelector(':scope > button')?.addEventListener('focus', () => {
+      dropdown.classList.remove('dropdown--dismissed');
     });
   });
 
@@ -158,6 +191,7 @@ const { title, items = [] } = Astro.props;
     navbarElement.querySelectorAll('.dropdown--open').forEach(dropdown => {
       dropdown.classList.remove('dropdown--open');
     });
+    desktopDropdowns.forEach(dropdown => dropdown.classList.remove('dropdown--dismissed'));
     dropdownButtons.forEach(button => button.setAttribute('aria-expanded', 'false'));
   };
 
@@ -254,6 +288,9 @@ const { title, items = [] } = Astro.props;
   }
 
   .navbar__link {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--sp-2);
     font-family: var(--font-navbar);
     font-weight: var(--font-weight-regular);
     font-size: var(--navbar-font-size);
@@ -302,7 +339,7 @@ const { title, items = [] } = Astro.props;
   }
 
   .dropdown__menu a {
-    display: block;
+    display: flex;
     padding: var(--sp-2) 0rem;
     white-space: nowrap;
   }
@@ -331,6 +368,11 @@ const { title, items = [] } = Astro.props;
     border: none;
     cursor: pointer;
     color: inherit;
+  }
+
+  ExternalLink {
+    display: inline-flex;
+    align-items: center;
   }
 
   @media (min-width: 48rem) {
@@ -373,7 +415,7 @@ const { title, items = [] } = Astro.props;
 
     .dropdown__menu {
       position: absolute;
-      top: calc(100% + var(--sp-2));
+      top: calc(100% + var(--sp-1));
       margin-top: 0;
       background-color: var(--menu-clr-bg);
       border: 1px solid var(--menu-clr-fg);
@@ -407,6 +449,10 @@ const { title, items = [] } = Astro.props;
     .dropdown--desktop:hover .dropdown__menu,
     .dropdown--desktop:focus-within .dropdown__menu {
       display: flex;
+    }
+
+    .dropdown--desktop.dropdown--dismissed .dropdown__menu {
+      display: none;
     }
   }
 </style>

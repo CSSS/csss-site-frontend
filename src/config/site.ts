@@ -10,7 +10,6 @@ export const navItems: NavItem[] = [
   {
     label: 'THE CSSS',
     children: [
-      { label: 'README', href: '/readme' },
       { label: 'OFFICERS', href: '/officers' },
       { label: 'COMMITTEES', href: '/committees' },
       { label: 'COMMON ROOM', href: '/common-room' },
@@ -20,8 +19,12 @@ export const navItems: NavItem[] = [
   {
     label: 'EVENTS',
     children: [
-      { label: 'ABOUT', href: '/events/' },
-      { label: 'ARCHIVES', href: '/events/archives' }
+      { label: 'ABOUT', href: '/events' },
+      { label: 'ARCHIVES', href: '/events/archives' },
+      { label: 'FROSH WEEK', href: 'https://frosh.sfucsss.org', external: true },
+      { label: 'FALL HACKS', href: 'https://fall-hacks.sfucsss.org', external: true },
+      { label: 'TECH FAIR', href: 'https://tech-fair.sfucsss.org', external: true },
+      { label: 'MOUNTAIN MADNESS', href: 'https://madness.sfucsss.org', external: true }
     ]
   },
   {
