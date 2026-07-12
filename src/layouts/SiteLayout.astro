@@ -51,11 +51,9 @@ const pageNoindex = frontmatter?.noindex ?? noindex ?? false;
     align-content: start;
   }
 
-  .page-content :is(ul, ol) {
-    padding-left: var(--sp-6);
-  }
-
-  .page-content li {
-    list-style: revert;
+  ul.contains-task-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-4);
   }
 </style>
