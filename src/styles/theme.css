@@ -140,7 +140,7 @@
     /* CSSS brand palette */
     /* Don't override these in the sites */
     --csss-brand-black: hsl(0, 0%, 0%);
-    --csss-brand-cream: hsl(55, 76%, 97%);
+    --csss-brand-cream: hsl(55, 71%, 97%);
     --csss-brand-selago: hsl(235, 76%, 97%);
     --csss-brand-teal: hsl(166, 57%, 43%);
     --csss-brand-blue: hsl(240, 100%, 28%);

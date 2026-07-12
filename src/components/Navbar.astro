@@ -107,7 +107,7 @@ const { title, items = [] } = Astro.props;
   }
 
   const updateScrolledState = () => {
-    navbarElement.classList.toggle('navbar--scrolled', window.scrollY > 0);
+    navbarElement.classList.toggle('navbar--scrolled', window.scrollY > 24);
   };
 
   updateScrolledState();
@@ -187,7 +187,6 @@ const { title, items = [] } = Astro.props;
     align-items: center;
     gap: var(--sp-6);
     width: 100%;
-    max-width: var(--site-content-width);
   }
 
   .navbar__nav {
@@ -335,7 +334,6 @@ const { title, items = [] } = Astro.props;
     .navbar__content {
       display: grid;
       grid-template-columns: 1fr 2fr 0;
-      max-width: var(--site-content-width);
       padding: 0 var(--sp-4);
     }
 

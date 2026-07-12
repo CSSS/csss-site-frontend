@@ -1,0 +1,95 @@
+---
+import { Image } from 'astro:assets';
+import redBlueCircle from '../assets/images/red-blue-circles.png';
+import pinkTealCircle from '../assets/images/pink-teal-circles.png';
+import csssLogoBlack from '../assets/images/csss-black.svg';
+---
+
+<section id="hero" class="full-width">
+  <div class="hero__border breakout">
+    <div class="hero__circles" aria-hidden="true">
+      <Image
+        class="hero__circle hero__circle--red-blue"
+        src={redBlueCircle}
+        loading="eager"
+        alt="red and blue circles"
+      />
+      <Image
+        class="hero__circle hero__circle--pink-teal"
+        src={pinkTealCircle}
+        loading="eager"
+        alt="pink and teal circles"
+      />
+    </div>
+    <div class="hero__logo">
+      <Image
+        class="csss-logo"
+        src={csssLogoBlack}
+        width={200}
+        loading="eager"
+        alt="CSSS black logo"
+      />
+      <h1>SFU Computing Science Society</h1>
+    </div>
+  </div>
+</section>
+
+<style>
+  #hero {
+    height: calc(100lvh - var(--navbar-height));
+    padding: var(--sp-5);
+  }
+
+  .hero__border {
+    position: relative;
+    overflow: hidden;
+    border: solid var(--clr-border-default);
+    border-width: 1px 4px 4px 1px;
+    border-radius: var(--border-radius-default);
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    align-items: center;
+  }
+
+  .hero__circle {
+    position: absolute;
+  }
+
+  .hero__circle--red-blue {
+    left: 0%;
+    top: 70%;
+  }
+
+  .hero__circle--pink-teal {
+    right: 0%;
+    bottom: 70%;
+  }
+
+  .hero__logo {
+    position: relative;
+    width: 100%;
+    z-index: 2;
+    text-align: center;
+
+    display: grid;
+    place-items: center;
+  }
+
+  .hero__logo h1 {
+    font-family: var(--font-body);
+    font-weight: var(--font-weight-normal);
+    font-size: var(--font-size-heading-3);
+  }
+
+  @media (min-width: 1280px) {
+    .hero__circle--red-blue {
+      top: 45%;
+    }
+
+    .hero__circle--pink-teal {
+      bottom: 45%;
+    }
+  }
+</style>
