@@ -1,0 +1,20 @@
+@layer base {
+  .mdx-content ul {
+    padding-inline-start: var(--sp-4);
+  }
+
+  .mdx-content ul > li {
+    list-style-type: circle;
+  }
+
+  .mdx-content ul.contains-task-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-4);
+    padding-inline-start: 0;
+  }
+
+  .mdx-content ul.contains-task-list > li {
+    list-style-type: none;
+  }
+}
