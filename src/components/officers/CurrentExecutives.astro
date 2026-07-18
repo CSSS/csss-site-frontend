@@ -1,0 +1,104 @@
+---
+import { Image } from 'astro:assets';
+import { type ImageMetadata } from 'astro';
+import president from '@assets/images/execs/president.jpg';
+import vp from '@assets/images/execs/vp.jpg';
+import treasurer from '@assets/images/execs/treasurer.jpg';
+import secretary from '@assets/images/execs/secretary.jpg';
+import doe from '@assets/images/execs/doe.jpg';
+import doee from '@assets/images/execs/doee.jpg';
+import adoe from '@assets/images/execs/adoe.jpg';
+import doc from '@assets/images/execs/doc.png';
+import dor from '@assets/images/execs/dor.jpg';
+import sfssrep from '@assets/images/execs/sfssrep.jpg';
+
+interface Exec {
+  role:
+    | 'president'
+    | 'vp'
+    | 'treasurer'
+    | 'secretary'
+    | 'doe'
+    | 'doee'
+    | 'adoe'
+    | 'doc'
+    | 'dor'
+    | 'sfssrep';
+  name: string;
+  label: string;
+  img: ImageMetadata;
+}
+
+const execs: Exec[] = [
+  { role: 'president', name: 'Samantha Gan', label: 'President', img: president },
+  {
+    role: 'vp',
+    name: 'Mengna Ma',
+    label: 'Vice-President',
+    img: vp
+  },
+  {
+    role: 'treasurer',
+    name: 'Megan Chau',
+    label: 'Treasurer',
+    img: treasurer
+  },
+  { role: 'secretary', name: 'Arielle Felicia', label: 'Secretary', img: secretary },
+  {
+    role: 'dor',
+    name: 'Phoebe Cai',
+    label: 'Director of Resources',
+    img: dor
+  },
+  { role: 'doc', name: 'Amelia Shen', label: 'Director of Communications', img: doc },
+  {
+    role: 'doe',
+    name: 'Hamzah Alshawwaf',
+    label: 'Director of Events',
+    img: doe
+  },
+  {
+    role: 'doee',
+    name: 'Daniel Smith',
+    label: 'Director of Educational Events',
+    img: doee
+  },
+  {
+    role: 'adoe',
+    name: 'Sia Garg',
+    label: 'Assistant Director of Events',
+    img: adoe
+  },
+  {
+    role: 'sfssrep',
+    name: 'Melody Oh',
+    label: 'SFSS Council Representative',
+    img: sfssrep
+  }
+];
+---
+
+<section>
+  {
+    execs.map(exec => (
+      <div class="card">
+        <Image src={exec.img} alt={exec.role} width={600} />
+        <h3>{exec.name}</h3>
+        <p>{exec.label}</p>
+      </div>
+    ))
+  }
+</section>
+
+<style>
+  section {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    justify-items: center;
+    row-gap: var(--sp-6);
+  }
+
+  .card {
+    max-width: 300px;
+  }
+</style>
