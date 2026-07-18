@@ -1,0 +1,21 @@
+---
+import type { HTMLAttributes } from 'astro/types';
+
+type Props = HTMLAttributes<'h3'>;
+
+const { class: className, ...props } = Astro.props;
+---
+
+<h3 {...props} class:list={['badge-heading', className]}>
+  <slot />
+</h3>
+
+<style>
+  .badge-heading {
+    width: fit-content;
+    padding: var(--sp-4);
+    border-radius: var(--border-radius-default);
+    color: var(--clr-text-inverse);
+    background-color: var(--badge-heading-colour);
+  }
+</style>

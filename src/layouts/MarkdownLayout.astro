@@ -1,0 +1,38 @@
+---
+import SiteLayout from './SiteLayout.astro';
+import { ACCENT_COLOUR_ORDER } from '../constants';
+import '../styles/mdx.css';
+
+interface PageMetadata {
+  title: string;
+  description?: string;
+  noindex?: boolean;
+}
+
+interface Props extends PageMetadata {
+  frontmatter?: PageMetadata;
+}
+
+const { frontmatter, title, description, noindex } = Astro.props;
+const pageTitle = frontmatter?.title ?? title;
+
+if (!pageTitle) {
+  throw new Error('MarkdownLayout requires a page title.');
+}
+
+const pageDescription = frontmatter?.description ?? description;
+const pageNoindex = frontmatter?.noindex ?? noindex;
+const badgeHeadingColourStyles = ACCENT_COLOUR_ORDER.map(
+  (colour, index) =>
+    `.mdx-content > .badge-heading:nth-of-type(${ACCENT_COLOUR_ORDER.length}n + ${index + 1}) {
+      --badge-heading-colour: var(--clr-accent-${colour});
+    }`
+).join('\n');
+---
+
+<SiteLayout title={pageTitle} description={pageDescription} noindex={pageNoindex}>
+  <style set:html={badgeHeadingColourStyles}></style>
+  <article class="mdx-content">
+    <slot />
+  </article>
+</SiteLayout>

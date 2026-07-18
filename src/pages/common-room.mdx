@@ -1,8 +1,11 @@
 ---
-layout: ../layouts/SiteLayout.astro
+layout: ../layouts/MarkdownLayout.astro
 title: Common Room
 description: CSSS common room page.
 ---
+
+import BadgeHeading from '../components/markdown/BadgeHeading.astro';
+export const components = { h3: BadgeHeading };
 
 # Common Room
 

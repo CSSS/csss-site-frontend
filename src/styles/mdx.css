@@ -1,4 +1,10 @@
 @layer base {
+  .mdx-content {
+    display: grid;
+    row-gap: var(--sp-5);
+    align-content: start;
+  }
+
   .mdx-content ul {
     padding-inline-start: var(--sp-4);
   }
