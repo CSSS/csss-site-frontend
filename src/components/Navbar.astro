@@ -1,5 +1,6 @@
 ---
 import type { NavItem } from '../types';
+import { ACCENT_COLOUR_ORDER } from '../constants';
 import { ExternalLink, Menu, X } from '@lucide/astro';
 
 interface Props {
@@ -13,7 +14,7 @@ const { title, items = [] } = Astro.props;
 <header class="navbar" transition:persist="site-navbar">
   <div class="navbar__content">
     <a class="navbar__left" href="/">
-      <span class="navbar__title chip">{title}</span>
+      <span class="navbar__title chip chip--red">{title}</span>
     </a>
     <nav class="navbar__nav" id="navbar-menu">
       <div class="navbar__menu-header">
@@ -23,72 +24,80 @@ const { title, items = [] } = Astro.props;
       </div>
       <ul class="navbar__list">
         {
-          items.map(item => (
-            <li>
-              {'href' in item ? (
-                <a
-                  class="navbar__link"
-                  href={item.href}
-                  target={item.external ? '_blank' : undefined}
-                  rel={item.external ? 'noopener noreferrer' : undefined}
-                >
-                  {item.label}
-                  {item.external && <ExternalLink size={14} aria-hidden="true" />}
-                </a>
-              ) : (
-                <Fragment>
-                  <div class="dropdown dropdown--mobile">
-                    <button class="navbar__link" type="button" aria-expanded="false">
-                      {item.label}
-                    </button>
-                    <ul class="dropdown__menu">
-                      {item.children.map(child => (
-                        <li>
-                          {'href' in child ? (
-                            <a
-                              class="navbar__link"
-                              href={child.href}
-                              target={child.external ? '_blank' : undefined}
-                              rel={child.external ? 'noopener noreferrer' : undefined}
-                            >
-                              {child.label}
-                              {child.external && <ExternalLink size={14} aria-hidden="true" />}
-                            </a>
-                          ) : (
-                            <span class="navbar__link">{child.label}</span>
-                          )}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                  <div class="dropdown dropdown--desktop">
-                    <button class="navbar__link" type="button">
-                      {item.label}
-                    </button>
-                    <ul class="dropdown__menu">
-                      {item.children.map(child => (
-                        <li>
-                          {'href' in child ? (
-                            <a
-                              class="navbar__link"
-                              href={child.href}
-                              target={child.external ? '_blank' : undefined}
-                              rel={child.external ? 'noopener noreferrer' : undefined}
-                            >
-                              {child.label}
-                              {child.external && <ExternalLink size={14} aria-hidden="true" />}
-                            </a>
-                          ) : (
-                            <span class="navbar__link">{child.label}</span>
-                          )}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </Fragment>
-              )}
-            </li>
-          ))
+          items.map((item, index) => {
+            const accentColour = ACCENT_COLOUR_ORDER[(index + 1) % ACCENT_COLOUR_ORDER.length];
+
+            return (
+              <li>
+                {'href' in item ? (
+                  <a
+                    class="navbar__link"
+                    href={item.href}
+                    target={item.external ? '_blank' : undefined}
+                    rel={item.external ? 'noopener noreferrer' : undefined}
+                  >
+                    {item.label}
+                    {item.external && <ExternalLink size={14} aria-hidden="true" />}
+                  </a>
+                ) : (
+                  <Fragment>
+                    <div class="dropdown dropdown--mobile">
+                      <button class="navbar__link" type="button" aria-expanded="false">
+                        {item.label}
+                      </button>
+                      <ul class="dropdown__menu">
+                        {item.children.map(child => (
+                          <li>
+                            {'href' in child ? (
+                              <a
+                                class="navbar__link"
+                                href={child.href}
+                                target={child.external ? '_blank' : undefined}
+                                rel={child.external ? 'noopener noreferrer' : undefined}
+                              >
+                                {child.label}
+                                {child.external && <ExternalLink size={14} aria-hidden="true" />}
+                              </a>
+                            ) : (
+                              <span class="navbar__link">{child.label}</span>
+                            )}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                    <div class="dropdown dropdown--desktop">
+                      <button
+                        class:list={['navbar__link', 'chip', `chip--${accentColour}`]}
+                        style={`--navbar-link-hover-colour: var(--clr-accent-${accentColour})`}
+                        type="button"
+                      >
+                        {item.label}
+                      </button>
+                      <ul class="dropdown__menu">
+                        {item.children.map(child => (
+                          <li>
+                            {'href' in child ? (
+                              <a
+                                class="navbar__link"
+                                href={child.href}
+                                target={child.external ? '_blank' : undefined}
+                                rel={child.external ? 'noopener noreferrer' : undefined}
+                              >
+                                {child.label}
+                                {child.external && <ExternalLink size={14} aria-hidden="true" />}
+                              </a>
+                            ) : (
+                              <span class="navbar__link">{child.label}</span>
+                            )}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </Fragment>
+                )}
+              </li>
+            );
+          })
         }
       </ul>
     </nav>
@@ -230,7 +239,7 @@ const { title, items = [] } = Astro.props;
     justify-content: space-between;
     align-items: center;
     gap: var(--sp-6);
-    width: 100%;
+    width: var(--site-breakout-width);
   }
 
   .navbar__nav {
@@ -276,7 +285,6 @@ const { title, items = [] } = Astro.props;
     font-size: var(--navbar-font-size);
     font-family: var(--font-navbar);
     font-weight: var(--font-weight-regular);
-    color: var(--csss-brand-black);
     white-space: nowrap;
   }
 
@@ -432,13 +440,13 @@ const { title, items = [] } = Astro.props;
       display: block;
     }
 
-    .navbar__list > li > a.navbar__link,
-    .dropdown--desktop > button.navbar__link {
-      padding: 0.125rem 0.375rem;
-      border: var(--border-default);
-      border-radius: var(--border-radius-default);
-    }
-
+    /* .navbar__list > li > a.navbar__link, */
+    /* .dropdown--desktop > button.navbar__link { */
+    /*   padding: 0.125rem 0.375rem; */
+    /*   border: var(--border-default); */
+    /*   border-radius: var(--border-radius-default); */
+    /* } */
+    /**/
     .dropdown--desktop > button.navbar__link {
       position: relative;
     }
@@ -461,6 +469,12 @@ const { title, items = [] } = Astro.props;
     .dropdown--desktop:hover .dropdown__menu,
     .dropdown--desktop:focus-within .dropdown__menu {
       display: flex;
+    }
+
+    .dropdown--desktop:hover > button.navbar__link,
+    .dropdown--desktop:focus-within > button.navbar__link {
+      color: var(--clr-text-inverse);
+      background-color: var(--navbar-link-hover-colour);
     }
 
     .dropdown--desktop.dropdown--dismissed .dropdown__menu {

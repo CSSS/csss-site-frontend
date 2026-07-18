@@ -175,6 +175,26 @@
     border-radius: var(--border-radius-default);
   }
 
+  .chip--red:hover {
+    color: var(--clr-text-inverse);
+    background-color: var(--clr-accent-red);
+  }
+
+  .chip--blue:hover {
+    color: var(--clr-text-inverse);
+    background-color: var(--clr-accent-blue);
+  }
+
+  .chip--pink:hover {
+    color: var(--clr-text-inverse);
+    background-color: var(--clr-accent-pink);
+  }
+
+  .chip--teal:hover {
+    color: var(--clr-text-inverse);
+    background-color: var(--clr-accent-teal);
+  }
+
   .brand--red {
     color: var(--clr-text-inverse);
     background-color: var(--clr-accent-red);
