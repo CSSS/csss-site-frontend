@@ -171,11 +171,19 @@ const { title, items = [] } = Astro.props;
   });
 
   desktopDropdowns.forEach(dropdown => {
+    const triggerButton = dropdown.querySelector<HTMLButtonElement>(':scope > button');
+
     dropdown.addEventListener('pointerleave', () => {
       dropdown.classList.remove('dropdown--dismissed');
     });
-    dropdown.querySelector(':scope > button')?.addEventListener('focus', () => {
+
+    triggerButton?.addEventListener('focus', () => {
       dropdown.classList.remove('dropdown--dismissed');
+    });
+
+    triggerButton?.addEventListener('pointerdown', event => {
+      event.preventDefault();
+      triggerButton.blur();
     });
   });
 
