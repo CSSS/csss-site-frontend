@@ -1,0 +1,70 @@
+---
+import type { ImageMetadata } from 'astro';
+import { Image } from 'astro:assets';
+import BadgeHeading from '@components/markdown/BadgeHeading.astro';
+import type { AccentColour } from 'src/constants';
+
+interface Props {
+  id: string;
+  img: ImageMetadata;
+  title: string;
+  alt: string;
+  colour: AccentColour;
+  isImgRight?: boolean;
+}
+
+const { id, img, title, alt, colour, isImgRight = false } = Astro.props;
+---
+
+<section id={id} class:list={{ 'section--right': isImgRight }}>
+  <Image class="section__img" src={img} alt={alt} width={450} />
+  <section class="section__content">
+    <BadgeHeading class="section__title" colour={colour}>{title}</BadgeHeading>
+    <p><slot /></p>
+    <slot name="footer" />
+  </section>
+</section>
+
+<style>
+  h2 {
+    text-align: center;
+  }
+
+  .section__title {
+    margin-bottom: var(--sp-4);
+  }
+
+  .section__img {
+    display: none;
+  }
+
+  .section__content {
+    grid-area: content;
+    padding-inline: var(--sp-4);
+  }
+
+  @media (min-width: 900px) {
+    .section__img {
+      display: block;
+      grid-area: img;
+      top: 0;
+      min-width: 10rem;
+      object-fit: cover;
+    }
+
+    .section__title {
+      margin: 0 auto var(--sp-4);
+    }
+
+    section[id] {
+      display: grid;
+      grid-template-columns: 1fr 1.5fr;
+      grid-template-areas: 'img content';
+    }
+
+    section[id].section--right {
+      grid-template-columns: 1.5fr 1fr;
+      grid-template-areas: 'content img';
+    }
+  }
+</style>

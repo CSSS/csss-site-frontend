@@ -1,13 +1,15 @@
 ---
-import BaseLayout from './BaseLayout.astro';
-import Footer from '../components/Footer.astro';
-import Navbar from '../components/Navbar.astro';
-import CsssIcon from '../icons/CsssIcon.astro';
-import { footerNavItems, navItems, siteConfig } from '../config/site';
 import '../styles/font-faces/cal-sans.css';
 import '../styles/font-faces/geist-mono.css';
+
 import calSansFont from '@assets/fonts/cal-sans-v2-latin-regular.woff2?url';
 import geistMonoRegularFont from '@assets/fonts/geist-mono-v6-latin-regular.woff2?url';
+
+import Footer from '@components/Footer.astro';
+import Navbar from '@components/Navbar.astro';
+import { footerNavItems, navItems, siteConfig } from '../config/site';
+import CsssIcon from '../icons/CsssIcon.astro';
+import BaseLayout from './BaseLayout.astro';
 
 interface PageMetadata {
   title: string;

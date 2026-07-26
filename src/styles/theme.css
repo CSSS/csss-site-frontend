@@ -41,7 +41,7 @@
     --font-size-heading-1: clamp(var(--font-size-5), 6vw, var(--font-size-7));
     --font-size-heading-2: clamp(var(--font-size-4), 4vw, var(--font-size-6));
     --font-size-heading-3: clamp(var(--font-size-3), 3vw, var(--font-size-5));
-    --font-size-body: clamp(var(--font-size-2), 2.5vw, var(--font-size-4));
+    --font-size-body: clamp(var(--font-size-2), 2.5vw, var(--font-size-3));
 
     --line-height-tight: 1.3;
     --line-height-normal: 1.5;
@@ -213,5 +213,11 @@
   .brand--teal {
     color: var(--clr-text-inverse);
     background-color: var(--clr-accent-teal);
+  }
+
+  .brand__border {
+    border: solid var(--clr-border-default);
+    border-width: 1px 4px 4px 1px;
+    border-radius: var(--border-radius-default);
   }
 }

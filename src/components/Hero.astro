@@ -1,12 +1,12 @@
 ---
-import { Image } from 'astro:assets';
-import redBlueCircle from '@assets/images/red-blue-circles.png';
-import pinkTealCircle from '@assets/images/pink-teal-circles.png';
 import csssLogoBlack from '@assets/images/csss-black.svg';
+import pinkTealCircle from '@assets/images/pink-teal-circles.png';
+import redBlueCircle from '@assets/images/red-blue-circles.png';
+import { Image } from 'astro:assets';
 ---
 
 <section id="hero" class="full-width">
-  <div class="hero__border breakout">
+  <div class="hero__border breakout brand__border">
     <div class="hero__circles" aria-hidden="true">
       <Image
         class="hero__circle hero__circle--red-blue"
@@ -43,9 +43,6 @@ import csssLogoBlack from '@assets/images/csss-black.svg';
   .hero__border {
     position: relative;
     overflow: hidden;
-    border: solid var(--clr-border-default);
-    border-width: 1px 4px 4px 1px;
-    border-radius: var(--border-radius-default);
     height: 100%;
 
     display: flex;

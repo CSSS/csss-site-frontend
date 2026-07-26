@@ -1,7 +1,8 @@
 ---
-import SiteLayout from './SiteLayout.astro';
-import { ACCENT_COLOUR_ORDER } from '../constants';
 import '../styles/mdx.css';
+
+import { ACCENT_COLOUR_ORDER } from '../constants';
+import SiteLayout from './SiteLayout.astro';
 
 interface PageMetadata {
   title: string;
@@ -25,14 +26,15 @@ const pageNoindex = frontmatter?.noindex ?? noindex;
 const badgeHeadingColourStyles = ACCENT_COLOUR_ORDER.map(
   (colour, index) =>
     `.mdx-content > .badge-heading:nth-of-type(${ACCENT_COLOUR_ORDER.length}n + ${index + 1}) {
-      --badge-heading-colour: var(--clr-accent-${colour});
+      color: var(--clr-accent-${colour}-fg);
+      background-color: var(--clr-accent-${colour});
     }`
 ).join('\n');
 ---
 
 <SiteLayout title={pageTitle} description={pageDescription} noindex={pageNoindex}>
   <style set:html={badgeHeadingColourStyles}></style>
-  <article class="mdx-content">
+  <article class="mdx-content content-grid full-width">
     <slot />
   </article>
 </SiteLayout>

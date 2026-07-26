@@ -1,21 +1,26 @@
 ---
-import type { HTMLAttributes } from 'astro/types';
+import type { Polymorphic } from 'astro/types';
 
-type Props = HTMLAttributes<'h3'>;
+import type { AccentColour } from 'src/constants';
 
-const { class: className, ...props } = Astro.props;
+type HeadingTag = 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
+
+interface Props extends Polymorphic<{ as: HeadingTag }> {
+  colour?: AccentColour;
+}
+
+const { as: Heading = 'h2', class: className, colour = 'red', ...props } = Astro.props;
 ---
 
-<h3 {...props} class:list={['badge-heading', className]}>
+<Heading {...props} class:list={['badge-heading', `brand--${colour}`, className]}>
   <slot />
-</h3>
+</Heading>
 
 <style>
   .badge-heading {
     width: fit-content;
-    padding: var(--sp-4);
+    padding: var(--sp-3);
+    border: solid transparent;
     border-radius: var(--border-radius-default);
-    color: var(--clr-text-inverse);
-    background-color: var(--badge-heading-colour);
   }
 </style>

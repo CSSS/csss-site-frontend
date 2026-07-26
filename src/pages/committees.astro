@@ -1,0 +1,95 @@
+---
+import fasFormal from '@assets/images/committees/events/fas-formal.jpg';
+import frosh from '@assets/images/committees/frosh/banner.jpg';
+import techFair from '@assets/images/committees/tech-fair.jpg';
+import w3 from '@assets/images/committees/w3.jpg';
+import type { ImageMetadata } from 'astro';
+import { ACCENT_COLOUR_ORDER } from 'src/constants';
+
+import CommitteeSection from '@components/committees/CommitteeSection.astro';
+import SiteLayout from '../layouts/SiteLayout.astro';
+
+interface Committee {
+  id: string;
+  title: string;
+  tagline: string;
+  description: string;
+  img: ImageMetadata;
+}
+
+const committees: Committee[] = [
+  {
+    id: 'events',
+    title: 'Events',
+    tagline: 'Spark joy',
+    description:
+      'Join our three Event Executives on the CSSS Discord to discuss, plan, and run our events.',
+    img: fasFormal
+  },
+  {
+    id: 'w3',
+    title: 'W3',
+    tagline: 'Build and deploy',
+    description:
+      'The Webmaster and System Administrator run this committee creating and maintaining our web projects.',
+    img: w3
+  },
+  {
+    id: 'frosh',
+    title: 'FROSH',
+    tagline: 'Guide our future',
+    description:
+      'This once-a-year committee is responsible for FROSH week, which welcomes new students to the CSSS community.',
+    img: frosh
+  },
+  {
+    id: 'tech-fair',
+    title: 'Tech Fair',
+    tagline: 'Make connections',
+    description:
+      'This committee plans our annual career fair, which connects students with local employers.',
+    img: techFair
+  }
+];
+---
+
+<SiteLayout title="Committees" description="Join a committee to meet new people!">
+  <article class="content-grid full-width">
+    <hgroup>
+      <h1>Committees</h1>
+      <p>
+        Want to be more involved in the CSSS community? Join a committee! Committees are extensions
+        of the CSSS that focuses on a specific area of interest. They are a great way to meet new
+        people, gain experience, and contribute to the CSSS in a way that aligns with your
+        interests!
+      </p>
+    </hgroup>
+    {
+      committees.map((c, i) => {
+        const name = `${c.title} Committee`;
+        const isImgRight = !!(i % 2);
+        return (
+          <CommitteeSection
+            id={c.id}
+            img={c.img}
+            title={c.title}
+            alt={name}
+            colour={ACCENT_COLOUR_ORDER[i]}
+            isImgRight={isImgRight}
+          >
+            <strong>{c.tagline}</strong> with the {name}.
+            <br />
+            <br />
+            {c.description}
+          </CommitteeSection>
+        );
+      })
+    }
+  </article>
+</SiteLayout>
+
+<style>
+  article {
+    row-gap: var(--sp-8);
+  }
+</style>
