@@ -1,0 +1,32 @@
+---
+import alumni from '@assets/images/affiliates/societies/alumni.png';
+import csga from '@assets/images/affiliates/societies/csga.png';
+import dsss from '@assets/images/affiliates/societies/dsss.png';
+import esss from '@assets/images/affiliates/societies/esss.png';
+import msess from '@assets/images/affiliates/societies/msess.png';
+import msu from '@assets/images/affiliates/societies/msu.png';
+import seess from '@assets/images/affiliates/societies/seess.png';
+import ssss from '@assets/images/affiliates/societies/ssss.png';
+import sus from '@assets/images/affiliates/societies/sus.png';
+import wics from '@assets/images/affiliates/societies/wics.png';
+import wie from '@assets/images/affiliates/societies/wie.png';
+
+import CardGallery from '@components/cards/CardGallery.astro';
+import type { CardItem } from 'src/types';
+
+const dsuCards: CardItem[] = [
+  { label: 'CS Alumni Group', img: alumni },
+  { label: 'CSGSA', img: csga },
+  { label: 'DSSS', img: dsss },
+  { label: 'ESSS', img: esss },
+  { label: 'MSESS', img: msess },
+  { label: 'MSU', img: msu },
+  { label: 'SEESS', img: seess },
+  { label: 'SSSS', img: ssss },
+  { label: 'SUS', img: sus },
+  { label: 'WiCS', img: wics },
+  { label: 'WiE', img: wie }
+];
+---
+
+<CardGallery items={dsuCards} />

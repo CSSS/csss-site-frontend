@@ -1,0 +1,20 @@
+---
+import competitiveProgramming from '@assets/images/affiliates/clubs/competitive-programming.png';
+import dns from '@assets/images/affiliates/clubs/dns.png';
+import gameDevClub from '@assets/images/affiliates/clubs/game-dev-club.png';
+import osDev from '@assets/images/affiliates/clubs/osdev.png';
+import surge from '@assets/images/affiliates/clubs/surge.png';
+
+import CardGallery from '@components/cards/CardGallery.astro';
+import type { CardItem } from 'src/types';
+
+const clubs: CardItem[] = [
+  { label: 'CompProg', img: competitiveProgramming },
+  { label: 'DNS', img: dns },
+  { label: 'Game Dev Club', img: gameDevClub },
+  { label: 'Open Source Dev Club', img: osDev },
+  { label: 'Surge', img: surge }
+];
+---
+
+<CardGallery items={clubs} />
