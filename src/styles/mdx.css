@@ -12,7 +12,7 @@
   }
 
   .mdx-content ul > li {
-    list-style-type: circle;
+    list-style-type: disc;
   }
 
   .mdx-content ul.contains-task-list {
