@@ -1,0 +1,78 @@
+---
+import SiteLayout from '../../layouts/SiteLayout.astro';
+import { getAccentColour } from 'src/constants';
+import Button from '@components/buttons/Button.astro';
+
+interface Event {
+  label: string;
+  years: number[];
+  baseUrl: string;
+}
+
+const events: Event[] = [
+  {
+    label: 'FROSH',
+    years: [2025, 2024, 2023, 2022, 2021, 2020, 2019, 2018, 2017, 2016, 2015, 2014, 2013, 2012],
+    baseUrl: 'https://frosh.sfucsss.org/'
+  },
+  {
+    label: 'Fall Hacks',
+    years: [2025, 2024, 2020],
+    baseUrl: 'https://fall-hacks.sfucsss.org/'
+  },
+  {
+    label: 'Tech Fair',
+    years: [2025, 2024, 2023, 2022],
+    baseUrl: 'https://tech-fair.sfucsss.org/'
+  },
+  {
+    label: 'Mountain Madness',
+    years: [2025, 2024, 2023, 2022, 2021, 2020, 2019],
+    baseUrl: 'https://madness.sfucsss.org/'
+  }
+];
+---
+
+<SiteLayout title="Event Archives" description="See all previous events sites we used for events.">
+  <h1>Event Archives</h1>
+  <p>Here's a list of all the past pages the CSSS used to promote their events.</p>
+  <br /><br />
+  <p>
+    <strong>
+      Note: The links and the functionality of some of these pages have been altered, but please be
+      cautious clicking links within these sites.
+    </strong>
+  </p>
+  {
+    events.map((event, i) => {
+      return (
+        <section>
+          <h2>{event.label}</h2>
+          <ul class="links">
+            {event.years.map(year => (
+              <li>
+                <Button
+                  size="lg"
+                  href={`${event.baseUrl}${year}`}
+                  tone={getAccentColour(i)}
+                  target="_blank"
+                  fullWidth
+                >
+                  {year}
+                </Button>
+              </li>
+            ))}
+          </ul>
+        </section>
+      );
+    })
+  }
+</SiteLayout>
+
+<style>
+  .links {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(5rem, 1fr));
+    gap: var(--content-gap);
+  }
+</style>
