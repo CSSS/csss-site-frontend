@@ -1,0 +1,35 @@
+---
+import type { HTMLAttributes } from 'astro/types';
+import type { AccentColour } from 'src/constants';
+import Card from './Card.astro';
+
+interface Props extends HTMLAttributes<'div'> {
+  label: string;
+  colour: AccentColour;
+}
+
+const { label, colour, class: className, ...props } = Astro.props;
+---
+
+<Card class={className} {...props}>
+  <div class="card__content">
+    <slot />
+  </div>
+  <div class:list={['card__footer', `brand--${colour}`]}>
+    <span class="h4">{label}</span>
+  </div>
+</Card>
+
+<style>
+  .card__content {
+    height: 100%;
+    width: 100%;
+  }
+
+  .card__footer {
+    text-align: center;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+  }
+</style>

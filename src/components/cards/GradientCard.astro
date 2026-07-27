@@ -3,12 +3,13 @@ import { type ImageMetadata } from 'astro';
 import type { HTMLAttributes } from 'astro/types';
 import { Image } from 'astro:assets';
 import type { AccentColour } from 'src/constants';
+import Card from './Card.astro';
 
 interface Props extends HTMLAttributes<'div'> {
   title?: string;
   img?: ImageMetadata;
-  colour?: AccentColour;
   alt?: string;
+  colour?: AccentColour;
 }
 
 const { title, img, colour, alt, class: className, ...props } = Astro.props;
@@ -16,7 +17,7 @@ const { title, img, colour, alt, class: className, ...props } = Astro.props;
 const hasFooter = Astro.slots.has('footer');
 ---
 
-<div class:list={['card', 'brand__border', className]} {...props}>
+<Card class={className} {...props}>
   {img && <Image class="card__img" src={img} alt={alt ?? title ?? ''} />}
   {colour && <div class="gradient" style={`--clr-grad: var(--clr-accent-${colour})`} />}
   <div class="card__content">
@@ -30,7 +31,7 @@ const hasFooter = Astro.slots.has('footer');
       </div>
     )
   }
-</div>
+</Card>
 
 <style>
   .card {

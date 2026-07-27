@@ -1,0 +1,20 @@
+---
+import type { HTMLAttributes } from 'astro/types';
+
+type Props = HTMLAttributes<'div'>;
+
+const { class: className, ...props } = Astro.props;
+---
+
+<div class:list={['card', 'brand__border', className]} {...props}>
+  <slot />
+</div>
+
+<style>
+  .card {
+    position: relative;
+    min-height: 20rem;
+    min-width: 10rem;
+    overflow: hidden;
+  }
+</style>
