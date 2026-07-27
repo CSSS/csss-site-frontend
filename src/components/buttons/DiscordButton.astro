@@ -1,0 +1,25 @@
+---
+import { socialLinks } from 'src/config/site';
+import type { AccentColour } from 'src/constants';
+import DiscordIcon from 'src/icons/DiscordIcon.astro';
+import Button from './Button.astro';
+
+interface Props {
+  tone?: AccentColour;
+  class?: string;
+  size?: 'sm' | 'md' | 'lg';
+}
+
+const { tone = 'blue', class: className, size = 'md', ...rest } = Astro.props;
+---
+
+<Button
+  class:list={[className]}
+  target="_blank"
+  href={socialLinks.discord}
+  tone={tone}
+  size={size}
+  {...rest}
+>
+  <DiscordIcon />Discord
+</Button>

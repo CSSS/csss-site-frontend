@@ -12,8 +12,12 @@
     text-decoration: none;
   }
 
-  li {
+  ul > li {
     list-style: none;
+  }
+
+  ol {
+    padding-left: 2.5rem;
   }
 
   button {

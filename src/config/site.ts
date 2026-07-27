@@ -39,7 +39,7 @@ export const navItems: NavItem[] = [
 
 export const footerNavItems: NavItem[] = [
   { label: 'HOME', href: '/' },
-  { label: 'README', href: '/readme' },
+  { label: 'OFFICERS', href: '/officers' },
   { label: 'EVENTS', href: '/events' },
   { label: 'ELECTIONS', href: '/elections' }
 ];

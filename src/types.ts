@@ -1,3 +1,5 @@
+import { type ImageMetadata } from 'astro';
+
 export type NavItem =
   | {
       label: string;
@@ -8,6 +10,12 @@ export type NavItem =
       label: string;
       children: NavItem[];
     };
+
+export interface CardItem {
+  label: string;
+  href?: string;
+  img: ImageMetadata;
+}
 
 export interface SiteConfig {
   name: string;

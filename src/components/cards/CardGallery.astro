@@ -1,0 +1,72 @@
+---
+import type { Polymorphic } from 'astro/types';
+import type { CardItem } from 'src/types';
+
+import GradientCard from './GradientCard.astro';
+import { getAccentColour } from 'src/constants';
+
+type GalleryElement = 'nav' | 'section';
+
+type Props<Tag extends GalleryElement> = Polymorphic<{ as: Tag }> & {
+  items: CardItem[];
+};
+
+const {
+  as: Gallery = 'section',
+  class: className,
+  items,
+  ...props
+} = Astro.props as Props<GalleryElement>;
+---
+
+<Gallery class:list={[className]} {...props}>
+  <ul class="card-gallery">
+    {
+      items.map((item, i) => {
+        return item.href ? (
+          <li>
+            <a href={item.href}>
+              <GradientCard class="card" img={item.img} alt={item.label}>
+                <h4 class:list={[`brand--${getAccentColour(i)}`]} slot="footer">
+                  {item.label}
+                </h4>
+              </GradientCard>
+            </a>
+          </li>
+        ) : (
+          <li>
+            <GradientCard class="card" img={item.img} alt={item.label}>
+              <h4 class:list={[`brand--${getAccentColour(i)}`]} slot="footer">
+                {item.label}
+              </h4>
+            </GradientCard>
+          </li>
+        );
+      })
+    }
+  </ul>
+
+  <style>
+    h4 {
+      text-align: center;
+    }
+
+    .card-gallery {
+      display: grid;
+      grid-template-columns: repeat(var(--card-grid-columns), minmax(10rem, 1fr));
+      gap: var(--content-gap);
+    }
+
+    @media (min-width: 35rem) {
+      .card-gallery {
+        --card-grid-columns: 2;
+      }
+    }
+
+    @media (min-width: 70rem) {
+      .card-gallery {
+        --card-grid-columns: 4;
+      }
+    }
+  </style>
+</Gallery>

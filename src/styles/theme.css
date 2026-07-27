@@ -63,6 +63,7 @@
     --border-radius-default: 15px;
     --border-radius-lg: 48px;
     --border-default: 1.5px solid var(--clr-surface-inverse);
+    --card-grid-columns: 1;
 
     /* Height of the navbar header element */
     --navbar-height: 5rem;
@@ -72,6 +73,9 @@
 
     /* Gap between sections within an article */
     --section-gap: var(--sp-8);
+
+    /* Gap between content within a section */
+    --content-gap: var(--sp-4);
 
     /* Colour of a link in a paragraph */
     --clr-link-inline: var(--clr-accent-blue);
@@ -110,13 +114,22 @@
     scroll-margin-top: var(--navbar-height);
   }
 
+  .list {
+    padding-left: 1rem;
+  }
+
+  .list > li {
+    list-style-type: disc;
+  }
+
   /* Allows the user to define if some content should be wider than the site content */
   .content-grid {
+    --content-width: min(100% - (var(--padding-inline) * 2), var(--site-content-width));
     display: grid;
     grid-template-columns:
       [full-width-start] minmax(var(--padding-inline), 1fr)
       [breakout-start] minmax(0, var(--breakout-width))
-      [content-start] min(100% - (var(--padding-inline) * 2), var(--site-content-width))
+      [content-start] var(--content-width)
       [content-end]
       minmax(0, var(--breakout-width)) [breakout-end]
       minmax(var(--padding-inline), 1fr) [full-width-end];
@@ -132,6 +145,13 @@
 
   .content-grid > .full-width {
     grid-column: full-width;
+  }
+
+  .button-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: var(--content-gap);
   }
 }
 

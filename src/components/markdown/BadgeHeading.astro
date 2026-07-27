@@ -5,11 +5,16 @@ import type { AccentColour } from 'src/constants';
 
 type HeadingTag = 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
 
-interface Props extends Polymorphic<{ as: HeadingTag }> {
+type Props<Tag extends HeadingTag> = Polymorphic<{ as: Tag }> & {
   colour?: AccentColour;
-}
+};
 
-const { as: Heading = 'h2', class: className, colour = 'red', ...props } = Astro.props;
+const {
+  as: Heading = 'h2',
+  class: className,
+  colour = 'red',
+  ...props
+} = Astro.props as Props<HeadingTag>;
 ---
 
 <Heading {...props} class:list={['badge-heading', `brand--${colour}`, className]}>

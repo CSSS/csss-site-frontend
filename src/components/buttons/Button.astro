@@ -1,0 +1,165 @@
+---
+import type { AccentColour } from 'src/constants';
+
+interface Props {
+  href?: string;
+  type?: 'button' | 'submit' | 'reset';
+  variant?: 'solid' | 'outline' | 'ghost';
+  tone?: AccentColour;
+  size?: 'sm' | 'md' | 'lg';
+  fullWidth?: boolean;
+  disabled?: boolean;
+  target?: '_blank' | '_self' | '_parent' | '_top';
+  rel?: string;
+  class?: string;
+}
+
+const {
+  href,
+  type = 'button',
+  variant = 'solid',
+  tone = 'blue',
+  size = 'md',
+  fullWidth = false,
+  disabled = false,
+  target,
+  rel,
+  class: className,
+  ...rest
+} = Astro.props;
+
+const isLink = typeof href === 'string' && href.length > 0;
+const computedRel = target === '_blank' ? (rel ?? 'noopener noreferrer') : rel;
+---
+
+{
+  isLink ? (
+    <a
+      class:list={[
+        'button',
+        `button--${variant}`,
+        `button--${tone}`,
+        `button--${size}`,
+        fullWidth && 'button--full',
+        disabled && 'button--disabled',
+        className
+      ]}
+      href={disabled ? undefined : href}
+      target={target}
+      rel={computedRel}
+      aria-disabled={disabled ? 'true' : undefined}
+      tabindex={disabled ? -1 : undefined}
+      {...rest}
+    >
+      <slot />
+    </a>
+  ) : (
+    <button
+      class:list={[
+        'button',
+        `button--${variant}`,
+        `button--${tone}`,
+        `button--${size}`,
+        fullWidth && 'button--full',
+        disabled && 'button--disabled',
+        className
+      ]}
+      type={type}
+      disabled={disabled}
+      {...rest}
+    >
+      <slot />
+    </button>
+  )
+}
+
+<style>
+  .button {
+    --btn-accent: var(--clr-accent-blue);
+    --btn-accent-contrast: var(--clr-accent-blue-fg);
+    --btn-border-width: 2px;
+    --btn-border-radius: 10px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--sp-2);
+    padding: var(--sp-2) var(--sp-4);
+    border-radius: var(--btn-border-radius);
+    border: var(--btn-border-width) solid var(--btn-accent);
+    font-family: var(--font-heading);
+    font-size: var(--font-size-body);
+    line-height: var(--line-height-tight);
+    text-decoration: none;
+    cursor: pointer;
+    transition:
+      background-color var(--animation-duration-regular) ease,
+      color var(--animation-duration-regular) ease,
+      border-color var(--animation-duration-regular) ease,
+      transform var(--animation-duration-regular) ease;
+  }
+
+  .button--solid {
+    background-color: var(--btn-accent);
+    color: var(--btn-accent-contrast);
+  }
+
+  .button--outline {
+    background-color: transparent;
+    color: var(--btn-accent);
+  }
+
+  .button--ghost {
+    background-color: transparent;
+    border-color: transparent;
+    color: var(--btn-accent);
+  }
+
+  .button--outline:hover:not(.button--disabled),
+  .button--outline:focus-visible:not(.button--disabled),
+  .button--ghost:hover:not(.button--disabled),
+  .button--ghost:focus-visible:not(.button--disabled) {
+    background-color: var(--btn-accent);
+    color: var(--btn-accent-contrast);
+  }
+
+  .button--sm {
+    padding: var(--sp-1) var(--sp-3);
+    font-size: var(--font-size-1);
+  }
+
+  .button--lg {
+    padding: var(--sp-3) var(--sp-5);
+    font-size: var(--font-size-3);
+  }
+
+  .button--full {
+    width: 100%;
+  }
+
+  .button--disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+
+  .button--blue {
+    --btn-accent: var(--clr-accent-blue);
+    --btn-accent-contrast: var(--clr-accent-blue-fg);
+  }
+
+  .button--pink {
+    --btn-accent: var(--clr-accent-pink);
+    --btn-accent-contrast: var(--clr-accent-pink-fg);
+  }
+
+  .button--red {
+    --btn-accent: var(--clr-accent-red);
+    --btn-accent-contrast: var(--clr-accent-red-fg);
+  }
+
+  .button--green {
+    --btn-accent: var(--clr-accent-green);
+    --btn-accent-contrast: var(--clr-accent-green-fg);
+  }
+</style>

@@ -5,7 +5,7 @@ import { Image } from 'astro:assets';
 import type { AccentColour } from 'src/constants';
 
 interface Props extends HTMLAttributes<'div'> {
-  title: string;
+  title?: string;
   img?: ImageMetadata;
   colour?: AccentColour;
   alt?: string;
@@ -17,24 +17,25 @@ const hasFooter = Astro.slots.has('footer');
 ---
 
 <div class:list={['card', 'brand__border', className]} {...props}>
-  {img && <Image class="card__img" src={img} alt={alt ?? title} />}
+  {img && <Image class="card__img" src={img} alt={alt ?? title ?? ''} />}
   {colour && <div class="gradient" style={`--clr-grad: var(--clr-accent-${colour})`} />}
   <div class="card__content">
-    <h2 class="card__title">{title}</h2>
+    {title && <h2 class="card__title">{title}</h2>}
     <slot />
-    {
-      hasFooter && (
-        <div class="card__footer">
-          <slot name="footer" />
-        </div>
-      )
-    }
   </div>
+  {
+    hasFooter && (
+      <div class="card__footer">
+        <slot name="footer" />
+      </div>
+    )
+  }
 </div>
+
 <style>
   .card {
     position: relative;
-    min-height: 10rem;
+    min-height: 20rem;
     min-width: 10rem;
     overflow: hidden;
   }
@@ -67,5 +68,11 @@ const hasFooter = Astro.slots.has('footer');
     width: 100%;
     top: 35%;
     color: var(--clr-text-inverse);
+  }
+
+  .card__footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
   }
 </style>

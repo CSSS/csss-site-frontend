@@ -37,7 +37,7 @@ import { Image } from 'astro:assets';
 <style>
   #hero {
     height: calc(100lvh - var(--navbar-height));
-    padding: var(--sp-5);
+    padding: clamp(var(--sp-2), 2vw, var(--sp-6));
   }
 
   .hero__border {

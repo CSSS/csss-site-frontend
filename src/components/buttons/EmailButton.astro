@@ -1,0 +1,17 @@
+---
+import { Mail } from '@lucide/astro';
+import type { AccentColour } from 'src/constants';
+import Button from './Button.astro';
+
+interface Props {
+  address: string;
+  tone?: AccentColour;
+  class?: string;
+}
+
+const { address, tone = 'blue', class: className, ...rest } = Astro.props;
+---
+
+<Button class:list={[className]} target="_blank" href={`mailto:${address}`} tone={tone} {...rest}>
+  <Mail /><slot>Email</slot>
+</Button>

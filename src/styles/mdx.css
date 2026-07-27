@@ -1,3 +1,5 @@
+@layer reset, base, theme;
+
 @layer base {
   .mdx-content {
     display: grid;

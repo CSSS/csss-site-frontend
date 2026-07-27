@@ -1,25 +1,22 @@
 ---
 import type { ImageMetadata } from 'astro';
 import { Image } from 'astro:assets';
-import BadgeHeading from '@components/markdown/BadgeHeading.astro';
-import type { AccentColour } from 'src/constants';
 
 interface Props {
   id: string;
   img: ImageMetadata;
   title: string;
   alt: string;
-  colour: AccentColour;
   isImgRight?: boolean;
 }
 
-const { id, img, title, alt, colour, isImgRight = false } = Astro.props;
+const { id, img, title, alt, isImgRight = false } = Astro.props;
 ---
 
 <section id={id} class:list={{ 'section--right': isImgRight }}>
   <Image class="section__img" src={img} alt={alt} width={450} />
   <section class="section__content">
-    <BadgeHeading class="section__title" colour={colour}>{title}</BadgeHeading>
+    <h2>{title}</h2>
     <p><slot /></p>
     <slot name="footer" />
   </section>

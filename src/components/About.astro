@@ -1,38 +1,166 @@
 ---
+import { Image } from 'astro:assets';
+import services from '@assets/images/services.png';
+import concernedStudent from '@assets/images/concerned-student.png';
+import fallHacks from '@assets/images/events/fall-hacks.jpg';
+import committees from '@assets/images/home/committees.jpg';
+import commonRoom from '@assets/images/home/common-room.jpg';
 
+import DiscordButton from './buttons/DiscordButton.astro';
+import CardGallery from './cards/CardGallery.astro';
+import type { CardItem } from 'src/types';
+
+const navCards: CardItem[] = [
+  {
+    label: 'Events',
+    img: fallHacks,
+    href: '/events'
+  },
+  {
+    label: 'Committees',
+    img: committees,
+    href: '/committees'
+  },
+  {
+    label: 'Common Room',
+    img: commonRoom,
+    href: '/common-room'
+  },
+  {
+    label: 'Officers',
+    img: fallHacks,
+    href: '/officers'
+  }
+];
 ---
 
-<section id="about" class="content-grid full-width">
-  <div class="container">
+<article id="about" class="content-grid full-width">
+  <section class="intro">
     <h2 class="heading">
-      <span class="top">THE</span>
-      <span class="bottom">CSSS</span>
+      <span class="heading__top">THE</span>
+      <span class="heading__bottom">CSSS</span>
     </h2>
-    <div>
-      <h3>Header</h3>
+    <section>
+      <h3>Welcome!</h3>
       <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate recusandae doloribus
-        asperiores vel! Maiores tenetur doloremque voluptatibus commodi ratione possimus.
+        The CSSS represents thousands of students at Simon Fraser University. We are a student-run
+        organization, providing a variety of services and events to enhance the student experience.
+      </p>
+    </section>
+  </section>
+  <section class="membership">
+    <h2 class="h2">If you're an undergraduate student...</h2>
+    <ul class="list">
+      <li>
+        who has declared a major, minor, or are in an honours program offered by the School of
+        Computing Science, or
+      </li>
+      <li>are taking any undergraduate course offered by the School of Computing Science</li>
+    </ul>
+    <p class="h2">then you're already a member!</p>
+    <p>
+      Join us on Discord and get involved with one of the biggest student groups at Simon Fraser
+      University
+    </p>
+    <div class="button-container">
+      <DiscordButton size="lg" />
+    </div>
+  </section>
+  <hr />
+  <section class="services">
+    <div class="services__left">
+      <Image src={concernedStudent} alt="concerned student" width={500} />
+    </div>
+    <div class="services__right">
+      <Image class="services__img" src={services} alt="CSSS services" width={500} />
+      <h3>Representing you!</h3>
+      <p>
+        The Computer Science Student Society is YOUR community to find people who can be your
+        academic support system. We offer past exams from our Exam Bank, class channels in our
+        Discord Server, and a network of alumni to help beyond your degree. Join our Discord server
+        to access our services today!
       </p>
     </div>
-  </div>
-</section>
+  </section>
+  <section>
+    <h2>Learn more about us...</h2>
+    <CardGallery items={navCards} as="nav" />
+  </section>
+</article>
 
 <style>
+  article {
+    display: grid;
+    line-height: var(--line-height-relaxed);
+    row-gap: var(--section-gap);
+  }
+
+  h2 {
+    line-height: var(--line-height-relaxed);
+  }
+
   .heading {
     color: var(--clr-accent-red);
     font-weight: var(--font-weight-normal);
     display: flex;
     flex-direction: column;
-    line-height: 0.8;
+    line-height: 1;
     margin-bottom: var(--sp-5);
 
-    > .top {
+    > .heading__top {
       font-size: 5.5rem;
     }
 
-    > .bottom {
+    > .heading__bottom {
       font-size: 7.5rem;
+    }
+  }
+
+  .membership {
+    display: grid;
+    row-gap: var(--content-gap);
+  }
+
+  .button-container {
+    margin-block: var(--content-gap);
+  }
+
+  .services__left {
+    display: none;
+  }
+
+  .services__img {
+    margin: 0 auto;
+  }
+
+  .discord {
+    margin: 0 auto;
+  }
+
+  @media (min-width: 1000px) {
+    article {
+      --section-gap: var(--sp-10);
+    }
+
+    .intro,
+    .services {
+      display: flex;
+      gap: var(--content-gap);
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .intro p {
+      max-width: 60ch;
+    }
+
+    .services__left {
+      display: block;
+    }
+
+    .services__right {
+      width: 60ch;
     }
   }
 </style>
