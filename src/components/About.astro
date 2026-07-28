@@ -69,11 +69,9 @@ const navCards: CardItem[] = [
   </section>
   <hr />
   <section class="services">
-    <div class="services__left">
-      <Image src={concernedStudent} alt="concerned student" width={500} />
-    </div>
-    <div class="services__right">
-      <Image class="services__img" src={services} alt="CSSS services" width={500} />
+    <Image class="services__student" src={concernedStudent} alt="concerned student" width={500} />
+    <Image class="services__concerns" src={services} alt="CSSS services" width={500} />
+    <div class="services__text">
       <h3>Representing you!</h3>
       <p>
         The Computer Science Student Society is YOUR community to find people who can be your
@@ -126,16 +124,32 @@ const navCards: CardItem[] = [
     margin-block: var(--content-gap);
   }
 
-  .services__left {
-    display: none;
+  .services {
+    display: grid;
+    row-gap: var(--content-gap);
+    place-items: center;
   }
 
-  .services__img {
-    margin: 0 auto;
+  .services__student {
+    display: none;
   }
 
   .discord {
     margin: 0 auto;
+  }
+
+  @media (min-width: 768px) {
+    .services {
+      grid-template: 1fr auto / 1fr 1fr;
+    }
+
+    .services__student {
+      display: block;
+    }
+
+    .services__text {
+      grid-area: 2 / 1 / span 1 / span 2;
+    }
   }
 
   @media (min-width: 1000px) {
@@ -143,8 +157,7 @@ const navCards: CardItem[] = [
       --section-gap: var(--sp-10);
     }
 
-    .intro,
-    .services {
+    .intro {
       display: flex;
       gap: var(--content-gap);
       flex-direction: row;
@@ -156,12 +169,12 @@ const navCards: CardItem[] = [
       max-width: 60ch;
     }
 
-    .services__left {
-      display: block;
+    .services__student {
+      grid-area: 1 / 1 / span 2 / span 1;
     }
 
-    .services__right {
-      width: 60ch;
+    .services__text {
+      grid-area: 2 / 2;
     }
   }
 </style>
