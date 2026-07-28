@@ -80,9 +80,9 @@ const execs: Exec[] = [
 
 <section>
   {
-    execs.map(exec => (
+    execs.map((exec, index) => (
       <div class="card">
-        <Image src={exec.img} alt={exec.role} width={300} quality="max" />
+        <Image src={exec.img} alt={exec.role} width={300} priority={index === 0} quality="max" />
         <h3>{exec.name}</h3>
         <p>{exec.label}</p>
       </div>

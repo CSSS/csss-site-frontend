@@ -30,9 +30,9 @@ export const navItems: NavItem[] = [
   {
     label: 'ELECTIONS',
     children: [
-      { label: 'ABOUT', href: '/elections' },
-      { label: 'SCHEDULE', href: '/elections/schedule' },
-      { label: 'SPEECHES', href: '/elections/speeches' }
+      { label: 'ABOUT', href: '/elections' }
+      // { label: 'SCHEDULE', href: '/elections/schedule' },
+      // { label: 'SPEECHES', href: '/elections/speeches' }
     ]
   }
 ];

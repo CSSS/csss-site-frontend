@@ -104,6 +104,12 @@ const computedRel = target === '_blank' ? (rel ?? 'noopener noreferrer') : rel;
     color: var(--btn-accent-contrast);
   }
 
+  .button--solid:hover:not(.button--disabled),
+  .button--solid:focus-visible:not(.button--disabled) {
+    background-color: transparent;
+    color: var(--btn-accent);
+  }
+
   .button--outline {
     background-color: transparent;
     color: var(--btn-accent);

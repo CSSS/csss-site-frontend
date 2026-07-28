@@ -28,14 +28,14 @@ const {
           <li>
             <a href={item.href}>
               <LabelCard class="card" label={item.label} colour={getAccentColour(i)}>
-                <Image class="card__img" src={item.img} alt={item.label} />
+                <Image class="card__img" src={item.img} alt={item.label} quality="max" />
               </LabelCard>
             </a>
           </li>
         ) : (
           <li>
             <LabelCard class="card" label={item.label} colour={getAccentColour(i)}>
-              <Image class="card__img" src={item.img} alt={item.label} />
+              <Image class="card__img" src={item.img} alt={item.label} quality="max" />
             </LabelCard>
           </li>
         );
