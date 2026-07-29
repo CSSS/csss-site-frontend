@@ -14,7 +14,7 @@ const { id, img, title, alt, isImgRight = false } = Astro.props;
 ---
 
 <section id={id} class:list={{ 'section--right': isImgRight }}>
-  <Image class="section__img" src={img} alt={alt} width={450} />
+  <Image class="section__img" src={img} alt={alt} width={450} loading="eager" quality="max" />
   <section class="section__content">
     <h2>{title}</h2>
     <p><slot /></p>
@@ -24,7 +24,6 @@ const { id, img, title, alt, isImgRight = false } = Astro.props;
 
 <style>
   h2 {
-    text-align: center;
     margin-block: var(--sp-4);
   }
 
@@ -42,6 +41,10 @@ const { id, img, title, alt, isImgRight = false } = Astro.props;
   }
 
   @media (min-width: 900px) {
+    h2 {
+      text-align: center;
+    }
+
     .section__img {
       display: block;
       grid-area: img;
