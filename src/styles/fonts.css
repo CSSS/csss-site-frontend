@@ -1,7 +1,7 @@
 @layer theme {
   h1,
   .h1 {
-    font-weight: var(--font-weight-bold);
+    font-weight: var(--font-weight-regular);
     font-size: var(--font-size-heading-1);
     line-height: var(--line-height-tight);
     font-family: var(--font-title);
@@ -9,7 +9,7 @@
 
   h2,
   .h2 {
-    font-weight: var(--font-weight-bold);
+    font-weight: var(--font-weight-regular);
     font-size: var(--font-size-heading-2);
     line-height: var(--line-height-tight);
     font-family: var(--font-heading);
@@ -19,7 +19,7 @@
   .h3,
   h4,
   .h4 {
-    font-weight: var(--font-weight-bold);
+    font-weight: var(--font-weight-regular);
     font-size: var(--font-size-heading-3);
     line-height: var(--line-height-tight);
     font-family: var(--font-heading);
