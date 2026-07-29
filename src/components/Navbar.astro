@@ -346,7 +346,6 @@ const { title, items = [] } = Astro.props;
 
   .dropdown__menu li {
     width: 100%;
-    padding: 0 var(--sp-2);
     display: flex;
     align-items: center;
   }
@@ -357,7 +356,8 @@ const { title, items = [] } = Astro.props;
 
   .dropdown__menu a {
     display: flex;
-    padding: var(--sp-2) 0rem;
+    width: 100%;
+    padding: var(--sp-2);
     white-space: nowrap;
   }
 
