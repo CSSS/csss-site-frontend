@@ -32,29 +32,53 @@ const { pageTitle, description, image, noindex = false } = Astro.props;
     <Seo title={pageTitle} description={description} image={image} noindex={noindex} />
     <slot name="head" />
     <ClientRouter fallback="swap" />
-    <script is:inline>
-      document.documentElement.classList.add('js');
-    </script>
   </head>
   <body>
     <slot />
     <script>
-      function initializeImageReveals() {
-        document.querySelectorAll<HTMLElement>('.image-reveal:not(.is-loaded)').forEach(element => {
-          const image =
-            element instanceof HTMLImageElement ? element : element.querySelector('img');
-          const reveal = () => element.classList.add('is-loaded');
+      import gsap from 'gsap';
+      import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
-          if (!image || image.complete) {
-            reveal();
-          } else {
-            image.addEventListener('load', reveal, { once: true });
-            image.addEventListener('error', reveal, { once: true });
-          }
+      gsap.registerPlugin(ScrollTrigger);
+
+      let revealContext: ReturnType<typeof gsap.context> | undefined;
+
+      function initializeScrollReveals() {
+        revealContext?.revert();
+
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+          revealContext = undefined;
+          return;
+        }
+
+        revealContext = gsap.context(() => {
+          gsap.utils.toArray<HTMLElement>('.image-reveal').forEach(element => {
+            gsap.fromTo(
+              element,
+              { autoAlpha: 0, y: 12 },
+              {
+                autoAlpha: 1,
+                y: 0,
+                duration: 0.4,
+                ease: 'power2.out',
+                scrollTrigger: {
+                  trigger: element,
+                  start: 'top 90%',
+                  once: true
+                }
+              }
+            );
+          });
         });
+
+        ScrollTrigger.refresh();
       }
 
-      document.addEventListener('astro:page-load', initializeImageReveals);
+      document.addEventListener('astro:before-swap', () => {
+        revealContext?.revert();
+        revealContext = undefined;
+      });
+      document.addEventListener('astro:page-load', initializeScrollReveals);
     </script>
   </body>
 </html>
