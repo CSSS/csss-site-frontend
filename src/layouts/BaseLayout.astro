@@ -32,8 +32,29 @@ const { pageTitle, description, image, noindex = false } = Astro.props;
     <Seo title={pageTitle} description={description} image={image} noindex={noindex} />
     <slot name="head" />
     <ClientRouter fallback="swap" />
+    <script is:inline>
+      document.documentElement.classList.add('js');
+    </script>
   </head>
   <body>
     <slot />
+    <script>
+      function initializeImageReveals() {
+        document.querySelectorAll<HTMLElement>('.image-reveal:not(.is-loaded)').forEach(element => {
+          const image =
+            element instanceof HTMLImageElement ? element : element.querySelector('img');
+          const reveal = () => element.classList.add('is-loaded');
+
+          if (!image || image.complete) {
+            reveal();
+          } else {
+            image.addEventListener('load', reveal, { once: true });
+            image.addEventListener('error', reveal, { once: true });
+          }
+        });
+      }
+
+      document.addEventListener('astro:page-load', initializeImageReveals);
+    </script>
   </body>
 </html>

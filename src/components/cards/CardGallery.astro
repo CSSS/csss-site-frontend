@@ -27,15 +27,15 @@ const {
         return item.href ? (
           <li>
             <a href={item.href}>
-              <LabelCard class="card" label={item.label} colour={getAccentColour(i)}>
-                <Image class="card__img" src={item.img} alt={item.label} quality="max" />
+              <LabelCard class="card image-reveal" label={item.label} colour={getAccentColour(i)}>
+                <Image class="card__img" src={item.img} alt={item.label} />
               </LabelCard>
             </a>
           </li>
         ) : (
           <li>
-            <LabelCard class="card" label={item.label} colour={getAccentColour(i)}>
-              <Image class="card__img" src={item.img} alt={item.label} quality="max" />
+            <LabelCard class="card image-reveal" label={item.label} colour={getAccentColour(i)}>
+              <Image class="card__img" src={item.img} alt={item.label} />
             </LabelCard>
           </li>
         );

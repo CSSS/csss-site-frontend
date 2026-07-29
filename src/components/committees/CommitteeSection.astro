@@ -14,7 +14,14 @@ const { id, img, title, alt, isImgRight = false } = Astro.props;
 ---
 
 <section id={id} class:list={{ 'section--right': isImgRight }}>
-  <Image class="section__img" src={img} alt={alt} width={450} loading="eager" quality="max" />
+  <Image
+    class="section__img image-reveal"
+    src={img}
+    alt={alt}
+    width={450}
+    loading="eager"
+    quality="max"
+  />
   <section class="section__content">
     <h2>{title}</h2>
     <p><slot /></p>
