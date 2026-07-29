@@ -1,6 +1,8 @@
 ---
 import adoe from '@assets/images/execs/adoe.jpg';
-import doc from '@assets/images/execs/doc.png';
+import doc from '@assets/images/execs/doc.jpg';
+import eal1 from '@assets/images/execs/eal1.jpg';
+import eal2 from '@assets/images/execs/eal2.jpg';
 import doe from '@assets/images/execs/doe.jpg';
 import doee from '@assets/images/execs/doee.jpg';
 import dor from '@assets/images/execs/dor.jpg';
@@ -23,7 +25,8 @@ interface Exec {
     | 'adoe'
     | 'doc'
     | 'dor'
-    | 'sfssrep';
+    | 'sfssrep'
+    | 'eal';
   name: string;
   label: string;
   img: ImageMetadata;
@@ -74,6 +77,18 @@ const execs: Exec[] = [
     name: 'Melody Oh',
     label: 'SFSS Council Representative',
     img: sfssrep
+  },
+  {
+    role: 'eal',
+    name: 'Jayson Wu',
+    label: 'Executive at Large',
+    img: eal1
+  },
+  {
+    role: 'eal',
+    name: 'Alex Ng',
+    label: 'Executive at Large',
+    img: eal2
   }
 ];
 ---
