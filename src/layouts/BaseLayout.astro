@@ -51,23 +51,25 @@ const { pageTitle, description, image, noindex = false } = Astro.props;
           return;
         }
 
-        revealContext = gsap.context(() => {
-          gsap.utils.toArray<HTMLElement>('.image-reveal').forEach(element => {
-            gsap.fromTo(
-              element,
-              { autoAlpha: 0, y: 12 },
-              {
-                autoAlpha: 1,
-                y: 0,
-                duration: 0.4,
-                ease: 'power2.out',
-                scrollTrigger: {
-                  trigger: element,
-                  start: 'top 90%',
-                  once: true
-                }
-              }
-            );
+        revealContext = gsap.context(context => {
+          const elements = gsap.utils.toArray<HTMLElement>('.image-reveal');
+
+          gsap.set(elements, { autoAlpha: 0, y: 12 });
+          ScrollTrigger.batch(elements, {
+            start: 'top 90%',
+            onEnter: (batch, triggers) => {
+              triggers.forEach(trigger => trigger.kill());
+              context.add(() => {
+                gsap.to(batch, {
+                  autoAlpha: 1,
+                  y: 0,
+                  duration: 0.5,
+                  ease: 'power2.out',
+                  stagger: 0.1,
+                  clearProps: 'transform,opacity,visibility'
+                });
+              });
+            }
           });
         });
 
