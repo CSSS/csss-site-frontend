@@ -13,9 +13,9 @@ const { title, items = [] } = Astro.props;
 
 <header class="navbar" transition:persist="site-navbar">
   <div class="navbar__content">
-    <a class="navbar__left" href="/">
-      <span class="navbar__title chip">{title}</span>
-    </a>
+    <div class="navbar__left">
+      <a class="navbar__title chip" href="/">{title}</a>
+    </div>
     <nav class="navbar__nav" id="navbar-menu">
       <div class="navbar__menu-header">
         <button class="navbar__close" type="button" aria-label="Close navigation">
