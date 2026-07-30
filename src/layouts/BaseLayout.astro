@@ -42,8 +42,10 @@ const { pageTitle, description, image, noindex = false } = Astro.props;
       gsap.registerPlugin(ScrollTrigger);
 
       let revealContext: ReturnType<typeof gsap.context> | undefined;
+      let revealGeneration = 0;
 
       function initializeScrollReveals() {
+        const generation = ++revealGeneration;
         revealContext?.revert();
 
         if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
@@ -53,20 +55,43 @@ const { pageTitle, description, image, noindex = false } = Astro.props;
 
         revealContext = gsap.context(context => {
           const elements = gsap.utils.toArray<HTMLElement>('.image-reveal');
+          const imageReady = new WeakMap<Element, Promise<void>>();
+
+          elements.forEach(element => {
+            const images = element.querySelectorAll<HTMLImageElement>('img');
+            const ready = Promise.all(
+              Array.from(images, image =>
+                image.decode().catch(() => {
+                  // A failed decode should not prevent its card from appearing.
+                })
+              )
+            ).then(() => undefined);
+
+            imageReady.set(element, ready);
+          });
 
           gsap.set(elements, { autoAlpha: 0, y: 12 });
           ScrollTrigger.batch(elements, {
             start: 'top 90%',
-            onEnter: (batch, triggers) => {
+            onEnter: async (batch, triggers) => {
               triggers.forEach(trigger => trigger.kill());
+
+              await Promise.all(batch.map(element => imageReady.get(element)));
+
+              if (generation !== revealGeneration) return;
+
+              const connectedBatch = batch.filter(element => element.isConnected);
+              if (connectedBatch.length === 0) return;
+
               context.add(() => {
-                gsap.to(batch, {
+                gsap.set(connectedBatch, { willChange: 'transform,opacity' });
+                gsap.to(connectedBatch, {
                   autoAlpha: 1,
                   y: 0,
                   duration: 0.5,
                   ease: 'power2.out',
                   stagger: 0.1,
-                  clearProps: 'transform,opacity,visibility'
+                  clearProps: 'transform,opacity,visibility,willChange'
                 });
               });
             }
@@ -77,6 +102,7 @@ const { pageTitle, description, image, noindex = false } = Astro.props;
       }
 
       document.addEventListener('astro:before-swap', () => {
+        revealGeneration += 1;
         revealContext?.revert();
         revealContext = undefined;
       });
