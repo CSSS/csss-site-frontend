@@ -1,25 +1,47 @@
 ---
+import blueCircle from '@assets/images/blue-circle.png';
 import csssLogoBlack from '@assets/images/csss-black.svg';
-import pinkTealCircle from '@assets/images/pink-teal-circles.png';
-import redBlueCircle from '@assets/images/red-blue-circles.png';
+import pinkCircle from '@assets/images/pink-circle.png';
+import redCircle from '@assets/images/red-circle.png';
+import tealCircle from '@assets/images/teal-circle.png';
 import { Image } from 'astro:assets';
 ---
 
 <section id="hero" class="full-width">
   <div class="hero__border breakout brand__border">
     <div class="hero__circles" aria-hidden="true">
-      <Image
-        class="hero__circle hero__circle--red-blue"
-        src={redBlueCircle}
-        loading="eager"
-        alt="red and blue circles"
-      />
-      <Image
-        class="hero__circle hero__circle--pink-teal"
-        src={pinkTealCircle}
-        loading="eager"
-        alt="pink and teal circles"
-      />
+      <div class="hero__circle-group hero__circle-group--red-blue">
+        <Image
+          class="hero__circle hero__circle--red"
+          src={redCircle}
+          loading="eager"
+          alt=""
+          data-motion-depth="0.65"
+        />
+        <Image
+          class="hero__circle hero__circle--blue"
+          src={blueCircle}
+          loading="eager"
+          alt=""
+          data-motion-depth="-1"
+        />
+      </div>
+      <div class="hero__circle-group hero__circle-group--pink-teal">
+        <Image
+          class="hero__circle hero__circle--teal"
+          src={tealCircle}
+          loading="eager"
+          alt=""
+          data-motion-depth="0.8"
+        />
+        <Image
+          class="hero__circle hero__circle--pink"
+          src={pinkCircle}
+          loading="eager"
+          alt=""
+          data-motion-depth="-0.9"
+        />
+      </div>
     </div>
     <div class="hero__logo">
       <Image
@@ -28,11 +50,87 @@ import { Image } from 'astro:assets';
         width={200}
         loading="eager"
         alt="CSSS black logo"
+        data-motion-depth="0.35"
       />
-      <h1>SFU Computing Science Student Society</h1>
+      <h1 data-motion-depth="-0.25">SFU Computing Science Student Society</h1>
     </div>
   </div>
 </section>
+
+<script>
+  import gsap from 'gsap';
+
+  // Maximum number of pixels any layer can move from its resting position on either axis.
+  const HERO_MOTION_BOUNDARY = 36;
+
+  let cleanupHeroMotion: (() => void) | undefined;
+
+  function initializeHeroMotion() {
+    cleanupHeroMotion?.();
+    cleanupHeroMotion = undefined;
+
+    const hero = document.querySelector<HTMLElement>('#hero');
+    const motionArea = hero?.querySelector<HTMLElement>('.hero__border');
+
+    if (!hero || !motionArea || window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      return;
+    }
+
+    const layers = gsap.utils.toArray<HTMLElement>('[data-motion-depth]', hero);
+    const movers = layers.map(layer => {
+      const depth = gsap.utils.clamp(-1, 1, Number(layer.dataset.motionDepth) || 0);
+
+      return {
+        depth,
+        moveX: gsap.quickTo(layer, 'x', { duration: 0.8, ease: 'power3.out' }),
+        moveY: gsap.quickTo(layer, 'y', { duration: 0.8, ease: 'power3.out' })
+      };
+    });
+
+    const moveLayers = (x: number, y: number) => {
+      movers.forEach(({ depth, moveX, moveY }) => {
+        moveX(x * HERO_MOTION_BOUNDARY * depth);
+        moveY(y * HERO_MOTION_BOUNDARY * depth);
+      });
+    };
+
+    const handlePointerMove = (event: PointerEvent) => {
+      if (event.pointerType !== 'mouse') return;
+
+      const bounds = motionArea.getBoundingClientRect();
+      const normalizedX = gsap.utils.clamp(
+        -1,
+        1,
+        ((event.clientX - bounds.left) / bounds.width) * 2 - 1
+      );
+      const normalizedY = gsap.utils.clamp(
+        -1,
+        1,
+        ((event.clientY - bounds.top) / bounds.height) * 2 - 1
+      );
+
+      moveLayers(normalizedX, normalizedY);
+    };
+
+    const resetLayers = () => moveLayers(0, 0);
+
+    motionArea.addEventListener('pointermove', handlePointerMove);
+    motionArea.addEventListener('pointerleave', resetLayers);
+
+    cleanupHeroMotion = () => {
+      motionArea.removeEventListener('pointermove', handlePointerMove);
+      motionArea.removeEventListener('pointerleave', resetLayers);
+      movers.forEach(({ moveX, moveY }) => {
+        moveX.tween.kill();
+        moveY.tween.kill();
+      });
+      gsap.set(layers, { clearProps: 'transform' });
+    };
+  }
+
+  document.addEventListener('astro:before-swap', () => cleanupHeroMotion?.());
+  document.addEventListener('astro:page-load', initializeHeroMotion);
+</script>
 
 <style>
   #hero {
@@ -49,18 +147,47 @@ import { Image } from 'astro:assets';
     align-items: center;
   }
 
+  .hero__circle-group,
   .hero__circle {
     position: absolute;
   }
 
-  .hero__circle--red-blue {
-    left: 0%;
+  [data-motion-depth] {
+    will-change: transform;
+  }
+
+  .hero__circle-group--red-blue {
+    width: 384px;
+    height: 336px;
+    left: 0;
     top: 70%;
   }
 
-  .hero__circle--pink-teal {
-    right: 0%;
+  .hero__circle--red {
+    top: 0;
+    left: 0;
+  }
+
+  .hero__circle--blue {
+    top: 157px;
+    left: 205px;
+  }
+
+  .hero__circle-group--pink-teal {
+    width: 301px;
+    height: 292px;
+    right: 0;
     bottom: 70%;
+  }
+
+  .hero__circle--teal {
+    top: 0;
+    right: 0;
+  }
+
+  .hero__circle--pink {
+    top: 155px;
+    left: 0;
   }
 
   .hero__logo {
@@ -80,11 +207,11 @@ import { Image } from 'astro:assets';
   }
 
   @media (min-width: 1280px) {
-    .hero__circle--red-blue {
+    .hero__circle-group--red-blue {
       top: 65%;
     }
 
-    .hero__circle--pink-teal {
+    .hero__circle-group--pink-teal {
       bottom: 65%;
     }
   }
