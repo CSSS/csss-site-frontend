@@ -11,8 +11,9 @@ type GalleryElement = 'nav' | 'section';
 type Props<Tag extends GalleryElement> = Polymorphic<{ as: Tag }> & {
   items: CardItem[];
   loading?: 'lazy' | 'eager';
-  minWidth?: string;
-  maxWidth?: string;
+  minWidth?: number;
+  maxWidth?: number;
+  quality?: number | 'max' | 'high' | 'mid' | 'low';
 };
 
 const {
@@ -20,28 +21,45 @@ const {
   class: className,
   items,
   loading = 'lazy',
-  minWidth = '10rem',
-  maxWidth = '1fr',
+  minWidth = 160,
+  maxWidth = 400,
+  quality = 'high',
   ...props
 } = Astro.props as Props<GalleryElement>;
+
+const gridWidthVariables = `--minWidth: ${minWidth}px; --maxWidth: ${maxWidth}px;`;
 ---
 
 <Gallery class:list={[className]} {...props}>
-  <ul class="card-gallery">
+  <ul class="card-gallery" style={gridWidthVariables}>
     {
       items.map((item, i) => {
         return item.href ? (
           <li>
             <a href={item.href}>
               <LabelCard class="card image-reveal" label={item.label} colour={getAccentColour(i)}>
-                <Image class="card__img" src={item.img} alt={item.label} loading={loading} />
+                <Image
+                  class="card__img"
+                  src={item.img}
+                  alt={item.label}
+                  loading={loading}
+                  quality={quality}
+                  width={maxWidth}
+                />
               </LabelCard>
             </a>
           </li>
         ) : (
           <li>
             <LabelCard class="card image-reveal" label={item.label} colour={getAccentColour(i)}>
-              <Image class="card__img" src={item.img} alt={item.label} loading={loading} />
+              <Image
+                class="card__img"
+                src={item.img}
+                alt={item.label}
+                loading={loading}
+                quality={quality}
+                width={maxWidth}
+              />
             </LabelCard>
           </li>
         );
@@ -50,7 +68,7 @@ const {
   </ul>
 </Gallery>
 
-<style define:vars={{ minWidth, maxWidth }}>
+<style>
   li {
     list-style: none;
   }
