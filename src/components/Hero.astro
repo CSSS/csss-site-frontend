@@ -16,14 +16,16 @@ import { Image } from 'astro:assets';
           src={redCircle}
           loading="eager"
           alt=""
-          data-motion-depth="0.65"
+          data-motion-depth="0.35"
+          width={322}
         />
         <Image
           class="hero__circle hero__circle--blue"
           src={blueCircle}
           loading="eager"
           alt=""
-          data-motion-depth="-1"
+          width={179}
+          data-motion-depth="1"
         />
       </div>
       <div class="hero__circle-group hero__circle-group--pink-teal">
@@ -32,14 +34,16 @@ import { Image } from 'astro:assets';
           src={tealCircle}
           loading="eager"
           alt=""
-          data-motion-depth="0.8"
+          data-motion-depth="0.35"
+          width={254}
         />
         <Image
           class="hero__circle hero__circle--pink"
           src={pinkCircle}
           loading="eager"
           alt=""
-          data-motion-depth="-0.9"
+          data-motion-depth="1"
+          width={137}
         />
       </div>
     </div>
@@ -52,7 +56,7 @@ import { Image } from 'astro:assets';
         alt="CSSS black logo"
         data-motion-depth="0.35"
       />
-      <h1 data-motion-depth="-0.25">SFU Computing Science Student Society</h1>
+      <h1 data-motion-depth="0.35">SFU Computing Science Student Society</h1>
     </div>
   </div>
 </section>
@@ -61,7 +65,7 @@ import { Image } from 'astro:assets';
   import gsap from 'gsap';
 
   // Maximum number of pixels any layer can move from its resting position on either axis.
-  const HERO_MOTION_BOUNDARY = 36;
+  const HERO_MOTION_BOUNDARY = 96;
 
   let cleanupHeroMotion: (() => void) | undefined;
 
@@ -82,8 +86,8 @@ import { Image } from 'astro:assets';
 
       return {
         depth,
-        moveX: gsap.quickTo(layer, 'x', { duration: 0.8, ease: 'power3.out' }),
-        moveY: gsap.quickTo(layer, 'y', { duration: 0.8, ease: 'power3.out' })
+        moveX: gsap.quickTo(layer, 'x', { duration: 0.4, ease: 'power3.out' }),
+        moveY: gsap.quickTo(layer, 'y', { duration: 0.4, ease: 'power3.out' })
       };
     });
 
@@ -169,8 +173,8 @@ import { Image } from 'astro:assets';
   }
 
   .hero__circle--blue {
-    top: 157px;
-    left: 205px;
+    top: 10%;
+    left: 120%;
   }
 
   .hero__circle-group--pink-teal {
@@ -186,8 +190,8 @@ import { Image } from 'astro:assets';
   }
 
   .hero__circle--pink {
-    top: 155px;
-    left: 0;
+    top: 50%;
+    right: 100%;
   }
 
   .hero__logo {
