@@ -1,7 +1,6 @@
 ---
 import { ExternalLink, Menu, X } from '@lucide/astro';
 
-import { ACCENT_COLOUR_ORDER } from '../constants';
 import type { NavItem } from '../types';
 
 interface Props {
@@ -15,19 +14,17 @@ const { title, items = [] } = Astro.props;
 <header class="navbar" transition:persist="site-navbar">
   <div class="navbar__content">
     <a class="navbar__left" href="/">
-      <span class="navbar__title chip chip--red">{title}</span>
+      <span class="navbar__title chip">{title}</span>
     </a>
     <nav class="navbar__nav" id="navbar-menu">
       <div class="navbar__menu-header">
         <button class="navbar__close" type="button" aria-label="Close navigation">
-          <X color="black" />
+          <X />
         </button>
       </div>
       <ul class="navbar__list">
         {
-          items.map((item, index) => {
-            const accentColour = ACCENT_COLOUR_ORDER[(index + 1) % ACCENT_COLOUR_ORDER.length];
-
+          items.map(item => {
             return (
               <li>
                 {'href' in item ? (
@@ -67,11 +64,7 @@ const { title, items = [] } = Astro.props;
                       </ul>
                     </div>
                     <div class="dropdown dropdown--desktop">
-                      <button
-                        class:list={['navbar__link', 'chip', `chip--${accentColour}`]}
-                        style={`--navbar-link-hover-colour: var(--clr-accent-${accentColour})`}
-                        type="button"
-                      >
+                      <button class:list={['navbar__link', 'chip']} type="button">
                         {item.label}
                       </button>
                       <ul class="dropdown__menu">
@@ -217,21 +210,27 @@ const { title, items = [] } = Astro.props;
 </script>
 
 <style>
-  :root {
-    --navbar-font-size: var(--font-size-2);
-  }
-
   .navbar {
-    --menu-clr-bg: var(--clr-surface-base);
-    --menu-clr-fg: var(--clr-surface-inverse);
+    /* Navbar colour controls */
+    --navbar-clr-bg: var(--clr-surface-base);
+    --navbar-clr-text: var(--clr-surface-inverse);
+    --navbar-clr-border: var(--clr-surface-inverse);
+    --navbar-clr-scrolled-border: var(--csss-brand-grey);
+    --navbar-clr-control-hover-bg: var(--clr-surface-inverse);
+    --navbar-clr-control-hover-text: var(--clr-text-inverse);
+    --navbar-clr-dropdown-bg: var(--clr-surface-base);
+    --navbar-clr-dropdown-hover-bg: var(--csss-brand-black);
+    --navbar-clr-dropdown-hover-text: var(--clr-text-inverse);
+
+    --navbar-font-size: var(--font-size-2);
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
     z-index: var(--navbar-z-index);
     width: 100vw;
-    background-color: var(--clr-surface-base);
-    color: var(--clr-surface-inverse);
+    background-color: var(--navbar-clr-bg);
+    color: var(--navbar-clr-text);
     height: var(--navbar-height);
     border-bottom: 1.5px solid transparent;
     transition:
@@ -258,7 +257,7 @@ const { title, items = [] } = Astro.props;
     width: 16.5rem;
     max-width: 100vw;
     height: 100vh;
-    background-color: var(--menu-clr-bg);
+    background-color: var(--navbar-clr-dropdown-bg);
     transform: translateX(100%);
     display: flex;
     flex-direction: column;
@@ -274,20 +273,19 @@ const { title, items = [] } = Astro.props;
 
   .navbar--menu-open .navbar__nav {
     transform: translateX(0);
-    color: var(--clr-surface-base);
-    border-left: 1px solid var(--menu-clr-fg);
+    color: var(--navbar-clr-text);
+    border-left: 1px solid var(--navbar-clr-border);
   }
 
   .navbar--scrolled {
     height: var(--navbar-height-scrolled);
-    border-bottom-color: var(--csss-brand-grey);
+    border-bottom-color: var(--navbar-clr-scrolled-border);
   }
 
   .navbar__left {
     display: flex;
     align-items: center;
     gap: var(--sp-3);
-    border: 1px var(--clr-surface-inverse);
   }
 
   .navbar__title {
@@ -295,6 +293,11 @@ const { title, items = [] } = Astro.props;
     font-family: var(--font-navbar);
     font-weight: var(--font-weight-regular);
     white-space: nowrap;
+  }
+
+  .navbar__title:hover {
+    color: var(--navbar-clr-control-hover-text);
+    background-color: var(--navbar-clr-control-hover-bg);
   }
 
   .navbar__list {
@@ -312,7 +315,7 @@ const { title, items = [] } = Astro.props;
     font-weight: var(--font-weight-regular);
     font-size: var(--navbar-font-size);
     text-decoration: none;
-    color: var(--csss-brand-black);
+    color: var(--navbar-clr-text);
   }
 
   .dropdown {
@@ -350,8 +353,12 @@ const { title, items = [] } = Astro.props;
     align-items: center;
   }
 
-  .dropdown__menu li:hover {
-    background-color: var(--clr-surface-hover);
+  .dropdown__menu li:is(:hover, :focus-within) {
+    background-color: var(--navbar-clr-dropdown-hover-bg);
+  }
+
+  .dropdown__menu li:is(:hover, :focus-within) > .navbar__link {
+    color: var(--navbar-clr-dropdown-hover-text);
   }
 
   .dropdown__menu a {
@@ -394,8 +401,6 @@ const { title, items = [] } = Astro.props;
 
   @media (min-width: 48rem) {
     .navbar {
-      --menu-clr-bg: var(--clr-surface-base);
-      --menu-clr-fg: var(--clr-surface-inverse);
       justify-content: center;
       padding: 0;
     }
@@ -436,8 +441,8 @@ const { title, items = [] } = Astro.props;
       position: absolute;
       top: calc(100% + var(--sp-1));
       margin-top: 0;
-      background-color: var(--menu-clr-bg);
-      border: 1px solid var(--menu-clr-fg);
+      background-color: var(--navbar-clr-dropdown-bg);
+      border: 1px solid var(--navbar-clr-border);
       border-radius: var(--border-radius-default);
     }
 
@@ -475,8 +480,8 @@ const { title, items = [] } = Astro.props;
 
     .dropdown--desktop:hover > button.navbar__link,
     .dropdown--desktop:focus-within > button.navbar__link {
-      color: var(--clr-text-inverse);
-      background-color: var(--navbar-link-hover-colour);
+      color: var(--navbar-clr-control-hover-text);
+      background-color: var(--navbar-clr-control-hover-bg);
     }
 
     .dropdown--desktop.dropdown--dismissed .dropdown__menu {

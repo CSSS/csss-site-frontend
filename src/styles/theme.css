@@ -175,7 +175,7 @@
     --clr-text-primary: var(--csss-brand-black);
     --clr-text-inverse: var(--csss-brand-cream);
 
-    --clr-surface-hover: var(--csss-brand-selago);
+    --clr-surface-hover: var(--csss-brand-black);
     --clr-accent-blue: var(--csss-brand-blue);
     --clr-accent-blue-fg: var(--csss-brand-cream);
     --clr-accent-pink: var(--csss-brand-pink);
@@ -213,6 +213,11 @@
   .chip--teal:hover {
     color: var(--clr-text-inverse);
     background-color: var(--clr-accent-teal);
+  }
+
+  .chip--black:hover {
+    color: var(--clr-text-inverse);
+    background-color: var(--clr-surface-inverse);
   }
 
   .brand--red {
