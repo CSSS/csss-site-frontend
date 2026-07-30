@@ -11,6 +11,8 @@ type GalleryElement = 'nav' | 'section';
 type Props<Tag extends GalleryElement> = Polymorphic<{ as: Tag }> & {
   items: CardItem[];
   loading?: 'lazy' | 'eager';
+  minWidth?: string;
+  maxWidth?: string;
 };
 
 const {
@@ -18,6 +20,8 @@ const {
   class: className,
   items,
   loading = 'lazy',
+  minWidth = '10rem',
+  maxWidth = '1fr',
   ...props
 } = Astro.props as Props<GalleryElement>;
 ---
@@ -46,7 +50,7 @@ const {
   </ul>
 </Gallery>
 
-<style>
+<style define:vars={{ minWidth, maxWidth }}>
   li {
     list-style: none;
   }
@@ -62,7 +66,11 @@ const {
 
   .card-gallery {
     display: grid;
-    grid-template-columns: repeat(var(--card-grid-columns), minmax(10rem, 1fr));
+    justify-content: center;
+    grid-template-columns: repeat(
+      var(--card-grid-columns),
+      minmax(var(--minWidth), var(--maxWidth))
+    );
     gap: var(--content-gap);
   }
 
