@@ -67,12 +67,7 @@ import { Image } from 'astro:assets';
   // Maximum number of pixels any layer can move from its resting position on either axis.
   const HERO_MOTION_BOUNDARY = 96;
 
-  let cleanupHeroMotion: (() => void) | undefined;
-
   function initializeHeroMotion() {
-    cleanupHeroMotion?.();
-    cleanupHeroMotion = undefined;
-
     const hero = document.querySelector<HTMLElement>('#hero');
     const motionArea = hero?.querySelector<HTMLElement>('.hero__border');
 
@@ -120,20 +115,9 @@ import { Image } from 'astro:assets';
 
     motionArea.addEventListener('pointermove', handlePointerMove);
     motionArea.addEventListener('pointerleave', resetLayers);
-
-    cleanupHeroMotion = () => {
-      motionArea.removeEventListener('pointermove', handlePointerMove);
-      motionArea.removeEventListener('pointerleave', resetLayers);
-      movers.forEach(({ moveX, moveY }) => {
-        moveX.tween.kill();
-        moveY.tween.kill();
-      });
-      gsap.set(layers, { clearProps: 'transform' });
-    };
   }
 
-  document.addEventListener('astro:before-swap', () => cleanupHeroMotion?.());
-  document.addEventListener('astro:page-load', initializeHeroMotion);
+  initializeHeroMotion();
 </script>
 
 <style>

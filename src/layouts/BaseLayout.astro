@@ -4,7 +4,6 @@ import '../styles/fonts.css';
 import '../styles/theme.css';
 
 import type { ImageMetadata } from 'astro';
-import { ClientRouter } from 'astro:transitions';
 import { Font } from 'astro:assets';
 
 import Seo from '@components/Seo.astro';
@@ -34,7 +33,6 @@ const { pageTitle, description, image, noindex = false } = Astro.props;
     <Font cssVariable="--font-body" />
     <Seo title={pageTitle} description={description} image={image} noindex={noindex} />
     <slot name="head" />
-    <ClientRouter fallback="swap" />
   </head>
   <body>
     <slot />
@@ -44,19 +42,12 @@ const { pageTitle, description, image, noindex = false } = Astro.props;
 
       gsap.registerPlugin(ScrollTrigger);
 
-      let revealContext: ReturnType<typeof gsap.context> | undefined;
-      let revealGeneration = 0;
-
       function initializeScrollReveals() {
-        const generation = ++revealGeneration;
-        revealContext?.revert();
-
         if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-          revealContext = undefined;
           return;
         }
 
-        revealContext = gsap.context(context => {
+        gsap.context(context => {
           const elements = gsap.utils.toArray<HTMLElement>('.image-reveal');
           if (elements.length === 0) return;
           const imageReady = new WeakMap<Element, Promise<void>>();
@@ -82,8 +73,6 @@ const { pageTitle, description, image, noindex = false } = Astro.props;
 
               await Promise.all(batch.map(element => imageReady.get(element)));
 
-              if (generation !== revealGeneration) return;
-
               const connectedBatch = batch.filter(element => element.isConnected);
               if (connectedBatch.length === 0) return;
 
@@ -105,12 +94,7 @@ const { pageTitle, description, image, noindex = false } = Astro.props;
         ScrollTrigger.refresh();
       }
 
-      document.addEventListener('astro:before-swap', () => {
-        revealGeneration += 1;
-        revealContext?.revert();
-        revealContext = undefined;
-      });
-      document.addEventListener('astro:page-load', initializeScrollReveals);
+      initializeScrollReveals();
     </script>
   </body>
 </html>
