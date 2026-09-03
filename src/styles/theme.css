@@ -21,13 +21,6 @@
     --sp-9: 6rem;
     --sp-10: 8rem;
 
-    /* Typography tokens */
-    --font-body: 'Geist Mono', monospace;
-    --font-navbar: 'Geist Mono', monospace;
-    --font-title: 'Cal Sans', sans-serif;
-    --font-heading: 'Cal Sans', sans-serif;
-    --font-fancy: 'Workbench', sans-serif;
-
     --font-size-0: 0.75rem;
     --font-size-1: 0.875rem;
     --font-size-2: 1rem;

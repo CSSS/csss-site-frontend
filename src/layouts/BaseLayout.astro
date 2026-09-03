@@ -5,6 +5,7 @@ import '../styles/theme.css';
 
 import type { ImageMetadata } from 'astro';
 import { ClientRouter } from 'astro:transitions';
+import { Font } from 'astro:assets';
 
 import Seo from '@components/Seo.astro';
 
@@ -29,6 +30,8 @@ const { pageTitle, description, image, noindex = false } = Astro.props;
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     <meta name="apple-mobile-web-app-title" content="CSSS" />
     <link rel="manifest" href="/site.webmanifest" />
+    <Font cssVariable="--font-heading" />
+    <Font cssVariable="--font-body" />
     <Seo title={pageTitle} description={description} image={image} noindex={noindex} />
     <slot name="head" />
     <ClientRouter fallback="swap" />

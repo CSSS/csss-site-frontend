@@ -4,7 +4,7 @@
     font-weight: var(--font-weight-regular);
     font-size: var(--font-size-heading-1);
     line-height: var(--line-height-tight);
-    font-family: var(--font-title);
+    font-family: var(--font-heading);
   }
 
   h2,
