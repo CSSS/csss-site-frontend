@@ -11,7 +11,7 @@ interface Props {
 const { title, items = [] } = Astro.props;
 ---
 
-<header class="navbar" transition:persist="site-navbar">
+<header class="navbar">
   <div class="navbar__content">
     <div class="navbar__left">
       <a class="navbar__title chip" href="/">{title}</a>
@@ -128,22 +128,12 @@ const { title, items = [] } = Astro.props;
     toggleButton?.setAttribute('aria-expanded', 'false');
   }
 
-  let isNavigating = false;
-
   const updateScrolledState = () => {
-    if (!isNavigating) {
-      navbarElement.classList.toggle('navbar--scrolled', window.scrollY > 24);
-    }
+    navbarElement.classList.toggle('navbar--scrolled', window.scrollY > 24);
   };
 
   updateScrolledState();
   window.addEventListener('scroll', updateScrolledState, { passive: true });
-  document.addEventListener('astro:before-preparation', () => {
-    isNavigating = true;
-  });
-  document.addEventListener('astro:page-load', () => {
-    isNavigating = false;
-  });
 
   if (toggleButton) {
     toggleButton.addEventListener('click', () => {
@@ -227,6 +217,7 @@ const { title, items = [] } = Astro.props;
     top: 0;
     left: 0;
     right: 0;
+    view-transition-name: site-navbar;
     z-index: var(--navbar-z-index);
     width: 100vw;
     background-color: var(--navbar-clr-bg);

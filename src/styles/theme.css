@@ -1,11 +1,3 @@
-/**
-* reset: removes unwanted browser defaults
-* base: structural component styling
-* theme: everything related to the CSSS branding
-* components: styles that affect package components
-*/
-@layer reset, base, theme;
-
 @layer base {
   :root {
     /* Spacing tokens */
