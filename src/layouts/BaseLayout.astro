@@ -98,3 +98,22 @@ const { pageTitle, description, image, noindex = false } = Astro.props;
     </script>
   </body>
 </html>
+
+<style is:global>
+  @view-transition {
+    navigation: auto;
+  }
+
+  ::view-transition-old(site-navbar),
+  ::view-transition-new(site-navbar) {
+    animation: none;
+    mix-blend-mode: normal;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    ::view-transition-old(root),
+    ::view-transition-new(root) {
+      animation-duration: 0.01ms;
+    }
+  }
+</style>
