@@ -14,10 +14,10 @@ import { Image } from 'astro:assets';
         <Image
           class="hero__circle hero__circle--red"
           src={redCircle}
-          loading="eager"
           alt=""
           data-motion-depth="0.35"
           width={322}
+          priority
         />
         <Image
           class="hero__circle hero__circle--blue"
@@ -26,6 +26,7 @@ import { Image } from 'astro:assets';
           alt=""
           width={179}
           data-motion-depth="1"
+          priority
         />
       </div>
       <div class="hero__circle-group hero__circle-group--pink-teal">
@@ -36,6 +37,7 @@ import { Image } from 'astro:assets';
           alt=""
           data-motion-depth="0.35"
           width={254}
+          priority
         />
         <Image
           class="hero__circle hero__circle--pink"
@@ -44,6 +46,7 @@ import { Image } from 'astro:assets';
           alt=""
           data-motion-depth="1"
           width={137}
+          priority
         />
       </div>
     </div>
@@ -55,6 +58,7 @@ import { Image } from 'astro:assets';
         loading="eager"
         alt="CSSS black logo"
         data-motion-depth="0.35"
+        priority
       />
       <h1 data-motion-depth="0.35">SFU Computing Science Student Society</h1>
     </div>

@@ -36,7 +36,7 @@ const gridWidthVariables = `--min-width: ${minWidth}px; --max-width: ${maxWidth}
       items.map((item, i) => {
         return item.href ? (
           <li>
-            <a href={item.href}>
+            <a href={item.href} aria-label={item.label}>
               <LabelCard class="card image-reveal" label={item.label} colour={getAccentColour(i)}>
                 <Image
                   class="card__img"
