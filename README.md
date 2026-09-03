@@ -51,4 +51,3 @@ Page content goes here.
 
 Adjust the relative layout path for nested pages. Ordinary `.astro` pages can import and render
 the same `SiteLayout.astro` component with `title` and optional `description` props.
-
