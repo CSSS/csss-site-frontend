@@ -102,7 +102,7 @@ const execs: Exec[] = [
           src={exec.img}
           alt={exec.role}
           width={300}
-          priority={index === 0}
+          priority={index < 7}
           quality="max"
         />
         <h3>{exec.name}</h3>

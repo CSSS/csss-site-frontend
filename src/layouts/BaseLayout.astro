@@ -58,6 +58,7 @@ const { pageTitle, description, image, noindex = false } = Astro.props;
 
         revealContext = gsap.context(context => {
           const elements = gsap.utils.toArray<HTMLElement>('.image-reveal');
+          if (elements.length === 0) return;
           const imageReady = new WeakMap<Element, Promise<void>>();
 
           elements.forEach(element => {
