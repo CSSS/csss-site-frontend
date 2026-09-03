@@ -21,30 +21,6 @@
     --sp-9: 6rem;
     --sp-10: 8rem;
 
-    --font-size-0: 0.75rem;
-    --font-size-1: 0.875rem;
-    --font-size-2: 1rem;
-    --font-size-3: 1.125rem;
-    --font-size-4: 1.25rem;
-    --font-size-5: 1.5rem;
-    --font-size-6: 2rem;
-    --font-size-7: 2.5rem;
-    --font-size-8: 3rem;
-
-    --font-size-heading-1: clamp(var(--font-size-5), 6vw, var(--font-size-7));
-    --font-size-heading-2: clamp(var(--font-size-4), 4vw, var(--font-size-6));
-    --font-size-heading-3: clamp(var(--font-size-3), 3vw, var(--font-size-5));
-    --font-size-body: clamp(var(--font-size-2), 2.5vw, var(--font-size-3));
-
-    --line-height-tight: 1.3;
-    --line-height-normal: 1.5;
-    --line-height-relaxed: 1.7;
-
-    --font-weight-regular: 400;
-    --font-weight-medium: 500;
-    --font-weight-semibold: 600;
-    --font-weight-bold: 700;
-
     --padding-inline: 1rem;
     --site-content-width: 70rem;
     --site-breakout-width: 90rem;
@@ -161,7 +137,7 @@
     --csss-brand-grey: hsl(0, 0%, 27%);
 
     /* Color tokens */
-    --clr-surface-base: var(--csss-brand-cream);
+    --clr-surface: var(--csss-brand-cream);
     --clr-surface-inverse: var(--csss-brand-black);
 
     --clr-text-primary: var(--csss-brand-black);
@@ -236,5 +212,12 @@
     border: solid var(--clr-border-default);
     border-width: 1px 4px 4px 1px;
     border-radius: var(--border-radius-default);
+  }
+
+  .photo {
+    border: 0.5rem solid white;
+    box-shadow:
+      0 0.5rem 1rem rgba(0, 0, 0, 0.4),
+      0.5rem 0.5rem 0 rgba(0, 0, 0, 0.5);
   }
 }
