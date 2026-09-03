@@ -19,6 +19,7 @@
   },
   "dependencies": {
     "@astrojs/mdx": "^7.0.2",
+    "@astrojs/sitemap": "^3.7.4",
     "@astrojs/ts-plugin": "^1.10.10",
     "@lucide/astro": "^1.21.0",
     "astro": "^7.0.7",
