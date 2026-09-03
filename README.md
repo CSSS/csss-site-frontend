@@ -6,6 +6,30 @@ The SFU Computing Science Student Society website is a statically generated Astr
 
 - Node 26
 - npm
+- Git LFS
+
+## Git LFS
+
+This repository stores PNG and JPEG assets with [Git LFS](https://git-lfs.com/). Install Git LFS
+before cloning the repository, then enable it for your user account:
+
+```sh
+git lfs install
+```
+
+Git downloads LFS-managed assets automatically during a new clone. If you cloned the repository
+before installing Git LFS, download them explicitly:
+
+```sh
+git lfs pull
+```
+
+Add and commit images through the normal Git workflow; the existing `.gitattributes` file handles
+PNG and JPEG files automatically. To confirm which files are managed by Git LFS, run:
+
+```sh
+git lfs ls-files
+```
 
 ## Development
 
