@@ -2,6 +2,7 @@
 import SiteLayout from '../../layouts/SiteLayout.astro';
 import { getAccentColour } from 'src/constants';
 import Button from '@components/buttons/Button.astro';
+import banner from '@assets/images/events/archives/banner.png';
 
 interface Event {
   label: string;
@@ -33,8 +34,11 @@ const events: Event[] = [
 ];
 ---
 
-<SiteLayout title="Event Archives" description="See all previous events sites we used for events.">
-  <h1>Event Archives</h1>
+<SiteLayout
+  title="Event Archives"
+  description="See all previous events sites we used for events."
+  banner={banner}
+>
   <p>Here's a list of all the past pages the CSSS used to promote their events.</p>
   <br /><br />
   <p>

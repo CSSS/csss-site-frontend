@@ -1,39 +1,43 @@
 ---
 import '../styles/mdx.css';
 
-import { ACCENT_COLOUR_ORDER } from '../constants';
+import type { ImageMetadata } from 'astro';
 import SiteLayout from './SiteLayout.astro';
 
 interface PageMetadata {
   title: string;
   description?: string;
   noindex?: boolean;
+  banner: string;
 }
 
 interface Props extends PageMetadata {
-  frontmatter?: PageMetadata;
+  frontmatter: PageMetadata;
 }
 
-const { frontmatter, title, description, noindex } = Astro.props;
-const pageTitle = frontmatter?.title ?? title;
+const { frontmatter } = Astro.props;
+const pageTitle = frontmatter.title;
 
 if (!pageTitle) {
   throw new Error('MarkdownLayout requires a page title.');
 }
 
-const pageDescription = frontmatter?.description ?? description;
-const pageNoindex = frontmatter?.noindex ?? noindex;
-const badgeHeadingColourStyles = ACCENT_COLOUR_ORDER.map(
-  (colour, index) =>
-    `.mdx-content > .badge-heading:nth-of-type(${ACCENT_COLOUR_ORDER.length}n + ${index + 1}) {
-      color: var(--clr-accent-${colour}-fg);
-      background-color: var(--clr-accent-${colour});
-    }`
-).join('\n');
+const images = import.meta.glob<ImageMetadata>('/src/assets/images/**/*.{avif,jpeg,jpg,png,webp}', {
+  eager: true,
+  import: 'default'
+});
+
+const pageDescription = frontmatter.description;
+const pageNoindex = frontmatter.noindex;
+const pageBanner = images[frontmatter.banner];
 ---
 
-<SiteLayout title={pageTitle} description={pageDescription} noindex={pageNoindex}>
-  <style set:html={badgeHeadingColourStyles}></style>
+<SiteLayout
+  title={pageTitle}
+  description={pageDescription}
+  noindex={pageNoindex}
+  banner={pageBanner}
+>
   <article class="mdx-content content-grid full-width">
     <slot />
   </article>

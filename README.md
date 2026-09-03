@@ -1,12 +1,11 @@
 # CSSS website
 
-The SFU Computing Science Student Society website is a statically generated Astro site. Page
-content is written in MDX, and shared site chrome is implemented with Astro components.
+The SFU Computing Science Student Society website is a statically generated Astro site.
 
 ## Requirements
 
-- Node.js 22.12 or newer; Node.js 24 is recommended
-- npm 9.6.5 or newer
+- Node 26
+- npm
 
 ## Development
 
@@ -42,6 +41,7 @@ frontmatter:
 layout: ../layouts/SiteLayout.astro
 title: Page title
 description: A short page description.
+banner: /path/to/banners
 ---
 
 # Page title
@@ -52,7 +52,3 @@ Page content goes here.
 Adjust the relative layout path for nested pages. Ordinary `.astro` pages can import and render
 the same `SiteLayout.astro` component with `title` and optional `description` props.
 
-## Deployment
-
-When a pull request is merged into `main`, GitHub Actions builds the static site and replaces the
-contents of the remote `build` branch with `dist/`.
