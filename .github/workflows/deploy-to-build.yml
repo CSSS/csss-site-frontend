@@ -21,7 +21,7 @@ jobs:
       - run: npm ci
       - run: npm run build
       - name: Deploy to Droplet
-        uses: burnett01/rsync-deployment@v9
+        uses: burnett01/rsync-deployments@v9
         with:
           switches: -avzr --delete
           path: dist/
