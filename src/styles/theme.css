@@ -56,7 +56,6 @@
     --border-radius-default: 15px;
     --border-radius-lg: 48px;
     --border-default: 1.5px solid var(--clr-surface-inverse);
-    --card-grid-columns: 1;
 
     /* Height of the navbar header element */
     --navbar-height: 5rem;

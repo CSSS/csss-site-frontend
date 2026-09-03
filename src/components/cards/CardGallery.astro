@@ -27,7 +27,7 @@ const {
   ...props
 } = Astro.props as Props<GalleryElement>;
 
-const gridWidthVariables = `--minWidth: ${minWidth}px; --maxWidth: ${maxWidth}px;`;
+const gridWidthVariables = `--min-width: ${minWidth}px; --max-width: ${maxWidth}px;`;
 ---
 
 <Gallery class:list={[className]} {...props}>
@@ -75,6 +75,7 @@ const gridWidthVariables = `--minWidth: ${minWidth}px; --maxWidth: ${maxWidth}px
 
   .card {
     height: 100%;
+    max-width: var(--max-width, 250px);
   }
 
   .card__img {
@@ -84,23 +85,10 @@ const gridWidthVariables = `--minWidth: ${minWidth}px; --maxWidth: ${maxWidth}px
 
   .card-gallery {
     display: grid;
+    padding: 0;
     justify-content: center;
-    grid-template-columns: repeat(
-      var(--card-grid-columns),
-      minmax(var(--minWidth), var(--maxWidth))
-    );
+    grid-template-columns: repeat(auto-fit, minmax(var(--min-width), 1fr));
     gap: var(--content-gap);
-  }
-
-  @media (min-width: 35rem) {
-    .card-gallery {
-      --card-grid-columns: 2;
-    }
-  }
-
-  @media (min-width: 70rem) {
-    .card-gallery {
-      --card-grid-columns: 4;
-    }
+    justify-items: center;
   }
 </style>
