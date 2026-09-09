@@ -5,61 +5,79 @@ import techFair from '@assets/images/committees/tech-fair.jpg';
 import w3 from '@assets/images/committees/w3.jpg';
 import banner from '@assets/images/committees/banner.png';
 import type { ImageMetadata } from 'astro';
+import { OFFICER_INFO, type OfficerRole } from 'src/officers';
+import DiscordButton from '@components/buttons/DiscordButton.astro';
+import EmailButton from '@components/buttons/EmailButton.astro';
+import { getAccentColour } from 'src/constants';
 
 import CommitteeSection from '@components/committees/CommitteeSection.astro';
 import SiteLayout from '../layouts/SiteLayout.astro';
 
+type Action = 'discord' | OfficerRole;
+
 interface Committee {
   id: string;
   title: string;
-  tagline: string;
-  description: string;
+  tagline?: string;
+  description: string[];
   img: ImageMetadata;
+  actions: Action[];
 }
 
 const committees: Committee[] = [
   {
     id: 'events',
     title: 'Events',
-    tagline: 'Spark joy',
-    description:
-      'Join our three Event Directors on the CSSS Discord to discuss, plan, and run our events.',
-    img: fasFormal
+    description: [
+      'Have an idea for an event and want support? Join the Events Committee and work with other motivated students to bring your event to life.',
+      'Bi-weekly meetings are chaired by the Director of Events with assistance from the Director of Educational Events, and Assistant Director of Events. Join our Discord to attend!'
+    ],
+    img: fasFormal,
+    actions: ['discord', 'doe']
   },
   {
     id: 'w3',
     title: 'W3',
     tagline: 'Build and deploy',
-    description:
-      'The Webmaster and Sys Admin co-chair this committee to develop projects for the CSSS. Contact them through Discord or email to join.',
-    img: w3
+    description: [
+      'The Webmaster and Sys Admin co-chair this committee to develop projects for the CSSS.',
+      'Contact them through Discord or email to join.'
+    ],
+    img: w3,
+    actions: ['sysadmin', 'webmaster']
   },
   {
     id: 'frosh',
     title: 'FROSH',
     tagline: 'Guide our future',
-    description:
+    description: [
       'This once-a-year committee is responsible for FROSH week, which welcomes new students to the CSSS community.',
-    img: frosh
+      'Join our Discord or email the FROSH committee for more information.'
+    ],
+    img: frosh,
+    actions: ['discord', 'frosh']
   },
   {
     id: 'tech-fair',
     title: 'Tech Fair',
     tagline: 'Make connections',
-    description:
+    description: [
       'This committee plans our annual career fair, which connects students with local employers.',
-    img: techFair
+      'Join our Discord or email the Tech Fair committee for more information.'
+    ],
+    img: techFair,
+    actions: ['discord', 'techfair']
   }
 ];
 ---
 
 <SiteLayout title="Committees" description="Join a committee to meet new people!" banner={banner}>
-  <article class="content-grid full-width">
-    <p>
-      Want to be more involved in the CSSS community? Join a committee! Committees are extensions of
-      the CSSS that focuses on a specific area of interest. They are a great way to meet new people,
-      gain experience, and contribute to the CSSS in a way that aligns with your interests!
-    </p>
+  <p>
+    Get involved by joining one of our committees! Committees are teams that focus on a specific
+    area of interest. They are a great way to meet new people, gain experience, and contribute to
+    the CSSS.
+  </p>
+  <article>
     {
       committees.map((c, i) => {
         const name = `${c.title} Committee`;
@@ -70,12 +88,28 @@ const committees: Committee[] = [
             img={c.img}
             title={c.title}
             alt={name}
+            content={c.description}
             isImgRight={isImgRight}
           >
-            <strong>{c.tagline}</strong> with the {name}.
-            <br />
-            <br />
-            {c.description}
+            {c.tagline && (
+              <div class="tagline">
+                <strong>{c.tagline}</strong> with the {name}.
+              </div>
+            )}
+            <footer slot="footer">
+              {c.actions.map((a, i) => {
+                if (a === 'discord') {
+                  return <DiscordButton tone={getAccentColour(i)} />;
+                } else {
+                  const officer = OFFICER_INFO[a];
+                  return (
+                    <EmailButton tone={getAccentColour(i)} address={officer.email ?? ''}>
+                      {officer.shortLabel}
+                    </EmailButton>
+                  );
+                }
+              })}
+            </footer>
           </CommitteeSection>
         );
       })
@@ -85,6 +119,27 @@ const committees: Committee[] = [
 
 <style>
   article {
-    row-gap: var(--sp-8);
+    display: grid;
+    grid-template-rows: auto;
+    row-gap: var(--section-gap);
+    margin-block: var(--section-gap);
+  }
+
+  .content {
+    white-space: pre-wrap;
+  }
+
+  .tagline + p {
+    margin-top: var(--sp-4);
+  }
+
+  .tagline {
+    margin-top: var(--sp-4);
+  }
+
+  footer {
+    display: flex;
+    justify-content: center;
+    gap: clamp(0.5rem, 10%, 1rem);
   }
 </style>
