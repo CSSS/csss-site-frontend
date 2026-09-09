@@ -6,7 +6,7 @@ import compress from 'astro-compress';
 import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
-  site: 'https://new.sfucsss.org',
+  site: 'https://sfucsss.org',
   output: 'static',
   fonts: [
     {
