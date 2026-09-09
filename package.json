@@ -40,5 +40,10 @@
     "prettier-plugin-organize-imports": "^4.3.0",
     "typescript": "^5.9.3",
     "typescript-eslint": "^8.58.2"
+  },
+  "overrides": {
+    "deepmerge-ts": "8.0.2",
+    "sharp": "0.35.4",
+    "svgo": "4.1.0"
   }
 }
