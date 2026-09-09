@@ -13,20 +13,10 @@ import treasurer from '@assets/images/execs/treasurer.jpg';
 import vp from '@assets/images/execs/vp.jpg';
 import { type ImageMetadata } from 'astro';
 import { Image } from 'astro:assets';
+import type { ExecutiveRole } from 'src/officers';
 
 interface Exec {
-  role:
-    | 'president'
-    | 'vp'
-    | 'treasurer'
-    | 'secretary'
-    | 'doe'
-    | 'doee'
-    | 'adoe'
-    | 'doc'
-    | 'dor'
-    | 'sfssrep'
-    | 'eal';
+  role: ExecutiveRole;
   name: string;
   label: string;
   img: ImageMetadata;
@@ -73,7 +63,7 @@ const execs: Exec[] = [
     img: adoe
   },
   {
-    role: 'sfssrep',
+    role: 'councilrep',
     name: 'Melody Oh',
     label: 'SFSS Council Representative',
     img: sfssrep

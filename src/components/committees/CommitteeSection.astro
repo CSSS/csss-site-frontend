@@ -7,13 +7,14 @@ interface Props {
   img: ImageMetadata;
   title: string;
   alt: string;
+  content: string[];
   isImgRight?: boolean;
 }
 
-const { id, img, title, alt, isImgRight = false } = Astro.props;
+const { id, img, title, alt, content, isImgRight = false } = Astro.props;
 ---
 
-<section id={id} class:list={{ 'section--right': isImgRight }}>
+<section class="section" id={id} class:list={{ 'section--right': isImgRight }}>
   <Image
     class="section__img image-reveal photo"
     src={img}
@@ -24,14 +25,16 @@ const { id, img, title, alt, isImgRight = false } = Astro.props;
   />
   <section class="section__content">
     <h2>{title}</h2>
-    <p><slot /></p>
+    <div class="content">
+      {content.map(c => <p>{c}</p>)}
+    </div>
     <slot name="footer" />
   </section>
 </section>
 
 <style>
-  h2 {
-    margin-block: var(--sp-4);
+  .section {
+    display: grid;
   }
 
   .section__title {
@@ -43,8 +46,13 @@ const { id, img, title, alt, isImgRight = false } = Astro.props;
   }
 
   .section__content {
-    grid-area: content;
-    padding-inline: var(--sp-4);
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    row-gap: 1rem;
+  }
+
+  p + p {
+    margin-top: var(--content-gap);
   }
 
   @media (min-width: 900px) {
@@ -58,10 +66,15 @@ const { id, img, title, alt, isImgRight = false } = Astro.props;
       top: 0;
       min-width: 10rem;
       object-fit: cover;
+      align-self: center;
+    }
+
+    .section__content {
+      padding-inline: var(--sp-4);
     }
 
     .section__title {
-      margin: 0 auto var(--sp-4);
+      padding: 0 auto var(--sp-4);
     }
 
     section[id] {
