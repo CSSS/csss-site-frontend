@@ -25,7 +25,7 @@ jobs:
         with:
           switches: -avzr --delete
           path: dist/
-          remote_path: /var/www/new
+          remote_path: ${{ secrests.MAIN_DEPLOY_PATH }}
           remote_host: ${{ secrets.DROPLET_HOST }}
           remote_user: ${{ secrets.DROPLET_USER }}
           remote_key: ${{ secrets.MAIN_KEY }}
