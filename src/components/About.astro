@@ -2,7 +2,7 @@
 import { Image } from 'astro:assets';
 import services from '@assets/images/services.png';
 import concernedStudent from '@assets/images/concerned-student.png';
-import fallHacks from '@assets/images/events/fall-hacks.png';
+import events from '@assets/images/home/events.jpg';
 import committees from '@assets/images/home/committees.jpg';
 import commonRoom from '@assets/images/home/common-room.png';
 import officers from '@assets/images/home/officers.jpg';
@@ -14,7 +14,7 @@ import type { CardItem } from 'src/types';
 const navCards: CardItem[] = [
   {
     label: 'Events',
-    img: fallHacks,
+    img: events,
     href: '/events'
   },
   {
@@ -41,12 +41,13 @@ const navCards: CardItem[] = [
       <span class="heading__top">THE</span>
       <span class="heading__bottom">CSSS</span>
     </h2>
-    <section>
+    <section class="welcome">
       <h3>Welcome!</h3>
       <p>
-        The CSSS represents thousands of students at Simon Fraser University. We are a student-run
-        organization, providing a variety of services and hosting events to enhance the student
-        experience.
+        Established in the 1970s, the Computing Science Student Society (CSSS) represents over 3,000
+        undergraduate students at Simon Fraser University. We are a student-led organization, with
+        the mission of fostering community, supporting academic growth, and providing assistance
+        with professional development.
       </p>
     </section>
   </section>
@@ -86,12 +87,20 @@ const navCards: CardItem[] = [
     />
     <div class="services__text">
       <h3>Representing you!</h3>
-      <p>
-        The Computer Science Student Society is YOUR community to find people who can be your
-        academic support system. We offer past exams from our Exam Bank, class channels in our
-        Discord Server, and a network of alumni to help beyond your degree. Join our Discord server
-        to access our services today!
-      </p>
+      <p>As a student society, we offer various avenues of support to the student body.</p>
+      <ul class="service__list">
+        <li>
+          We offer scholarships and help fund trips to events like hackathons and conferences.
+        </li>
+        <li>
+          We regularly host study cafes, maintain a Discord server with channels dedicated to
+          classes, and offer an Exam Bank full of tests from previous years.
+        </li>
+        <li>
+          We have a large network of CSSS alumni and company contacts which we use to hold
+          networking events, resume reviews, and company tours.
+        </li>
+      </ul>
     </div>
   </section>
   <section class="breakout">
@@ -111,6 +120,12 @@ const navCards: CardItem[] = [
     line-height: var(--line-height-relaxed);
   }
 
+  .welcome {
+    p + p {
+      margin-top: var(--sp-4);
+    }
+  }
+
   .heading {
     color: var(--clr-accent-red);
     font-weight: var(--font-weight-normal);
@@ -125,6 +140,18 @@ const navCards: CardItem[] = [
 
     > .heading__bottom {
       font-size: 7.5rem;
+    }
+  }
+
+  .service__list {
+    margin-top: var(--sp-2);
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-2);
+
+    li {
+      list-style: disc;
+      margin-left: var(--sp-5);
     }
   }
 
