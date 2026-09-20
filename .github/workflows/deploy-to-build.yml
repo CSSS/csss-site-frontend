@@ -23,7 +23,7 @@ jobs:
       - name: Deploy to Droplet
         uses: burnett01/rsync-deployments@v9
         with:
-          switches: -avzr --delete
+          switches: -rltvz --delete
           path: dist/
           remote_path: ${{ secrets.MAIN_DEPLOY_PATH }}
           remote_host: ${{ secrets.DROPLET_HOST }}
