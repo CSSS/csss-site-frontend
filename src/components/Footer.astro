@@ -20,36 +20,42 @@ const currentYear = new Date().getFullYear();
 
 <footer>
   <div class="footer__container">
-    <a href="/"><h2>{config.name}</h2></a>
+    <a href="/">
+      <h2>{config.name}</h2>
+    </a>
     <nav>
-      {
-        navLinks.map(nav => (
-          <div>
-            <a href={nav.href}>{nav.label}</a>
-          </div>
-        ))
-      }
+      {navLinks.map(nav => (
+        <div>
+          <a href={nav.href}>{nav.label}</a>
+        </div>
+      ))}
     </nav>
     <p>Follow the CSSS to join our other events!</p>
     <ul class="socials">
       <li>
-        <a href={socialLinks.website} target="_blank" rel="noopener noreferrer"><CsssIcon /></a>
+        <a href={socialLinks.website} target="_blank" rel="noopener noreferrer">
+          <CsssIcon />
+        </a>
       </li>
       <li>
-        <a href={socialLinks.discord} target="_blank" rel="noopener noreferrer"><DiscordIcon /></a>
+        <a href={socialLinks.discord} target="_blank" rel="noopener noreferrer">
+          <DiscordIcon />
+        </a>
       </li>
       <li>
-        <a href={socialLinks.instagram} target="_blank" rel="noopener noreferrer"
-          ><InstagramIcon /></a
-        >
+        <a href={socialLinks.instagram} target="_blank" rel="noopener noreferrer">
+          <InstagramIcon />
+        </a>
       </li>
       <li>
-        <a href={socialLinks.linkedin} target="_blank" rel="noopener noreferrer"><LinkedInIcon /></a
-        >
+        <a href={socialLinks.linkedin} target="_blank" rel="noopener noreferrer">
+          <LinkedInIcon />
+        </a>
       </li>
       <li>
-        <a href={socialLinks.facebook} target="_blank" rel="noopener noreferrer"><FacebookIcon /></a
-        >
+        <a href={socialLinks.facebook} target="_blank" rel="noopener noreferrer">
+          <FacebookIcon />
+        </a>
       </li>
     </ul>
     <p class="copyright">

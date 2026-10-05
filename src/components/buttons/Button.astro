@@ -32,46 +32,44 @@ const isLink = typeof href === 'string' && href.length > 0;
 const computedRel = target === '_blank' ? (rel ?? 'noopener noreferrer') : rel;
 ---
 
-{
-  isLink ? (
-    <a
-      class:list={[
-        'button',
-        `button--${variant}`,
-        `button--${tone}`,
-        `button--${size}`,
-        fullWidth && 'button--full',
-        disabled && 'button--disabled',
-        className
-      ]}
-      href={disabled ? undefined : href}
-      target={target}
-      rel={computedRel}
-      aria-disabled={disabled ? 'true' : undefined}
-      tabindex={disabled ? -1 : undefined}
-      {...rest}
-    >
-      <slot />
-    </a>
-  ) : (
-    <button
-      class:list={[
-        'button',
-        `button--${variant}`,
-        `button--${tone}`,
-        `button--${size}`,
-        fullWidth && 'button--full',
-        disabled && 'button--disabled',
-        className
-      ]}
-      type={type}
-      disabled={disabled}
-      {...rest}
-    >
-      <slot />
-    </button>
-  )
-}
+{isLink ? (
+  <a
+    class:list={[
+      'button',
+      `button--${variant}`,
+      `button--${tone}`,
+      `button--${size}`,
+      fullWidth && 'button--full',
+      disabled && 'button--disabled',
+      className
+    ]}
+    href={disabled ? undefined : href}
+    target={target}
+    rel={computedRel}
+    aria-disabled={disabled ? 'true' : undefined}
+    tabindex={disabled ? -1 : undefined}
+    {...rest}
+  >
+    <slot />
+  </a>
+) : (
+  <button
+    class:list={[
+      'button',
+      `button--${variant}`,
+      `button--${tone}`,
+      `button--${size}`,
+      fullWidth && 'button--full',
+      disabled && 'button--disabled',
+      className
+    ]}
+    type={type}
+    disabled={disabled}
+    {...rest}
+  >
+    <slot />
+  </button>
+)}
 
 <style>
   .button {

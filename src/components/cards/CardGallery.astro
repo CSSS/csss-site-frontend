@@ -1,10 +1,10 @@
 ---
-import { Image } from 'astro:assets';
 import type { Polymorphic } from 'astro/types';
+import { Image } from 'astro:assets';
 import type { CardItem } from 'src/types';
 
-import LabelCard from './LabelCard.astro';
 import { getAccentColour } from 'src/constants';
+import LabelCard from './LabelCard.astro';
 
 type GalleryElement = 'nav' | 'section';
 
@@ -32,25 +32,10 @@ const gridWidthVariables = `--min-width: ${minWidth}px; --max-width: ${maxWidth}
 
 <Gallery class:list={[className]} {...props}>
   <ul class="card-gallery" style={gridWidthVariables}>
-    {
-      items.map((item, i) => {
-        return item.href ? (
-          <li>
-            <a href={item.href} aria-label={item.label}>
-              <LabelCard class="card image-reveal" label={item.label} colour={getAccentColour(i)}>
-                <Image
-                  class="card__img"
-                  src={item.img}
-                  alt={item.label}
-                  loading={loading}
-                  quality={quality}
-                  width={maxWidth}
-                />
-              </LabelCard>
-            </a>
-          </li>
-        ) : (
-          <li>
+    {items.map((item, i) => {
+      return item.href ? (
+        <li>
+          <a href={item.href} aria-label={item.label}>
             <LabelCard class="card image-reveal" label={item.label} colour={getAccentColour(i)}>
               <Image
                 class="card__img"
@@ -61,10 +46,23 @@ const gridWidthVariables = `--min-width: ${minWidth}px; --max-width: ${maxWidth}
                 width={maxWidth}
               />
             </LabelCard>
-          </li>
-        );
-      })
-    }
+          </a>
+        </li>
+      ) : (
+        <li>
+          <LabelCard class="card image-reveal" label={item.label} colour={getAccentColour(i)}>
+            <Image
+              class="card__img"
+              src={item.img}
+              alt={item.label}
+              loading={loading}
+              quality={quality}
+              width={maxWidth}
+            />
+          </LabelCard>
+        </li>
+      );
+    })}
   </ul>
 </Gallery>
 

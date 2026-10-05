@@ -1,11 +1,11 @@
 ---
 import Footer from '@components/Footer.astro';
 import Navbar from '@components/Navbar.astro';
+import type { ImageMetadata } from 'astro';
+import { Image } from 'astro:assets';
 import { footerNavItems, navItems, siteConfig } from '../config/site';
 import CsssIcon from '../icons/CsssIcon.astro';
 import BaseLayout from './BaseLayout.astro';
-import type { ImageMetadata } from 'astro';
-import { Image } from 'astro:assets';
 
 interface PageMetadata {
   title: string;
@@ -34,20 +34,18 @@ const pageNoindex = frontmatter?.noindex ?? noindex ?? false;
     <CsssIcon slot="icon" size={36} />
   </Navbar>
   <main class="page-content content-grid">
-    {
-      banner && (
-        <hgroup class="banner breakout">
-          <Image
-            class="banner__img"
-            src={banner}
-            alt={`${pageTitle} banner`}
-            quality="high"
-            priority
-          />
-          <h1 class="banner__title">{pageTitle}</h1>
-        </hgroup>
-      )
-    }
+    {banner && (
+      <hgroup class="banner breakout">
+        <Image
+          class="banner__img"
+          src={banner}
+          alt={`${pageTitle} banner`}
+          quality="high"
+          priority
+        />
+        <h1 class="banner__title">{pageTitle}</h1>
+      </hgroup>
+    )}
     <slot />
   </main>
   <Footer config={siteConfig} navItems={footerNavItems} />

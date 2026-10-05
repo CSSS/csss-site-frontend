@@ -14,7 +14,9 @@ const { title, items = [] } = Astro.props;
 <header class="navbar">
   <div class="navbar__content">
     <div class="navbar__left">
-      <a class="navbar__title chip" href="/">{title}</a>
+      <a class="navbar__title chip" href="/">
+        {title}
+      </a>
     </div>
     <nav class="navbar__nav" id="navbar-menu">
       <div class="navbar__menu-header">
@@ -23,76 +25,74 @@ const { title, items = [] } = Astro.props;
         </button>
       </div>
       <ul class="navbar__list">
-        {
-          items.map(item => {
-            return (
-              <li>
-                {'href' in item ? (
-                  <a
-                    class="navbar__link"
-                    href={item.href}
-                    target={item.external ? '_blank' : undefined}
-                    rel={item.external ? 'noopener noreferrer' : undefined}
-                  >
-                    {item.label}
-                    {item.external && <ExternalLink size={14} aria-hidden="true" />}
-                  </a>
-                ) : (
-                  <Fragment>
-                    <div class="dropdown dropdown--mobile">
-                      <button class="navbar__link" type="button" aria-expanded="false">
-                        {item.label}
-                      </button>
-                      <ul class="dropdown__menu">
-                        {item.children.map(child => (
-                          <li>
-                            {'href' in child ? (
-                              <a
-                                class="navbar__link"
-                                href={child.href}
-                                target={child.external ? '_blank' : undefined}
-                                rel={child.external ? 'noopener noreferrer' : undefined}
-                              >
-                                {child.label}
-                                {child.external && <ExternalLink size={14} aria-hidden="true" />}
-                              </a>
-                            ) : (
-                              <span class="navbar__link">{child.label}</span>
-                            )}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                    <div class="dropdown dropdown--desktop">
-                      <button class:list={['navbar__link', 'chip']} type="button">
-                        {item.label}
-                      </button>
-                      <ul class="dropdown__menu">
-                        {item.children.map(child => (
-                          <li>
-                            {'href' in child ? (
-                              <a
-                                class="navbar__link"
-                                href={child.href}
-                                target={child.external ? '_blank' : undefined}
-                                rel={child.external ? 'noopener noreferrer' : undefined}
-                              >
-                                {child.label}
-                                {child.external && <ExternalLink size={14} aria-hidden="true" />}
-                              </a>
-                            ) : (
-                              <span class="navbar__link">{child.label}</span>
-                            )}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  </Fragment>
-                )}
-              </li>
-            );
-          })
-        }
+        {items.map(item => {
+          return (
+            <li>
+              {'href' in item ? (
+                <a
+                  class="navbar__link"
+                  href={item.href}
+                  target={item.external ? '_blank' : undefined}
+                  rel={item.external ? 'noopener noreferrer' : undefined}
+                >
+                  {item.label}
+                  {item.external && <ExternalLink size={14} aria-hidden="true" />}
+                </a>
+              ) : (
+                <Fragment>
+                  <div class="dropdown dropdown--mobile">
+                    <button class="navbar__link" type="button" aria-expanded="false">
+                      {item.label}
+                    </button>
+                    <ul class="dropdown__menu">
+                      {item.children.map(child => (
+                        <li>
+                          {'href' in child ? (
+                            <a
+                              class="navbar__link"
+                              href={child.href}
+                              target={child.external ? '_blank' : undefined}
+                              rel={child.external ? 'noopener noreferrer' : undefined}
+                            >
+                              {child.label}
+                              {child.external && <ExternalLink size={14} aria-hidden="true" />}
+                            </a>
+                          ) : (
+                            <span class="navbar__link">{child.label}</span>
+                          )}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                  <div class="dropdown dropdown--desktop">
+                    <button class:list={['navbar__link', 'chip']} type="button">
+                      {item.label}
+                    </button>
+                    <ul class="dropdown__menu">
+                      {item.children.map(child => (
+                        <li>
+                          {'href' in child ? (
+                            <a
+                              class="navbar__link"
+                              href={child.href}
+                              target={child.external ? '_blank' : undefined}
+                              rel={child.external ? 'noopener noreferrer' : undefined}
+                            >
+                              {child.label}
+                              {child.external && <ExternalLink size={14} aria-hidden="true" />}
+                            </a>
+                          ) : (
+                            <span class="navbar__link">{child.label}</span>
+                          )}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </Fragment>
+              )}
+            </li>
+          );
+        })}
       </ul>
     </nav>
     <button

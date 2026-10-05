@@ -1,11 +1,11 @@
 ---
 import adoe from '@assets/images/execs/adoe.jpg';
 import doc from '@assets/images/execs/doc.jpg';
-import eal1 from '@assets/images/execs/eal1.jpg';
-import eal2 from '@assets/images/execs/eal2.jpg';
 import doe from '@assets/images/execs/doe.jpg';
 import doee from '@assets/images/execs/doee.jpg';
 import dor from '@assets/images/execs/dor.jpg';
+import eal1 from '@assets/images/execs/eal1.jpg';
+import eal2 from '@assets/images/execs/eal2.jpg';
 import president from '@assets/images/execs/president.jpg';
 import secretary from '@assets/images/execs/secretary.jpg';
 import sfssrep from '@assets/images/execs/sfssrep.jpg';
@@ -84,23 +84,21 @@ const execs: Exec[] = [
 ---
 
 <section>
-  {
-    execs.map((exec, index) => (
-      <div class="card">
-        <Image
-          class="image-reveal"
-          src={exec.img}
-          alt={exec.role}
-          width={300}
-          height={400}
-          priority={index < 7}
-          quality="max"
-        />
-        <h3>{exec.name}</h3>
-        <p>{exec.label}</p>
-      </div>
-    ))
-  }
+  {execs.map((exec, index) => (
+    <div class="card">
+      <Image
+        class="image-reveal"
+        src={exec.img}
+        alt={exec.role}
+        width={300}
+        height={400}
+        priority={index < 7}
+        quality="max"
+      />
+      <h3>{exec.name}</h3>
+      <p>{exec.label}</p>
+    </div>
+  ))}
 </section>
 
 <style>

@@ -13,5 +13,6 @@ const { address, tone = 'blue', class: className, ...rest } = Astro.props;
 ---
 
 <Button class:list={[className]} target="_blank" href={`mailto:${address}`} tone={tone} {...rest}>
-  <Mail /><slot>Email</slot>
+  <Mail />
+  <slot>Email</slot>
 </Button>

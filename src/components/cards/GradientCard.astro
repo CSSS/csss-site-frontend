@@ -24,13 +24,11 @@ const hasFooter = Astro.slots.has('footer');
     {title && <h2 class="card__title">{title}</h2>}
     <slot />
   </div>
-  {
-    hasFooter && (
-      <div class="card__footer">
-        <slot name="footer" />
-      </div>
-    )
-  }
+  {hasFooter && (
+    <div class="card__footer">
+      <slot name="footer" />
+    </div>
+  )}
 </Card>
 
 <style>
