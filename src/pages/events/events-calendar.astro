@@ -1,4 +1,5 @@
 ---
+import { getAccentColour } from 'src/constants';
 import banner from '@assets/images/events/archives/banner.png';
 import SiteLayout from '../../layouts/SiteLayout.astro';
 ---
@@ -35,9 +36,9 @@ import SiteLayout from '../../layouts/SiteLayout.astro';
 	calendar.render();
 </script>
 
-<!-- TODO: override the colour palette here somehow -->
 <style>
 	#calendar {
+	  --fc-breezy-primary: var(--clr-accent-red);
 	}
 	
 </style>
