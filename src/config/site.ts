@@ -20,6 +20,7 @@ export const navItems: NavItem[] = [
     label: 'EVENTS',
     children: [
       { label: 'ABOUT', href: '/events' },
+      { label: 'EVENTS CALENDAR', href: '/events/events-calendar' },
       { label: 'ARCHIVES', href: '/events/archives' },
       { label: 'FROSH WEEK', href: 'https://frosh.sfucsss.org', external: true },
       { label: 'FALL HACKS', href: 'https://fall-hacks.sfucsss.org', external: true },

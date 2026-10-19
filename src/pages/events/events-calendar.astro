@@ -1,0 +1,42 @@
+---
+import banner from '@assets/images/events/archives/banner.png';
+import SiteLayout from '../../layouts/SiteLayout.astro';
+---
+
+<SiteLayout
+  title="Events Calendar"
+  description="See all upcoming events using the calendar."
+  banner={banner}
+>
+  <div id="calendar"></div>
+</SiteLayout>
+
+<script>
+  import { Calendar } from 'fullcalendar';
+  import dayGridPlugin from 'fullcalendar/daygrid';
+  import listPlugin from 'fullcalendar/list';
+  import themePlugin from 'fullcalendar/themes/breezy';
+  import timeGridPlugin from 'fullcalendar/timegrid';
+
+  // stylesheets
+  import 'fullcalendar/skeleton.css';
+  import 'fullcalendar/themes/breezy/palettes/rose.css'; // see style below for 1 override
+  import 'fullcalendar/themes/breezy/theme.css';
+  const calendarEl = document.getElementById('calendar');
+  const calendar = new Calendar(calendarEl, {
+    plugins: [themePlugin, dayGridPlugin, timeGridPlugin, listPlugin],
+    initialView: 'dayGridMonth',
+    headerToolbar: {
+      left: 'prev,next today',
+      center: 'title',
+      right: 'dayGridMonth,timeGridWeek,listWeek'
+    }
+  });
+  calendar.render();
+</script>
+
+<style>
+  #calendar {
+    --fc-breezy-primary: var(--clr-accent-red);
+  }
+</style>
