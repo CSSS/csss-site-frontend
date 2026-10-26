@@ -22,6 +22,12 @@ import SiteLayout from '../../layouts/SiteLayout.astro';
   import 'fullcalendar/skeleton.css';
   import 'fullcalendar/themes/breezy/palettes/rose.css'; // see style below for 1 override
   import 'fullcalendar/themes/breezy/theme.css';
+  
+  const API_URL = 'https://sfucsss.org';
+  const EVENTS_URL = import.meta.env.DEV
+  ? '/mock-events.json'       // development
+  : `${API_URL}/api/event`;   // production
+
   const calendarEl = document.getElementById('calendar');
   const calendar = new Calendar(calendarEl, {
     plugins: [themePlugin, dayGridPlugin, timeGridPlugin, listPlugin],
@@ -30,6 +36,49 @@ import SiteLayout from '../../layouts/SiteLayout.astro';
       left: 'prev,next today',
       center: 'title',
       right: 'dayGridMonth,timeGridWeek,listWeek'
+    },
+  events: async (info, successCallback, failureCallback) => {
+    try {
+      const url = import.meta.env.DEV
+        ? EVENTS_URL
+        : `${EVENTS_URL}?${new URLSearchParams({
+            start: info.startStr,
+            end: info.endStr,
+          })}`;
+        const res = await fetch(url);
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        const data = await res.json();
+
+        successCallback(
+          data
+            .map((e) => ({
+              id: String(e.eid),
+              title: e.name,
+              start: e.start_datetime,
+              end: e.end_datetime,
+              url: e.url ?? undefined,
+              extendedProps: {
+                description: e.description,
+                location: e.location,
+                organizer: e.organizer,
+                status: e.status,
+                imageUrl: e.image_url
+                ? new URL(e.image_url, API_URL).href
+                : '/web-app-manifest-512x512.png',
+                groupId: e.group_id
+              }
+            }))
+        );
+      } catch (err) {
+        console.error('Failed to load events', err);
+        failureCallback(err);
+      }
+    },
+    eventClick: (info) => {
+      if (info.event.url) {
+        info.jsEvent.preventDefault();
+        window.open(info.event.url, '_blank', 'noopener');
+      }
     }
   });
   calendar.render();
