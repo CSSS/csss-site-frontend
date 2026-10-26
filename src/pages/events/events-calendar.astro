@@ -56,7 +56,7 @@ import SiteLayout from '../../layouts/SiteLayout.astro';
               title: e.name,
               start: e.start_datetime,
               end: e.end_datetime,
-              url: e.url ?? undefined,
+              url: e.url ?? API_URL + '/events/events-calendar', // Not sure what to do if url null
               extendedProps: {
                 description: e.description,
                 location: e.location,
@@ -64,7 +64,7 @@ import SiteLayout from '../../layouts/SiteLayout.astro';
                 status: e.status,
                 imageUrl: e.image_url
                 ? new URL(e.image_url, API_URL).href
-                : '/web-app-manifest-512x512.png',
+                : '/web-app-manifest-512x512.png', // I just chose this as a placeholder
                 groupId: e.group_id
               }
             }))
@@ -84,7 +84,7 @@ import SiteLayout from '../../layouts/SiteLayout.astro';
   calendar.render();
 </script>
 
-<style>
+<style is:global>
   #calendar {
     --fc-breezy-primary: var(--clr-accent-red);
   }
