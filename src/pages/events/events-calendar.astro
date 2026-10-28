@@ -1,0 +1,108 @@
+---
+import banner from '@assets/images/events/archives/banner.png';
+import SiteLayout from '../../layouts/SiteLayout.astro';
+---
+
+<SiteLayout
+  title="Events Calendar"
+  description="See all upcoming events using the calendar."
+  banner={banner}
+>
+  <div id="calendar"></div>
+</SiteLayout>
+
+<script>
+  import { Calendar } from 'fullcalendar';
+  import dayGridPlugin from 'fullcalendar/daygrid';
+  import listPlugin from 'fullcalendar/list';
+  import themePlugin from 'fullcalendar/themes/breezy';
+  import timeGridPlugin from 'fullcalendar/timegrid';
+
+  // stylesheets
+  import 'fullcalendar/skeleton.css';
+  import 'fullcalendar/themes/breezy/palettes/rose.css'; // see style below for 1 override
+  import 'fullcalendar/themes/breezy/theme.css';
+
+  interface ApiEvent {
+    name: string;
+    description: string;
+    start_datetime: string;
+    end_datetime: string;
+    location: string | null;
+    organizer: string | null;
+    status: string;
+    url: string | null;
+    image_id: number | null;
+    eid: number;
+    group_id: number | null;
+    image_url: string | null;
+  }
+
+  const API_URL = 'https://sfucsss.org';
+  const EVENTS_URL = import.meta.env.DEV
+    ? '/mock-events.json' // development
+    : `${API_URL}/api/event`; // production
+
+  const calendarEl = document.getElementById('calendar');
+  if (!calendarEl) {
+    throw new Error('Calendar element (#calendar) not found');
+  }
+  const calendar = new Calendar(calendarEl, {
+    plugins: [themePlugin, dayGridPlugin, timeGridPlugin, listPlugin],
+    initialView: 'dayGridMonth',
+    headerToolbar: {
+      left: 'prev,next today',
+      center: 'title',
+      right: 'dayGridMonth,timeGridWeek,listWeek'
+    },
+    events: async (info, successCallback, failureCallback) => {
+      try {
+        const url = import.meta.env.DEV
+          ? EVENTS_URL
+          : `${EVENTS_URL}?${new URLSearchParams({
+              start: info.startStr,
+              end: info.endStr
+            })}`;
+        const res = await fetch(url);
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        const data = (await res.json()) as ApiEvent;
+
+        successCallback(
+          data.map(e => ({
+            id: String(e.eid),
+            title: e.name,
+            start: e.start_datetime,
+            end: e.end_datetime,
+            url: e.url ?? '',
+            extendedProps: {
+              description: e.description,
+              location: e.location,
+              organizer: e.organizer,
+              status: e.status,
+              imageUrl: e.image_url
+                ? new URL(e.image_url, API_URL).href
+                : '/web-app-manifest-512x512.png', // Placeholder
+              groupId: e.group_id
+            }
+          }))
+        );
+      } catch (err) {
+        console.error('Failed to load events', err);
+        failureCallback(err);
+      }
+    },
+    eventClick: info => {
+      if (info.event.url) {
+        info.jsEvent.preventDefault();
+        window.open(info.event.url, '_blank', 'noopener');
+      }
+    }
+  });
+  calendar.render();
+</script>
+
+<style>
+  #calendar {
+    --fc-breezy-primary: var(--clr-accent-red);
+  }
+</style>
