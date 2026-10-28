@@ -22,6 +22,21 @@ import SiteLayout from '../../layouts/SiteLayout.astro';
   import 'fullcalendar/skeleton.css';
   import 'fullcalendar/themes/breezy/palettes/rose.css'; // see style below for 1 override
   import 'fullcalendar/themes/breezy/theme.css';
+
+  interface ApiEvent {
+    name: string;
+    description: string;
+    start_datetime: string;
+    end_datetime: string;
+    location: string;
+    organizer: string;
+    status: string;
+    url?: string | null;
+    image_id: number;
+    eid: number;
+    group_id: number;
+    image_url?: string | null;
+  }
   
   const API_URL = 'https://sfucsss.org';
   const EVENTS_URL = import.meta.env.DEV
@@ -29,6 +44,9 @@ import SiteLayout from '../../layouts/SiteLayout.astro';
   : `${API_URL}/api/event`;   // production
 
   const calendarEl = document.getElementById('calendar');
+  if (!calendarEl) {
+    throw new Error('Calendar element (#calendar) not found');
+  }
   const calendar = new Calendar(calendarEl, {
     plugins: [themePlugin, dayGridPlugin, timeGridPlugin, listPlugin],
     initialView: 'dayGridMonth',
@@ -47,7 +65,7 @@ import SiteLayout from '../../layouts/SiteLayout.astro';
           })}`;
         const res = await fetch(url);
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
-        const data = await res.json();
+        const data = (await res.json()) as ApiEvent;
 
         successCallback(
           data
@@ -56,7 +74,7 @@ import SiteLayout from '../../layouts/SiteLayout.astro';
               title: e.name,
               start: e.start_datetime,
               end: e.end_datetime,
-              url: e.url ?? API_URL + '/events/events-calendar', // Not sure what to do if url null
+              url: e.url ?? '',
               extendedProps: {
                 description: e.description,
                 location: e.location,
@@ -64,7 +82,7 @@ import SiteLayout from '../../layouts/SiteLayout.astro';
                 status: e.status,
                 imageUrl: e.image_url
                 ? new URL(e.image_url, API_URL).href
-                : '/web-app-manifest-512x512.png', // I just chose this as a placeholder
+                : '/web-app-manifest-512x512.png', // Placeholder
                 groupId: e.group_id
               }
             }))
@@ -84,7 +102,7 @@ import SiteLayout from '../../layouts/SiteLayout.astro';
   calendar.render();
 </script>
 
-<style is:global>
+<style>
   #calendar {
     --fc-breezy-primary: var(--clr-accent-red);
   }
