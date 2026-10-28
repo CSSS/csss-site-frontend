@@ -28,14 +28,14 @@ import SiteLayout from '../../layouts/SiteLayout.astro';
     description: string;
     start_datetime: string;
     end_datetime: string;
-    location: string;
-    organizer: string;
+    location: string | null;
+    organizer: string | null;
     status: string;
-    url?: string | null;
-    image_id: number;
+    url: string | null;
+    image_id: number | null;
     eid: number;
-    group_id: number;
-    image_url?: string | null;
+    group_id: number | null;
+    image_url: string | null;
   }
 
   const API_URL = 'https://sfucsss.org';
